@@ -62,69 +62,71 @@ find_library(OSGGA_LIBRARY
 
 # Copy DLLs to staging area for newborn python extension modules
 
-# 1) OpenSceneGraph
-file(GLOB OSG_RUNTIME_LIBS "${OSG_DIR}/bin/*.dll")
-file(GLOB OSG_RUNTIME_DEBUG_LIBS "${OSG_DIR}/bin/*d.dll")
-set(OSG_PLUGIN_FOLDER "osgPlugins-${OSG_VERSION_STRING}")
-file(GLOB OSG_PLUGIN_LIBS "${OSG_DIR}/bin/${OSG_PLUGIN_FOLDER}/*.dll")
-file(GLOB OSG_PLUGIN_DEBUG_LIBS "${OSG_DIR}/bin/${OSG_PLUGIN_FOLDER}/*d.dll")
-# Copy release libraries, but not debug libraries
-list(REMOVE_ITEM OSG_RUNTIME_LIBS ${OSG_RUNTIME_DEBUG_LIBS} "foo")
-list(REMOVE_ITEM OSG_PLUGIN_LIBS ${OSG_PLUGIN_DEBUG_LIBS} "foo")
-foreach(LIB ${OSG_RUNTIME_LIBS})
-    file(COPY ${LIB} DESTINATION "${STAGING_FOLDER}/osgpypp")
-endforeach()
-foreach(LIB ${OSG_PLUGIN_LIBS})
-    file(COPY ${LIB} DESTINATION "${STAGING_FOLDER}/osgpypp/${OSG_PLUGIN_FOLDER}/")
-endforeach()
+if (WIN32)
+    # 1) OpenSceneGraph
+    file(GLOB OSG_RUNTIME_LIBS "${OSG_DIR}/bin/*.dll")
+    file(GLOB OSG_RUNTIME_DEBUG_LIBS "${OSG_DIR}/bin/*d.dll")
+    set(OSG_PLUGIN_FOLDER "osgPlugins-${OSG_VERSION_STRING}")
+    file(GLOB OSG_PLUGIN_LIBS "${OSG_DIR}/bin/${OSG_PLUGIN_FOLDER}/*.dll")
+    file(GLOB OSG_PLUGIN_DEBUG_LIBS "${OSG_DIR}/bin/${OSG_PLUGIN_FOLDER}/*d.dll")
+    # Copy release libraries, but not debug libraries
+    list(REMOVE_ITEM OSG_RUNTIME_LIBS ${OSG_RUNTIME_DEBUG_LIBS} "foo")
+    list(REMOVE_ITEM OSG_PLUGIN_LIBS ${OSG_PLUGIN_DEBUG_LIBS} "foo")
+    foreach(LIB ${OSG_RUNTIME_LIBS})
+        file(COPY ${LIB} DESTINATION "${STAGING_FOLDER}/osgpypp")
+    endforeach()
+    foreach(LIB ${OSG_PLUGIN_LIBS})
+        file(COPY ${LIB} DESTINATION "${STAGING_FOLDER}/osgpypp/${OSG_PLUGIN_FOLDER}/")
+    endforeach()
 
-# 2a) ZLIB - Maybe copy libs on Windows only? - needed by osgDB
-find_package(ZLIB)
-if (ZLIB_FOUND)
-    message(STATUS "${ZLIB_INCLUDE_DIR}/../bin/")
-    find_file(
-        ZLIB_RUNTIME_LIBRARY
-        NAMES zlib1.dll
-        PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
-    )
-    find_library(
-        ZLIB_RUNTIME_LIBRARY
-        NAMES zlib1 z
-        PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
-    )
-    file(COPY "${ZLIB_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
-    
-    # 2b) jpeg library
-    find_file(
-        JPEG_RUNTIME_LIBRARY
-        NAMES jpeg62.dll
-        PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
-    )
-    find_library(
-        JPEG_RUNTIME_LIBRARY
-        NAMES jpeg62 jpeg
-        PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
-    )
-    if (JPEG_RUNTIME_LIBRARY)
-        message(STATUS ${JPEG_RUNTIME_LIBRARY})
-        file(COPY "${JPEG_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
+    # 2a) ZLIB - Maybe copy libs on Windows only? - needed by osgDB
+    find_package(ZLIB)
+    if (ZLIB_FOUND)
+        message(STATUS "${ZLIB_INCLUDE_DIR}/../bin/")
+        find_file(
+            ZLIB_RUNTIME_LIBRARY
+            NAMES zlib1.dll
+            PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
+        )
+        find_library(
+            ZLIB_RUNTIME_LIBRARY
+            NAMES zlib1 z
+            PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
+        )
+        file(COPY "${ZLIB_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
+        
+        # 2b) jpeg library
+        find_file(
+            JPEG_RUNTIME_LIBRARY
+            NAMES jpeg62.dll
+            PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
+        )
+        find_library(
+            JPEG_RUNTIME_LIBRARY
+            NAMES jpeg62 jpeg
+            PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
+        )
+        if (JPEG_RUNTIME_LIBRARY)
+            message(STATUS ${JPEG_RUNTIME_LIBRARY})
+            file(COPY "${JPEG_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
+        endif()
     endif()
-endif()
 
 
-# 3) boost python 
-get_filename_component(BOOSTPYTHON_LIB_BASE "${Boost_PYTHON_LIBRARY_RELEASE}" NAME_WE)
-find_file(
-    BOOST_PYTHON_RUNTIME_LIBRARY
-    NAMES "${BOOSTPYTHON_LIB_BASE}.dll"
-    PATHS "${Boost_LIBRARY_DIR}"
-)
-file(COPY "${BOOST_PYTHON_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
-# 4) Collada library, needed for DAE loader plugin; OSG must have been built with DAE plugin too...
-find_file(
-    COLLADA_RUNTIME_LIBRARY
-    NAMES libcollada14dom21.dll)
-file(COPY "${COLLADA_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
+    # 3) boost python 
+    get_filename_component(BOOSTPYTHON_LIB_BASE "${Boost_PYTHON_LIBRARY_RELEASE}" NAME_WE)
+    find_file(
+        BOOST_PYTHON_RUNTIME_LIBRARY
+        NAMES "${BOOSTPYTHON_LIB_BASE}.dll"
+        PATHS "${Boost_LIBRARY_DIR}"
+    )
+    file(COPY "${BOOST_PYTHON_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
+    # 4) Collada library, needed for DAE loader plugin; OSG must have been built with DAE plugin too...
+    find_file(
+        COLLADA_RUNTIME_LIBRARY
+        NAMES libcollada14dom21.dll)
+    file(COPY "${COLLADA_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
+endif(WIN32)
 
 set(OSGPYPP_REGENERATE_BINDINGS FALSE CACHE BOOL "Whether to regenerate boost python C++ binding source code")
 
