@@ -49,7 +49,7 @@ find_path(OSG_INCLUDE_DIR "osg/Node"
 include_directories(${OSG_INCLUDE_DIR})
 find_library(OPENTHREADS_LIBRARY 
     NAMES OpenThreads openthreads openthreads14
-    PATHS ${OSG_DIR}/lib
+    PATHS ${OSG_DIR}/lib /usr/libs
 )
 find_library(OSG_LIBRARY 
     NAME osg
@@ -225,7 +225,7 @@ add_custom_target(InstallOsgPyPPLocally DEPENDS
     _osgAnimation _osgSim _osgParticle)
 
 # Only use the first two values in the python version for the install version, e.g. "2.7"
-string(REGEX MATCH "^[0-9]+\\.[0-9]+" PY_TARGET_VERSION ${PYTHONLIBS_VERSION_STRING})
+string(REGEX MATCH "^[0-9]+\\.[0-9]+" PY_TARGET_VERSION "${PYTHONLIBS_VERSION_STRING}")
 # message(${PY_TARGET_VERSION})
 add_custom_target(InstallerWin32 ALL
     # We shoehorned version into X.Y.Z format so we can use msi instead of wininst
