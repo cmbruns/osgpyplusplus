@@ -1,0 +1,10 @@
+# started from example at http://blog.azerg.com/using-travis-yml-with-cmake-project/
+language: cpp
+compiler:
+  - gcc
+before_script:
+  - mkdir build_cmake
+  - cd build_cmake
+  - cmake ..
+script:
+  - make
