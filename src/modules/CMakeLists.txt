@@ -48,7 +48,7 @@ find_path(OSG_INCLUDE_DIR "osg/Node"
     PATHS ${OSG_DIR}/include)
 include_directories(${OSG_INCLUDE_DIR})
 find_library(OPENTHREADS_LIBRARY 
-    NAME OpenThreads
+    NAMES OpenThreads openthreads openthreads14
     PATHS ${OSG_DIR}/lib
 )
 find_library(OSG_LIBRARY 
@@ -56,7 +56,7 @@ find_library(OSG_LIBRARY
     PATHS ${OSG_DIR}/lib
 )
 find_library(OSGGA_LIBRARY 
-    NAME osgGA
+    NAMES osgGA osgga
     PATHS ${OSG_DIR}/lib
 )
 
