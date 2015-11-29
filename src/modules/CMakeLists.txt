@@ -22,7 +22,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # Python
-find_package(PythonLibs REQUIRED)
+find_package(PythonLibs 2.7 REQUIRED)
 mark_as_advanced(CLEAR PYTHON_INCLUDE_DIRS)
 mark_as_advanced(CLEAR PYTHON_LIBRARIES)
 include_directories(${PYTHON_INCLUDE_DIRS})
