@@ -3,8 +3,8 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/list.hpp"
-#include "wrap_osgutil.h"
-#include "compilesets.pypp.hpp"
+#include "wrap_osgUtil.h"
+#include "CompileSets.pypp.hpp"
 
 namespace bp = boost::python;
 

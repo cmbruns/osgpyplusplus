@@ -3,14 +3,18 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/map.hpp"
-#include "wrap_osgutil.h"
-#include "renderbinlist.pypp.hpp"
+#include "wrap_osgUtil.h"
+#include "RenderBinList.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_RenderBinList_class(){
 
-    bp::class_< std::map< int, osg::ref_ptr<osgUtil::RenderBin> > >( "RenderBinList" )    
-        .def( bp::indexing::map_suite< std::map< int, osg::ref_ptr<osgUtil::RenderBin> > >() );
+    { //::std::map< int, osg::ref_ptr<osgUtil::RenderBin> >
+        typedef bp::class_< std::map< int, osg::ref_ptr<osgUtil::RenderBin> > > RenderBinList_exposer_t;
+        RenderBinList_exposer_t RenderBinList_exposer = RenderBinList_exposer_t( "RenderBinList" );
+        bp::scope RenderBinList_scope( RenderBinList_exposer );
+        RenderBinList_exposer.def( bp::indexing::map_suite< std::map< int, osg::ref_ptr<osgUtil::RenderBin> > >() );
+    }
 
 }

@@ -158,8 +158,10 @@ template<class VecType, class ElemType> struct OsgVec_container_traits {
 // Specialization of list_algorithms, because osg::vectors lack size() method
 // TODO - not yet tested
 template<class VecType, class ElemType, int vecSize> 
-struct OsgVec_algorithms : public list_algorithms <OsgVec_container_traits<VecType, ElemType>, OsgVec_algorithms<VecType, ElemType, vecSize>> 
+struct OsgVec_algorithms : public list_algorithms <OsgVec_container_traits<VecType, ElemType>, OsgVec_algorithms<VecType, ElemType, vecSize> > 
 {
+    typedef VecType container;
+
     static const size_t size(container& c) {return vecSize;}
 };
 

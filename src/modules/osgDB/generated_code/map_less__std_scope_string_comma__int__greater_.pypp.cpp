@@ -3,14 +3,18 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/map.hpp"
-#include "wrap_osgdb.h"
+#include "wrap_osgDB.h"
 #include "map_less__std_scope_string_comma__int__greater_.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_map_less__std_scope_string_comma__int__greater__class(){
 
-    bp::class_< std::map< std::string, int > >( "map_less__std_scope_string_comma__int__greater_" )    
-        .def( bp::indexing::map_suite< std::map< std::string, int > >() );
+    { //::std::map< std::string, int >
+        typedef bp::class_< std::map< std::string, int > > map_less__std_scope_string_comma__int__greater__exposer_t;
+        map_less__std_scope_string_comma__int__greater__exposer_t map_less__std_scope_string_comma__int__greater__exposer = map_less__std_scope_string_comma__int__greater__exposer_t( "map_less__std_scope_string_comma__int__greater_" );
+        bp::scope map_less__std_scope_string_comma__int__greater__scope( map_less__std_scope_string_comma__int__greater__exposer );
+        map_less__std_scope_string_comma__int__greater__exposer.def( bp::indexing::map_suite< std::map< std::string, int > >() );
+    }
 
 }

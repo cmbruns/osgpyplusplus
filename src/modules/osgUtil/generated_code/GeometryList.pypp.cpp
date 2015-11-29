@@ -3,14 +3,18 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/set.hpp"
-#include "wrap_osgutil.h"
-#include "geometrylist.pypp.hpp"
+#include "wrap_osgUtil.h"
+#include "GeometryList.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_GeometryList_class(){
 
-    bp::class_< std::set< osg::Geometry* > >( "GeometryList" )    
-        .def( bp::indexing::set_suite< std::set< osg::Geometry* > >::with_policies(bp::return_internal_reference< >()) );
+    { //::std::set< osg::Geometry* >
+        typedef bp::class_< std::set< osg::Geometry* > > GeometryList_exposer_t;
+        GeometryList_exposer_t GeometryList_exposer = GeometryList_exposer_t( "GeometryList" );
+        bp::scope GeometryList_scope( GeometryList_exposer );
+        GeometryList_exposer.def( bp::indexing::set_suite< std::set< osg::Geometry* > >::with_policies(bp::return_internal_reference< >()) );
+    }
 
 }

@@ -3,8 +3,8 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/deque.hpp"
-#include "wrap_osgdb.h"
-#include "filepathlist.pypp.hpp"
+#include "wrap_osgDB.h"
+#include "FilePathList.pypp.hpp"
 
 namespace bp = boost::python;
 

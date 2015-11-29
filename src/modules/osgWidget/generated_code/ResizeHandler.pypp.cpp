@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgwidget.h"
+#include "wrap_osgWidget.h"
 #include "wrap_referenced.h"
-#include "resizehandler.pypp.hpp"
+#include "ResizeHandler.pypp.hpp"
 
 namespace bp = boost::python;
 

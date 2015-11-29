@@ -2,7 +2,7 @@
 
 #include "boost/python.hpp"
 #include "wrap_osg.h"
-#include "observer.pypp.hpp"
+#include "Observer.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -41,8 +41,8 @@ void register_Observer_class(){
     bp::class_< Observer_wrapper >( "Observer", "\n Observer base class for tracking when objects are unreferenced (their reference count goes to 0) and are being deleted.\n", bp::init< >("\n Observer base class for tracking when objects are unreferenced (their reference count goes to 0) and are being deleted.\n") )    
         .def( 
             "objectDeleted"
-            , (void ( ::osg::Observer::* )( void * ))(&::osg::Observer::objectDeleted)
-            , (void ( Observer_wrapper::* )( void * ))(&Observer_wrapper::default_objectDeleted)
+            , (void ( ::osg::Observer::* )( void * ) )(&::osg::Observer::objectDeleted)
+            , (void ( Observer_wrapper::* )( void * ) )(&Observer_wrapper::default_objectDeleted)
             , ( bp::arg("arg0") ) );
 
 }

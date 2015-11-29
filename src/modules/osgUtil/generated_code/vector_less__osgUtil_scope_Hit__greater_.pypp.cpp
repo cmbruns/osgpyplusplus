@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "_Hit__value_traits.pypp.hpp"
-#include "vector_less__osgutil_scope_hit__greater_.pypp.hpp"
+#include "vector_less__osgUtil_scope_Hit__greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

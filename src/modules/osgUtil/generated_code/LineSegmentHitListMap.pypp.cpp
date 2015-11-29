@@ -3,15 +3,19 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/map.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "_vector_less__osgUtil_scope_Hit__greater___value_traits.pypp.hpp"
-#include "linesegmenthitlistmap.pypp.hpp"
+#include "LineSegmentHitListMap.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_LineSegmentHitListMap_class(){
 
-    bp::class_< std::map< osg::LineSegment const*, std::vector< osgUtil::Hit > > >( "LineSegmentHitListMap" )    
-        .def( bp::indexing::map_suite< std::map< osg::LineSegment const*, std::vector< osgUtil::Hit > > >() );
+    { //::std::map< osg::LineSegment const*, std::vector< osgUtil::Hit > >
+        typedef bp::class_< std::map< osg::LineSegment const*, std::vector< osgUtil::Hit > > > LineSegmentHitListMap_exposer_t;
+        LineSegmentHitListMap_exposer_t LineSegmentHitListMap_exposer = LineSegmentHitListMap_exposer_t( "LineSegmentHitListMap" );
+        bp::scope LineSegmentHitListMap_scope( LineSegmentHitListMap_exposer );
+        LineSegmentHitListMap_exposer.def( bp::indexing::map_suite< std::map< osg::LineSegment const*, std::vector< osgUtil::Hit > > >() );
+    }
 
 }

@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgmanipulator.h"
+#include "wrap_osgManipulator.h"
 #include "wrap_referenced.h"
-#include "draggercallback.pypp.hpp"
+#include "DraggerCallback.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -323,28 +323,28 @@ void register_DraggerCallback_class(){
     bp::class_< DraggerCallback_wrapper, bp::bases< ::osg::Object >, osg::ref_ptr< DraggerCallback_wrapper >, boost::noncopyable >( "DraggerCallback", bp::init< >() )    
         .def( 
             "className"
-            , (char const * ( ::osgManipulator::DraggerCallback::* )(  )const)(&::osgManipulator::DraggerCallback::className)
-            , (char const * ( DraggerCallback_wrapper::* )(  )const)(&DraggerCallback_wrapper::default_className) )    
+            , (char const * ( ::osgManipulator::DraggerCallback::* )(  ) const)(&::osgManipulator::DraggerCallback::className)
+            , (char const * ( DraggerCallback_wrapper::* )(  ) const)(&DraggerCallback_wrapper::default_className) )    
         .def( 
             "clone"
-            , (::osg::Object * ( ::osgManipulator::DraggerCallback::* )( ::osg::CopyOp const & )const)(&::osgManipulator::DraggerCallback::clone)
-            , (::osg::Object * ( DraggerCallback_wrapper::* )( ::osg::CopyOp const & )const)(&DraggerCallback_wrapper::default_clone)
+            , (::osg::Object * ( ::osgManipulator::DraggerCallback::* )( ::osg::CopyOp const & ) const)(&::osgManipulator::DraggerCallback::clone)
+            , (::osg::Object * ( DraggerCallback_wrapper::* )( ::osg::CopyOp const & ) const)(&DraggerCallback_wrapper::default_clone)
             , ( bp::arg("copyop") )
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "cloneType"
-            , (::osg::Object * ( ::osgManipulator::DraggerCallback::* )(  )const)(&::osgManipulator::DraggerCallback::cloneType)
-            , (::osg::Object * ( DraggerCallback_wrapper::* )(  )const)(&DraggerCallback_wrapper::default_cloneType)
+            , (::osg::Object * ( ::osgManipulator::DraggerCallback::* )(  ) const)(&::osgManipulator::DraggerCallback::cloneType)
+            , (::osg::Object * ( DraggerCallback_wrapper::* )(  ) const)(&DraggerCallback_wrapper::default_cloneType)
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "isSameKindAs"
-            , (bool ( ::osgManipulator::DraggerCallback::* )( ::osg::Object const * )const)(&::osgManipulator::DraggerCallback::isSameKindAs)
-            , (bool ( DraggerCallback_wrapper::* )( ::osg::Object const * )const)(&DraggerCallback_wrapper::default_isSameKindAs)
+            , (bool ( ::osgManipulator::DraggerCallback::* )( ::osg::Object const * ) const)(&::osgManipulator::DraggerCallback::isSameKindAs)
+            , (bool ( DraggerCallback_wrapper::* )( ::osg::Object const * ) const)(&DraggerCallback_wrapper::default_isSameKindAs)
             , ( bp::arg("obj") ) )    
         .def( 
             "libraryName"
-            , (char const * ( ::osgManipulator::DraggerCallback::* )(  )const)(&::osgManipulator::DraggerCallback::libraryName)
-            , (char const * ( DraggerCallback_wrapper::* )(  )const)(&DraggerCallback_wrapper::default_libraryName) )    
+            , (char const * ( ::osgManipulator::DraggerCallback::* )(  ) const)(&::osgManipulator::DraggerCallback::libraryName)
+            , (char const * ( DraggerCallback_wrapper::* )(  ) const)(&DraggerCallback_wrapper::default_libraryName) )    
         .def( 
             "receive"
             , (boost::python::object (*)( ::osgManipulator::DraggerCallback &,::osgManipulator::MotionCommand & ))( &DraggerCallback_wrapper::default_receive_a81453cad0b55e6a30e46933e3b5b17c )

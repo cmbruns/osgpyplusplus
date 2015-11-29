@@ -3,14 +3,18 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/set.hpp"
-#include "wrap_osgutil.h"
-#include "textureset.pypp.hpp"
+#include "wrap_osgUtil.h"
+#include "TextureSet.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_TextureSet_class(){
 
-    bp::class_< std::set< osg::Texture* > >( "TextureSet" )    
-        .def( bp::indexing::set_suite< std::set< osg::Texture* > >::with_policies(bp::return_internal_reference< >()) );
+    { //::std::set< osg::Texture* >
+        typedef bp::class_< std::set< osg::Texture* > > TextureSet_exposer_t;
+        TextureSet_exposer_t TextureSet_exposer = TextureSet_exposer_t( "TextureSet" );
+        bp::scope TextureSet_scope( TextureSet_exposer );
+        TextureSet_exposer.def( bp::indexing::set_suite< std::set< osg::Texture* > >::with_policies(bp::return_internal_reference< >()) );
+    }
 
 }

@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "primitiveset.pypp.hpp"
+#include "PrimitiveSet.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -217,42 +217,6 @@ struct PrimitiveSet_wrapper : osg::PrimitiveSet, bp::wrapper< osg::PrimitiveSet 
         return func_cloneType(  );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
     virtual void resizeGLObjectBuffers( unsigned int maxSize ) {
         if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
             func_resizeGLObjectBuffers( maxSize );
@@ -263,42 +227,6 @@ struct PrimitiveSet_wrapper : osg::PrimitiveSet, bp::wrapper< osg::PrimitiveSet 
     
     void default_resizeGLObjectBuffers( unsigned int maxSize ) {
         osg::BufferData::resizeGLObjectBuffers( maxSize );
-    }
-
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
     }
 
 };
@@ -338,7 +266,7 @@ void register_PrimitiveSet_class(){
             ;
         { //::osg::PrimitiveSet::accept
         
-            typedef void ( ::osg::PrimitiveSet::*accept_function_type)( ::osg::PrimitiveFunctor & ) const;
+            typedef void ( ::osg::PrimitiveSet::*accept_function_type )( ::osg::PrimitiveFunctor & ) const;
             
             PrimitiveSet_exposer.def( 
                 "accept"
@@ -348,7 +276,7 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::accept
         
-            typedef void ( ::osg::PrimitiveSet::*accept_function_type)( ::osg::PrimitiveIndexFunctor & ) const;
+            typedef void ( ::osg::PrimitiveSet::*accept_function_type )( ::osg::PrimitiveIndexFunctor & ) const;
             
             PrimitiveSet_exposer.def( 
                 "accept"
@@ -358,8 +286,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::asPrimitiveSet
         
-            typedef ::osg::PrimitiveSet * ( ::osg::PrimitiveSet::*asPrimitiveSet_function_type)(  ) ;
-            typedef ::osg::PrimitiveSet * ( PrimitiveSet_wrapper::*default_asPrimitiveSet_function_type)(  ) ;
+            typedef ::osg::PrimitiveSet * ( ::osg::PrimitiveSet::*asPrimitiveSet_function_type )(  ) ;
+            typedef ::osg::PrimitiveSet * ( PrimitiveSet_wrapper::*default_asPrimitiveSet_function_type )(  ) ;
             
             PrimitiveSet_exposer.def( 
                 "asPrimitiveSet"
@@ -370,8 +298,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::asPrimitiveSet
         
-            typedef ::osg::PrimitiveSet const * ( ::osg::PrimitiveSet::*asPrimitiveSet_function_type)(  ) const;
-            typedef ::osg::PrimitiveSet const * ( PrimitiveSet_wrapper::*default_asPrimitiveSet_function_type)(  ) const;
+            typedef ::osg::PrimitiveSet const * ( ::osg::PrimitiveSet::*asPrimitiveSet_function_type )(  ) const;
+            typedef ::osg::PrimitiveSet const * ( PrimitiveSet_wrapper::*default_asPrimitiveSet_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "asPrimitiveSet"
@@ -382,8 +310,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::className
         
-            typedef char const * ( ::osg::PrimitiveSet::*className_function_type)(  ) const;
-            typedef char const * ( PrimitiveSet_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::PrimitiveSet::*className_function_type )(  ) const;
+            typedef char const * ( PrimitiveSet_wrapper::*default_className_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "className"
@@ -393,8 +321,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::computeRange
         
-            typedef void ( ::osg::PrimitiveSet::*computeRange_function_type)(  ) const;
-            typedef void ( PrimitiveSet_wrapper::*default_computeRange_function_type)(  ) const;
+            typedef void ( ::osg::PrimitiveSet::*computeRange_function_type )(  ) const;
+            typedef void ( PrimitiveSet_wrapper::*default_computeRange_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "computeRange"
@@ -404,7 +332,7 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::draw
         
-            typedef void ( ::osg::PrimitiveSet::*draw_function_type)( ::osg::State &,bool ) const;
+            typedef void ( ::osg::PrimitiveSet::*draw_function_type )( ::osg::State &,bool ) const;
             
             PrimitiveSet_exposer.def( 
                 "draw"
@@ -414,8 +342,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::getDataPointer
         
-            typedef ::GLvoid const * ( ::osg::PrimitiveSet::*getDataPointer_function_type)(  ) const;
-            typedef ::GLvoid const * ( PrimitiveSet_wrapper::*default_getDataPointer_function_type)(  ) const;
+            typedef ::GLvoid const * ( ::osg::PrimitiveSet::*getDataPointer_function_type )(  ) const;
+            typedef ::GLvoid const * ( PrimitiveSet_wrapper::*default_getDataPointer_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "getDataPointer"
@@ -426,8 +354,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::getDrawElements
         
-            typedef ::osg::DrawElements * ( ::osg::PrimitiveSet::*getDrawElements_function_type)(  ) ;
-            typedef ::osg::DrawElements * ( PrimitiveSet_wrapper::*default_getDrawElements_function_type)(  ) ;
+            typedef ::osg::DrawElements * ( ::osg::PrimitiveSet::*getDrawElements_function_type )(  ) ;
+            typedef ::osg::DrawElements * ( PrimitiveSet_wrapper::*default_getDrawElements_function_type )(  ) ;
             
             PrimitiveSet_exposer.def( 
                 "getDrawElements"
@@ -438,8 +366,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::getDrawElements
         
-            typedef ::osg::DrawElements const * ( ::osg::PrimitiveSet::*getDrawElements_function_type)(  ) const;
-            typedef ::osg::DrawElements const * ( PrimitiveSet_wrapper::*default_getDrawElements_function_type)(  ) const;
+            typedef ::osg::DrawElements const * ( ::osg::PrimitiveSet::*getDrawElements_function_type )(  ) const;
+            typedef ::osg::DrawElements const * ( PrimitiveSet_wrapper::*default_getDrawElements_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "getDrawElements"
@@ -450,7 +378,7 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::getMode
         
-            typedef ::GLenum ( ::osg::PrimitiveSet::*getMode_function_type)(  ) const;
+            typedef ::GLenum ( ::osg::PrimitiveSet::*getMode_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "getMode"
@@ -459,7 +387,7 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::getNumIndices
         
-            typedef unsigned int ( ::osg::PrimitiveSet::*getNumIndices_function_type)(  ) const;
+            typedef unsigned int ( ::osg::PrimitiveSet::*getNumIndices_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "getNumIndices"
@@ -468,7 +396,7 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::getNumInstances
         
-            typedef int ( ::osg::PrimitiveSet::*getNumInstances_function_type)(  ) const;
+            typedef int ( ::osg::PrimitiveSet::*getNumInstances_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "getNumInstances"
@@ -477,8 +405,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::getNumPrimitives
         
-            typedef unsigned int ( ::osg::PrimitiveSet::*getNumPrimitives_function_type)(  ) const;
-            typedef unsigned int ( PrimitiveSet_wrapper::*default_getNumPrimitives_function_type)(  ) const;
+            typedef unsigned int ( ::osg::PrimitiveSet::*getNumPrimitives_function_type )(  ) const;
+            typedef unsigned int ( PrimitiveSet_wrapper::*default_getNumPrimitives_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "getNumPrimitives"
@@ -488,8 +416,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::getTotalDataSize
         
-            typedef unsigned int ( ::osg::PrimitiveSet::*getTotalDataSize_function_type)(  ) const;
-            typedef unsigned int ( PrimitiveSet_wrapper::*default_getTotalDataSize_function_type)(  ) const;
+            typedef unsigned int ( ::osg::PrimitiveSet::*getTotalDataSize_function_type )(  ) const;
+            typedef unsigned int ( PrimitiveSet_wrapper::*default_getTotalDataSize_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "getTotalDataSize"
@@ -499,7 +427,7 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::getType
         
-            typedef ::osg::PrimitiveSet::Type ( ::osg::PrimitiveSet::*getType_function_type)(  ) const;
+            typedef ::osg::PrimitiveSet::Type ( ::osg::PrimitiveSet::*getType_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "getType"
@@ -508,7 +436,7 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::index
         
-            typedef unsigned int ( ::osg::PrimitiveSet::*index_function_type)( unsigned int ) const;
+            typedef unsigned int ( ::osg::PrimitiveSet::*index_function_type )( unsigned int ) const;
             
             PrimitiveSet_exposer.def( 
                 "index"
@@ -518,8 +446,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::isSameKindAs
         
-            typedef bool ( ::osg::PrimitiveSet::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( PrimitiveSet_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::PrimitiveSet::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( PrimitiveSet_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             PrimitiveSet_exposer.def( 
                 "isSameKindAs"
@@ -530,8 +458,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::libraryName
         
-            typedef char const * ( ::osg::PrimitiveSet::*libraryName_function_type)(  ) const;
-            typedef char const * ( PrimitiveSet_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::PrimitiveSet::*libraryName_function_type )(  ) const;
+            typedef char const * ( PrimitiveSet_wrapper::*default_libraryName_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "libraryName"
@@ -541,7 +469,7 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::offsetIndices
         
-            typedef void ( ::osg::PrimitiveSet::*offsetIndices_function_type)( int ) ;
+            typedef void ( ::osg::PrimitiveSet::*offsetIndices_function_type )( int ) ;
             
             PrimitiveSet_exposer.def( 
                 "offsetIndices"
@@ -551,7 +479,7 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::setMode
         
-            typedef void ( ::osg::PrimitiveSet::*setMode_function_type)( ::GLenum ) ;
+            typedef void ( ::osg::PrimitiveSet::*setMode_function_type )( ::GLenum ) ;
             
             PrimitiveSet_exposer.def( 
                 "setMode"
@@ -561,7 +489,7 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::setNumInstances
         
-            typedef void ( ::osg::PrimitiveSet::*setNumInstances_function_type)( int ) ;
+            typedef void ( ::osg::PrimitiveSet::*setNumInstances_function_type )( int ) ;
             
             PrimitiveSet_exposer.def( 
                 "setNumInstances"
@@ -571,8 +499,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::PrimitiveSet::supportsBufferObject
         
-            typedef bool ( ::osg::PrimitiveSet::*supportsBufferObject_function_type)(  ) const;
-            typedef bool ( PrimitiveSet_wrapper::*default_supportsBufferObject_function_type)(  ) const;
+            typedef bool ( ::osg::PrimitiveSet::*supportsBufferObject_function_type )(  ) const;
+            typedef bool ( PrimitiveSet_wrapper::*default_supportsBufferObject_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "supportsBufferObject"
@@ -582,8 +510,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::BufferData::asArray
         
-            typedef ::osg::Array * ( ::osg::BufferData::*asArray_function_type)(  ) ;
-            typedef ::osg::Array * ( PrimitiveSet_wrapper::*default_asArray_function_type)(  ) ;
+            typedef ::osg::Array * ( ::osg::BufferData::*asArray_function_type )(  ) ;
+            typedef ::osg::Array * ( PrimitiveSet_wrapper::*default_asArray_function_type )(  ) ;
             
             PrimitiveSet_exposer.def( 
                 "asArray"
@@ -594,8 +522,8 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::BufferData::asArray
         
-            typedef ::osg::Array const * ( ::osg::BufferData::*asArray_function_type)(  ) const;
-            typedef ::osg::Array const * ( PrimitiveSet_wrapper::*default_asArray_function_type)(  ) const;
+            typedef ::osg::Array const * ( ::osg::BufferData::*asArray_function_type )(  ) const;
+            typedef ::osg::Array const * ( PrimitiveSet_wrapper::*default_asArray_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "asArray"
@@ -606,7 +534,7 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::Object::clone
         
-            typedef ::osg::Object * ( ::osg::Object::*clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::Object::*clone_function_type )( ::osg::CopyOp const & ) const;
             
             PrimitiveSet_exposer.def( 
                 "clone"
@@ -618,7 +546,7 @@ void register_PrimitiveSet_class(){
         }
         { //::osg::Object::cloneType
         
-            typedef ::osg::Object * ( ::osg::Object::*cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::Object::*cloneType_function_type )(  ) const;
             
             PrimitiveSet_exposer.def( 
                 "cloneType"
@@ -627,98 +555,16 @@ void register_PrimitiveSet_class(){
                 , "\n Clone the type of an object, with Object* return type.\n            Must be defined by derived classes.\n" );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( PrimitiveSet_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            PrimitiveSet_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&PrimitiveSet_wrapper::default_computeDataVariance) );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( PrimitiveSet_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            PrimitiveSet_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&PrimitiveSet_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( PrimitiveSet_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            PrimitiveSet_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&PrimitiveSet_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::BufferData::resizeGLObjectBuffers
         
-            typedef void ( ::osg::BufferData::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( PrimitiveSet_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::BufferData::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( PrimitiveSet_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             PrimitiveSet_exposer.def( 
                 "resizeGLObjectBuffers"
                 , resizeGLObjectBuffers_function_type(&::osg::BufferData::resizeGLObjectBuffers)
                 , default_resizeGLObjectBuffers_function_type(&PrimitiveSet_wrapper::default_resizeGLObjectBuffers)
                 , ( bp::arg("maxSize") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( PrimitiveSet_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            PrimitiveSet_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&PrimitiveSet_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            PrimitiveSet_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( PrimitiveSet_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            PrimitiveSet_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&PrimitiveSet_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( PrimitiveSet_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            PrimitiveSet_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&PrimitiveSet_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
     }

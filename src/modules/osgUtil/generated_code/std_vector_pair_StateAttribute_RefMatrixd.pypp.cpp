@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "_pair_less__osg_scope_ref_ptr_less__osg_scope_StateAttribute_const__greater__comma__osg_scope_ref_ptr_less__osg_scope_RefMatrixd__greater___greater___value_traits.pypp.hpp"
-#include "std_vector_pair_stateattribute_refmatrixd.pypp.hpp"
+#include "std_vector_pair_StateAttribute_RefMatrixd.pypp.hpp"
 
 namespace bp = boost::python;
 

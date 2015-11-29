@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "alphafunc.pypp.hpp"
+#include "AlphaFunc.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -167,18 +167,6 @@ struct AlphaFunc_wrapper : osg::AlphaFunc, bp::wrapper< osg::AlphaFunc > {
         osg::StateAttribute::compileGLObjects( boost::ref(arg0) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
     virtual unsigned int getMember(  ) const  {
         if( bp::override func_getMember = this->get_override( "getMember" ) )
             return func_getMember(  );
@@ -189,30 +177,6 @@ struct AlphaFunc_wrapper : osg::AlphaFunc, bp::wrapper< osg::AlphaFunc > {
     
     unsigned int default_getMember(  ) const  {
         return osg::StateAttribute::getMember( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
     }
 
     virtual bool isTextureAttribute(  ) const  {
@@ -239,42 +203,6 @@ struct AlphaFunc_wrapper : osg::AlphaFunc, bp::wrapper< osg::AlphaFunc > {
         osg::StateAttribute::resizeGLObjectBuffers( arg0 );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_AlphaFunc_class(){
@@ -298,8 +226,8 @@ void register_AlphaFunc_class(){
         AlphaFunc_exposer.def( bp::init< osg::AlphaFunc::ComparisonFunction, float >(( bp::arg("func"), bp::arg("ref") )) );
         { //::osg::AlphaFunc::apply
         
-            typedef void ( ::osg::AlphaFunc::*apply_function_type)( ::osg::State & ) const;
-            typedef void ( AlphaFunc_wrapper::*default_apply_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::AlphaFunc::*apply_function_type )( ::osg::State & ) const;
+            typedef void ( AlphaFunc_wrapper::*default_apply_function_type )( ::osg::State & ) const;
             
             AlphaFunc_exposer.def( 
                 "apply"
@@ -310,8 +238,8 @@ void register_AlphaFunc_class(){
         }
         { //::osg::AlphaFunc::className
         
-            typedef char const * ( ::osg::AlphaFunc::*className_function_type)(  ) const;
-            typedef char const * ( AlphaFunc_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::AlphaFunc::*className_function_type )(  ) const;
+            typedef char const * ( AlphaFunc_wrapper::*default_className_function_type )(  ) const;
             
             AlphaFunc_exposer.def( 
                 "className"
@@ -321,8 +249,8 @@ void register_AlphaFunc_class(){
         }
         { //::osg::AlphaFunc::clone
         
-            typedef ::osg::Object * ( ::osg::AlphaFunc::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( AlphaFunc_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::AlphaFunc::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( AlphaFunc_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             AlphaFunc_exposer.def( 
                 "clone"
@@ -334,8 +262,8 @@ void register_AlphaFunc_class(){
         }
         { //::osg::AlphaFunc::cloneType
         
-            typedef ::osg::Object * ( ::osg::AlphaFunc::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( AlphaFunc_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::AlphaFunc::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( AlphaFunc_wrapper::*default_cloneType_function_type )(  ) const;
             
             AlphaFunc_exposer.def( 
                 "cloneType"
@@ -346,7 +274,7 @@ void register_AlphaFunc_class(){
         }
         { //::osg::AlphaFunc::getFunction
         
-            typedef ::osg::AlphaFunc::ComparisonFunction ( ::osg::AlphaFunc::*getFunction_function_type)(  ) const;
+            typedef ::osg::AlphaFunc::ComparisonFunction ( ::osg::AlphaFunc::*getFunction_function_type )(  ) const;
             
             AlphaFunc_exposer.def( 
                 "getFunction"
@@ -355,8 +283,8 @@ void register_AlphaFunc_class(){
         }
         { //::osg::AlphaFunc::getModeUsage
         
-            typedef bool ( ::osg::AlphaFunc::*getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
-            typedef bool ( AlphaFunc_wrapper::*default_getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( ::osg::AlphaFunc::*getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( AlphaFunc_wrapper::*default_getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
             
             AlphaFunc_exposer.def( 
                 "getModeUsage"
@@ -367,7 +295,7 @@ void register_AlphaFunc_class(){
         }
         { //::osg::AlphaFunc::getReferenceValue
         
-            typedef float ( ::osg::AlphaFunc::*getReferenceValue_function_type)(  ) const;
+            typedef float ( ::osg::AlphaFunc::*getReferenceValue_function_type )(  ) const;
             
             AlphaFunc_exposer.def( 
                 "getReferenceValue"
@@ -376,8 +304,8 @@ void register_AlphaFunc_class(){
         }
         { //::osg::AlphaFunc::getType
         
-            typedef ::osg::StateAttribute::Type ( ::osg::AlphaFunc::*getType_function_type)(  ) const;
-            typedef ::osg::StateAttribute::Type ( AlphaFunc_wrapper::*default_getType_function_type)(  ) const;
+            typedef ::osg::StateAttribute::Type ( ::osg::AlphaFunc::*getType_function_type )(  ) const;
+            typedef ::osg::StateAttribute::Type ( AlphaFunc_wrapper::*default_getType_function_type )(  ) const;
             
             AlphaFunc_exposer.def( 
                 "getType"
@@ -387,8 +315,8 @@ void register_AlphaFunc_class(){
         }
         { //::osg::AlphaFunc::isSameKindAs
         
-            typedef bool ( ::osg::AlphaFunc::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( AlphaFunc_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::AlphaFunc::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( AlphaFunc_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             AlphaFunc_exposer.def( 
                 "isSameKindAs"
@@ -399,8 +327,8 @@ void register_AlphaFunc_class(){
         }
         { //::osg::AlphaFunc::libraryName
         
-            typedef char const * ( ::osg::AlphaFunc::*libraryName_function_type)(  ) const;
-            typedef char const * ( AlphaFunc_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::AlphaFunc::*libraryName_function_type )(  ) const;
+            typedef char const * ( AlphaFunc_wrapper::*default_libraryName_function_type )(  ) const;
             
             AlphaFunc_exposer.def( 
                 "libraryName"
@@ -410,7 +338,7 @@ void register_AlphaFunc_class(){
         }
         { //::osg::AlphaFunc::setFunction
         
-            typedef void ( ::osg::AlphaFunc::*setFunction_function_type)( ::osg::AlphaFunc::ComparisonFunction,float ) ;
+            typedef void ( ::osg::AlphaFunc::*setFunction_function_type )( ::osg::AlphaFunc::ComparisonFunction,float ) ;
             
             AlphaFunc_exposer.def( 
                 "setFunction"
@@ -420,7 +348,7 @@ void register_AlphaFunc_class(){
         }
         { //::osg::AlphaFunc::setFunction
         
-            typedef void ( ::osg::AlphaFunc::*setFunction_function_type)( ::osg::AlphaFunc::ComparisonFunction ) ;
+            typedef void ( ::osg::AlphaFunc::*setFunction_function_type )( ::osg::AlphaFunc::ComparisonFunction ) ;
             
             AlphaFunc_exposer.def( 
                 "setFunction"
@@ -430,7 +358,7 @@ void register_AlphaFunc_class(){
         }
         { //::osg::AlphaFunc::setReferenceValue
         
-            typedef void ( ::osg::AlphaFunc::*setReferenceValue_function_type)( float ) ;
+            typedef void ( ::osg::AlphaFunc::*setReferenceValue_function_type )( float ) ;
             
             AlphaFunc_exposer.def( 
                 "setReferenceValue"
@@ -440,8 +368,8 @@ void register_AlphaFunc_class(){
         }
         { //::osg::StateAttribute::asTexture
         
-            typedef ::osg::Texture * ( ::osg::StateAttribute::*asTexture_function_type)(  ) ;
-            typedef ::osg::Texture * ( AlphaFunc_wrapper::*default_asTexture_function_type)(  ) ;
+            typedef ::osg::Texture * ( ::osg::StateAttribute::*asTexture_function_type )(  ) ;
+            typedef ::osg::Texture * ( AlphaFunc_wrapper::*default_asTexture_function_type )(  ) ;
             
             AlphaFunc_exposer.def( 
                 "asTexture"
@@ -452,8 +380,8 @@ void register_AlphaFunc_class(){
         }
         { //::osg::StateAttribute::asTexture
         
-            typedef ::osg::Texture const * ( ::osg::StateAttribute::*asTexture_function_type)(  ) const;
-            typedef ::osg::Texture const * ( AlphaFunc_wrapper::*default_asTexture_function_type)(  ) const;
+            typedef ::osg::Texture const * ( ::osg::StateAttribute::*asTexture_function_type )(  ) const;
+            typedef ::osg::Texture const * ( AlphaFunc_wrapper::*default_asTexture_function_type )(  ) const;
             
             AlphaFunc_exposer.def( 
                 "asTexture"
@@ -464,8 +392,8 @@ void register_AlphaFunc_class(){
         }
         { //::osg::StateAttribute::checkValidityOfAssociatedModes
         
-            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
-            typedef bool ( AlphaFunc_wrapper::*default_checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
+            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
+            typedef bool ( AlphaFunc_wrapper::*default_checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
             
             AlphaFunc_exposer.def( 
                 "checkValidityOfAssociatedModes"
@@ -476,8 +404,8 @@ void register_AlphaFunc_class(){
         }
         { //::osg::StateAttribute::compileGLObjects
         
-            typedef void ( ::osg::StateAttribute::*compileGLObjects_function_type)( ::osg::State & ) const;
-            typedef void ( AlphaFunc_wrapper::*default_compileGLObjects_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::StateAttribute::*compileGLObjects_function_type )( ::osg::State & ) const;
+            typedef void ( AlphaFunc_wrapper::*default_compileGLObjects_function_type )( ::osg::State & ) const;
             
             AlphaFunc_exposer.def( 
                 "compileGLObjects"
@@ -486,21 +414,10 @@ void register_AlphaFunc_class(){
                 , ( bp::arg("arg0") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( AlphaFunc_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            AlphaFunc_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&AlphaFunc_wrapper::default_computeDataVariance) );
-        
-        }
         { //::osg::StateAttribute::getMember
         
-            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type)(  ) const;
-            typedef unsigned int ( AlphaFunc_wrapper::*default_getMember_function_type)(  ) const;
+            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type )(  ) const;
+            typedef unsigned int ( AlphaFunc_wrapper::*default_getMember_function_type )(  ) const;
             
             AlphaFunc_exposer.def( 
                 "getMember"
@@ -508,34 +425,10 @@ void register_AlphaFunc_class(){
                 , default_getMember_function_type(&AlphaFunc_wrapper::default_getMember) );
         
         }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( AlphaFunc_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            AlphaFunc_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&AlphaFunc_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( AlphaFunc_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            AlphaFunc_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&AlphaFunc_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::StateAttribute::isTextureAttribute
         
-            typedef bool ( ::osg::StateAttribute::*isTextureAttribute_function_type)(  ) const;
-            typedef bool ( AlphaFunc_wrapper::*default_isTextureAttribute_function_type)(  ) const;
+            typedef bool ( ::osg::StateAttribute::*isTextureAttribute_function_type )(  ) const;
+            typedef bool ( AlphaFunc_wrapper::*default_isTextureAttribute_function_type )(  ) const;
             
             AlphaFunc_exposer.def( 
                 "isTextureAttribute"
@@ -545,61 +438,14 @@ void register_AlphaFunc_class(){
         }
         { //::osg::StateAttribute::resizeGLObjectBuffers
         
-            typedef void ( ::osg::StateAttribute::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( AlphaFunc_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::StateAttribute::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( AlphaFunc_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             AlphaFunc_exposer.def( 
                 "resizeGLObjectBuffers"
                 , resizeGLObjectBuffers_function_type(&::osg::StateAttribute::resizeGLObjectBuffers)
                 , default_resizeGLObjectBuffers_function_type(&AlphaFunc_wrapper::default_resizeGLObjectBuffers)
                 , ( bp::arg("arg0") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( AlphaFunc_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            AlphaFunc_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&AlphaFunc_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            AlphaFunc_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( AlphaFunc_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            AlphaFunc_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&AlphaFunc_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( AlphaFunc_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            AlphaFunc_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&AlphaFunc_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
     }

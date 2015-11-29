@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "_ref_ptr_less__osgUtil_scope_Intersector__greater___value_traits.pypp.hpp"
-#include "intersectors.pypp.hpp"
+#include "Intersectors.pypp.hpp"
 
 namespace bp = boost::python;
 

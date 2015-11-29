@@ -3,14 +3,18 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/set.hpp"
-#include "wrap_osgutil.h"
-#include "set_less__osg_scope_node_ptr___greater_.pypp.hpp"
+#include "wrap_osgUtil.h"
+#include "set_less__osg_scope_Node_ptr___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_set_less__osg_scope_Node_ptr___greater__class(){
 
-    bp::class_< std::set< osg::Node* > >( "set_less__osg_scope_Node_ptr___greater_" )    
-        .def( bp::indexing::set_suite< std::set< osg::Node* > >::with_policies(bp::return_internal_reference< >()) );
+    { //::std::set< osg::Node* >
+        typedef bp::class_< std::set< osg::Node* > > set_less__osg_scope_Node_ptr___greater__exposer_t;
+        set_less__osg_scope_Node_ptr___greater__exposer_t set_less__osg_scope_Node_ptr___greater__exposer = set_less__osg_scope_Node_ptr___greater__exposer_t( "set_less__osg_scope_Node_ptr___greater_" );
+        bp::scope set_less__osg_scope_Node_ptr___greater__scope( set_less__osg_scope_Node_ptr___greater__exposer );
+        set_less__osg_scope_Node_ptr___greater__exposer.def( bp::indexing::set_suite< std::set< osg::Node* > >::with_policies(bp::return_internal_reference< >()) );
+    }
 
 }

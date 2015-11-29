@@ -2,103 +2,103 @@
 
 #include "boost/python.hpp"
 
-#include "wrap_osgparticle.h"
+#include "wrap_osgParticle.h"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/acceloperator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/AccelOperator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/angularacceloperator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/AngularAccelOperator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/angulardampingoperator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/AngularDampingOperator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/bounceoperator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/BounceOperator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/boxplacer.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/BoxPlacer.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/centeredplacer.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/CenteredPlacer.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/compositeplacer.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/CompositePlacer.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/connectedparticlesystem.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/ConnectedParticleSystem.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/constantratecounter.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/ConstantRateCounter.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/counter.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/Counter.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/dampingoperator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/DampingOperator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/domainoperator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/DomainOperator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/emitter.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/Emitter.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/explosiondebriseffect.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/ExplosionDebrisEffect.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/explosioneffect.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/ExplosionEffect.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/explosionoperator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/ExplosionOperator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/fireeffect.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/FireEffect.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/fluidfrictionoperator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/FluidFrictionOperator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/fluidprogram.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/FluidProgram.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/forceoperator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/ForceOperator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/interpolator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/Interpolator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/linearinterpolator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/LinearInterpolator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/modularemitter.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/ModularEmitter.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/modularprogram.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/ModularProgram.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/multisegmentplacer.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/MultiSegmentPlacer.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/operator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/Operator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/orbitoperator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/OrbitOperator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/particle.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/Particle.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/particleeffect.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/ParticleEffect.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/particleprocessor.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/ParticleProcessor.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/particlesystem.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/ParticleSystem.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/particlesystemupdater.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/ParticleSystemUpdater.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/placer.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/Placer.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/pointplacer.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/PointPlacer.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/precipitationeffect.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/PrecipitationEffect.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/program.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/Program.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/radialshooter.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/RadialShooter.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/randomratecounter.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/RandomRateCounter.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/rangef.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/SectorPlacer.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/rangev3.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/SegmentPlacer.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/rangev4.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/Shooter.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/sectorplacer.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/SinkOperator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/segmentplacer.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/SmokeEffect.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/shooter.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/SmokeTrailEffect.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/sinkoperator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/VariableRateCounter.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/smokeeffect.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/rangef.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/smoketraileffect.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/rangev3.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgparticle/generated_code/variableratecounter.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgParticle/generated_code/rangev4.pypp.hpp"
 
 namespace bp = boost::python;
 

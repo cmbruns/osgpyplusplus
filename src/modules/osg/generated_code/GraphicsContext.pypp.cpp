@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "graphicscontext.pypp.hpp"
+#include "GraphicsContext.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -23,18 +23,6 @@ struct GraphicsContext_wrapper : osg::GraphicsContext, bp::wrapper< osg::Graphic
             func_resizedImplementation( boost::python::ptr(gc), x, y, width, height );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct SwapCallback_wrapper : osg::GraphicsContext::SwapCallback, bp::wrapper< osg::GraphicsContext::SwapCallback > {
@@ -49,34 +37,6 @@ struct GraphicsContext_wrapper : osg::GraphicsContext, bp::wrapper< osg::Graphic
         virtual void swapBuffersImplementation( ::osg::GraphicsContext * gc ){
             bp::override func_swapBuffersImplementation = this->get_override( "swapBuffersImplementation" );
             func_swapBuffersImplementation( boost::python::ptr(gc) );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
-
-    struct Traits_wrapper : osg::GraphicsContext::Traits, bp::wrapper< osg::GraphicsContext::Traits > {
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -120,18 +80,6 @@ struct GraphicsContext_wrapper : osg::GraphicsContext, bp::wrapper< osg::Graphic
         
         bool default_setScreenSettings( ::osg::GraphicsContext::ScreenIdentifier const & arg0, ::osg::GraphicsContext::ScreenSettings const & arg1 ) {
             return osg::GraphicsContext::WindowingSystemInterface::setScreenSettings( boost::ref(arg0), boost::ref(arg1) );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -253,90 +201,6 @@ struct GraphicsContext_wrapper : osg::GraphicsContext, bp::wrapper< osg::Graphic
         return func_valid(  );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_GraphicsContext_class(){
@@ -348,30 +212,25 @@ void register_GraphicsContext_class(){
         bp::class_< GraphicsContext_wrapper::ResizedCallback_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< GraphicsContext_wrapper::ResizedCallback_wrapper >, boost::noncopyable >( "ResizedCallback", bp::no_init )    
             .def( 
                 "resizedImplementation"
-                , bp::pure_virtual( (void ( ::osg::GraphicsContext::ResizedCallback::* )( ::osg::GraphicsContext *,int,int,int,int ))(&::osg::GraphicsContext::ResizedCallback::resizedImplementation) )
-                , ( bp::arg("gc"), bp::arg("x"), bp::arg("y"), bp::arg("width"), bp::arg("height") ) )    
-            .def( 
-                "setThreadSafeRefUnref"
-                , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-                , (void ( GraphicsContext_wrapper::ResizedCallback_wrapper::* )( bool ))(&GraphicsContext_wrapper::ResizedCallback_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
+                , bp::pure_virtual( (void ( ::osg::GraphicsContext::ResizedCallback::* )( ::osg::GraphicsContext *,int,int,int,int ) )(&::osg::GraphicsContext::ResizedCallback::resizedImplementation) )
+                , ( bp::arg("gc"), bp::arg("x"), bp::arg("y"), bp::arg("width"), bp::arg("height") ) );
         bp::class_< osg::GraphicsContext::ScreenIdentifier >( "ScreenIdentifier", "\n Base class for providing Windowing API agnostic access to creating and managing graphics context.\n" )    
             .def( 
                 "displayName"
-                , (::std::string ( ::osg::GraphicsContext::ScreenIdentifier::* )(  )const)( &::osg::GraphicsContext::ScreenIdentifier::displayName )
+                , (::std::string ( ::osg::GraphicsContext::ScreenIdentifier::* )(  ) const)( &::osg::GraphicsContext::ScreenIdentifier::displayName )
                 , "\n Return the display name in the form hostName::displayNum:screenNum.\n" )    
             .def( 
                 "readDISPLAY"
-                , (void ( ::osg::GraphicsContext::ScreenIdentifier::* )(  ))( &::osg::GraphicsContext::ScreenIdentifier::readDISPLAY )
+                , (void ( ::osg::GraphicsContext::ScreenIdentifier::* )(  ) )( &::osg::GraphicsContext::ScreenIdentifier::readDISPLAY )
                 , "\n Read the DISPLAY environmental variable, and set the ScreenIdentifier accordingly.\n Note, if either of displayNum or screenNum are not defined then -1 is set respectively to\n signify that this parameter has not been set. When parameters are undefined one can call\n call setUndefinedScreenDetailsToDefaultScreen() after readDISPLAY() to ensure valid values.\n" )    
             .def( 
                 "setScreenIdentifier"
-                , (void ( ::osg::GraphicsContext::ScreenIdentifier::* )( ::std::string const & ))( &::osg::GraphicsContext::ScreenIdentifier::setScreenIdentifier )
+                , (void ( ::osg::GraphicsContext::ScreenIdentifier::* )( ::std::string const & ) )( &::osg::GraphicsContext::ScreenIdentifier::setScreenIdentifier )
                 , ( bp::arg("displayName") )
                 , "\n Set the screenIndentifier from the displayName string.\n Note, if either of displayNum or screenNum are not defined then -1 is set to\n signify that this parameter has not been set. When parameters are undefined one can call\n call setUndefinedScreenDetailsToDefaultScreen() after readDISPLAY() to ensure valid values.\n" )    
             .def( 
                 "setUndefinedScreenDetailsToDefaultScreen"
-                , (void ( ::osg::GraphicsContext::ScreenIdentifier::* )(  ))( &::osg::GraphicsContext::ScreenIdentifier::setUndefinedScreenDetailsToDefaultScreen )
+                , (void ( ::osg::GraphicsContext::ScreenIdentifier::* )(  ) )( &::osg::GraphicsContext::ScreenIdentifier::setUndefinedScreenDetailsToDefaultScreen )
                 , "\n Set any undefined displayNum or screenNum values (i.e. -1) to the default display & screen of 0 respectively.\n" )    
             .def_readwrite( "displayNum", &osg::GraphicsContext::ScreenIdentifier::displayNum )    
             .def_readwrite( "hostName", &osg::GraphicsContext::ScreenIdentifier::hostName )    
@@ -385,19 +244,14 @@ void register_GraphicsContext_class(){
         bp::class_< GraphicsContext_wrapper::SwapCallback_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< GraphicsContext_wrapper::SwapCallback_wrapper >, boost::noncopyable >( "SwapCallback", bp::no_init )    
             .def( 
                 "swapBuffersImplementation"
-                , bp::pure_virtual( (void ( ::osg::GraphicsContext::SwapCallback::* )( ::osg::GraphicsContext * ))(&::osg::GraphicsContext::SwapCallback::swapBuffersImplementation) )
-                , ( bp::arg("gc") ) )    
-            .def( 
-                "setThreadSafeRefUnref"
-                , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-                , (void ( GraphicsContext_wrapper::SwapCallback_wrapper::* )( bool ))(&GraphicsContext_wrapper::SwapCallback_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        bp::class_< GraphicsContext_wrapper::Traits_wrapper, bp::bases< osg::Referenced, osg::GraphicsContext::ScreenIdentifier >, osg::ref_ptr< ::osg::GraphicsContext::Traits >, boost::noncopyable >( "Traits", "\n GraphicsContext Traits object provides the specification of what type of graphics context is required.\n" )    
+                , bp::pure_virtual( (void ( ::osg::GraphicsContext::SwapCallback::* )( ::osg::GraphicsContext * ) )(&::osg::GraphicsContext::SwapCallback::swapBuffersImplementation) )
+                , ( bp::arg("gc") ) );
+        bp::class_< osg::GraphicsContext::Traits, bp::bases< osg::Referenced, osg::GraphicsContext::ScreenIdentifier >, osg::ref_ptr< ::osg::GraphicsContext::Traits >, boost::noncopyable >( "Traits", "\n GraphicsContext Traits object provides the specification of what type of graphics context is required.\n" )    
             .def( 
                 "getContextVersion"
-                , (bool ( ::osg::GraphicsContext::Traits::* )( unsigned int &,unsigned int & )const)( &::osg::GraphicsContext::Traits::getContextVersion )
+                , (bool ( ::osg::GraphicsContext::Traits::* )( unsigned int &,unsigned int & ) const)( &::osg::GraphicsContext::Traits::getContextVersion )
                 , ( bp::arg("major"), bp::arg("minor") )
-                , " return true if glContextVersion is set in the form major.minor, and assign the appropriate major and minor values to the associated parameters." )    
+                , "\n return true if glContextVersion is set in the form major.minor, and assign the appropriate major and minor values to the associated parameters.\n" )    
             .def_readwrite( "alpha", &osg::GraphicsContext::Traits::alpha )    
             .def_readwrite( "blue", &osg::GraphicsContext::Traits::blue )    
             .def_readwrite( "depth", &osg::GraphicsContext::Traits::depth )    
@@ -434,81 +288,71 @@ void register_GraphicsContext_class(){
             .def_readwrite( "windowDecoration", &osg::GraphicsContext::Traits::windowDecoration )    
             .def_readwrite( "windowName", &osg::GraphicsContext::Traits::windowName )    
             .def_readwrite( "x", &osg::GraphicsContext::Traits::x )    
-            .def_readwrite( "y", &osg::GraphicsContext::Traits::y )    
-            .def( 
-                "setThreadSafeRefUnref"
-                , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-                , (void ( GraphicsContext_wrapper::Traits_wrapper::* )( bool ))(&GraphicsContext_wrapper::Traits_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
+            .def_readwrite( "y", &osg::GraphicsContext::Traits::y );
         bp::class_< GraphicsContext_wrapper::WindowingSystemInterface_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::GraphicsContext::WindowingSystemInterface >, boost::noncopyable >( "WindowingSystemInterface", "\n Callback to be implemented to provide access to Windowing APIs ability to create Windows/pbuffers.\n", bp::no_init )    
             .def( 
                 "createGraphicsContext"
-                , bp::pure_virtual( (::osg::GraphicsContext * ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::Traits * ))(&::osg::GraphicsContext::WindowingSystemInterface::createGraphicsContext) )
+                , bp::pure_virtual( (::osg::GraphicsContext * ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::Traits * ) )(&::osg::GraphicsContext::WindowingSystemInterface::createGraphicsContext) )
                 , ( bp::arg("traits") )
                 , bp::return_internal_reference< >() )    
             .def( 
                 "enumerateScreenSettings"
-                , bp::pure_virtual( (void ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const &,::std::vector< osg::GraphicsContext::ScreenSettings > & ))(&::osg::GraphicsContext::WindowingSystemInterface::enumerateScreenSettings) )
+                , bp::pure_virtual( (void ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const &,::std::vector< osg::GraphicsContext::ScreenSettings > & ) )(&::osg::GraphicsContext::WindowingSystemInterface::enumerateScreenSettings) )
                 , ( bp::arg("screenIdentifier"), bp::arg("resolutionList") ) )    
             .def( 
                 "getNumScreens"
-                , bp::pure_virtual( (unsigned int ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const & ))(&::osg::GraphicsContext::WindowingSystemInterface::getNumScreens) )
+                , bp::pure_virtual( (unsigned int ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const & ) )(&::osg::GraphicsContext::WindowingSystemInterface::getNumScreens) )
                 , ( bp::arg("screenIdentifier")=osg::GraphicsContext::ScreenIdentifier() )
                 , "\n Callback to be implemented to provide access to Windowing APIs ability to create Windows/pbuffers.\n" )    
             .def( 
                 "getScreenResolution"
-                , (void ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const &,unsigned int &,unsigned int & ))( &::osg::GraphicsContext::WindowingSystemInterface::getScreenResolution )
+                , (void ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const &,unsigned int &,unsigned int & ) )( &::osg::GraphicsContext::WindowingSystemInterface::getScreenResolution )
                 , ( bp::arg("screenIdentifier"), bp::arg("width"), bp::arg("height") )
-                , " Gets screen resolution without using the ScreenResolution structure.\n Deprecated: Provided only for backward compatibility." )    
+                , "\n Gets screen resolution without using the ScreenResolution structure.\n Deprecated: Provided only for backward compatibility.\n" )    
             .def( 
                 "getScreenSettings"
-                , bp::pure_virtual( (void ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const &,::osg::GraphicsContext::ScreenSettings & ))(&::osg::GraphicsContext::WindowingSystemInterface::getScreenSettings) )
+                , bp::pure_virtual( (void ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const &,::osg::GraphicsContext::ScreenSettings & ) )(&::osg::GraphicsContext::WindowingSystemInterface::getScreenSettings) )
                 , ( bp::arg("screenIdentifier"), bp::arg("resolution") ) )    
             .def( 
                 "setScreenRefreshRate"
-                , (bool ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const &,double ))( &::osg::GraphicsContext::WindowingSystemInterface::setScreenRefreshRate )
+                , (bool ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const &,double ) )( &::osg::GraphicsContext::WindowingSystemInterface::setScreenRefreshRate )
                 , ( bp::arg("screenIdentifier"), bp::arg("refreshRate") )
-                , " Deprecated: Provided only for backward compatibility." )    
+                , "\n Deprecated: Provided only for backward compatibility.\n" )    
             .def( 
                 "setScreenResolution"
-                , (bool ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const &,unsigned int,unsigned int ))( &::osg::GraphicsContext::WindowingSystemInterface::setScreenResolution )
+                , (bool ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const &,unsigned int,unsigned int ) )( &::osg::GraphicsContext::WindowingSystemInterface::setScreenResolution )
                 , ( bp::arg("screenIdentifier"), bp::arg("width"), bp::arg("height") )
-                , " Sets screen resolution without using the ScreenSettings structure.\n Deprecated: Provided only for backward compatibility." )    
+                , "\n Sets screen resolution without using the ScreenSettings structure.\n Deprecated: Provided only for backward compatibility.\n" )    
             .def( 
                 "setScreenSettings"
-                , (bool ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const &,::osg::GraphicsContext::ScreenSettings const & ))(&::osg::GraphicsContext::WindowingSystemInterface::setScreenSettings)
-                , (bool ( GraphicsContext_wrapper::WindowingSystemInterface_wrapper::* )( ::osg::GraphicsContext::ScreenIdentifier const &,::osg::GraphicsContext::ScreenSettings const & ))(&GraphicsContext_wrapper::WindowingSystemInterface_wrapper::default_setScreenSettings)
-                , ( bp::arg("arg0"), bp::arg("arg1") ) )    
-            .def( 
-                "setThreadSafeRefUnref"
-                , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-                , (void ( GraphicsContext_wrapper::WindowingSystemInterface_wrapper::* )( bool ))(&GraphicsContext_wrapper::WindowingSystemInterface_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
+                , (bool ( ::osg::GraphicsContext::WindowingSystemInterface::* )( ::osg::GraphicsContext::ScreenIdentifier const &,::osg::GraphicsContext::ScreenSettings const & ) )(&::osg::GraphicsContext::WindowingSystemInterface::setScreenSettings)
+                , (bool ( GraphicsContext_wrapper::WindowingSystemInterface_wrapper::* )( ::osg::GraphicsContext::ScreenIdentifier const &,::osg::GraphicsContext::ScreenSettings const & ) )(&GraphicsContext_wrapper::WindowingSystemInterface_wrapper::default_setScreenSettings)
+                , ( bp::arg("arg0"), bp::arg("arg1") ) );
         { //::osg::GraphicsContext::add
         
-            typedef void ( ::osg::GraphicsContext::*add_function_type)( ::osg::Operation * ) ;
+            typedef void ( ::osg::GraphicsContext::*add_function_type )( ::osg::Operation * ) ;
             
             GraphicsContext_exposer.def( 
                 "add"
                 , add_function_type( &::osg::GraphicsContext::add )
                 , ( bp::arg("operation") )
-                , " Add operation to end of OperationQueue." );
+                , "\n Add operation to end of OperationQueue.\n" );
         
         }
         { //::osg::GraphicsContext::bindPBufferToTexture
         
-            typedef void ( ::osg::GraphicsContext::*bindPBufferToTexture_function_type)( ::GLenum ) ;
+            typedef void ( ::osg::GraphicsContext::*bindPBufferToTexture_function_type )( ::GLenum ) ;
             
             GraphicsContext_exposer.def( 
                 "bindPBufferToTexture"
                 , bindPBufferToTexture_function_type( &::osg::GraphicsContext::bindPBufferToTexture )
                 , ( bp::arg("buffer") )
-                , " Bind the graphics context to associated texture." );
+                , "\n Bind the graphics context to associated texture.\n" );
         
         }
         { //::osg::GraphicsContext::bindPBufferToTextureImplementation
         
-            typedef void ( ::osg::GraphicsContext::*bindPBufferToTextureImplementation_function_type)( ::GLenum ) ;
+            typedef void ( ::osg::GraphicsContext::*bindPBufferToTextureImplementation_function_type )( ::GLenum ) ;
             
             GraphicsContext_exposer.def( 
                 "bindPBufferToTextureImplementation"
@@ -519,8 +363,8 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::className
         
-            typedef char const * ( ::osg::GraphicsContext::*className_function_type)(  ) const;
-            typedef char const * ( GraphicsContext_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::GraphicsContext::*className_function_type )(  ) const;
+            typedef char const * ( GraphicsContext_wrapper::*default_className_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "className"
@@ -530,8 +374,8 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::clear
         
-            typedef void ( ::osg::GraphicsContext::*clear_function_type)(  ) ;
-            typedef void ( GraphicsContext_wrapper::*default_clear_function_type)(  ) ;
+            typedef void ( ::osg::GraphicsContext::*clear_function_type )(  ) ;
+            typedef void ( GraphicsContext_wrapper::*default_clear_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "clear"
@@ -541,18 +385,18 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::close
         
-            typedef void ( ::osg::GraphicsContext::*close_function_type)( bool ) ;
+            typedef void ( ::osg::GraphicsContext::*close_function_type )( bool ) ;
             
             GraphicsContext_exposer.def( 
                 "close"
                 , close_function_type( &::osg::GraphicsContext::close )
                 , ( bp::arg("callCloseImplementation")=(bool)(true) )
-                , " close the graphics context.\n close(bool) stops any associated graphics threads, releases the contextID for the GraphicsContext then\n optional calls closeImplementation() to do the actual deletion of the graphics.  This call is made optional\n as there are times when the graphics context has already been deleted externally and only the OSG side\n of the its data need to be closed down." );
+                , "\n close the graphics context.\n close(bool) stops any associated graphics threads, releases the contextID for the GraphicsContext then\n optional calls closeImplementation() to do the actual deletion of the graphics.  This call is made optional\n as there are times when the graphics context has already been deleted externally and only the OSG side\n of the its data need to be closed down.\n" );
         
         }
         { //::osg::GraphicsContext::closeImplementation
         
-            typedef void ( ::osg::GraphicsContext::*closeImplementation_function_type)(  ) ;
+            typedef void ( ::osg::GraphicsContext::*closeImplementation_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "closeImplementation"
@@ -569,17 +413,17 @@ void register_GraphicsContext_class(){
                 , createGraphicsContext_function_type( &::osg::GraphicsContext::createGraphicsContext )
                 , ( bp::arg("traits") )
                 , bp::return_internal_reference< >()
-                , " Create a graphics context for a specified set of traits." );
+                , "\n Create a graphics context for a specified set of traits.\n" );
         
         }
         { //::osg::GraphicsContext::createGraphicsThread
         
-            typedef void ( ::osg::GraphicsContext::*createGraphicsThread_function_type)(  ) ;
+            typedef void ( ::osg::GraphicsContext::*createGraphicsThread_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "createGraphicsThread"
                 , createGraphicsThread_function_type( &::osg::GraphicsContext::createGraphicsThread )
-                , " Create a graphics thread to the graphics context, so that the thread handles all OpenGL operations." );
+                , "\n Create a graphics thread to the graphics context, so that the thread handles all OpenGL operations.\n" );
         
         }
         { //::osg::GraphicsContext::createNewContextID
@@ -589,7 +433,7 @@ void register_GraphicsContext_class(){
             GraphicsContext_exposer.def( 
                 "createNewContextID"
                 , createNewContextID_function_type( &::osg::GraphicsContext::createNewContextID )
-                , " Create a contextID for a new graphics context, this contextID is used to set up the osg::State associate with context.\n Automatically increments the usage count of the contextID to 1." );
+                , "\n Create a contextID for a new graphics context, this contextID is used to set up the osg::State associate with context.\n Automatically increments the usage count of the contextID to 1.\n" );
         
         }
         { //::osg::GraphicsContext::decrementContextIDUsageCount
@@ -600,7 +444,7 @@ void register_GraphicsContext_class(){
                 "decrementContextIDUsageCount"
                 , decrementContextIDUsageCount_function_type( &::osg::GraphicsContext::decrementContextIDUsageCount )
                 , ( bp::arg("contextID") )
-                , " Decrement the usage count associate with a contextID. Once the contextID goes to 0 the contextID is then free to be reused." );
+                , "\n Decrement the usage count associate with a contextID. Once the contextID goes to 0 the contextID is then free to be reused.\n" );
         
         }
         { //::osg::GraphicsContext::getAllRegisteredGraphicsContexts
@@ -610,50 +454,50 @@ void register_GraphicsContext_class(){
             GraphicsContext_exposer.def( 
                 "getAllRegisteredGraphicsContexts"
                 , getAllRegisteredGraphicsContexts_function_type( &::osg::GraphicsContext::getAllRegisteredGraphicsContexts )
-                , " Get all the registered graphics contexts." );
+                , "\n Get all the registered graphics contexts.\n" );
         
         }
         { //::osg::GraphicsContext::getCameras
         
-            typedef ::std::list< osg::Camera* > & ( ::osg::GraphicsContext::*getCameras_function_type)(  ) ;
+            typedef ::std::list< osg::Camera* > & ( ::osg::GraphicsContext::*getCameras_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "getCameras"
                 , getCameras_function_type( &::osg::GraphicsContext::getCameras )
                 , bp::return_internal_reference< >()
-                , " Get the the list of cameras associated with this graphics context." );
+                , "\n Get the the list of cameras associated with this graphics context.\n" );
         
         }
         { //::osg::GraphicsContext::getCameras
         
-            typedef ::std::list< osg::Camera* > const & ( ::osg::GraphicsContext::*getCameras_function_type)(  ) const;
+            typedef ::std::list< osg::Camera* > const & ( ::osg::GraphicsContext::*getCameras_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "getCameras"
                 , getCameras_function_type( &::osg::GraphicsContext::getCameras )
                 , bp::return_internal_reference< >()
-                , " Get the the const list of cameras associated with this graphics context." );
+                , "\n Get the the const list of cameras associated with this graphics context.\n" );
         
         }
         { //::osg::GraphicsContext::getClearColor
         
-            typedef ::osg::Vec4 const & ( ::osg::GraphicsContext::*getClearColor_function_type)(  ) const;
+            typedef ::osg::Vec4 const & ( ::osg::GraphicsContext::*getClearColor_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "getClearColor"
                 , getClearColor_function_type( &::osg::GraphicsContext::getClearColor )
                 , bp::return_internal_reference< >()
-                , " Returns the clear color." );
+                , "\n Returns the clear color.\n" );
         
         }
         { //::osg::GraphicsContext::getClearMask
         
-            typedef ::GLbitfield ( ::osg::GraphicsContext::*getClearMask_function_type)(  ) const;
+            typedef ::GLbitfield ( ::osg::GraphicsContext::*getClearMask_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "getClearMask"
                 , getClearMask_function_type( &::osg::GraphicsContext::getClearMask )
-                , " Get the clear mask." );
+                , "\n Get the clear mask.\n" );
         
         }
         { //::osg::GraphicsContext::getCompileContext
@@ -665,23 +509,23 @@ void register_GraphicsContext_class(){
                 , getCompileContext_function_type( &::osg::GraphicsContext::getCompileContext )
                 , ( bp::arg("contextID") )
                 , bp::return_internal_reference< >()
-                , " Get the GraphicsContext for doing background compilation for GraphicsContexts associated with specified contextID." );
+                , "\n Get the GraphicsContext for doing background compilation for GraphicsContexts associated with specified contextID.\n" );
         
         }
         { //::osg::GraphicsContext::getCurrentOperation
         
-            typedef ::osg::Operation * ( ::osg::GraphicsContext::*getCurrentOperation_function_type)(  ) ;
+            typedef ::osg::Operation * ( ::osg::GraphicsContext::*getCurrentOperation_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "getCurrentOperation"
                 , getCurrentOperation_function_type( &::osg::GraphicsContext::getCurrentOperation )
                 , bp::return_internal_reference< >()
-                , " Get the current operations that is being run." );
+                , "\n Get the current operations that is being run.\n" );
         
         }
         { //::osg::GraphicsContext::getDefaultFboId
         
-            typedef ::GLuint ( ::osg::GraphicsContext::*getDefaultFboId_function_type)(  ) const;
+            typedef ::GLuint ( ::osg::GraphicsContext::*getDefaultFboId_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "getDefaultFboId"
@@ -690,24 +534,24 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::getGraphicsThread
         
-            typedef ::osg::GraphicsThread * ( ::osg::GraphicsContext::*getGraphicsThread_function_type)(  ) ;
+            typedef ::osg::GraphicsThread * ( ::osg::GraphicsContext::*getGraphicsThread_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "getGraphicsThread"
                 , getGraphicsThread_function_type( &::osg::GraphicsContext::getGraphicsThread )
                 , bp::return_internal_reference< >()
-                , " Get the graphics thread assigned the graphics context." );
+                , "\n Get the graphics thread assigned the graphics context.\n" );
         
         }
         { //::osg::GraphicsContext::getGraphicsThread
         
-            typedef ::osg::GraphicsThread const * ( ::osg::GraphicsContext::*getGraphicsThread_function_type)(  ) const;
+            typedef ::osg::GraphicsThread const * ( ::osg::GraphicsContext::*getGraphicsThread_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "getGraphicsThread"
                 , getGraphicsThread_function_type( &::osg::GraphicsContext::getGraphicsThread )
                 , bp::return_internal_reference< >()
-                , " Get the const graphics thread assigned the graphics context." );
+                , "\n Get the const graphics thread assigned the graphics context.\n" );
         
         }
         { //::osg::GraphicsContext::getMaxContextID
@@ -717,40 +561,40 @@ void register_GraphicsContext_class(){
             GraphicsContext_exposer.def( 
                 "getMaxContextID"
                 , getMaxContextID_function_type( &::osg::GraphicsContext::getMaxContextID )
-                , " Get the current max ContextID." );
+                , "\n Get the current max ContextID.\n" );
         
         }
         { //::osg::GraphicsContext::getOperationsBlock
         
-            typedef ::osg::RefBlock * ( ::osg::GraphicsContext::*getOperationsBlock_function_type)(  ) ;
+            typedef ::osg::RefBlock * ( ::osg::GraphicsContext::*getOperationsBlock_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "getOperationsBlock"
                 , getOperationsBlock_function_type( &::osg::GraphicsContext::getOperationsBlock )
                 , bp::return_internal_reference< >()
-                , " Get the operations queue block used to mark an empty queue, if you end items into the empty queue you must release this block." );
+                , "\n Get the operations queue block used to mark an empty queue, if you end items into the empty queue you must release this block.\n" );
         
         }
         { //::osg::GraphicsContext::getOperationsMutex
         
-            typedef ::OpenThreads::Mutex * ( ::osg::GraphicsContext::*getOperationsMutex_function_type)(  ) ;
+            typedef ::OpenThreads::Mutex * ( ::osg::GraphicsContext::*getOperationsMutex_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "getOperationsMutex"
                 , getOperationsMutex_function_type( &::osg::GraphicsContext::getOperationsMutex )
                 , bp::return_internal_reference< >()
-                , " Get the operations queue mutex." );
+                , "\n Get the operations queue mutex.\n" );
         
         }
         { //::osg::GraphicsContext::getOperationsQueue
         
-            typedef ::std::list< osg::ref_ptr<osg::Operation> > & ( ::osg::GraphicsContext::*getOperationsQueue_function_type)(  ) ;
+            typedef ::std::list< osg::ref_ptr<osg::Operation> > & ( ::osg::GraphicsContext::*getOperationsQueue_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "getOperationsQueue"
                 , getOperationsQueue_function_type( &::osg::GraphicsContext::getOperationsQueue )
                 , bp::return_internal_reference< >()
-                , " Get the operations queue, not you must use the OperationsMutex when accessing the queue." );
+                , "\n Get the operations queue, not you must use the OperationsMutex when accessing the queue.\n" );
         
         }
         { //::osg::GraphicsContext::getOrCreateCompileContext
@@ -762,7 +606,7 @@ void register_GraphicsContext_class(){
                 , getOrCreateCompileContext_function_type( &::osg::GraphicsContext::getOrCreateCompileContext )
                 , ( bp::arg("contextID") )
                 , bp::return_internal_reference< >()
-                , " Get existing or create a new GraphicsContext to do background compilation for GraphicsContexts associated with specified contextID." );
+                , "\n Get existing or create a new GraphicsContext to do background compilation for GraphicsContexts associated with specified contextID.\n" );
         
         }
         { //::osg::GraphicsContext::getRegisteredGraphicsContexts
@@ -773,78 +617,78 @@ void register_GraphicsContext_class(){
                 "getRegisteredGraphicsContexts"
                 , getRegisteredGraphicsContexts_function_type( &::osg::GraphicsContext::getRegisteredGraphicsContexts )
                 , ( bp::arg("contextID") )
-                , " Get all the registered graphics contexts associated with a specific contextID." );
+                , "\n Get all the registered graphics contexts associated with a specific contextID.\n" );
         
         }
         { //::osg::GraphicsContext::getResizedCallback
         
-            typedef ::osg::GraphicsContext::ResizedCallback * ( ::osg::GraphicsContext::*getResizedCallback_function_type)(  ) ;
+            typedef ::osg::GraphicsContext::ResizedCallback * ( ::osg::GraphicsContext::*getResizedCallback_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "getResizedCallback"
                 , getResizedCallback_function_type( &::osg::GraphicsContext::getResizedCallback )
                 , bp::return_internal_reference< >()
-                , " Get the resized callback which overrides the GraphicsConext::realizedImplementation()." );
+                , "\n Get the resized callback which overrides the GraphicsConext::realizedImplementation().\n" );
         
         }
         { //::osg::GraphicsContext::getResizedCallback
         
-            typedef ::osg::GraphicsContext::ResizedCallback const * ( ::osg::GraphicsContext::*getResizedCallback_function_type)(  ) const;
+            typedef ::osg::GraphicsContext::ResizedCallback const * ( ::osg::GraphicsContext::*getResizedCallback_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "getResizedCallback"
                 , getResizedCallback_function_type( &::osg::GraphicsContext::getResizedCallback )
                 , bp::return_internal_reference< >()
-                , " Get the const resized callback which overrides the GraphicsConext::realizedImplementation()." );
+                , "\n Get the const resized callback which overrides the GraphicsConext::realizedImplementation().\n" );
         
         }
         { //::osg::GraphicsContext::getState
         
-            typedef ::osg::State * ( ::osg::GraphicsContext::*getState_function_type)(  ) ;
+            typedef ::osg::State * ( ::osg::GraphicsContext::*getState_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "getState"
                 , getState_function_type( &::osg::GraphicsContext::getState )
                 , bp::return_internal_reference< >()
-                , " Get the State object which tracks the current OpenGL state for this graphics context." );
+                , "\n Get the State object which tracks the current OpenGL state for this graphics context.\n" );
         
         }
         { //::osg::GraphicsContext::getState
         
-            typedef ::osg::State const * ( ::osg::GraphicsContext::*getState_function_type)(  ) const;
+            typedef ::osg::State const * ( ::osg::GraphicsContext::*getState_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "getState"
                 , getState_function_type( &::osg::GraphicsContext::getState )
                 , bp::return_internal_reference< >()
-                , " Get the const State object which tracks the current OpenGL state for this graphics context." );
+                , "\n Get the const State object which tracks the current OpenGL state for this graphics context.\n" );
         
         }
         { //::osg::GraphicsContext::getSwapCallback
         
-            typedef ::osg::GraphicsContext::SwapCallback * ( ::osg::GraphicsContext::*getSwapCallback_function_type)(  ) ;
+            typedef ::osg::GraphicsContext::SwapCallback * ( ::osg::GraphicsContext::*getSwapCallback_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "getSwapCallback"
                 , getSwapCallback_function_type( &::osg::GraphicsContext::getSwapCallback )
                 , bp::return_internal_reference< >()
-                , " Get the swap callback which overrides the GraphicsContext::swapBuffersImplementation()." );
+                , "\n Get the swap callback which overrides the GraphicsContext::swapBuffersImplementation().\n" );
         
         }
         { //::osg::GraphicsContext::getSwapCallback
         
-            typedef ::osg::GraphicsContext::SwapCallback const * ( ::osg::GraphicsContext::*getSwapCallback_function_type)(  ) const;
+            typedef ::osg::GraphicsContext::SwapCallback const * ( ::osg::GraphicsContext::*getSwapCallback_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "getSwapCallback"
                 , getSwapCallback_function_type( &::osg::GraphicsContext::getSwapCallback )
                 , bp::return_internal_reference< >()
-                , " Get the const swap callback which overrides the GraphicsContext::swapBuffersImplementation()." );
+                , "\n Get the const swap callback which overrides the GraphicsContext::swapBuffersImplementation().\n" );
         
         }
         { //::osg::GraphicsContext::getTimeSinceLastClear
         
-            typedef double ( ::osg::GraphicsContext::*getTimeSinceLastClear_function_type)(  ) const;
+            typedef double ( ::osg::GraphicsContext::*getTimeSinceLastClear_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "getTimeSinceLastClear"
@@ -853,13 +697,13 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::getTraits
         
-            typedef ::osg::GraphicsContext::Traits const * ( ::osg::GraphicsContext::*getTraits_function_type)(  ) const;
+            typedef ::osg::GraphicsContext::Traits const * ( ::osg::GraphicsContext::*getTraits_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "getTraits"
                 , getTraits_function_type( &::osg::GraphicsContext::getTraits )
                 , bp::return_internal_reference< >()
-                , " Get the traits of the GraphicsContext." );
+                , "\n Get the traits of the GraphicsContext.\n" );
         
         }
         { //::osg::GraphicsContext::getWindowingSystemInterface
@@ -870,7 +714,7 @@ void register_GraphicsContext_class(){
                 "getWindowingSystemInterface"
                 , getWindowingSystemInterface_function_type( &::osg::GraphicsContext::getWindowingSystemInterface )
                 , bp::return_internal_reference< >()
-                , " Get the WindowingSystemInterface" );
+                , "\n Get the WindowingSystemInterface\n" );
         
         }
         { //::osg::GraphicsContext::incrementContextIDUsageCount
@@ -881,32 +725,32 @@ void register_GraphicsContext_class(){
                 "incrementContextIDUsageCount"
                 , incrementContextIDUsageCount_function_type( &::osg::GraphicsContext::incrementContextIDUsageCount )
                 , ( bp::arg("contextID") )
-                , " Increment the usage count associate with a contextID. The usage count specifies how many graphics contexts a specific contextID is shared between." );
+                , "\n Increment the usage count associate with a contextID. The usage count specifies how many graphics contexts a specific contextID is shared between.\n" );
         
         }
         { //::osg::GraphicsContext::isCurrent
         
-            typedef bool ( ::osg::GraphicsContext::*isCurrent_function_type)(  ) const;
+            typedef bool ( ::osg::GraphicsContext::*isCurrent_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "isCurrent"
                 , isCurrent_function_type( &::osg::GraphicsContext::isCurrent )
-                , " Return true if the current thread has this OpenGL graphics context." );
+                , "\n Return true if the current thread has this OpenGL graphics context.\n" );
         
         }
         { //::osg::GraphicsContext::isRealized
         
-            typedef bool ( ::osg::GraphicsContext::*isRealized_function_type)(  ) const;
+            typedef bool ( ::osg::GraphicsContext::*isRealized_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "isRealized"
                 , isRealized_function_type( &::osg::GraphicsContext::isRealized )
-                , " Return true if the graphics context has been realized and is ready to use." );
+                , "\n Return true if the graphics context has been realized and is ready to use.\n" );
         
         }
         { //::osg::GraphicsContext::isRealizedImplementation
         
-            typedef bool ( ::osg::GraphicsContext::*isRealizedImplementation_function_type)(  ) const;
+            typedef bool ( ::osg::GraphicsContext::*isRealizedImplementation_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "isRealizedImplementation"
@@ -916,8 +760,8 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::isSameKindAs
         
-            typedef bool ( ::osg::GraphicsContext::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( GraphicsContext_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::GraphicsContext::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( GraphicsContext_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             GraphicsContext_exposer.def( 
                 "isSameKindAs"
@@ -928,8 +772,8 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::libraryName
         
-            typedef char const * ( ::osg::GraphicsContext::*libraryName_function_type)(  ) const;
-            typedef char const * ( GraphicsContext_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::GraphicsContext::*libraryName_function_type )(  ) const;
+            typedef char const * ( GraphicsContext_wrapper::*default_libraryName_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "libraryName"
@@ -939,18 +783,18 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::makeContextCurrent
         
-            typedef bool ( ::osg::GraphicsContext::*makeContextCurrent_function_type)( ::osg::GraphicsContext * ) ;
+            typedef bool ( ::osg::GraphicsContext::*makeContextCurrent_function_type )( ::osg::GraphicsContext * ) ;
             
             GraphicsContext_exposer.def( 
                 "makeContextCurrent"
                 , makeContextCurrent_function_type( &::osg::GraphicsContext::makeContextCurrent )
                 , ( bp::arg("readContext") )
-                , " Make this graphics context current with specified read context.\n Implemented by calling makeContextCurrentImplementation().\n Returns true on success." );
+                , "\n Make this graphics context current with specified read context.\n Implemented by calling makeContextCurrentImplementation().\n Returns true on success.\n" );
         
         }
         { //::osg::GraphicsContext::makeContextCurrentImplementation
         
-            typedef bool ( ::osg::GraphicsContext::*makeContextCurrentImplementation_function_type)( ::osg::GraphicsContext * ) ;
+            typedef bool ( ::osg::GraphicsContext::*makeContextCurrentImplementation_function_type )( ::osg::GraphicsContext * ) ;
             
             GraphicsContext_exposer.def( 
                 "makeContextCurrentImplementation"
@@ -961,17 +805,17 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::makeCurrent
         
-            typedef bool ( ::osg::GraphicsContext::*makeCurrent_function_type)(  ) ;
+            typedef bool ( ::osg::GraphicsContext::*makeCurrent_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "makeCurrent"
                 , makeCurrent_function_type( &::osg::GraphicsContext::makeCurrent )
-                , " Make this graphics context current.\n Implemented by calling makeCurrentImplementation().\n Returns true on success." );
+                , "\n Make this graphics context current.\n Implemented by calling makeCurrentImplementation().\n Returns true on success.\n" );
         
         }
         { //::osg::GraphicsContext::makeCurrentImplementation
         
-            typedef bool ( ::osg::GraphicsContext::*makeCurrentImplementation_function_type)(  ) ;
+            typedef bool ( ::osg::GraphicsContext::*makeCurrentImplementation_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "makeCurrentImplementation"
@@ -981,17 +825,17 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::realize
         
-            typedef bool ( ::osg::GraphicsContext::*realize_function_type)(  ) ;
+            typedef bool ( ::osg::GraphicsContext::*realize_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "realize"
                 , realize_function_type( &::osg::GraphicsContext::realize )
-                , " Realize the GraphicsContext." );
+                , "\n Realize the GraphicsContext.\n" );
         
         }
         { //::osg::GraphicsContext::realizeImplementation
         
-            typedef bool ( ::osg::GraphicsContext::*realizeImplementation_function_type)(  ) ;
+            typedef bool ( ::osg::GraphicsContext::*realizeImplementation_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "realizeImplementation"
@@ -1001,17 +845,17 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::releaseContext
         
-            typedef bool ( ::osg::GraphicsContext::*releaseContext_function_type)(  ) ;
+            typedef bool ( ::osg::GraphicsContext::*releaseContext_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "releaseContext"
                 , releaseContext_function_type( &::osg::GraphicsContext::releaseContext )
-                , " Release the graphics context.\n Returns true on success." );
+                , "\n Release the graphics context.\n Returns true on success.\n" );
         
         }
         { //::osg::GraphicsContext::releaseContextImplementation
         
-            typedef bool ( ::osg::GraphicsContext::*releaseContextImplementation_function_type)(  ) ;
+            typedef bool ( ::osg::GraphicsContext::*releaseContextImplementation_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "releaseContextImplementation"
@@ -1021,51 +865,51 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::remove
         
-            typedef void ( ::osg::GraphicsContext::*remove_function_type)( ::osg::Operation * ) ;
+            typedef void ( ::osg::GraphicsContext::*remove_function_type )( ::osg::Operation * ) ;
             
             GraphicsContext_exposer.def( 
                 "remove"
                 , remove_function_type( &::osg::GraphicsContext::remove )
                 , ( bp::arg("operation") )
-                , " Remove operation from OperationQueue." );
+                , "\n Remove operation from OperationQueue.\n" );
         
         }
         { //::osg::GraphicsContext::remove
         
-            typedef void ( ::osg::GraphicsContext::*remove_function_type)( ::std::string const & ) ;
+            typedef void ( ::osg::GraphicsContext::*remove_function_type )( ::std::string const & ) ;
             
             GraphicsContext_exposer.def( 
                 "remove"
                 , remove_function_type( &::osg::GraphicsContext::remove )
                 , ( bp::arg("name") )
-                , " Remove named operation from OperationQueue." );
+                , "\n Remove named operation from OperationQueue.\n" );
         
         }
         { //::osg::GraphicsContext::removeAllOperations
         
-            typedef void ( ::osg::GraphicsContext::*removeAllOperations_function_type)(  ) ;
+            typedef void ( ::osg::GraphicsContext::*removeAllOperations_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "removeAllOperations"
                 , removeAllOperations_function_type( &::osg::GraphicsContext::removeAllOperations )
-                , " Remove all operations from OperationQueue." );
+                , "\n Remove all operations from OperationQueue.\n" );
         
         }
         { //::osg::GraphicsContext::resized
         
-            typedef void ( ::osg::GraphicsContext::*resized_function_type)( int,int,int,int ) ;
+            typedef void ( ::osg::GraphicsContext::*resized_function_type )( int,int,int,int ) ;
             
             GraphicsContext_exposer.def( 
                 "resized"
                 , resized_function_type( &::osg::GraphicsContext::resized )
                 , ( bp::arg("x"), bp::arg("y"), bp::arg("width"), bp::arg("height") )
-                , " resized method should be called when the underlying window has been resized and the GraphicsWindow and associated Cameras must\n            be updated to keep in sync with the new size." );
+                , "\n resized method should be called when the underlying window has been resized and the GraphicsWindow and associated Cameras must\n            be updated to keep in sync with the new size.\n" );
         
         }
         { //::osg::GraphicsContext::resizedImplementation
         
-            typedef void ( ::osg::GraphicsContext::*resizedImplementation_function_type)( int,int,int,int ) ;
-            typedef void ( GraphicsContext_wrapper::*default_resizedImplementation_function_type)( int,int,int,int ) ;
+            typedef void ( ::osg::GraphicsContext::*resizedImplementation_function_type )( int,int,int,int ) ;
+            typedef void ( GraphicsContext_wrapper::*default_resizedImplementation_function_type )( int,int,int,int ) ;
             
             GraphicsContext_exposer.def( 
                 "resizedImplementation"
@@ -1076,8 +920,8 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::runOperations
         
-            typedef void ( ::osg::GraphicsContext::*runOperations_function_type)(  ) ;
-            typedef void ( GraphicsContext_wrapper::*default_runOperations_function_type)(  ) ;
+            typedef void ( ::osg::GraphicsContext::*runOperations_function_type )(  ) ;
+            typedef void ( GraphicsContext_wrapper::*default_runOperations_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "runOperations"
@@ -1087,24 +931,24 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::setClearColor
         
-            typedef void ( ::osg::GraphicsContext::*setClearColor_function_type)( ::osg::Vec4 const & ) ;
+            typedef void ( ::osg::GraphicsContext::*setClearColor_function_type )( ::osg::Vec4 const & ) ;
             
             GraphicsContext_exposer.def( 
                 "setClearColor"
                 , setClearColor_function_type( &::osg::GraphicsContext::setClearColor )
                 , ( bp::arg("color") )
-                , " Sets the clear color." );
+                , "\n Sets the clear color.\n" );
         
         }
         { //::osg::GraphicsContext::setClearMask
         
-            typedef void ( ::osg::GraphicsContext::*setClearMask_function_type)( ::GLbitfield ) ;
+            typedef void ( ::osg::GraphicsContext::*setClearMask_function_type )( ::GLbitfield ) ;
             
             GraphicsContext_exposer.def( 
                 "setClearMask"
                 , setClearMask_function_type( &::osg::GraphicsContext::setClearMask )
                 , ( bp::arg("mask") )
-                , " Set the clear mask used in glClear(..).\n Defaults to 0 - so no clear is done by default by the GraphicsContext, instead the Cameras attached to the GraphicsContext will do the clear.\n GraphicsContext::setClearMask() is useful for when the Camera Viewports dont cover the whole context, so the context will fill in the gaps." );
+                , "\n Set the clear mask used in glClear(..).\n Defaults to 0 - so no clear is done by default by the GraphicsContext, instead the Cameras attached to the GraphicsContext will do the clear.\n GraphicsContext::setClearMask() is useful for when the Camera Viewports dont cover the whole context, so the context will fill in the gaps.\n" );
         
         }
         { //::osg::GraphicsContext::setCompileContext
@@ -1115,62 +959,62 @@ void register_GraphicsContext_class(){
                 "setCompileContext"
                 , setCompileContext_function_type( &::osg::GraphicsContext::setCompileContext )
                 , ( bp::arg("contextID"), bp::arg("gc") )
-                , " Get the GraphicsContext for doing background compilation for GraphicsContexts associated with specified contextID." );
+                , "\n Get the GraphicsContext for doing background compilation for GraphicsContexts associated with specified contextID.\n" );
         
         }
         { //::osg::GraphicsContext::setDefaultFboId
         
-            typedef void ( ::osg::GraphicsContext::*setDefaultFboId_function_type)( ::GLuint ) ;
+            typedef void ( ::osg::GraphicsContext::*setDefaultFboId_function_type )( ::GLuint ) ;
             
             GraphicsContext_exposer.def( 
                 "setDefaultFboId"
                 , setDefaultFboId_function_type( &::osg::GraphicsContext::setDefaultFboId )
                 , ( bp::arg("i") )
-                , " set the default FBO-id, this id will be used when the rendering-backend is finished with RTT FBOs" );
+                , "\n set the default FBO-id, this id will be used when the rendering-backend is finished with RTT FBOs\n" );
         
         }
         { //::osg::GraphicsContext::setGraphicsThread
         
-            typedef void ( ::osg::GraphicsContext::*setGraphicsThread_function_type)( ::osg::GraphicsThread * ) ;
+            typedef void ( ::osg::GraphicsContext::*setGraphicsThread_function_type )( ::osg::GraphicsThread * ) ;
             
             GraphicsContext_exposer.def( 
                 "setGraphicsThread"
                 , setGraphicsThread_function_type( &::osg::GraphicsContext::setGraphicsThread )
                 , ( bp::arg("gt") )
-                , " Assign a graphics thread to the graphics context, so that the thread handles all OpenGL operations." );
+                , "\n Assign a graphics thread to the graphics context, so that the thread handles all OpenGL operations.\n" );
         
         }
         { //::osg::GraphicsContext::setResizedCallback
         
-            typedef void ( ::osg::GraphicsContext::*setResizedCallback_function_type)( ::osg::GraphicsContext::ResizedCallback * ) ;
+            typedef void ( ::osg::GraphicsContext::*setResizedCallback_function_type )( ::osg::GraphicsContext::ResizedCallback * ) ;
             
             GraphicsContext_exposer.def( 
                 "setResizedCallback"
                 , setResizedCallback_function_type( &::osg::GraphicsContext::setResizedCallback )
                 , ( bp::arg("rc") )
-                , " Set the resized callback which overrides the GraphicsConext::realizedImplementation(), allow developers to provide custom behavior\n in response to a window being resized." );
+                , "\n Set the resized callback which overrides the GraphicsConext::realizedImplementation(), allow developers to provide custom behavior\n in response to a window being resized.\n" );
         
         }
         { //::osg::GraphicsContext::setState
         
-            typedef void ( ::osg::GraphicsContext::*setState_function_type)( ::osg::State * ) ;
+            typedef void ( ::osg::GraphicsContext::*setState_function_type )( ::osg::State * ) ;
             
             GraphicsContext_exposer.def( 
                 "setState"
                 , setState_function_type( &::osg::GraphicsContext::setState )
                 , ( bp::arg("state") )
-                , " Set the State object which tracks the current OpenGL state for this graphics context." );
+                , "\n Set the State object which tracks the current OpenGL state for this graphics context.\n" );
         
         }
         { //::osg::GraphicsContext::setSwapCallback
         
-            typedef void ( ::osg::GraphicsContext::*setSwapCallback_function_type)( ::osg::GraphicsContext::SwapCallback * ) ;
+            typedef void ( ::osg::GraphicsContext::*setSwapCallback_function_type )( ::osg::GraphicsContext::SwapCallback * ) ;
             
             GraphicsContext_exposer.def( 
                 "setSwapCallback"
                 , setSwapCallback_function_type( &::osg::GraphicsContext::setSwapCallback )
                 , ( bp::arg("rc") )
-                , " Set the swap callback which overrides the\n GraphicsContext::swapBuffersImplementation(), allowing\n developers to provide custom behavior for swap.\n The callback must call\n GraphicsContext::swapBuffersImplementation()" );
+                , "\n Set the swap callback which overrides the\n GraphicsContext::swapBuffersImplementation(), allowing\n developers to provide custom behavior for swap.\n The callback must call\n GraphicsContext::swapBuffersImplementation()\n" );
         
         }
         { //::osg::GraphicsContext::setWindowingSystemInterface
@@ -1181,32 +1025,32 @@ void register_GraphicsContext_class(){
                 "setWindowingSystemInterface"
                 , setWindowingSystemInterface_function_type( &::osg::GraphicsContext::setWindowingSystemInterface )
                 , ( bp::arg("wsInterface") )
-                , " Set the query the windowing system for screens and create graphics context - this functor should be supplied by the windows toolkit." );
+                , "\n Set the query the windowing system for screens and create graphics context - this functor should be supplied by the windows toolkit.\n" );
         
         }
         { //::osg::GraphicsContext::swapBuffers
         
-            typedef void ( ::osg::GraphicsContext::*swapBuffers_function_type)(  ) ;
+            typedef void ( ::osg::GraphicsContext::*swapBuffers_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "swapBuffers"
                 , swapBuffers_function_type( &::osg::GraphicsContext::swapBuffers )
-                , " swap the front and back buffers." );
+                , "\n swap the front and back buffers.\n" );
         
         }
         { //::osg::GraphicsContext::swapBuffersCallbackOrImplemenation
         
-            typedef void ( ::osg::GraphicsContext::*swapBuffersCallbackOrImplemenation_function_type)(  ) ;
+            typedef void ( ::osg::GraphicsContext::*swapBuffersCallbackOrImplemenation_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "swapBuffersCallbackOrImplemenation"
                 , swapBuffersCallbackOrImplemenation_function_type( &::osg::GraphicsContext::swapBuffersCallbackOrImplemenation )
-                , " convinience method for handling whether to call swapbuffers callback or the standard context swapBuffersImplementation.\n swapBuffersCallbackOrImplemenation() is called by swapBuffers() and osg::SwapBuffersOperation, end users should normally\n call swapBuffers() rather than swapBuffersCallbackOrImplemenation()." );
+                , "\n convinience method for handling whether to call swapbuffers callback or the standard context swapBuffersImplementation.\n swapBuffersCallbackOrImplemenation() is called by swapBuffers() and osg::SwapBuffersOperation, end users should normally\n call swapBuffers() rather than swapBuffersCallbackOrImplemenation().\n" );
         
         }
         { //::osg::GraphicsContext::swapBuffersImplementation
         
-            typedef void ( ::osg::GraphicsContext::*swapBuffersImplementation_function_type)(  ) ;
+            typedef void ( ::osg::GraphicsContext::*swapBuffersImplementation_function_type )(  ) ;
             
             GraphicsContext_exposer.def( 
                 "swapBuffersImplementation"
@@ -1216,106 +1060,12 @@ void register_GraphicsContext_class(){
         }
         { //::osg::GraphicsContext::valid
         
-            typedef bool ( ::osg::GraphicsContext::*valid_function_type)(  ) const;
+            typedef bool ( ::osg::GraphicsContext::*valid_function_type )(  ) const;
             
             GraphicsContext_exposer.def( 
                 "valid"
                 , bp::pure_virtual( valid_function_type(&::osg::GraphicsContext::valid) )
                 , "\n Return whether a valid and usable GraphicsContext has been created.\n" );
-        
-        }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( GraphicsContext_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            GraphicsContext_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&GraphicsContext_wrapper::default_computeDataVariance) );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( GraphicsContext_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            GraphicsContext_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&GraphicsContext_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( GraphicsContext_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            GraphicsContext_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&GraphicsContext_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::resizeGLObjectBuffers
-        
-            typedef void ( ::osg::Object::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( GraphicsContext_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            
-            GraphicsContext_exposer.def( 
-                "resizeGLObjectBuffers"
-                , resizeGLObjectBuffers_function_type(&::osg::Object::resizeGLObjectBuffers)
-                , default_resizeGLObjectBuffers_function_type(&GraphicsContext_wrapper::default_resizeGLObjectBuffers)
-                , ( bp::arg("arg0") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( GraphicsContext_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            GraphicsContext_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&GraphicsContext_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            GraphicsContext_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( GraphicsContext_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            GraphicsContext_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&GraphicsContext_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( GraphicsContext_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            GraphicsContext_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&GraphicsContext_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
         GraphicsContext_exposer.staticmethod( "createGraphicsContext" );

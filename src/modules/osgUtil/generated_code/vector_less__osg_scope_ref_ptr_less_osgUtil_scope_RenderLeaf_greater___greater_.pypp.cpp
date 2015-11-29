@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "_ref_ptr_less__osgUtil_scope_RenderLeaf__greater___value_traits.pypp.hpp"
-#include "vector_less__osg_scope_ref_ptr_less_osgutil_scope_renderleaf_greater___greater_.pypp.hpp"
+#include "vector_less__osg_scope_ref_ptr_less_osgUtil_scope_RenderLeaf_greater___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "flushdeletedglobjectsoperation.pypp.hpp"
+#include "FlushDeletedGLObjectsOperation.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -40,18 +40,6 @@ struct FlushDeletedGLObjectsOperation_wrapper : osg::FlushDeletedGLObjectsOperat
         osg::Operation::release( );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_FlushDeletedGLObjectsOperation_class(){
@@ -63,8 +51,8 @@ void register_FlushDeletedGLObjectsOperation_class(){
         bp::implicitly_convertible< double, osg::FlushDeletedGLObjectsOperation >();
         { //::osg::FlushDeletedGLObjectsOperation::operator()
         
-            typedef void ( ::osg::FlushDeletedGLObjectsOperation::*__call___function_type)( ::osg::GraphicsContext * ) ;
-            typedef void ( FlushDeletedGLObjectsOperation_wrapper::*default___call___function_type)( ::osg::GraphicsContext * ) ;
+            typedef void ( ::osg::FlushDeletedGLObjectsOperation::*__call___function_type )( ::osg::GraphicsContext * ) ;
+            typedef void ( FlushDeletedGLObjectsOperation_wrapper::*default___call___function_type )( ::osg::GraphicsContext * ) ;
             
             FlushDeletedGLObjectsOperation_exposer.def( 
                 "__call__"
@@ -76,25 +64,13 @@ void register_FlushDeletedGLObjectsOperation_class(){
         FlushDeletedGLObjectsOperation_exposer.def_readwrite( "_availableTime", &osg::FlushDeletedGLObjectsOperation::_availableTime );
         { //::osg::Operation::release
         
-            typedef void ( ::osg::Operation::*release_function_type)(  ) ;
-            typedef void ( FlushDeletedGLObjectsOperation_wrapper::*default_release_function_type)(  ) ;
+            typedef void ( ::osg::Operation::*release_function_type )(  ) ;
+            typedef void ( FlushDeletedGLObjectsOperation_wrapper::*default_release_function_type )(  ) ;
             
             FlushDeletedGLObjectsOperation_exposer.def( 
                 "release"
                 , release_function_type(&::osg::Operation::release)
                 , default_release_function_type(&FlushDeletedGLObjectsOperation_wrapper::default_release) );
-        
-        }
-        { //::osg::Referenced::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Referenced::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( FlushDeletedGLObjectsOperation_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            FlushDeletedGLObjectsOperation_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Referenced::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&FlushDeletedGLObjectsOperation_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
         
         }
     }

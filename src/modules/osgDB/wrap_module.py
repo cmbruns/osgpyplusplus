@@ -34,7 +34,7 @@ from wrap_helpers import *
 
 class OsgDBWrapper(BaseWrapper):
     def __init__(self):
-        BaseWrapper.__init__(self, files=["wrap_osgdb.h",])
+        BaseWrapper.__init__(self, files=["wrap_osgDB.h",])
         # Don't rewrap anything already wrapped by osg etc.
         # See http://www.language-binding.net/pyplusplus/documentation/multi_module_development.html
         self.mb.register_module_dependency('../osg/generated_code/')
@@ -104,6 +104,8 @@ class OsgDBWrapper(BaseWrapper):
         
         # Exclude difficult classes for now
         for cls_name in [
+                "ifstream",
+                "ofstream",
                 "Archive",
                 "DatabaseRevision",
                 "DatabaseRevisions",

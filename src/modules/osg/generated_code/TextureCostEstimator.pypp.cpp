@@ -3,55 +3,27 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "texturecostestimator.pypp.hpp"
+#include "TextureCostEstimator.pypp.hpp"
 
 namespace bp = boost::python;
 
-struct TextureCostEstimator_wrapper : osg::TextureCostEstimator, bp::wrapper< osg::TextureCostEstimator > {
-
-    TextureCostEstimator_wrapper( )
-    : osg::TextureCostEstimator( )
-      , bp::wrapper< osg::TextureCostEstimator >(){
-        // null constructor
-    
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
-
 void register_TextureCostEstimator_class(){
 
-    bp::class_< TextureCostEstimator_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::TextureCostEstimator >, boost::noncopyable >( "TextureCostEstimator", bp::init< >() )    
+    bp::class_< osg::TextureCostEstimator, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::TextureCostEstimator >, boost::noncopyable >( "TextureCostEstimator", bp::init< >() )    
         .def( 
             "calibrate"
-            , (void ( ::osg::TextureCostEstimator::* )( ::osg::RenderInfo & ))( &::osg::TextureCostEstimator::calibrate )
+            , (void ( ::osg::TextureCostEstimator::* )( ::osg::RenderInfo & ) )( &::osg::TextureCostEstimator::calibrate )
             , ( bp::arg("renderInfo") ) )    
         .def( 
             "estimateCompileCost"
-            , (::osg::CostPair ( ::osg::TextureCostEstimator::* )( ::osg::Texture const * )const)( &::osg::TextureCostEstimator::estimateCompileCost )
+            , (::osg::CostPair ( ::osg::TextureCostEstimator::* )( ::osg::Texture const * ) const)( &::osg::TextureCostEstimator::estimateCompileCost )
             , ( bp::arg("texture") ) )    
         .def( 
             "estimateDrawCost"
-            , (::osg::CostPair ( ::osg::TextureCostEstimator::* )( ::osg::Texture const * )const)( &::osg::TextureCostEstimator::estimateDrawCost )
+            , (::osg::CostPair ( ::osg::TextureCostEstimator::* )( ::osg::Texture const * ) const)( &::osg::TextureCostEstimator::estimateDrawCost )
             , ( bp::arg("texture") ) )    
         .def( 
             "setDefaults"
-            , (void ( ::osg::TextureCostEstimator::* )(  ))( &::osg::TextureCostEstimator::setDefaults ) )    
-        .def( 
-            "setThreadSafeRefUnref"
-            , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-            , (void ( TextureCostEstimator_wrapper::* )( bool ))(&TextureCostEstimator_wrapper::default_setThreadSafeRefUnref)
-            , ( bp::arg("threadSafe") ) );
+            , (void ( ::osg::TextureCostEstimator::* )(  ) )( &::osg::TextureCostEstimator::setDefaults ) );
 
 }

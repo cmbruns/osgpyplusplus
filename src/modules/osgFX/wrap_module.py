@@ -60,7 +60,9 @@ class OsgFXWrapper(BaseWrapper):
         wrap_call_policies(self.mb)
 
         # RuntimeWarning: to-Python converter for class osg::ref_ptr<struct Registry_wrapper> already registered; second conversion method ignored.
-        osgFX.class_("Registry").wrapper_alias = 'FXRegistry_wrapper'
+        # TODO: But not on Linux...
+        # osgFX.class_("Registry").wrapper_alias = 'FXRegistry_wrapper'
+        osgFX.class_("Registry").wrapper_alias = 'osgFX::Registry'
 
         self.wrap_all_osg_referenced(osgFX)
             

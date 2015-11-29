@@ -1,5 +1,7 @@
 #include "../default.h"
 
+#include <osg/Switch>
+
 // DONE - all osgParticle include files included
 #include <osgParticle/AccelOperator>
 #include <osgParticle/AngularAccelOperator>

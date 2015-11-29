@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "vector_less__int__greater_.pypp.hpp"
 
 namespace bp = boost::python;

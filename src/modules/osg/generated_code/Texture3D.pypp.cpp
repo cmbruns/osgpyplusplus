@@ -4,61 +4,11 @@
 #include "__call_policies.pypp.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "texture3d.pypp.hpp"
+#include "Texture3D.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct Texture3D_wrapper : osg::Texture3D, bp::wrapper< osg::Texture3D > {
-
-    struct Extensions_wrapper : osg::Texture3D::Extensions, bp::wrapper< osg::Texture3D::Extensions > {
-    
-        Extensions_wrapper(unsigned int contextID )
-        : osg::Texture3D::Extensions( contextID )
-          , bp::wrapper< osg::Texture3D::Extensions >(){
-            // constructor
-        
-        }
-    
-        static void lowestCommonDenominator( ::osg::Texture3D::Extensions & inst, ::osg::Texture3D::Extensions & rhs ){
-            inst.lowestCommonDenominator(rhs);
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
-
-    struct SubloadCallback_wrapper : osg::Texture3D::SubloadCallback, bp::wrapper< osg::Texture3D::SubloadCallback > {
-    
-        SubloadCallback_wrapper()
-        : osg::Texture3D::SubloadCallback()
-          , bp::wrapper< osg::Texture3D::SubloadCallback >(){
-            // null constructor
-            
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
 
     Texture3D_wrapper( )
     : osg::Texture3D( )
@@ -302,18 +252,6 @@ struct Texture3D_wrapper : osg::Texture3D, bp::wrapper< osg::Texture3D > {
         osg::Texture::compileGLObjects( boost::ref(state) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
     virtual unsigned int getMember(  ) const  {
         if( bp::override func_getMember = this->get_override( "getMember" ) )
             return func_getMember(  );
@@ -336,30 +274,6 @@ struct Texture3D_wrapper : osg::Texture3D, bp::wrapper< osg::Texture3D > {
     
     bool default_getModeUsage( ::osg::StateAttribute::ModeUsage & usage ) const  {
         return osg::Texture::getModeUsage( boost::ref(usage) );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
     }
 
     virtual bool isTextureAttribute(  ) const  {
@@ -386,43 +300,11 @@ struct Texture3D_wrapper : osg::Texture3D, bp::wrapper< osg::Texture3D > {
         osg::Texture::resizeGLObjectBuffers( maxSize );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
+
+static void lowestCommonDenominator_acefee199464937642a20017e378951d( ::osg::Texture3D::Extensions & inst, ::osg::Texture3D::Extensions & rhs ){
+    inst.lowestCommonDenominator(rhs);
+}
 
 void register_Texture3D_class(){
 
@@ -431,14 +313,14 @@ void register_Texture3D_class(){
         Texture3D_exposer_t Texture3D_exposer = Texture3D_exposer_t( "Texture3D", "\n Encapsulates OpenGL 3D texture functionality. Doesnt support cube maps,\n so ignore C{face} parameters.\n", bp::no_init );
         bp::scope Texture3D_scope( Texture3D_exposer );
         { //::osg::Texture3D::Extensions
-            typedef bp::class_< Texture3D_wrapper::Extensions_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::Texture3D::Extensions > > Extensions_exposer_t;
+            typedef bp::class_< osg::Texture3D::Extensions, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::Texture3D::Extensions > > Extensions_exposer_t;
             Extensions_exposer_t Extensions_exposer = Extensions_exposer_t( "Extensions", "\n Encapsulates queries of extension availability, obtains extension\n function pointers, and provides convenience wrappers for\n calling extension functions.\n", bp::no_init );
             bp::scope Extensions_scope( Extensions_exposer );
             Extensions_exposer.def( bp::init< unsigned int >(( bp::arg("contextID") ), "\n Encapsulates queries of extension availability, obtains extension\n function pointers, and provides convenience wrappers for\n calling extension functions.\n") );
             bp::implicitly_convertible< unsigned int, osg::Texture3D::Extensions >();
             { //::osg::Texture3D::Extensions::isCompressedTexImage3DSupported
             
-                typedef bool ( ::osg::Texture3D::Extensions::*isCompressedTexImage3DSupported_function_type)(  ) const;
+                typedef bool ( ::osg::Texture3D::Extensions::*isCompressedTexImage3DSupported_function_type )(  ) const;
                 
                 Extensions_exposer.def( 
                     "isCompressedTexImage3DSupported"
@@ -447,7 +329,7 @@ void register_Texture3D_class(){
             }
             { //::osg::Texture3D::Extensions::isCompressedTexSubImage3DSupported
             
-                typedef bool ( ::osg::Texture3D::Extensions::*isCompressedTexSubImage3DSupported_function_type)(  ) const;
+                typedef bool ( ::osg::Texture3D::Extensions::*isCompressedTexSubImage3DSupported_function_type )(  ) const;
                 
                 Extensions_exposer.def( 
                     "isCompressedTexSubImage3DSupported"
@@ -456,7 +338,7 @@ void register_Texture3D_class(){
             }
             { //::osg::Texture3D::Extensions::isTexture3DFast
             
-                typedef bool ( ::osg::Texture3D::Extensions::*isTexture3DFast_function_type)(  ) const;
+                typedef bool ( ::osg::Texture3D::Extensions::*isTexture3DFast_function_type )(  ) const;
                 
                 Extensions_exposer.def( 
                     "isTexture3DFast"
@@ -465,7 +347,7 @@ void register_Texture3D_class(){
             }
             { //::osg::Texture3D::Extensions::isTexture3DSupported
             
-                typedef bool ( ::osg::Texture3D::Extensions::*isTexture3DSupported_function_type)(  ) const;
+                typedef bool ( ::osg::Texture3D::Extensions::*isTexture3DSupported_function_type )(  ) const;
                 
                 Extensions_exposer.def( 
                     "isTexture3DSupported"
@@ -478,13 +360,13 @@ void register_Texture3D_class(){
                 
                 Extensions_exposer.def( 
                     "lowestCommonDenominator"
-                    , lowestCommonDenominator_function_type( &Texture3D_wrapper::Extensions_wrapper::lowestCommonDenominator )
+                    , lowestCommonDenominator_function_type( &lowestCommonDenominator_acefee199464937642a20017e378951d )
                     , ( bp::arg("inst"), bp::arg("rhs") ) );
             
             }
             { //::osg::Texture3D::Extensions::maxTexture3DSize
             
-                typedef ::GLint ( ::osg::Texture3D::Extensions::*maxTexture3DSize_function_type)(  ) const;
+                typedef ::GLint ( ::osg::Texture3D::Extensions::*maxTexture3DSize_function_type )(  ) const;
                 
                 Extensions_exposer.def( 
                     "maxTexture3DSize"
@@ -493,7 +375,7 @@ void register_Texture3D_class(){
             }
             { //::osg::Texture3D::Extensions::setMaxTexture3DSize
             
-                typedef void ( ::osg::Texture3D::Extensions::*setMaxTexture3DSize_function_type)( ::GLint ) ;
+                typedef void ( ::osg::Texture3D::Extensions::*setMaxTexture3DSize_function_type )( ::GLint ) ;
                 
                 Extensions_exposer.def( 
                     "setMaxTexture3DSize"
@@ -503,7 +385,7 @@ void register_Texture3D_class(){
             }
             { //::osg::Texture3D::Extensions::setTexture3DFast
             
-                typedef void ( ::osg::Texture3D::Extensions::*setTexture3DFast_function_type)( bool ) ;
+                typedef void ( ::osg::Texture3D::Extensions::*setTexture3DFast_function_type )( bool ) ;
                 
                 Extensions_exposer.def( 
                     "setTexture3DFast"
@@ -513,7 +395,7 @@ void register_Texture3D_class(){
             }
             { //::osg::Texture3D::Extensions::setTexture3DSupported
             
-                typedef void ( ::osg::Texture3D::Extensions::*setTexture3DSupported_function_type)( bool ) ;
+                typedef void ( ::osg::Texture3D::Extensions::*setTexture3DSupported_function_type )( bool ) ;
                 
                 Extensions_exposer.def( 
                     "setTexture3DSupported"
@@ -523,7 +405,7 @@ void register_Texture3D_class(){
             }
             { //::osg::Texture3D::Extensions::setupGLExtensions
             
-                typedef void ( ::osg::Texture3D::Extensions::*setupGLExtensions_function_type)( unsigned int ) ;
+                typedef void ( ::osg::Texture3D::Extensions::*setupGLExtensions_function_type )( unsigned int ) ;
                 
                 Extensions_exposer.def( 
                     "setupGLExtensions"
@@ -531,32 +413,14 @@ void register_Texture3D_class(){
                     , ( bp::arg("contextID") ) );
             
             }
-            { //::osg::Referenced::setThreadSafeRefUnref
-            
-                typedef void ( ::osg::Referenced::*setThreadSafeRefUnref_function_type)( bool ) ;
-                typedef void ( Texture3D_wrapper::Extensions_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-                
-                Extensions_exposer.def( 
-                    "setThreadSafeRefUnref"
-                    , setThreadSafeRefUnref_function_type(&::osg::Referenced::setThreadSafeRefUnref)
-                    , default_setThreadSafeRefUnref_function_type(&Texture3D_wrapper::Extensions_wrapper::default_setThreadSafeRefUnref)
-                    , ( bp::arg("threadSafe") ) );
-            
-            }
         }
-        bp::class_< Texture3D_wrapper::SubloadCallback_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< Texture3D_wrapper::SubloadCallback_wrapper >, boost::noncopyable >( "SubloadCallback", bp::no_init )    
-            .def( 
-                "setThreadSafeRefUnref"
-                , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-                , (void ( Texture3D_wrapper::SubloadCallback_wrapper::* )( bool ))(&Texture3D_wrapper::SubloadCallback_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
         Texture3D_exposer.def( bp::init< >("\n Encapsulates OpenGL 3D texture functionality. Doesnt support cube maps,\n so ignore C{face} parameters.\n") );
         Texture3D_exposer.def( bp::init< osg::Image * >(( bp::arg("image") )) );
         bp::implicitly_convertible< osg::Image *, osg::Texture3D >();
         { //::osg::Texture3D::apply
         
-            typedef void ( ::osg::Texture3D::*apply_function_type)( ::osg::State & ) const;
-            typedef void ( Texture3D_wrapper::*default_apply_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::Texture3D::*apply_function_type )( ::osg::State & ) const;
+            typedef void ( Texture3D_wrapper::*default_apply_function_type )( ::osg::State & ) const;
             
             Texture3D_exposer.def( 
                 "apply"
@@ -567,8 +431,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::className
         
-            typedef char const * ( ::osg::Texture3D::*className_function_type)(  ) const;
-            typedef char const * ( Texture3D_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::Texture3D::*className_function_type )(  ) const;
+            typedef char const * ( Texture3D_wrapper::*default_className_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "className"
@@ -578,8 +442,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::clone
         
-            typedef ::osg::Object * ( ::osg::Texture3D::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( Texture3D_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::Texture3D::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( Texture3D_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             Texture3D_exposer.def( 
                 "clone"
@@ -591,8 +455,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::cloneType
         
-            typedef ::osg::Object * ( ::osg::Texture3D::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( Texture3D_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::Texture3D::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( Texture3D_wrapper::*default_cloneType_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "cloneType"
@@ -603,13 +467,13 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::copyTexSubImage3D
         
-            typedef void ( ::osg::Texture3D::*copyTexSubImage3D_function_type)( ::osg::State &,int,int,int,int,int,int,int ) ;
+            typedef void ( ::osg::Texture3D::*copyTexSubImage3D_function_type )( ::osg::State &,int,int,int,int,int,int,int ) ;
             
             Texture3D_exposer.def( 
                 "copyTexSubImage3D"
                 , copyTexSubImage3D_function_type( &::osg::Texture3D::copyTexSubImage3D )
                 , ( bp::arg("state"), bp::arg("xoffset"), bp::arg("yoffset"), bp::arg("zoffset"), bp::arg("x"), bp::arg("y"), bp::arg("width"), bp::arg("height") )
-                , " Copies a two-dimensional texture subimage, as per\n glCopyTexSubImage3D. Updates a portion of an existing OpenGL\n texture object from the current OpenGL background framebuffer\n contents at position C{x,} C{y} with width C{width} and height\n C{height.} Loads framebuffer data into the texture using offsets\n C{xoffset,} C{yoffset,} and C{zoffset.} C{width} and C{height}\n must be powers of two." );
+                , "\n Copies a two-dimensional texture subimage, as per\n glCopyTexSubImage3D. Updates a portion of an existing OpenGL\n texture object from the current OpenGL background framebuffer\n contents at position C{x,} C{y} with width C{width} and height\n C{height.} Loads framebuffer data into the texture using offsets\n C{xoffset,} C{yoffset,} and C{zoffset.} C{width} and C{height}\n must be powers of two.\n" );
         
         }
         { //::osg::Texture3D::getExtensions
@@ -621,35 +485,35 @@ void register_Texture3D_class(){
                 , getExtensions_function_type( &::osg::Texture3D::getExtensions )
                 , ( bp::arg("contextID"), bp::arg("createIfNotInitalized") )
                 , bp::return_internal_reference< >()
-                , " Encapsulates queries of extension availability, obtains extension\n function pointers, and provides convenience wrappers for\n calling extension functions." );
+                , "\n Encapsulates queries of extension availability, obtains extension\n function pointers, and provides convenience wrappers for\n calling extension functions.\n" );
         
         }
         { //::osg::Texture3D::getImage
         
-            typedef ::osg::Image * ( ::osg::Texture3D::*getImage_function_type)(  ) ;
+            typedef ::osg::Image * ( ::osg::Texture3D::*getImage_function_type )(  ) ;
             
             Texture3D_exposer.def( 
                 "getImage"
                 , getImage_function_type( &::osg::Texture3D::getImage )
                 , bp::return_internal_reference< >()
-                , " Gets the texture image." );
+                , "\n Gets the texture image.\n" );
         
         }
         { //::osg::Texture3D::getImage
         
-            typedef ::osg::Image const * ( ::osg::Texture3D::*getImage_function_type)(  ) const;
+            typedef ::osg::Image const * ( ::osg::Texture3D::*getImage_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "getImage"
                 , getImage_function_type( &::osg::Texture3D::getImage )
                 , bp::return_internal_reference< >()
-                , " Gets the const texture image." );
+                , "\n Gets the const texture image.\n" );
         
         }
         { //::osg::Texture3D::getImage
         
-            typedef ::osg::Image * ( ::osg::Texture3D::*getImage_function_type)( unsigned int ) ;
-            typedef ::osg::Image * ( Texture3D_wrapper::*default_getImage_function_type)( unsigned int ) ;
+            typedef ::osg::Image * ( ::osg::Texture3D::*getImage_function_type )( unsigned int ) ;
+            typedef ::osg::Image * ( Texture3D_wrapper::*default_getImage_function_type )( unsigned int ) ;
             
             Texture3D_exposer.def( 
                 "getImage"
@@ -661,8 +525,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::getImage
         
-            typedef ::osg::Image const * ( ::osg::Texture3D::*getImage_function_type)( unsigned int ) const;
-            typedef ::osg::Image const * ( Texture3D_wrapper::*default_getImage_function_type)( unsigned int ) const;
+            typedef ::osg::Image const * ( ::osg::Texture3D::*getImage_function_type )( unsigned int ) const;
+            typedef ::osg::Image const * ( Texture3D_wrapper::*default_getImage_function_type )( unsigned int ) const;
             
             Texture3D_exposer.def( 
                 "getImage"
@@ -674,7 +538,7 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::getModifiedCount
         
-            typedef unsigned int & ( ::osg::Texture3D::*getModifiedCount_function_type)( unsigned int ) const;
+            typedef unsigned int & ( ::osg::Texture3D::*getModifiedCount_function_type )( unsigned int ) const;
             
             Texture3D_exposer.def( 
                 "getModifiedCount"
@@ -685,8 +549,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::getNumImages
         
-            typedef unsigned int ( ::osg::Texture3D::*getNumImages_function_type)(  ) const;
-            typedef unsigned int ( Texture3D_wrapper::*default_getNumImages_function_type)(  ) const;
+            typedef unsigned int ( ::osg::Texture3D::*getNumImages_function_type )(  ) const;
+            typedef unsigned int ( Texture3D_wrapper::*default_getNumImages_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "getNumImages"
@@ -696,17 +560,17 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::getNumMipmapLevels
         
-            typedef unsigned int ( ::osg::Texture3D::*getNumMipmapLevels_function_type)(  ) const;
+            typedef unsigned int ( ::osg::Texture3D::*getNumMipmapLevels_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "getNumMipmapLevels"
                 , getNumMipmapLevels_function_type( &::osg::Texture3D::getNumMipmapLevels )
-                , " Gets the number of mipmap levels created." );
+                , "\n Gets the number of mipmap levels created.\n" );
         
         }
         { //::osg::Texture3D::getSubloadCallback
         
-            typedef ::osg::Texture3D::SubloadCallback * ( ::osg::Texture3D::*getSubloadCallback_function_type)(  ) ;
+            typedef ::osg::Texture3D::SubloadCallback * ( ::osg::Texture3D::*getSubloadCallback_function_type )(  ) ;
             
             Texture3D_exposer.def( 
                 "getSubloadCallback"
@@ -716,7 +580,7 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::getSubloadCallback
         
-            typedef ::osg::Texture3D::SubloadCallback const * ( ::osg::Texture3D::*getSubloadCallback_function_type)(  ) const;
+            typedef ::osg::Texture3D::SubloadCallback const * ( ::osg::Texture3D::*getSubloadCallback_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "getSubloadCallback"
@@ -726,8 +590,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::getTextureDepth
         
-            typedef int ( ::osg::Texture3D::*getTextureDepth_function_type)(  ) const;
-            typedef int ( Texture3D_wrapper::*default_getTextureDepth_function_type)(  ) const;
+            typedef int ( ::osg::Texture3D::*getTextureDepth_function_type )(  ) const;
+            typedef int ( Texture3D_wrapper::*default_getTextureDepth_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "getTextureDepth"
@@ -737,8 +601,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::getTextureHeight
         
-            typedef int ( ::osg::Texture3D::*getTextureHeight_function_type)(  ) const;
-            typedef int ( Texture3D_wrapper::*default_getTextureHeight_function_type)(  ) const;
+            typedef int ( ::osg::Texture3D::*getTextureHeight_function_type )(  ) const;
+            typedef int ( Texture3D_wrapper::*default_getTextureHeight_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "getTextureHeight"
@@ -748,19 +612,19 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::getTextureSize
         
-            typedef void ( ::osg::Texture3D::*getTextureSize_function_type)( int &,int &,int & ) const;
+            typedef void ( ::osg::Texture3D::*getTextureSize_function_type )( int &,int &,int & ) const;
             
             Texture3D_exposer.def( 
                 "getTextureSize"
                 , getTextureSize_function_type( &::osg::Texture3D::getTextureSize )
                 , ( bp::arg("width"), bp::arg("height"), bp::arg("depth") )
-                , " Gets the texture subload width." );
+                , "\n Gets the texture subload width.\n" );
         
         }
         { //::osg::Texture3D::getTextureTarget
         
-            typedef ::GLenum ( ::osg::Texture3D::*getTextureTarget_function_type)(  ) const;
-            typedef ::GLenum ( Texture3D_wrapper::*default_getTextureTarget_function_type)(  ) const;
+            typedef ::GLenum ( ::osg::Texture3D::*getTextureTarget_function_type )(  ) const;
+            typedef ::GLenum ( Texture3D_wrapper::*default_getTextureTarget_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "getTextureTarget"
@@ -770,8 +634,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::getTextureWidth
         
-            typedef int ( ::osg::Texture3D::*getTextureWidth_function_type)(  ) const;
-            typedef int ( Texture3D_wrapper::*default_getTextureWidth_function_type)(  ) const;
+            typedef int ( ::osg::Texture3D::*getTextureWidth_function_type )(  ) const;
+            typedef int ( Texture3D_wrapper::*default_getTextureWidth_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "getTextureWidth"
@@ -781,8 +645,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::getType
         
-            typedef ::osg::StateAttribute::Type ( ::osg::Texture3D::*getType_function_type)(  ) const;
-            typedef ::osg::StateAttribute::Type ( Texture3D_wrapper::*default_getType_function_type)(  ) const;
+            typedef ::osg::StateAttribute::Type ( ::osg::Texture3D::*getType_function_type )(  ) const;
+            typedef ::osg::StateAttribute::Type ( Texture3D_wrapper::*default_getType_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "getType"
@@ -792,8 +656,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::isSameKindAs
         
-            typedef bool ( ::osg::Texture3D::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( Texture3D_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::Texture3D::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( Texture3D_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             Texture3D_exposer.def( 
                 "isSameKindAs"
@@ -804,8 +668,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::libraryName
         
-            typedef char const * ( ::osg::Texture3D::*libraryName_function_type)(  ) const;
-            typedef char const * ( Texture3D_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::Texture3D::*libraryName_function_type )(  ) const;
+            typedef char const * ( Texture3D_wrapper::*default_libraryName_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "libraryName"
@@ -821,24 +685,24 @@ void register_Texture3D_class(){
                 "setExtensions"
                 , setExtensions_function_type( &::osg::Texture3D::setExtensions )
                 , ( bp::arg("contextID"), bp::arg("extensions") )
-                , " Overrides Extensions objects across graphics contexts. Typically\n used to ensure the same lowest common denominator of extensions\n on systems with different graphics pipes." );
+                , "\n Overrides Extensions objects across graphics contexts. Typically\n used to ensure the same lowest common denominator of extensions\n on systems with different graphics pipes.\n" );
         
         }
         { //::osg::Texture3D::setImage
         
-            typedef void ( ::osg::Texture3D::*setImage_function_type)( ::osg::Image * ) ;
+            typedef void ( ::osg::Texture3D::*setImage_function_type )( ::osg::Image * ) ;
             
             Texture3D_exposer.def( 
                 "setImage"
                 , setImage_function_type( &::osg::Texture3D::setImage )
                 , ( bp::arg("image") )
-                , " Sets the texture image." );
+                , "\n Sets the texture image.\n" );
         
         }
         { //::osg::Texture3D::setImage
         
-            typedef void ( ::osg::Texture3D::*setImage_function_type)( unsigned int,::osg::Image * ) ;
-            typedef void ( Texture3D_wrapper::*default_setImage_function_type)( unsigned int,::osg::Image * ) ;
+            typedef void ( ::osg::Texture3D::*setImage_function_type )( unsigned int,::osg::Image * ) ;
+            typedef void ( Texture3D_wrapper::*default_setImage_function_type )( unsigned int,::osg::Image * ) ;
             
             Texture3D_exposer.def( 
                 "setImage"
@@ -849,18 +713,18 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::setNumMipmapLevels
         
-            typedef void ( ::osg::Texture3D::*setNumMipmapLevels_function_type)( unsigned int ) const;
+            typedef void ( ::osg::Texture3D::*setNumMipmapLevels_function_type )( unsigned int ) const;
             
             Texture3D_exposer.def( 
                 "setNumMipmapLevels"
                 , setNumMipmapLevels_function_type( &::osg::Texture3D::setNumMipmapLevels )
                 , ( bp::arg("num") )
-                , " Helper function. Sets the number of mipmap levels created for this\n texture. Should only be called within an osg::Texture::apply(), or\n during a custom OpenGL texture load." );
+                , "\n Helper function. Sets the number of mipmap levels created for this\n texture. Should only be called within an osg::Texture::apply(), or\n during a custom OpenGL texture load.\n" );
         
         }
         { //::osg::Texture3D::setSubloadCallback
         
-            typedef void ( ::osg::Texture3D::*setSubloadCallback_function_type)( ::osg::Texture3D::SubloadCallback * ) ;
+            typedef void ( ::osg::Texture3D::*setSubloadCallback_function_type )( ::osg::Texture3D::SubloadCallback * ) ;
             
             Texture3D_exposer.def( 
                 "setSubloadCallback"
@@ -870,7 +734,7 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::setTextureDepth
         
-            typedef void ( ::osg::Texture3D::*setTextureDepth_function_type)( int ) ;
+            typedef void ( ::osg::Texture3D::*setTextureDepth_function_type )( int ) ;
             
             Texture3D_exposer.def( 
                 "setTextureDepth"
@@ -880,7 +744,7 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::setTextureHeight
         
-            typedef void ( ::osg::Texture3D::*setTextureHeight_function_type)( int ) ;
+            typedef void ( ::osg::Texture3D::*setTextureHeight_function_type )( int ) ;
             
             Texture3D_exposer.def( 
                 "setTextureHeight"
@@ -890,18 +754,18 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture3D::setTextureSize
         
-            typedef void ( ::osg::Texture3D::*setTextureSize_function_type)( int,int,int ) const;
+            typedef void ( ::osg::Texture3D::*setTextureSize_function_type )( int,int,int ) const;
             
             Texture3D_exposer.def( 
                 "setTextureSize"
                 , setTextureSize_function_type( &::osg::Texture3D::setTextureSize )
                 , ( bp::arg("width"), bp::arg("height"), bp::arg("depth") )
-                , " Sets the texture width, height, and depth. If width, height, or\n depth are zero, calculate the respective value from the source\n image size." );
+                , "\n Sets the texture width, height, and depth. If width, height, or\n depth are zero, calculate the respective value from the source\n image size.\n" );
         
         }
         { //::osg::Texture3D::setTextureWidth
         
-            typedef void ( ::osg::Texture3D::*setTextureWidth_function_type)( int ) ;
+            typedef void ( ::osg::Texture3D::*setTextureWidth_function_type )( int ) ;
             
             Texture3D_exposer.def( 
                 "setTextureWidth"
@@ -911,8 +775,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture::asTexture
         
-            typedef ::osg::Texture * ( ::osg::Texture::*asTexture_function_type)(  ) ;
-            typedef ::osg::Texture * ( Texture3D_wrapper::*default_asTexture_function_type)(  ) ;
+            typedef ::osg::Texture * ( ::osg::Texture::*asTexture_function_type )(  ) ;
+            typedef ::osg::Texture * ( Texture3D_wrapper::*default_asTexture_function_type )(  ) ;
             
             Texture3D_exposer.def( 
                 "asTexture"
@@ -923,8 +787,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture::asTexture
         
-            typedef ::osg::Texture const * ( ::osg::Texture::*asTexture_function_type)(  ) const;
-            typedef ::osg::Texture const * ( Texture3D_wrapper::*default_asTexture_function_type)(  ) const;
+            typedef ::osg::Texture const * ( ::osg::Texture::*asTexture_function_type )(  ) const;
+            typedef ::osg::Texture const * ( Texture3D_wrapper::*default_asTexture_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "asTexture"
@@ -935,8 +799,8 @@ void register_Texture3D_class(){
         }
         { //::osg::StateAttribute::checkValidityOfAssociatedModes
         
-            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
-            typedef bool ( Texture3D_wrapper::*default_checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
+            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
+            typedef bool ( Texture3D_wrapper::*default_checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
             
             Texture3D_exposer.def( 
                 "checkValidityOfAssociatedModes"
@@ -947,8 +811,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture::compileGLObjects
         
-            typedef void ( ::osg::Texture::*compileGLObjects_function_type)( ::osg::State & ) const;
-            typedef void ( Texture3D_wrapper::*default_compileGLObjects_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::Texture::*compileGLObjects_function_type )( ::osg::State & ) const;
+            typedef void ( Texture3D_wrapper::*default_compileGLObjects_function_type )( ::osg::State & ) const;
             
             Texture3D_exposer.def( 
                 "compileGLObjects"
@@ -957,21 +821,10 @@ void register_Texture3D_class(){
                 , ( bp::arg("state") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( Texture3D_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            Texture3D_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&Texture3D_wrapper::default_computeDataVariance) );
-        
-        }
         { //::osg::StateAttribute::getMember
         
-            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type)(  ) const;
-            typedef unsigned int ( Texture3D_wrapper::*default_getMember_function_type)(  ) const;
+            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type )(  ) const;
+            typedef unsigned int ( Texture3D_wrapper::*default_getMember_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "getMember"
@@ -981,8 +834,8 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture::getModeUsage
         
-            typedef bool ( ::osg::Texture::*getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
-            typedef bool ( Texture3D_wrapper::*default_getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( ::osg::Texture::*getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( Texture3D_wrapper::*default_getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
             
             Texture3D_exposer.def( 
                 "getModeUsage"
@@ -991,34 +844,10 @@ void register_Texture3D_class(){
                 , ( bp::arg("usage") ) );
         
         }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( Texture3D_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            Texture3D_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Texture3D_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( Texture3D_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            Texture3D_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Texture3D_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::Texture::isTextureAttribute
         
-            typedef bool ( ::osg::Texture::*isTextureAttribute_function_type)(  ) const;
-            typedef bool ( Texture3D_wrapper::*default_isTextureAttribute_function_type)(  ) const;
+            typedef bool ( ::osg::Texture::*isTextureAttribute_function_type )(  ) const;
+            typedef bool ( Texture3D_wrapper::*default_isTextureAttribute_function_type )(  ) const;
             
             Texture3D_exposer.def( 
                 "isTextureAttribute"
@@ -1028,61 +857,14 @@ void register_Texture3D_class(){
         }
         { //::osg::Texture::resizeGLObjectBuffers
         
-            typedef void ( ::osg::Texture::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( Texture3D_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::Texture::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( Texture3D_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             Texture3D_exposer.def( 
                 "resizeGLObjectBuffers"
                 , resizeGLObjectBuffers_function_type(&::osg::Texture::resizeGLObjectBuffers)
                 , default_resizeGLObjectBuffers_function_type(&Texture3D_wrapper::default_resizeGLObjectBuffers)
                 , ( bp::arg("maxSize") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( Texture3D_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            Texture3D_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&Texture3D_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            Texture3D_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( Texture3D_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            Texture3D_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&Texture3D_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( Texture3D_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            Texture3D_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&Texture3D_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
         Texture3D_exposer.staticmethod( "getExtensions" );

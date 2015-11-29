@@ -3,52 +3,17 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "refblockcount.pypp.hpp"
+#include "RefBlockCount.pypp.hpp"
 
 namespace bp = boost::python;
-
-struct RefBlockCount_wrapper : osg::RefBlockCount, bp::wrapper< osg::RefBlockCount > {
-
-    RefBlockCount_wrapper(unsigned int blockCount )
-    : osg::RefBlockCount( blockCount )
-      , bp::wrapper< osg::RefBlockCount >(){
-        // constructor
-    
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
 
 void register_RefBlockCount_class(){
 
     { //::osg::RefBlockCount
-        typedef bp::class_< RefBlockCount_wrapper, bp::bases< osg::Referenced, OpenThreads::BlockCount >, osg::ref_ptr< ::osg::RefBlockCount >, boost::noncopyable > RefBlockCount_exposer_t;
+        typedef bp::class_< osg::RefBlockCount, bp::bases< osg::Referenced, OpenThreads::BlockCount >, osg::ref_ptr< ::osg::RefBlockCount >, boost::noncopyable > RefBlockCount_exposer_t;
         RefBlockCount_exposer_t RefBlockCount_exposer = RefBlockCount_exposer_t( "RefBlockCount", bp::init< unsigned int >(( bp::arg("blockCount") )) );
         bp::scope RefBlockCount_scope( RefBlockCount_exposer );
         bp::implicitly_convertible< unsigned int, osg::RefBlockCount >();
-        { //::osg::Referenced::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Referenced::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( RefBlockCount_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            RefBlockCount_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Referenced::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&RefBlockCount_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
     }
 
 }

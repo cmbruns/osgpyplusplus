@@ -3,14 +3,18 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/set.hpp"
-#include "wrap_osgutil.h"
-#include "geodestodividelist.pypp.hpp"
+#include "wrap_osgUtil.h"
+#include "GeodesToDivideList.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_GeodesToDivideList_class(){
 
-    bp::class_< std::set< osg::Geode* > >( "GeodesToDivideList" )    
-        .def( bp::indexing::set_suite< std::set< osg::Geode* > >::with_policies(bp::return_internal_reference< >()) );
+    { //::std::set< osg::Geode* >
+        typedef bp::class_< std::set< osg::Geode* > > GeodesToDivideList_exposer_t;
+        GeodesToDivideList_exposer_t GeodesToDivideList_exposer = GeodesToDivideList_exposer_t( "GeodesToDivideList" );
+        bp::scope GeodesToDivideList_scope( GeodesToDivideList_exposer );
+        GeodesToDivideList_exposer.def( bp::indexing::set_suite< std::set< osg::Geode* > >::with_policies(bp::return_internal_reference< >()) );
+    }
 
 }

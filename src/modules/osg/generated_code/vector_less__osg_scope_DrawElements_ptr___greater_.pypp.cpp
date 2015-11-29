@@ -4,7 +4,7 @@
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
 #include "wrap_osg.h"
-#include "vector_less__osg_scope_drawelements_ptr___greater_.pypp.hpp"
+#include "vector_less__osg_scope_DrawElements_ptr___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

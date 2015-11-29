@@ -16,63 +16,63 @@
 
 #include "indexing_suite/list.hpp"
 
-#include "wrap_osgga.h"
+#include "wrap_osgGA.h"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/_osgga_free_functions.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/AnimationPathManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/animationpathmanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/CameraManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/cameramanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/CameraViewSwitchManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/cameraviewswitchmanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/Device.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/device.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/DriveManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/drivemanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/EventQueue.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/eventqueue.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/EventVisitor.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/eventvisitor.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/FirstPersonManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/firstpersonmanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/FlightManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/flightmanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/GUIActionAdapter.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/guiactionadapter.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/GUIEventAdapter.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/guieventadapter.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/GUIEventHandler.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/guieventhandler.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/GUIEventHandlerVisitor.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/guieventhandlervisitor.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/KeyManipMap.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/keymanipmap.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/KeySwitchMatrixManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/keyswitchmatrixmanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/MultiTouchTrackballManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/list_less__osg_scope_ref_ptr_less_osgga_scope_guieventadapter_greater___greater_.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/NodeTrackerManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/multitouchtrackballmanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/OrbitManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/nodetrackermanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/PointerData.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/orbitmanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/PointerDataList.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/pointerdata.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/SphericalManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/pointerdatalist.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/StandardManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/sphericalmanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/StateSetManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/standardmanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/TerrainManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/statesetmanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/TrackballManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/terrainmanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/UFOManipulator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/trackballmanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/_osgGA_free_functions.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgga/generated_code/ufomanipulator.pypp.hpp"
+#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgGA/generated_code/list_less__osg_scope_ref_ptr_less_osgGA_scope_GUIEventAdapter_greater___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

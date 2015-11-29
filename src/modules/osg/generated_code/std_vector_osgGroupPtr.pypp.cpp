@@ -4,7 +4,7 @@
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
 #include "wrap_osg.h"
-#include "std_vector_osggroupptr.pypp.hpp"
+#include "std_vector_osgGroupPtr.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -12,7 +12,7 @@ void register_std_vector_osgGroupPtr_class(){
 
     { //::std::vector< osg::Group* >
         typedef bp::class_< std::vector< osg::Group* > > std_vector_osgGroupPtr_exposer_t;
-        std_vector_osgGroupPtr_exposer_t std_vector_osgGroupPtr_exposer = std_vector_osgGroupPtr_exposer_t( "std_vector_osgGroupPtr" );
+        std_vector_osgGroupPtr_exposer_t std_vector_osgGroupPtr_exposer = std_vector_osgGroupPtr_exposer_t( "std_vector_osgGroupPtr", "\n  A standard container which offers fixed time access to\n  individual elements in any order.\n\n  fngroup sequences\n\n  Tparam: _Tp  Type of element.\n  Tparam: _Alloc  Allocator type, defaults to allocator<_Tp>.\n\n  Meets the requirements of a <a href=tables.html#65>container</a>, a\n  <a href=tables.html#66>reversible container</a>, and a\n  <a href=tables.html#67>sequence</a>, including the\n  <a href=tables.html#68>optional sequence requirements</a> with the\n  %exception of @c push_front and @c pop_front.\n\n  In some terminology a %vector can be described as a dynamic\n  C-style array, it offers fast and efficient access to individual\n  elements in any order and saves the user from worrying about\n  memory and size allocation.  Subscripting ( @c [] ) access is\n  also provided as with C-style arrays.\n" );
         bp::scope std_vector_osgGroupPtr_scope( std_vector_osgGroupPtr_exposer );
         std_vector_osgGroupPtr_exposer.def( bp::indexing::vector_suite< std::vector< osg::Group* > >::with_policies(bp::return_internal_reference< >()) );
     }

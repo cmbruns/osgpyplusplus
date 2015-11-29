@@ -4,61 +4,11 @@
 #include "__call_policies.pypp.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "texturecubemap.pypp.hpp"
+#include "TextureCubeMap.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct TextureCubeMap_wrapper : osg::TextureCubeMap, bp::wrapper< osg::TextureCubeMap > {
-
-    struct Extensions_wrapper : osg::TextureCubeMap::Extensions, bp::wrapper< osg::TextureCubeMap::Extensions > {
-    
-        Extensions_wrapper(unsigned int contextID )
-        : osg::TextureCubeMap::Extensions( contextID )
-          , bp::wrapper< osg::TextureCubeMap::Extensions >(){
-            // constructor
-        
-        }
-    
-        static void lowestCommonDenominator( ::osg::TextureCubeMap::Extensions & inst, ::osg::TextureCubeMap::Extensions & rhs ){
-            inst.lowestCommonDenominator(rhs);
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
-
-    struct SubloadCallback_wrapper : osg::TextureCubeMap::SubloadCallback, bp::wrapper< osg::TextureCubeMap::SubloadCallback > {
-    
-        SubloadCallback_wrapper()
-        : osg::TextureCubeMap::SubloadCallback()
-          , bp::wrapper< osg::TextureCubeMap::SubloadCallback >(){
-            // null constructor
-            
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
 
     TextureCubeMap_wrapper( )
     : osg::TextureCubeMap( )
@@ -295,18 +245,6 @@ struct TextureCubeMap_wrapper : osg::TextureCubeMap, bp::wrapper< osg::TextureCu
         osg::Texture::compileGLObjects( boost::ref(state) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
     virtual unsigned int getMember(  ) const  {
         if( bp::override func_getMember = this->get_override( "getMember" ) )
             return func_getMember(  );
@@ -329,30 +267,6 @@ struct TextureCubeMap_wrapper : osg::TextureCubeMap, bp::wrapper< osg::TextureCu
     
     bool default_getModeUsage( ::osg::StateAttribute::ModeUsage & usage ) const  {
         return osg::Texture::getModeUsage( boost::ref(usage) );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
     }
 
     virtual bool isTextureAttribute(  ) const  {
@@ -379,43 +293,11 @@ struct TextureCubeMap_wrapper : osg::TextureCubeMap, bp::wrapper< osg::TextureCu
         osg::Texture::resizeGLObjectBuffers( maxSize );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
+
+static void lowestCommonDenominator_fc169043dcc4cfa7e9b901e29cbfbf69( ::osg::TextureCubeMap::Extensions & inst, ::osg::TextureCubeMap::Extensions & rhs ){
+    inst.lowestCommonDenominator(rhs);
+}
 
 void register_TextureCubeMap_class(){
 
@@ -433,14 +315,14 @@ void register_TextureCubeMap_class(){
             .export_values()
             ;
         { //::osg::TextureCubeMap::Extensions
-            typedef bp::class_< TextureCubeMap_wrapper::Extensions_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::TextureCubeMap::Extensions > > Extensions_exposer_t;
-            Extensions_exposer_t Extensions_exposer = Extensions_exposer_t( "Extensions", "\n Extensions class which encapsulates the querying of extensions and\n associated function pointers, and provides convenience wrappers to\n check for the extensions or use the associated functions.\n", bp::no_init );
+            typedef bp::class_< osg::TextureCubeMap::Extensions, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::TextureCubeMap::Extensions > > Extensions_exposer_t;
+            Extensions_exposer_t Extensions_exposer = Extensions_exposer_t( "Extensions", " Extensions class which encapsulates the querying of extensions and\n associated function pointers, and provides convenience wrappers to\n check for the extensions or use the associated functions.", bp::no_init );
             bp::scope Extensions_scope( Extensions_exposer );
-            Extensions_exposer.def( bp::init< unsigned int >(( bp::arg("contextID") ), "\n Extensions class which encapsulates the querying of extensions and\n associated function pointers, and provides convenience wrappers to\n check for the extensions or use the associated functions.\n") );
+            Extensions_exposer.def( bp::init< unsigned int >(( bp::arg("contextID") ), " Extensions class which encapsulates the querying of extensions and\n associated function pointers, and provides convenience wrappers to\n check for the extensions or use the associated functions.") );
             bp::implicitly_convertible< unsigned int, osg::TextureCubeMap::Extensions >();
             { //::osg::TextureCubeMap::Extensions::isCubeMapSupported
             
-                typedef bool ( ::osg::TextureCubeMap::Extensions::*isCubeMapSupported_function_type)(  ) const;
+                typedef bool ( ::osg::TextureCubeMap::Extensions::*isCubeMapSupported_function_type )(  ) const;
                 
                 Extensions_exposer.def( 
                     "isCubeMapSupported"
@@ -453,13 +335,13 @@ void register_TextureCubeMap_class(){
                 
                 Extensions_exposer.def( 
                     "lowestCommonDenominator"
-                    , lowestCommonDenominator_function_type( &TextureCubeMap_wrapper::Extensions_wrapper::lowestCommonDenominator )
+                    , lowestCommonDenominator_function_type( &lowestCommonDenominator_fc169043dcc4cfa7e9b901e29cbfbf69 )
                     , ( bp::arg("inst"), bp::arg("rhs") ) );
             
             }
             { //::osg::TextureCubeMap::Extensions::setCubeMapSupported
             
-                typedef void ( ::osg::TextureCubeMap::Extensions::*setCubeMapSupported_function_type)( bool ) ;
+                typedef void ( ::osg::TextureCubeMap::Extensions::*setCubeMapSupported_function_type )( bool ) ;
                 
                 Extensions_exposer.def( 
                     "setCubeMapSupported"
@@ -469,7 +351,7 @@ void register_TextureCubeMap_class(){
             }
             { //::osg::TextureCubeMap::Extensions::setupGLExtensions
             
-                typedef void ( ::osg::TextureCubeMap::Extensions::*setupGLExtensions_function_type)( unsigned int ) ;
+                typedef void ( ::osg::TextureCubeMap::Extensions::*setupGLExtensions_function_type )( unsigned int ) ;
                 
                 Extensions_exposer.def( 
                     "setupGLExtensions"
@@ -477,30 +359,12 @@ void register_TextureCubeMap_class(){
                     , ( bp::arg("contextID") ) );
             
             }
-            { //::osg::Referenced::setThreadSafeRefUnref
-            
-                typedef void ( ::osg::Referenced::*setThreadSafeRefUnref_function_type)( bool ) ;
-                typedef void ( TextureCubeMap_wrapper::Extensions_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-                
-                Extensions_exposer.def( 
-                    "setThreadSafeRefUnref"
-                    , setThreadSafeRefUnref_function_type(&::osg::Referenced::setThreadSafeRefUnref)
-                    , default_setThreadSafeRefUnref_function_type(&TextureCubeMap_wrapper::Extensions_wrapper::default_setThreadSafeRefUnref)
-                    , ( bp::arg("threadSafe") ) );
-            
-            }
         }
-        bp::class_< TextureCubeMap_wrapper::SubloadCallback_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< TextureCubeMap_wrapper::SubloadCallback_wrapper >, boost::noncopyable >( "SubloadCallback", bp::no_init )    
-            .def( 
-                "setThreadSafeRefUnref"
-                , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-                , (void ( TextureCubeMap_wrapper::SubloadCallback_wrapper::* )( bool ))(&TextureCubeMap_wrapper::SubloadCallback_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
         TextureCubeMap_exposer.def( bp::init< >("\n TextureCubeMap state class which encapsulates OpenGL texture cubemap functionality.\n") );
         { //::osg::TextureCubeMap::apply
         
-            typedef void ( ::osg::TextureCubeMap::*apply_function_type)( ::osg::State & ) const;
-            typedef void ( TextureCubeMap_wrapper::*default_apply_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::TextureCubeMap::*apply_function_type )( ::osg::State & ) const;
+            typedef void ( TextureCubeMap_wrapper::*default_apply_function_type )( ::osg::State & ) const;
             
             TextureCubeMap_exposer.def( 
                 "apply"
@@ -511,8 +375,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::className
         
-            typedef char const * ( ::osg::TextureCubeMap::*className_function_type)(  ) const;
-            typedef char const * ( TextureCubeMap_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::TextureCubeMap::*className_function_type )(  ) const;
+            typedef char const * ( TextureCubeMap_wrapper::*default_className_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "className"
@@ -522,8 +386,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::clone
         
-            typedef ::osg::Object * ( ::osg::TextureCubeMap::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( TextureCubeMap_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::TextureCubeMap::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( TextureCubeMap_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             TextureCubeMap_exposer.def( 
                 "clone"
@@ -535,8 +399,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::cloneType
         
-            typedef ::osg::Object * ( ::osg::TextureCubeMap::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( TextureCubeMap_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::TextureCubeMap::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( TextureCubeMap_wrapper::*default_cloneType_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "cloneType"
@@ -547,7 +411,7 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::copyTexSubImageCubeMap
         
-            typedef void ( ::osg::TextureCubeMap::*copyTexSubImageCubeMap_function_type)( ::osg::State &,int,int,int,int,int,int,int ) ;
+            typedef void ( ::osg::TextureCubeMap::*copyTexSubImageCubeMap_function_type )( ::osg::State &,int,int,int,int,int,int,int ) ;
             
             TextureCubeMap_exposer.def( 
                 "copyTexSubImageCubeMap"
@@ -570,8 +434,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::getImage
         
-            typedef ::osg::Image * ( ::osg::TextureCubeMap::*getImage_function_type)( unsigned int ) ;
-            typedef ::osg::Image * ( TextureCubeMap_wrapper::*default_getImage_function_type)( unsigned int ) ;
+            typedef ::osg::Image * ( ::osg::TextureCubeMap::*getImage_function_type )( unsigned int ) ;
+            typedef ::osg::Image * ( TextureCubeMap_wrapper::*default_getImage_function_type )( unsigned int ) ;
             
             TextureCubeMap_exposer.def( 
                 "getImage"
@@ -583,8 +447,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::getImage
         
-            typedef ::osg::Image const * ( ::osg::TextureCubeMap::*getImage_function_type)( unsigned int ) const;
-            typedef ::osg::Image const * ( TextureCubeMap_wrapper::*default_getImage_function_type)( unsigned int ) const;
+            typedef ::osg::Image const * ( ::osg::TextureCubeMap::*getImage_function_type )( unsigned int ) const;
+            typedef ::osg::Image const * ( TextureCubeMap_wrapper::*default_getImage_function_type )( unsigned int ) const;
             
             TextureCubeMap_exposer.def( 
                 "getImage"
@@ -596,7 +460,7 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::getModifiedCount
         
-            typedef unsigned int & ( ::osg::TextureCubeMap::*getModifiedCount_function_type)( unsigned int,unsigned int ) const;
+            typedef unsigned int & ( ::osg::TextureCubeMap::*getModifiedCount_function_type )( unsigned int,unsigned int ) const;
             
             TextureCubeMap_exposer.def( 
                 "getModifiedCount"
@@ -607,8 +471,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::getNumImages
         
-            typedef unsigned int ( ::osg::TextureCubeMap::*getNumImages_function_type)(  ) const;
-            typedef unsigned int ( TextureCubeMap_wrapper::*default_getNumImages_function_type)(  ) const;
+            typedef unsigned int ( ::osg::TextureCubeMap::*getNumImages_function_type )(  ) const;
+            typedef unsigned int ( TextureCubeMap_wrapper::*default_getNumImages_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "getNumImages"
@@ -618,7 +482,7 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::getNumMipmapLevels
         
-            typedef unsigned int ( ::osg::TextureCubeMap::*getNumMipmapLevels_function_type)(  ) const;
+            typedef unsigned int ( ::osg::TextureCubeMap::*getNumMipmapLevels_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "getNumMipmapLevels"
@@ -628,7 +492,7 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::getSubloadCallback
         
-            typedef ::osg::TextureCubeMap::SubloadCallback * ( ::osg::TextureCubeMap::*getSubloadCallback_function_type)(  ) ;
+            typedef ::osg::TextureCubeMap::SubloadCallback * ( ::osg::TextureCubeMap::*getSubloadCallback_function_type )(  ) ;
             
             TextureCubeMap_exposer.def( 
                 "getSubloadCallback"
@@ -638,7 +502,7 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::getSubloadCallback
         
-            typedef ::osg::TextureCubeMap::SubloadCallback const * ( ::osg::TextureCubeMap::*getSubloadCallback_function_type)(  ) const;
+            typedef ::osg::TextureCubeMap::SubloadCallback const * ( ::osg::TextureCubeMap::*getSubloadCallback_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "getSubloadCallback"
@@ -648,8 +512,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::getTextureDepth
         
-            typedef int ( ::osg::TextureCubeMap::*getTextureDepth_function_type)(  ) const;
-            typedef int ( TextureCubeMap_wrapper::*default_getTextureDepth_function_type)(  ) const;
+            typedef int ( ::osg::TextureCubeMap::*getTextureDepth_function_type )(  ) const;
+            typedef int ( TextureCubeMap_wrapper::*default_getTextureDepth_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "getTextureDepth"
@@ -659,8 +523,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::getTextureHeight
         
-            typedef int ( ::osg::TextureCubeMap::*getTextureHeight_function_type)(  ) const;
-            typedef int ( TextureCubeMap_wrapper::*default_getTextureHeight_function_type)(  ) const;
+            typedef int ( ::osg::TextureCubeMap::*getTextureHeight_function_type )(  ) const;
+            typedef int ( TextureCubeMap_wrapper::*default_getTextureHeight_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "getTextureHeight"
@@ -670,8 +534,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::getTextureTarget
         
-            typedef ::GLenum ( ::osg::TextureCubeMap::*getTextureTarget_function_type)(  ) const;
-            typedef ::GLenum ( TextureCubeMap_wrapper::*default_getTextureTarget_function_type)(  ) const;
+            typedef ::GLenum ( ::osg::TextureCubeMap::*getTextureTarget_function_type )(  ) const;
+            typedef ::GLenum ( TextureCubeMap_wrapper::*default_getTextureTarget_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "getTextureTarget"
@@ -681,8 +545,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::getTextureWidth
         
-            typedef int ( ::osg::TextureCubeMap::*getTextureWidth_function_type)(  ) const;
-            typedef int ( TextureCubeMap_wrapper::*default_getTextureWidth_function_type)(  ) const;
+            typedef int ( ::osg::TextureCubeMap::*getTextureWidth_function_type )(  ) const;
+            typedef int ( TextureCubeMap_wrapper::*default_getTextureWidth_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "getTextureWidth"
@@ -692,8 +556,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::getType
         
-            typedef ::osg::StateAttribute::Type ( ::osg::TextureCubeMap::*getType_function_type)(  ) const;
-            typedef ::osg::StateAttribute::Type ( TextureCubeMap_wrapper::*default_getType_function_type)(  ) const;
+            typedef ::osg::StateAttribute::Type ( ::osg::TextureCubeMap::*getType_function_type )(  ) const;
+            typedef ::osg::StateAttribute::Type ( TextureCubeMap_wrapper::*default_getType_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "getType"
@@ -703,8 +567,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::isSameKindAs
         
-            typedef bool ( ::osg::TextureCubeMap::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( TextureCubeMap_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::TextureCubeMap::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( TextureCubeMap_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             TextureCubeMap_exposer.def( 
                 "isSameKindAs"
@@ -715,8 +579,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::libraryName
         
-            typedef char const * ( ::osg::TextureCubeMap::*libraryName_function_type)(  ) const;
-            typedef char const * ( TextureCubeMap_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::TextureCubeMap::*libraryName_function_type )(  ) const;
+            typedef char const * ( TextureCubeMap_wrapper::*default_libraryName_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "libraryName"
@@ -737,8 +601,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::setImage
         
-            typedef void ( ::osg::TextureCubeMap::*setImage_function_type)( unsigned int,::osg::Image * ) ;
-            typedef void ( TextureCubeMap_wrapper::*default_setImage_function_type)( unsigned int,::osg::Image * ) ;
+            typedef void ( ::osg::TextureCubeMap::*setImage_function_type )( unsigned int,::osg::Image * ) ;
+            typedef void ( TextureCubeMap_wrapper::*default_setImage_function_type )( unsigned int,::osg::Image * ) ;
             
             TextureCubeMap_exposer.def( 
                 "setImage"
@@ -749,7 +613,7 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::setNumMipmapLevels
         
-            typedef void ( ::osg::TextureCubeMap::*setNumMipmapLevels_function_type)( unsigned int ) const;
+            typedef void ( ::osg::TextureCubeMap::*setNumMipmapLevels_function_type )( unsigned int ) const;
             
             TextureCubeMap_exposer.def( 
                 "setNumMipmapLevels"
@@ -760,7 +624,7 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::setSubloadCallback
         
-            typedef void ( ::osg::TextureCubeMap::*setSubloadCallback_function_type)( ::osg::TextureCubeMap::SubloadCallback * ) ;
+            typedef void ( ::osg::TextureCubeMap::*setSubloadCallback_function_type )( ::osg::TextureCubeMap::SubloadCallback * ) ;
             
             TextureCubeMap_exposer.def( 
                 "setSubloadCallback"
@@ -770,7 +634,7 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::setTextureHeight
         
-            typedef void ( ::osg::TextureCubeMap::*setTextureHeight_function_type)( int ) ;
+            typedef void ( ::osg::TextureCubeMap::*setTextureHeight_function_type )( int ) ;
             
             TextureCubeMap_exposer.def( 
                 "setTextureHeight"
@@ -780,7 +644,7 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::setTextureSize
         
-            typedef void ( ::osg::TextureCubeMap::*setTextureSize_function_type)( int,int ) const;
+            typedef void ( ::osg::TextureCubeMap::*setTextureSize_function_type )( int,int ) const;
             
             TextureCubeMap_exposer.def( 
                 "setTextureSize"
@@ -791,7 +655,7 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::TextureCubeMap::setTextureWidth
         
-            typedef void ( ::osg::TextureCubeMap::*setTextureWidth_function_type)( int ) ;
+            typedef void ( ::osg::TextureCubeMap::*setTextureWidth_function_type )( int ) ;
             
             TextureCubeMap_exposer.def( 
                 "setTextureWidth"
@@ -801,8 +665,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::Texture::asTexture
         
-            typedef ::osg::Texture * ( ::osg::Texture::*asTexture_function_type)(  ) ;
-            typedef ::osg::Texture * ( TextureCubeMap_wrapper::*default_asTexture_function_type)(  ) ;
+            typedef ::osg::Texture * ( ::osg::Texture::*asTexture_function_type )(  ) ;
+            typedef ::osg::Texture * ( TextureCubeMap_wrapper::*default_asTexture_function_type )(  ) ;
             
             TextureCubeMap_exposer.def( 
                 "asTexture"
@@ -813,8 +677,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::Texture::asTexture
         
-            typedef ::osg::Texture const * ( ::osg::Texture::*asTexture_function_type)(  ) const;
-            typedef ::osg::Texture const * ( TextureCubeMap_wrapper::*default_asTexture_function_type)(  ) const;
+            typedef ::osg::Texture const * ( ::osg::Texture::*asTexture_function_type )(  ) const;
+            typedef ::osg::Texture const * ( TextureCubeMap_wrapper::*default_asTexture_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "asTexture"
@@ -825,8 +689,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::StateAttribute::checkValidityOfAssociatedModes
         
-            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
-            typedef bool ( TextureCubeMap_wrapper::*default_checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
+            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
+            typedef bool ( TextureCubeMap_wrapper::*default_checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
             
             TextureCubeMap_exposer.def( 
                 "checkValidityOfAssociatedModes"
@@ -837,8 +701,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::Texture::compileGLObjects
         
-            typedef void ( ::osg::Texture::*compileGLObjects_function_type)( ::osg::State & ) const;
-            typedef void ( TextureCubeMap_wrapper::*default_compileGLObjects_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::Texture::*compileGLObjects_function_type )( ::osg::State & ) const;
+            typedef void ( TextureCubeMap_wrapper::*default_compileGLObjects_function_type )( ::osg::State & ) const;
             
             TextureCubeMap_exposer.def( 
                 "compileGLObjects"
@@ -847,21 +711,10 @@ void register_TextureCubeMap_class(){
                 , ( bp::arg("state") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( TextureCubeMap_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            TextureCubeMap_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&TextureCubeMap_wrapper::default_computeDataVariance) );
-        
-        }
         { //::osg::StateAttribute::getMember
         
-            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type)(  ) const;
-            typedef unsigned int ( TextureCubeMap_wrapper::*default_getMember_function_type)(  ) const;
+            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type )(  ) const;
+            typedef unsigned int ( TextureCubeMap_wrapper::*default_getMember_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "getMember"
@@ -871,8 +724,8 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::Texture::getModeUsage
         
-            typedef bool ( ::osg::Texture::*getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
-            typedef bool ( TextureCubeMap_wrapper::*default_getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( ::osg::Texture::*getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( TextureCubeMap_wrapper::*default_getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
             
             TextureCubeMap_exposer.def( 
                 "getModeUsage"
@@ -881,34 +734,10 @@ void register_TextureCubeMap_class(){
                 , ( bp::arg("usage") ) );
         
         }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( TextureCubeMap_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            TextureCubeMap_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&TextureCubeMap_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( TextureCubeMap_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            TextureCubeMap_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&TextureCubeMap_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::Texture::isTextureAttribute
         
-            typedef bool ( ::osg::Texture::*isTextureAttribute_function_type)(  ) const;
-            typedef bool ( TextureCubeMap_wrapper::*default_isTextureAttribute_function_type)(  ) const;
+            typedef bool ( ::osg::Texture::*isTextureAttribute_function_type )(  ) const;
+            typedef bool ( TextureCubeMap_wrapper::*default_isTextureAttribute_function_type )(  ) const;
             
             TextureCubeMap_exposer.def( 
                 "isTextureAttribute"
@@ -918,61 +747,14 @@ void register_TextureCubeMap_class(){
         }
         { //::osg::Texture::resizeGLObjectBuffers
         
-            typedef void ( ::osg::Texture::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( TextureCubeMap_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::Texture::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( TextureCubeMap_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             TextureCubeMap_exposer.def( 
                 "resizeGLObjectBuffers"
                 , resizeGLObjectBuffers_function_type(&::osg::Texture::resizeGLObjectBuffers)
                 , default_resizeGLObjectBuffers_function_type(&TextureCubeMap_wrapper::default_resizeGLObjectBuffers)
                 , ( bp::arg("maxSize") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( TextureCubeMap_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            TextureCubeMap_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&TextureCubeMap_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            TextureCubeMap_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( TextureCubeMap_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            TextureCubeMap_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&TextureCubeMap_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( TextureCubeMap_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            TextureCubeMap_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&TextureCubeMap_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
         TextureCubeMap_exposer.staticmethod( "getExtensions" );

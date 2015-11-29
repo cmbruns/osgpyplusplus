@@ -3,15 +3,19 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/set.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "_ref_ptr_less__osgUtil_scope_EdgeCollector_scope_Point__greater___value_traits.pypp.hpp"
-#include "pointset.pypp.hpp"
+#include "PointSet.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_PointSet_class(){
 
-    bp::class_< std::set<osg::ref_ptr<osgUtil::EdgeCollector::Point>, osgUtil::dereference_less, std::allocator<osg::ref_ptr<osgUtil::EdgeCollector::Point> > > >( "PointSet" )    
-        .def( bp::indexing::set_suite< std::set<osg::ref_ptr<osgUtil::EdgeCollector::Point>, osgUtil::dereference_less, std::allocator<osg::ref_ptr<osgUtil::EdgeCollector::Point> > > >() );
+    { //::std::set<osg::ref_ptr<osgUtil::EdgeCollector::Point>, osgUtil::dereference_less, std::allocator<osg::ref_ptr<osgUtil::EdgeCollector::Point> > >
+        typedef bp::class_< std::set<osg::ref_ptr<osgUtil::EdgeCollector::Point>, osgUtil::dereference_less, std::allocator<osg::ref_ptr<osgUtil::EdgeCollector::Point> > > > PointSet_exposer_t;
+        PointSet_exposer_t PointSet_exposer = PointSet_exposer_t( "PointSet" );
+        bp::scope PointSet_scope( PointSet_exposer );
+        PointSet_exposer.def( bp::indexing::set_suite< std::set<osg::ref_ptr<osgUtil::EdgeCollector::Point>, osgUtil::dereference_less, std::allocator<osg::ref_ptr<osgUtil::EdgeCollector::Point> > > >() );
+    }
 
 }

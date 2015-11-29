@@ -9,7 +9,8 @@
 #include "../default.h"
 
 // External headers needed for osgUtil classes to compile:
-// <none yet>
+#include <osg/Switch>
+#include <osg/PositionAttitudeTransform>
 
 // Full set of OSG 3.2.1 osgManipulator headers:
 #include <osgManipulator/AntiSquish>

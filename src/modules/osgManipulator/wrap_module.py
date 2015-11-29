@@ -84,6 +84,8 @@ class OsgManipulatorWrapper(BaseWrapper):
             hack_osg_arg(cls, "receive", "command")
             hack_osg_arg(cls, "receive", "arg0")
 
+        osgManipulator.class_("CompositeDragger").member_function("findDragger").exclude()
+
         self.generate_module_code('_osgManipulator')
 
 if __name__ == "__main__":

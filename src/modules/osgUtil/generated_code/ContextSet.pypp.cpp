@@ -3,14 +3,18 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/set.hpp"
-#include "wrap_osgutil.h"
-#include "contextset.pypp.hpp"
+#include "wrap_osgUtil.h"
+#include "ContextSet.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_ContextSet_class(){
 
-    bp::class_< std::set< osg::GraphicsContext* > >( "ContextSet" )    
-        .def( bp::indexing::set_suite< std::set< osg::GraphicsContext* > >::with_policies(bp::return_internal_reference< >()) );
+    { //::std::set< osg::GraphicsContext* >
+        typedef bp::class_< std::set< osg::GraphicsContext* > > ContextSet_exposer_t;
+        ContextSet_exposer_t ContextSet_exposer = ContextSet_exposer_t( "ContextSet" );
+        bp::scope ContextSet_scope( ContextSet_exposer );
+        ContextSet_exposer.def( bp::indexing::set_suite< std::set< osg::GraphicsContext* > >::with_policies(bp::return_internal_reference< >()) );
+    }
 
 }

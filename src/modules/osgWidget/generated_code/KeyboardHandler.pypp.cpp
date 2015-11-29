@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgwidget.h"
+#include "wrap_osgWidget.h"
 #include "wrap_referenced.h"
-#include "keyboardhandler.pypp.hpp"
+#include "KeyboardHandler.pypp.hpp"
 
 namespace bp = boost::python;
 

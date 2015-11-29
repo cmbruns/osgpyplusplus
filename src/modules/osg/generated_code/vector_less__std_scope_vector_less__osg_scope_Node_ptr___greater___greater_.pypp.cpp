@@ -5,7 +5,7 @@
 #include "indexing_suite/vector.hpp"
 #include "wrap_osg.h"
 #include "_std_vector_osgNodePtr__value_traits.pypp.hpp"
-#include "vector_less__std_scope_vector_less__osg_scope_node_ptr___greater___greater_.pypp.hpp"
+#include "vector_less__std_scope_vector_less__osg_scope_Node_ptr___greater___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

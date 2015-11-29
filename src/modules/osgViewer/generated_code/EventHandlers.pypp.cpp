@@ -3,8 +3,8 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/list.hpp"
-#include "wrap_osgviewer.h"
-#include "eventhandlers.pypp.hpp"
+#include "wrap_osgViewer.h"
+#include "EventHandlers.pypp.hpp"
 
 namespace bp = boost::python;
 

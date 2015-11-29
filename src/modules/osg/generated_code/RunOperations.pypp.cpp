@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "runoperations.pypp.hpp"
+#include "RunOperations.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -40,18 +40,6 @@ struct RunOperations_wrapper : osg::RunOperations, bp::wrapper< osg::RunOperatio
         osg::Operation::release( );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_RunOperations_class(){
@@ -59,17 +47,12 @@ void register_RunOperations_class(){
     bp::class_< RunOperations_wrapper, bp::bases< osg::GraphicsOperation >, osg::ref_ptr< ::osg::RunOperations >, boost::noncopyable >( "RunOperations", bp::init< >() )    
         .def( 
             "__call__"
-            , (void ( ::osg::RunOperations::* )( ::osg::GraphicsContext * ))(&::osg::RunOperations::operator())
-            , (void ( RunOperations_wrapper::* )( ::osg::GraphicsContext * ))(&RunOperations_wrapper::default___call__)
+            , (void ( ::osg::RunOperations::* )( ::osg::GraphicsContext * ) )(&::osg::RunOperations::operator())
+            , (void ( RunOperations_wrapper::* )( ::osg::GraphicsContext * ) )(&RunOperations_wrapper::default___call__)
             , ( bp::arg("context") ) )    
         .def( 
             "release"
-            , (void ( ::osg::Operation::* )(  ))(&::osg::Operation::release)
-            , (void ( RunOperations_wrapper::* )(  ))(&RunOperations_wrapper::default_release) )    
-        .def( 
-            "setThreadSafeRefUnref"
-            , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-            , (void ( RunOperations_wrapper::* )( bool ))(&RunOperations_wrapper::default_setThreadSafeRefUnref)
-            , ( bp::arg("threadSafe") ) );
+            , (void ( ::osg::Operation::* )(  ) )(&::osg::Operation::release)
+            , (void ( RunOperations_wrapper::* )(  ) )(&RunOperations_wrapper::default_release) );
 
 }

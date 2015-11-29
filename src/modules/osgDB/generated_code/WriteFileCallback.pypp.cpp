@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgdb.h"
+#include "wrap_osgDB.h"
 #include "wrap_referenced.h"
-#include "writefilecallback.pypp.hpp"
+#include "WriteFileCallback.pypp.hpp"
 
 namespace bp = boost::python;
 

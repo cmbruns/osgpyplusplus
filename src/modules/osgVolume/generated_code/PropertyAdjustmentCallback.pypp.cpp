@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgvolume.h"
+#include "wrap_osgVolume.h"
 #include "wrap_referenced.h"
-#include "propertyadjustmentcallback.pypp.hpp"
+#include "PropertyAdjustmentCallback.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -191,66 +191,66 @@ void register_PropertyAdjustmentCallback_class(){
     bp::class_< PropertyAdjustmentCallback_wrapper, bp::bases< ::osg::StateSet::Callback >, osg::ref_ptr< PropertyAdjustmentCallback_wrapper >, boost::noncopyable >( "PropertyAdjustmentCallback", bp::init< >() )    
         .def( 
             "className"
-            , (char const * ( ::osgVolume::PropertyAdjustmentCallback::* )(  )const)(&::osgVolume::PropertyAdjustmentCallback::className)
-            , (char const * ( PropertyAdjustmentCallback_wrapper::* )(  )const)(&PropertyAdjustmentCallback_wrapper::default_className) )    
+            , (char const * ( ::osgVolume::PropertyAdjustmentCallback::* )(  ) const)(&::osgVolume::PropertyAdjustmentCallback::className)
+            , (char const * ( PropertyAdjustmentCallback_wrapper::* )(  ) const)(&PropertyAdjustmentCallback_wrapper::default_className) )    
         .def( 
             "clone"
-            , (::osg::Object * ( ::osgVolume::PropertyAdjustmentCallback::* )( ::osg::CopyOp const & )const)(&::osgVolume::PropertyAdjustmentCallback::clone)
-            , (::osg::Object * ( PropertyAdjustmentCallback_wrapper::* )( ::osg::CopyOp const & )const)(&PropertyAdjustmentCallback_wrapper::default_clone)
+            , (::osg::Object * ( ::osgVolume::PropertyAdjustmentCallback::* )( ::osg::CopyOp const & ) const)(&::osgVolume::PropertyAdjustmentCallback::clone)
+            , (::osg::Object * ( PropertyAdjustmentCallback_wrapper::* )( ::osg::CopyOp const & ) const)(&PropertyAdjustmentCallback_wrapper::default_clone)
             , ( bp::arg("copyop") )
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "cloneType"
-            , (::osg::Object * ( ::osgVolume::PropertyAdjustmentCallback::* )(  )const)(&::osgVolume::PropertyAdjustmentCallback::cloneType)
-            , (::osg::Object * ( PropertyAdjustmentCallback_wrapper::* )(  )const)(&PropertyAdjustmentCallback_wrapper::default_cloneType)
+            , (::osg::Object * ( ::osgVolume::PropertyAdjustmentCallback::* )(  ) const)(&::osgVolume::PropertyAdjustmentCallback::cloneType)
+            , (::osg::Object * ( PropertyAdjustmentCallback_wrapper::* )(  ) const)(&PropertyAdjustmentCallback_wrapper::default_cloneType)
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "getKeyEventActivatesAlphaFuncAdjustment"
-            , (int ( ::osgVolume::PropertyAdjustmentCallback::* )(  )const)( &::osgVolume::PropertyAdjustmentCallback::getKeyEventActivatesAlphaFuncAdjustment ) )    
+            , (int ( ::osgVolume::PropertyAdjustmentCallback::* )(  ) const)( &::osgVolume::PropertyAdjustmentCallback::getKeyEventActivatesAlphaFuncAdjustment ) )    
         .def( 
             "getKeyEventActivatesSampleDensityAdjustment"
-            , (int ( ::osgVolume::PropertyAdjustmentCallback::* )(  )const)( &::osgVolume::PropertyAdjustmentCallback::getKeyEventActivatesSampleDensityAdjustment ) )    
+            , (int ( ::osgVolume::PropertyAdjustmentCallback::* )(  ) const)( &::osgVolume::PropertyAdjustmentCallback::getKeyEventActivatesSampleDensityAdjustment ) )    
         .def( 
             "getKeyEventActivatesTransparencyAdjustment"
-            , (int ( ::osgVolume::PropertyAdjustmentCallback::* )(  )const)( &::osgVolume::PropertyAdjustmentCallback::getKeyEventActivatesTransparencyAdjustment ) )    
+            , (int ( ::osgVolume::PropertyAdjustmentCallback::* )(  ) const)( &::osgVolume::PropertyAdjustmentCallback::getKeyEventActivatesTransparencyAdjustment ) )    
         .def( 
             "getKeyEventCycleBackward"
-            , (int ( ::osgVolume::PropertyAdjustmentCallback::* )(  )const)( &::osgVolume::PropertyAdjustmentCallback::getKeyEventCycleBackward ) )    
+            , (int ( ::osgVolume::PropertyAdjustmentCallback::* )(  ) const)( &::osgVolume::PropertyAdjustmentCallback::getKeyEventCycleBackward ) )    
         .def( 
             "getKeyEventCycleForward"
-            , (int ( ::osgVolume::PropertyAdjustmentCallback::* )(  )const)( &::osgVolume::PropertyAdjustmentCallback::getKeyEventCycleForward ) )    
+            , (int ( ::osgVolume::PropertyAdjustmentCallback::* )(  ) const)( &::osgVolume::PropertyAdjustmentCallback::getKeyEventCycleForward ) )    
         .def( 
             "handle"
             , (boost::python::object (*)( ::osgVolume::PropertyAdjustmentCallback &,::osgGA::GUIEventAdapter &,::osgGA::GUIActionAdapter &,::osg::Object *,::osg::NodeVisitor * ))( &PropertyAdjustmentCallback_wrapper::default_handle )
             , ( bp::arg("inst"), bp::arg("ea"), bp::arg("arg1"), bp::arg("object"), bp::arg("arg3") ) )    
         .def( 
             "isSameKindAs"
-            , (bool ( ::osgVolume::PropertyAdjustmentCallback::* )( ::osg::Object const * )const)(&::osgVolume::PropertyAdjustmentCallback::isSameKindAs)
-            , (bool ( PropertyAdjustmentCallback_wrapper::* )( ::osg::Object const * )const)(&PropertyAdjustmentCallback_wrapper::default_isSameKindAs)
+            , (bool ( ::osgVolume::PropertyAdjustmentCallback::* )( ::osg::Object const * ) const)(&::osgVolume::PropertyAdjustmentCallback::isSameKindAs)
+            , (bool ( PropertyAdjustmentCallback_wrapper::* )( ::osg::Object const * ) const)(&PropertyAdjustmentCallback_wrapper::default_isSameKindAs)
             , ( bp::arg("obj") ) )    
         .def( 
             "libraryName"
-            , (char const * ( ::osgVolume::PropertyAdjustmentCallback::* )(  )const)(&::osgVolume::PropertyAdjustmentCallback::libraryName)
-            , (char const * ( PropertyAdjustmentCallback_wrapper::* )(  )const)(&PropertyAdjustmentCallback_wrapper::default_libraryName) )    
+            , (char const * ( ::osgVolume::PropertyAdjustmentCallback::* )(  ) const)(&::osgVolume::PropertyAdjustmentCallback::libraryName)
+            , (char const * ( PropertyAdjustmentCallback_wrapper::* )(  ) const)(&PropertyAdjustmentCallback_wrapper::default_libraryName) )    
         .def( 
             "setKeyEventActivatesAlphaFuncAdjustment"
-            , (void ( ::osgVolume::PropertyAdjustmentCallback::* )( int ))( &::osgVolume::PropertyAdjustmentCallback::setKeyEventActivatesAlphaFuncAdjustment )
+            , (void ( ::osgVolume::PropertyAdjustmentCallback::* )( int ) )( &::osgVolume::PropertyAdjustmentCallback::setKeyEventActivatesAlphaFuncAdjustment )
             , ( bp::arg("key") ) )    
         .def( 
             "setKeyEventActivatesSampleDensityAdjustment"
-            , (void ( ::osgVolume::PropertyAdjustmentCallback::* )( int ))( &::osgVolume::PropertyAdjustmentCallback::setKeyEventActivatesSampleDensityAdjustment )
+            , (void ( ::osgVolume::PropertyAdjustmentCallback::* )( int ) )( &::osgVolume::PropertyAdjustmentCallback::setKeyEventActivatesSampleDensityAdjustment )
             , ( bp::arg("key") ) )    
         .def( 
             "setKeyEventActivatesTransparencyAdjustment"
-            , (void ( ::osgVolume::PropertyAdjustmentCallback::* )( int ))( &::osgVolume::PropertyAdjustmentCallback::setKeyEventActivatesTransparencyAdjustment )
+            , (void ( ::osgVolume::PropertyAdjustmentCallback::* )( int ) )( &::osgVolume::PropertyAdjustmentCallback::setKeyEventActivatesTransparencyAdjustment )
             , ( bp::arg("key") ) )    
         .def( 
             "setKeyEventCycleBackward"
-            , (void ( ::osgVolume::PropertyAdjustmentCallback::* )( int ))( &::osgVolume::PropertyAdjustmentCallback::setKeyEventCycleBackward )
+            , (void ( ::osgVolume::PropertyAdjustmentCallback::* )( int ) )( &::osgVolume::PropertyAdjustmentCallback::setKeyEventCycleBackward )
             , ( bp::arg("key") ) )    
         .def( 
             "setKeyEventCycleForward"
-            , (void ( ::osgVolume::PropertyAdjustmentCallback::* )( int ))( &::osgVolume::PropertyAdjustmentCallback::setKeyEventCycleForward )
+            , (void ( ::osgVolume::PropertyAdjustmentCallback::* )( int ) )( &::osgVolume::PropertyAdjustmentCallback::setKeyEventCycleForward )
             , ( bp::arg("key") ) )    
         .def_readwrite( "_alphaFuncKey", &osgVolume::PropertyAdjustmentCallback::_alphaFuncKey )    
         .def_readwrite( "_cyleBackwardKey", &osgVolume::PropertyAdjustmentCallback::_cyleBackwardKey )    

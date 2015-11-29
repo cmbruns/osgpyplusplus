@@ -2,7 +2,7 @@
 
 #include "boost/python.hpp"
 #include "wrap_osg.h"
-#include "constshapevisitor.pypp.hpp"
+#include "ConstShapeVisitor.pypp.hpp"
 
 namespace bp = boost::python;
 

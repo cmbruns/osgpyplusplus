@@ -66,8 +66,9 @@ class BaseWrapper:
         parser.add_argument('--osg_include_path', 
                             default="C:/Program Files (x86)/OpenSceneGraph323vs2008/include", 
                             help="path to the OpenSceneGraph C++ header files",)
+        default_compiler = "msvc9"
         parser.add_argument('--gccxml_compiler', 
-                            default="msvc9", 
+                            default=default_compiler, 
                             help="name of C++ compiler",)
         args = parser.parse_args()
         #

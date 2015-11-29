@@ -676,7 +676,7 @@ void register_free_functions(){
         bp::def( 
             "equivalent"
             , equivalent_function_type( &::osg::equivalent )
-            , ( bp::arg("lhs"), bp::arg("rhs"), bp::arg("epsilon")=9.99999999999999954748111825886258685613938723691e-7 )
+            , ( bp::arg("lhs"), bp::arg("rhs"), bp::arg("epsilon")=9.99999999999999954748111825886258685613938723690807819366e-7 )
             , " return true if double lhs and rhs are equivalent,\n meaning that the difference between them is less than an epsilon value\n which defaults to 1e-6." );
     
     }
@@ -688,7 +688,7 @@ void register_free_functions(){
         bp::def( 
             "equivalent"
             , equivalent_function_type( &::osg::equivalent )
-            , ( bp::arg("lhs"), bp::arg("rhs"), bp::arg("epsilon")=9.99999999999999954748111825886258685613938723691e-7 )
+            , ( bp::arg("lhs"), bp::arg("rhs"), bp::arg("epsilon")=9.99999999999999954748111825886258685613938723690807819366e-7 )
             , " return true if float lhs and rhs are equivalent,\n meaning that the difference between them is less than an epsilon value\n which defaults to 1e-6." );
     
     }
@@ -904,28 +904,6 @@ void register_free_functions(){
     
     }
 
-    { //::osg::gluDeleteTess
-    
-        typedef void ( *gluDeleteTess_function_type )( ::osg::GLUtesselator * );
-        
-        bp::def( 
-            "gluDeleteTess"
-            , gluDeleteTess_function_type( &::osg::gluDeleteTess )
-            , ( bp::arg("tess") ) );
-    
-    }
-
-    { //::osg::gluGetTessProperty
-    
-        typedef void ( *gluGetTessProperty_function_type )( ::osg::GLUtesselator *,::GLenum,double * );
-        
-        bp::def( 
-            "gluGetTessProperty"
-            , gluGetTessProperty_function_type( &::osg::gluGetTessProperty )
-            , ( bp::arg("tess"), bp::arg("which"), bp::arg("value") ) );
-    
-    }
-
     { //::osg::gluScaleImage
     
         typedef ::GLint ( *gluScaleImage_function_type )( ::GLenum,::GLsizei,::GLsizei,::GLenum,void const *,::GLsizei,::GLsizei,::GLenum,::GLvoid * );
@@ -947,83 +925,6 @@ void register_free_functions(){
             , gluScaleImage_function_type( &::osg::gluScaleImage )
             , ( bp::arg("psm"), bp::arg("format"), bp::arg("wIn"), bp::arg("hIn"), bp::arg("typeIn"), bp::arg("dataIn"), bp::arg("wOut"), bp::arg("hOut"), bp::arg("typeOut"), bp::arg("dataOut") )
             , " OSG specific gluScaleImage function that allows you to pass in the PixelStoreModes, which\n enables the code to avoid glGets that are associated with the conventional gluScaleImage function.\n Avoiding glGets allows this gluScaleImage function to be called at any time, from any thread, there\n is no need to have a graphics context current." );
-    
-    }
-
-    { //::osg::gluTessBeginContour
-    
-        typedef void ( *gluTessBeginContour_function_type )( ::osg::GLUtesselator * );
-        
-        bp::def( 
-            "gluTessBeginContour"
-            , gluTessBeginContour_function_type( &::osg::gluTessBeginContour )
-            , ( bp::arg("tess") ) );
-    
-    }
-
-    { //::osg::gluTessBeginPolygon
-    
-        typedef void ( *gluTessBeginPolygon_function_type )( ::osg::GLUtesselator *,::GLvoid * );
-        
-        bp::def( 
-            "gluTessBeginPolygon"
-            , gluTessBeginPolygon_function_type( &::osg::gluTessBeginPolygon )
-            , ( bp::arg("tess"), bp::arg("data") ) );
-    
-    }
-
-    { //::osg::gluTessEndContour
-    
-        typedef void ( *gluTessEndContour_function_type )( ::osg::GLUtesselator * );
-        
-        bp::def( 
-            "gluTessEndContour"
-            , gluTessEndContour_function_type( &::osg::gluTessEndContour )
-            , ( bp::arg("tess") ) );
-    
-    }
-
-    { //::osg::gluTessEndPolygon
-    
-        typedef void ( *gluTessEndPolygon_function_type )( ::osg::GLUtesselator * );
-        
-        bp::def( 
-            "gluTessEndPolygon"
-            , gluTessEndPolygon_function_type( &::osg::gluTessEndPolygon )
-            , ( bp::arg("tess") ) );
-    
-    }
-
-    { //::osg::gluTessNormal
-    
-        typedef void ( *gluTessNormal_function_type )( ::osg::GLUtesselator *,double,double,double );
-        
-        bp::def( 
-            "gluTessNormal"
-            , gluTessNormal_function_type( &::osg::gluTessNormal )
-            , ( bp::arg("tess"), bp::arg("valueX"), bp::arg("valueY"), bp::arg("valueZ") ) );
-    
-    }
-
-    { //::osg::gluTessProperty
-    
-        typedef void ( *gluTessProperty_function_type )( ::osg::GLUtesselator *,::GLenum,double );
-        
-        bp::def( 
-            "gluTessProperty"
-            , gluTessProperty_function_type( &::osg::gluTessProperty )
-            , ( bp::arg("tess"), bp::arg("which"), bp::arg("data") ) );
-    
-    }
-
-    { //::osg::gluTessVertex
-    
-        typedef void ( *gluTessVertex_function_type )( ::osg::GLUtesselator *,double *,::GLvoid * );
-        
-        bp::def( 
-            "gluTessVertex"
-            , gluTessVertex_function_type( &::osg::gluTessVertex )
-            , ( bp::arg("tess"), bp::arg("location"), bp::arg("data") ) );
     
     }
 
@@ -1121,6 +1022,17 @@ void register_free_functions(){
     { //::osg::isNaN
     
         typedef bool ( *isNaN_function_type )( double );
+        
+        bp::def( 
+            "isNaN"
+            , isNaN_function_type( &::osg::isNaN )
+            , ( bp::arg("v") ) );
+    
+    }
+
+    { //::osg::isNaN
+    
+        typedef bool ( *isNaN_function_type )( float );
         
         bp::def( 
             "isNaN"

@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "swapbuffersoperation.pypp.hpp"
+#include "SwapBuffersOperation.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -40,18 +40,6 @@ struct SwapBuffersOperation_wrapper : osg::SwapBuffersOperation, bp::wrapper< os
         osg::Operation::release( );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_SwapBuffersOperation_class(){
@@ -59,17 +47,12 @@ void register_SwapBuffersOperation_class(){
     bp::class_< SwapBuffersOperation_wrapper, bp::bases< osg::GraphicsOperation >, osg::ref_ptr< ::osg::SwapBuffersOperation >, boost::noncopyable >( "SwapBuffersOperation", "\n SwapBufferOperation calls swap buffers on the GraphicsContext.\n", bp::init< >("\n SwapBufferOperation calls swap buffers on the GraphicsContext.\n") )    
         .def( 
             "__call__"
-            , (void ( ::osg::SwapBuffersOperation::* )( ::osg::GraphicsContext * ))(&::osg::SwapBuffersOperation::operator())
-            , (void ( SwapBuffersOperation_wrapper::* )( ::osg::GraphicsContext * ))(&SwapBuffersOperation_wrapper::default___call__)
+            , (void ( ::osg::SwapBuffersOperation::* )( ::osg::GraphicsContext * ) )(&::osg::SwapBuffersOperation::operator())
+            , (void ( SwapBuffersOperation_wrapper::* )( ::osg::GraphicsContext * ) )(&SwapBuffersOperation_wrapper::default___call__)
             , ( bp::arg("context") ) )    
         .def( 
             "release"
-            , (void ( ::osg::Operation::* )(  ))(&::osg::Operation::release)
-            , (void ( SwapBuffersOperation_wrapper::* )(  ))(&SwapBuffersOperation_wrapper::default_release) )    
-        .def( 
-            "setThreadSafeRefUnref"
-            , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-            , (void ( SwapBuffersOperation_wrapper::* )( bool ))(&SwapBuffersOperation_wrapper::default_setThreadSafeRefUnref)
-            , ( bp::arg("threadSafe") ) );
+            , (void ( ::osg::Operation::* )(  ) )(&::osg::Operation::release)
+            , (void ( SwapBuffersOperation_wrapper::* )(  ) )(&SwapBuffersOperation_wrapper::default_release) );
 
 }

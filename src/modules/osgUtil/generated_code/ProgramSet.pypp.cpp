@@ -3,14 +3,18 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/set.hpp"
-#include "wrap_osgutil.h"
-#include "programset.pypp.hpp"
+#include "wrap_osgUtil.h"
+#include "ProgramSet.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_ProgramSet_class(){
 
-    bp::class_< std::set< osg::Program* > >( "ProgramSet" )    
-        .def( bp::indexing::set_suite< std::set< osg::Program* > >::with_policies(bp::return_internal_reference< >()) );
+    { //::std::set< osg::Program* >
+        typedef bp::class_< std::set< osg::Program* > > ProgramSet_exposer_t;
+        ProgramSet_exposer_t ProgramSet_exposer = ProgramSet_exposer_t( "ProgramSet" );
+        bp::scope ProgramSet_scope( ProgramSet_exposer );
+        ProgramSet_exposer.def( bp::indexing::set_suite< std::set< osg::Program* > >::with_policies(bp::return_internal_reference< >()) );
+    }
 
 }

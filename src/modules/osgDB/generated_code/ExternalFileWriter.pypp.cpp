@@ -2,12 +2,12 @@
 
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
-#include "wrap_osgdb.h"
-#include "externalfilewriter.pypp.hpp"
+#include "wrap_osgDB.h"
+#include "ExternalFileWriter.pypp.hpp"
 
 namespace bp = boost::python;
 
-static boost::python::object write_450b6356464d3b168ed8fbce635bbd4a( ::osgDB::ExternalFileWriter & inst, ::osg::Object & obj, ::osgDB::Options const * options, ::std::string * out_absolutePath=0, ::std::string * out_relativePath=0 ){
+static boost::python::object write_450b6356464d3b168ed8fbce635bbd4a( ::osgDB::ExternalFileWriter & inst, ::osg::Object & obj, ::osgDB::Options const * options, ::std::string * out_absolutePath=0l, ::std::string * out_relativePath=0l ){
     bool result = inst.write(obj, options, out_absolutePath, out_relativePath);
     return bp::object( result );
 }
@@ -27,7 +27,7 @@ void register_ExternalFileWriter_class(){
         bp::implicitly_convertible< std::string const &, osgDB::ExternalFileWriter >();
         { //::osgDB::ExternalFileWriter::getObjects
         
-            typedef ::std::map< osg::Object const*, osgDB::ExternalFileWriter::ObjectData > const & ( ::osgDB::ExternalFileWriter::*getObjects_function_type)(  ) const;
+            typedef ::std::map< osg::Object const*, osgDB::ExternalFileWriter::ObjectData > const & ( ::osgDB::ExternalFileWriter::*getObjects_function_type )(  ) const;
             
             ExternalFileWriter_exposer.def( 
                 "getObjects"
@@ -42,7 +42,7 @@ void register_ExternalFileWriter_class(){
             ExternalFileWriter_exposer.def( 
                 "write"
                 , write_function_type( &write_450b6356464d3b168ed8fbce635bbd4a )
-                , ( bp::arg("inst"), bp::arg("obj"), bp::arg("options"), bp::arg("out_absolutePath")=bp::object(), bp::arg("out_relativePath")=bp::object() ) );
+                , ( bp::arg("inst"), bp::arg("obj"), bp::arg("options"), bp::arg("out_absolutePath")=0l, bp::arg("out_relativePath")=0l ) );
         
         }
     }

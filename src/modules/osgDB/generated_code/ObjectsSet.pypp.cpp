@@ -3,15 +3,19 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/map.hpp"
-#include "wrap_osgdb.h"
+#include "wrap_osgDB.h"
 #include "_ObjectData__value_traits.pypp.hpp"
-#include "objectsset.pypp.hpp"
+#include "ObjectsSet.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_ObjectsSet_class(){
 
-    bp::class_< std::map< osg::Object const*, osgDB::ExternalFileWriter::ObjectData > >( "ObjectsSet" )    
-        .def( bp::indexing::map_suite< std::map< osg::Object const*, osgDB::ExternalFileWriter::ObjectData > >() );
+    { //::std::map< osg::Object const*, osgDB::ExternalFileWriter::ObjectData >
+        typedef bp::class_< std::map< osg::Object const*, osgDB::ExternalFileWriter::ObjectData > > ObjectsSet_exposer_t;
+        ObjectsSet_exposer_t ObjectsSet_exposer = ObjectsSet_exposer_t( "ObjectsSet" );
+        bp::scope ObjectsSet_scope( ObjectsSet_exposer );
+        ObjectsSet_exposer.def( bp::indexing::map_suite< std::map< osg::Object const*, osgDB::ExternalFileWriter::ObjectData > >() );
+    }
 
 }

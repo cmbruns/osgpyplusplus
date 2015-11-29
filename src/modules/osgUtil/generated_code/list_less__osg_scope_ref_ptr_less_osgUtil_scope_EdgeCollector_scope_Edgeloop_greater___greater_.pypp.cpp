@@ -3,8 +3,8 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/list.hpp"
-#include "wrap_osgutil.h"
-#include "list_less__osg_scope_ref_ptr_less_osgutil_scope_edgecollector_scope_edgeloop_greater___greater_.pypp.hpp"
+#include "wrap_osgUtil.h"
+#include "list_less__osg_scope_ref_ptr_less_osgUtil_scope_EdgeCollector_scope_Edgeloop_greater___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

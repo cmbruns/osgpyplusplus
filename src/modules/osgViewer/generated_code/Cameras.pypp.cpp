@@ -3,8 +3,8 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
-#include "wrap_osgviewer.h"
-#include "cameras.pypp.hpp"
+#include "wrap_osgViewer.h"
+#include "Cameras.pypp.hpp"
 
 namespace bp = boost::python;
 

@@ -2,9 +2,9 @@
 
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
-#include "wrap_osgdb.h"
+#include "wrap_osgDB.h"
 #include "wrap_referenced.h"
-#include "registry.pypp.hpp"
+#include "Registry.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -128,20 +128,20 @@ void register_Registry_class(){
         bp::class_< Registry_wrapper::ReadFunctor_wrapper, boost::noncopyable >( "ReadFunctor", bp::init< std::string const &, osgDB::Options const * >(( bp::arg("filename"), bp::arg("options") )) )    
             .def( 
                 "cloneType"
-                , bp::pure_virtual( (::osgDB::Registry::ReadFunctor * ( ::osgDB::Registry::ReadFunctor::* )( ::std::string const &,::osgDB::Options const * )const)(&::osgDB::Registry::ReadFunctor::cloneType) )
+                , bp::pure_virtual( (::osgDB::Registry::ReadFunctor * ( ::osgDB::Registry::ReadFunctor::* )( ::std::string const &,::osgDB::Options const * ) const)(&::osgDB::Registry::ReadFunctor::cloneType) )
                 , ( bp::arg("filename"), bp::arg("options") )
                 , bp::return_value_policy< bp::reference_existing_object >() )    
             .def( 
                 "doRead"
-                , bp::pure_virtual( (::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::ReadFunctor::* )( ::osgDB::ReaderWriter & )const)(&::osgDB::Registry::ReadFunctor::doRead) )
+                , bp::pure_virtual( (::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::ReadFunctor::* )( ::osgDB::ReaderWriter & ) const)(&::osgDB::Registry::ReadFunctor::doRead) )
                 , ( bp::arg("rw") ) )    
             .def( 
                 "isValid"
-                , bp::pure_virtual( (bool ( ::osgDB::Registry::ReadFunctor::* )( ::osgDB::ReaderWriter::ReadResult & )const)(&::osgDB::Registry::ReadFunctor::isValid) )
+                , bp::pure_virtual( (bool ( ::osgDB::Registry::ReadFunctor::* )( ::osgDB::ReaderWriter::ReadResult & ) const)(&::osgDB::Registry::ReadFunctor::isValid) )
                 , ( bp::arg("readResult") ) )    
             .def( 
                 "isValid"
-                , bp::pure_virtual( (bool ( ::osgDB::Registry::ReadFunctor::* )( ::osg::Object * )const)(&::osgDB::Registry::ReadFunctor::isValid) )
+                , bp::pure_virtual( (bool ( ::osgDB::Registry::ReadFunctor::* )( ::osg::Object * ) const)(&::osgDB::Registry::ReadFunctor::isValid) )
                 , ( bp::arg("object") ) )    
             .def_readwrite( "_filename", &osgDB::Registry::ReadFunctor::_filename )    
             .add_property( "_options"
@@ -149,7 +149,7 @@ void register_Registry_class(){
                         , bp::make_function( (void (*)( ::osgDB::Registry::ReadFunctor &,::osgDB::Options const * ))(&Registry_wrapper::ReadFunctor_wrapper::set__options), bp::with_custodian_and_ward_postcall< 1, 2 >() ) );
         { //::osgDB::Registry::_buildKdTreeIfRequired
         
-            typedef void ( ::osgDB::Registry::*_buildKdTreeIfRequired_function_type)( ::osgDB::ReaderWriter::ReadResult &,::osgDB::Options const * ) ;
+            typedef void ( ::osgDB::Registry::*_buildKdTreeIfRequired_function_type )( ::osgDB::ReaderWriter::ReadResult &,::osgDB::Options const * ) ;
             
             Registry_exposer.def( 
                 "_buildKdTreeIfRequired"
@@ -159,7 +159,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::addArchiveExtension
         
-            typedef void ( ::osgDB::Registry::*addArchiveExtension_function_type)( ::std::string const ) ;
+            typedef void ( ::osgDB::Registry::*addArchiveExtension_function_type )( ::std::string const ) ;
             
             Registry_exposer.def( 
                 "addArchiveExtension"
@@ -169,7 +169,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::addEntryToObjectCache
         
-            typedef void ( ::osgDB::Registry::*addEntryToObjectCache_function_type)( ::std::string const &,::osg::Object *,double ) ;
+            typedef void ( ::osgDB::Registry::*addEntryToObjectCache_function_type )( ::std::string const &,::osg::Object *,double ) ;
             
             Registry_exposer.def( 
                 "addEntryToObjectCache"
@@ -179,7 +179,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::addFileExtensionAlias
         
-            typedef void ( ::osgDB::Registry::*addFileExtensionAlias_function_type)( ::std::string const,::std::string const ) ;
+            typedef void ( ::osgDB::Registry::*addFileExtensionAlias_function_type )( ::std::string const,::std::string const ) ;
             
             Registry_exposer.def( 
                 "addFileExtensionAlias"
@@ -189,7 +189,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::addImageProcessor
         
-            typedef void ( ::osgDB::Registry::*addImageProcessor_function_type)( ::osgDB::ImageProcessor * ) ;
+            typedef void ( ::osgDB::Registry::*addImageProcessor_function_type )( ::osgDB::ImageProcessor * ) ;
             
             Registry_exposer.def( 
                 "addImageProcessor"
@@ -199,7 +199,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::addMimeTypeExtensionMapping
         
-            typedef void ( ::osgDB::Registry::*addMimeTypeExtensionMapping_function_type)( ::std::string const,::std::string const ) ;
+            typedef void ( ::osgDB::Registry::*addMimeTypeExtensionMapping_function_type )( ::std::string const,::std::string const ) ;
             
             Registry_exposer.def( 
                 "addMimeTypeExtensionMapping"
@@ -209,7 +209,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::addReaderWriter
         
-            typedef void ( ::osgDB::Registry::*addReaderWriter_function_type)( ::osgDB::ReaderWriter * ) ;
+            typedef void ( ::osgDB::Registry::*addReaderWriter_function_type )( ::osgDB::ReaderWriter * ) ;
             
             Registry_exposer.def( 
                 "addReaderWriter"
@@ -219,7 +219,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::addToArchiveCache
         
-            typedef void ( ::osgDB::Registry::*addToArchiveCache_function_type)( ::std::string const &,::osgDB::Archive * ) ;
+            typedef void ( ::osgDB::Registry::*addToArchiveCache_function_type )( ::std::string const &,::osgDB::Archive * ) ;
             
             Registry_exposer.def( 
                 "addToArchiveCache"
@@ -229,7 +229,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::clearArchiveCache
         
-            typedef void ( ::osgDB::Registry::*clearArchiveCache_function_type)(  ) ;
+            typedef void ( ::osgDB::Registry::*clearArchiveCache_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "clearArchiveCache"
@@ -238,7 +238,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::clearObjectCache
         
-            typedef void ( ::osgDB::Registry::*clearObjectCache_function_type)(  ) ;
+            typedef void ( ::osgDB::Registry::*clearObjectCache_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "clearObjectCache"
@@ -247,7 +247,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::closeAllLibraries
         
-            typedef void ( ::osgDB::Registry::*closeAllLibraries_function_type)(  ) ;
+            typedef void ( ::osgDB::Registry::*closeAllLibraries_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "closeAllLibraries"
@@ -256,7 +256,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::closeLibrary
         
-            typedef bool ( ::osgDB::Registry::*closeLibrary_function_type)( ::std::string const & ) ;
+            typedef bool ( ::osgDB::Registry::*closeLibrary_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "closeLibrary"
@@ -266,7 +266,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::createLibraryNameForExtension
         
-            typedef ::std::string ( ::osgDB::Registry::*createLibraryNameForExtension_function_type)( ::std::string const & ) ;
+            typedef ::std::string ( ::osgDB::Registry::*createLibraryNameForExtension_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "createLibraryNameForExtension"
@@ -276,7 +276,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::createLibraryNameForFile
         
-            typedef ::std::string ( ::osgDB::Registry::*createLibraryNameForFile_function_type)( ::std::string const & ) ;
+            typedef ::std::string ( ::osgDB::Registry::*createLibraryNameForFile_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "createLibraryNameForFile"
@@ -286,7 +286,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::createLibraryNameForNodeKit
         
-            typedef ::std::string ( ::osgDB::Registry::*createLibraryNameForNodeKit_function_type)( ::std::string const & ) ;
+            typedef ::std::string ( ::osgDB::Registry::*createLibraryNameForNodeKit_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "createLibraryNameForNodeKit"
@@ -296,7 +296,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::findDataFile
         
-            typedef ::std::string ( ::osgDB::Registry::*findDataFile_function_type)( ::std::string const &,::osgDB::Options const *,::osgDB::CaseSensitivity ) ;
+            typedef ::std::string ( ::osgDB::Registry::*findDataFile_function_type )( ::std::string const &,::osgDB::Options const *,::osgDB::CaseSensitivity ) ;
             
             Registry_exposer.def( 
                 "findDataFile"
@@ -306,7 +306,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::findDataFileImplementation
         
-            typedef ::std::string ( ::osgDB::Registry::*findDataFileImplementation_function_type)( ::std::string const &,::osgDB::Options const *,::osgDB::CaseSensitivity ) ;
+            typedef ::std::string ( ::osgDB::Registry::*findDataFileImplementation_function_type )( ::std::string const &,::osgDB::Options const *,::osgDB::CaseSensitivity ) ;
             
             Registry_exposer.def( 
                 "findDataFileImplementation"
@@ -316,7 +316,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::findLibraryFile
         
-            typedef ::std::string ( ::osgDB::Registry::*findLibraryFile_function_type)( ::std::string const &,::osgDB::Options const *,::osgDB::CaseSensitivity ) ;
+            typedef ::std::string ( ::osgDB::Registry::*findLibraryFile_function_type )( ::std::string const &,::osgDB::Options const *,::osgDB::CaseSensitivity ) ;
             
             Registry_exposer.def( 
                 "findLibraryFile"
@@ -326,7 +326,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::findLibraryFileImplementation
         
-            typedef ::std::string ( ::osgDB::Registry::*findLibraryFileImplementation_function_type)( ::std::string const &,::osgDB::Options const *,::osgDB::CaseSensitivity ) ;
+            typedef ::std::string ( ::osgDB::Registry::*findLibraryFileImplementation_function_type )( ::std::string const &,::osgDB::Options const *,::osgDB::CaseSensitivity ) ;
             
             Registry_exposer.def( 
                 "findLibraryFileImplementation"
@@ -336,7 +336,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getArchiveExtensions
         
-            typedef ::std::vector< std::string > const & ( ::osgDB::Registry::*getArchiveExtensions_function_type)(  ) const;
+            typedef ::std::vector< std::string > const & ( ::osgDB::Registry::*getArchiveExtensions_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getArchiveExtensions"
@@ -346,7 +346,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getAuthenticationMap
         
-            typedef ::osgDB::AuthenticationMap * ( ::osgDB::Registry::*getAuthenticationMap_function_type)(  ) ;
+            typedef ::osgDB::AuthenticationMap * ( ::osgDB::Registry::*getAuthenticationMap_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getAuthenticationMap"
@@ -356,7 +356,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getAuthenticationMap
         
-            typedef ::osgDB::AuthenticationMap const * ( ::osgDB::Registry::*getAuthenticationMap_function_type)(  ) const;
+            typedef ::osgDB::AuthenticationMap const * ( ::osgDB::Registry::*getAuthenticationMap_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getAuthenticationMap"
@@ -366,7 +366,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getBuildKdTreesHint
         
-            typedef ::osgDB::Options::BuildKdTreesHint ( ::osgDB::Registry::*getBuildKdTreesHint_function_type)(  ) const;
+            typedef ::osgDB::Options::BuildKdTreesHint ( ::osgDB::Registry::*getBuildKdTreesHint_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getBuildKdTreesHint"
@@ -375,7 +375,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getCreateNodeFromImage
         
-            typedef bool ( ::osgDB::Registry::*getCreateNodeFromImage_function_type)(  ) const;
+            typedef bool ( ::osgDB::Registry::*getCreateNodeFromImage_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getCreateNodeFromImage"
@@ -384,7 +384,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getDataFilePathList
         
-            typedef ::osgDB::FilePathList & ( ::osgDB::Registry::*getDataFilePathList_function_type)(  ) ;
+            typedef ::osgDB::FilePathList & ( ::osgDB::Registry::*getDataFilePathList_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getDataFilePathList"
@@ -394,7 +394,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getDataFilePathList
         
-            typedef ::osgDB::FilePathList const & ( ::osgDB::Registry::*getDataFilePathList_function_type)(  ) const;
+            typedef ::osgDB::FilePathList const & ( ::osgDB::Registry::*getDataFilePathList_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getDataFilePathList"
@@ -404,7 +404,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getDeprecatedDotOsgObjectWrapperManager
         
-            typedef ::osgDB::DeprecatedDotOsgWrapperManager * ( ::osgDB::Registry::*getDeprecatedDotOsgObjectWrapperManager_function_type)(  ) ;
+            typedef ::osgDB::DeprecatedDotOsgWrapperManager * ( ::osgDB::Registry::*getDeprecatedDotOsgObjectWrapperManager_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getDeprecatedDotOsgObjectWrapperManager"
@@ -414,7 +414,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getExpiryDelay
         
-            typedef double ( ::osgDB::Registry::*getExpiryDelay_function_type)(  ) const;
+            typedef double ( ::osgDB::Registry::*getExpiryDelay_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getExpiryDelay"
@@ -423,7 +423,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getFileCache
         
-            typedef ::osgDB::FileCache * ( ::osgDB::Registry::*getFileCache_function_type)(  ) ;
+            typedef ::osgDB::FileCache * ( ::osgDB::Registry::*getFileCache_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getFileCache"
@@ -433,7 +433,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getFileCache
         
-            typedef ::osgDB::FileCache const * ( ::osgDB::Registry::*getFileCache_function_type)(  ) const;
+            typedef ::osgDB::FileCache const * ( ::osgDB::Registry::*getFileCache_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getFileCache"
@@ -443,7 +443,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getFileLocationCallback
         
-            typedef ::osgDB::FileLocationCallback * ( ::osgDB::Registry::*getFileLocationCallback_function_type)(  ) const;
+            typedef ::osgDB::FileLocationCallback * ( ::osgDB::Registry::*getFileLocationCallback_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getFileLocationCallback"
@@ -453,7 +453,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getFindFileCallback
         
-            typedef ::osgDB::FindFileCallback * ( ::osgDB::Registry::*getFindFileCallback_function_type)(  ) ;
+            typedef ::osgDB::FindFileCallback * ( ::osgDB::Registry::*getFindFileCallback_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getFindFileCallback"
@@ -463,7 +463,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getFindFileCallback
         
-            typedef ::osgDB::FindFileCallback const * ( ::osgDB::Registry::*getFindFileCallback_function_type)(  ) const;
+            typedef ::osgDB::FindFileCallback const * ( ::osgDB::Registry::*getFindFileCallback_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getFindFileCallback"
@@ -473,7 +473,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getFromArchiveCache
         
-            typedef ::osgDB::Archive * ( ::osgDB::Registry::*getFromArchiveCache_function_type)( ::std::string const & ) ;
+            typedef ::osgDB::Archive * ( ::osgDB::Registry::*getFromArchiveCache_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "getFromArchiveCache"
@@ -484,7 +484,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getFromObjectCache
         
-            typedef ::osg::Object * ( ::osgDB::Registry::*getFromObjectCache_function_type)( ::std::string const & ) ;
+            typedef ::osg::Object * ( ::osgDB::Registry::*getFromObjectCache_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "getFromObjectCache"
@@ -495,7 +495,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getImageProcessor
         
-            typedef ::osgDB::ImageProcessor * ( ::osgDB::Registry::*getImageProcessor_function_type)(  ) ;
+            typedef ::osgDB::ImageProcessor * ( ::osgDB::Registry::*getImageProcessor_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getImageProcessor"
@@ -505,7 +505,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getImageProcessorForExtension
         
-            typedef ::osgDB::ImageProcessor * ( ::osgDB::Registry::*getImageProcessorForExtension_function_type)( ::std::string const & ) ;
+            typedef ::osgDB::ImageProcessor * ( ::osgDB::Registry::*getImageProcessorForExtension_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "getImageProcessorForExtension"
@@ -516,7 +516,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getImageProcessorList
         
-            typedef ::std::vector< osg::ref_ptr<osgDB::ImageProcessor> > & ( ::osgDB::Registry::*getImageProcessorList_function_type)(  ) ;
+            typedef ::std::vector< osg::ref_ptr<osgDB::ImageProcessor> > & ( ::osgDB::Registry::*getImageProcessorList_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getImageProcessorList"
@@ -526,7 +526,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getImageProcessorList
         
-            typedef ::std::vector< osg::ref_ptr<osgDB::ImageProcessor> > const & ( ::osgDB::Registry::*getImageProcessorList_function_type)(  ) const;
+            typedef ::std::vector< osg::ref_ptr<osgDB::ImageProcessor> > const & ( ::osgDB::Registry::*getImageProcessorList_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getImageProcessorList"
@@ -536,7 +536,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getKdTreeBuilder
         
-            typedef ::osg::KdTreeBuilder * ( ::osgDB::Registry::*getKdTreeBuilder_function_type)(  ) ;
+            typedef ::osg::KdTreeBuilder * ( ::osgDB::Registry::*getKdTreeBuilder_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getKdTreeBuilder"
@@ -546,7 +546,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getLibrary
         
-            typedef ::osgDB::DynamicLibrary * ( ::osgDB::Registry::*getLibrary_function_type)( ::std::string const & ) ;
+            typedef ::osgDB::DynamicLibrary * ( ::osgDB::Registry::*getLibrary_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "getLibrary"
@@ -557,7 +557,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getLibraryFilePathList
         
-            typedef ::osgDB::FilePathList & ( ::osgDB::Registry::*getLibraryFilePathList_function_type)(  ) ;
+            typedef ::osgDB::FilePathList & ( ::osgDB::Registry::*getLibraryFilePathList_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getLibraryFilePathList"
@@ -567,7 +567,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getLibraryFilePathList
         
-            typedef ::osgDB::FilePathList const & ( ::osgDB::Registry::*getLibraryFilePathList_function_type)(  ) const;
+            typedef ::osgDB::FilePathList const & ( ::osgDB::Registry::*getLibraryFilePathList_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getLibraryFilePathList"
@@ -577,7 +577,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getMimeTypeExtensionMap
         
-            typedef ::std::map< std::string, std::string > & ( ::osgDB::Registry::*getMimeTypeExtensionMap_function_type)(  ) ;
+            typedef ::std::map< std::string, std::string > & ( ::osgDB::Registry::*getMimeTypeExtensionMap_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getMimeTypeExtensionMap"
@@ -587,7 +587,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getMimeTypeExtensionMap
         
-            typedef ::std::map< std::string, std::string > const & ( ::osgDB::Registry::*getMimeTypeExtensionMap_function_type)(  ) const;
+            typedef ::std::map< std::string, std::string > const & ( ::osgDB::Registry::*getMimeTypeExtensionMap_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getMimeTypeExtensionMap"
@@ -597,7 +597,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getObjectWrapperManager
         
-            typedef ::osgDB::ObjectWrapperManager * ( ::osgDB::Registry::*getObjectWrapperManager_function_type)(  ) ;
+            typedef ::osgDB::ObjectWrapperManager * ( ::osgDB::Registry::*getObjectWrapperManager_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getObjectWrapperManager"
@@ -607,7 +607,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getOptions
         
-            typedef ::osgDB::Options * ( ::osgDB::Registry::*getOptions_function_type)(  ) ;
+            typedef ::osgDB::Options * ( ::osgDB::Registry::*getOptions_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getOptions"
@@ -617,7 +617,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getOptions
         
-            typedef ::osgDB::Options const * ( ::osgDB::Registry::*getOptions_function_type)(  ) const;
+            typedef ::osgDB::Options const * ( ::osgDB::Registry::*getOptions_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getOptions"
@@ -627,7 +627,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getOrCreateSharedStateManager
         
-            typedef ::osgDB::SharedStateManager * ( ::osgDB::Registry::*getOrCreateSharedStateManager_function_type)(  ) ;
+            typedef ::osgDB::SharedStateManager * ( ::osgDB::Registry::*getOrCreateSharedStateManager_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getOrCreateSharedStateManager"
@@ -637,7 +637,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getReadFileCallback
         
-            typedef ::osgDB::ReadFileCallback * ( ::osgDB::Registry::*getReadFileCallback_function_type)(  ) ;
+            typedef ::osgDB::ReadFileCallback * ( ::osgDB::Registry::*getReadFileCallback_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getReadFileCallback"
@@ -647,7 +647,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getReadFileCallback
         
-            typedef ::osgDB::ReadFileCallback const * ( ::osgDB::Registry::*getReadFileCallback_function_type)(  ) const;
+            typedef ::osgDB::ReadFileCallback const * ( ::osgDB::Registry::*getReadFileCallback_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getReadFileCallback"
@@ -657,7 +657,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getReaderWriterForExtension
         
-            typedef ::osgDB::ReaderWriter * ( ::osgDB::Registry::*getReaderWriterForExtension_function_type)( ::std::string const & ) ;
+            typedef ::osgDB::ReaderWriter * ( ::osgDB::Registry::*getReaderWriterForExtension_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "getReaderWriterForExtension"
@@ -668,7 +668,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getReaderWriterForMimeType
         
-            typedef ::osgDB::ReaderWriter * ( ::osgDB::Registry::*getReaderWriterForMimeType_function_type)( ::std::string const & ) ;
+            typedef ::osgDB::ReaderWriter * ( ::osgDB::Registry::*getReaderWriterForMimeType_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "getReaderWriterForMimeType"
@@ -679,7 +679,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getReaderWriterForProtocolAndExtension
         
-            typedef ::osgDB::ReaderWriter * ( ::osgDB::Registry::*getReaderWriterForProtocolAndExtension_function_type)( ::std::string const &,::std::string const & ) ;
+            typedef ::osgDB::ReaderWriter * ( ::osgDB::Registry::*getReaderWriterForProtocolAndExtension_function_type )( ::std::string const &,::std::string const & ) ;
             
             Registry_exposer.def( 
                 "getReaderWriterForProtocolAndExtension"
@@ -690,7 +690,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getReaderWriterList
         
-            typedef ::std::vector< osg::ref_ptr<osgDB::ReaderWriter> > & ( ::osgDB::Registry::*getReaderWriterList_function_type)(  ) ;
+            typedef ::std::vector< osg::ref_ptr<osgDB::ReaderWriter> > & ( ::osgDB::Registry::*getReaderWriterList_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getReaderWriterList"
@@ -700,7 +700,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getReaderWriterList
         
-            typedef ::std::vector< osg::ref_ptr<osgDB::ReaderWriter> > const & ( ::osgDB::Registry::*getReaderWriterList_function_type)(  ) const;
+            typedef ::std::vector< osg::ref_ptr<osgDB::ReaderWriter> > const & ( ::osgDB::Registry::*getReaderWriterList_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getReaderWriterList"
@@ -710,7 +710,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getReaderWriterListForProtocol
         
-            typedef void ( ::osgDB::Registry::*getReaderWriterListForProtocol_function_type)( ::std::string const &,::std::vector< osg::ref_ptr<osgDB::ReaderWriter> > & ) const;
+            typedef void ( ::osgDB::Registry::*getReaderWriterListForProtocol_function_type )( ::std::string const &,::std::vector< osg::ref_ptr<osgDB::ReaderWriter> > & ) const;
             
             Registry_exposer.def( 
                 "getReaderWriterListForProtocol"
@@ -720,7 +720,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getRefFromArchiveCache
         
-            typedef ::osg::ref_ptr< osgDB::Archive > ( ::osgDB::Registry::*getRefFromArchiveCache_function_type)( ::std::string const & ) ;
+            typedef ::osg::ref_ptr< osgDB::Archive > ( ::osgDB::Registry::*getRefFromArchiveCache_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "getRefFromArchiveCache"
@@ -730,7 +730,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getRefFromObjectCache
         
-            typedef ::osg::ref_ptr< osg::Object > ( ::osgDB::Registry::*getRefFromObjectCache_function_type)( ::std::string const & ) ;
+            typedef ::osg::ref_ptr< osg::Object > ( ::osgDB::Registry::*getRefFromObjectCache_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "getRefFromObjectCache"
@@ -740,7 +740,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getSharedStateManager
         
-            typedef ::osgDB::SharedStateManager * ( ::osgDB::Registry::*getSharedStateManager_function_type)(  ) ;
+            typedef ::osgDB::SharedStateManager * ( ::osgDB::Registry::*getSharedStateManager_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getSharedStateManager"
@@ -750,7 +750,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getWriteFileCallback
         
-            typedef ::osgDB::WriteFileCallback * ( ::osgDB::Registry::*getWriteFileCallback_function_type)(  ) ;
+            typedef ::osgDB::WriteFileCallback * ( ::osgDB::Registry::*getWriteFileCallback_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "getWriteFileCallback"
@@ -760,7 +760,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::getWriteFileCallback
         
-            typedef ::osgDB::WriteFileCallback const * ( ::osgDB::Registry::*getWriteFileCallback_function_type)(  ) const;
+            typedef ::osgDB::WriteFileCallback const * ( ::osgDB::Registry::*getWriteFileCallback_function_type )(  ) const;
             
             Registry_exposer.def( 
                 "getWriteFileCallback"
@@ -770,7 +770,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::initDataFilePathList
         
-            typedef void ( ::osgDB::Registry::*initDataFilePathList_function_type)(  ) ;
+            typedef void ( ::osgDB::Registry::*initDataFilePathList_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "initDataFilePathList"
@@ -779,7 +779,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::initFilePathLists
         
-            typedef void ( ::osgDB::Registry::*initFilePathLists_function_type)(  ) ;
+            typedef void ( ::osgDB::Registry::*initFilePathLists_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "initFilePathLists"
@@ -788,7 +788,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::initLibraryFilePathList
         
-            typedef void ( ::osgDB::Registry::*initLibraryFilePathList_function_type)(  ) ;
+            typedef void ( ::osgDB::Registry::*initLibraryFilePathList_function_type )(  ) ;
             
             Registry_exposer.def( 
                 "initLibraryFilePathList"
@@ -808,7 +808,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::isProtocolRegistered
         
-            typedef bool ( ::osgDB::Registry::*isProtocolRegistered_function_type)( ::std::string const & ) ;
+            typedef bool ( ::osgDB::Registry::*isProtocolRegistered_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "isProtocolRegistered"
@@ -818,7 +818,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::loadLibrary
         
-            typedef ::osgDB::Registry::LoadStatus ( ::osgDB::Registry::*loadLibrary_function_type)( ::std::string const & ) ;
+            typedef ::osgDB::Registry::LoadStatus ( ::osgDB::Registry::*loadLibrary_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "loadLibrary"
@@ -828,7 +828,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::openArchive
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*openArchive_function_type)( ::std::string const &,::osgDB::ReaderWriter::ArchiveStatus,unsigned int,::osgDB::Options const * ) ;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*openArchive_function_type )( ::std::string const &,::osgDB::ReaderWriter::ArchiveStatus,unsigned int,::osgDB::Options const * ) ;
             
             Registry_exposer.def( 
                 "openArchive"
@@ -838,7 +838,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::openArchiveImplementation
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*openArchiveImplementation_function_type)( ::std::string const &,::osgDB::ReaderWriter::ArchiveStatus,unsigned int,::osgDB::Options const * ) ;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*openArchiveImplementation_function_type )( ::std::string const &,::osgDB::ReaderWriter::ArchiveStatus,unsigned int,::osgDB::Options const * ) ;
             
             Registry_exposer.def( 
                 "openArchiveImplementation"
@@ -848,7 +848,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::readCommandLine
         
-            typedef void ( ::osgDB::Registry::*readCommandLine_function_type)( ::osg::ArgumentParser & ) ;
+            typedef void ( ::osgDB::Registry::*readCommandLine_function_type )( ::osg::ArgumentParser & ) ;
             
             Registry_exposer.def( 
                 "readCommandLine"
@@ -858,7 +858,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::readHeightField
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readHeightField_function_type)( ::std::string const &,::osgDB::Options const * ) ;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readHeightField_function_type )( ::std::string const &,::osgDB::Options const * ) ;
             
             Registry_exposer.def( 
                 "readHeightField"
@@ -868,7 +868,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::readHeightFieldImplementation
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readHeightFieldImplementation_function_type)( ::std::string const &,::osgDB::Options const * ) ;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readHeightFieldImplementation_function_type )( ::std::string const &,::osgDB::Options const * ) ;
             
             Registry_exposer.def( 
                 "readHeightFieldImplementation"
@@ -878,7 +878,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::readImage
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readImage_function_type)( ::std::string const &,::osgDB::Options const * ) ;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readImage_function_type )( ::std::string const &,::osgDB::Options const * ) ;
             
             Registry_exposer.def( 
                 "readImage"
@@ -888,7 +888,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::readImageImplementation
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readImageImplementation_function_type)( ::std::string const &,::osgDB::Options const * ) ;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readImageImplementation_function_type )( ::std::string const &,::osgDB::Options const * ) ;
             
             Registry_exposer.def( 
                 "readImageImplementation"
@@ -898,7 +898,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::readNode
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readNode_function_type)( ::std::string const &,::osgDB::Options const *,bool ) ;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readNode_function_type )( ::std::string const &,::osgDB::Options const *,bool ) ;
             
             Registry_exposer.def( 
                 "readNode"
@@ -908,7 +908,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::readNodeImplementation
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readNodeImplementation_function_type)( ::std::string const &,::osgDB::Options const * ) ;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readNodeImplementation_function_type )( ::std::string const &,::osgDB::Options const * ) ;
             
             Registry_exposer.def( 
                 "readNodeImplementation"
@@ -918,7 +918,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::readObject
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readObject_function_type)( ::std::string const &,::osgDB::Options const *,bool ) ;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readObject_function_type )( ::std::string const &,::osgDB::Options const *,bool ) ;
             
             Registry_exposer.def( 
                 "readObject"
@@ -928,7 +928,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::readObjectImplementation
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readObjectImplementation_function_type)( ::std::string const &,::osgDB::Options const * ) ;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readObjectImplementation_function_type )( ::std::string const &,::osgDB::Options const * ) ;
             
             Registry_exposer.def( 
                 "readObjectImplementation"
@@ -938,7 +938,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::readPluginAliasConfigurationFile
         
-            typedef bool ( ::osgDB::Registry::*readPluginAliasConfigurationFile_function_type)( ::std::string const & ) ;
+            typedef bool ( ::osgDB::Registry::*readPluginAliasConfigurationFile_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "readPluginAliasConfigurationFile"
@@ -948,7 +948,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::readShader
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readShader_function_type)( ::std::string const &,::osgDB::Options const * ) ;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readShader_function_type )( ::std::string const &,::osgDB::Options const * ) ;
             
             Registry_exposer.def( 
                 "readShader"
@@ -958,7 +958,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::readShaderImplementation
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readShaderImplementation_function_type)( ::std::string const &,::osgDB::Options const * ) ;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::*readShaderImplementation_function_type )( ::std::string const &,::osgDB::Options const * ) ;
             
             Registry_exposer.def( 
                 "readShaderImplementation"
@@ -968,7 +968,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::registerProtocol
         
-            typedef void ( ::osgDB::Registry::*registerProtocol_function_type)( ::std::string const & ) ;
+            typedef void ( ::osgDB::Registry::*registerProtocol_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "registerProtocol"
@@ -978,7 +978,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::releaseGLObjects
         
-            typedef void ( ::osgDB::Registry::*releaseGLObjects_function_type)( ::osg::State * ) ;
+            typedef void ( ::osgDB::Registry::*releaseGLObjects_function_type )( ::osg::State * ) ;
             
             Registry_exposer.def( 
                 "releaseGLObjects"
@@ -988,7 +988,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::removeExpiredObjectsInCache
         
-            typedef void ( ::osgDB::Registry::*removeExpiredObjectsInCache_function_type)( ::osg::FrameStamp const & ) ;
+            typedef void ( ::osgDB::Registry::*removeExpiredObjectsInCache_function_type )( ::osg::FrameStamp const & ) ;
             
             Registry_exposer.def( 
                 "removeExpiredObjectsInCache"
@@ -998,7 +998,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::removeFromArchiveCache
         
-            typedef void ( ::osgDB::Registry::*removeFromArchiveCache_function_type)( ::std::string const & ) ;
+            typedef void ( ::osgDB::Registry::*removeFromArchiveCache_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "removeFromArchiveCache"
@@ -1008,7 +1008,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::removeFromObjectCache
         
-            typedef void ( ::osgDB::Registry::*removeFromObjectCache_function_type)( ::std::string const & ) ;
+            typedef void ( ::osgDB::Registry::*removeFromObjectCache_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "removeFromObjectCache"
@@ -1018,7 +1018,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::removeImageProcessor
         
-            typedef void ( ::osgDB::Registry::*removeImageProcessor_function_type)( ::osgDB::ImageProcessor * ) ;
+            typedef void ( ::osgDB::Registry::*removeImageProcessor_function_type )( ::osgDB::ImageProcessor * ) ;
             
             Registry_exposer.def( 
                 "removeImageProcessor"
@@ -1028,7 +1028,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::removeReaderWriter
         
-            typedef void ( ::osgDB::Registry::*removeReaderWriter_function_type)( ::osgDB::ReaderWriter * ) ;
+            typedef void ( ::osgDB::Registry::*removeReaderWriter_function_type )( ::osgDB::ReaderWriter * ) ;
             
             Registry_exposer.def( 
                 "removeReaderWriter"
@@ -1038,7 +1038,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setAuthenticationMap
         
-            typedef void ( ::osgDB::Registry::*setAuthenticationMap_function_type)( ::osgDB::AuthenticationMap * ) ;
+            typedef void ( ::osgDB::Registry::*setAuthenticationMap_function_type )( ::osgDB::AuthenticationMap * ) ;
             
             Registry_exposer.def( 
                 "setAuthenticationMap"
@@ -1048,7 +1048,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setBuildKdTreesHint
         
-            typedef void ( ::osgDB::Registry::*setBuildKdTreesHint_function_type)( ::osgDB::Options::BuildKdTreesHint ) ;
+            typedef void ( ::osgDB::Registry::*setBuildKdTreesHint_function_type )( ::osgDB::Options::BuildKdTreesHint ) ;
             
             Registry_exposer.def( 
                 "setBuildKdTreesHint"
@@ -1058,7 +1058,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setCreateNodeFromImage
         
-            typedef void ( ::osgDB::Registry::*setCreateNodeFromImage_function_type)( bool ) ;
+            typedef void ( ::osgDB::Registry::*setCreateNodeFromImage_function_type )( bool ) ;
             
             Registry_exposer.def( 
                 "setCreateNodeFromImage"
@@ -1068,7 +1068,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setDataFilePathList
         
-            typedef void ( ::osgDB::Registry::*setDataFilePathList_function_type)( ::osgDB::FilePathList const & ) ;
+            typedef void ( ::osgDB::Registry::*setDataFilePathList_function_type )( ::osgDB::FilePathList const & ) ;
             
             Registry_exposer.def( 
                 "setDataFilePathList"
@@ -1078,7 +1078,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setDataFilePathList
         
-            typedef void ( ::osgDB::Registry::*setDataFilePathList_function_type)( ::std::string const & ) ;
+            typedef void ( ::osgDB::Registry::*setDataFilePathList_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "setDataFilePathList"
@@ -1088,7 +1088,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setExpiryDelay
         
-            typedef void ( ::osgDB::Registry::*setExpiryDelay_function_type)( double ) ;
+            typedef void ( ::osgDB::Registry::*setExpiryDelay_function_type )( double ) ;
             
             Registry_exposer.def( 
                 "setExpiryDelay"
@@ -1098,7 +1098,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setFileCache
         
-            typedef void ( ::osgDB::Registry::*setFileCache_function_type)( ::osgDB::FileCache * ) ;
+            typedef void ( ::osgDB::Registry::*setFileCache_function_type )( ::osgDB::FileCache * ) ;
             
             Registry_exposer.def( 
                 "setFileCache"
@@ -1108,7 +1108,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setFileLocationCallback
         
-            typedef void ( ::osgDB::Registry::*setFileLocationCallback_function_type)( ::osgDB::FileLocationCallback * ) ;
+            typedef void ( ::osgDB::Registry::*setFileLocationCallback_function_type )( ::osgDB::FileLocationCallback * ) ;
             
             Registry_exposer.def( 
                 "setFileLocationCallback"
@@ -1118,7 +1118,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setFindFileCallback
         
-            typedef void ( ::osgDB::Registry::*setFindFileCallback_function_type)( ::osgDB::FindFileCallback * ) ;
+            typedef void ( ::osgDB::Registry::*setFindFileCallback_function_type )( ::osgDB::FindFileCallback * ) ;
             
             Registry_exposer.def( 
                 "setFindFileCallback"
@@ -1128,7 +1128,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setKdTreeBuilder
         
-            typedef void ( ::osgDB::Registry::*setKdTreeBuilder_function_type)( ::osg::KdTreeBuilder * ) ;
+            typedef void ( ::osgDB::Registry::*setKdTreeBuilder_function_type )( ::osg::KdTreeBuilder * ) ;
             
             Registry_exposer.def( 
                 "setKdTreeBuilder"
@@ -1138,7 +1138,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setLibraryFilePathList
         
-            typedef void ( ::osgDB::Registry::*setLibraryFilePathList_function_type)( ::osgDB::FilePathList const & ) ;
+            typedef void ( ::osgDB::Registry::*setLibraryFilePathList_function_type )( ::osgDB::FilePathList const & ) ;
             
             Registry_exposer.def( 
                 "setLibraryFilePathList"
@@ -1148,7 +1148,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setLibraryFilePathList
         
-            typedef void ( ::osgDB::Registry::*setLibraryFilePathList_function_type)( ::std::string const & ) ;
+            typedef void ( ::osgDB::Registry::*setLibraryFilePathList_function_type )( ::std::string const & ) ;
             
             Registry_exposer.def( 
                 "setLibraryFilePathList"
@@ -1158,7 +1158,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setOptions
         
-            typedef void ( ::osgDB::Registry::*setOptions_function_type)( ::osgDB::Options * ) ;
+            typedef void ( ::osgDB::Registry::*setOptions_function_type )( ::osgDB::Options * ) ;
             
             Registry_exposer.def( 
                 "setOptions"
@@ -1168,7 +1168,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setReadFileCallback
         
-            typedef void ( ::osgDB::Registry::*setReadFileCallback_function_type)( ::osgDB::ReadFileCallback * ) ;
+            typedef void ( ::osgDB::Registry::*setReadFileCallback_function_type )( ::osgDB::ReadFileCallback * ) ;
             
             Registry_exposer.def( 
                 "setReadFileCallback"
@@ -1178,7 +1178,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setSharedStateManager
         
-            typedef void ( ::osgDB::Registry::*setSharedStateManager_function_type)( ::osgDB::SharedStateManager * ) ;
+            typedef void ( ::osgDB::Registry::*setSharedStateManager_function_type )( ::osgDB::SharedStateManager * ) ;
             
             Registry_exposer.def( 
                 "setSharedStateManager"
@@ -1188,7 +1188,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::setWriteFileCallback
         
-            typedef void ( ::osgDB::Registry::*setWriteFileCallback_function_type)( ::osgDB::WriteFileCallback * ) ;
+            typedef void ( ::osgDB::Registry::*setWriteFileCallback_function_type )( ::osgDB::WriteFileCallback * ) ;
             
             Registry_exposer.def( 
                 "setWriteFileCallback"
@@ -1198,7 +1198,7 @@ void register_Registry_class(){
         }
         { //::osgDB::Registry::updateTimeStampOfObjectsInCacheWithExternalReferences
         
-            typedef void ( ::osgDB::Registry::*updateTimeStampOfObjectsInCacheWithExternalReferences_function_type)( ::osg::FrameStamp const & ) ;
+            typedef void ( ::osgDB::Registry::*updateTimeStampOfObjectsInCacheWithExternalReferences_function_type )( ::osg::FrameStamp const & ) ;
             
             Registry_exposer.def( 
                 "updateTimeStampOfObjectsInCacheWithExternalReferences"

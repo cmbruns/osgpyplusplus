@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgdb.h"
+#include "wrap_osgDB.h"
 #include "wrap_referenced.h"
-#include "readerwriter.pypp.hpp"
+#include "ReaderWriter.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -114,7 +114,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         return osgDB::ReaderWriter::libraryName( );
     }
 
-    virtual ::osgDB::ReaderWriter::ReadResult openArchive( ::std::string const & arg0, ::osgDB::ReaderWriter::ArchiveStatus arg1, unsigned int arg2=4096, ::osgDB::Options const * arg3=0 ) const  {
+    virtual ::osgDB::ReaderWriter::ReadResult openArchive( ::std::string const & arg0, ::osgDB::ReaderWriter::ArchiveStatus arg1, unsigned int arg2=4096, ::osgDB::Options const * arg3=0l ) const  {
         if( bp::override func_openArchive = this->get_override( "openArchive" ) )
             return func_openArchive( arg0, arg1, arg2, boost::python::ptr(arg3) );
         else{
@@ -122,11 +122,11 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    ::osgDB::ReaderWriter::ReadResult default_openArchive( ::std::string const & arg0, ::osgDB::ReaderWriter::ArchiveStatus arg1, unsigned int arg2=4096, ::osgDB::Options const * arg3=0 ) const  {
+    ::osgDB::ReaderWriter::ReadResult default_openArchive( ::std::string const & arg0, ::osgDB::ReaderWriter::ArchiveStatus arg1, unsigned int arg2=4096, ::osgDB::Options const * arg3=0l ) const  {
         return osgDB::ReaderWriter::openArchive( arg0, arg1, arg2, boost::python::ptr(arg3) );
     }
 
-    virtual ::osgDB::ReaderWriter::ReadResult openArchive( ::std::istream & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    virtual ::osgDB::ReaderWriter::ReadResult openArchive( ::std::istream & arg0, ::osgDB::Options const * arg1=0l ) const  {
         if( bp::override func_openArchive = this->get_override( "openArchive" ) )
             return func_openArchive( boost::ref(arg0), boost::python::ptr(arg1) );
         else{
@@ -134,11 +134,11 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    ::osgDB::ReaderWriter::ReadResult default_openArchive( ::std::istream & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    ::osgDB::ReaderWriter::ReadResult default_openArchive( ::std::istream & arg0, ::osgDB::Options const * arg1=0l ) const  {
         return osgDB::ReaderWriter::openArchive( boost::ref(arg0), boost::python::ptr(arg1) );
     }
 
-    virtual ::osgDB::ReaderWriter::ReadResult readHeightField( ::std::string const & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    virtual ::osgDB::ReaderWriter::ReadResult readHeightField( ::std::string const & arg0, ::osgDB::Options const * arg1=0l ) const  {
         if( bp::override func_readHeightField = this->get_override( "readHeightField" ) )
             return func_readHeightField( arg0, boost::python::ptr(arg1) );
         else{
@@ -146,11 +146,11 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    ::osgDB::ReaderWriter::ReadResult default_readHeightField( ::std::string const & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    ::osgDB::ReaderWriter::ReadResult default_readHeightField( ::std::string const & arg0, ::osgDB::Options const * arg1=0l ) const  {
         return osgDB::ReaderWriter::readHeightField( arg0, boost::python::ptr(arg1) );
     }
 
-    virtual ::osgDB::ReaderWriter::ReadResult readHeightField( ::std::istream & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    virtual ::osgDB::ReaderWriter::ReadResult readHeightField( ::std::istream & arg0, ::osgDB::Options const * arg1=0l ) const  {
         if( bp::override func_readHeightField = this->get_override( "readHeightField" ) )
             return func_readHeightField( boost::ref(arg0), boost::python::ptr(arg1) );
         else{
@@ -158,11 +158,11 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    ::osgDB::ReaderWriter::ReadResult default_readHeightField( ::std::istream & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    ::osgDB::ReaderWriter::ReadResult default_readHeightField( ::std::istream & arg0, ::osgDB::Options const * arg1=0l ) const  {
         return osgDB::ReaderWriter::readHeightField( boost::ref(arg0), boost::python::ptr(arg1) );
     }
 
-    virtual ::osgDB::ReaderWriter::ReadResult readImage( ::std::string const & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    virtual ::osgDB::ReaderWriter::ReadResult readImage( ::std::string const & arg0, ::osgDB::Options const * arg1=0l ) const  {
         if( bp::override func_readImage = this->get_override( "readImage" ) )
             return func_readImage( arg0, boost::python::ptr(arg1) );
         else{
@@ -170,11 +170,11 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    ::osgDB::ReaderWriter::ReadResult default_readImage( ::std::string const & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    ::osgDB::ReaderWriter::ReadResult default_readImage( ::std::string const & arg0, ::osgDB::Options const * arg1=0l ) const  {
         return osgDB::ReaderWriter::readImage( arg0, boost::python::ptr(arg1) );
     }
 
-    virtual ::osgDB::ReaderWriter::ReadResult readImage( ::std::istream & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    virtual ::osgDB::ReaderWriter::ReadResult readImage( ::std::istream & arg0, ::osgDB::Options const * arg1=0l ) const  {
         if( bp::override func_readImage = this->get_override( "readImage" ) )
             return func_readImage( boost::ref(arg0), boost::python::ptr(arg1) );
         else{
@@ -182,11 +182,11 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    ::osgDB::ReaderWriter::ReadResult default_readImage( ::std::istream & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    ::osgDB::ReaderWriter::ReadResult default_readImage( ::std::istream & arg0, ::osgDB::Options const * arg1=0l ) const  {
         return osgDB::ReaderWriter::readImage( boost::ref(arg0), boost::python::ptr(arg1) );
     }
 
-    virtual ::osgDB::ReaderWriter::ReadResult readNode( ::std::string const & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    virtual ::osgDB::ReaderWriter::ReadResult readNode( ::std::string const & arg0, ::osgDB::Options const * arg1=0l ) const  {
         if( bp::override func_readNode = this->get_override( "readNode" ) )
             return func_readNode( arg0, boost::python::ptr(arg1) );
         else{
@@ -194,11 +194,11 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    ::osgDB::ReaderWriter::ReadResult default_readNode( ::std::string const & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    ::osgDB::ReaderWriter::ReadResult default_readNode( ::std::string const & arg0, ::osgDB::Options const * arg1=0l ) const  {
         return osgDB::ReaderWriter::readNode( arg0, boost::python::ptr(arg1) );
     }
 
-    virtual ::osgDB::ReaderWriter::ReadResult readNode( ::std::istream & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    virtual ::osgDB::ReaderWriter::ReadResult readNode( ::std::istream & arg0, ::osgDB::Options const * arg1=0l ) const  {
         if( bp::override func_readNode = this->get_override( "readNode" ) )
             return func_readNode( boost::ref(arg0), boost::python::ptr(arg1) );
         else{
@@ -206,11 +206,11 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    ::osgDB::ReaderWriter::ReadResult default_readNode( ::std::istream & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    ::osgDB::ReaderWriter::ReadResult default_readNode( ::std::istream & arg0, ::osgDB::Options const * arg1=0l ) const  {
         return osgDB::ReaderWriter::readNode( boost::ref(arg0), boost::python::ptr(arg1) );
     }
 
-    virtual ::osgDB::ReaderWriter::ReadResult readObject( ::std::string const & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    virtual ::osgDB::ReaderWriter::ReadResult readObject( ::std::string const & arg0, ::osgDB::Options const * arg1=0l ) const  {
         if( bp::override func_readObject = this->get_override( "readObject" ) )
             return func_readObject( arg0, boost::python::ptr(arg1) );
         else{
@@ -218,11 +218,11 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    ::osgDB::ReaderWriter::ReadResult default_readObject( ::std::string const & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    ::osgDB::ReaderWriter::ReadResult default_readObject( ::std::string const & arg0, ::osgDB::Options const * arg1=0l ) const  {
         return osgDB::ReaderWriter::readObject( arg0, boost::python::ptr(arg1) );
     }
 
-    virtual ::osgDB::ReaderWriter::ReadResult readObject( ::std::istream & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    virtual ::osgDB::ReaderWriter::ReadResult readObject( ::std::istream & arg0, ::osgDB::Options const * arg1=0l ) const  {
         if( bp::override func_readObject = this->get_override( "readObject" ) )
             return func_readObject( boost::ref(arg0), boost::python::ptr(arg1) );
         else{
@@ -230,11 +230,11 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    ::osgDB::ReaderWriter::ReadResult default_readObject( ::std::istream & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    ::osgDB::ReaderWriter::ReadResult default_readObject( ::std::istream & arg0, ::osgDB::Options const * arg1=0l ) const  {
         return osgDB::ReaderWriter::readObject( boost::ref(arg0), boost::python::ptr(arg1) );
     }
 
-    virtual ::osgDB::ReaderWriter::ReadResult readShader( ::std::string const & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    virtual ::osgDB::ReaderWriter::ReadResult readShader( ::std::string const & arg0, ::osgDB::Options const * arg1=0l ) const  {
         if( bp::override func_readShader = this->get_override( "readShader" ) )
             return func_readShader( arg0, boost::python::ptr(arg1) );
         else{
@@ -242,11 +242,11 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    ::osgDB::ReaderWriter::ReadResult default_readShader( ::std::string const & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    ::osgDB::ReaderWriter::ReadResult default_readShader( ::std::string const & arg0, ::osgDB::Options const * arg1=0l ) const  {
         return osgDB::ReaderWriter::readShader( arg0, boost::python::ptr(arg1) );
     }
 
-    virtual ::osgDB::ReaderWriter::ReadResult readShader( ::std::istream & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    virtual ::osgDB::ReaderWriter::ReadResult readShader( ::std::istream & arg0, ::osgDB::Options const * arg1=0l ) const  {
         if( bp::override func_readShader = this->get_override( "readShader" ) )
             return func_readShader( boost::ref(arg0), boost::python::ptr(arg1) );
         else{
@@ -254,7 +254,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    ::osgDB::ReaderWriter::ReadResult default_readShader( ::std::istream & arg0, ::osgDB::Options const * arg1=0 ) const  {
+    ::osgDB::ReaderWriter::ReadResult default_readShader( ::std::istream & arg0, ::osgDB::Options const * arg1=0l ) const  {
         return osgDB::ReaderWriter::readShader( boost::ref(arg0), boost::python::ptr(arg1) );
     }
 
@@ -270,7 +270,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         return osgDB::ReaderWriter::supportedFeatures( );
     }
 
-    virtual ::osgDB::ReaderWriter::WriteResult writeHeightField( ::osg::HeightField const & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0 ) const  {
+    virtual ::osgDB::ReaderWriter::WriteResult writeHeightField( ::osg::HeightField const & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0l ) const  {
         namespace bpl = boost::python;
         if( bpl::override func_writeHeightField = this->get_override( "writeHeightField" ) ){
             bpl::object py_result = bpl::call<bpl::object>( func_writeHeightField.ptr(), arg0, arg1, arg2 );
@@ -281,7 +281,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    static boost::python::object default_writeHeightField_492ba9227016a7cdc011f560ee63846b( ::osgDB::ReaderWriter const & inst, ::osg::HeightField & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0 ){
+    static boost::python::object default_writeHeightField_492ba9227016a7cdc011f560ee63846b( ::osgDB::ReaderWriter const & inst, ::osg::HeightField & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0l ){
         osgDB::ReaderWriter::WriteResult result;
         if( dynamic_cast< ReaderWriter_wrapper const* >( boost::addressof( inst ) ) ){
             result = inst.::osgDB::ReaderWriter::writeHeightField(arg0, arg1, arg2);
@@ -292,7 +292,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         return bp::object( result );
     }
 
-    virtual ::osgDB::ReaderWriter::WriteResult writeHeightField( ::osg::HeightField const & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0 ) const  {
+    virtual ::osgDB::ReaderWriter::WriteResult writeHeightField( ::osg::HeightField const & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0l ) const  {
         namespace bpl = boost::python;
         if( bpl::override func_writeHeightField = this->get_override( "writeHeightField" ) ){
             bpl::object py_result = bpl::call<bpl::object>( func_writeHeightField.ptr(), arg0, arg1, arg2 );
@@ -303,7 +303,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    static boost::python::object default_writeHeightField_9396c211b31e432102458b3f4acc5b01( ::osgDB::ReaderWriter const & inst, ::osg::HeightField & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0 ){
+    static boost::python::object default_writeHeightField_9396c211b31e432102458b3f4acc5b01( ::osgDB::ReaderWriter const & inst, ::osg::HeightField & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0l ){
         osgDB::ReaderWriter::WriteResult result;
         if( dynamic_cast< ReaderWriter_wrapper const* >( boost::addressof( inst ) ) ){
             result = inst.::osgDB::ReaderWriter::writeHeightField(arg0, arg1, arg2);
@@ -314,7 +314,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         return bp::object( result );
     }
 
-    virtual ::osgDB::ReaderWriter::WriteResult writeImage( ::osg::Image const & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0 ) const  {
+    virtual ::osgDB::ReaderWriter::WriteResult writeImage( ::osg::Image const & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0l ) const  {
         namespace bpl = boost::python;
         if( bpl::override func_writeImage = this->get_override( "writeImage" ) ){
             bpl::object py_result = bpl::call<bpl::object>( func_writeImage.ptr(), arg0, arg1, arg2 );
@@ -325,7 +325,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    static boost::python::object default_writeImage_48409f166d256ec2a1ce1aba7ba91b41( ::osgDB::ReaderWriter const & inst, ::osg::Image & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0 ){
+    static boost::python::object default_writeImage_48409f166d256ec2a1ce1aba7ba91b41( ::osgDB::ReaderWriter const & inst, ::osg::Image & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0l ){
         osgDB::ReaderWriter::WriteResult result;
         if( dynamic_cast< ReaderWriter_wrapper const* >( boost::addressof( inst ) ) ){
             result = inst.::osgDB::ReaderWriter::writeImage(arg0, arg1, arg2);
@@ -336,7 +336,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         return bp::object( result );
     }
 
-    virtual ::osgDB::ReaderWriter::WriteResult writeImage( ::osg::Image const & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0 ) const  {
+    virtual ::osgDB::ReaderWriter::WriteResult writeImage( ::osg::Image const & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0l ) const  {
         namespace bpl = boost::python;
         if( bpl::override func_writeImage = this->get_override( "writeImage" ) ){
             bpl::object py_result = bpl::call<bpl::object>( func_writeImage.ptr(), arg0, arg1, arg2 );
@@ -347,7 +347,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    static boost::python::object default_writeImage_09e0c822c73aac048a8706dbb950438f( ::osgDB::ReaderWriter const & inst, ::osg::Image & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0 ){
+    static boost::python::object default_writeImage_09e0c822c73aac048a8706dbb950438f( ::osgDB::ReaderWriter const & inst, ::osg::Image & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0l ){
         osgDB::ReaderWriter::WriteResult result;
         if( dynamic_cast< ReaderWriter_wrapper const* >( boost::addressof( inst ) ) ){
             result = inst.::osgDB::ReaderWriter::writeImage(arg0, arg1, arg2);
@@ -358,7 +358,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         return bp::object( result );
     }
 
-    virtual ::osgDB::ReaderWriter::WriteResult writeNode( ::osg::Node const & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0 ) const  {
+    virtual ::osgDB::ReaderWriter::WriteResult writeNode( ::osg::Node const & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0l ) const  {
         namespace bpl = boost::python;
         if( bpl::override func_writeNode = this->get_override( "writeNode" ) ){
             bpl::object py_result = bpl::call<bpl::object>( func_writeNode.ptr(), arg0, arg1, arg2 );
@@ -369,7 +369,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    static boost::python::object default_writeNode_94ab5d58c5431145dd0b29259e29a1e0( ::osgDB::ReaderWriter const & inst, ::osg::Node & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0 ){
+    static boost::python::object default_writeNode_94ab5d58c5431145dd0b29259e29a1e0( ::osgDB::ReaderWriter const & inst, ::osg::Node & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0l ){
         osgDB::ReaderWriter::WriteResult result;
         if( dynamic_cast< ReaderWriter_wrapper const* >( boost::addressof( inst ) ) ){
             result = inst.::osgDB::ReaderWriter::writeNode(arg0, arg1, arg2);
@@ -380,7 +380,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         return bp::object( result );
     }
 
-    virtual ::osgDB::ReaderWriter::WriteResult writeNode( ::osg::Node const & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0 ) const  {
+    virtual ::osgDB::ReaderWriter::WriteResult writeNode( ::osg::Node const & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0l ) const  {
         namespace bpl = boost::python;
         if( bpl::override func_writeNode = this->get_override( "writeNode" ) ){
             bpl::object py_result = bpl::call<bpl::object>( func_writeNode.ptr(), arg0, arg1, arg2 );
@@ -391,7 +391,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    static boost::python::object default_writeNode_85ada25f9394d5ca11dce46130e109e3( ::osgDB::ReaderWriter const & inst, ::osg::Node & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0 ){
+    static boost::python::object default_writeNode_85ada25f9394d5ca11dce46130e109e3( ::osgDB::ReaderWriter const & inst, ::osg::Node & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0l ){
         osgDB::ReaderWriter::WriteResult result;
         if( dynamic_cast< ReaderWriter_wrapper const* >( boost::addressof( inst ) ) ){
             result = inst.::osgDB::ReaderWriter::writeNode(arg0, arg1, arg2);
@@ -402,7 +402,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         return bp::object( result );
     }
 
-    virtual ::osgDB::ReaderWriter::WriteResult writeObject( ::osg::Object const & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0 ) const  {
+    virtual ::osgDB::ReaderWriter::WriteResult writeObject( ::osg::Object const & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0l ) const  {
         namespace bpl = boost::python;
         if( bpl::override func_writeObject = this->get_override( "writeObject" ) ){
             bpl::object py_result = bpl::call<bpl::object>( func_writeObject.ptr(), arg0, arg1, arg2 );
@@ -413,7 +413,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    static boost::python::object default_writeObject_4b217c12bc66236059a76e176772f392( ::osgDB::ReaderWriter const & inst, ::osg::Object & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0 ){
+    static boost::python::object default_writeObject_4b217c12bc66236059a76e176772f392( ::osgDB::ReaderWriter const & inst, ::osg::Object & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0l ){
         osgDB::ReaderWriter::WriteResult result;
         if( dynamic_cast< ReaderWriter_wrapper const* >( boost::addressof( inst ) ) ){
             result = inst.::osgDB::ReaderWriter::writeObject(arg0, arg1, arg2);
@@ -424,7 +424,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         return bp::object( result );
     }
 
-    virtual ::osgDB::ReaderWriter::WriteResult writeObject( ::osg::Object const & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0 ) const  {
+    virtual ::osgDB::ReaderWriter::WriteResult writeObject( ::osg::Object const & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0l ) const  {
         namespace bpl = boost::python;
         if( bpl::override func_writeObject = this->get_override( "writeObject" ) ){
             bpl::object py_result = bpl::call<bpl::object>( func_writeObject.ptr(), arg0, arg1, arg2 );
@@ -435,7 +435,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    static boost::python::object default_writeObject_86a17357be0e1c05716ddbecef039a10( ::osgDB::ReaderWriter const & inst, ::osg::Object & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0 ){
+    static boost::python::object default_writeObject_86a17357be0e1c05716ddbecef039a10( ::osgDB::ReaderWriter const & inst, ::osg::Object & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0l ){
         osgDB::ReaderWriter::WriteResult result;
         if( dynamic_cast< ReaderWriter_wrapper const* >( boost::addressof( inst ) ) ){
             result = inst.::osgDB::ReaderWriter::writeObject(arg0, arg1, arg2);
@@ -446,7 +446,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         return bp::object( result );
     }
 
-    virtual ::osgDB::ReaderWriter::WriteResult writeShader( ::osg::Shader const & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0 ) const  {
+    virtual ::osgDB::ReaderWriter::WriteResult writeShader( ::osg::Shader const & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0l ) const  {
         namespace bpl = boost::python;
         if( bpl::override func_writeShader = this->get_override( "writeShader" ) ){
             bpl::object py_result = bpl::call<bpl::object>( func_writeShader.ptr(), arg0, arg1, arg2 );
@@ -457,7 +457,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    static boost::python::object default_writeShader_be57249f6a6e741afc4665bd121f54f9( ::osgDB::ReaderWriter const & inst, ::osg::Shader & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0 ){
+    static boost::python::object default_writeShader_be57249f6a6e741afc4665bd121f54f9( ::osgDB::ReaderWriter const & inst, ::osg::Shader & arg0, ::std::string const & arg1, ::osgDB::Options const * arg2=0l ){
         osgDB::ReaderWriter::WriteResult result;
         if( dynamic_cast< ReaderWriter_wrapper const* >( boost::addressof( inst ) ) ){
             result = inst.::osgDB::ReaderWriter::writeShader(arg0, arg1, arg2);
@@ -468,7 +468,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         return bp::object( result );
     }
 
-    virtual ::osgDB::ReaderWriter::WriteResult writeShader( ::osg::Shader const & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0 ) const  {
+    virtual ::osgDB::ReaderWriter::WriteResult writeShader( ::osg::Shader const & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0l ) const  {
         namespace bpl = boost::python;
         if( bpl::override func_writeShader = this->get_override( "writeShader" ) ){
             bpl::object py_result = bpl::call<bpl::object>( func_writeShader.ptr(), arg0, arg1, arg2 );
@@ -479,7 +479,7 @@ struct ReaderWriter_wrapper : osgDB::ReaderWriter, bp::wrapper< osgDB::ReaderWri
         }
     }
     
-    static boost::python::object default_writeShader_88038c79c30b9deaaaed55931fcd9f34( ::osgDB::ReaderWriter const & inst, ::osg::Shader & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0 ){
+    static boost::python::object default_writeShader_88038c79c30b9deaaaed55931fcd9f34( ::osgDB::ReaderWriter const & inst, ::osg::Shader & arg0, ::std::ostream & arg1, ::osgDB::Options const * arg2=0l ){
         osgDB::ReaderWriter::WriteResult result;
         if( dynamic_cast< ReaderWriter_wrapper const* >( boost::addressof( inst ) ) ){
             result = inst.::osgDB::ReaderWriter::writeShader(arg0, arg1, arg2);
@@ -626,7 +626,7 @@ void register_ReaderWriter_class(){
             ReadResult_exposer.def( bp::init< osgDB::ReaderWriter::ReadResult const & >(( bp::arg("rr") )) );
             { //::osgDB::ReaderWriter::ReadResult::error
             
-                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*error_function_type)(  ) const;
+                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*error_function_type )(  ) const;
                 
                 ReadResult_exposer.def( 
                     "error"
@@ -635,7 +635,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::getArchive
             
-                typedef ::osgDB::Archive * ( ::osgDB::ReaderWriter::ReadResult::*getArchive_function_type)(  ) ;
+                typedef ::osgDB::Archive * ( ::osgDB::ReaderWriter::ReadResult::*getArchive_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "getArchive"
@@ -645,7 +645,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::getHeightField
             
-                typedef ::osg::HeightField * ( ::osgDB::ReaderWriter::ReadResult::*getHeightField_function_type)(  ) ;
+                typedef ::osg::HeightField * ( ::osgDB::ReaderWriter::ReadResult::*getHeightField_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "getHeightField"
@@ -655,7 +655,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::getImage
             
-                typedef ::osg::Image * ( ::osgDB::ReaderWriter::ReadResult::*getImage_function_type)(  ) ;
+                typedef ::osg::Image * ( ::osgDB::ReaderWriter::ReadResult::*getImage_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "getImage"
@@ -665,7 +665,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::getNode
             
-                typedef ::osg::Node * ( ::osgDB::ReaderWriter::ReadResult::*getNode_function_type)(  ) ;
+                typedef ::osg::Node * ( ::osgDB::ReaderWriter::ReadResult::*getNode_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "getNode"
@@ -675,7 +675,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::getObject
             
-                typedef ::osg::Object * ( ::osgDB::ReaderWriter::ReadResult::*getObject_function_type)(  ) ;
+                typedef ::osg::Object * ( ::osgDB::ReaderWriter::ReadResult::*getObject_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "getObject"
@@ -685,7 +685,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::getShader
             
-                typedef ::osg::Shader * ( ::osgDB::ReaderWriter::ReadResult::*getShader_function_type)(  ) ;
+                typedef ::osg::Shader * ( ::osgDB::ReaderWriter::ReadResult::*getShader_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "getShader"
@@ -695,7 +695,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::loadedFromCache
             
-                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*loadedFromCache_function_type)(  ) const;
+                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*loadedFromCache_function_type )(  ) const;
                 
                 ReadResult_exposer.def( 
                     "loadedFromCache"
@@ -704,7 +704,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::message
             
-                typedef ::std::string & ( ::osgDB::ReaderWriter::ReadResult::*message_function_type)(  ) ;
+                typedef ::std::string & ( ::osgDB::ReaderWriter::ReadResult::*message_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "message"
@@ -714,7 +714,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::message
             
-                typedef ::std::string const & ( ::osgDB::ReaderWriter::ReadResult::*message_function_type)(  ) const;
+                typedef ::std::string const & ( ::osgDB::ReaderWriter::ReadResult::*message_function_type )(  ) const;
                 
                 ReadResult_exposer.def( 
                     "message"
@@ -724,7 +724,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::notEnoughMemory
             
-                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*notEnoughMemory_function_type)(  ) const;
+                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*notEnoughMemory_function_type )(  ) const;
                 
                 ReadResult_exposer.def( 
                     "notEnoughMemory"
@@ -733,7 +733,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::notFound
             
-                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*notFound_function_type)(  ) const;
+                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*notFound_function_type )(  ) const;
                 
                 ReadResult_exposer.def( 
                     "notFound"
@@ -742,7 +742,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::notHandled
             
-                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*notHandled_function_type)(  ) const;
+                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*notHandled_function_type )(  ) const;
                 
                 ReadResult_exposer.def( 
                     "notHandled"
@@ -752,7 +752,7 @@ void register_ReaderWriter_class(){
             ReadResult_exposer.def( bp::self < bp::self );
             { //::osgDB::ReaderWriter::ReadResult::status
             
-                typedef ::osgDB::ReaderWriter::ReadResult::ReadStatus ( ::osgDB::ReaderWriter::ReadResult::*status_function_type)(  ) const;
+                typedef ::osgDB::ReaderWriter::ReadResult::ReadStatus ( ::osgDB::ReaderWriter::ReadResult::*status_function_type )(  ) const;
                 
                 ReadResult_exposer.def( 
                     "status"
@@ -761,7 +761,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::success
             
-                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*success_function_type)(  ) const;
+                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*success_function_type )(  ) const;
                 
                 ReadResult_exposer.def( 
                     "success"
@@ -770,7 +770,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::takeArchive
             
-                typedef ::osgDB::Archive * ( ::osgDB::ReaderWriter::ReadResult::*takeArchive_function_type)(  ) ;
+                typedef ::osgDB::Archive * ( ::osgDB::ReaderWriter::ReadResult::*takeArchive_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "takeArchive"
@@ -780,7 +780,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::takeHeightField
             
-                typedef ::osg::HeightField * ( ::osgDB::ReaderWriter::ReadResult::*takeHeightField_function_type)(  ) ;
+                typedef ::osg::HeightField * ( ::osgDB::ReaderWriter::ReadResult::*takeHeightField_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "takeHeightField"
@@ -790,7 +790,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::takeImage
             
-                typedef ::osg::Image * ( ::osgDB::ReaderWriter::ReadResult::*takeImage_function_type)(  ) ;
+                typedef ::osg::Image * ( ::osgDB::ReaderWriter::ReadResult::*takeImage_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "takeImage"
@@ -800,7 +800,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::takeNode
             
-                typedef ::osg::Node * ( ::osgDB::ReaderWriter::ReadResult::*takeNode_function_type)(  ) ;
+                typedef ::osg::Node * ( ::osgDB::ReaderWriter::ReadResult::*takeNode_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "takeNode"
@@ -810,7 +810,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::takeObject
             
-                typedef ::osg::Object * ( ::osgDB::ReaderWriter::ReadResult::*takeObject_function_type)(  ) ;
+                typedef ::osg::Object * ( ::osgDB::ReaderWriter::ReadResult::*takeObject_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "takeObject"
@@ -820,7 +820,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::takeShader
             
-                typedef ::osg::Shader * ( ::osgDB::ReaderWriter::ReadResult::*takeShader_function_type)(  ) ;
+                typedef ::osg::Shader * ( ::osgDB::ReaderWriter::ReadResult::*takeShader_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "takeShader"
@@ -830,7 +830,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::validArchive
             
-                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*validArchive_function_type)(  ) ;
+                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*validArchive_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "validArchive"
@@ -839,7 +839,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::validHeightField
             
-                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*validHeightField_function_type)(  ) ;
+                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*validHeightField_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "validHeightField"
@@ -848,7 +848,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::validImage
             
-                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*validImage_function_type)(  ) ;
+                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*validImage_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "validImage"
@@ -857,7 +857,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::validNode
             
-                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*validNode_function_type)(  ) ;
+                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*validNode_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "validNode"
@@ -866,7 +866,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::validObject
             
-                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*validObject_function_type)(  ) ;
+                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*validObject_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "validObject"
@@ -875,7 +875,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::ReadResult::validShader
             
-                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*validShader_function_type)(  ) ;
+                typedef bool ( ::osgDB::ReaderWriter::ReadResult::*validShader_function_type )(  ) ;
                 
                 ReadResult_exposer.def( 
                     "validShader"
@@ -900,7 +900,7 @@ void register_ReaderWriter_class(){
             WriteResult_exposer.def( bp::init< osgDB::ReaderWriter::WriteResult const & >(( bp::arg("rr") )) );
             { //::osgDB::ReaderWriter::WriteResult::error
             
-                typedef bool ( ::osgDB::ReaderWriter::WriteResult::*error_function_type)(  ) const;
+                typedef bool ( ::osgDB::ReaderWriter::WriteResult::*error_function_type )(  ) const;
                 
                 WriteResult_exposer.def( 
                     "error"
@@ -909,7 +909,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::WriteResult::message
             
-                typedef ::std::string & ( ::osgDB::ReaderWriter::WriteResult::*message_function_type)(  ) ;
+                typedef ::std::string & ( ::osgDB::ReaderWriter::WriteResult::*message_function_type )(  ) ;
                 
                 WriteResult_exposer.def( 
                     "message"
@@ -919,7 +919,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::WriteResult::message
             
-                typedef ::std::string const & ( ::osgDB::ReaderWriter::WriteResult::*message_function_type)(  ) const;
+                typedef ::std::string const & ( ::osgDB::ReaderWriter::WriteResult::*message_function_type )(  ) const;
                 
                 WriteResult_exposer.def( 
                     "message"
@@ -929,7 +929,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::WriteResult::notHandled
             
-                typedef bool ( ::osgDB::ReaderWriter::WriteResult::*notHandled_function_type)(  ) const;
+                typedef bool ( ::osgDB::ReaderWriter::WriteResult::*notHandled_function_type )(  ) const;
                 
                 WriteResult_exposer.def( 
                     "notHandled"
@@ -939,7 +939,7 @@ void register_ReaderWriter_class(){
             WriteResult_exposer.def( bp::self < bp::self );
             { //::osgDB::ReaderWriter::WriteResult::status
             
-                typedef ::osgDB::ReaderWriter::WriteResult::WriteStatus ( ::osgDB::ReaderWriter::WriteResult::*status_function_type)(  ) const;
+                typedef ::osgDB::ReaderWriter::WriteResult::WriteStatus ( ::osgDB::ReaderWriter::WriteResult::*status_function_type )(  ) const;
                 
                 WriteResult_exposer.def( 
                     "status"
@@ -948,7 +948,7 @@ void register_ReaderWriter_class(){
             }
             { //::osgDB::ReaderWriter::WriteResult::success
             
-                typedef bool ( ::osgDB::ReaderWriter::WriteResult::*success_function_type)(  ) const;
+                typedef bool ( ::osgDB::ReaderWriter::WriteResult::*success_function_type )(  ) const;
                 
                 WriteResult_exposer.def( 
                     "success"
@@ -958,8 +958,8 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::acceptsExtension
         
-            typedef bool ( ::osgDB::ReaderWriter::*acceptsExtension_function_type)( ::std::string const & ) const;
-            typedef bool ( ReaderWriter_wrapper::*default_acceptsExtension_function_type)( ::std::string const & ) const;
+            typedef bool ( ::osgDB::ReaderWriter::*acceptsExtension_function_type )( ::std::string const & ) const;
+            typedef bool ( ReaderWriter_wrapper::*default_acceptsExtension_function_type )( ::std::string const & ) const;
             
             ReaderWriter_exposer.def( 
                 "acceptsExtension"
@@ -970,8 +970,8 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::acceptsProtocol
         
-            typedef bool ( ::osgDB::ReaderWriter::*acceptsProtocol_function_type)( ::std::string const & ) const;
-            typedef bool ( ReaderWriter_wrapper::*default_acceptsProtocol_function_type)( ::std::string const & ) const;
+            typedef bool ( ::osgDB::ReaderWriter::*acceptsProtocol_function_type )( ::std::string const & ) const;
+            typedef bool ( ReaderWriter_wrapper::*default_acceptsProtocol_function_type )( ::std::string const & ) const;
             
             ReaderWriter_exposer.def( 
                 "acceptsProtocol"
@@ -982,8 +982,8 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::className
         
-            typedef char const * ( ::osgDB::ReaderWriter::*className_function_type)(  ) const;
-            typedef char const * ( ReaderWriter_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osgDB::ReaderWriter::*className_function_type )(  ) const;
+            typedef char const * ( ReaderWriter_wrapper::*default_className_function_type )(  ) const;
             
             ReaderWriter_exposer.def( 
                 "className"
@@ -993,8 +993,8 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::clone
         
-            typedef ::osg::Object * ( ::osgDB::ReaderWriter::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( ReaderWriter_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osgDB::ReaderWriter::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ReaderWriter_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             ReaderWriter_exposer.def( 
                 "clone"
@@ -1006,8 +1006,8 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::cloneType
         
-            typedef ::osg::Object * ( ::osgDB::ReaderWriter::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( ReaderWriter_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osgDB::ReaderWriter::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( ReaderWriter_wrapper::*default_cloneType_function_type )(  ) const;
             
             ReaderWriter_exposer.def( 
                 "cloneType"
@@ -1028,8 +1028,8 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::fileExists
         
-            typedef bool ( ::osgDB::ReaderWriter::*fileExists_function_type)( ::std::string const &,::osgDB::Options const * ) const;
-            typedef bool ( ReaderWriter_wrapper::*default_fileExists_function_type)( ::std::string const &,::osgDB::Options const * ) const;
+            typedef bool ( ::osgDB::ReaderWriter::*fileExists_function_type )( ::std::string const &,::osgDB::Options const * ) const;
+            typedef bool ( ReaderWriter_wrapper::*default_fileExists_function_type )( ::std::string const &,::osgDB::Options const * ) const;
             
             ReaderWriter_exposer.def( 
                 "fileExists"
@@ -1040,8 +1040,8 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::isSameKindAs
         
-            typedef bool ( ::osgDB::ReaderWriter::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( ReaderWriter_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osgDB::ReaderWriter::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( ReaderWriter_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             ReaderWriter_exposer.def( 
                 "isSameKindAs"
@@ -1052,8 +1052,8 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::libraryName
         
-            typedef char const * ( ::osgDB::ReaderWriter::*libraryName_function_type)(  ) const;
-            typedef char const * ( ReaderWriter_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osgDB::ReaderWriter::*libraryName_function_type )(  ) const;
+            typedef char const * ( ReaderWriter_wrapper::*default_libraryName_function_type )(  ) const;
             
             ReaderWriter_exposer.def( 
                 "libraryName"
@@ -1063,151 +1063,151 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::openArchive
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*openArchive_function_type)( ::std::string const &,::osgDB::ReaderWriter::ArchiveStatus,unsigned int,::osgDB::Options const * ) const;
-            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_openArchive_function_type)( ::std::string const &,::osgDB::ReaderWriter::ArchiveStatus,unsigned int,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*openArchive_function_type )( ::std::string const &,::osgDB::ReaderWriter::ArchiveStatus,unsigned int,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_openArchive_function_type )( ::std::string const &,::osgDB::ReaderWriter::ArchiveStatus,unsigned int,::osgDB::Options const * ) const;
             
             ReaderWriter_exposer.def( 
                 "openArchive"
                 , openArchive_function_type(&::osgDB::ReaderWriter::openArchive)
                 , default_openArchive_function_type(&ReaderWriter_wrapper::default_openArchive)
-                , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=(unsigned int)(4096), bp::arg("arg3")=bp::object() ) );
+                , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=(unsigned int)(4096), bp::arg("arg3")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::openArchive
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*openArchive_function_type)( ::std::istream &,::osgDB::Options const * ) const;
-            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_openArchive_function_type)( ::std::istream &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*openArchive_function_type )( ::std::istream &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_openArchive_function_type )( ::std::istream &,::osgDB::Options const * ) const;
             
             ReaderWriter_exposer.def( 
                 "openArchive"
                 , openArchive_function_type(&::osgDB::ReaderWriter::openArchive)
                 , default_openArchive_function_type(&ReaderWriter_wrapper::default_openArchive)
-                , ( bp::arg("arg0"), bp::arg("arg1")=bp::object() ) );
+                , ( bp::arg("arg0"), bp::arg("arg1")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::readHeightField
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readHeightField_function_type)( ::std::string const &,::osgDB::Options const * ) const;
-            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readHeightField_function_type)( ::std::string const &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readHeightField_function_type )( ::std::string const &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readHeightField_function_type )( ::std::string const &,::osgDB::Options const * ) const;
             
             ReaderWriter_exposer.def( 
                 "readHeightField"
                 , readHeightField_function_type(&::osgDB::ReaderWriter::readHeightField)
                 , default_readHeightField_function_type(&ReaderWriter_wrapper::default_readHeightField)
-                , ( bp::arg("arg0"), bp::arg("arg1")=bp::object() ) );
+                , ( bp::arg("arg0"), bp::arg("arg1")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::readHeightField
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readHeightField_function_type)( ::std::istream &,::osgDB::Options const * ) const;
-            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readHeightField_function_type)( ::std::istream &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readHeightField_function_type )( ::std::istream &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readHeightField_function_type )( ::std::istream &,::osgDB::Options const * ) const;
             
             ReaderWriter_exposer.def( 
                 "readHeightField"
                 , readHeightField_function_type(&::osgDB::ReaderWriter::readHeightField)
                 , default_readHeightField_function_type(&ReaderWriter_wrapper::default_readHeightField)
-                , ( bp::arg("arg0"), bp::arg("arg1")=bp::object() ) );
+                , ( bp::arg("arg0"), bp::arg("arg1")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::readImage
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readImage_function_type)( ::std::string const &,::osgDB::Options const * ) const;
-            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readImage_function_type)( ::std::string const &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readImage_function_type )( ::std::string const &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readImage_function_type )( ::std::string const &,::osgDB::Options const * ) const;
             
             ReaderWriter_exposer.def( 
                 "readImage"
                 , readImage_function_type(&::osgDB::ReaderWriter::readImage)
                 , default_readImage_function_type(&ReaderWriter_wrapper::default_readImage)
-                , ( bp::arg("arg0"), bp::arg("arg1")=bp::object() ) );
+                , ( bp::arg("arg0"), bp::arg("arg1")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::readImage
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readImage_function_type)( ::std::istream &,::osgDB::Options const * ) const;
-            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readImage_function_type)( ::std::istream &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readImage_function_type )( ::std::istream &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readImage_function_type )( ::std::istream &,::osgDB::Options const * ) const;
             
             ReaderWriter_exposer.def( 
                 "readImage"
                 , readImage_function_type(&::osgDB::ReaderWriter::readImage)
                 , default_readImage_function_type(&ReaderWriter_wrapper::default_readImage)
-                , ( bp::arg("arg0"), bp::arg("arg1")=bp::object() ) );
+                , ( bp::arg("arg0"), bp::arg("arg1")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::readNode
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readNode_function_type)( ::std::string const &,::osgDB::Options const * ) const;
-            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readNode_function_type)( ::std::string const &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readNode_function_type )( ::std::string const &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readNode_function_type )( ::std::string const &,::osgDB::Options const * ) const;
             
             ReaderWriter_exposer.def( 
                 "readNode"
                 , readNode_function_type(&::osgDB::ReaderWriter::readNode)
                 , default_readNode_function_type(&ReaderWriter_wrapper::default_readNode)
-                , ( bp::arg("arg0"), bp::arg("arg1")=bp::object() ) );
+                , ( bp::arg("arg0"), bp::arg("arg1")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::readNode
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readNode_function_type)( ::std::istream &,::osgDB::Options const * ) const;
-            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readNode_function_type)( ::std::istream &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readNode_function_type )( ::std::istream &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readNode_function_type )( ::std::istream &,::osgDB::Options const * ) const;
             
             ReaderWriter_exposer.def( 
                 "readNode"
                 , readNode_function_type(&::osgDB::ReaderWriter::readNode)
                 , default_readNode_function_type(&ReaderWriter_wrapper::default_readNode)
-                , ( bp::arg("arg0"), bp::arg("arg1")=bp::object() ) );
+                , ( bp::arg("arg0"), bp::arg("arg1")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::readObject
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readObject_function_type)( ::std::string const &,::osgDB::Options const * ) const;
-            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readObject_function_type)( ::std::string const &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readObject_function_type )( ::std::string const &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readObject_function_type )( ::std::string const &,::osgDB::Options const * ) const;
             
             ReaderWriter_exposer.def( 
                 "readObject"
                 , readObject_function_type(&::osgDB::ReaderWriter::readObject)
                 , default_readObject_function_type(&ReaderWriter_wrapper::default_readObject)
-                , ( bp::arg("arg0"), bp::arg("arg1")=bp::object() ) );
+                , ( bp::arg("arg0"), bp::arg("arg1")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::readObject
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readObject_function_type)( ::std::istream &,::osgDB::Options const * ) const;
-            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readObject_function_type)( ::std::istream &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readObject_function_type )( ::std::istream &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readObject_function_type )( ::std::istream &,::osgDB::Options const * ) const;
             
             ReaderWriter_exposer.def( 
                 "readObject"
                 , readObject_function_type(&::osgDB::ReaderWriter::readObject)
                 , default_readObject_function_type(&ReaderWriter_wrapper::default_readObject)
-                , ( bp::arg("arg0"), bp::arg("arg1")=bp::object() ) );
+                , ( bp::arg("arg0"), bp::arg("arg1")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::readShader
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readShader_function_type)( ::std::string const &,::osgDB::Options const * ) const;
-            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readShader_function_type)( ::std::string const &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readShader_function_type )( ::std::string const &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readShader_function_type )( ::std::string const &,::osgDB::Options const * ) const;
             
             ReaderWriter_exposer.def( 
                 "readShader"
                 , readShader_function_type(&::osgDB::ReaderWriter::readShader)
                 , default_readShader_function_type(&ReaderWriter_wrapper::default_readShader)
-                , ( bp::arg("arg0"), bp::arg("arg1")=bp::object() ) );
+                , ( bp::arg("arg0"), bp::arg("arg1")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::readShader
         
-            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readShader_function_type)( ::std::istream &,::osgDB::Options const * ) const;
-            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readShader_function_type)( ::std::istream &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ::osgDB::ReaderWriter::*readShader_function_type )( ::std::istream &,::osgDB::Options const * ) const;
+            typedef ::osgDB::ReaderWriter::ReadResult ( ReaderWriter_wrapper::*default_readShader_function_type )( ::std::istream &,::osgDB::Options const * ) const;
             
             ReaderWriter_exposer.def( 
                 "readShader"
                 , readShader_function_type(&::osgDB::ReaderWriter::readShader)
                 , default_readShader_function_type(&ReaderWriter_wrapper::default_readShader)
-                , ( bp::arg("arg0"), bp::arg("arg1")=bp::object() ) );
+                , ( bp::arg("arg0"), bp::arg("arg1")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::supportedExtensions
         
-            typedef ::std::map< std::string, std::string > const & ( ::osgDB::ReaderWriter::*supportedExtensions_function_type)(  ) const;
+            typedef ::std::map< std::string, std::string > const & ( ::osgDB::ReaderWriter::*supportedExtensions_function_type )(  ) const;
             
             ReaderWriter_exposer.def( 
                 "supportedExtensions"
@@ -1217,8 +1217,8 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::supportedFeatures
         
-            typedef ::osgDB::ReaderWriter::Features ( ::osgDB::ReaderWriter::*supportedFeatures_function_type)(  ) const;
-            typedef ::osgDB::ReaderWriter::Features ( ReaderWriter_wrapper::*default_supportedFeatures_function_type)(  ) const;
+            typedef ::osgDB::ReaderWriter::Features ( ::osgDB::ReaderWriter::*supportedFeatures_function_type )(  ) const;
+            typedef ::osgDB::ReaderWriter::Features ( ReaderWriter_wrapper::*default_supportedFeatures_function_type )(  ) const;
             
             ReaderWriter_exposer.def( 
                 "supportedFeatures"
@@ -1228,7 +1228,7 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::supportedOptions
         
-            typedef ::std::map< std::string, std::string > const & ( ::osgDB::ReaderWriter::*supportedOptions_function_type)(  ) const;
+            typedef ::std::map< std::string, std::string > const & ( ::osgDB::ReaderWriter::*supportedOptions_function_type )(  ) const;
             
             ReaderWriter_exposer.def( 
                 "supportedOptions"
@@ -1238,7 +1238,7 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::supportedProtocols
         
-            typedef ::std::map< std::string, std::string > const & ( ::osgDB::ReaderWriter::*supportedProtocols_function_type)(  ) const;
+            typedef ::std::map< std::string, std::string > const & ( ::osgDB::ReaderWriter::*supportedProtocols_function_type )(  ) const;
             
             ReaderWriter_exposer.def( 
                 "supportedProtocols"
@@ -1248,7 +1248,7 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::supportsExtension
         
-            typedef void ( ::osgDB::ReaderWriter::*supportsExtension_function_type)( ::std::string const &,::std::string const & ) ;
+            typedef void ( ::osgDB::ReaderWriter::*supportsExtension_function_type )( ::std::string const &,::std::string const & ) ;
             
             ReaderWriter_exposer.def( 
                 "supportsExtension"
@@ -1258,7 +1258,7 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::supportsOption
         
-            typedef void ( ::osgDB::ReaderWriter::*supportsOption_function_type)( ::std::string const &,::std::string const & ) ;
+            typedef void ( ::osgDB::ReaderWriter::*supportsOption_function_type )( ::std::string const &,::std::string const & ) ;
             
             ReaderWriter_exposer.def( 
                 "supportsOption"
@@ -1268,7 +1268,7 @@ void register_ReaderWriter_class(){
         }
         { //::osgDB::ReaderWriter::supportsProtocol
         
-            typedef void ( ::osgDB::ReaderWriter::*supportsProtocol_function_type)( ::std::string const &,::std::string const & ) ;
+            typedef void ( ::osgDB::ReaderWriter::*supportsProtocol_function_type )( ::std::string const &,::std::string const & ) ;
             
             ReaderWriter_exposer.def( 
                 "supportsProtocol"
@@ -1283,7 +1283,7 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "writeHeightField"
                 , default_writeHeightField_function_type( &ReaderWriter_wrapper::default_writeHeightField_492ba9227016a7cdc011f560ee63846b )
-                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=bp::object() ) );
+                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::writeHeightField
@@ -1293,7 +1293,7 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "writeHeightField"
                 , default_writeHeightField_function_type( &ReaderWriter_wrapper::default_writeHeightField_9396c211b31e432102458b3f4acc5b01 )
-                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=bp::object() ) );
+                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::writeImage
@@ -1303,7 +1303,7 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "writeImage"
                 , default_writeImage_function_type( &ReaderWriter_wrapper::default_writeImage_48409f166d256ec2a1ce1aba7ba91b41 )
-                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=bp::object() ) );
+                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::writeImage
@@ -1313,7 +1313,7 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "writeImage"
                 , default_writeImage_function_type( &ReaderWriter_wrapper::default_writeImage_09e0c822c73aac048a8706dbb950438f )
-                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=bp::object() ) );
+                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::writeNode
@@ -1323,7 +1323,7 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "writeNode"
                 , default_writeNode_function_type( &ReaderWriter_wrapper::default_writeNode_94ab5d58c5431145dd0b29259e29a1e0 )
-                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=bp::object() ) );
+                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::writeNode
@@ -1333,7 +1333,7 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "writeNode"
                 , default_writeNode_function_type( &ReaderWriter_wrapper::default_writeNode_85ada25f9394d5ca11dce46130e109e3 )
-                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=bp::object() ) );
+                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::writeObject
@@ -1343,7 +1343,7 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "writeObject"
                 , default_writeObject_function_type( &ReaderWriter_wrapper::default_writeObject_4b217c12bc66236059a76e176772f392 )
-                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=bp::object() ) );
+                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::writeObject
@@ -1353,7 +1353,7 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "writeObject"
                 , default_writeObject_function_type( &ReaderWriter_wrapper::default_writeObject_86a17357be0e1c05716ddbecef039a10 )
-                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=bp::object() ) );
+                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::writeShader
@@ -1363,7 +1363,7 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "writeShader"
                 , default_writeShader_function_type( &ReaderWriter_wrapper::default_writeShader_be57249f6a6e741afc4665bd121f54f9 )
-                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=bp::object() ) );
+                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=0l ) );
         
         }
         { //::osgDB::ReaderWriter::writeShader
@@ -1373,7 +1373,7 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "writeShader"
                 , default_writeShader_function_type( &ReaderWriter_wrapper::default_writeShader_88038c79c30b9deaaaed55931fcd9f34 )
-                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=bp::object() ) );
+                , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2")=0l ) );
         
         }
         ReaderWriter_exposer.staticmethod( "featureAsString" );

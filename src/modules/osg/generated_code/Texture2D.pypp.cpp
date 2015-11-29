@@ -3,34 +3,11 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "texture2d.pypp.hpp"
+#include "Texture2D.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct Texture2D_wrapper : osg::Texture2D, bp::wrapper< osg::Texture2D > {
-
-    struct SubloadCallback_wrapper : osg::Texture2D::SubloadCallback, bp::wrapper< osg::Texture2D::SubloadCallback > {
-    
-        SubloadCallback_wrapper()
-        : osg::Texture2D::SubloadCallback()
-          , bp::wrapper< osg::Texture2D::SubloadCallback >(){
-            // null constructor
-            
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
 
     Texture2D_wrapper( )
     : osg::Texture2D( )
@@ -274,18 +251,6 @@ struct Texture2D_wrapper : osg::Texture2D, bp::wrapper< osg::Texture2D > {
         osg::Texture::compileGLObjects( boost::ref(state) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
     virtual unsigned int getMember(  ) const  {
         if( bp::override func_getMember = this->get_override( "getMember" ) )
             return func_getMember(  );
@@ -308,30 +273,6 @@ struct Texture2D_wrapper : osg::Texture2D, bp::wrapper< osg::Texture2D > {
     
     bool default_getModeUsage( ::osg::StateAttribute::ModeUsage & usage ) const  {
         return osg::Texture::getModeUsage( boost::ref(usage) );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
     }
 
     virtual bool isTextureAttribute(  ) const  {
@@ -358,42 +299,6 @@ struct Texture2D_wrapper : osg::Texture2D, bp::wrapper< osg::Texture2D > {
         osg::Texture::resizeGLObjectBuffers( maxSize );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_Texture2D_class(){
@@ -402,19 +307,13 @@ void register_Texture2D_class(){
         typedef bp::class_< Texture2D_wrapper, bp::bases< osg::Texture >, osg::ref_ptr< ::osg::Texture2D >, boost::noncopyable > Texture2D_exposer_t;
         Texture2D_exposer_t Texture2D_exposer = Texture2D_exposer_t( "Texture2D", "\n Encapsulates OpenGL 2D texture functionality. Doesnt support cube maps,\n so ignore C{face} parameters.\n", bp::no_init );
         bp::scope Texture2D_scope( Texture2D_exposer );
-        bp::class_< Texture2D_wrapper::SubloadCallback_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< Texture2D_wrapper::SubloadCallback_wrapper >, boost::noncopyable >( "SubloadCallback", bp::no_init )    
-            .def( 
-                "setThreadSafeRefUnref"
-                , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-                , (void ( Texture2D_wrapper::SubloadCallback_wrapper::* )( bool ))(&Texture2D_wrapper::SubloadCallback_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
         Texture2D_exposer.def( bp::init< >("\n Encapsulates OpenGL 2D texture functionality. Doesnt support cube maps,\n so ignore C{face} parameters.\n") );
         Texture2D_exposer.def( bp::init< osg::Image * >(( bp::arg("image") )) );
         bp::implicitly_convertible< osg::Image *, osg::Texture2D >();
         { //::osg::Texture2D::apply
         
-            typedef void ( ::osg::Texture2D::*apply_function_type)( ::osg::State & ) const;
-            typedef void ( Texture2D_wrapper::*default_apply_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::Texture2D::*apply_function_type )( ::osg::State & ) const;
+            typedef void ( Texture2D_wrapper::*default_apply_function_type )( ::osg::State & ) const;
             
             Texture2D_exposer.def( 
                 "apply"
@@ -425,8 +324,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::className
         
-            typedef char const * ( ::osg::Texture2D::*className_function_type)(  ) const;
-            typedef char const * ( Texture2D_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::Texture2D::*className_function_type )(  ) const;
+            typedef char const * ( Texture2D_wrapper::*default_className_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "className"
@@ -436,8 +335,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::clone
         
-            typedef ::osg::Object * ( ::osg::Texture2D::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( Texture2D_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::Texture2D::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( Texture2D_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             Texture2D_exposer.def( 
                 "clone"
@@ -449,8 +348,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::cloneType
         
-            typedef ::osg::Object * ( ::osg::Texture2D::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( Texture2D_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::Texture2D::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( Texture2D_wrapper::*default_cloneType_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "cloneType"
@@ -461,7 +360,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::copyTexImage2D
         
-            typedef void ( ::osg::Texture2D::*copyTexImage2D_function_type)( ::osg::State &,int,int,int,int ) ;
+            typedef void ( ::osg::Texture2D::*copyTexImage2D_function_type )( ::osg::State &,int,int,int,int ) ;
             
             Texture2D_exposer.def( 
                 "copyTexImage2D"
@@ -472,7 +371,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::copyTexSubImage2D
         
-            typedef void ( ::osg::Texture2D::*copyTexSubImage2D_function_type)( ::osg::State &,int,int,int,int,int,int ) ;
+            typedef void ( ::osg::Texture2D::*copyTexSubImage2D_function_type )( ::osg::State &,int,int,int,int,int,int ) ;
             
             Texture2D_exposer.def( 
                 "copyTexSubImage2D"
@@ -483,7 +382,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getImage
         
-            typedef ::osg::Image * ( ::osg::Texture2D::*getImage_function_type)(  ) ;
+            typedef ::osg::Image * ( ::osg::Texture2D::*getImage_function_type )(  ) ;
             
             Texture2D_exposer.def( 
                 "getImage"
@@ -494,7 +393,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getImage
         
-            typedef ::osg::Image const * ( ::osg::Texture2D::*getImage_function_type)(  ) const;
+            typedef ::osg::Image const * ( ::osg::Texture2D::*getImage_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "getImage"
@@ -505,8 +404,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getImage
         
-            typedef ::osg::Image * ( ::osg::Texture2D::*getImage_function_type)( unsigned int ) ;
-            typedef ::osg::Image * ( Texture2D_wrapper::*default_getImage_function_type)( unsigned int ) ;
+            typedef ::osg::Image * ( ::osg::Texture2D::*getImage_function_type )( unsigned int ) ;
+            typedef ::osg::Image * ( Texture2D_wrapper::*default_getImage_function_type )( unsigned int ) ;
             
             Texture2D_exposer.def( 
                 "getImage"
@@ -518,8 +417,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getImage
         
-            typedef ::osg::Image const * ( ::osg::Texture2D::*getImage_function_type)( unsigned int ) const;
-            typedef ::osg::Image const * ( Texture2D_wrapper::*default_getImage_function_type)( unsigned int ) const;
+            typedef ::osg::Image const * ( ::osg::Texture2D::*getImage_function_type )( unsigned int ) const;
+            typedef ::osg::Image const * ( Texture2D_wrapper::*default_getImage_function_type )( unsigned int ) const;
             
             Texture2D_exposer.def( 
                 "getImage"
@@ -531,7 +430,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getModifiedCount
         
-            typedef unsigned int & ( ::osg::Texture2D::*getModifiedCount_function_type)( unsigned int ) const;
+            typedef unsigned int & ( ::osg::Texture2D::*getModifiedCount_function_type )( unsigned int ) const;
             
             Texture2D_exposer.def( 
                 "getModifiedCount"
@@ -542,8 +441,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getNumImages
         
-            typedef unsigned int ( ::osg::Texture2D::*getNumImages_function_type)(  ) const;
-            typedef unsigned int ( Texture2D_wrapper::*default_getNumImages_function_type)(  ) const;
+            typedef unsigned int ( ::osg::Texture2D::*getNumImages_function_type )(  ) const;
+            typedef unsigned int ( Texture2D_wrapper::*default_getNumImages_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "getNumImages"
@@ -553,7 +452,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getNumMipmapLevels
         
-            typedef unsigned int ( ::osg::Texture2D::*getNumMipmapLevels_function_type)(  ) const;
+            typedef unsigned int ( ::osg::Texture2D::*getNumMipmapLevels_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "getNumMipmapLevels"
@@ -563,7 +462,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getSubloadCallback
         
-            typedef ::osg::Texture2D::SubloadCallback * ( ::osg::Texture2D::*getSubloadCallback_function_type)(  ) ;
+            typedef ::osg::Texture2D::SubloadCallback * ( ::osg::Texture2D::*getSubloadCallback_function_type )(  ) ;
             
             Texture2D_exposer.def( 
                 "getSubloadCallback"
@@ -573,7 +472,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getSubloadCallback
         
-            typedef ::osg::Texture2D::SubloadCallback const * ( ::osg::Texture2D::*getSubloadCallback_function_type)(  ) const;
+            typedef ::osg::Texture2D::SubloadCallback const * ( ::osg::Texture2D::*getSubloadCallback_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "getSubloadCallback"
@@ -583,8 +482,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getTextureDepth
         
-            typedef int ( ::osg::Texture2D::*getTextureDepth_function_type)(  ) const;
-            typedef int ( Texture2D_wrapper::*default_getTextureDepth_function_type)(  ) const;
+            typedef int ( ::osg::Texture2D::*getTextureDepth_function_type )(  ) const;
+            typedef int ( Texture2D_wrapper::*default_getTextureDepth_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "getTextureDepth"
@@ -594,8 +493,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getTextureHeight
         
-            typedef int ( ::osg::Texture2D::*getTextureHeight_function_type)(  ) const;
-            typedef int ( Texture2D_wrapper::*default_getTextureHeight_function_type)(  ) const;
+            typedef int ( ::osg::Texture2D::*getTextureHeight_function_type )(  ) const;
+            typedef int ( Texture2D_wrapper::*default_getTextureHeight_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "getTextureHeight"
@@ -605,8 +504,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getTextureTarget
         
-            typedef ::GLenum ( ::osg::Texture2D::*getTextureTarget_function_type)(  ) const;
-            typedef ::GLenum ( Texture2D_wrapper::*default_getTextureTarget_function_type)(  ) const;
+            typedef ::GLenum ( ::osg::Texture2D::*getTextureTarget_function_type )(  ) const;
+            typedef ::GLenum ( Texture2D_wrapper::*default_getTextureTarget_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "getTextureTarget"
@@ -616,8 +515,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getTextureWidth
         
-            typedef int ( ::osg::Texture2D::*getTextureWidth_function_type)(  ) const;
-            typedef int ( Texture2D_wrapper::*default_getTextureWidth_function_type)(  ) const;
+            typedef int ( ::osg::Texture2D::*getTextureWidth_function_type )(  ) const;
+            typedef int ( Texture2D_wrapper::*default_getTextureWidth_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "getTextureWidth"
@@ -627,8 +526,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::getType
         
-            typedef ::osg::StateAttribute::Type ( ::osg::Texture2D::*getType_function_type)(  ) const;
-            typedef ::osg::StateAttribute::Type ( Texture2D_wrapper::*default_getType_function_type)(  ) const;
+            typedef ::osg::StateAttribute::Type ( ::osg::Texture2D::*getType_function_type )(  ) const;
+            typedef ::osg::StateAttribute::Type ( Texture2D_wrapper::*default_getType_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "getType"
@@ -638,8 +537,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::isSameKindAs
         
-            typedef bool ( ::osg::Texture2D::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( Texture2D_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::Texture2D::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( Texture2D_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             Texture2D_exposer.def( 
                 "isSameKindAs"
@@ -650,8 +549,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::libraryName
         
-            typedef char const * ( ::osg::Texture2D::*libraryName_function_type)(  ) const;
-            typedef char const * ( Texture2D_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::Texture2D::*libraryName_function_type )(  ) const;
+            typedef char const * ( Texture2D_wrapper::*default_libraryName_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "libraryName"
@@ -661,7 +560,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::setImage
         
-            typedef void ( ::osg::Texture2D::*setImage_function_type)( ::osg::Image * ) ;
+            typedef void ( ::osg::Texture2D::*setImage_function_type )( ::osg::Image * ) ;
             
             Texture2D_exposer.def( 
                 "setImage"
@@ -672,8 +571,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::setImage
         
-            typedef void ( ::osg::Texture2D::*setImage_function_type)( unsigned int,::osg::Image * ) ;
-            typedef void ( Texture2D_wrapper::*default_setImage_function_type)( unsigned int,::osg::Image * ) ;
+            typedef void ( ::osg::Texture2D::*setImage_function_type )( unsigned int,::osg::Image * ) ;
+            typedef void ( Texture2D_wrapper::*default_setImage_function_type )( unsigned int,::osg::Image * ) ;
             
             Texture2D_exposer.def( 
                 "setImage"
@@ -684,7 +583,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::setNumMipmapLevels
         
-            typedef void ( ::osg::Texture2D::*setNumMipmapLevels_function_type)( unsigned int ) const;
+            typedef void ( ::osg::Texture2D::*setNumMipmapLevels_function_type )( unsigned int ) const;
             
             Texture2D_exposer.def( 
                 "setNumMipmapLevels"
@@ -695,7 +594,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::setSubloadCallback
         
-            typedef void ( ::osg::Texture2D::*setSubloadCallback_function_type)( ::osg::Texture2D::SubloadCallback * ) ;
+            typedef void ( ::osg::Texture2D::*setSubloadCallback_function_type )( ::osg::Texture2D::SubloadCallback * ) ;
             
             Texture2D_exposer.def( 
                 "setSubloadCallback"
@@ -705,7 +604,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::setTextureHeight
         
-            typedef void ( ::osg::Texture2D::*setTextureHeight_function_type)( int ) ;
+            typedef void ( ::osg::Texture2D::*setTextureHeight_function_type )( int ) ;
             
             Texture2D_exposer.def( 
                 "setTextureHeight"
@@ -715,7 +614,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::setTextureSize
         
-            typedef void ( ::osg::Texture2D::*setTextureSize_function_type)( int,int ) const;
+            typedef void ( ::osg::Texture2D::*setTextureSize_function_type )( int,int ) const;
             
             Texture2D_exposer.def( 
                 "setTextureSize"
@@ -726,7 +625,7 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture2D::setTextureWidth
         
-            typedef void ( ::osg::Texture2D::*setTextureWidth_function_type)( int ) ;
+            typedef void ( ::osg::Texture2D::*setTextureWidth_function_type )( int ) ;
             
             Texture2D_exposer.def( 
                 "setTextureWidth"
@@ -736,8 +635,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture::asTexture
         
-            typedef ::osg::Texture * ( ::osg::Texture::*asTexture_function_type)(  ) ;
-            typedef ::osg::Texture * ( Texture2D_wrapper::*default_asTexture_function_type)(  ) ;
+            typedef ::osg::Texture * ( ::osg::Texture::*asTexture_function_type )(  ) ;
+            typedef ::osg::Texture * ( Texture2D_wrapper::*default_asTexture_function_type )(  ) ;
             
             Texture2D_exposer.def( 
                 "asTexture"
@@ -748,8 +647,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture::asTexture
         
-            typedef ::osg::Texture const * ( ::osg::Texture::*asTexture_function_type)(  ) const;
-            typedef ::osg::Texture const * ( Texture2D_wrapper::*default_asTexture_function_type)(  ) const;
+            typedef ::osg::Texture const * ( ::osg::Texture::*asTexture_function_type )(  ) const;
+            typedef ::osg::Texture const * ( Texture2D_wrapper::*default_asTexture_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "asTexture"
@@ -760,8 +659,8 @@ void register_Texture2D_class(){
         }
         { //::osg::StateAttribute::checkValidityOfAssociatedModes
         
-            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
-            typedef bool ( Texture2D_wrapper::*default_checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
+            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
+            typedef bool ( Texture2D_wrapper::*default_checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
             
             Texture2D_exposer.def( 
                 "checkValidityOfAssociatedModes"
@@ -772,8 +671,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture::compileGLObjects
         
-            typedef void ( ::osg::Texture::*compileGLObjects_function_type)( ::osg::State & ) const;
-            typedef void ( Texture2D_wrapper::*default_compileGLObjects_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::Texture::*compileGLObjects_function_type )( ::osg::State & ) const;
+            typedef void ( Texture2D_wrapper::*default_compileGLObjects_function_type )( ::osg::State & ) const;
             
             Texture2D_exposer.def( 
                 "compileGLObjects"
@@ -782,21 +681,10 @@ void register_Texture2D_class(){
                 , ( bp::arg("state") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( Texture2D_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            Texture2D_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&Texture2D_wrapper::default_computeDataVariance) );
-        
-        }
         { //::osg::StateAttribute::getMember
         
-            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type)(  ) const;
-            typedef unsigned int ( Texture2D_wrapper::*default_getMember_function_type)(  ) const;
+            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type )(  ) const;
+            typedef unsigned int ( Texture2D_wrapper::*default_getMember_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "getMember"
@@ -806,8 +694,8 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture::getModeUsage
         
-            typedef bool ( ::osg::Texture::*getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
-            typedef bool ( Texture2D_wrapper::*default_getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( ::osg::Texture::*getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( Texture2D_wrapper::*default_getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
             
             Texture2D_exposer.def( 
                 "getModeUsage"
@@ -816,34 +704,10 @@ void register_Texture2D_class(){
                 , ( bp::arg("usage") ) );
         
         }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( Texture2D_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            Texture2D_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Texture2D_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( Texture2D_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            Texture2D_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Texture2D_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::Texture::isTextureAttribute
         
-            typedef bool ( ::osg::Texture::*isTextureAttribute_function_type)(  ) const;
-            typedef bool ( Texture2D_wrapper::*default_isTextureAttribute_function_type)(  ) const;
+            typedef bool ( ::osg::Texture::*isTextureAttribute_function_type )(  ) const;
+            typedef bool ( Texture2D_wrapper::*default_isTextureAttribute_function_type )(  ) const;
             
             Texture2D_exposer.def( 
                 "isTextureAttribute"
@@ -853,61 +717,14 @@ void register_Texture2D_class(){
         }
         { //::osg::Texture::resizeGLObjectBuffers
         
-            typedef void ( ::osg::Texture::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( Texture2D_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::Texture::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( Texture2D_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             Texture2D_exposer.def( 
                 "resizeGLObjectBuffers"
                 , resizeGLObjectBuffers_function_type(&::osg::Texture::resizeGLObjectBuffers)
                 , default_resizeGLObjectBuffers_function_type(&Texture2D_wrapper::default_resizeGLObjectBuffers)
                 , ( bp::arg("maxSize") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( Texture2D_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            Texture2D_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&Texture2D_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            Texture2D_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( Texture2D_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            Texture2D_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&Texture2D_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( Texture2D_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            Texture2D_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&Texture2D_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
     }

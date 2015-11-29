@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__convenience.pypp.hpp"
 #include "__call_policies.pypp.hpp"
-#include "wrap_osgviewer.h"
+#include "wrap_osgViewer.h"
 #include "wrap_referenced.h"
-#include "graphicswindowembedded.pypp.hpp"
+#include "GraphicsWindowEmbedded.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -533,8 +533,8 @@ void register_GraphicsWindowEmbedded_class(){
         GraphicsWindowEmbedded_exposer.def( bp::init< int, int, int, int >(( bp::arg("x"), bp::arg("y"), bp::arg("width"), bp::arg("height") )) );
         { //::osgViewer::GraphicsWindowEmbedded::className
         
-            typedef char const * ( ::osgViewer::GraphicsWindowEmbedded::*className_function_type)(  ) const;
-            typedef char const * ( GraphicsWindowEmbedded_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osgViewer::GraphicsWindowEmbedded::*className_function_type )(  ) const;
+            typedef char const * ( GraphicsWindowEmbedded_wrapper::*default_className_function_type )(  ) const;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "className"
@@ -544,8 +544,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindowEmbedded::closeImplementation
         
-            typedef void ( ::osgViewer::GraphicsWindowEmbedded::*closeImplementation_function_type)(  ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_closeImplementation_function_type)(  ) ;
+            typedef void ( ::osgViewer::GraphicsWindowEmbedded::*closeImplementation_function_type )(  ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_closeImplementation_function_type )(  ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "closeImplementation"
@@ -555,8 +555,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindowEmbedded::grabFocus
         
-            typedef void ( ::osgViewer::GraphicsWindowEmbedded::*grabFocus_function_type)(  ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_grabFocus_function_type)(  ) ;
+            typedef void ( ::osgViewer::GraphicsWindowEmbedded::*grabFocus_function_type )(  ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_grabFocus_function_type )(  ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "grabFocus"
@@ -566,8 +566,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindowEmbedded::grabFocusIfPointerInWindow
         
-            typedef void ( ::osgViewer::GraphicsWindowEmbedded::*grabFocusIfPointerInWindow_function_type)(  ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_grabFocusIfPointerInWindow_function_type)(  ) ;
+            typedef void ( ::osgViewer::GraphicsWindowEmbedded::*grabFocusIfPointerInWindow_function_type )(  ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_grabFocusIfPointerInWindow_function_type )(  ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "grabFocusIfPointerInWindow"
@@ -577,7 +577,7 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindowEmbedded::init
         
-            typedef void ( ::osgViewer::GraphicsWindowEmbedded::*init_function_type)(  ) ;
+            typedef void ( ::osgViewer::GraphicsWindowEmbedded::*init_function_type )(  ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "init"
@@ -586,8 +586,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindowEmbedded::isRealizedImplementation
         
-            typedef bool ( ::osgViewer::GraphicsWindowEmbedded::*isRealizedImplementation_function_type)(  ) const;
-            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_isRealizedImplementation_function_type)(  ) const;
+            typedef bool ( ::osgViewer::GraphicsWindowEmbedded::*isRealizedImplementation_function_type )(  ) const;
+            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_isRealizedImplementation_function_type )(  ) const;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "isRealizedImplementation"
@@ -597,8 +597,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindowEmbedded::isSameKindAs
         
-            typedef bool ( ::osgViewer::GraphicsWindowEmbedded::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osgViewer::GraphicsWindowEmbedded::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "isSameKindAs"
@@ -609,8 +609,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindowEmbedded::libraryName
         
-            typedef char const * ( ::osgViewer::GraphicsWindowEmbedded::*libraryName_function_type)(  ) const;
-            typedef char const * ( GraphicsWindowEmbedded_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osgViewer::GraphicsWindowEmbedded::*libraryName_function_type )(  ) const;
+            typedef char const * ( GraphicsWindowEmbedded_wrapper::*default_libraryName_function_type )(  ) const;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "libraryName"
@@ -620,8 +620,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindowEmbedded::makeCurrentImplementation
         
-            typedef bool ( ::osgViewer::GraphicsWindowEmbedded::*makeCurrentImplementation_function_type)(  ) ;
-            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_makeCurrentImplementation_function_type)(  ) ;
+            typedef bool ( ::osgViewer::GraphicsWindowEmbedded::*makeCurrentImplementation_function_type )(  ) ;
+            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_makeCurrentImplementation_function_type )(  ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "makeCurrentImplementation"
@@ -631,8 +631,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindowEmbedded::raiseWindow
         
-            typedef void ( ::osgViewer::GraphicsWindowEmbedded::*raiseWindow_function_type)(  ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_raiseWindow_function_type)(  ) ;
+            typedef void ( ::osgViewer::GraphicsWindowEmbedded::*raiseWindow_function_type )(  ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_raiseWindow_function_type )(  ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "raiseWindow"
@@ -642,8 +642,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindowEmbedded::realizeImplementation
         
-            typedef bool ( ::osgViewer::GraphicsWindowEmbedded::*realizeImplementation_function_type)(  ) ;
-            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_realizeImplementation_function_type)(  ) ;
+            typedef bool ( ::osgViewer::GraphicsWindowEmbedded::*realizeImplementation_function_type )(  ) ;
+            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_realizeImplementation_function_type )(  ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "realizeImplementation"
@@ -653,8 +653,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindowEmbedded::releaseContextImplementation
         
-            typedef bool ( ::osgViewer::GraphicsWindowEmbedded::*releaseContextImplementation_function_type)(  ) ;
-            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_releaseContextImplementation_function_type)(  ) ;
+            typedef bool ( ::osgViewer::GraphicsWindowEmbedded::*releaseContextImplementation_function_type )(  ) ;
+            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_releaseContextImplementation_function_type )(  ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "releaseContextImplementation"
@@ -664,8 +664,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindowEmbedded::swapBuffersImplementation
         
-            typedef void ( ::osgViewer::GraphicsWindowEmbedded::*swapBuffersImplementation_function_type)(  ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_swapBuffersImplementation_function_type)(  ) ;
+            typedef void ( ::osgViewer::GraphicsWindowEmbedded::*swapBuffersImplementation_function_type )(  ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_swapBuffersImplementation_function_type )(  ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "swapBuffersImplementation"
@@ -675,8 +675,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindowEmbedded::valid
         
-            typedef bool ( ::osgViewer::GraphicsWindowEmbedded::*valid_function_type)(  ) const;
-            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_valid_function_type)(  ) const;
+            typedef bool ( ::osgViewer::GraphicsWindowEmbedded::*valid_function_type )(  ) const;
+            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_valid_function_type )(  ) const;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "valid"
@@ -686,8 +686,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::bindPBufferToTextureImplementation
         
-            typedef void ( ::osgViewer::GraphicsWindow::*bindPBufferToTextureImplementation_function_type)( ::GLenum ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_bindPBufferToTextureImplementation_function_type)( ::GLenum ) ;
+            typedef void ( ::osgViewer::GraphicsWindow::*bindPBufferToTextureImplementation_function_type )( ::GLenum ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_bindPBufferToTextureImplementation_function_type )( ::GLenum ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "bindPBufferToTextureImplementation"
@@ -698,8 +698,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::checkEvents
         
-            typedef bool ( ::osgViewer::GraphicsWindow::*checkEvents_function_type)(  ) ;
-            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_checkEvents_function_type)(  ) ;
+            typedef bool ( ::osgViewer::GraphicsWindow::*checkEvents_function_type )(  ) ;
+            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_checkEvents_function_type )(  ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "checkEvents"
@@ -709,8 +709,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::getWindowDecoration
         
-            typedef bool ( ::osgViewer::GraphicsWindow::*getWindowDecoration_function_type)(  ) const;
-            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_getWindowDecoration_function_type)(  ) const;
+            typedef bool ( ::osgViewer::GraphicsWindow::*getWindowDecoration_function_type )(  ) const;
+            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_getWindowDecoration_function_type )(  ) const;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "getWindowDecoration"
@@ -720,8 +720,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::getWindowName
         
-            typedef ::std::string ( ::osgViewer::GraphicsWindow::*getWindowName_function_type)(  ) ;
-            typedef ::std::string ( GraphicsWindowEmbedded_wrapper::*default_getWindowName_function_type)(  ) ;
+            typedef ::std::string ( ::osgViewer::GraphicsWindow::*getWindowName_function_type )(  ) ;
+            typedef ::std::string ( GraphicsWindowEmbedded_wrapper::*default_getWindowName_function_type )(  ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "getWindowName"
@@ -741,8 +741,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::makeContextCurrentImplementation
         
-            typedef bool ( ::osgViewer::GraphicsWindow::*makeContextCurrentImplementation_function_type)( ::osg::GraphicsContext * ) ;
-            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_makeContextCurrentImplementation_function_type)( ::osg::GraphicsContext * ) ;
+            typedef bool ( ::osgViewer::GraphicsWindow::*makeContextCurrentImplementation_function_type )( ::osg::GraphicsContext * ) ;
+            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_makeContextCurrentImplementation_function_type )( ::osg::GraphicsContext * ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "makeContextCurrentImplementation"
@@ -753,8 +753,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::requestContinuousUpdate
         
-            typedef void ( ::osgViewer::GraphicsWindow::*requestContinuousUpdate_function_type)( bool ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_requestContinuousUpdate_function_type)( bool ) ;
+            typedef void ( ::osgViewer::GraphicsWindow::*requestContinuousUpdate_function_type )( bool ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_requestContinuousUpdate_function_type )( bool ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "requestContinuousUpdate"
@@ -765,8 +765,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::requestRedraw
         
-            typedef void ( ::osgViewer::GraphicsWindow::*requestRedraw_function_type)(  ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_requestRedraw_function_type)(  ) ;
+            typedef void ( ::osgViewer::GraphicsWindow::*requestRedraw_function_type )(  ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_requestRedraw_function_type )(  ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "requestRedraw"
@@ -776,8 +776,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::requestWarpPointer
         
-            typedef void ( ::osgViewer::GraphicsWindow::*requestWarpPointer_function_type)( float,float ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_requestWarpPointer_function_type)( float,float ) ;
+            typedef void ( ::osgViewer::GraphicsWindow::*requestWarpPointer_function_type )( float,float ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_requestWarpPointer_function_type )( float,float ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "requestWarpPointer"
@@ -788,8 +788,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::setCursor
         
-            typedef void ( ::osgViewer::GraphicsWindow::*setCursor_function_type)( ::osgViewer::GraphicsWindow::MouseCursor ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_setCursor_function_type)( ::osgViewer::GraphicsWindow::MouseCursor ) ;
+            typedef void ( ::osgViewer::GraphicsWindow::*setCursor_function_type )( ::osgViewer::GraphicsWindow::MouseCursor ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_setCursor_function_type )( ::osgViewer::GraphicsWindow::MouseCursor ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "setCursor"
@@ -800,8 +800,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::setSwapGroup
         
-            typedef void ( ::osgViewer::GraphicsWindow::*setSwapGroup_function_type)( bool,::GLuint,::GLuint ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_setSwapGroup_function_type)( bool,::GLuint,::GLuint ) ;
+            typedef void ( ::osgViewer::GraphicsWindow::*setSwapGroup_function_type )( bool,::GLuint,::GLuint ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_setSwapGroup_function_type )( bool,::GLuint,::GLuint ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "setSwapGroup"
@@ -812,8 +812,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::setSyncToVBlank
         
-            typedef void ( ::osgViewer::GraphicsWindow::*setSyncToVBlank_function_type)( bool ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_setSyncToVBlank_function_type)( bool ) ;
+            typedef void ( ::osgViewer::GraphicsWindow::*setSyncToVBlank_function_type )( bool ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_setSyncToVBlank_function_type )( bool ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "setSyncToVBlank"
@@ -824,8 +824,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::setWindowDecorationImplementation
         
-            typedef bool ( ::osgViewer::GraphicsWindow::*setWindowDecorationImplementation_function_type)( bool ) ;
-            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_setWindowDecorationImplementation_function_type)( bool ) ;
+            typedef bool ( ::osgViewer::GraphicsWindow::*setWindowDecorationImplementation_function_type )( bool ) ;
+            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_setWindowDecorationImplementation_function_type )( bool ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "setWindowDecorationImplementation"
@@ -836,8 +836,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::setWindowName
         
-            typedef void ( ::osgViewer::GraphicsWindow::*setWindowName_function_type)( ::std::string const & ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_setWindowName_function_type)( ::std::string const & ) ;
+            typedef void ( ::osgViewer::GraphicsWindow::*setWindowName_function_type )( ::std::string const & ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_setWindowName_function_type )( ::std::string const & ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "setWindowName"
@@ -848,8 +848,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::setWindowRectangleImplementation
         
-            typedef bool ( ::osgViewer::GraphicsWindow::*setWindowRectangleImplementation_function_type)( int,int,int,int ) ;
-            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_setWindowRectangleImplementation_function_type)( int,int,int,int ) ;
+            typedef bool ( ::osgViewer::GraphicsWindow::*setWindowRectangleImplementation_function_type )( int,int,int,int ) ;
+            typedef bool ( GraphicsWindowEmbedded_wrapper::*default_setWindowRectangleImplementation_function_type )( int,int,int,int ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "setWindowRectangleImplementation"
@@ -860,8 +860,8 @@ void register_GraphicsWindowEmbedded_class(){
         }
         { //::osgViewer::GraphicsWindow::useCursor
         
-            typedef void ( ::osgViewer::GraphicsWindow::*useCursor_function_type)( bool ) ;
-            typedef void ( GraphicsWindowEmbedded_wrapper::*default_useCursor_function_type)( bool ) ;
+            typedef void ( ::osgViewer::GraphicsWindow::*useCursor_function_type )( bool ) ;
+            typedef void ( GraphicsWindowEmbedded_wrapper::*default_useCursor_function_type )( bool ) ;
             
             GraphicsWindowEmbedded_exposer.def( 
                 "useCursor"

@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/list.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "_ref_ptr_less__osg_scope_TemplateIndexArray_less__unsigned_int_comma___obrace_osg_scope_Array_scope_Type_cbrace_6_comma__1_comma__5125__greater___greater___value_traits.pypp.hpp"
 #include "std_list_tiarray_uint_5125.pypp.hpp"
 

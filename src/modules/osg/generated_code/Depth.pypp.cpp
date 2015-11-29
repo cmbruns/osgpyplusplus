@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "depth.pypp.hpp"
+#include "Depth.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -160,18 +160,6 @@ struct Depth_wrapper : osg::Depth, bp::wrapper< osg::Depth > {
         osg::StateAttribute::compileGLObjects( boost::ref(arg0) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
     virtual unsigned int getMember(  ) const  {
         if( bp::override func_getMember = this->get_override( "getMember" ) )
             return func_getMember(  );
@@ -182,30 +170,6 @@ struct Depth_wrapper : osg::Depth, bp::wrapper< osg::Depth > {
     
     unsigned int default_getMember(  ) const  {
         return osg::StateAttribute::getMember( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
     }
 
     virtual bool isTextureAttribute(  ) const  {
@@ -232,42 +196,6 @@ struct Depth_wrapper : osg::Depth, bp::wrapper< osg::Depth > {
         osg::StateAttribute::resizeGLObjectBuffers( arg0 );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_Depth_class(){
@@ -291,8 +219,8 @@ void register_Depth_class(){
         bp::implicitly_convertible< osg::Depth::Function, osg::Depth >();
         { //::osg::Depth::apply
         
-            typedef void ( ::osg::Depth::*apply_function_type)( ::osg::State & ) const;
-            typedef void ( Depth_wrapper::*default_apply_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::Depth::*apply_function_type )( ::osg::State & ) const;
+            typedef void ( Depth_wrapper::*default_apply_function_type )( ::osg::State & ) const;
             
             Depth_exposer.def( 
                 "apply"
@@ -303,8 +231,8 @@ void register_Depth_class(){
         }
         { //::osg::Depth::className
         
-            typedef char const * ( ::osg::Depth::*className_function_type)(  ) const;
-            typedef char const * ( Depth_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::Depth::*className_function_type )(  ) const;
+            typedef char const * ( Depth_wrapper::*default_className_function_type )(  ) const;
             
             Depth_exposer.def( 
                 "className"
@@ -314,8 +242,8 @@ void register_Depth_class(){
         }
         { //::osg::Depth::clone
         
-            typedef ::osg::Object * ( ::osg::Depth::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( Depth_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::Depth::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( Depth_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             Depth_exposer.def( 
                 "clone"
@@ -327,8 +255,8 @@ void register_Depth_class(){
         }
         { //::osg::Depth::cloneType
         
-            typedef ::osg::Object * ( ::osg::Depth::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( Depth_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::Depth::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( Depth_wrapper::*default_cloneType_function_type )(  ) const;
             
             Depth_exposer.def( 
                 "cloneType"
@@ -339,7 +267,7 @@ void register_Depth_class(){
         }
         { //::osg::Depth::getFunction
         
-            typedef ::osg::Depth::Function ( ::osg::Depth::*getFunction_function_type)(  ) const;
+            typedef ::osg::Depth::Function ( ::osg::Depth::*getFunction_function_type )(  ) const;
             
             Depth_exposer.def( 
                 "getFunction"
@@ -348,8 +276,8 @@ void register_Depth_class(){
         }
         { //::osg::Depth::getModeUsage
         
-            typedef bool ( ::osg::Depth::*getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
-            typedef bool ( Depth_wrapper::*default_getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( ::osg::Depth::*getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( Depth_wrapper::*default_getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
             
             Depth_exposer.def( 
                 "getModeUsage"
@@ -360,8 +288,8 @@ void register_Depth_class(){
         }
         { //::osg::Depth::getType
         
-            typedef ::osg::StateAttribute::Type ( ::osg::Depth::*getType_function_type)(  ) const;
-            typedef ::osg::StateAttribute::Type ( Depth_wrapper::*default_getType_function_type)(  ) const;
+            typedef ::osg::StateAttribute::Type ( ::osg::Depth::*getType_function_type )(  ) const;
+            typedef ::osg::StateAttribute::Type ( Depth_wrapper::*default_getType_function_type )(  ) const;
             
             Depth_exposer.def( 
                 "getType"
@@ -371,7 +299,7 @@ void register_Depth_class(){
         }
         { //::osg::Depth::getWriteMask
         
-            typedef bool ( ::osg::Depth::*getWriteMask_function_type)(  ) const;
+            typedef bool ( ::osg::Depth::*getWriteMask_function_type )(  ) const;
             
             Depth_exposer.def( 
                 "getWriteMask"
@@ -380,7 +308,7 @@ void register_Depth_class(){
         }
         { //::osg::Depth::getZFar
         
-            typedef double ( ::osg::Depth::*getZFar_function_type)(  ) const;
+            typedef double ( ::osg::Depth::*getZFar_function_type )(  ) const;
             
             Depth_exposer.def( 
                 "getZFar"
@@ -389,7 +317,7 @@ void register_Depth_class(){
         }
         { //::osg::Depth::getZNear
         
-            typedef double ( ::osg::Depth::*getZNear_function_type)(  ) const;
+            typedef double ( ::osg::Depth::*getZNear_function_type )(  ) const;
             
             Depth_exposer.def( 
                 "getZNear"
@@ -398,8 +326,8 @@ void register_Depth_class(){
         }
         { //::osg::Depth::isSameKindAs
         
-            typedef bool ( ::osg::Depth::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( Depth_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::Depth::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( Depth_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             Depth_exposer.def( 
                 "isSameKindAs"
@@ -410,8 +338,8 @@ void register_Depth_class(){
         }
         { //::osg::Depth::libraryName
         
-            typedef char const * ( ::osg::Depth::*libraryName_function_type)(  ) const;
-            typedef char const * ( Depth_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::Depth::*libraryName_function_type )(  ) const;
+            typedef char const * ( Depth_wrapper::*default_libraryName_function_type )(  ) const;
             
             Depth_exposer.def( 
                 "libraryName"
@@ -421,7 +349,7 @@ void register_Depth_class(){
         }
         { //::osg::Depth::setFunction
         
-            typedef void ( ::osg::Depth::*setFunction_function_type)( ::osg::Depth::Function ) ;
+            typedef void ( ::osg::Depth::*setFunction_function_type )( ::osg::Depth::Function ) ;
             
             Depth_exposer.def( 
                 "setFunction"
@@ -431,7 +359,7 @@ void register_Depth_class(){
         }
         { //::osg::Depth::setRange
         
-            typedef void ( ::osg::Depth::*setRange_function_type)( double,double ) ;
+            typedef void ( ::osg::Depth::*setRange_function_type )( double,double ) ;
             
             Depth_exposer.def( 
                 "setRange"
@@ -441,7 +369,7 @@ void register_Depth_class(){
         }
         { //::osg::Depth::setWriteMask
         
-            typedef void ( ::osg::Depth::*setWriteMask_function_type)( bool ) ;
+            typedef void ( ::osg::Depth::*setWriteMask_function_type )( bool ) ;
             
             Depth_exposer.def( 
                 "setWriteMask"
@@ -451,7 +379,7 @@ void register_Depth_class(){
         }
         { //::osg::Depth::setZFar
         
-            typedef void ( ::osg::Depth::*setZFar_function_type)( double ) ;
+            typedef void ( ::osg::Depth::*setZFar_function_type )( double ) ;
             
             Depth_exposer.def( 
                 "setZFar"
@@ -461,7 +389,7 @@ void register_Depth_class(){
         }
         { //::osg::Depth::setZNear
         
-            typedef void ( ::osg::Depth::*setZNear_function_type)( double ) ;
+            typedef void ( ::osg::Depth::*setZNear_function_type )( double ) ;
             
             Depth_exposer.def( 
                 "setZNear"
@@ -471,8 +399,8 @@ void register_Depth_class(){
         }
         { //::osg::StateAttribute::asTexture
         
-            typedef ::osg::Texture * ( ::osg::StateAttribute::*asTexture_function_type)(  ) ;
-            typedef ::osg::Texture * ( Depth_wrapper::*default_asTexture_function_type)(  ) ;
+            typedef ::osg::Texture * ( ::osg::StateAttribute::*asTexture_function_type )(  ) ;
+            typedef ::osg::Texture * ( Depth_wrapper::*default_asTexture_function_type )(  ) ;
             
             Depth_exposer.def( 
                 "asTexture"
@@ -483,8 +411,8 @@ void register_Depth_class(){
         }
         { //::osg::StateAttribute::asTexture
         
-            typedef ::osg::Texture const * ( ::osg::StateAttribute::*asTexture_function_type)(  ) const;
-            typedef ::osg::Texture const * ( Depth_wrapper::*default_asTexture_function_type)(  ) const;
+            typedef ::osg::Texture const * ( ::osg::StateAttribute::*asTexture_function_type )(  ) const;
+            typedef ::osg::Texture const * ( Depth_wrapper::*default_asTexture_function_type )(  ) const;
             
             Depth_exposer.def( 
                 "asTexture"
@@ -495,8 +423,8 @@ void register_Depth_class(){
         }
         { //::osg::StateAttribute::checkValidityOfAssociatedModes
         
-            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
-            typedef bool ( Depth_wrapper::*default_checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
+            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
+            typedef bool ( Depth_wrapper::*default_checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
             
             Depth_exposer.def( 
                 "checkValidityOfAssociatedModes"
@@ -507,8 +435,8 @@ void register_Depth_class(){
         }
         { //::osg::StateAttribute::compileGLObjects
         
-            typedef void ( ::osg::StateAttribute::*compileGLObjects_function_type)( ::osg::State & ) const;
-            typedef void ( Depth_wrapper::*default_compileGLObjects_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::StateAttribute::*compileGLObjects_function_type )( ::osg::State & ) const;
+            typedef void ( Depth_wrapper::*default_compileGLObjects_function_type )( ::osg::State & ) const;
             
             Depth_exposer.def( 
                 "compileGLObjects"
@@ -517,21 +445,10 @@ void register_Depth_class(){
                 , ( bp::arg("arg0") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( Depth_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            Depth_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&Depth_wrapper::default_computeDataVariance) );
-        
-        }
         { //::osg::StateAttribute::getMember
         
-            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type)(  ) const;
-            typedef unsigned int ( Depth_wrapper::*default_getMember_function_type)(  ) const;
+            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type )(  ) const;
+            typedef unsigned int ( Depth_wrapper::*default_getMember_function_type )(  ) const;
             
             Depth_exposer.def( 
                 "getMember"
@@ -539,34 +456,10 @@ void register_Depth_class(){
                 , default_getMember_function_type(&Depth_wrapper::default_getMember) );
         
         }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( Depth_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            Depth_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Depth_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( Depth_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            Depth_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Depth_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::StateAttribute::isTextureAttribute
         
-            typedef bool ( ::osg::StateAttribute::*isTextureAttribute_function_type)(  ) const;
-            typedef bool ( Depth_wrapper::*default_isTextureAttribute_function_type)(  ) const;
+            typedef bool ( ::osg::StateAttribute::*isTextureAttribute_function_type )(  ) const;
+            typedef bool ( Depth_wrapper::*default_isTextureAttribute_function_type )(  ) const;
             
             Depth_exposer.def( 
                 "isTextureAttribute"
@@ -576,61 +469,14 @@ void register_Depth_class(){
         }
         { //::osg::StateAttribute::resizeGLObjectBuffers
         
-            typedef void ( ::osg::StateAttribute::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( Depth_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::StateAttribute::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( Depth_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             Depth_exposer.def( 
                 "resizeGLObjectBuffers"
                 , resizeGLObjectBuffers_function_type(&::osg::StateAttribute::resizeGLObjectBuffers)
                 , default_resizeGLObjectBuffers_function_type(&Depth_wrapper::default_resizeGLObjectBuffers)
                 , ( bp::arg("arg0") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( Depth_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            Depth_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&Depth_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            Depth_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( Depth_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            Depth_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&Depth_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( Depth_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            Depth_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&Depth_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
     }

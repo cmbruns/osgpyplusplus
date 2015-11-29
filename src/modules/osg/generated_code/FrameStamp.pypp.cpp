@@ -3,50 +3,20 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "framestamp.pypp.hpp"
+#include "FrameStamp.pypp.hpp"
 
 namespace bp = boost::python;
-
-struct FrameStamp_wrapper : osg::FrameStamp, bp::wrapper< osg::FrameStamp > {
-
-    FrameStamp_wrapper( )
-    : osg::FrameStamp( )
-      , bp::wrapper< osg::FrameStamp >(){
-        // null constructor
-    
-    }
-
-    FrameStamp_wrapper(::osg::FrameStamp const & fs )
-    : osg::FrameStamp( boost::ref(fs) )
-      , bp::wrapper< osg::FrameStamp >(){
-        // copy constructor
-    
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
 
 void register_FrameStamp_class(){
 
     { //::osg::FrameStamp
-        typedef bp::class_< FrameStamp_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::FrameStamp > > FrameStamp_exposer_t;
+        typedef bp::class_< osg::FrameStamp, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::FrameStamp > > FrameStamp_exposer_t;
         FrameStamp_exposer_t FrameStamp_exposer = FrameStamp_exposer_t( "FrameStamp", "\n Class which encapsulates the frame number, reference time and calendar\n time of specific frame, used to synchronize operations on the scene graph\n and other machines when using a graphics cluster.  Note the calendar\n time can be an artificial simulation time or capture the real time\n of day etc.\n", bp::init< >("\n Class which encapsulates the frame number, reference time and calendar\n time of specific frame, used to synchronize operations on the scene graph\n and other machines when using a graphics cluster.  Note the calendar\n time can be an artificial simulation time or capture the real time\n of day etc.\n") );
         bp::scope FrameStamp_scope( FrameStamp_exposer );
         FrameStamp_exposer.def( bp::init< osg::FrameStamp const & >(( bp::arg("fs") )) );
         { //::osg::FrameStamp::getCalendarTime
         
-            typedef void ( ::osg::FrameStamp::*getCalendarTime_function_type)( ::tm & ) const;
+            typedef void ( ::osg::FrameStamp::*getCalendarTime_function_type )( ::tm & ) const;
             
             FrameStamp_exposer.def( 
                 "getCalendarTime"
@@ -56,7 +26,7 @@ void register_FrameStamp_class(){
         }
         { //::osg::FrameStamp::getFrameNumber
         
-            typedef unsigned int ( ::osg::FrameStamp::*getFrameNumber_function_type)(  ) const;
+            typedef unsigned int ( ::osg::FrameStamp::*getFrameNumber_function_type )(  ) const;
             
             FrameStamp_exposer.def( 
                 "getFrameNumber"
@@ -65,7 +35,7 @@ void register_FrameStamp_class(){
         }
         { //::osg::FrameStamp::getReferenceTime
         
-            typedef double ( ::osg::FrameStamp::*getReferenceTime_function_type)(  ) const;
+            typedef double ( ::osg::FrameStamp::*getReferenceTime_function_type )(  ) const;
             
             FrameStamp_exposer.def( 
                 "getReferenceTime"
@@ -74,7 +44,7 @@ void register_FrameStamp_class(){
         }
         { //::osg::FrameStamp::getSimulationTime
         
-            typedef double ( ::osg::FrameStamp::*getSimulationTime_function_type)(  ) const;
+            typedef double ( ::osg::FrameStamp::*getSimulationTime_function_type )(  ) const;
             
             FrameStamp_exposer.def( 
                 "getSimulationTime"
@@ -83,7 +53,7 @@ void register_FrameStamp_class(){
         }
         { //::osg::FrameStamp::setCalendarTime
         
-            typedef void ( ::osg::FrameStamp::*setCalendarTime_function_type)( ::tm const & ) ;
+            typedef void ( ::osg::FrameStamp::*setCalendarTime_function_type )( ::tm const & ) ;
             
             FrameStamp_exposer.def( 
                 "setCalendarTime"
@@ -93,7 +63,7 @@ void register_FrameStamp_class(){
         }
         { //::osg::FrameStamp::setFrameNumber
         
-            typedef void ( ::osg::FrameStamp::*setFrameNumber_function_type)( unsigned int ) ;
+            typedef void ( ::osg::FrameStamp::*setFrameNumber_function_type )( unsigned int ) ;
             
             FrameStamp_exposer.def( 
                 "setFrameNumber"
@@ -103,7 +73,7 @@ void register_FrameStamp_class(){
         }
         { //::osg::FrameStamp::setReferenceTime
         
-            typedef void ( ::osg::FrameStamp::*setReferenceTime_function_type)( double ) ;
+            typedef void ( ::osg::FrameStamp::*setReferenceTime_function_type )( double ) ;
             
             FrameStamp_exposer.def( 
                 "setReferenceTime"
@@ -113,24 +83,12 @@ void register_FrameStamp_class(){
         }
         { //::osg::FrameStamp::setSimulationTime
         
-            typedef void ( ::osg::FrameStamp::*setSimulationTime_function_type)( double ) ;
+            typedef void ( ::osg::FrameStamp::*setSimulationTime_function_type )( double ) ;
             
             FrameStamp_exposer.def( 
                 "setSimulationTime"
                 , setSimulationTime_function_type( &::osg::FrameStamp::setSimulationTime )
                 , ( bp::arg("refTime") ) );
-        
-        }
-        { //::osg::Referenced::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Referenced::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( FrameStamp_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            FrameStamp_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Referenced::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&FrameStamp_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
         
         }
     }

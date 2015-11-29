@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "drawable.pypp.hpp"
+#include "Drawable.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -491,90 +491,6 @@ struct Drawable_wrapper : osg::Drawable, bp::wrapper< osg::Drawable > {
             return osg::Drawable::CullCallback::libraryName( );
         }
     
-        virtual void computeDataVariance(  ) {
-            if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-                func_computeDataVariance(  );
-            else{
-                this->osg::Object::computeDataVariance(  );
-            }
-        }
-        
-        void default_computeDataVariance(  ) {
-            osg::Object::computeDataVariance( );
-        }
-    
-        virtual ::osg::Referenced * getUserData(  ) {
-            if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-                return func_getUserData(  );
-            else{
-                return this->osg::Object::getUserData(  );
-            }
-        }
-        
-        ::osg::Referenced * default_getUserData(  ) {
-            return osg::Object::getUserData( );
-        }
-    
-        virtual ::osg::Referenced const * getUserData(  ) const  {
-            if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-                return func_getUserData(  );
-            else{
-                return this->osg::Object::getUserData(  );
-            }
-        }
-        
-        ::osg::Referenced const * default_getUserData(  ) const  {
-            return osg::Object::getUserData( );
-        }
-    
-        virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-            if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-                func_resizeGLObjectBuffers( arg0 );
-            else{
-                this->osg::Object::resizeGLObjectBuffers( arg0 );
-            }
-        }
-        
-        void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-            osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    
-        virtual void setName( ::std::string const & name ) {
-            if( bp::override func_setName = this->get_override( "setName" ) )
-                func_setName( name );
-            else{
-                this->osg::Object::setName( name );
-            }
-        }
-        
-        void default_setName( ::std::string const & name ) {
-            osg::Object::setName( name );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Object::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    
-        virtual void setUserData( ::osg::Referenced * obj ) {
-            if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-                func_setUserData( boost::python::ptr(obj) );
-            else{
-                this->osg::Object::setUserData( boost::python::ptr(obj) );
-            }
-        }
-        
-        void default_setUserData( ::osg::Referenced * obj ) {
-            osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    
     };
 
     struct DrawCallback_wrapper : osg::Drawable::DrawCallback, bp::wrapper< osg::Drawable::DrawCallback > {
@@ -649,90 +565,6 @@ struct Drawable_wrapper : osg::Drawable, bp::wrapper< osg::Drawable > {
         
         char const * default_libraryName(  ) const  {
             return osg::Drawable::DrawCallback::libraryName( );
-        }
-    
-        virtual void computeDataVariance(  ) {
-            if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-                func_computeDataVariance(  );
-            else{
-                this->osg::Object::computeDataVariance(  );
-            }
-        }
-        
-        void default_computeDataVariance(  ) {
-            osg::Object::computeDataVariance( );
-        }
-    
-        virtual ::osg::Referenced * getUserData(  ) {
-            if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-                return func_getUserData(  );
-            else{
-                return this->osg::Object::getUserData(  );
-            }
-        }
-        
-        ::osg::Referenced * default_getUserData(  ) {
-            return osg::Object::getUserData( );
-        }
-    
-        virtual ::osg::Referenced const * getUserData(  ) const  {
-            if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-                return func_getUserData(  );
-            else{
-                return this->osg::Object::getUserData(  );
-            }
-        }
-        
-        ::osg::Referenced const * default_getUserData(  ) const  {
-            return osg::Object::getUserData( );
-        }
-    
-        virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-            if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-                func_resizeGLObjectBuffers( arg0 );
-            else{
-                this->osg::Object::resizeGLObjectBuffers( arg0 );
-            }
-        }
-        
-        void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-            osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    
-        virtual void setName( ::std::string const & name ) {
-            if( bp::override func_setName = this->get_override( "setName" ) )
-                func_setName( name );
-            else{
-                this->osg::Object::setName( name );
-            }
-        }
-        
-        void default_setName( ::std::string const & name ) {
-            osg::Object::setName( name );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Object::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    
-        virtual void setUserData( ::osg::Referenced * obj ) {
-            if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-                func_setUserData( boost::python::ptr(obj) );
-            else{
-                this->osg::Object::setUserData( boost::python::ptr(obj) );
-            }
-        }
-        
-        void default_setUserData( ::osg::Referenced * obj ) {
-            osg::Object::setUserData( boost::python::ptr(obj) );
         }
     
     };
@@ -811,90 +643,6 @@ struct Drawable_wrapper : osg::Drawable, bp::wrapper< osg::Drawable > {
             return osg::Drawable::EventCallback::libraryName( );
         }
     
-        virtual void computeDataVariance(  ) {
-            if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-                func_computeDataVariance(  );
-            else{
-                this->osg::Object::computeDataVariance(  );
-            }
-        }
-        
-        void default_computeDataVariance(  ) {
-            osg::Object::computeDataVariance( );
-        }
-    
-        virtual ::osg::Referenced * getUserData(  ) {
-            if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-                return func_getUserData(  );
-            else{
-                return this->osg::Object::getUserData(  );
-            }
-        }
-        
-        ::osg::Referenced * default_getUserData(  ) {
-            return osg::Object::getUserData( );
-        }
-    
-        virtual ::osg::Referenced const * getUserData(  ) const  {
-            if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-                return func_getUserData(  );
-            else{
-                return this->osg::Object::getUserData(  );
-            }
-        }
-        
-        ::osg::Referenced const * default_getUserData(  ) const  {
-            return osg::Object::getUserData( );
-        }
-    
-        virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-            if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-                func_resizeGLObjectBuffers( arg0 );
-            else{
-                this->osg::Object::resizeGLObjectBuffers( arg0 );
-            }
-        }
-        
-        void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-            osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    
-        virtual void setName( ::std::string const & name ) {
-            if( bp::override func_setName = this->get_override( "setName" ) )
-                func_setName( name );
-            else{
-                this->osg::Object::setName( name );
-            }
-        }
-        
-        void default_setName( ::std::string const & name ) {
-            osg::Object::setName( name );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Object::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    
-        virtual void setUserData( ::osg::Referenced * obj ) {
-            if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-                func_setUserData( boost::python::ptr(obj) );
-            else{
-                this->osg::Object::setUserData( boost::python::ptr(obj) );
-            }
-        }
-        
-        void default_setUserData( ::osg::Referenced * obj ) {
-            osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    
     };
 
     struct UpdateCallback_wrapper : osg::Drawable::UpdateCallback, bp::wrapper< osg::Drawable::UpdateCallback > {
@@ -969,90 +717,6 @@ struct Drawable_wrapper : osg::Drawable, bp::wrapper< osg::Drawable > {
         
         void default_update( ::osg::NodeVisitor * arg0, ::osg::Drawable * arg1 ) {
             osg::Drawable::UpdateCallback::update( boost::python::ptr(arg0), boost::python::ptr(arg1) );
-        }
-    
-        virtual void computeDataVariance(  ) {
-            if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-                func_computeDataVariance(  );
-            else{
-                this->osg::Object::computeDataVariance(  );
-            }
-        }
-        
-        void default_computeDataVariance(  ) {
-            osg::Object::computeDataVariance( );
-        }
-    
-        virtual ::osg::Referenced * getUserData(  ) {
-            if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-                return func_getUserData(  );
-            else{
-                return this->osg::Object::getUserData(  );
-            }
-        }
-        
-        ::osg::Referenced * default_getUserData(  ) {
-            return osg::Object::getUserData( );
-        }
-    
-        virtual ::osg::Referenced const * getUserData(  ) const  {
-            if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-                return func_getUserData(  );
-            else{
-                return this->osg::Object::getUserData(  );
-            }
-        }
-        
-        ::osg::Referenced const * default_getUserData(  ) const  {
-            return osg::Object::getUserData( );
-        }
-    
-        virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-            if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-                func_resizeGLObjectBuffers( arg0 );
-            else{
-                this->osg::Object::resizeGLObjectBuffers( arg0 );
-            }
-        }
-        
-        void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-            osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    
-        virtual void setName( ::std::string const & name ) {
-            if( bp::override func_setName = this->get_override( "setName" ) )
-                func_setName( name );
-            else{
-                this->osg::Object::setName( name );
-            }
-        }
-        
-        void default_setName( ::std::string const & name ) {
-            osg::Object::setName( name );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Object::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    
-        virtual void setUserData( ::osg::Referenced * obj ) {
-            if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-                func_setUserData( boost::python::ptr(obj) );
-            else{
-                this->osg::Object::setUserData( boost::python::ptr(obj) );
-            }
-        }
-        
-        void default_setUserData( ::osg::Referenced * obj ) {
-            osg::Object::setUserData( boost::python::ptr(obj) );
         }
     
     };
@@ -1372,54 +1036,6 @@ struct Drawable_wrapper : osg::Drawable, bp::wrapper< osg::Drawable > {
         return func_cloneType(  );
     }
 
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_Drawable_class(){
@@ -1451,440 +1067,284 @@ void register_Drawable_class(){
         bp::class_< Drawable_wrapper::AttributeFunctor_wrapper >( "AttributeFunctor" )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::GLbyte * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLbyte * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::GLbyte * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLbyte * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::GLshort * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLshort * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::GLshort * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLshort * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::GLint * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLint * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::GLint * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLint * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::GLubyte * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLubyte * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::GLubyte * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLubyte * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::GLushort * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLushort * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::GLushort * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLushort * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::GLuint * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLuint * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::GLuint * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLuint * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,float * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,float * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,float * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,float * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec2 * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec2 * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec2 * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec2 * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec3 * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec3 * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec3 * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec3 * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec4 * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec4 * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec4 * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec4 * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec4ub * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec4ub * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec4ub * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec4ub * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,double * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,double * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,double * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,double * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec2d * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec2d * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec2d * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec2d * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec3d * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec3d * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec3d * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec3d * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec4d * ))(&::osg::Drawable::AttributeFunctor::apply)
-                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec4d * ))(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::AttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec4d * ) )(&::osg::Drawable::AttributeFunctor::apply)
+                , (void ( Drawable_wrapper::AttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec4d * ) )(&Drawable_wrapper::AttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) );
         bp::class_< Drawable_wrapper::ConstAttributeFunctor_wrapper >( "ConstAttributeFunctor", "\n accept an AttributeFunctor and call its methods to tell it about the internal attributes that this Drawable has.\n return true if functor handled by drawable,\n return false on failure of drawable to generate functor calls.\n" )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::GLbyte const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLbyte const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::GLbyte const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLbyte const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::GLshort const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLshort const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::GLshort const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLshort const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::GLint const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLint const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::GLint const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLint const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::GLubyte const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLubyte const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::GLubyte const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLubyte const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::GLushort const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLushort const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::GLushort const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLushort const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::GLuint const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLuint const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::GLuint const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::GLuint const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,float const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,float const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,float const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,float const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec2 const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec2 const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec2 const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec2 const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec3 const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec3 const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec3 const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec3 const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec4 const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec4 const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec4 const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec4 const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec4ub const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec4ub const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec4ub const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec4ub const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,double const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,double const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,double const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,double const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec2d const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec2d const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec2d const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec2d const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec3d const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec3d const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec3d const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec3d const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec4d const * ))(&::osg::Drawable::ConstAttributeFunctor::apply)
-                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec4d const * ))(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
+                , (void ( ::osg::Drawable::ConstAttributeFunctor::* )( unsigned int,unsigned int,::osg::Vec4d const * ) )(&::osg::Drawable::ConstAttributeFunctor::apply)
+                , (void ( Drawable_wrapper::ConstAttributeFunctor_wrapper::* )( unsigned int,unsigned int,::osg::Vec4d const * ) )(&Drawable_wrapper::ConstAttributeFunctor_wrapper::default_apply)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) );
         bp::class_< Drawable_wrapper::CullCallback_wrapper, bp::bases< osg::Object >, osg::ref_ptr< Drawable_wrapper::CullCallback_wrapper >, boost::noncopyable >( "CullCallback" )    
             .def( 
                 "className"
-                , (char const * ( ::osg::Drawable::CullCallback::* )(  )const)(&::osg::Drawable::CullCallback::className)
-                , (char const * ( Drawable_wrapper::CullCallback_wrapper::* )(  )const)(&Drawable_wrapper::CullCallback_wrapper::default_className) )    
+                , (char const * ( ::osg::Drawable::CullCallback::* )(  ) const)(&::osg::Drawable::CullCallback::className)
+                , (char const * ( Drawable_wrapper::CullCallback_wrapper::* )(  ) const)(&Drawable_wrapper::CullCallback_wrapper::default_className) )    
             .def( 
                 "clone"
-                , (::osg::Object * ( ::osg::Drawable::CullCallback::* )( ::osg::CopyOp const & )const)(&::osg::Drawable::CullCallback::clone)
-                , (::osg::Object * ( Drawable_wrapper::CullCallback_wrapper::* )( ::osg::CopyOp const & )const)(&Drawable_wrapper::CullCallback_wrapper::default_clone)
+                , (::osg::Object * ( ::osg::Drawable::CullCallback::* )( ::osg::CopyOp const & ) const)(&::osg::Drawable::CullCallback::clone)
+                , (::osg::Object * ( Drawable_wrapper::CullCallback_wrapper::* )( ::osg::CopyOp const & ) const)(&Drawable_wrapper::CullCallback_wrapper::default_clone)
                 , ( bp::arg("copyop") )
                 , bp::return_value_policy< bp::reference_existing_object >() )    
             .def( 
                 "cloneType"
-                , (::osg::Object * ( ::osg::Drawable::CullCallback::* )(  )const)(&::osg::Drawable::CullCallback::cloneType)
-                , (::osg::Object * ( Drawable_wrapper::CullCallback_wrapper::* )(  )const)(&Drawable_wrapper::CullCallback_wrapper::default_cloneType)
+                , (::osg::Object * ( ::osg::Drawable::CullCallback::* )(  ) const)(&::osg::Drawable::CullCallback::cloneType)
+                , (::osg::Object * ( Drawable_wrapper::CullCallback_wrapper::* )(  ) const)(&Drawable_wrapper::CullCallback_wrapper::default_cloneType)
                 , bp::return_value_policy< bp::reference_existing_object >() )    
             .def( 
                 "cull"
-                , (bool ( ::osg::Drawable::CullCallback::* )( ::osg::NodeVisitor *,::osg::Drawable *,::osg::State * )const)(&::osg::Drawable::CullCallback::cull)
-                , (bool ( Drawable_wrapper::CullCallback_wrapper::* )( ::osg::NodeVisitor *,::osg::Drawable *,::osg::State * )const)(&Drawable_wrapper::CullCallback_wrapper::default_cull)
+                , (bool ( ::osg::Drawable::CullCallback::* )( ::osg::NodeVisitor *,::osg::Drawable *,::osg::State * ) const)(&::osg::Drawable::CullCallback::cull)
+                , (bool ( Drawable_wrapper::CullCallback_wrapper::* )( ::osg::NodeVisitor *,::osg::Drawable *,::osg::State * ) const)(&Drawable_wrapper::CullCallback_wrapper::default_cull)
                 , ( bp::arg("arg0"), bp::arg("arg1"), bp::arg("arg2") ) )    
             .def( 
                 "cull"
-                , (bool ( ::osg::Drawable::CullCallback::* )( ::osg::NodeVisitor *,::osg::Drawable *,::osg::RenderInfo * )const)(&::osg::Drawable::CullCallback::cull)
-                , (bool ( Drawable_wrapper::CullCallback_wrapper::* )( ::osg::NodeVisitor *,::osg::Drawable *,::osg::RenderInfo * )const)(&Drawable_wrapper::CullCallback_wrapper::default_cull)
+                , (bool ( ::osg::Drawable::CullCallback::* )( ::osg::NodeVisitor *,::osg::Drawable *,::osg::RenderInfo * ) const)(&::osg::Drawable::CullCallback::cull)
+                , (bool ( Drawable_wrapper::CullCallback_wrapper::* )( ::osg::NodeVisitor *,::osg::Drawable *,::osg::RenderInfo * ) const)(&Drawable_wrapper::CullCallback_wrapper::default_cull)
                 , ( bp::arg("nv"), bp::arg("drawable"), bp::arg("renderInfo") ) )    
             .def( 
                 "isSameKindAs"
-                , (bool ( ::osg::Drawable::CullCallback::* )( ::osg::Object const * )const)(&::osg::Drawable::CullCallback::isSameKindAs)
-                , (bool ( Drawable_wrapper::CullCallback_wrapper::* )( ::osg::Object const * )const)(&Drawable_wrapper::CullCallback_wrapper::default_isSameKindAs)
+                , (bool ( ::osg::Drawable::CullCallback::* )( ::osg::Object const * ) const)(&::osg::Drawable::CullCallback::isSameKindAs)
+                , (bool ( Drawable_wrapper::CullCallback_wrapper::* )( ::osg::Object const * ) const)(&Drawable_wrapper::CullCallback_wrapper::default_isSameKindAs)
                 , ( bp::arg("obj") ) )    
             .def( 
                 "libraryName"
-                , (char const * ( ::osg::Drawable::CullCallback::* )(  )const)(&::osg::Drawable::CullCallback::libraryName)
-                , (char const * ( Drawable_wrapper::CullCallback_wrapper::* )(  )const)(&Drawable_wrapper::CullCallback_wrapper::default_libraryName) )    
-            .def( 
-                "computeDataVariance"
-                , (void ( ::osg::Object::* )(  ))(&::osg::Object::computeDataVariance)
-                , (void ( Drawable_wrapper::CullCallback_wrapper::* )(  ))(&Drawable_wrapper::CullCallback_wrapper::default_computeDataVariance) )    
-            .def( 
-                "getUserData"
-                , (::osg::Referenced * ( ::osg::Object::* )(  ))(&::osg::Object::getUserData)
-                , (::osg::Referenced * ( Drawable_wrapper::CullCallback_wrapper::* )(  ))(&Drawable_wrapper::CullCallback_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() )    
-            .def( 
-                "getUserData"
-                , (::osg::Referenced const * ( ::osg::Object::* )(  )const)(&::osg::Object::getUserData)
-                , (::osg::Referenced const * ( Drawable_wrapper::CullCallback_wrapper::* )(  )const)(&Drawable_wrapper::CullCallback_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() )    
-            .def( 
-                "resizeGLObjectBuffers"
-                , (void ( ::osg::Object::* )( unsigned int ))(&::osg::Object::resizeGLObjectBuffers)
-                , (void ( Drawable_wrapper::CullCallback_wrapper::* )( unsigned int ))(&Drawable_wrapper::CullCallback_wrapper::default_resizeGLObjectBuffers)
-                , ( bp::arg("arg0") ) )    
-            .def( 
-                "setName"
-                , (void ( ::osg::Object::* )( ::std::string const & ))(&::osg::Object::setName)
-                , (void ( Drawable_wrapper::CullCallback_wrapper::* )( ::std::string const & ))(&Drawable_wrapper::CullCallback_wrapper::default_setName)
-                , ( bp::arg("name") ) )    
-            .def( 
-                "setName"
-                , (void ( ::osg::Object::* )( char const * ))( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." )    
-            .def( 
-                "setThreadSafeRefUnref"
-                , (void ( ::osg::Object::* )( bool ))(&::osg::Object::setThreadSafeRefUnref)
-                , (void ( Drawable_wrapper::CullCallback_wrapper::* )( bool ))(&Drawable_wrapper::CullCallback_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) )    
-            .def( 
-                "setUserData"
-                , (void ( ::osg::Object::* )( ::osg::Referenced * ))(&::osg::Object::setUserData)
-                , (void ( Drawable_wrapper::CullCallback_wrapper::* )( ::osg::Referenced * ))(&Drawable_wrapper::CullCallback_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
+                , (char const * ( ::osg::Drawable::CullCallback::* )(  ) const)(&::osg::Drawable::CullCallback::libraryName)
+                , (char const * ( Drawable_wrapper::CullCallback_wrapper::* )(  ) const)(&Drawable_wrapper::CullCallback_wrapper::default_libraryName) );
         bp::class_< Drawable_wrapper::DrawCallback_wrapper, bp::bases< osg::Object >, osg::ref_ptr< Drawable_wrapper::DrawCallback_wrapper >, boost::noncopyable >( "DrawCallback", "\n Callback attached to an Drawable which allows the users to customize the drawing of an exist Drawable object.\n The draw callback is implement as a replacement to the Drawables own drawImplementation() method, if the\n the user intends to decorate the existing draw code then simple call the drawable->drawImplementation() from\n with the callbacks drawImplementation() method. This allows the users to do both pre and post callbacks\n without fuss and can even disable the inner draw if required.\n" )    
             .def( 
                 "className"
-                , (char const * ( ::osg::Drawable::DrawCallback::* )(  )const)(&::osg::Drawable::DrawCallback::className)
-                , (char const * ( Drawable_wrapper::DrawCallback_wrapper::* )(  )const)(&Drawable_wrapper::DrawCallback_wrapper::default_className) )    
+                , (char const * ( ::osg::Drawable::DrawCallback::* )(  ) const)(&::osg::Drawable::DrawCallback::className)
+                , (char const * ( Drawable_wrapper::DrawCallback_wrapper::* )(  ) const)(&Drawable_wrapper::DrawCallback_wrapper::default_className) )    
             .def( 
                 "clone"
-                , (::osg::Object * ( ::osg::Drawable::DrawCallback::* )( ::osg::CopyOp const & )const)(&::osg::Drawable::DrawCallback::clone)
-                , (::osg::Object * ( Drawable_wrapper::DrawCallback_wrapper::* )( ::osg::CopyOp const & )const)(&Drawable_wrapper::DrawCallback_wrapper::default_clone)
+                , (::osg::Object * ( ::osg::Drawable::DrawCallback::* )( ::osg::CopyOp const & ) const)(&::osg::Drawable::DrawCallback::clone)
+                , (::osg::Object * ( Drawable_wrapper::DrawCallback_wrapper::* )( ::osg::CopyOp const & ) const)(&Drawable_wrapper::DrawCallback_wrapper::default_clone)
                 , ( bp::arg("copyop") )
                 , bp::return_value_policy< bp::reference_existing_object >() )    
             .def( 
                 "cloneType"
-                , (::osg::Object * ( ::osg::Drawable::DrawCallback::* )(  )const)(&::osg::Drawable::DrawCallback::cloneType)
-                , (::osg::Object * ( Drawable_wrapper::DrawCallback_wrapper::* )(  )const)(&Drawable_wrapper::DrawCallback_wrapper::default_cloneType)
+                , (::osg::Object * ( ::osg::Drawable::DrawCallback::* )(  ) const)(&::osg::Drawable::DrawCallback::cloneType)
+                , (::osg::Object * ( Drawable_wrapper::DrawCallback_wrapper::* )(  ) const)(&Drawable_wrapper::DrawCallback_wrapper::default_cloneType)
                 , bp::return_value_policy< bp::reference_existing_object >() )    
             .def( 
                 "drawImplementation"
-                , (void ( ::osg::Drawable::DrawCallback::* )( ::osg::RenderInfo &,::osg::Drawable const * )const)(&::osg::Drawable::DrawCallback::drawImplementation)
-                , (void ( Drawable_wrapper::DrawCallback_wrapper::* )( ::osg::RenderInfo &,::osg::Drawable const * )const)(&Drawable_wrapper::DrawCallback_wrapper::default_drawImplementation)
+                , (void ( ::osg::Drawable::DrawCallback::* )( ::osg::RenderInfo &,::osg::Drawable const * ) const)(&::osg::Drawable::DrawCallback::drawImplementation)
+                , (void ( Drawable_wrapper::DrawCallback_wrapper::* )( ::osg::RenderInfo &,::osg::Drawable const * ) const)(&Drawable_wrapper::DrawCallback_wrapper::default_drawImplementation)
                 , ( bp::arg("arg0"), bp::arg("arg1") ) )    
             .def( 
                 "isSameKindAs"
-                , (bool ( ::osg::Drawable::DrawCallback::* )( ::osg::Object const * )const)(&::osg::Drawable::DrawCallback::isSameKindAs)
-                , (bool ( Drawable_wrapper::DrawCallback_wrapper::* )( ::osg::Object const * )const)(&Drawable_wrapper::DrawCallback_wrapper::default_isSameKindAs)
+                , (bool ( ::osg::Drawable::DrawCallback::* )( ::osg::Object const * ) const)(&::osg::Drawable::DrawCallback::isSameKindAs)
+                , (bool ( Drawable_wrapper::DrawCallback_wrapper::* )( ::osg::Object const * ) const)(&Drawable_wrapper::DrawCallback_wrapper::default_isSameKindAs)
                 , ( bp::arg("obj") ) )    
             .def( 
                 "libraryName"
-                , (char const * ( ::osg::Drawable::DrawCallback::* )(  )const)(&::osg::Drawable::DrawCallback::libraryName)
-                , (char const * ( Drawable_wrapper::DrawCallback_wrapper::* )(  )const)(&Drawable_wrapper::DrawCallback_wrapper::default_libraryName) )    
-            .def( 
-                "computeDataVariance"
-                , (void ( ::osg::Object::* )(  ))(&::osg::Object::computeDataVariance)
-                , (void ( Drawable_wrapper::DrawCallback_wrapper::* )(  ))(&Drawable_wrapper::DrawCallback_wrapper::default_computeDataVariance) )    
-            .def( 
-                "getUserData"
-                , (::osg::Referenced * ( ::osg::Object::* )(  ))(&::osg::Object::getUserData)
-                , (::osg::Referenced * ( Drawable_wrapper::DrawCallback_wrapper::* )(  ))(&Drawable_wrapper::DrawCallback_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() )    
-            .def( 
-                "getUserData"
-                , (::osg::Referenced const * ( ::osg::Object::* )(  )const)(&::osg::Object::getUserData)
-                , (::osg::Referenced const * ( Drawable_wrapper::DrawCallback_wrapper::* )(  )const)(&Drawable_wrapper::DrawCallback_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() )    
-            .def( 
-                "resizeGLObjectBuffers"
-                , (void ( ::osg::Object::* )( unsigned int ))(&::osg::Object::resizeGLObjectBuffers)
-                , (void ( Drawable_wrapper::DrawCallback_wrapper::* )( unsigned int ))(&Drawable_wrapper::DrawCallback_wrapper::default_resizeGLObjectBuffers)
-                , ( bp::arg("arg0") ) )    
-            .def( 
-                "setName"
-                , (void ( ::osg::Object::* )( ::std::string const & ))(&::osg::Object::setName)
-                , (void ( Drawable_wrapper::DrawCallback_wrapper::* )( ::std::string const & ))(&Drawable_wrapper::DrawCallback_wrapper::default_setName)
-                , ( bp::arg("name") ) )    
-            .def( 
-                "setName"
-                , (void ( ::osg::Object::* )( char const * ))( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." )    
-            .def( 
-                "setThreadSafeRefUnref"
-                , (void ( ::osg::Object::* )( bool ))(&::osg::Object::setThreadSafeRefUnref)
-                , (void ( Drawable_wrapper::DrawCallback_wrapper::* )( bool ))(&Drawable_wrapper::DrawCallback_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) )    
-            .def( 
-                "setUserData"
-                , (void ( ::osg::Object::* )( ::osg::Referenced * ))(&::osg::Object::setUserData)
-                , (void ( Drawable_wrapper::DrawCallback_wrapper::* )( ::osg::Referenced * ))(&Drawable_wrapper::DrawCallback_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
+                , (char const * ( ::osg::Drawable::DrawCallback::* )(  ) const)(&::osg::Drawable::DrawCallback::libraryName)
+                , (char const * ( Drawable_wrapper::DrawCallback_wrapper::* )(  ) const)(&Drawable_wrapper::DrawCallback_wrapper::default_libraryName) );
         bp::class_< Drawable_wrapper::EventCallback_wrapper, bp::bases< osg::Object >, osg::ref_ptr< Drawable_wrapper::EventCallback_wrapper >, boost::noncopyable >( "EventCallback" )    
             .def( 
                 "className"
-                , (char const * ( ::osg::Drawable::EventCallback::* )(  )const)(&::osg::Drawable::EventCallback::className)
-                , (char const * ( Drawable_wrapper::EventCallback_wrapper::* )(  )const)(&Drawable_wrapper::EventCallback_wrapper::default_className) )    
+                , (char const * ( ::osg::Drawable::EventCallback::* )(  ) const)(&::osg::Drawable::EventCallback::className)
+                , (char const * ( Drawable_wrapper::EventCallback_wrapper::* )(  ) const)(&Drawable_wrapper::EventCallback_wrapper::default_className) )    
             .def( 
                 "clone"
-                , (::osg::Object * ( ::osg::Drawable::EventCallback::* )( ::osg::CopyOp const & )const)(&::osg::Drawable::EventCallback::clone)
-                , (::osg::Object * ( Drawable_wrapper::EventCallback_wrapper::* )( ::osg::CopyOp const & )const)(&Drawable_wrapper::EventCallback_wrapper::default_clone)
+                , (::osg::Object * ( ::osg::Drawable::EventCallback::* )( ::osg::CopyOp const & ) const)(&::osg::Drawable::EventCallback::clone)
+                , (::osg::Object * ( Drawable_wrapper::EventCallback_wrapper::* )( ::osg::CopyOp const & ) const)(&Drawable_wrapper::EventCallback_wrapper::default_clone)
                 , ( bp::arg("copyop") )
                 , bp::return_value_policy< bp::reference_existing_object >() )    
             .def( 
                 "cloneType"
-                , (::osg::Object * ( ::osg::Drawable::EventCallback::* )(  )const)(&::osg::Drawable::EventCallback::cloneType)
-                , (::osg::Object * ( Drawable_wrapper::EventCallback_wrapper::* )(  )const)(&Drawable_wrapper::EventCallback_wrapper::default_cloneType)
+                , (::osg::Object * ( ::osg::Drawable::EventCallback::* )(  ) const)(&::osg::Drawable::EventCallback::cloneType)
+                , (::osg::Object * ( Drawable_wrapper::EventCallback_wrapper::* )(  ) const)(&Drawable_wrapper::EventCallback_wrapper::default_cloneType)
                 , bp::return_value_policy< bp::reference_existing_object >() )    
             .def( 
                 "event"
-                , (void ( ::osg::Drawable::EventCallback::* )( ::osg::NodeVisitor *,::osg::Drawable * ))(&::osg::Drawable::EventCallback::event)
-                , (void ( Drawable_wrapper::EventCallback_wrapper::* )( ::osg::NodeVisitor *,::osg::Drawable * ))(&Drawable_wrapper::EventCallback_wrapper::default_event)
+                , (void ( ::osg::Drawable::EventCallback::* )( ::osg::NodeVisitor *,::osg::Drawable * ) )(&::osg::Drawable::EventCallback::event)
+                , (void ( Drawable_wrapper::EventCallback_wrapper::* )( ::osg::NodeVisitor *,::osg::Drawable * ) )(&Drawable_wrapper::EventCallback_wrapper::default_event)
                 , ( bp::arg("arg0"), bp::arg("arg1") ) )    
             .def( 
                 "isSameKindAs"
-                , (bool ( ::osg::Drawable::EventCallback::* )( ::osg::Object const * )const)(&::osg::Drawable::EventCallback::isSameKindAs)
-                , (bool ( Drawable_wrapper::EventCallback_wrapper::* )( ::osg::Object const * )const)(&Drawable_wrapper::EventCallback_wrapper::default_isSameKindAs)
+                , (bool ( ::osg::Drawable::EventCallback::* )( ::osg::Object const * ) const)(&::osg::Drawable::EventCallback::isSameKindAs)
+                , (bool ( Drawable_wrapper::EventCallback_wrapper::* )( ::osg::Object const * ) const)(&Drawable_wrapper::EventCallback_wrapper::default_isSameKindAs)
                 , ( bp::arg("obj") ) )    
             .def( 
                 "libraryName"
-                , (char const * ( ::osg::Drawable::EventCallback::* )(  )const)(&::osg::Drawable::EventCallback::libraryName)
-                , (char const * ( Drawable_wrapper::EventCallback_wrapper::* )(  )const)(&Drawable_wrapper::EventCallback_wrapper::default_libraryName) )    
-            .def( 
-                "computeDataVariance"
-                , (void ( ::osg::Object::* )(  ))(&::osg::Object::computeDataVariance)
-                , (void ( Drawable_wrapper::EventCallback_wrapper::* )(  ))(&Drawable_wrapper::EventCallback_wrapper::default_computeDataVariance) )    
-            .def( 
-                "getUserData"
-                , (::osg::Referenced * ( ::osg::Object::* )(  ))(&::osg::Object::getUserData)
-                , (::osg::Referenced * ( Drawable_wrapper::EventCallback_wrapper::* )(  ))(&Drawable_wrapper::EventCallback_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() )    
-            .def( 
-                "getUserData"
-                , (::osg::Referenced const * ( ::osg::Object::* )(  )const)(&::osg::Object::getUserData)
-                , (::osg::Referenced const * ( Drawable_wrapper::EventCallback_wrapper::* )(  )const)(&Drawable_wrapper::EventCallback_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() )    
-            .def( 
-                "resizeGLObjectBuffers"
-                , (void ( ::osg::Object::* )( unsigned int ))(&::osg::Object::resizeGLObjectBuffers)
-                , (void ( Drawable_wrapper::EventCallback_wrapper::* )( unsigned int ))(&Drawable_wrapper::EventCallback_wrapper::default_resizeGLObjectBuffers)
-                , ( bp::arg("arg0") ) )    
-            .def( 
-                "setName"
-                , (void ( ::osg::Object::* )( ::std::string const & ))(&::osg::Object::setName)
-                , (void ( Drawable_wrapper::EventCallback_wrapper::* )( ::std::string const & ))(&Drawable_wrapper::EventCallback_wrapper::default_setName)
-                , ( bp::arg("name") ) )    
-            .def( 
-                "setName"
-                , (void ( ::osg::Object::* )( char const * ))( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." )    
-            .def( 
-                "setThreadSafeRefUnref"
-                , (void ( ::osg::Object::* )( bool ))(&::osg::Object::setThreadSafeRefUnref)
-                , (void ( Drawable_wrapper::EventCallback_wrapper::* )( bool ))(&Drawable_wrapper::EventCallback_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) )    
-            .def( 
-                "setUserData"
-                , (void ( ::osg::Object::* )( ::osg::Referenced * ))(&::osg::Object::setUserData)
-                , (void ( Drawable_wrapper::EventCallback_wrapper::* )( ::osg::Referenced * ))(&Drawable_wrapper::EventCallback_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
+                , (char const * ( ::osg::Drawable::EventCallback::* )(  ) const)(&::osg::Drawable::EventCallback::libraryName)
+                , (char const * ( Drawable_wrapper::EventCallback_wrapper::* )(  ) const)(&Drawable_wrapper::EventCallback_wrapper::default_libraryName) );
         bp::class_< Drawable_wrapper::UpdateCallback_wrapper, bp::bases< osg::Object >, osg::ref_ptr< Drawable_wrapper::UpdateCallback_wrapper >, boost::noncopyable >( "UpdateCallback" )    
             .def( 
                 "className"
-                , (char const * ( ::osg::Drawable::UpdateCallback::* )(  )const)(&::osg::Drawable::UpdateCallback::className)
-                , (char const * ( Drawable_wrapper::UpdateCallback_wrapper::* )(  )const)(&Drawable_wrapper::UpdateCallback_wrapper::default_className) )    
+                , (char const * ( ::osg::Drawable::UpdateCallback::* )(  ) const)(&::osg::Drawable::UpdateCallback::className)
+                , (char const * ( Drawable_wrapper::UpdateCallback_wrapper::* )(  ) const)(&Drawable_wrapper::UpdateCallback_wrapper::default_className) )    
             .def( 
                 "clone"
-                , (::osg::Object * ( ::osg::Drawable::UpdateCallback::* )( ::osg::CopyOp const & )const)(&::osg::Drawable::UpdateCallback::clone)
-                , (::osg::Object * ( Drawable_wrapper::UpdateCallback_wrapper::* )( ::osg::CopyOp const & )const)(&Drawable_wrapper::UpdateCallback_wrapper::default_clone)
+                , (::osg::Object * ( ::osg::Drawable::UpdateCallback::* )( ::osg::CopyOp const & ) const)(&::osg::Drawable::UpdateCallback::clone)
+                , (::osg::Object * ( Drawable_wrapper::UpdateCallback_wrapper::* )( ::osg::CopyOp const & ) const)(&Drawable_wrapper::UpdateCallback_wrapper::default_clone)
                 , ( bp::arg("copyop") )
                 , bp::return_value_policy< bp::reference_existing_object >() )    
             .def( 
                 "cloneType"
-                , (::osg::Object * ( ::osg::Drawable::UpdateCallback::* )(  )const)(&::osg::Drawable::UpdateCallback::cloneType)
-                , (::osg::Object * ( Drawable_wrapper::UpdateCallback_wrapper::* )(  )const)(&Drawable_wrapper::UpdateCallback_wrapper::default_cloneType)
+                , (::osg::Object * ( ::osg::Drawable::UpdateCallback::* )(  ) const)(&::osg::Drawable::UpdateCallback::cloneType)
+                , (::osg::Object * ( Drawable_wrapper::UpdateCallback_wrapper::* )(  ) const)(&Drawable_wrapper::UpdateCallback_wrapper::default_cloneType)
                 , bp::return_value_policy< bp::reference_existing_object >() )    
             .def( 
                 "isSameKindAs"
-                , (bool ( ::osg::Drawable::UpdateCallback::* )( ::osg::Object const * )const)(&::osg::Drawable::UpdateCallback::isSameKindAs)
-                , (bool ( Drawable_wrapper::UpdateCallback_wrapper::* )( ::osg::Object const * )const)(&Drawable_wrapper::UpdateCallback_wrapper::default_isSameKindAs)
+                , (bool ( ::osg::Drawable::UpdateCallback::* )( ::osg::Object const * ) const)(&::osg::Drawable::UpdateCallback::isSameKindAs)
+                , (bool ( Drawable_wrapper::UpdateCallback_wrapper::* )( ::osg::Object const * ) const)(&Drawable_wrapper::UpdateCallback_wrapper::default_isSameKindAs)
                 , ( bp::arg("obj") ) )    
             .def( 
                 "libraryName"
-                , (char const * ( ::osg::Drawable::UpdateCallback::* )(  )const)(&::osg::Drawable::UpdateCallback::libraryName)
-                , (char const * ( Drawable_wrapper::UpdateCallback_wrapper::* )(  )const)(&Drawable_wrapper::UpdateCallback_wrapper::default_libraryName) )    
+                , (char const * ( ::osg::Drawable::UpdateCallback::* )(  ) const)(&::osg::Drawable::UpdateCallback::libraryName)
+                , (char const * ( Drawable_wrapper::UpdateCallback_wrapper::* )(  ) const)(&Drawable_wrapper::UpdateCallback_wrapper::default_libraryName) )    
             .def( 
                 "update"
-                , (void ( ::osg::Drawable::UpdateCallback::* )( ::osg::NodeVisitor *,::osg::Drawable * ))(&::osg::Drawable::UpdateCallback::update)
-                , (void ( Drawable_wrapper::UpdateCallback_wrapper::* )( ::osg::NodeVisitor *,::osg::Drawable * ))(&Drawable_wrapper::UpdateCallback_wrapper::default_update)
-                , ( bp::arg("arg0"), bp::arg("arg1") ) )    
-            .def( 
-                "computeDataVariance"
-                , (void ( ::osg::Object::* )(  ))(&::osg::Object::computeDataVariance)
-                , (void ( Drawable_wrapper::UpdateCallback_wrapper::* )(  ))(&Drawable_wrapper::UpdateCallback_wrapper::default_computeDataVariance) )    
-            .def( 
-                "getUserData"
-                , (::osg::Referenced * ( ::osg::Object::* )(  ))(&::osg::Object::getUserData)
-                , (::osg::Referenced * ( Drawable_wrapper::UpdateCallback_wrapper::* )(  ))(&Drawable_wrapper::UpdateCallback_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() )    
-            .def( 
-                "getUserData"
-                , (::osg::Referenced const * ( ::osg::Object::* )(  )const)(&::osg::Object::getUserData)
-                , (::osg::Referenced const * ( Drawable_wrapper::UpdateCallback_wrapper::* )(  )const)(&Drawable_wrapper::UpdateCallback_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() )    
-            .def( 
-                "resizeGLObjectBuffers"
-                , (void ( ::osg::Object::* )( unsigned int ))(&::osg::Object::resizeGLObjectBuffers)
-                , (void ( Drawable_wrapper::UpdateCallback_wrapper::* )( unsigned int ))(&Drawable_wrapper::UpdateCallback_wrapper::default_resizeGLObjectBuffers)
-                , ( bp::arg("arg0") ) )    
-            .def( 
-                "setName"
-                , (void ( ::osg::Object::* )( ::std::string const & ))(&::osg::Object::setName)
-                , (void ( Drawable_wrapper::UpdateCallback_wrapper::* )( ::std::string const & ))(&Drawable_wrapper::UpdateCallback_wrapper::default_setName)
-                , ( bp::arg("name") ) )    
-            .def( 
-                "setName"
-                , (void ( ::osg::Object::* )( char const * ))( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." )    
-            .def( 
-                "setThreadSafeRefUnref"
-                , (void ( ::osg::Object::* )( bool ))(&::osg::Object::setThreadSafeRefUnref)
-                , (void ( Drawable_wrapper::UpdateCallback_wrapper::* )( bool ))(&Drawable_wrapper::UpdateCallback_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) )    
-            .def( 
-                "setUserData"
-                , (void ( ::osg::Object::* )( ::osg::Referenced * ))(&::osg::Object::setUserData)
-                , (void ( Drawable_wrapper::UpdateCallback_wrapper::* )( ::osg::Referenced * ))(&Drawable_wrapper::UpdateCallback_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
+                , (void ( ::osg::Drawable::UpdateCallback::* )( ::osg::NodeVisitor *,::osg::Drawable * ) )(&::osg::Drawable::UpdateCallback::update)
+                , (void ( Drawable_wrapper::UpdateCallback_wrapper::* )( ::osg::NodeVisitor *,::osg::Drawable * ) )(&Drawable_wrapper::UpdateCallback_wrapper::default_update)
+                , ( bp::arg("arg0"), bp::arg("arg1") ) );
         { //::osg::Drawable::accept
         
-            typedef void ( ::osg::Drawable::*accept_function_type)( ::osg::Drawable::AttributeFunctor & ) ;
-            typedef void ( Drawable_wrapper::*default_accept_function_type)( ::osg::Drawable::AttributeFunctor & ) ;
+            typedef void ( ::osg::Drawable::*accept_function_type )( ::osg::Drawable::AttributeFunctor & ) ;
+            typedef void ( Drawable_wrapper::*default_accept_function_type )( ::osg::Drawable::AttributeFunctor & ) ;
             
             Drawable_exposer.def( 
                 "accept"
@@ -1895,8 +1355,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::accept
         
-            typedef void ( ::osg::Drawable::*accept_function_type)( ::osg::Drawable::ConstAttributeFunctor & ) const;
-            typedef void ( Drawable_wrapper::*default_accept_function_type)( ::osg::Drawable::ConstAttributeFunctor & ) const;
+            typedef void ( ::osg::Drawable::*accept_function_type )( ::osg::Drawable::ConstAttributeFunctor & ) const;
+            typedef void ( Drawable_wrapper::*default_accept_function_type )( ::osg::Drawable::ConstAttributeFunctor & ) const;
             
             Drawable_exposer.def( 
                 "accept"
@@ -1907,8 +1367,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::accept
         
-            typedef void ( ::osg::Drawable::*accept_function_type)( ::osg::PrimitiveFunctor & ) const;
-            typedef void ( Drawable_wrapper::*default_accept_function_type)( ::osg::PrimitiveFunctor & ) const;
+            typedef void ( ::osg::Drawable::*accept_function_type )( ::osg::PrimitiveFunctor & ) const;
+            typedef void ( Drawable_wrapper::*default_accept_function_type )( ::osg::PrimitiveFunctor & ) const;
             
             Drawable_exposer.def( 
                 "accept"
@@ -1919,8 +1379,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::accept
         
-            typedef void ( ::osg::Drawable::*accept_function_type)( ::osg::PrimitiveIndexFunctor & ) const;
-            typedef void ( Drawable_wrapper::*default_accept_function_type)( ::osg::PrimitiveIndexFunctor & ) const;
+            typedef void ( ::osg::Drawable::*accept_function_type )( ::osg::PrimitiveIndexFunctor & ) const;
+            typedef void ( Drawable_wrapper::*default_accept_function_type )( ::osg::PrimitiveIndexFunctor & ) const;
             
             Drawable_exposer.def( 
                 "accept"
@@ -1931,8 +1391,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::asGeometry
         
-            typedef ::osg::Geometry * ( ::osg::Drawable::*asGeometry_function_type)(  ) ;
-            typedef ::osg::Geometry * ( Drawable_wrapper::*default_asGeometry_function_type)(  ) ;
+            typedef ::osg::Geometry * ( ::osg::Drawable::*asGeometry_function_type )(  ) ;
+            typedef ::osg::Geometry * ( Drawable_wrapper::*default_asGeometry_function_type )(  ) ;
             
             Drawable_exposer.def( 
                 "asGeometry"
@@ -1943,8 +1403,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::asGeometry
         
-            typedef ::osg::Geometry const * ( ::osg::Drawable::*asGeometry_function_type)(  ) const;
-            typedef ::osg::Geometry const * ( Drawable_wrapper::*default_asGeometry_function_type)(  ) const;
+            typedef ::osg::Geometry const * ( ::osg::Drawable::*asGeometry_function_type )(  ) const;
+            typedef ::osg::Geometry const * ( Drawable_wrapper::*default_asGeometry_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "asGeometry"
@@ -1955,8 +1415,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::className
         
-            typedef char const * ( ::osg::Drawable::*className_function_type)(  ) const;
-            typedef char const * ( Drawable_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::Drawable::*className_function_type )(  ) const;
+            typedef char const * ( Drawable_wrapper::*default_className_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "className"
@@ -1966,8 +1426,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::compileGLObjects
         
-            typedef void ( ::osg::Drawable::*compileGLObjects_function_type)( ::osg::RenderInfo & ) const;
-            typedef void ( Drawable_wrapper::*default_compileGLObjects_function_type)( ::osg::RenderInfo & ) const;
+            typedef void ( ::osg::Drawable::*compileGLObjects_function_type )( ::osg::RenderInfo & ) const;
+            typedef void ( Drawable_wrapper::*default_compileGLObjects_function_type )( ::osg::RenderInfo & ) const;
             
             Drawable_exposer.def( 
                 "compileGLObjects"
@@ -1978,8 +1438,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::computeBound
         
-            typedef ::osg::BoundingBox ( ::osg::Drawable::*computeBound_function_type)(  ) const;
-            typedef ::osg::BoundingBox ( Drawable_wrapper::*default_computeBound_function_type)(  ) const;
+            typedef ::osg::BoundingBox ( ::osg::Drawable::*computeBound_function_type )(  ) const;
+            typedef ::osg::BoundingBox ( Drawable_wrapper::*default_computeBound_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "computeBound"
@@ -1989,8 +1449,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::computeDataVariance
         
-            typedef void ( ::osg::Drawable::*computeDataVariance_function_type)(  ) ;
-            typedef void ( Drawable_wrapper::*default_computeDataVariance_function_type)(  ) ;
+            typedef void ( ::osg::Drawable::*computeDataVariance_function_type )(  ) ;
+            typedef void ( Drawable_wrapper::*default_computeDataVariance_function_type )(  ) ;
             
             Drawable_exposer.def( 
                 "computeDataVariance"
@@ -2011,7 +1471,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::dirtyBound
         
-            typedef void ( ::osg::Drawable::*dirtyBound_function_type)(  ) ;
+            typedef void ( ::osg::Drawable::*dirtyBound_function_type )(  ) ;
             
             Drawable_exposer.def( 
                 "dirtyBound"
@@ -2021,8 +1481,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::dirtyDisplayList
         
-            typedef void ( ::osg::Drawable::*dirtyDisplayList_function_type)(  ) ;
-            typedef void ( Drawable_wrapper::*default_dirtyDisplayList_function_type)(  ) ;
+            typedef void ( ::osg::Drawable::*dirtyDisplayList_function_type )(  ) ;
+            typedef void ( Drawable_wrapper::*default_dirtyDisplayList_function_type )(  ) ;
             
             Drawable_exposer.def( 
                 "dirtyDisplayList"
@@ -2043,7 +1503,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::draw
         
-            typedef void ( ::osg::Drawable::*draw_function_type)( ::osg::RenderInfo & ) const;
+            typedef void ( ::osg::Drawable::*draw_function_type )( ::osg::RenderInfo & ) const;
             
             Drawable_exposer.def( 
                 "draw"
@@ -2053,7 +1513,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::drawImplementation
         
-            typedef void ( ::osg::Drawable::*drawImplementation_function_type)( ::osg::RenderInfo & ) const;
+            typedef void ( ::osg::Drawable::*drawImplementation_function_type )( ::osg::RenderInfo & ) const;
             
             Drawable_exposer.def( 
                 "drawImplementation"
@@ -2097,7 +1557,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getBound
         
-            typedef ::osg::BoundingBox const & ( ::osg::Drawable::*getBound_function_type)(  ) const;
+            typedef ::osg::BoundingBox const & ( ::osg::Drawable::*getBound_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getBound"
@@ -2108,7 +1568,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getComputeBoundingBoxCallback
         
-            typedef ::osg::Drawable::ComputeBoundingBoxCallback * ( ::osg::Drawable::*getComputeBoundingBoxCallback_function_type)(  ) ;
+            typedef ::osg::Drawable::ComputeBoundingBoxCallback * ( ::osg::Drawable::*getComputeBoundingBoxCallback_function_type )(  ) ;
             
             Drawable_exposer.def( 
                 "getComputeBoundingBoxCallback"
@@ -2119,7 +1579,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getComputeBoundingBoxCallback
         
-            typedef ::osg::Drawable::ComputeBoundingBoxCallback const * ( ::osg::Drawable::*getComputeBoundingBoxCallback_function_type)(  ) const;
+            typedef ::osg::Drawable::ComputeBoundingBoxCallback const * ( ::osg::Drawable::*getComputeBoundingBoxCallback_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getComputeBoundingBoxCallback"
@@ -2130,7 +1590,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getCullCallback
         
-            typedef ::osg::Drawable::CullCallback * ( ::osg::Drawable::*getCullCallback_function_type)(  ) ;
+            typedef ::osg::Drawable::CullCallback * ( ::osg::Drawable::*getCullCallback_function_type )(  ) ;
             
             Drawable_exposer.def( 
                 "getCullCallback"
@@ -2141,7 +1601,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getCullCallback
         
-            typedef ::osg::Drawable::CullCallback const * ( ::osg::Drawable::*getCullCallback_function_type)(  ) const;
+            typedef ::osg::Drawable::CullCallback const * ( ::osg::Drawable::*getCullCallback_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getCullCallback"
@@ -2152,7 +1612,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getDisplayList
         
-            typedef ::GLuint & ( ::osg::Drawable::*getDisplayList_function_type)( unsigned int ) const;
+            typedef ::GLuint & ( ::osg::Drawable::*getDisplayList_function_type )( unsigned int ) const;
             
             Drawable_exposer.def( 
                 "getDisplayList"
@@ -2164,7 +1624,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getDrawCallback
         
-            typedef ::osg::Drawable::DrawCallback * ( ::osg::Drawable::*getDrawCallback_function_type)(  ) ;
+            typedef ::osg::Drawable::DrawCallback * ( ::osg::Drawable::*getDrawCallback_function_type )(  ) ;
             
             Drawable_exposer.def( 
                 "getDrawCallback"
@@ -2175,7 +1635,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getDrawCallback
         
-            typedef ::osg::Drawable::DrawCallback const * ( ::osg::Drawable::*getDrawCallback_function_type)(  ) const;
+            typedef ::osg::Drawable::DrawCallback const * ( ::osg::Drawable::*getDrawCallback_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getDrawCallback"
@@ -2186,7 +1646,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getEventCallback
         
-            typedef ::osg::Drawable::EventCallback * ( ::osg::Drawable::*getEventCallback_function_type)(  ) ;
+            typedef ::osg::Drawable::EventCallback * ( ::osg::Drawable::*getEventCallback_function_type )(  ) ;
             
             Drawable_exposer.def( 
                 "getEventCallback"
@@ -2197,7 +1657,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getEventCallback
         
-            typedef ::osg::Drawable::EventCallback const * ( ::osg::Drawable::*getEventCallback_function_type)(  ) const;
+            typedef ::osg::Drawable::EventCallback const * ( ::osg::Drawable::*getEventCallback_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getEventCallback"
@@ -2220,8 +1680,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getGLObjectSizeHint
         
-            typedef unsigned int ( ::osg::Drawable::*getGLObjectSizeHint_function_type)(  ) const;
-            typedef unsigned int ( Drawable_wrapper::*default_getGLObjectSizeHint_function_type)(  ) const;
+            typedef unsigned int ( ::osg::Drawable::*getGLObjectSizeHint_function_type )(  ) const;
+            typedef unsigned int ( Drawable_wrapper::*default_getGLObjectSizeHint_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getGLObjectSizeHint"
@@ -2231,7 +1691,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getInitialBound
         
-            typedef ::osg::BoundingBox const & ( ::osg::Drawable::*getInitialBound_function_type)(  ) const;
+            typedef ::osg::BoundingBox const & ( ::osg::Drawable::*getInitialBound_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getInitialBound"
@@ -2252,7 +1712,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getNumParents
         
-            typedef unsigned int ( ::osg::Drawable::*getNumParents_function_type)(  ) const;
+            typedef unsigned int ( ::osg::Drawable::*getNumParents_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getNumParents"
@@ -2262,7 +1722,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getOrCreateStateSet
         
-            typedef ::osg::StateSet * ( ::osg::Drawable::*getOrCreateStateSet_function_type)(  ) ;
+            typedef ::osg::StateSet * ( ::osg::Drawable::*getOrCreateStateSet_function_type )(  ) ;
             
             Drawable_exposer.def( 
                 "getOrCreateStateSet"
@@ -2273,7 +1733,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getParent
         
-            typedef ::osg::Node * ( ::osg::Drawable::*getParent_function_type)( unsigned int ) ;
+            typedef ::osg::Node * ( ::osg::Drawable::*getParent_function_type )( unsigned int ) ;
             
             Drawable_exposer.def( 
                 "getParent"
@@ -2285,7 +1745,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getParent
         
-            typedef ::osg::Node const * ( ::osg::Drawable::*getParent_function_type)( unsigned int ) const;
+            typedef ::osg::Node const * ( ::osg::Drawable::*getParent_function_type )( unsigned int ) const;
             
             Drawable_exposer.def( 
                 "getParent"
@@ -2297,7 +1757,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getParents
         
-            typedef ::std::vector< osg::Node* > const & ( ::osg::Drawable::*getParents_function_type)(  ) const;
+            typedef ::std::vector< osg::Node* > const & ( ::osg::Drawable::*getParents_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getParents"
@@ -2308,7 +1768,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getParents
         
-            typedef ::std::vector< osg::Node* > ( ::osg::Drawable::*getParents_function_type)(  ) ;
+            typedef ::std::vector< osg::Node* > ( ::osg::Drawable::*getParents_function_type )(  ) ;
             
             Drawable_exposer.def( 
                 "getParents"
@@ -2318,7 +1778,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getShape
         
-            typedef ::osg::Shape * ( ::osg::Drawable::*getShape_function_type)(  ) ;
+            typedef ::osg::Shape * ( ::osg::Drawable::*getShape_function_type )(  ) ;
             
             Drawable_exposer.def( 
                 "getShape"
@@ -2329,7 +1789,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getShape
         
-            typedef ::osg::Shape const * ( ::osg::Drawable::*getShape_function_type)(  ) const;
+            typedef ::osg::Shape const * ( ::osg::Drawable::*getShape_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getShape"
@@ -2340,7 +1800,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getStateSet
         
-            typedef ::osg::StateSet * ( ::osg::Drawable::*getStateSet_function_type)(  ) ;
+            typedef ::osg::StateSet * ( ::osg::Drawable::*getStateSet_function_type )(  ) ;
             
             Drawable_exposer.def( 
                 "getStateSet"
@@ -2351,7 +1811,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getStateSet
         
-            typedef ::osg::StateSet const * ( ::osg::Drawable::*getStateSet_function_type)(  ) const;
+            typedef ::osg::StateSet const * ( ::osg::Drawable::*getStateSet_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getStateSet"
@@ -2362,7 +1822,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getSupportsDisplayList
         
-            typedef bool ( ::osg::Drawable::*getSupportsDisplayList_function_type)(  ) const;
+            typedef bool ( ::osg::Drawable::*getSupportsDisplayList_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getSupportsDisplayList"
@@ -2372,7 +1832,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getUpdateCallback
         
-            typedef ::osg::Drawable::UpdateCallback * ( ::osg::Drawable::*getUpdateCallback_function_type)(  ) ;
+            typedef ::osg::Drawable::UpdateCallback * ( ::osg::Drawable::*getUpdateCallback_function_type )(  ) ;
             
             Drawable_exposer.def( 
                 "getUpdateCallback"
@@ -2383,7 +1843,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getUpdateCallback
         
-            typedef ::osg::Drawable::UpdateCallback const * ( ::osg::Drawable::*getUpdateCallback_function_type)(  ) const;
+            typedef ::osg::Drawable::UpdateCallback const * ( ::osg::Drawable::*getUpdateCallback_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getUpdateCallback"
@@ -2394,7 +1854,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getUseDisplayList
         
-            typedef bool ( ::osg::Drawable::*getUseDisplayList_function_type)(  ) const;
+            typedef bool ( ::osg::Drawable::*getUseDisplayList_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getUseDisplayList"
@@ -2404,7 +1864,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getUseVertexBufferObjects
         
-            typedef bool ( ::osg::Drawable::*getUseVertexBufferObjects_function_type)(  ) const;
+            typedef bool ( ::osg::Drawable::*getUseVertexBufferObjects_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "getUseVertexBufferObjects"
@@ -2414,7 +1874,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::getWorldMatrices
         
-            typedef ::osg::MatrixList ( ::osg::Drawable::*getWorldMatrices_function_type)( ::osg::Node const * ) const;
+            typedef ::osg::MatrixList ( ::osg::Drawable::*getWorldMatrices_function_type )( ::osg::Node const * ) const;
             
             Drawable_exposer.def( 
                 "getWorldMatrices"
@@ -2425,8 +1885,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::isSameKindAs
         
-            typedef bool ( ::osg::Drawable::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( Drawable_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::Drawable::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( Drawable_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             Drawable_exposer.def( 
                 "isSameKindAs"
@@ -2437,8 +1897,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::libraryName
         
-            typedef char const * ( ::osg::Drawable::*libraryName_function_type)(  ) const;
-            typedef char const * ( Drawable_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::Drawable::*libraryName_function_type )(  ) const;
+            typedef char const * ( Drawable_wrapper::*default_libraryName_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "libraryName"
@@ -2448,7 +1908,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::requiresEventTraversal
         
-            typedef bool ( ::osg::Drawable::*requiresEventTraversal_function_type)(  ) const;
+            typedef bool ( ::osg::Drawable::*requiresEventTraversal_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "requiresEventTraversal"
@@ -2458,7 +1918,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::requiresUpdateTraversal
         
-            typedef bool ( ::osg::Drawable::*requiresUpdateTraversal_function_type)(  ) const;
+            typedef bool ( ::osg::Drawable::*requiresUpdateTraversal_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "requiresUpdateTraversal"
@@ -2468,8 +1928,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::resizeGLObjectBuffers
         
-            typedef void ( ::osg::Drawable::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( Drawable_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::Drawable::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( Drawable_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             Drawable_exposer.def( 
                 "resizeGLObjectBuffers"
@@ -2480,7 +1940,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::setComputeBoundingBoxCallback
         
-            typedef void ( ::osg::Drawable::*setComputeBoundingBoxCallback_function_type)( ::osg::Drawable::ComputeBoundingBoxCallback * ) ;
+            typedef void ( ::osg::Drawable::*setComputeBoundingBoxCallback_function_type )( ::osg::Drawable::ComputeBoundingBoxCallback * ) ;
             
             Drawable_exposer.def( 
                 "setComputeBoundingBoxCallback"
@@ -2491,8 +1951,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::setCullCallback
         
-            typedef void ( ::osg::Drawable::*setCullCallback_function_type)( ::osg::Drawable::CullCallback * ) ;
-            typedef void ( Drawable_wrapper::*default_setCullCallback_function_type)( ::osg::Drawable::CullCallback * ) ;
+            typedef void ( ::osg::Drawable::*setCullCallback_function_type )( ::osg::Drawable::CullCallback * ) ;
+            typedef void ( Drawable_wrapper::*default_setCullCallback_function_type )( ::osg::Drawable::CullCallback * ) ;
             
             Drawable_exposer.def( 
                 "setCullCallback"
@@ -2503,8 +1963,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::setDrawCallback
         
-            typedef void ( ::osg::Drawable::*setDrawCallback_function_type)( ::osg::Drawable::DrawCallback * ) ;
-            typedef void ( Drawable_wrapper::*default_setDrawCallback_function_type)( ::osg::Drawable::DrawCallback * ) ;
+            typedef void ( ::osg::Drawable::*setDrawCallback_function_type )( ::osg::Drawable::DrawCallback * ) ;
+            typedef void ( Drawable_wrapper::*default_setDrawCallback_function_type )( ::osg::Drawable::DrawCallback * ) ;
             
             Drawable_exposer.def( 
                 "setDrawCallback"
@@ -2515,8 +1975,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::setEventCallback
         
-            typedef void ( ::osg::Drawable::*setEventCallback_function_type)( ::osg::Drawable::EventCallback * ) ;
-            typedef void ( Drawable_wrapper::*default_setEventCallback_function_type)( ::osg::Drawable::EventCallback * ) ;
+            typedef void ( ::osg::Drawable::*setEventCallback_function_type )( ::osg::Drawable::EventCallback * ) ;
+            typedef void ( Drawable_wrapper::*default_setEventCallback_function_type )( ::osg::Drawable::EventCallback * ) ;
             
             Drawable_exposer.def( 
                 "setEventCallback"
@@ -2538,7 +1998,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::setInitialBound
         
-            typedef void ( ::osg::Drawable::*setInitialBound_function_type)( ::osg::BoundingBox const & ) ;
+            typedef void ( ::osg::Drawable::*setInitialBound_function_type )( ::osg::BoundingBox const & ) ;
             
             Drawable_exposer.def( 
                 "setInitialBound"
@@ -2560,7 +2020,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::setShape
         
-            typedef void ( ::osg::Drawable::*setShape_function_type)( ::osg::Shape * ) ;
+            typedef void ( ::osg::Drawable::*setShape_function_type )( ::osg::Shape * ) ;
             
             Drawable_exposer.def( 
                 "setShape"
@@ -2571,7 +2031,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::setStateSet
         
-            typedef void ( ::osg::Drawable::*setStateSet_function_type)( ::osg::StateSet * ) ;
+            typedef void ( ::osg::Drawable::*setStateSet_function_type )( ::osg::StateSet * ) ;
             
             Drawable_exposer.def( 
                 "setStateSet"
@@ -2582,7 +2042,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::setSupportsDisplayList
         
-            typedef void ( ::osg::Drawable::*setSupportsDisplayList_function_type)( bool ) ;
+            typedef void ( ::osg::Drawable::*setSupportsDisplayList_function_type )( bool ) ;
             
             Drawable_exposer.def( 
                 "setSupportsDisplayList"
@@ -2593,8 +2053,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::setThreadSafeRefUnref
         
-            typedef void ( ::osg::Drawable::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( Drawable_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
+            typedef void ( ::osg::Drawable::*setThreadSafeRefUnref_function_type )( bool ) ;
+            typedef void ( Drawable_wrapper::*default_setThreadSafeRefUnref_function_type )( bool ) ;
             
             Drawable_exposer.def( 
                 "setThreadSafeRefUnref"
@@ -2605,8 +2065,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::setUpdateCallback
         
-            typedef void ( ::osg::Drawable::*setUpdateCallback_function_type)( ::osg::Drawable::UpdateCallback * ) ;
-            typedef void ( Drawable_wrapper::*default_setUpdateCallback_function_type)( ::osg::Drawable::UpdateCallback * ) ;
+            typedef void ( ::osg::Drawable::*setUpdateCallback_function_type )( ::osg::Drawable::UpdateCallback * ) ;
+            typedef void ( Drawable_wrapper::*default_setUpdateCallback_function_type )( ::osg::Drawable::UpdateCallback * ) ;
             
             Drawable_exposer.def( 
                 "setUpdateCallback"
@@ -2617,7 +2077,7 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::setUseDisplayList
         
-            typedef void ( ::osg::Drawable::*setUseDisplayList_function_type)( bool ) ;
+            typedef void ( ::osg::Drawable::*setUseDisplayList_function_type )( bool ) ;
             
             Drawable_exposer.def( 
                 "setUseDisplayList"
@@ -2628,8 +2088,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::setUseVertexBufferObjects
         
-            typedef void ( ::osg::Drawable::*setUseVertexBufferObjects_function_type)( bool ) ;
-            typedef void ( Drawable_wrapper::*default_setUseVertexBufferObjects_function_type)( bool ) ;
+            typedef void ( ::osg::Drawable::*setUseVertexBufferObjects_function_type )( bool ) ;
+            typedef void ( Drawable_wrapper::*default_setUseVertexBufferObjects_function_type )( bool ) ;
             
             Drawable_exposer.def( 
                 "setUseVertexBufferObjects"
@@ -2640,8 +2100,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::supports
         
-            typedef bool ( ::osg::Drawable::*supports_function_type)( ::osg::Drawable::AttributeFunctor const & ) const;
-            typedef bool ( Drawable_wrapper::*default_supports_function_type)( ::osg::Drawable::AttributeFunctor const & ) const;
+            typedef bool ( ::osg::Drawable::*supports_function_type )( ::osg::Drawable::AttributeFunctor const & ) const;
+            typedef bool ( Drawable_wrapper::*default_supports_function_type )( ::osg::Drawable::AttributeFunctor const & ) const;
             
             Drawable_exposer.def( 
                 "supports"
@@ -2652,8 +2112,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::supports
         
-            typedef bool ( ::osg::Drawable::*supports_function_type)( ::osg::Drawable::ConstAttributeFunctor const & ) const;
-            typedef bool ( Drawable_wrapper::*default_supports_function_type)( ::osg::Drawable::ConstAttributeFunctor const & ) const;
+            typedef bool ( ::osg::Drawable::*supports_function_type )( ::osg::Drawable::ConstAttributeFunctor const & ) const;
+            typedef bool ( Drawable_wrapper::*default_supports_function_type )( ::osg::Drawable::ConstAttributeFunctor const & ) const;
             
             Drawable_exposer.def( 
                 "supports"
@@ -2664,8 +2124,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::supports
         
-            typedef bool ( ::osg::Drawable::*supports_function_type)( ::osg::PrimitiveFunctor const & ) const;
-            typedef bool ( Drawable_wrapper::*default_supports_function_type)( ::osg::PrimitiveFunctor const & ) const;
+            typedef bool ( ::osg::Drawable::*supports_function_type )( ::osg::PrimitiveFunctor const & ) const;
+            typedef bool ( Drawable_wrapper::*default_supports_function_type )( ::osg::PrimitiveFunctor const & ) const;
             
             Drawable_exposer.def( 
                 "supports"
@@ -2676,8 +2136,8 @@ void register_Drawable_class(){
         }
         { //::osg::Drawable::supports
         
-            typedef bool ( ::osg::Drawable::*supports_function_type)( ::osg::PrimitiveIndexFunctor const & ) const;
-            typedef bool ( Drawable_wrapper::*default_supports_function_type)( ::osg::PrimitiveIndexFunctor const & ) const;
+            typedef bool ( ::osg::Drawable::*supports_function_type )( ::osg::PrimitiveIndexFunctor const & ) const;
+            typedef bool ( Drawable_wrapper::*default_supports_function_type )( ::osg::PrimitiveIndexFunctor const & ) const;
             
             Drawable_exposer.def( 
                 "supports"
@@ -2691,7 +2151,7 @@ void register_Drawable_class(){
         Drawable_exposer.def_readwrite( "s_numberNewDrawablesInLastFrame", osg::Drawable::s_numberNewDrawablesInLastFrame );
         { //::osg::Object::clone
         
-            typedef ::osg::Object * ( ::osg::Object::*clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::Object::*clone_function_type )( ::osg::CopyOp const & ) const;
             
             Drawable_exposer.def( 
                 "clone"
@@ -2703,72 +2163,13 @@ void register_Drawable_class(){
         }
         { //::osg::Object::cloneType
         
-            typedef ::osg::Object * ( ::osg::Object::*cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::Object::*cloneType_function_type )(  ) const;
             
             Drawable_exposer.def( 
                 "cloneType"
                 , bp::pure_virtual( cloneType_function_type(&::osg::Object::cloneType) )
                 , bp::return_value_policy< bp::reference_existing_object >()
                 , "\n Clone the type of an object, with Object* return type.\n            Must be defined by derived classes.\n" );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( Drawable_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            Drawable_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Drawable_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( Drawable_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            Drawable_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Drawable_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( Drawable_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            Drawable_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&Drawable_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            Drawable_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( Drawable_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            Drawable_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&Drawable_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
         Drawable_exposer.staticmethod( "deleteDisplayList" );

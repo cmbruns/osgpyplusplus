@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__convenience.pypp.hpp"
 #include "__call_policies.pypp.hpp"
-#include "wrap_osgviewer.h"
+#include "wrap_osgViewer.h"
 #include "wrap_referenced.h"
-#include "depthpartitionsettings.pypp.hpp"
+#include "DepthPartitionSettings.pypp.hpp"
 
 namespace bp = boost::python;
 

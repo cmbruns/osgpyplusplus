@@ -4,7 +4,7 @@
 #include "__array_1.pypp.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "state.pypp.hpp"
+#include "State.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -22,18 +22,6 @@ struct State_wrapper : osg::State, bp::wrapper< osg::State > {
         virtual void completed( ::osg::State * arg0 ){
             bp::override func_completed = this->get_override( "completed" );
             func_completed( boost::python::ptr(arg0) );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -79,18 +67,6 @@ struct State_wrapper : osg::State, bp::wrapper< osg::State > {
         return pyplusplus::containers::static_sized::array_1_t< ::std::vector<unsigned short, std::allocator<unsigned short> >, 4>( inst._quadIndicesGLushort );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_State_class(){
@@ -108,17 +84,12 @@ void register_State_class(){
         bp::class_< State_wrapper::DynamicObjectRenderingCompletedCallback_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< State_wrapper::DynamicObjectRenderingCompletedCallback_wrapper >, boost::noncopyable >( "DynamicObjectRenderingCompletedCallback", bp::no_init )    
             .def( 
                 "completed"
-                , bp::pure_virtual( (void ( ::osg::State::DynamicObjectRenderingCompletedCallback::* )( ::osg::State * ))(&::osg::State::DynamicObjectRenderingCompletedCallback::completed) )
-                , ( bp::arg("arg0") ) )    
-            .def( 
-                "setThreadSafeRefUnref"
-                , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-                , (void ( State_wrapper::DynamicObjectRenderingCompletedCallback_wrapper::* )( bool ))(&State_wrapper::DynamicObjectRenderingCompletedCallback_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
+                , bp::pure_virtual( (void ( ::osg::State::DynamicObjectRenderingCompletedCallback::* )( ::osg::State * ) )(&::osg::State::DynamicObjectRenderingCompletedCallback::completed) )
+                , ( bp::arg("arg0") ) );
         State_exposer.def( bp::init< >("\n Encapsulates the current applied OpenGL modes, attributes and vertex arrays settings,\n implements lazy state updating and provides accessors for querying the current state.\n The venerable Red Book says that OpenGL is a state machine, and this class\n represents the OpenGL state in OSG. Furthermore,  State also has other\n important features:\n - It works as a stack of states (see  pushStateSet() and\n    popStateSet()). Manipulating this stack of OpenGL states manually is\n   seldom needed, since OSG does this in the most common situations.\n - It implements lazy state updating. This means that, if one requests a\n   state change and that particular state is already in the requested state,\n   no OpenGL call will be made. This ensures that the OpenGL pipeline is not\n   stalled by unnecessary state changes.\n - It allows to query the current OpenGL state without calls to  glGet*(),\n   which typically stall the graphics pipeline (see, for instance,\n    captureCurrentState() and  getModelViewMatrix()).\n") );
         { //::osg::State::Color
         
-            typedef void ( ::osg::State::*Color_function_type)( float,float,float,float ) ;
+            typedef void ( ::osg::State::*Color_function_type )( float,float,float,float ) ;
             
             State_exposer.def( 
                 "Color"
@@ -128,7 +99,7 @@ void register_State_class(){
         }
         { //::osg::State::MultiTexCoord
         
-            typedef void ( ::osg::State::*MultiTexCoord_function_type)( unsigned int,float,float,float,float ) ;
+            typedef void ( ::osg::State::*MultiTexCoord_function_type )( unsigned int,float,float,float,float ) ;
             
             State_exposer.def( 
                 "MultiTexCoord"
@@ -138,7 +109,7 @@ void register_State_class(){
         }
         { //::osg::State::Normal
         
-            typedef void ( ::osg::State::*Normal_function_type)( float,float,float ) ;
+            typedef void ( ::osg::State::*Normal_function_type )( float,float,float ) ;
             
             State_exposer.def( 
                 "Normal"
@@ -148,7 +119,7 @@ void register_State_class(){
         }
         { //::osg::State::TexCoord
         
-            typedef void ( ::osg::State::*TexCoord_function_type)( float,float,float,float ) ;
+            typedef void ( ::osg::State::*TexCoord_function_type )( float,float,float,float ) ;
             
             State_exposer.def( 
                 "TexCoord"
@@ -158,7 +129,7 @@ void register_State_class(){
         }
         { //::osg::State::VerteAttrib
         
-            typedef void ( ::osg::State::*VerteAttrib_function_type)( unsigned int,float,float,float,float ) ;
+            typedef void ( ::osg::State::*VerteAttrib_function_type )( unsigned int,float,float,float,float ) ;
             
             State_exposer.def( 
                 "VerteAttrib"
@@ -168,7 +139,7 @@ void register_State_class(){
         }
         { //::osg::State::Vertex
         
-            typedef void ( ::osg::State::*Vertex_function_type)( float,float,float,float ) ;
+            typedef void ( ::osg::State::*Vertex_function_type )( float,float,float,float ) ;
             
             State_exposer.def( 
                 "Vertex"
@@ -178,7 +149,7 @@ void register_State_class(){
         }
         { //::osg::State::apply
         
-            typedef void ( ::osg::State::*apply_function_type)( ::osg::StateSet const * ) ;
+            typedef void ( ::osg::State::*apply_function_type )( ::osg::StateSet const * ) ;
             
             State_exposer.def( 
                 "apply"
@@ -189,7 +160,7 @@ void register_State_class(){
         }
         { //::osg::State::apply
         
-            typedef void ( ::osg::State::*apply_function_type)(  ) ;
+            typedef void ( ::osg::State::*apply_function_type )(  ) ;
             
             State_exposer.def( 
                 "apply"
@@ -199,7 +170,7 @@ void register_State_class(){
         }
         { //::osg::State::applyAttribute
         
-            typedef bool ( ::osg::State::*applyAttribute_function_type)( ::osg::StateAttribute const * ) ;
+            typedef bool ( ::osg::State::*applyAttribute_function_type )( ::osg::StateAttribute const * ) ;
             
             State_exposer.def( 
                 "applyAttribute"
@@ -210,7 +181,7 @@ void register_State_class(){
         }
         { //::osg::State::applyDisablingOfVertexAttributes
         
-            typedef void ( ::osg::State::*applyDisablingOfVertexAttributes_function_type)(  ) ;
+            typedef void ( ::osg::State::*applyDisablingOfVertexAttributes_function_type )(  ) ;
             
             State_exposer.def( 
                 "applyDisablingOfVertexAttributes"
@@ -220,7 +191,7 @@ void register_State_class(){
         }
         { //::osg::State::applyMode
         
-            typedef bool ( ::osg::State::*applyMode_function_type)( ::GLenum,bool ) ;
+            typedef bool ( ::osg::State::*applyMode_function_type )( ::GLenum,bool ) ;
             
             State_exposer.def( 
                 "applyMode"
@@ -231,7 +202,7 @@ void register_State_class(){
         }
         { //::osg::State::applyModelViewAndProjectionUniformsIfRequired
         
-            typedef void ( ::osg::State::*applyModelViewAndProjectionUniformsIfRequired_function_type)(  ) ;
+            typedef void ( ::osg::State::*applyModelViewAndProjectionUniformsIfRequired_function_type )(  ) ;
             
             State_exposer.def( 
                 "applyModelViewAndProjectionUniformsIfRequired"
@@ -240,7 +211,7 @@ void register_State_class(){
         }
         { //::osg::State::applyModelViewMatrix
         
-            typedef void ( ::osg::State::*applyModelViewMatrix_function_type)( ::osg::RefMatrix const * ) ;
+            typedef void ( ::osg::State::*applyModelViewMatrix_function_type )( ::osg::RefMatrix const * ) ;
             
             State_exposer.def( 
                 "applyModelViewMatrix"
@@ -250,7 +221,7 @@ void register_State_class(){
         }
         { //::osg::State::applyModelViewMatrix
         
-            typedef void ( ::osg::State::*applyModelViewMatrix_function_type)( ::osg::Matrix const & ) ;
+            typedef void ( ::osg::State::*applyModelViewMatrix_function_type )( ::osg::Matrix const & ) ;
             
             State_exposer.def( 
                 "applyModelViewMatrix"
@@ -260,7 +231,7 @@ void register_State_class(){
         }
         { //::osg::State::applyProjectionMatrix
         
-            typedef void ( ::osg::State::*applyProjectionMatrix_function_type)( ::osg::RefMatrix const * ) ;
+            typedef void ( ::osg::State::*applyProjectionMatrix_function_type )( ::osg::RefMatrix const * ) ;
             
             State_exposer.def( 
                 "applyProjectionMatrix"
@@ -270,7 +241,7 @@ void register_State_class(){
         }
         { //::osg::State::applyShaderComposition
         
-            typedef void ( ::osg::State::*applyShaderComposition_function_type)(  ) ;
+            typedef void ( ::osg::State::*applyShaderComposition_function_type )(  ) ;
             
             State_exposer.def( 
                 "applyShaderComposition"
@@ -280,7 +251,7 @@ void register_State_class(){
         }
         { //::osg::State::applyShaderCompositionUniform
         
-            typedef void ( ::osg::State::*applyShaderCompositionUniform_function_type)( ::osg::Uniform const *,unsigned int ) ;
+            typedef void ( ::osg::State::*applyShaderCompositionUniform_function_type )( ::osg::Uniform const *,unsigned int ) ;
             
             State_exposer.def( 
                 "applyShaderCompositionUniform"
@@ -291,7 +262,7 @@ void register_State_class(){
         }
         { //::osg::State::applyTextureAttribute
         
-            typedef bool ( ::osg::State::*applyTextureAttribute_function_type)( unsigned int,::osg::StateAttribute const * ) ;
+            typedef bool ( ::osg::State::*applyTextureAttribute_function_type )( unsigned int,::osg::StateAttribute const * ) ;
             
             State_exposer.def( 
                 "applyTextureAttribute"
@@ -301,7 +272,7 @@ void register_State_class(){
         }
         { //::osg::State::applyTextureMode
         
-            typedef bool ( ::osg::State::*applyTextureMode_function_type)( unsigned int,::GLenum,bool ) ;
+            typedef bool ( ::osg::State::*applyTextureMode_function_type )( unsigned int,::GLenum,bool ) ;
             
             State_exposer.def( 
                 "applyTextureMode"
@@ -311,7 +282,7 @@ void register_State_class(){
         }
         { //::osg::State::bindElementBufferObject
         
-            typedef void ( ::osg::State::*bindElementBufferObject_function_type)( ::osg::GLBufferObject * ) ;
+            typedef void ( ::osg::State::*bindElementBufferObject_function_type )( ::osg::GLBufferObject * ) ;
             
             State_exposer.def( 
                 "bindElementBufferObject"
@@ -321,7 +292,7 @@ void register_State_class(){
         }
         { //::osg::State::bindPixelBufferObject
         
-            typedef void ( ::osg::State::*bindPixelBufferObject_function_type)( ::osg::GLBufferObject * ) ;
+            typedef void ( ::osg::State::*bindPixelBufferObject_function_type )( ::osg::GLBufferObject * ) ;
             
             State_exposer.def( 
                 "bindPixelBufferObject"
@@ -331,7 +302,7 @@ void register_State_class(){
         }
         { //::osg::State::bindVertexBufferObject
         
-            typedef void ( ::osg::State::*bindVertexBufferObject_function_type)( ::osg::GLBufferObject * ) ;
+            typedef void ( ::osg::State::*bindVertexBufferObject_function_type )( ::osg::GLBufferObject * ) ;
             
             State_exposer.def( 
                 "bindVertexBufferObject"
@@ -341,7 +312,7 @@ void register_State_class(){
         }
         { //::osg::State::captureCurrentState
         
-            typedef void ( ::osg::State::*captureCurrentState_function_type)( ::osg::StateSet & ) const;
+            typedef void ( ::osg::State::*captureCurrentState_function_type )( ::osg::StateSet & ) const;
             
             State_exposer.def( 
                 "captureCurrentState"
@@ -352,7 +323,7 @@ void register_State_class(){
         }
         { //::osg::State::checkGLErrors
         
-            typedef bool ( ::osg::State::*checkGLErrors_function_type)( char const * ) const;
+            typedef bool ( ::osg::State::*checkGLErrors_function_type )( char const * ) const;
             
             State_exposer.def( 
                 "checkGLErrors"
@@ -362,7 +333,7 @@ void register_State_class(){
         }
         { //::osg::State::checkGLErrors
         
-            typedef bool ( ::osg::State::*checkGLErrors_function_type)( ::GLenum ) const;
+            typedef bool ( ::osg::State::*checkGLErrors_function_type )( ::GLenum ) const;
             
             State_exposer.def( 
                 "checkGLErrors"
@@ -372,7 +343,7 @@ void register_State_class(){
         }
         { //::osg::State::checkGLErrors
         
-            typedef bool ( ::osg::State::*checkGLErrors_function_type)( ::osg::StateAttribute const * ) const;
+            typedef bool ( ::osg::State::*checkGLErrors_function_type )( ::osg::StateAttribute const * ) const;
             
             State_exposer.def( 
                 "checkGLErrors"
@@ -382,7 +353,7 @@ void register_State_class(){
         }
         { //::osg::State::convertVertexShaderSourceToOsgBuiltIns
         
-            typedef bool ( ::osg::State::*convertVertexShaderSourceToOsgBuiltIns_function_type)( ::std::string & ) const;
+            typedef bool ( ::osg::State::*convertVertexShaderSourceToOsgBuiltIns_function_type )( ::std::string & ) const;
             
             State_exposer.def( 
                 "convertVertexShaderSourceToOsgBuiltIns"
@@ -392,7 +363,7 @@ void register_State_class(){
         }
         { //::osg::State::decrementDynamicObjectCount
         
-            typedef void ( ::osg::State::*decrementDynamicObjectCount_function_type)(  ) ;
+            typedef void ( ::osg::State::*decrementDynamicObjectCount_function_type )(  ) ;
             
             State_exposer.def( 
                 "decrementDynamicObjectCount"
@@ -402,7 +373,7 @@ void register_State_class(){
         }
         { //::osg::State::dirtyAllAttributes
         
-            typedef void ( ::osg::State::*dirtyAllAttributes_function_type)(  ) ;
+            typedef void ( ::osg::State::*dirtyAllAttributes_function_type )(  ) ;
             
             State_exposer.def( 
                 "dirtyAllAttributes"
@@ -412,7 +383,7 @@ void register_State_class(){
         }
         { //::osg::State::dirtyAllModes
         
-            typedef void ( ::osg::State::*dirtyAllModes_function_type)(  ) ;
+            typedef void ( ::osg::State::*dirtyAllModes_function_type )(  ) ;
             
             State_exposer.def( 
                 "dirtyAllModes"
@@ -422,7 +393,7 @@ void register_State_class(){
         }
         { //::osg::State::dirtyAllVertexArrays
         
-            typedef void ( ::osg::State::*dirtyAllVertexArrays_function_type)(  ) ;
+            typedef void ( ::osg::State::*dirtyAllVertexArrays_function_type )(  ) ;
             
             State_exposer.def( 
                 "dirtyAllVertexArrays"
@@ -432,7 +403,7 @@ void register_State_class(){
         }
         { //::osg::State::dirtyColorPointer
         
-            typedef void ( ::osg::State::*dirtyColorPointer_function_type)(  ) ;
+            typedef void ( ::osg::State::*dirtyColorPointer_function_type )(  ) ;
             
             State_exposer.def( 
                 "dirtyColorPointer"
@@ -441,7 +412,7 @@ void register_State_class(){
         }
         { //::osg::State::dirtyFogCoordPointer
         
-            typedef void ( ::osg::State::*dirtyFogCoordPointer_function_type)(  ) ;
+            typedef void ( ::osg::State::*dirtyFogCoordPointer_function_type )(  ) ;
             
             State_exposer.def( 
                 "dirtyFogCoordPointer"
@@ -450,7 +421,7 @@ void register_State_class(){
         }
         { //::osg::State::dirtyNormalPointer
         
-            typedef void ( ::osg::State::*dirtyNormalPointer_function_type)(  ) ;
+            typedef void ( ::osg::State::*dirtyNormalPointer_function_type )(  ) ;
             
             State_exposer.def( 
                 "dirtyNormalPointer"
@@ -459,7 +430,7 @@ void register_State_class(){
         }
         { //::osg::State::dirtySecondaryColorPointer
         
-            typedef void ( ::osg::State::*dirtySecondaryColorPointer_function_type)(  ) ;
+            typedef void ( ::osg::State::*dirtySecondaryColorPointer_function_type )(  ) ;
             
             State_exposer.def( 
                 "dirtySecondaryColorPointer"
@@ -468,7 +439,7 @@ void register_State_class(){
         }
         { //::osg::State::dirtyTexCoordPointer
         
-            typedef void ( ::osg::State::*dirtyTexCoordPointer_function_type)( unsigned int ) ;
+            typedef void ( ::osg::State::*dirtyTexCoordPointer_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "dirtyTexCoordPointer"
@@ -478,7 +449,7 @@ void register_State_class(){
         }
         { //::osg::State::dirtyTexCoordPointersAboveAndIncluding
         
-            typedef void ( ::osg::State::*dirtyTexCoordPointersAboveAndIncluding_function_type)( unsigned int ) ;
+            typedef void ( ::osg::State::*dirtyTexCoordPointersAboveAndIncluding_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "dirtyTexCoordPointersAboveAndIncluding"
@@ -488,7 +459,7 @@ void register_State_class(){
         }
         { //::osg::State::dirtyVertexAttribPointer
         
-            typedef void ( ::osg::State::*dirtyVertexAttribPointer_function_type)( unsigned int ) ;
+            typedef void ( ::osg::State::*dirtyVertexAttribPointer_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "dirtyVertexAttribPointer"
@@ -498,7 +469,7 @@ void register_State_class(){
         }
         { //::osg::State::dirtyVertexAttribPointersAboveAndIncluding
         
-            typedef void ( ::osg::State::*dirtyVertexAttribPointersAboveAndIncluding_function_type)( unsigned int ) ;
+            typedef void ( ::osg::State::*dirtyVertexAttribPointersAboveAndIncluding_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "dirtyVertexAttribPointersAboveAndIncluding"
@@ -508,7 +479,7 @@ void register_State_class(){
         }
         { //::osg::State::dirtyVertexPointer
         
-            typedef void ( ::osg::State::*dirtyVertexPointer_function_type)(  ) ;
+            typedef void ( ::osg::State::*dirtyVertexPointer_function_type )(  ) ;
             
             State_exposer.def( 
                 "dirtyVertexPointer"
@@ -517,7 +488,7 @@ void register_State_class(){
         }
         { //::osg::State::disableAllVertexArrays
         
-            typedef void ( ::osg::State::*disableAllVertexArrays_function_type)(  ) ;
+            typedef void ( ::osg::State::*disableAllVertexArrays_function_type )(  ) ;
             
             State_exposer.def( 
                 "disableAllVertexArrays"
@@ -527,7 +498,7 @@ void register_State_class(){
         }
         { //::osg::State::disableColorPointer
         
-            typedef void ( ::osg::State::*disableColorPointer_function_type)(  ) ;
+            typedef void ( ::osg::State::*disableColorPointer_function_type )(  ) ;
             
             State_exposer.def( 
                 "disableColorPointer"
@@ -537,7 +508,7 @@ void register_State_class(){
         }
         { //::osg::State::disableFogCoordPointer
         
-            typedef void ( ::osg::State::*disableFogCoordPointer_function_type)(  ) ;
+            typedef void ( ::osg::State::*disableFogCoordPointer_function_type )(  ) ;
             
             State_exposer.def( 
                 "disableFogCoordPointer"
@@ -547,7 +518,7 @@ void register_State_class(){
         }
         { //::osg::State::disableNormalPointer
         
-            typedef void ( ::osg::State::*disableNormalPointer_function_type)(  ) ;
+            typedef void ( ::osg::State::*disableNormalPointer_function_type )(  ) ;
             
             State_exposer.def( 
                 "disableNormalPointer"
@@ -557,7 +528,7 @@ void register_State_class(){
         }
         { //::osg::State::disableSecondaryColorPointer
         
-            typedef void ( ::osg::State::*disableSecondaryColorPointer_function_type)(  ) ;
+            typedef void ( ::osg::State::*disableSecondaryColorPointer_function_type )(  ) ;
             
             State_exposer.def( 
                 "disableSecondaryColorPointer"
@@ -567,7 +538,7 @@ void register_State_class(){
         }
         { //::osg::State::disableTexCoordPointer
         
-            typedef void ( ::osg::State::*disableTexCoordPointer_function_type)( unsigned int ) ;
+            typedef void ( ::osg::State::*disableTexCoordPointer_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "disableTexCoordPointer"
@@ -578,7 +549,7 @@ void register_State_class(){
         }
         { //::osg::State::disableTexCoordPointersAboveAndIncluding
         
-            typedef void ( ::osg::State::*disableTexCoordPointersAboveAndIncluding_function_type)( unsigned int ) ;
+            typedef void ( ::osg::State::*disableTexCoordPointersAboveAndIncluding_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "disableTexCoordPointersAboveAndIncluding"
@@ -588,7 +559,7 @@ void register_State_class(){
         }
         { //::osg::State::disableVertexAttribPointer
         
-            typedef void ( ::osg::State::*disableVertexAttribPointer_function_type)( unsigned int ) ;
+            typedef void ( ::osg::State::*disableVertexAttribPointer_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "disableVertexAttribPointer"
@@ -599,7 +570,7 @@ void register_State_class(){
         }
         { //::osg::State::disableVertexAttribPointersAboveAndIncluding
         
-            typedef void ( ::osg::State::*disableVertexAttribPointersAboveAndIncluding_function_type)( unsigned int ) ;
+            typedef void ( ::osg::State::*disableVertexAttribPointersAboveAndIncluding_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "disableVertexAttribPointersAboveAndIncluding"
@@ -609,7 +580,7 @@ void register_State_class(){
         }
         { //::osg::State::disableVertexPointer
         
-            typedef void ( ::osg::State::*disableVertexPointer_function_type)(  ) ;
+            typedef void ( ::osg::State::*disableVertexPointer_function_type )(  ) ;
             
             State_exposer.def( 
                 "disableVertexPointer"
@@ -619,7 +590,7 @@ void register_State_class(){
         }
         { //::osg::State::drawQuads
         
-            typedef void ( ::osg::State::*drawQuads_function_type)( ::GLint,::GLsizei,::GLsizei ) ;
+            typedef void ( ::osg::State::*drawQuads_function_type )( ::GLint,::GLsizei,::GLsizei ) ;
             
             State_exposer.def( 
                 "drawQuads"
@@ -629,8 +600,8 @@ void register_State_class(){
         }
         { //::osg::State::frameCompleted
         
-            typedef void ( ::osg::State::*frameCompleted_function_type)(  ) ;
-            typedef void ( State_wrapper::*default_frameCompleted_function_type)(  ) ;
+            typedef void ( ::osg::State::*frameCompleted_function_type )(  ) ;
+            typedef void ( State_wrapper::*default_frameCompleted_function_type )(  ) ;
             
             State_exposer.def( 
                 "frameCompleted"
@@ -640,7 +611,7 @@ void register_State_class(){
         }
         { //::osg::State::getAbortRendering
         
-            typedef bool ( ::osg::State::*getAbortRendering_function_type)(  ) const;
+            typedef bool ( ::osg::State::*getAbortRendering_function_type )(  ) const;
             
             State_exposer.def( 
                 "getAbortRendering"
@@ -650,7 +621,7 @@ void register_State_class(){
         }
         { //::osg::State::getActiveTextureUnit
         
-            typedef unsigned int ( ::osg::State::*getActiveTextureUnit_function_type)(  ) const;
+            typedef unsigned int ( ::osg::State::*getActiveTextureUnit_function_type )(  ) const;
             
             State_exposer.def( 
                 "getActiveTextureUnit"
@@ -660,7 +631,7 @@ void register_State_class(){
         }
         { //::osg::State::getArrayDispatchers
         
-            typedef ::osg::ArrayDispatchers & ( ::osg::State::*getArrayDispatchers_function_type)(  ) ;
+            typedef ::osg::ArrayDispatchers & ( ::osg::State::*getArrayDispatchers_function_type )(  ) ;
             
             State_exposer.def( 
                 "getArrayDispatchers"
@@ -671,7 +642,7 @@ void register_State_class(){
         }
         { //::osg::State::getAttribLocation
         
-            typedef ::GLint ( ::osg::State::*getAttribLocation_function_type)( ::std::string const & ) const;
+            typedef ::GLint ( ::osg::State::*getAttribLocation_function_type )( ::std::string const & ) const;
             
             State_exposer.def( 
                 "getAttribLocation"
@@ -681,7 +652,7 @@ void register_State_class(){
         }
         { //::osg::State::getAttributeBindingList
         
-            typedef ::std::map< std::string, unsigned int > const & ( ::osg::State::*getAttributeBindingList_function_type)(  ) ;
+            typedef ::std::map< std::string, unsigned int > const & ( ::osg::State::*getAttributeBindingList_function_type )(  ) ;
             
             State_exposer.def( 
                 "getAttributeBindingList"
@@ -691,7 +662,7 @@ void register_State_class(){
         }
         { //::osg::State::getAttributeVec
         
-            typedef ::std::vector< std::pair<osg::StateAttribute const*, unsigned int> > & ( ::osg::State::*getAttributeVec_function_type)( ::osg::StateAttribute const * ) ;
+            typedef ::std::vector< std::pair<osg::StateAttribute const*, unsigned int> > & ( ::osg::State::*getAttributeVec_function_type )( ::osg::StateAttribute const * ) ;
             
             State_exposer.def( 
                 "getAttributeVec"
@@ -702,7 +673,7 @@ void register_State_class(){
         }
         { //::osg::State::getCheckForGLErrors
         
-            typedef ::osg::State::CheckForGLErrors ( ::osg::State::*getCheckForGLErrors_function_type)(  ) const;
+            typedef ::osg::State::CheckForGLErrors ( ::osg::State::*getCheckForGLErrors_function_type )(  ) const;
             
             State_exposer.def( 
                 "getCheckForGLErrors"
@@ -712,7 +683,7 @@ void register_State_class(){
         }
         { //::osg::State::getClientActiveTextureUnit
         
-            typedef unsigned int ( ::osg::State::*getClientActiveTextureUnit_function_type)(  ) const;
+            typedef unsigned int ( ::osg::State::*getClientActiveTextureUnit_function_type )(  ) const;
             
             State_exposer.def( 
                 "getClientActiveTextureUnit"
@@ -722,7 +693,7 @@ void register_State_class(){
         }
         { //::osg::State::getColorAlias
         
-            typedef ::osg::VertexAttribAlias const & ( ::osg::State::*getColorAlias_function_type)(  ) ;
+            typedef ::osg::VertexAttribAlias const & ( ::osg::State::*getColorAlias_function_type )(  ) ;
             
             State_exposer.def( 
                 "getColorAlias"
@@ -732,7 +703,7 @@ void register_State_class(){
         }
         { //::osg::State::getContextID
         
-            typedef unsigned int ( ::osg::State::*getContextID_function_type)(  ) const;
+            typedef unsigned int ( ::osg::State::*getContextID_function_type )(  ) const;
             
             State_exposer.def( 
                 "getContextID"
@@ -742,7 +713,7 @@ void register_State_class(){
         }
         { //::osg::State::getCurrentElementBufferObject
         
-            typedef ::osg::GLBufferObject const * ( ::osg::State::*getCurrentElementBufferObject_function_type)(  ) ;
+            typedef ::osg::GLBufferObject const * ( ::osg::State::*getCurrentElementBufferObject_function_type )(  ) ;
             
             State_exposer.def( 
                 "getCurrentElementBufferObject"
@@ -752,7 +723,7 @@ void register_State_class(){
         }
         { //::osg::State::getCurrentPixelBufferObject
         
-            typedef ::osg::GLBufferObject const * ( ::osg::State::*getCurrentPixelBufferObject_function_type)(  ) ;
+            typedef ::osg::GLBufferObject const * ( ::osg::State::*getCurrentPixelBufferObject_function_type )(  ) ;
             
             State_exposer.def( 
                 "getCurrentPixelBufferObject"
@@ -762,7 +733,7 @@ void register_State_class(){
         }
         { //::osg::State::getCurrentShaderCompositionUniformList
         
-            typedef ::std::map< std::string, std::pair<osg::ref_ptr<osg::Uniform>, unsigned int> > & ( ::osg::State::*getCurrentShaderCompositionUniformList_function_type)(  ) ;
+            typedef ::std::map< std::string, std::pair<osg::ref_ptr<osg::Uniform>, unsigned int> > & ( ::osg::State::*getCurrentShaderCompositionUniformList_function_type )(  ) ;
             
             State_exposer.def( 
                 "getCurrentShaderCompositionUniformList"
@@ -773,7 +744,7 @@ void register_State_class(){
         }
         { //::osg::State::getCurrentVertexBufferObject
         
-            typedef ::osg::GLBufferObject const * ( ::osg::State::*getCurrentVertexBufferObject_function_type)(  ) ;
+            typedef ::osg::GLBufferObject const * ( ::osg::State::*getCurrentVertexBufferObject_function_type )(  ) ;
             
             State_exposer.def( 
                 "getCurrentVertexBufferObject"
@@ -783,7 +754,7 @@ void register_State_class(){
         }
         { //::osg::State::getCurrentViewport
         
-            typedef ::osg::Viewport const * ( ::osg::State::*getCurrentViewport_function_type)(  ) const;
+            typedef ::osg::Viewport const * ( ::osg::State::*getCurrentViewport_function_type )(  ) const;
             
             State_exposer.def( 
                 "getCurrentViewport"
@@ -793,7 +764,7 @@ void register_State_class(){
         }
         { //::osg::State::getDisplaySettings
         
-            typedef ::osg::DisplaySettings const * ( ::osg::State::*getDisplaySettings_function_type)(  ) const;
+            typedef ::osg::DisplaySettings const * ( ::osg::State::*getDisplaySettings_function_type )(  ) const;
             
             State_exposer.def( 
                 "getDisplaySettings"
@@ -804,7 +775,7 @@ void register_State_class(){
         }
         { //::osg::State::getDynamicObjectCount
         
-            typedef unsigned int ( ::osg::State::*getDynamicObjectCount_function_type)(  ) const;
+            typedef unsigned int ( ::osg::State::*getDynamicObjectCount_function_type )(  ) const;
             
             State_exposer.def( 
                 "getDynamicObjectCount"
@@ -814,7 +785,7 @@ void register_State_class(){
         }
         { //::osg::State::getDynamicObjectRenderingCompletedCallback
         
-            typedef ::osg::State::DynamicObjectRenderingCompletedCallback * ( ::osg::State::*getDynamicObjectRenderingCompletedCallback_function_type)(  ) ;
+            typedef ::osg::State::DynamicObjectRenderingCompletedCallback * ( ::osg::State::*getDynamicObjectRenderingCompletedCallback_function_type )(  ) ;
             
             State_exposer.def( 
                 "getDynamicObjectRenderingCompletedCallback"
@@ -825,7 +796,7 @@ void register_State_class(){
         }
         { //::osg::State::getFogCoordAlias
         
-            typedef ::osg::VertexAttribAlias const & ( ::osg::State::*getFogCoordAlias_function_type)(  ) ;
+            typedef ::osg::VertexAttribAlias const & ( ::osg::State::*getFogCoordAlias_function_type )(  ) ;
             
             State_exposer.def( 
                 "getFogCoordAlias"
@@ -835,7 +806,7 @@ void register_State_class(){
         }
         { //::osg::State::getFrameStamp
         
-            typedef ::osg::FrameStamp * ( ::osg::State::*getFrameStamp_function_type)(  ) ;
+            typedef ::osg::FrameStamp * ( ::osg::State::*getFrameStamp_function_type )(  ) ;
             
             State_exposer.def( 
                 "getFrameStamp"
@@ -846,7 +817,7 @@ void register_State_class(){
         }
         { //::osg::State::getFrameStamp
         
-            typedef ::osg::FrameStamp const * ( ::osg::State::*getFrameStamp_function_type)(  ) const;
+            typedef ::osg::FrameStamp const * ( ::osg::State::*getFrameStamp_function_type )(  ) const;
             
             State_exposer.def( 
                 "getFrameStamp"
@@ -857,7 +828,7 @@ void register_State_class(){
         }
         { //::osg::State::getGLBeginEndAdapter
         
-            typedef ::osg::GLBeginEndAdapter & ( ::osg::State::*getGLBeginEndAdapter_function_type)(  ) ;
+            typedef ::osg::GLBeginEndAdapter & ( ::osg::State::*getGLBeginEndAdapter_function_type )(  ) ;
             
             State_exposer.def( 
                 "getGLBeginEndAdapter"
@@ -868,7 +839,7 @@ void register_State_class(){
         }
         { //::osg::State::getGlobalDefaultAttribute
         
-            typedef ::osg::StateAttribute const * ( ::osg::State::*getGlobalDefaultAttribute_function_type)( ::osg::StateAttribute::Type,unsigned int ) ;
+            typedef ::osg::StateAttribute const * ( ::osg::State::*getGlobalDefaultAttribute_function_type )( ::osg::StateAttribute::Type,unsigned int ) ;
             
             State_exposer.def( 
                 "getGlobalDefaultAttribute"
@@ -879,7 +850,7 @@ void register_State_class(){
         }
         { //::osg::State::getGlobalDefaultModeValue
         
-            typedef bool ( ::osg::State::*getGlobalDefaultModeValue_function_type)( ::GLenum ) ;
+            typedef bool ( ::osg::State::*getGlobalDefaultModeValue_function_type )( ::GLenum ) ;
             
             State_exposer.def( 
                 "getGlobalDefaultModeValue"
@@ -889,7 +860,7 @@ void register_State_class(){
         }
         { //::osg::State::getGlobalDefaultTextureAttribute
         
-            typedef ::osg::StateAttribute const * ( ::osg::State::*getGlobalDefaultTextureAttribute_function_type)( unsigned int,::osg::StateAttribute::Type,unsigned int ) ;
+            typedef ::osg::StateAttribute const * ( ::osg::State::*getGlobalDefaultTextureAttribute_function_type )( unsigned int,::osg::StateAttribute::Type,unsigned int ) ;
             
             State_exposer.def( 
                 "getGlobalDefaultTextureAttribute"
@@ -900,7 +871,7 @@ void register_State_class(){
         }
         { //::osg::State::getGlobalDefaultTextureModeValue
         
-            typedef bool ( ::osg::State::*getGlobalDefaultTextureModeValue_function_type)( unsigned int,::GLenum ) ;
+            typedef bool ( ::osg::State::*getGlobalDefaultTextureModeValue_function_type )( unsigned int,::GLenum ) ;
             
             State_exposer.def( 
                 "getGlobalDefaultTextureModeValue"
@@ -910,7 +881,7 @@ void register_State_class(){
         }
         { //::osg::State::getGpuTick
         
-            typedef ::osg::Timer_t ( ::osg::State::*getGpuTick_function_type)(  ) const;
+            typedef ::osg::Timer_t ( ::osg::State::*getGpuTick_function_type )(  ) const;
             
             State_exposer.def( 
                 "getGpuTick"
@@ -919,7 +890,7 @@ void register_State_class(){
         }
         { //::osg::State::getGpuTime
         
-            typedef double ( ::osg::State::*getGpuTime_function_type)(  ) const;
+            typedef double ( ::osg::State::*getGpuTime_function_type )(  ) const;
             
             State_exposer.def( 
                 "getGpuTime"
@@ -928,7 +899,7 @@ void register_State_class(){
         }
         { //::osg::State::getGpuTimestamp
         
-            typedef ::GLuint64EXT ( ::osg::State::*getGpuTimestamp_function_type)(  ) const;
+            typedef ::GLuint64EXT ( ::osg::State::*getGpuTimestamp_function_type )(  ) const;
             
             State_exposer.def( 
                 "getGpuTimestamp"
@@ -937,7 +908,7 @@ void register_State_class(){
         }
         { //::osg::State::getGraphicsContext
         
-            typedef ::osg::GraphicsContext * ( ::osg::State::*getGraphicsContext_function_type)(  ) ;
+            typedef ::osg::GraphicsContext * ( ::osg::State::*getGraphicsContext_function_type )(  ) ;
             
             State_exposer.def( 
                 "getGraphicsContext"
@@ -948,7 +919,7 @@ void register_State_class(){
         }
         { //::osg::State::getGraphicsContext
         
-            typedef ::osg::GraphicsContext const * ( ::osg::State::*getGraphicsContext_function_type)(  ) const;
+            typedef ::osg::GraphicsContext const * ( ::osg::State::*getGraphicsContext_function_type )(  ) const;
             
             State_exposer.def( 
                 "getGraphicsContext"
@@ -959,7 +930,7 @@ void register_State_class(){
         }
         { //::osg::State::getGraphicsCostEstimator
         
-            typedef ::osg::GraphicsCostEstimator * ( ::osg::State::*getGraphicsCostEstimator_function_type)(  ) ;
+            typedef ::osg::GraphicsCostEstimator * ( ::osg::State::*getGraphicsCostEstimator_function_type )(  ) ;
             
             State_exposer.def( 
                 "getGraphicsCostEstimator"
@@ -970,7 +941,7 @@ void register_State_class(){
         }
         { //::osg::State::getGraphicsCostEstimator
         
-            typedef ::osg::GraphicsCostEstimator const * ( ::osg::State::*getGraphicsCostEstimator_function_type)(  ) const;
+            typedef ::osg::GraphicsCostEstimator const * ( ::osg::State::*getGraphicsCostEstimator_function_type )(  ) const;
             
             State_exposer.def( 
                 "getGraphicsCostEstimator"
@@ -981,7 +952,7 @@ void register_State_class(){
         }
         { //::osg::State::getInitialInverseViewMatrix
         
-            typedef ::osg::Matrix const & ( ::osg::State::*getInitialInverseViewMatrix_function_type)(  ) const;
+            typedef ::osg::Matrix const & ( ::osg::State::*getInitialInverseViewMatrix_function_type )(  ) const;
             
             State_exposer.def( 
                 "getInitialInverseViewMatrix"
@@ -991,7 +962,7 @@ void register_State_class(){
         }
         { //::osg::State::getInitialViewMatrix
         
-            typedef ::osg::Matrix const & ( ::osg::State::*getInitialViewMatrix_function_type)(  ) const;
+            typedef ::osg::Matrix const & ( ::osg::State::*getInitialViewMatrix_function_type )(  ) const;
             
             State_exposer.def( 
                 "getInitialViewMatrix"
@@ -1001,7 +972,7 @@ void register_State_class(){
         }
         { //::osg::State::getLastAppliedAttribute
         
-            typedef ::osg::StateAttribute const * ( ::osg::State::*getLastAppliedAttribute_function_type)( ::osg::StateAttribute::Type,unsigned int ) const;
+            typedef ::osg::StateAttribute const * ( ::osg::State::*getLastAppliedAttribute_function_type )( ::osg::StateAttribute::Type,unsigned int ) const;
             
             State_exposer.def( 
                 "getLastAppliedAttribute"
@@ -1013,7 +984,7 @@ void register_State_class(){
         }
         { //::osg::State::getLastAppliedMode
         
-            typedef bool ( ::osg::State::*getLastAppliedMode_function_type)( ::GLenum ) const;
+            typedef bool ( ::osg::State::*getLastAppliedMode_function_type )( ::GLenum ) const;
             
             State_exposer.def( 
                 "getLastAppliedMode"
@@ -1024,7 +995,7 @@ void register_State_class(){
         }
         { //::osg::State::getLastAppliedProgramObject
         
-            typedef ::osg::Program::PerContextProgram const * ( ::osg::State::*getLastAppliedProgramObject_function_type)(  ) const;
+            typedef ::osg::Program::PerContextProgram const * ( ::osg::State::*getLastAppliedProgramObject_function_type )(  ) const;
             
             State_exposer.def( 
                 "getLastAppliedProgramObject"
@@ -1034,7 +1005,7 @@ void register_State_class(){
         }
         { //::osg::State::getLastAppliedTextureAttribute
         
-            typedef ::osg::StateAttribute const * ( ::osg::State::*getLastAppliedTextureAttribute_function_type)( unsigned int,::osg::StateAttribute::Type,unsigned int ) const;
+            typedef ::osg::StateAttribute const * ( ::osg::State::*getLastAppliedTextureAttribute_function_type )( unsigned int,::osg::StateAttribute::Type,unsigned int ) const;
             
             State_exposer.def( 
                 "getLastAppliedTextureAttribute"
@@ -1046,7 +1017,7 @@ void register_State_class(){
         }
         { //::osg::State::getLastAppliedTextureMode
         
-            typedef bool ( ::osg::State::*getLastAppliedTextureMode_function_type)( unsigned int,::GLenum ) const;
+            typedef bool ( ::osg::State::*getLastAppliedTextureMode_function_type )( unsigned int,::GLenum ) const;
             
             State_exposer.def( 
                 "getLastAppliedTextureMode"
@@ -1057,45 +1028,25 @@ void register_State_class(){
         }
         { //::osg::State::getMaxBufferObjectPoolSize
         
-            typedef unsigned int ( ::osg::State::*getMaxBufferObjectPoolSize_function_type)(  ) const;
+            typedef unsigned int ( ::osg::State::*getMaxBufferObjectPoolSize_function_type )(  ) const;
             
             State_exposer.def( 
                 "getMaxBufferObjectPoolSize"
                 , getMaxBufferObjectPoolSize_function_type( &::osg::State::getMaxBufferObjectPoolSize ) );
         
         }
-        { //::osg::State::getMaxTextureCoords
-        
-            typedef ::GLint ( ::osg::State::*getMaxTextureCoords_function_type)(  ) const;
-            
-            State_exposer.def( 
-                "getMaxTextureCoords"
-                , getMaxTextureCoords_function_type( &::osg::State::getMaxTextureCoords )
-                , " For GL>=2.0 uses GL_MAX_TEXTURE_COORDS, for GL<2 uses GL_MAX_TEXTURE_UNITS" );
-        
-        }
         { //::osg::State::getMaxTexturePoolSize
         
-            typedef unsigned int ( ::osg::State::*getMaxTexturePoolSize_function_type)(  ) const;
+            typedef unsigned int ( ::osg::State::*getMaxTexturePoolSize_function_type )(  ) const;
             
             State_exposer.def( 
                 "getMaxTexturePoolSize"
                 , getMaxTexturePoolSize_function_type( &::osg::State::getMaxTexturePoolSize ) );
         
         }
-        { //::osg::State::getMaxTextureUnits
-        
-            typedef ::GLint ( ::osg::State::*getMaxTextureUnits_function_type)(  ) const;
-            
-            State_exposer.def( 
-                "getMaxTextureUnits"
-                , getMaxTextureUnits_function_type( &::osg::State::getMaxTextureUnits )
-                , " For GL>=2.0 uses GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, for GL<2 uses GL_MAX_TEXTURE_UNITS" );
-        
-        }
         { //::osg::State::getModeValidity
         
-            typedef bool ( ::osg::State::*getModeValidity_function_type)( ::GLenum ) ;
+            typedef bool ( ::osg::State::*getModeValidity_function_type )( ::GLenum ) ;
             
             State_exposer.def( 
                 "getModeValidity"
@@ -1106,7 +1057,7 @@ void register_State_class(){
         }
         { //::osg::State::getModelViewMatrix
         
-            typedef ::osg::Matrix const & ( ::osg::State::*getModelViewMatrix_function_type)(  ) const;
+            typedef ::osg::Matrix const & ( ::osg::State::*getModelViewMatrix_function_type )(  ) const;
             
             State_exposer.def( 
                 "getModelViewMatrix"
@@ -1116,7 +1067,7 @@ void register_State_class(){
         }
         { //::osg::State::getModelViewMatrixUniform
         
-            typedef ::osg::Uniform * ( ::osg::State::*getModelViewMatrixUniform_function_type)(  ) ;
+            typedef ::osg::Uniform * ( ::osg::State::*getModelViewMatrixUniform_function_type )(  ) ;
             
             State_exposer.def( 
                 "getModelViewMatrixUniform"
@@ -1126,7 +1077,7 @@ void register_State_class(){
         }
         { //::osg::State::getModelViewProjectionMatrixUniform
         
-            typedef ::osg::Uniform * ( ::osg::State::*getModelViewProjectionMatrixUniform_function_type)(  ) ;
+            typedef ::osg::Uniform * ( ::osg::State::*getModelViewProjectionMatrixUniform_function_type )(  ) ;
             
             State_exposer.def( 
                 "getModelViewProjectionMatrixUniform"
@@ -1136,7 +1087,7 @@ void register_State_class(){
         }
         { //::osg::State::getNormalAlias
         
-            typedef ::osg::VertexAttribAlias const & ( ::osg::State::*getNormalAlias_function_type)(  ) ;
+            typedef ::osg::VertexAttribAlias const & ( ::osg::State::*getNormalAlias_function_type )(  ) ;
             
             State_exposer.def( 
                 "getNormalAlias"
@@ -1146,7 +1097,7 @@ void register_State_class(){
         }
         { //::osg::State::getNormalMatrixUniform
         
-            typedef ::osg::Uniform * ( ::osg::State::*getNormalMatrixUniform_function_type)(  ) ;
+            typedef ::osg::Uniform * ( ::osg::State::*getNormalMatrixUniform_function_type )(  ) ;
             
             State_exposer.def( 
                 "getNormalMatrixUniform"
@@ -1156,7 +1107,7 @@ void register_State_class(){
         }
         { //::osg::State::getProjectionMatrix
         
-            typedef ::osg::Matrix const & ( ::osg::State::*getProjectionMatrix_function_type)(  ) const;
+            typedef ::osg::Matrix const & ( ::osg::State::*getProjectionMatrix_function_type )(  ) const;
             
             State_exposer.def( 
                 "getProjectionMatrix"
@@ -1166,7 +1117,7 @@ void register_State_class(){
         }
         { //::osg::State::getProjectionMatrixUniform
         
-            typedef ::osg::Uniform * ( ::osg::State::*getProjectionMatrixUniform_function_type)(  ) ;
+            typedef ::osg::Uniform * ( ::osg::State::*getProjectionMatrixUniform_function_type )(  ) ;
             
             State_exposer.def( 
                 "getProjectionMatrixUniform"
@@ -1176,7 +1127,7 @@ void register_State_class(){
         }
         { //::osg::State::getSecondaryColorAlias
         
-            typedef ::osg::VertexAttribAlias const & ( ::osg::State::*getSecondaryColorAlias_function_type)(  ) ;
+            typedef ::osg::VertexAttribAlias const & ( ::osg::State::*getSecondaryColorAlias_function_type )(  ) ;
             
             State_exposer.def( 
                 "getSecondaryColorAlias"
@@ -1186,7 +1137,7 @@ void register_State_class(){
         }
         { //::osg::State::getShaderComposer
         
-            typedef ::osg::ShaderComposer * ( ::osg::State::*getShaderComposer_function_type)(  ) ;
+            typedef ::osg::ShaderComposer * ( ::osg::State::*getShaderComposer_function_type )(  ) ;
             
             State_exposer.def( 
                 "getShaderComposer"
@@ -1197,7 +1148,7 @@ void register_State_class(){
         }
         { //::osg::State::getShaderComposer
         
-            typedef ::osg::ShaderComposer const * ( ::osg::State::*getShaderComposer_function_type)(  ) const;
+            typedef ::osg::ShaderComposer const * ( ::osg::State::*getShaderComposer_function_type )(  ) const;
             
             State_exposer.def( 
                 "getShaderComposer"
@@ -1208,7 +1159,7 @@ void register_State_class(){
         }
         { //::osg::State::getShaderCompositionEnabled
         
-            typedef bool ( ::osg::State::*getShaderCompositionEnabled_function_type)(  ) const;
+            typedef bool ( ::osg::State::*getShaderCompositionEnabled_function_type )(  ) const;
             
             State_exposer.def( 
                 "getShaderCompositionEnabled"
@@ -1217,7 +1168,7 @@ void register_State_class(){
         }
         { //::osg::State::getStartTick
         
-            typedef ::osg::Timer_t ( ::osg::State::*getStartTick_function_type)(  ) const;
+            typedef ::osg::Timer_t ( ::osg::State::*getStartTick_function_type )(  ) const;
             
             State_exposer.def( 
                 "getStartTick"
@@ -1227,7 +1178,7 @@ void register_State_class(){
         }
         { //::osg::State::getStateSetStack
         
-            typedef ::std::vector< osg::StateSet const* > & ( ::osg::State::*getStateSetStack_function_type)(  ) ;
+            typedef ::std::vector< osg::StateSet const* > & ( ::osg::State::*getStateSetStack_function_type )(  ) ;
             
             State_exposer.def( 
                 "getStateSetStack"
@@ -1238,7 +1189,7 @@ void register_State_class(){
         }
         { //::osg::State::getStateSetStackSize
         
-            typedef unsigned int ( ::osg::State::*getStateSetStackSize_function_type)(  ) ;
+            typedef unsigned int ( ::osg::State::*getStateSetStackSize_function_type )(  ) ;
             
             State_exposer.def( 
                 "getStateSetStackSize"
@@ -1248,7 +1199,7 @@ void register_State_class(){
         }
         { //::osg::State::getTimestampBits
         
-            typedef int ( ::osg::State::*getTimestampBits_function_type)(  ) const;
+            typedef int ( ::osg::State::*getTimestampBits_function_type )(  ) const;
             
             State_exposer.def( 
                 "getTimestampBits"
@@ -1257,7 +1208,7 @@ void register_State_class(){
         }
         { //::osg::State::getUniformLocation
         
-            typedef ::GLint ( ::osg::State::*getUniformLocation_function_type)( unsigned int ) const;
+            typedef ::GLint ( ::osg::State::*getUniformLocation_function_type )( unsigned int ) const;
             
             State_exposer.def( 
                 "getUniformLocation"
@@ -1267,7 +1218,7 @@ void register_State_class(){
         }
         { //::osg::State::getUniformLocation
         
-            typedef ::GLint ( ::osg::State::*getUniformLocation_function_type)( ::std::string const & ) const;
+            typedef ::GLint ( ::osg::State::*getUniformLocation_function_type )( ::std::string const & ) const;
             
             State_exposer.def( 
                 "getUniformLocation"
@@ -1278,7 +1229,7 @@ void register_State_class(){
         }
         { //::osg::State::getUseModelViewAndProjectionUniforms
         
-            typedef bool ( ::osg::State::*getUseModelViewAndProjectionUniforms_function_type)(  ) const;
+            typedef bool ( ::osg::State::*getUseModelViewAndProjectionUniforms_function_type )(  ) const;
             
             State_exposer.def( 
                 "getUseModelViewAndProjectionUniforms"
@@ -1287,7 +1238,7 @@ void register_State_class(){
         }
         { //::osg::State::getUseVertexAttributeAliasing
         
-            typedef bool ( ::osg::State::*getUseVertexAttributeAliasing_function_type)(  ) const;
+            typedef bool ( ::osg::State::*getUseVertexAttributeAliasing_function_type )(  ) const;
             
             State_exposer.def( 
                 "getUseVertexAttributeAliasing"
@@ -1296,7 +1247,7 @@ void register_State_class(){
         }
         { //::osg::State::getVertexAlias
         
-            typedef ::osg::VertexAttribAlias const & ( ::osg::State::*getVertexAlias_function_type)(  ) ;
+            typedef ::osg::VertexAttribAlias const & ( ::osg::State::*getVertexAlias_function_type )(  ) ;
             
             State_exposer.def( 
                 "getVertexAlias"
@@ -1306,7 +1257,7 @@ void register_State_class(){
         }
         { //::osg::State::getViewFrustum
         
-            typedef ::osg::Polytope ( ::osg::State::*getViewFrustum_function_type)(  ) const;
+            typedef ::osg::Polytope ( ::osg::State::*getViewFrustum_function_type )(  ) const;
             
             State_exposer.def( 
                 "getViewFrustum"
@@ -1315,7 +1266,7 @@ void register_State_class(){
         }
         { //::osg::State::glDrawArraysInstanced
         
-            typedef void ( ::osg::State::*glDrawArraysInstanced_function_type)( ::GLenum,::GLint,::GLsizei,::GLsizei ) ;
+            typedef void ( ::osg::State::*glDrawArraysInstanced_function_type )( ::GLenum,::GLint,::GLsizei,::GLsizei ) ;
             
             State_exposer.def( 
                 "glDrawArraysInstanced"
@@ -1325,7 +1276,7 @@ void register_State_class(){
         }
         { //::osg::State::glDrawElementsInstanced
         
-            typedef void ( ::osg::State::*glDrawElementsInstanced_function_type)( ::GLenum,::GLsizei,::GLenum,::GLvoid const *,::GLsizei ) ;
+            typedef void ( ::osg::State::*glDrawElementsInstanced_function_type )( ::GLenum,::GLsizei,::GLenum,::GLvoid const *,::GLsizei ) ;
             
             State_exposer.def( 
                 "glDrawElementsInstanced"
@@ -1335,7 +1286,7 @@ void register_State_class(){
         }
         { //::osg::State::haveAppliedAttribute
         
-            typedef void ( ::osg::State::*haveAppliedAttribute_function_type)( ::osg::StateAttribute const * ) ;
+            typedef void ( ::osg::State::*haveAppliedAttribute_function_type )( ::osg::StateAttribute const * ) ;
             
             State_exposer.def( 
                 "haveAppliedAttribute"
@@ -1346,7 +1297,7 @@ void register_State_class(){
         }
         { //::osg::State::haveAppliedAttribute
         
-            typedef void ( ::osg::State::*haveAppliedAttribute_function_type)( ::osg::StateAttribute::Type,unsigned int ) ;
+            typedef void ( ::osg::State::*haveAppliedAttribute_function_type )( ::osg::StateAttribute::Type,unsigned int ) ;
             
             State_exposer.def( 
                 "haveAppliedAttribute"
@@ -1357,7 +1308,7 @@ void register_State_class(){
         }
         { //::osg::State::haveAppliedMode
         
-            typedef void ( ::osg::State::*haveAppliedMode_function_type)( ::GLenum,unsigned int ) ;
+            typedef void ( ::osg::State::*haveAppliedMode_function_type )( ::GLenum,unsigned int ) ;
             
             State_exposer.def( 
                 "haveAppliedMode"
@@ -1368,7 +1319,7 @@ void register_State_class(){
         }
         { //::osg::State::haveAppliedMode
         
-            typedef void ( ::osg::State::*haveAppliedMode_function_type)( ::GLenum ) ;
+            typedef void ( ::osg::State::*haveAppliedMode_function_type )( ::GLenum ) ;
             
             State_exposer.def( 
                 "haveAppliedMode"
@@ -1379,7 +1330,7 @@ void register_State_class(){
         }
         { //::osg::State::haveAppliedTextureAttribute
         
-            typedef void ( ::osg::State::*haveAppliedTextureAttribute_function_type)( unsigned int,::osg::StateAttribute const * ) ;
+            typedef void ( ::osg::State::*haveAppliedTextureAttribute_function_type )( unsigned int,::osg::StateAttribute const * ) ;
             
             State_exposer.def( 
                 "haveAppliedTextureAttribute"
@@ -1390,7 +1341,7 @@ void register_State_class(){
         }
         { //::osg::State::haveAppliedTextureAttribute
         
-            typedef void ( ::osg::State::*haveAppliedTextureAttribute_function_type)( unsigned int,::osg::StateAttribute::Type,unsigned int ) ;
+            typedef void ( ::osg::State::*haveAppliedTextureAttribute_function_type )( unsigned int,::osg::StateAttribute::Type,unsigned int ) ;
             
             State_exposer.def( 
                 "haveAppliedTextureAttribute"
@@ -1401,7 +1352,7 @@ void register_State_class(){
         }
         { //::osg::State::haveAppliedTextureMode
         
-            typedef void ( ::osg::State::*haveAppliedTextureMode_function_type)( unsigned int,::GLenum,unsigned int ) ;
+            typedef void ( ::osg::State::*haveAppliedTextureMode_function_type )( unsigned int,::GLenum,unsigned int ) ;
             
             State_exposer.def( 
                 "haveAppliedTextureMode"
@@ -1412,7 +1363,7 @@ void register_State_class(){
         }
         { //::osg::State::haveAppliedTextureMode
         
-            typedef void ( ::osg::State::*haveAppliedTextureMode_function_type)( unsigned int,::GLenum ) ;
+            typedef void ( ::osg::State::*haveAppliedTextureMode_function_type )( unsigned int,::GLenum ) ;
             
             State_exposer.def( 
                 "haveAppliedTextureMode"
@@ -1423,7 +1374,7 @@ void register_State_class(){
         }
         { //::osg::State::initializeExtensionProcs
         
-            typedef void ( ::osg::State::*initializeExtensionProcs_function_type)(  ) ;
+            typedef void ( ::osg::State::*initializeExtensionProcs_function_type )(  ) ;
             
             State_exposer.def( 
                 "initializeExtensionProcs"
@@ -1433,7 +1384,7 @@ void register_State_class(){
         }
         { //::osg::State::insertStateSet
         
-            typedef void ( ::osg::State::*insertStateSet_function_type)( unsigned int,::osg::StateSet const * ) ;
+            typedef void ( ::osg::State::*insertStateSet_function_type )( unsigned int,::osg::StateSet const * ) ;
             
             State_exposer.def( 
                 "insertStateSet"
@@ -1444,7 +1395,7 @@ void register_State_class(){
         }
         { //::osg::State::isFogCoordSupported
         
-            typedef bool ( ::osg::State::*isFogCoordSupported_function_type)(  ) const;
+            typedef bool ( ::osg::State::*isFogCoordSupported_function_type )(  ) const;
             
             State_exposer.def( 
                 "isFogCoordSupported"
@@ -1453,7 +1404,7 @@ void register_State_class(){
         }
         { //::osg::State::isSecondaryColorSupported
         
-            typedef bool ( ::osg::State::*isSecondaryColorSupported_function_type)(  ) const;
+            typedef bool ( ::osg::State::*isSecondaryColorSupported_function_type )(  ) const;
             
             State_exposer.def( 
                 "isSecondaryColorSupported"
@@ -1462,7 +1413,7 @@ void register_State_class(){
         }
         { //::osg::State::isVertexBufferObjectSupported
         
-            typedef bool ( ::osg::State::*isVertexBufferObjectSupported_function_type)(  ) const;
+            typedef bool ( ::osg::State::*isVertexBufferObjectSupported_function_type )(  ) const;
             
             State_exposer.def( 
                 "isVertexBufferObjectSupported"
@@ -1471,7 +1422,7 @@ void register_State_class(){
         }
         { //::osg::State::lazyDisablingOfVertexAttributes
         
-            typedef void ( ::osg::State::*lazyDisablingOfVertexAttributes_function_type)(  ) ;
+            typedef void ( ::osg::State::*lazyDisablingOfVertexAttributes_function_type )(  ) ;
             
             State_exposer.def( 
                 "lazyDisablingOfVertexAttributes"
@@ -1481,8 +1432,8 @@ void register_State_class(){
         }
         { //::osg::State::objectDeleted
         
-            typedef void ( ::osg::State::*objectDeleted_function_type)( void * ) ;
-            typedef void ( State_wrapper::*default_objectDeleted_function_type)( void * ) ;
+            typedef void ( ::osg::State::*objectDeleted_function_type )( void * ) ;
+            typedef void ( State_wrapper::*default_objectDeleted_function_type )( void * ) ;
             
             State_exposer.def( 
                 "objectDeleted"
@@ -1493,7 +1444,7 @@ void register_State_class(){
         }
         { //::osg::State::popAllStateSets
         
-            typedef void ( ::osg::State::*popAllStateSets_function_type)(  ) ;
+            typedef void ( ::osg::State::*popAllStateSets_function_type )(  ) ;
             
             State_exposer.def( 
                 "popAllStateSets"
@@ -1503,7 +1454,7 @@ void register_State_class(){
         }
         { //::osg::State::popStateSet
         
-            typedef void ( ::osg::State::*popStateSet_function_type)(  ) ;
+            typedef void ( ::osg::State::*popStateSet_function_type )(  ) ;
             
             State_exposer.def( 
                 "popStateSet"
@@ -1513,7 +1464,7 @@ void register_State_class(){
         }
         { //::osg::State::popStateSetStackToSize
         
-            typedef void ( ::osg::State::*popStateSetStackToSize_function_type)( unsigned int ) ;
+            typedef void ( ::osg::State::*popStateSetStackToSize_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "popStateSetStackToSize"
@@ -1524,7 +1475,7 @@ void register_State_class(){
         }
         { //::osg::State::print
         
-            typedef void ( ::osg::State::*print_function_type)( ::std::ostream & ) const;
+            typedef void ( ::osg::State::*print_function_type )( ::std::ostream & ) const;
             
             State_exposer.def( 
                 "print"
@@ -1535,7 +1486,7 @@ void register_State_class(){
         }
         { //::osg::State::pushStateSet
         
-            typedef void ( ::osg::State::*pushStateSet_function_type)( ::osg::StateSet const * ) ;
+            typedef void ( ::osg::State::*pushStateSet_function_type )( ::osg::StateSet const * ) ;
             
             State_exposer.def( 
                 "pushStateSet"
@@ -1546,7 +1497,7 @@ void register_State_class(){
         }
         { //::osg::State::removeStateSet
         
-            typedef void ( ::osg::State::*removeStateSet_function_type)( unsigned int ) ;
+            typedef void ( ::osg::State::*removeStateSet_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "removeStateSet"
@@ -1557,7 +1508,7 @@ void register_State_class(){
         }
         { //::osg::State::reset
         
-            typedef void ( ::osg::State::*reset_function_type)(  ) ;
+            typedef void ( ::osg::State::*reset_function_type )(  ) ;
             
             State_exposer.def( 
                 "reset"
@@ -1567,7 +1518,7 @@ void register_State_class(){
         }
         { //::osg::State::resetVertexAttributeAlias
         
-            typedef void ( ::osg::State::*resetVertexAttributeAlias_function_type)( bool ) ;
+            typedef void ( ::osg::State::*resetVertexAttributeAlias_function_type )( bool ) ;
             
             State_exposer.def( 
                 "resetVertexAttributeAlias"
@@ -1578,7 +1529,7 @@ void register_State_class(){
         }
         { //::osg::State::setAbortRenderingPtr
         
-            typedef void ( ::osg::State::*setAbortRenderingPtr_function_type)( bool * ) ;
+            typedef void ( ::osg::State::*setAbortRenderingPtr_function_type )( bool * ) ;
             
             State_exposer.def( 
                 "setAbortRenderingPtr"
@@ -1589,7 +1540,7 @@ void register_State_class(){
         }
         { //::osg::State::setActiveTextureUnit
         
-            typedef bool ( ::osg::State::*setActiveTextureUnit_function_type)( unsigned int ) ;
+            typedef bool ( ::osg::State::*setActiveTextureUnit_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "setActiveTextureUnit"
@@ -1599,7 +1550,7 @@ void register_State_class(){
         }
         { //::osg::State::setAttributeBindingList
         
-            typedef void ( ::osg::State::*setAttributeBindingList_function_type)( ::std::map< std::string, unsigned int > const & ) ;
+            typedef void ( ::osg::State::*setAttributeBindingList_function_type )( ::std::map< std::string, unsigned int > const & ) ;
             
             State_exposer.def( 
                 "setAttributeBindingList"
@@ -1610,7 +1561,7 @@ void register_State_class(){
         }
         { //::osg::State::setCheckForGLErrors
         
-            typedef void ( ::osg::State::*setCheckForGLErrors_function_type)( ::osg::State::CheckForGLErrors ) ;
+            typedef void ( ::osg::State::*setCheckForGLErrors_function_type )( ::osg::State::CheckForGLErrors ) ;
             
             State_exposer.def( 
                 "setCheckForGLErrors"
@@ -1621,7 +1572,7 @@ void register_State_class(){
         }
         { //::osg::State::setClientActiveTextureUnit
         
-            typedef bool ( ::osg::State::*setClientActiveTextureUnit_function_type)( unsigned int ) ;
+            typedef bool ( ::osg::State::*setClientActiveTextureUnit_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "setClientActiveTextureUnit"
@@ -1632,7 +1583,7 @@ void register_State_class(){
         }
         { //::osg::State::setColorAlias
         
-            typedef void ( ::osg::State::*setColorAlias_function_type)( ::osg::VertexAttribAlias const & ) ;
+            typedef void ( ::osg::State::*setColorAlias_function_type )( ::osg::VertexAttribAlias const & ) ;
             
             State_exposer.def( 
                 "setColorAlias"
@@ -1643,7 +1594,7 @@ void register_State_class(){
         }
         { //::osg::State::setColorPointer
         
-            typedef void ( ::osg::State::*setColorPointer_function_type)( ::osg::Array const * ) ;
+            typedef void ( ::osg::State::*setColorPointer_function_type )( ::osg::Array const * ) ;
             
             State_exposer.def( 
                 "setColorPointer"
@@ -1654,7 +1605,7 @@ void register_State_class(){
         }
         { //::osg::State::setColorPointer
         
-            typedef void ( ::osg::State::*setColorPointer_function_type)( ::GLint,::GLenum,::GLsizei,::GLvoid const *,::GLboolean ) ;
+            typedef void ( ::osg::State::*setColorPointer_function_type )( ::GLint,::GLenum,::GLsizei,::GLvoid const *,::GLboolean ) ;
             
             State_exposer.def( 
                 "setColorPointer"
@@ -1665,7 +1616,7 @@ void register_State_class(){
         }
         { //::osg::State::setContextID
         
-            typedef void ( ::osg::State::*setContextID_function_type)( unsigned int ) ;
+            typedef void ( ::osg::State::*setContextID_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "setContextID"
@@ -1676,7 +1627,7 @@ void register_State_class(){
         }
         { //::osg::State::setCurrentElementBufferObject
         
-            typedef void ( ::osg::State::*setCurrentElementBufferObject_function_type)( ::osg::GLBufferObject * ) ;
+            typedef void ( ::osg::State::*setCurrentElementBufferObject_function_type )( ::osg::GLBufferObject * ) ;
             
             State_exposer.def( 
                 "setCurrentElementBufferObject"
@@ -1686,7 +1637,7 @@ void register_State_class(){
         }
         { //::osg::State::setCurrentPixelBufferObject
         
-            typedef void ( ::osg::State::*setCurrentPixelBufferObject_function_type)( ::osg::GLBufferObject * ) ;
+            typedef void ( ::osg::State::*setCurrentPixelBufferObject_function_type )( ::osg::GLBufferObject * ) ;
             
             State_exposer.def( 
                 "setCurrentPixelBufferObject"
@@ -1696,7 +1647,7 @@ void register_State_class(){
         }
         { //::osg::State::setCurrentVertexBufferObject
         
-            typedef void ( ::osg::State::*setCurrentVertexBufferObject_function_type)( ::osg::GLBufferObject * ) ;
+            typedef void ( ::osg::State::*setCurrentVertexBufferObject_function_type )( ::osg::GLBufferObject * ) ;
             
             State_exposer.def( 
                 "setCurrentVertexBufferObject"
@@ -1706,7 +1657,7 @@ void register_State_class(){
         }
         { //::osg::State::setDisplaySettings
         
-            typedef void ( ::osg::State::*setDisplaySettings_function_type)( ::osg::DisplaySettings * ) ;
+            typedef void ( ::osg::State::*setDisplaySettings_function_type )( ::osg::DisplaySettings * ) ;
             
             State_exposer.def( 
                 "setDisplaySettings"
@@ -1717,7 +1668,7 @@ void register_State_class(){
         }
         { //::osg::State::setDynamicObjectCount
         
-            typedef void ( ::osg::State::*setDynamicObjectCount_function_type)( unsigned int,bool ) ;
+            typedef void ( ::osg::State::*setDynamicObjectCount_function_type )( unsigned int,bool ) ;
             
             State_exposer.def( 
                 "setDynamicObjectCount"
@@ -1728,7 +1679,7 @@ void register_State_class(){
         }
         { //::osg::State::setDynamicObjectRenderingCompletedCallback
         
-            typedef void ( ::osg::State::*setDynamicObjectRenderingCompletedCallback_function_type)( ::osg::State::DynamicObjectRenderingCompletedCallback * ) ;
+            typedef void ( ::osg::State::*setDynamicObjectRenderingCompletedCallback_function_type )( ::osg::State::DynamicObjectRenderingCompletedCallback * ) ;
             
             State_exposer.def( 
                 "setDynamicObjectRenderingCompletedCallback"
@@ -1739,7 +1690,7 @@ void register_State_class(){
         }
         { //::osg::State::setFogCoordAlias
         
-            typedef void ( ::osg::State::*setFogCoordAlias_function_type)( ::osg::VertexAttribAlias const & ) ;
+            typedef void ( ::osg::State::*setFogCoordAlias_function_type )( ::osg::VertexAttribAlias const & ) ;
             
             State_exposer.def( 
                 "setFogCoordAlias"
@@ -1750,7 +1701,7 @@ void register_State_class(){
         }
         { //::osg::State::setFogCoordPointer
         
-            typedef void ( ::osg::State::*setFogCoordPointer_function_type)( ::osg::Array const * ) ;
+            typedef void ( ::osg::State::*setFogCoordPointer_function_type )( ::osg::Array const * ) ;
             
             State_exposer.def( 
                 "setFogCoordPointer"
@@ -1761,7 +1712,7 @@ void register_State_class(){
         }
         { //::osg::State::setFogCoordPointer
         
-            typedef void ( ::osg::State::*setFogCoordPointer_function_type)( ::GLenum,::GLsizei,::GLvoid const *,::GLboolean ) ;
+            typedef void ( ::osg::State::*setFogCoordPointer_function_type )( ::GLenum,::GLsizei,::GLvoid const *,::GLboolean ) ;
             
             State_exposer.def( 
                 "setFogCoordPointer"
@@ -1772,7 +1723,7 @@ void register_State_class(){
         }
         { //::osg::State::setFrameStamp
         
-            typedef void ( ::osg::State::*setFrameStamp_function_type)( ::osg::FrameStamp * ) ;
+            typedef void ( ::osg::State::*setFrameStamp_function_type )( ::osg::FrameStamp * ) ;
             
             State_exposer.def( 
                 "setFrameStamp"
@@ -1783,7 +1734,7 @@ void register_State_class(){
         }
         { //::osg::State::setGlobalDefaultAttribute
         
-            typedef void ( ::osg::State::*setGlobalDefaultAttribute_function_type)( ::osg::StateAttribute const * ) ;
+            typedef void ( ::osg::State::*setGlobalDefaultAttribute_function_type )( ::osg::StateAttribute const * ) ;
             
             State_exposer.def( 
                 "setGlobalDefaultAttribute"
@@ -1793,7 +1744,7 @@ void register_State_class(){
         }
         { //::osg::State::setGlobalDefaultModeValue
         
-            typedef void ( ::osg::State::*setGlobalDefaultModeValue_function_type)( ::GLenum,bool ) ;
+            typedef void ( ::osg::State::*setGlobalDefaultModeValue_function_type )( ::GLenum,bool ) ;
             
             State_exposer.def( 
                 "setGlobalDefaultModeValue"
@@ -1803,7 +1754,7 @@ void register_State_class(){
         }
         { //::osg::State::setGlobalDefaultTextureAttribute
         
-            typedef void ( ::osg::State::*setGlobalDefaultTextureAttribute_function_type)( unsigned int,::osg::StateAttribute const * ) ;
+            typedef void ( ::osg::State::*setGlobalDefaultTextureAttribute_function_type )( unsigned int,::osg::StateAttribute const * ) ;
             
             State_exposer.def( 
                 "setGlobalDefaultTextureAttribute"
@@ -1813,7 +1764,7 @@ void register_State_class(){
         }
         { //::osg::State::setGlobalDefaultTextureModeValue
         
-            typedef void ( ::osg::State::*setGlobalDefaultTextureModeValue_function_type)( unsigned int,::GLenum,bool ) ;
+            typedef void ( ::osg::State::*setGlobalDefaultTextureModeValue_function_type )( unsigned int,::GLenum,bool ) ;
             
             State_exposer.def( 
                 "setGlobalDefaultTextureModeValue"
@@ -1823,7 +1774,7 @@ void register_State_class(){
         }
         { //::osg::State::setGpuTimestamp
         
-            typedef void ( ::osg::State::*setGpuTimestamp_function_type)( ::osg::Timer_t,::GLuint64EXT ) ;
+            typedef void ( ::osg::State::*setGpuTimestamp_function_type )( ::osg::Timer_t,::GLuint64EXT ) ;
             
             State_exposer.def( 
                 "setGpuTimestamp"
@@ -1833,7 +1784,7 @@ void register_State_class(){
         }
         { //::osg::State::setGraphicsContext
         
-            typedef void ( ::osg::State::*setGraphicsContext_function_type)( ::osg::GraphicsContext * ) ;
+            typedef void ( ::osg::State::*setGraphicsContext_function_type )( ::osg::GraphicsContext * ) ;
             
             State_exposer.def( 
                 "setGraphicsContext"
@@ -1844,7 +1795,7 @@ void register_State_class(){
         }
         { //::osg::State::setGraphicsCostEstimator
         
-            typedef void ( ::osg::State::*setGraphicsCostEstimator_function_type)( ::osg::GraphicsCostEstimator * ) ;
+            typedef void ( ::osg::State::*setGraphicsCostEstimator_function_type )( ::osg::GraphicsCostEstimator * ) ;
             
             State_exposer.def( 
                 "setGraphicsCostEstimator"
@@ -1855,7 +1806,7 @@ void register_State_class(){
         }
         { //::osg::State::setInitialViewMatrix
         
-            typedef void ( ::osg::State::*setInitialViewMatrix_function_type)( ::osg::RefMatrix const * ) ;
+            typedef void ( ::osg::State::*setInitialViewMatrix_function_type )( ::osg::RefMatrix const * ) ;
             
             State_exposer.def( 
                 "setInitialViewMatrix"
@@ -1865,7 +1816,7 @@ void register_State_class(){
         }
         { //::osg::State::setInterleavedArrays
         
-            typedef void ( ::osg::State::*setInterleavedArrays_function_type)( ::GLenum,::GLsizei,::GLvoid const * ) ;
+            typedef void ( ::osg::State::*setInterleavedArrays_function_type )( ::GLenum,::GLsizei,::GLvoid const * ) ;
             
             State_exposer.def( 
                 "setInterleavedArrays"
@@ -1876,7 +1827,7 @@ void register_State_class(){
         }
         { //::osg::State::setLastAppliedProgramObject
         
-            typedef void ( ::osg::State::*setLastAppliedProgramObject_function_type)( ::osg::Program::PerContextProgram const * ) ;
+            typedef void ( ::osg::State::*setLastAppliedProgramObject_function_type )( ::osg::Program::PerContextProgram const * ) ;
             
             State_exposer.def( 
                 "setLastAppliedProgramObject"
@@ -1886,7 +1837,7 @@ void register_State_class(){
         }
         { //::osg::State::setMaxBufferObjectPoolSize
         
-            typedef void ( ::osg::State::*setMaxBufferObjectPoolSize_function_type)( unsigned int ) ;
+            typedef void ( ::osg::State::*setMaxBufferObjectPoolSize_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "setMaxBufferObjectPoolSize"
@@ -1896,7 +1847,7 @@ void register_State_class(){
         }
         { //::osg::State::setMaxTexturePoolSize
         
-            typedef void ( ::osg::State::*setMaxTexturePoolSize_function_type)( unsigned int ) ;
+            typedef void ( ::osg::State::*setMaxTexturePoolSize_function_type )( unsigned int ) ;
             
             State_exposer.def( 
                 "setMaxTexturePoolSize"
@@ -1906,7 +1857,7 @@ void register_State_class(){
         }
         { //::osg::State::setModeValidity
         
-            typedef void ( ::osg::State::*setModeValidity_function_type)( ::GLenum,bool ) ;
+            typedef void ( ::osg::State::*setModeValidity_function_type )( ::GLenum,bool ) ;
             
             State_exposer.def( 
                 "setModeValidity"
@@ -1917,7 +1868,7 @@ void register_State_class(){
         }
         { //::osg::State::setNormalAlias
         
-            typedef void ( ::osg::State::*setNormalAlias_function_type)( ::osg::VertexAttribAlias const & ) ;
+            typedef void ( ::osg::State::*setNormalAlias_function_type )( ::osg::VertexAttribAlias const & ) ;
             
             State_exposer.def( 
                 "setNormalAlias"
@@ -1928,7 +1879,7 @@ void register_State_class(){
         }
         { //::osg::State::setNormalPointer
         
-            typedef void ( ::osg::State::*setNormalPointer_function_type)( ::osg::Array const * ) ;
+            typedef void ( ::osg::State::*setNormalPointer_function_type )( ::osg::Array const * ) ;
             
             State_exposer.def( 
                 "setNormalPointer"
@@ -1939,7 +1890,7 @@ void register_State_class(){
         }
         { //::osg::State::setNormalPointer
         
-            typedef void ( ::osg::State::*setNormalPointer_function_type)( ::GLenum,::GLsizei,::GLvoid const *,::GLboolean ) ;
+            typedef void ( ::osg::State::*setNormalPointer_function_type )( ::GLenum,::GLsizei,::GLvoid const *,::GLboolean ) ;
             
             State_exposer.def( 
                 "setNormalPointer"
@@ -1950,7 +1901,7 @@ void register_State_class(){
         }
         { //::osg::State::setSecondaryColorAlias
         
-            typedef void ( ::osg::State::*setSecondaryColorAlias_function_type)( ::osg::VertexAttribAlias const & ) ;
+            typedef void ( ::osg::State::*setSecondaryColorAlias_function_type )( ::osg::VertexAttribAlias const & ) ;
             
             State_exposer.def( 
                 "setSecondaryColorAlias"
@@ -1961,7 +1912,7 @@ void register_State_class(){
         }
         { //::osg::State::setSecondaryColorPointer
         
-            typedef void ( ::osg::State::*setSecondaryColorPointer_function_type)( ::osg::Array const * ) ;
+            typedef void ( ::osg::State::*setSecondaryColorPointer_function_type )( ::osg::Array const * ) ;
             
             State_exposer.def( 
                 "setSecondaryColorPointer"
@@ -1972,7 +1923,7 @@ void register_State_class(){
         }
         { //::osg::State::setSecondaryColorPointer
         
-            typedef void ( ::osg::State::*setSecondaryColorPointer_function_type)( ::GLint,::GLenum,::GLsizei,::GLvoid const *,::GLboolean ) ;
+            typedef void ( ::osg::State::*setSecondaryColorPointer_function_type )( ::GLint,::GLenum,::GLsizei,::GLvoid const *,::GLboolean ) ;
             
             State_exposer.def( 
                 "setSecondaryColorPointer"
@@ -1983,7 +1934,7 @@ void register_State_class(){
         }
         { //::osg::State::setShaderComposer
         
-            typedef void ( ::osg::State::*setShaderComposer_function_type)( ::osg::ShaderComposer * ) ;
+            typedef void ( ::osg::State::*setShaderComposer_function_type )( ::osg::ShaderComposer * ) ;
             
             State_exposer.def( 
                 "setShaderComposer"
@@ -1994,7 +1945,7 @@ void register_State_class(){
         }
         { //::osg::State::setShaderCompositionEnabled
         
-            typedef void ( ::osg::State::*setShaderCompositionEnabled_function_type)( bool ) ;
+            typedef void ( ::osg::State::*setShaderCompositionEnabled_function_type )( bool ) ;
             
             State_exposer.def( 
                 "setShaderCompositionEnabled"
@@ -2004,7 +1955,7 @@ void register_State_class(){
         }
         { //::osg::State::setStartTick
         
-            typedef void ( ::osg::State::*setStartTick_function_type)( ::osg::Timer_t ) ;
+            typedef void ( ::osg::State::*setStartTick_function_type )( ::osg::Timer_t ) ;
             
             State_exposer.def( 
                 "setStartTick"
@@ -2014,7 +1965,7 @@ void register_State_class(){
         }
         { //::osg::State::setTexCoordPointer
         
-            typedef void ( ::osg::State::*setTexCoordPointer_function_type)( unsigned int,::osg::Array const * ) ;
+            typedef void ( ::osg::State::*setTexCoordPointer_function_type )( unsigned int,::osg::Array const * ) ;
             
             State_exposer.def( 
                 "setTexCoordPointer"
@@ -2025,7 +1976,7 @@ void register_State_class(){
         }
         { //::osg::State::setTexCoordPointer
         
-            typedef void ( ::osg::State::*setTexCoordPointer_function_type)( unsigned int,::GLint,::GLenum,::GLsizei,::GLvoid const *,::GLboolean ) ;
+            typedef void ( ::osg::State::*setTexCoordPointer_function_type )( unsigned int,::GLint,::GLenum,::GLsizei,::GLvoid const *,::GLboolean ) ;
             
             State_exposer.def( 
                 "setTexCoordPointer"
@@ -2036,7 +1987,7 @@ void register_State_class(){
         }
         { //::osg::State::setTimestampBits
         
-            typedef void ( ::osg::State::*setTimestampBits_function_type)( int ) ;
+            typedef void ( ::osg::State::*setTimestampBits_function_type )( int ) ;
             
             State_exposer.def( 
                 "setTimestampBits"
@@ -2046,7 +1997,7 @@ void register_State_class(){
         }
         { //::osg::State::setUseModelViewAndProjectionUniforms
         
-            typedef void ( ::osg::State::*setUseModelViewAndProjectionUniforms_function_type)( bool ) ;
+            typedef void ( ::osg::State::*setUseModelViewAndProjectionUniforms_function_type )( bool ) ;
             
             State_exposer.def( 
                 "setUseModelViewAndProjectionUniforms"
@@ -2056,7 +2007,7 @@ void register_State_class(){
         }
         { //::osg::State::setUseVertexAttributeAliasing
         
-            typedef void ( ::osg::State::*setUseVertexAttributeAliasing_function_type)( bool ) ;
+            typedef void ( ::osg::State::*setUseVertexAttributeAliasing_function_type )( bool ) ;
             
             State_exposer.def( 
                 "setUseVertexAttributeAliasing"
@@ -2066,7 +2017,7 @@ void register_State_class(){
         }
         { //::osg::State::setVertexAlias
         
-            typedef void ( ::osg::State::*setVertexAlias_function_type)( ::osg::VertexAttribAlias const & ) ;
+            typedef void ( ::osg::State::*setVertexAlias_function_type )( ::osg::VertexAttribAlias const & ) ;
             
             State_exposer.def( 
                 "setVertexAlias"
@@ -2077,7 +2028,7 @@ void register_State_class(){
         }
         { //::osg::State::setVertexAttribIPointer
         
-            typedef void ( ::osg::State::*setVertexAttribIPointer_function_type)( unsigned int,::osg::Array const * ) ;
+            typedef void ( ::osg::State::*setVertexAttribIPointer_function_type )( unsigned int,::osg::Array const * ) ;
             
             State_exposer.def( 
                 "setVertexAttribIPointer"
@@ -2088,7 +2039,7 @@ void register_State_class(){
         }
         { //::osg::State::setVertexAttribIPointer
         
-            typedef void ( ::osg::State::*setVertexAttribIPointer_function_type)( unsigned int,::GLint,::GLenum,::GLsizei,::GLvoid const * ) ;
+            typedef void ( ::osg::State::*setVertexAttribIPointer_function_type )( unsigned int,::GLint,::GLenum,::GLsizei,::GLvoid const * ) ;
             
             State_exposer.def( 
                 "setVertexAttribIPointer"
@@ -2099,7 +2050,7 @@ void register_State_class(){
         }
         { //::osg::State::setVertexAttribLPointer
         
-            typedef void ( ::osg::State::*setVertexAttribLPointer_function_type)( unsigned int,::osg::Array const * ) ;
+            typedef void ( ::osg::State::*setVertexAttribLPointer_function_type )( unsigned int,::osg::Array const * ) ;
             
             State_exposer.def( 
                 "setVertexAttribLPointer"
@@ -2110,7 +2061,7 @@ void register_State_class(){
         }
         { //::osg::State::setVertexAttribLPointer
         
-            typedef void ( ::osg::State::*setVertexAttribLPointer_function_type)( unsigned int,::GLint,::GLenum,::GLsizei,::GLvoid const * ) ;
+            typedef void ( ::osg::State::*setVertexAttribLPointer_function_type )( unsigned int,::GLint,::GLenum,::GLsizei,::GLvoid const * ) ;
             
             State_exposer.def( 
                 "setVertexAttribLPointer"
@@ -2121,7 +2072,7 @@ void register_State_class(){
         }
         { //::osg::State::setVertexAttribPointer
         
-            typedef void ( ::osg::State::*setVertexAttribPointer_function_type)( unsigned int,::osg::Array const * ) ;
+            typedef void ( ::osg::State::*setVertexAttribPointer_function_type )( unsigned int,::osg::Array const * ) ;
             
             State_exposer.def( 
                 "setVertexAttribPointer"
@@ -2132,7 +2083,7 @@ void register_State_class(){
         }
         { //::osg::State::setVertexAttribPointer
         
-            typedef void ( ::osg::State::*setVertexAttribPointer_function_type)( unsigned int,::GLint,::GLenum,::GLboolean,::GLsizei,::GLvoid const * ) ;
+            typedef void ( ::osg::State::*setVertexAttribPointer_function_type )( unsigned int,::GLint,::GLenum,::GLboolean,::GLsizei,::GLvoid const * ) ;
             
             State_exposer.def( 
                 "setVertexAttribPointer"
@@ -2143,7 +2094,7 @@ void register_State_class(){
         }
         { //::osg::State::setVertexPointer
         
-            typedef void ( ::osg::State::*setVertexPointer_function_type)( ::osg::Array const * ) ;
+            typedef void ( ::osg::State::*setVertexPointer_function_type )( ::osg::Array const * ) ;
             
             State_exposer.def( 
                 "setVertexPointer"
@@ -2154,7 +2105,7 @@ void register_State_class(){
         }
         { //::osg::State::setVertexPointer
         
-            typedef void ( ::osg::State::*setVertexPointer_function_type)( ::GLint,::GLenum,::GLsizei,::GLvoid const *,::GLboolean ) ;
+            typedef void ( ::osg::State::*setVertexPointer_function_type )( ::GLint,::GLenum,::GLsizei,::GLvoid const *,::GLboolean ) ;
             
             State_exposer.def( 
                 "setVertexPointer"
@@ -2165,7 +2116,7 @@ void register_State_class(){
         }
         { //::osg::State::unbindElementBufferObject
         
-            typedef void ( ::osg::State::*unbindElementBufferObject_function_type)(  ) ;
+            typedef void ( ::osg::State::*unbindElementBufferObject_function_type )(  ) ;
             
             State_exposer.def( 
                 "unbindElementBufferObject"
@@ -2174,7 +2125,7 @@ void register_State_class(){
         }
         { //::osg::State::unbindPixelBufferObject
         
-            typedef void ( ::osg::State::*unbindPixelBufferObject_function_type)(  ) ;
+            typedef void ( ::osg::State::*unbindPixelBufferObject_function_type )(  ) ;
             
             State_exposer.def( 
                 "unbindPixelBufferObject"
@@ -2183,7 +2134,7 @@ void register_State_class(){
         }
         { //::osg::State::unbindVertexBufferObject
         
-            typedef void ( ::osg::State::*unbindVertexBufferObject_function_type)(  ) ;
+            typedef void ( ::osg::State::*unbindVertexBufferObject_function_type )(  ) ;
             
             State_exposer.def( 
                 "unbindVertexBufferObject"
@@ -2192,7 +2143,7 @@ void register_State_class(){
         }
         { //::osg::State::updateModelViewAndProjectionMatrixUniforms
         
-            typedef void ( ::osg::State::*updateModelViewAndProjectionMatrixUniforms_function_type)(  ) ;
+            typedef void ( ::osg::State::*updateModelViewAndProjectionMatrixUniforms_function_type )(  ) ;
             
             State_exposer.def( 
                 "updateModelViewAndProjectionMatrixUniforms"
@@ -2216,18 +2167,6 @@ void register_State_class(){
             State_exposer.add_property( "_quadIndicesGLushort"
                 , bp::make_function( array_wrapper_creator(&State_wrapper::pyplusplus__quadIndicesGLushort_wrapper)
                                     , bp::with_custodian_and_ward_postcall< 0, 1 >() ) );
-        }
-        { //::osg::Referenced::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Referenced::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( State_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            State_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Referenced::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&State_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
         }
     }
 

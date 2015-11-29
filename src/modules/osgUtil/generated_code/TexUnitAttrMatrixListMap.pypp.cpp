@@ -3,15 +3,19 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/map.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "_std_vector_pair_StateAttribute_RefMatrixd__value_traits.pypp.hpp"
-#include "texunitattrmatrixlistmap.pypp.hpp"
+#include "TexUnitAttrMatrixListMap.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_TexUnitAttrMatrixListMap_class(){
 
-    bp::class_< std::map< unsigned int, std::vector< std::pair<osg::ref_ptr<osg::StateAttribute const>, osg::ref_ptr<osg::RefMatrixd> > > > >( "TexUnitAttrMatrixListMap" )    
-        .def( bp::indexing::map_suite< std::map< unsigned int, std::vector< std::pair<osg::ref_ptr<osg::StateAttribute const>, osg::ref_ptr<osg::RefMatrixd> > > > >() );
+    { //::std::map< unsigned int, std::vector< std::pair<osg::ref_ptr<osg::StateAttribute const>, osg::ref_ptr<osg::RefMatrixd> > > >
+        typedef bp::class_< std::map< unsigned int, std::vector< std::pair<osg::ref_ptr<osg::StateAttribute const>, osg::ref_ptr<osg::RefMatrixd> > > > > TexUnitAttrMatrixListMap_exposer_t;
+        TexUnitAttrMatrixListMap_exposer_t TexUnitAttrMatrixListMap_exposer = TexUnitAttrMatrixListMap_exposer_t( "TexUnitAttrMatrixListMap" );
+        bp::scope TexUnitAttrMatrixListMap_scope( TexUnitAttrMatrixListMap_exposer );
+        TexUnitAttrMatrixListMap_exposer.def( bp::indexing::map_suite< std::map< unsigned int, std::vector< std::pair<osg::ref_ptr<osg::StateAttribute const>, osg::ref_ptr<osg::RefMatrixd> > > > >() );
+    }
 
 }

@@ -3,15 +3,19 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/set.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "_ref_ptr_less__osgUtil_scope_EdgeCollector_scope_Triangle__greater___value_traits.pypp.hpp"
-#include "triangleset.pypp.hpp"
+#include "TriangleSet.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_TriangleSet_class(){
 
-    bp::class_< std::set< osg::ref_ptr<osgUtil::EdgeCollector::Triangle> > >( "TriangleSet" )    
-        .def( bp::indexing::set_suite< std::set< osg::ref_ptr<osgUtil::EdgeCollector::Triangle> > >() );
+    { //::std::set< osg::ref_ptr<osgUtil::EdgeCollector::Triangle> >
+        typedef bp::class_< std::set< osg::ref_ptr<osgUtil::EdgeCollector::Triangle> > > TriangleSet_exposer_t;
+        TriangleSet_exposer_t TriangleSet_exposer = TriangleSet_exposer_t( "TriangleSet" );
+        bp::scope TriangleSet_scope( TriangleSet_exposer );
+        TriangleSet_exposer.def( bp::indexing::set_suite< std::set< osg::ref_ptr<osgUtil::EdgeCollector::Triangle> > >() );
+    }
 
 }

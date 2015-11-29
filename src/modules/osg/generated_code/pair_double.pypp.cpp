@@ -8,12 +8,8 @@ namespace bp = boost::python;
 
 void register_pair_double_class(){
 
-    bp::class_< std::pair< double, double > >( "pair_double", bp::init< >() )    
-        .def( bp::init< double const &, double const & >(( bp::arg("_Val1"), bp::arg("_Val2") )) )    
-        .def( 
-            "swap"
-            , (void ( ::std::pair<double, double>::* )( ::std::pair< double, double > & ))( &::std::pair< double, double >::swap )
-            , ( bp::arg("_Right") ) )    
+    bp::class_< std::pair< double, double > >( "pair_double", "\n  Struct holding two objects of arbitrary type.\n\n  Tparam: _T1  Type of first object.\n  Tparam: _T2  Type of second object.\n", bp::init< >("\n The default constructor creates @c first and @c second using their\n  respective default constructors.\n") )    
+        .def( bp::init< double const &, double const & >(( bp::arg("__a"), bp::arg("__b") ), "\n Two objects may be passed to a @c pair constructor to be copied.\n") )    
         .def_readwrite( "first", &std::pair< double, double >::first )    
         .def_readwrite( "second", &std::pair< double, double >::second );
 

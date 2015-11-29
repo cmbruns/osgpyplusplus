@@ -3,15 +3,19 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/set.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "_ref_ptr_less__osgUtil_scope_EdgeCollector_scope_Edge__greater___value_traits.pypp.hpp"
-#include "edgeset.pypp.hpp"
+#include "EdgeSet.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_EdgeSet_class(){
 
-    bp::class_< std::set<osg::ref_ptr<osgUtil::EdgeCollector::Edge>, osgUtil::dereference_less, std::allocator<osg::ref_ptr<osgUtil::EdgeCollector::Edge> > > >( "EdgeSet" )    
-        .def( bp::indexing::set_suite< std::set<osg::ref_ptr<osgUtil::EdgeCollector::Edge>, osgUtil::dereference_less, std::allocator<osg::ref_ptr<osgUtil::EdgeCollector::Edge> > > >() );
+    { //::std::set<osg::ref_ptr<osgUtil::EdgeCollector::Edge>, osgUtil::dereference_less, std::allocator<osg::ref_ptr<osgUtil::EdgeCollector::Edge> > >
+        typedef bp::class_< std::set<osg::ref_ptr<osgUtil::EdgeCollector::Edge>, osgUtil::dereference_less, std::allocator<osg::ref_ptr<osgUtil::EdgeCollector::Edge> > > > EdgeSet_exposer_t;
+        EdgeSet_exposer_t EdgeSet_exposer = EdgeSet_exposer_t( "EdgeSet" );
+        bp::scope EdgeSet_scope( EdgeSet_exposer );
+        EdgeSet_exposer.def( bp::indexing::set_suite< std::set<osg::ref_ptr<osgUtil::EdgeCollector::Edge>, osgUtil::dereference_less, std::allocator<osg::ref_ptr<osgUtil::EdgeCollector::Edge> > > >() );
+    }
 
 }

@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "_PlaneIntersection__value_traits.pypp.hpp"
-#include "planeintersections.pypp.hpp"
+#include "PlaneIntersections.pypp.hpp"
 
 namespace bp = boost::python;
 

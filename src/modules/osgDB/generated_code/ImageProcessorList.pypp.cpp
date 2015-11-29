@@ -3,8 +3,8 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
-#include "wrap_osgdb.h"
-#include "imageprocessorlist.pypp.hpp"
+#include "wrap_osgDB.h"
+#include "ImageProcessorList.pypp.hpp"
 
 namespace bp = boost::python;
 

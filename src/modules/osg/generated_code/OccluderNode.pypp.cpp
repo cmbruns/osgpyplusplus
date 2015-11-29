@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "occludernode.pypp.hpp"
+#include "OccluderNode.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -244,42 +244,6 @@ struct OccluderNode_wrapper : osg::OccluderNode, bp::wrapper< osg::OccluderNode 
         osg::Node::ascend( boost::ref(nv) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
     virtual bool insertChild( unsigned int index, ::osg::Node * child ) {
         if( bp::override func_insertChild = this->get_override( "insertChild" ) )
             return func_insertChild( index, boost::python::ptr(child) );
@@ -340,18 +304,6 @@ struct OccluderNode_wrapper : osg::OccluderNode, bp::wrapper< osg::OccluderNode 
         return osg::Group::setChild( i, boost::python::ptr(node) );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
     virtual void setThreadSafeRefUnref( bool threadSafe ) {
         if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
             func_setThreadSafeRefUnref( threadSafe );
@@ -362,18 +314,6 @@ struct OccluderNode_wrapper : osg::OccluderNode, bp::wrapper< osg::OccluderNode 
     
     void default_setThreadSafeRefUnref( bool threadSafe ) {
         osg::Group::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
     }
 
     virtual void traverse( ::osg::NodeVisitor & nv ) {
@@ -396,175 +336,146 @@ void register_OccluderNode_class(){
         .def( bp::init< >("\n OccluderNode is a Group node which provides hooks for adding\n ConvexPlanarOccluders to the scene.\n") )    
         .def( 
             "accept"
-            , (void ( ::osg::OccluderNode::* )( ::osg::NodeVisitor & ))(&::osg::OccluderNode::accept)
-            , (void ( OccluderNode_wrapper::* )( ::osg::NodeVisitor & ))(&OccluderNode_wrapper::default_accept)
+            , (void ( ::osg::OccluderNode::* )( ::osg::NodeVisitor & ) )(&::osg::OccluderNode::accept)
+            , (void ( OccluderNode_wrapper::* )( ::osg::NodeVisitor & ) )(&OccluderNode_wrapper::default_accept)
             , ( bp::arg("nv") ) )    
         .def( 
             "className"
-            , (char const * ( ::osg::OccluderNode::* )(  )const)(&::osg::OccluderNode::className)
-            , (char const * ( OccluderNode_wrapper::* )(  )const)(&OccluderNode_wrapper::default_className) )    
+            , (char const * ( ::osg::OccluderNode::* )(  ) const)(&::osg::OccluderNode::className)
+            , (char const * ( OccluderNode_wrapper::* )(  ) const)(&OccluderNode_wrapper::default_className) )    
         .def( 
             "clone"
-            , (::osg::Object * ( ::osg::OccluderNode::* )( ::osg::CopyOp const & )const)(&::osg::OccluderNode::clone)
-            , (::osg::Object * ( OccluderNode_wrapper::* )( ::osg::CopyOp const & )const)(&OccluderNode_wrapper::default_clone)
+            , (::osg::Object * ( ::osg::OccluderNode::* )( ::osg::CopyOp const & ) const)(&::osg::OccluderNode::clone)
+            , (::osg::Object * ( OccluderNode_wrapper::* )( ::osg::CopyOp const & ) const)(&OccluderNode_wrapper::default_clone)
             , ( bp::arg("copyop") )
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "cloneType"
-            , (::osg::Object * ( ::osg::OccluderNode::* )(  )const)(&::osg::OccluderNode::cloneType)
-            , (::osg::Object * ( OccluderNode_wrapper::* )(  )const)(&OccluderNode_wrapper::default_cloneType)
+            , (::osg::Object * ( ::osg::OccluderNode::* )(  ) const)(&::osg::OccluderNode::cloneType)
+            , (::osg::Object * ( OccluderNode_wrapper::* )(  ) const)(&OccluderNode_wrapper::default_cloneType)
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "computeBound"
-            , (::osg::BoundingSphere ( ::osg::OccluderNode::* )(  )const)(&::osg::OccluderNode::computeBound)
-            , (::osg::BoundingSphere ( OccluderNode_wrapper::* )(  )const)(&OccluderNode_wrapper::default_computeBound) )    
+            , (::osg::BoundingSphere ( ::osg::OccluderNode::* )(  ) const)(&::osg::OccluderNode::computeBound)
+            , (::osg::BoundingSphere ( OccluderNode_wrapper::* )(  ) const)(&OccluderNode_wrapper::default_computeBound) )    
         .def( 
             "getOccluder"
-            , (::osg::ConvexPlanarOccluder * ( ::osg::OccluderNode::* )(  ))( &::osg::OccluderNode::getOccluder )
+            , (::osg::ConvexPlanarOccluder * ( ::osg::OccluderNode::* )(  ) )( &::osg::OccluderNode::getOccluder )
             , bp::return_internal_reference< >()
             , " Get the ConvexPlanarOccluder* attached to a OccluderNode." )    
         .def( 
             "getOccluder"
-            , (::osg::ConvexPlanarOccluder const * ( ::osg::OccluderNode::* )(  )const)( &::osg::OccluderNode::getOccluder )
+            , (::osg::ConvexPlanarOccluder const * ( ::osg::OccluderNode::* )(  ) const)( &::osg::OccluderNode::getOccluder )
             , bp::return_internal_reference< >()
             , " Get the const ConvexPlanarOccluder* attached to a OccluderNode." )    
         .def( 
             "isSameKindAs"
-            , (bool ( ::osg::OccluderNode::* )( ::osg::Object const * )const)(&::osg::OccluderNode::isSameKindAs)
-            , (bool ( OccluderNode_wrapper::* )( ::osg::Object const * )const)(&OccluderNode_wrapper::default_isSameKindAs)
+            , (bool ( ::osg::OccluderNode::* )( ::osg::Object const * ) const)(&::osg::OccluderNode::isSameKindAs)
+            , (bool ( OccluderNode_wrapper::* )( ::osg::Object const * ) const)(&OccluderNode_wrapper::default_isSameKindAs)
             , ( bp::arg("obj") ) )    
         .def( 
             "libraryName"
-            , (char const * ( ::osg::OccluderNode::* )(  )const)(&::osg::OccluderNode::libraryName)
-            , (char const * ( OccluderNode_wrapper::* )(  )const)(&OccluderNode_wrapper::default_libraryName) )    
+            , (char const * ( ::osg::OccluderNode::* )(  ) const)(&::osg::OccluderNode::libraryName)
+            , (char const * ( OccluderNode_wrapper::* )(  ) const)(&OccluderNode_wrapper::default_libraryName) )    
         .def( 
             "setOccluder"
-            , (void ( ::osg::OccluderNode::* )( ::osg::ConvexPlanarOccluder * ))( &::osg::OccluderNode::setOccluder )
+            , (void ( ::osg::OccluderNode::* )( ::osg::ConvexPlanarOccluder * ) )( &::osg::OccluderNode::setOccluder )
             , ( bp::arg("occluder") )
             , " Attach a ConvexPlanarOccluder to an OccluderNode." )    
         .def( 
             "addChild"
-            , (bool ( ::osg::Group::* )( ::osg::Node * ))(&::osg::Group::addChild)
-            , (bool ( OccluderNode_wrapper::* )( ::osg::Node * ))(&OccluderNode_wrapper::default_addChild)
+            , (bool ( ::osg::Group::* )( ::osg::Node * ) )(&::osg::Group::addChild)
+            , (bool ( OccluderNode_wrapper::* )( ::osg::Node * ) )(&OccluderNode_wrapper::default_addChild)
             , ( bp::arg("child") ) )    
         .def( 
             "asCamera"
-            , (::osg::Camera * ( ::osg::Node::* )(  ))(&::osg::Node::asCamera)
-            , (::osg::Camera * ( OccluderNode_wrapper::* )(  ))(&OccluderNode_wrapper::default_asCamera)
+            , (::osg::Camera * ( ::osg::Node::* )(  ) )(&::osg::Node::asCamera)
+            , (::osg::Camera * ( OccluderNode_wrapper::* )(  ) )(&OccluderNode_wrapper::default_asCamera)
             , bp::return_internal_reference< >() )    
         .def( 
             "asCamera"
-            , (::osg::Camera const * ( ::osg::Node::* )(  )const)(&::osg::Node::asCamera)
-            , (::osg::Camera const * ( OccluderNode_wrapper::* )(  )const)(&OccluderNode_wrapper::default_asCamera)
+            , (::osg::Camera const * ( ::osg::Node::* )(  ) const)(&::osg::Node::asCamera)
+            , (::osg::Camera const * ( OccluderNode_wrapper::* )(  ) const)(&OccluderNode_wrapper::default_asCamera)
             , bp::return_internal_reference< >() )    
         .def( 
             "asGeode"
-            , (::osg::Geode * ( ::osg::Node::* )(  ))(&::osg::Node::asGeode)
-            , (::osg::Geode * ( OccluderNode_wrapper::* )(  ))(&OccluderNode_wrapper::default_asGeode)
+            , (::osg::Geode * ( ::osg::Node::* )(  ) )(&::osg::Node::asGeode)
+            , (::osg::Geode * ( OccluderNode_wrapper::* )(  ) )(&OccluderNode_wrapper::default_asGeode)
             , bp::return_internal_reference< >() )    
         .def( 
             "asGeode"
-            , (::osg::Geode const * ( ::osg::Node::* )(  )const)(&::osg::Node::asGeode)
-            , (::osg::Geode const * ( OccluderNode_wrapper::* )(  )const)(&OccluderNode_wrapper::default_asGeode)
+            , (::osg::Geode const * ( ::osg::Node::* )(  ) const)(&::osg::Node::asGeode)
+            , (::osg::Geode const * ( OccluderNode_wrapper::* )(  ) const)(&OccluderNode_wrapper::default_asGeode)
             , bp::return_internal_reference< >() )    
         .def( 
             "asGroup"
-            , (::osg::Group * ( ::osg::Group::* )(  ))(&::osg::Group::asGroup)
-            , (::osg::Group * ( OccluderNode_wrapper::* )(  ))(&OccluderNode_wrapper::default_asGroup)
+            , (::osg::Group * ( ::osg::Group::* )(  ) )(&::osg::Group::asGroup)
+            , (::osg::Group * ( OccluderNode_wrapper::* )(  ) )(&OccluderNode_wrapper::default_asGroup)
             , bp::return_internal_reference< >() )    
         .def( 
             "asGroup"
-            , (::osg::Group const * ( ::osg::Group::* )(  )const)(&::osg::Group::asGroup)
-            , (::osg::Group const * ( OccluderNode_wrapper::* )(  )const)(&OccluderNode_wrapper::default_asGroup)
+            , (::osg::Group const * ( ::osg::Group::* )(  ) const)(&::osg::Group::asGroup)
+            , (::osg::Group const * ( OccluderNode_wrapper::* )(  ) const)(&OccluderNode_wrapper::default_asGroup)
             , bp::return_internal_reference< >() )    
         .def( 
             "asSwitch"
-            , (::osg::Switch * ( ::osg::Node::* )(  ))(&::osg::Node::asSwitch)
-            , (::osg::Switch * ( OccluderNode_wrapper::* )(  ))(&OccluderNode_wrapper::default_asSwitch)
+            , (::osg::Switch * ( ::osg::Node::* )(  ) )(&::osg::Node::asSwitch)
+            , (::osg::Switch * ( OccluderNode_wrapper::* )(  ) )(&OccluderNode_wrapper::default_asSwitch)
             , bp::return_internal_reference< >() )    
         .def( 
             "asSwitch"
-            , (::osg::Switch const * ( ::osg::Node::* )(  )const)(&::osg::Node::asSwitch)
-            , (::osg::Switch const * ( OccluderNode_wrapper::* )(  )const)(&OccluderNode_wrapper::default_asSwitch)
+            , (::osg::Switch const * ( ::osg::Node::* )(  ) const)(&::osg::Node::asSwitch)
+            , (::osg::Switch const * ( OccluderNode_wrapper::* )(  ) const)(&OccluderNode_wrapper::default_asSwitch)
             , bp::return_internal_reference< >() )    
         .def( 
             "asTransform"
-            , (::osg::Transform * ( ::osg::Node::* )(  ))(&::osg::Node::asTransform)
-            , (::osg::Transform * ( OccluderNode_wrapper::* )(  ))(&OccluderNode_wrapper::default_asTransform)
+            , (::osg::Transform * ( ::osg::Node::* )(  ) )(&::osg::Node::asTransform)
+            , (::osg::Transform * ( OccluderNode_wrapper::* )(  ) )(&OccluderNode_wrapper::default_asTransform)
             , bp::return_internal_reference< >() )    
         .def( 
             "asTransform"
-            , (::osg::Transform const * ( ::osg::Node::* )(  )const)(&::osg::Node::asTransform)
-            , (::osg::Transform const * ( OccluderNode_wrapper::* )(  )const)(&OccluderNode_wrapper::default_asTransform)
+            , (::osg::Transform const * ( ::osg::Node::* )(  ) const)(&::osg::Node::asTransform)
+            , (::osg::Transform const * ( OccluderNode_wrapper::* )(  ) const)(&OccluderNode_wrapper::default_asTransform)
             , bp::return_internal_reference< >() )    
         .def( 
             "ascend"
-            , (void ( ::osg::Node::* )( ::osg::NodeVisitor & ))(&::osg::Node::ascend)
-            , (void ( OccluderNode_wrapper::* )( ::osg::NodeVisitor & ))(&OccluderNode_wrapper::default_ascend)
+            , (void ( ::osg::Node::* )( ::osg::NodeVisitor & ) )(&::osg::Node::ascend)
+            , (void ( OccluderNode_wrapper::* )( ::osg::NodeVisitor & ) )(&OccluderNode_wrapper::default_ascend)
             , ( bp::arg("nv") ) )    
         .def( 
-            "computeDataVariance"
-            , (void ( ::osg::Object::* )(  ))(&::osg::Object::computeDataVariance)
-            , (void ( OccluderNode_wrapper::* )(  ))(&OccluderNode_wrapper::default_computeDataVariance) )    
-        .def( 
-            "getUserData"
-            , (::osg::Referenced * ( ::osg::Object::* )(  ))(&::osg::Object::getUserData)
-            , (::osg::Referenced * ( OccluderNode_wrapper::* )(  ))(&OccluderNode_wrapper::default_getUserData)
-            , bp::return_internal_reference< >() )    
-        .def( 
-            "getUserData"
-            , (::osg::Referenced const * ( ::osg::Object::* )(  )const)(&::osg::Object::getUserData)
-            , (::osg::Referenced const * ( OccluderNode_wrapper::* )(  )const)(&OccluderNode_wrapper::default_getUserData)
-            , bp::return_internal_reference< >() )    
-        .def( 
             "insertChild"
-            , (bool ( ::osg::Group::* )( unsigned int,::osg::Node * ))(&::osg::Group::insertChild)
-            , (bool ( OccluderNode_wrapper::* )( unsigned int,::osg::Node * ))(&OccluderNode_wrapper::default_insertChild)
+            , (bool ( ::osg::Group::* )( unsigned int,::osg::Node * ) )(&::osg::Group::insertChild)
+            , (bool ( OccluderNode_wrapper::* )( unsigned int,::osg::Node * ) )(&OccluderNode_wrapper::default_insertChild)
             , ( bp::arg("index"), bp::arg("child") ) )    
         .def( 
             "removeChildren"
-            , (bool ( ::osg::Group::* )( unsigned int,unsigned int ))(&::osg::Group::removeChildren)
-            , (bool ( OccluderNode_wrapper::* )( unsigned int,unsigned int ))(&OccluderNode_wrapper::default_removeChildren)
+            , (bool ( ::osg::Group::* )( unsigned int,unsigned int ) )(&::osg::Group::removeChildren)
+            , (bool ( OccluderNode_wrapper::* )( unsigned int,unsigned int ) )(&OccluderNode_wrapper::default_removeChildren)
             , ( bp::arg("pos"), bp::arg("numChildrenToRemove") ) )    
         .def( 
             "replaceChild"
-            , (bool ( ::osg::Group::* )( ::osg::Node *,::osg::Node * ))(&::osg::Group::replaceChild)
-            , (bool ( OccluderNode_wrapper::* )( ::osg::Node *,::osg::Node * ))(&OccluderNode_wrapper::default_replaceChild)
+            , (bool ( ::osg::Group::* )( ::osg::Node *,::osg::Node * ) )(&::osg::Group::replaceChild)
+            , (bool ( OccluderNode_wrapper::* )( ::osg::Node *,::osg::Node * ) )(&OccluderNode_wrapper::default_replaceChild)
             , ( bp::arg("origChild"), bp::arg("newChild") ) )    
         .def( 
             "resizeGLObjectBuffers"
-            , (void ( ::osg::Group::* )( unsigned int ))(&::osg::Group::resizeGLObjectBuffers)
-            , (void ( OccluderNode_wrapper::* )( unsigned int ))(&OccluderNode_wrapper::default_resizeGLObjectBuffers)
+            , (void ( ::osg::Group::* )( unsigned int ) )(&::osg::Group::resizeGLObjectBuffers)
+            , (void ( OccluderNode_wrapper::* )( unsigned int ) )(&OccluderNode_wrapper::default_resizeGLObjectBuffers)
             , ( bp::arg("maxSize") ) )    
         .def( 
             "setChild"
-            , (bool ( ::osg::Group::* )( unsigned int,::osg::Node * ))(&::osg::Group::setChild)
-            , (bool ( OccluderNode_wrapper::* )( unsigned int,::osg::Node * ))(&OccluderNode_wrapper::default_setChild)
+            , (bool ( ::osg::Group::* )( unsigned int,::osg::Node * ) )(&::osg::Group::setChild)
+            , (bool ( OccluderNode_wrapper::* )( unsigned int,::osg::Node * ) )(&OccluderNode_wrapper::default_setChild)
             , ( bp::arg("i"), bp::arg("node") ) )    
         .def( 
-            "setName"
-            , (void ( ::osg::Object::* )( ::std::string const & ))(&::osg::Object::setName)
-            , (void ( OccluderNode_wrapper::* )( ::std::string const & ))(&OccluderNode_wrapper::default_setName)
-            , ( bp::arg("name") ) )    
-        .def( 
-            "setName"
-            , (void ( ::osg::Object::* )( char const * ))( &::osg::Object::setName )
-            , ( bp::arg("name") )
-            , " Set the name of object using a C style string." )    
-        .def( 
             "setThreadSafeRefUnref"
-            , (void ( ::osg::Group::* )( bool ))(&::osg::Group::setThreadSafeRefUnref)
-            , (void ( OccluderNode_wrapper::* )( bool ))(&OccluderNode_wrapper::default_setThreadSafeRefUnref)
+            , (void ( ::osg::Group::* )( bool ) )(&::osg::Group::setThreadSafeRefUnref)
+            , (void ( OccluderNode_wrapper::* )( bool ) )(&OccluderNode_wrapper::default_setThreadSafeRefUnref)
             , ( bp::arg("threadSafe") ) )    
         .def( 
-            "setUserData"
-            , (void ( ::osg::Object::* )( ::osg::Referenced * ))(&::osg::Object::setUserData)
-            , (void ( OccluderNode_wrapper::* )( ::osg::Referenced * ))(&OccluderNode_wrapper::default_setUserData)
-            , ( bp::arg("obj") ) )    
-        .def( 
             "traverse"
-            , (void ( ::osg::Group::* )( ::osg::NodeVisitor & ))(&::osg::Group::traverse)
-            , (void ( OccluderNode_wrapper::* )( ::osg::NodeVisitor & ))(&OccluderNode_wrapper::default_traverse)
+            , (void ( ::osg::Group::* )( ::osg::NodeVisitor & ) )(&::osg::Group::traverse)
+            , (void ( OccluderNode_wrapper::* )( ::osg::NodeVisitor & ) )(&OccluderNode_wrapper::default_traverse)
             , ( bp::arg("nv") ) );
 
 }

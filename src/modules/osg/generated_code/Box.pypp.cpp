@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "box.pypp.hpp"
+#include "Box.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -114,90 +114,6 @@ struct Box_wrapper : osg::Box, bp::wrapper< osg::Box > {
         return osg::Box::libraryName( );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_Box_class(){
@@ -208,113 +124,74 @@ void register_Box_class(){
         .def( bp::init< osg::Vec3 const &, float, float, float >(( bp::arg("center"), bp::arg("lengthX"), bp::arg("lengthY"), bp::arg("lengthZ") )) )    
         .def( 
             "accept"
-            , (void ( ::osg::Box::* )( ::osg::ShapeVisitor & ))(&::osg::Box::accept)
-            , (void ( Box_wrapper::* )( ::osg::ShapeVisitor & ))(&Box_wrapper::default_accept)
+            , (void ( ::osg::Box::* )( ::osg::ShapeVisitor & ) )(&::osg::Box::accept)
+            , (void ( Box_wrapper::* )( ::osg::ShapeVisitor & ) )(&Box_wrapper::default_accept)
             , ( bp::arg("sv") ) )    
         .def( 
             "accept"
-            , (void ( ::osg::Box::* )( ::osg::ConstShapeVisitor & )const)(&::osg::Box::accept)
-            , (void ( Box_wrapper::* )( ::osg::ConstShapeVisitor & )const)(&Box_wrapper::default_accept)
+            , (void ( ::osg::Box::* )( ::osg::ConstShapeVisitor & ) const)(&::osg::Box::accept)
+            , (void ( Box_wrapper::* )( ::osg::ConstShapeVisitor & ) const)(&Box_wrapper::default_accept)
             , ( bp::arg("csv") ) )    
         .def( 
             "className"
-            , (char const * ( ::osg::Box::* )(  )const)(&::osg::Box::className)
-            , (char const * ( Box_wrapper::* )(  )const)(&Box_wrapper::default_className) )    
+            , (char const * ( ::osg::Box::* )(  ) const)(&::osg::Box::className)
+            , (char const * ( Box_wrapper::* )(  ) const)(&Box_wrapper::default_className) )    
         .def( 
             "clone"
-            , (::osg::Object * ( ::osg::Box::* )( ::osg::CopyOp const & )const)(&::osg::Box::clone)
-            , (::osg::Object * ( Box_wrapper::* )( ::osg::CopyOp const & )const)(&Box_wrapper::default_clone)
+            , (::osg::Object * ( ::osg::Box::* )( ::osg::CopyOp const & ) const)(&::osg::Box::clone)
+            , (::osg::Object * ( Box_wrapper::* )( ::osg::CopyOp const & ) const)(&Box_wrapper::default_clone)
             , ( bp::arg("copyop") )
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "cloneType"
-            , (::osg::Object * ( ::osg::Box::* )(  )const)(&::osg::Box::cloneType)
-            , (::osg::Object * ( Box_wrapper::* )(  )const)(&Box_wrapper::default_cloneType)
+            , (::osg::Object * ( ::osg::Box::* )(  ) const)(&::osg::Box::cloneType)
+            , (::osg::Object * ( Box_wrapper::* )(  ) const)(&Box_wrapper::default_cloneType)
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "computeRotationMatrix"
-            , (::osg::Matrix ( ::osg::Box::* )(  )const)( &::osg::Box::computeRotationMatrix ) )    
+            , (::osg::Matrix ( ::osg::Box::* )(  ) const)( &::osg::Box::computeRotationMatrix ) )    
         .def( 
             "getCenter"
-            , (::osg::Vec3 const & ( ::osg::Box::* )(  )const)( &::osg::Box::getCenter )
+            , (::osg::Vec3 const & ( ::osg::Box::* )(  ) const)( &::osg::Box::getCenter )
             , bp::return_internal_reference< >() )    
         .def( 
             "getHalfLengths"
-            , (::osg::Vec3 const & ( ::osg::Box::* )(  )const)( &::osg::Box::getHalfLengths )
+            , (::osg::Vec3 const & ( ::osg::Box::* )(  ) const)( &::osg::Box::getHalfLengths )
             , bp::return_internal_reference< >() )    
         .def( 
             "getRotation"
-            , (::osg::Quat const & ( ::osg::Box::* )(  )const)( &::osg::Box::getRotation )
+            , (::osg::Quat const & ( ::osg::Box::* )(  ) const)( &::osg::Box::getRotation )
             , bp::return_internal_reference< >() )    
         .def( 
             "isSameKindAs"
-            , (bool ( ::osg::Box::* )( ::osg::Object const * )const)(&::osg::Box::isSameKindAs)
-            , (bool ( Box_wrapper::* )( ::osg::Object const * )const)(&Box_wrapper::default_isSameKindAs)
+            , (bool ( ::osg::Box::* )( ::osg::Object const * ) const)(&::osg::Box::isSameKindAs)
+            , (bool ( Box_wrapper::* )( ::osg::Object const * ) const)(&Box_wrapper::default_isSameKindAs)
             , ( bp::arg("obj") ) )    
         .def( 
             "libraryName"
-            , (char const * ( ::osg::Box::* )(  )const)(&::osg::Box::libraryName)
-            , (char const * ( Box_wrapper::* )(  )const)(&Box_wrapper::default_libraryName) )    
+            , (char const * ( ::osg::Box::* )(  ) const)(&::osg::Box::libraryName)
+            , (char const * ( Box_wrapper::* )(  ) const)(&Box_wrapper::default_libraryName) )    
         .def( 
             "set"
-            , (void ( ::osg::Box::* )( ::osg::Vec3 const &,::osg::Vec3 const & ))( &::osg::Box::set )
+            , (void ( ::osg::Box::* )( ::osg::Vec3 const &,::osg::Vec3 const & ) )( &::osg::Box::set )
             , ( bp::arg("center"), bp::arg("halfLengths") ) )    
         .def( 
             "setCenter"
-            , (void ( ::osg::Box::* )( ::osg::Vec3 const & ))( &::osg::Box::setCenter )
+            , (void ( ::osg::Box::* )( ::osg::Vec3 const & ) )( &::osg::Box::setCenter )
             , ( bp::arg("center") ) )    
         .def( 
             "setHalfLengths"
-            , (void ( ::osg::Box::* )( ::osg::Vec3 const & ))( &::osg::Box::setHalfLengths )
+            , (void ( ::osg::Box::* )( ::osg::Vec3 const & ) )( &::osg::Box::setHalfLengths )
             , ( bp::arg("halfLengths") ) )    
         .def( 
             "setRotation"
-            , (void ( ::osg::Box::* )( ::osg::Quat const & ))( &::osg::Box::setRotation )
+            , (void ( ::osg::Box::* )( ::osg::Quat const & ) )( &::osg::Box::setRotation )
             , ( bp::arg("quat") ) )    
         .def( 
             "valid"
-            , (bool ( ::osg::Box::* )(  )const)( &::osg::Box::valid ) )    
+            , (bool ( ::osg::Box::* )(  ) const)( &::osg::Box::valid ) )    
         .def( 
             "zeroRotation"
-            , (bool ( ::osg::Box::* )(  )const)( &::osg::Box::zeroRotation ) )    
-        .def( 
-            "computeDataVariance"
-            , (void ( ::osg::Object::* )(  ))(&::osg::Object::computeDataVariance)
-            , (void ( Box_wrapper::* )(  ))(&Box_wrapper::default_computeDataVariance) )    
-        .def( 
-            "getUserData"
-            , (::osg::Referenced * ( ::osg::Object::* )(  ))(&::osg::Object::getUserData)
-            , (::osg::Referenced * ( Box_wrapper::* )(  ))(&Box_wrapper::default_getUserData)
-            , bp::return_internal_reference< >() )    
-        .def( 
-            "getUserData"
-            , (::osg::Referenced const * ( ::osg::Object::* )(  )const)(&::osg::Object::getUserData)
-            , (::osg::Referenced const * ( Box_wrapper::* )(  )const)(&Box_wrapper::default_getUserData)
-            , bp::return_internal_reference< >() )    
-        .def( 
-            "resizeGLObjectBuffers"
-            , (void ( ::osg::Object::* )( unsigned int ))(&::osg::Object::resizeGLObjectBuffers)
-            , (void ( Box_wrapper::* )( unsigned int ))(&Box_wrapper::default_resizeGLObjectBuffers)
-            , ( bp::arg("arg0") ) )    
-        .def( 
-            "setName"
-            , (void ( ::osg::Object::* )( ::std::string const & ))(&::osg::Object::setName)
-            , (void ( Box_wrapper::* )( ::std::string const & ))(&Box_wrapper::default_setName)
-            , ( bp::arg("name") ) )    
-        .def( 
-            "setName"
-            , (void ( ::osg::Object::* )( char const * ))( &::osg::Object::setName )
-            , ( bp::arg("name") )
-            , " Set the name of object using a C style string." )    
-        .def( 
-            "setThreadSafeRefUnref"
-            , (void ( ::osg::Object::* )( bool ))(&::osg::Object::setThreadSafeRefUnref)
-            , (void ( Box_wrapper::* )( bool ))(&Box_wrapper::default_setThreadSafeRefUnref)
-            , ( bp::arg("threadSafe") ) )    
-        .def( 
-            "setUserData"
-            , (void ( ::osg::Object::* )( ::osg::Referenced * ))(&::osg::Object::setUserData)
-            , (void ( Box_wrapper::* )( ::osg::Referenced * ))(&Box_wrapper::default_setUserData)
-            , ( bp::arg("obj") ) );
+            , (bool ( ::osg::Box::* )(  ) const)( &::osg::Box::zeroRotation ) );
 
 }
