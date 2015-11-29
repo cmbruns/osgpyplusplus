@@ -14,45 +14,45 @@
 
 #include "wrap_osgText.h"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/Bevel.pypp.hpp"
+#include "Bevel.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/FadeText.pypp.hpp"
+#include "FadeText.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/Font.pypp.hpp"
+#include "Font.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/Glyph.pypp.hpp"
+#include "Glyph.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/Glyph3D.pypp.hpp"
+#include "Glyph3D.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/GlyphGeometry.pypp.hpp"
+#include "GlyphGeometry.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/GlyphTexture.pypp.hpp"
+#include "GlyphTexture.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/GlyphTextureList.pypp.hpp"
+#include "GlyphTextureList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/Glyphs.pypp.hpp"
+#include "Glyphs.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/String.pypp.hpp"
+#include "String.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/Style.pypp.hpp"
+#include "Style.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/Text.pypp.hpp"
+#include "Text.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/Text3D.pypp.hpp"
+#include "Text3D.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/TextBase.pypp.hpp"
+#include "TextBase.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/TextureGlyphQuadMap.pypp.hpp"
+#include "TextureGlyphQuadMap.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/VectorUInt.pypp.hpp"
+#include "VectorUInt.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/_osgText_enumerations.pypp.hpp"
+#include "_osgText_enumerations.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/_osgText_free_functions.pypp.hpp"
+#include "_osgText_free_functions.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/vector_less__osg_scope_Vec2f__greater_.pypp.hpp"
+#include "vector_less__osg_scope_Vec2f__greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgText/generated_code/vector_less__osg_scope_Vec4f__greater_.pypp.hpp"
+#include "vector_less__osg_scope_Vec4f__greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

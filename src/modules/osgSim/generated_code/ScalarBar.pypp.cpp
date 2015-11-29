@@ -30,18 +30,6 @@ struct ScalarBar_wrapper : osgSim::ScalarBar, bp::wrapper< osgSim::ScalarBar > {
             return osgSim::ScalarBar::ScalarPrinter::printScalar( scalar );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     ScalarBar_wrapper( )

@@ -7,26 +7,10 @@
 
 namespace bp = boost::python;
 
-struct DotOsgWrapper_wrapper : osgDB::DotOsgWrapper, bp::wrapper< osgDB::DotOsgWrapper > {
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
-
 void register_DotOsgWrapper_class(){
 
     { //::osgDB::DotOsgWrapper
-        typedef bp::class_< DotOsgWrapper_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< DotOsgWrapper_wrapper >, boost::noncopyable > DotOsgWrapper_exposer_t;
+        typedef bp::class_< osgDB::DotOsgWrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgDB::DotOsgWrapper >, boost::noncopyable > DotOsgWrapper_exposer_t;
         DotOsgWrapper_exposer_t DotOsgWrapper_exposer = DotOsgWrapper_exposer_t( "DotOsgWrapper", bp::no_init );
         bp::scope DotOsgWrapper_scope( DotOsgWrapper_exposer );
         bp::enum_< osgDB::DotOsgWrapper::ReadWriteMode>("ReadWriteMode")

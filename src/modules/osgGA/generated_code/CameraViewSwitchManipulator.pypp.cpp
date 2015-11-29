@@ -371,18 +371,6 @@ struct CameraViewSwitchManipulator_wrapper : osgGA::CameraViewSwitchManipulator,
         return osgGA::GUIEventHandler::libraryName( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void setAutoComputeHomePosition( bool flag ) {
         if( bp::override func_setAutoComputeHomePosition = this->get_override( "setAutoComputeHomePosition" ) )
             func_setAutoComputeHomePosition( flag );
@@ -568,12 +556,12 @@ void register_CameraViewSwitchManipulator_class(){
             "home"
             , (void (*)( ::osgGA::CameraManipulator &,::osgGA::GUIEventAdapter &,::osgGA::GUIActionAdapter & ))( &CameraViewSwitchManipulator_wrapper::default_home_9715462911072744dcf4ae663764b018 )
             , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1") )
-            , "        Move the camera to the default position.\n        May be ignored by manipulators if home functionality is not appropriate." )    
+            , "\n        Move the camera to the default position.\n        May be ignored by manipulators if home functionality is not appropriate.\n" )    
         .def( 
             "home"
             , (void (*)( ::osgGA::CameraManipulator &,double ))( &CameraViewSwitchManipulator_wrapper::default_home_60d9f789ca14c44af8e13acc6b7f8b5f )
             , ( bp::arg("inst"), bp::arg("arg0") )
-            , "        Move the camera to the default position.\n        This version does not require GUIEventAdapter and GUIActionAdapter so may be\n        called from somewhere other than a handle() method in GUIEventHandler.  Application\n        must be aware of implications." )    
+            , "\n        Move the camera to the default position.\n        This version does not require GUIEventAdapter and GUIActionAdapter so may be\n        called from somewhere other than a handle() method in GUIEventHandler.  Application\n        must be aware of implications.\n" )    
         .def( 
             "isSameKindAs"
             , (bool ( ::osgGA::GUIEventHandler::* )( ::osg::Object const * ) const)(&::osgGA::GUIEventHandler::isSameKindAs)

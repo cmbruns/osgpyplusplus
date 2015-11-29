@@ -9,29 +9,6 @@ namespace bp = boost::python;
 
 struct Tessellator_wrapper : osgUtil::Tessellator, bp::wrapper< osgUtil::Tessellator > {
 
-    struct Prim_wrapper : osgUtil::Tessellator::Prim, bp::wrapper< osgUtil::Tessellator::Prim > {
-    
-        Prim_wrapper(::GLenum mode )
-        : osgUtil::Tessellator::Prim( mode )
-          , bp::wrapper< osgUtil::Tessellator::Prim >(){
-            // constructor
-        
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
-
     Tessellator_wrapper( )
     : osgUtil::Tessellator( )
       , bp::wrapper< osgUtil::Tessellator >(){
@@ -49,18 +26,6 @@ struct Tessellator_wrapper : osgUtil::Tessellator, bp::wrapper< osgUtil::Tessell
     
     void default_beginTessellation(  ) {
         osgUtil::Tessellator::beginTessellation( );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
     }
 
 };
@@ -86,7 +51,7 @@ void register_Tessellator_class(){
             .export_values()
             ;
         { //::osgUtil::Tessellator::Prim
-            typedef bp::class_< Tessellator_wrapper::Prim_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< Tessellator_wrapper::Prim_wrapper >, boost::noncopyable > Prim_exposer_t;
+            typedef bp::class_< osgUtil::Tessellator::Prim, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::Tessellator::Prim >, boost::noncopyable > Prim_exposer_t;
             Prim_exposer_t Prim_exposer = Prim_exposer_t( "Prim", bp::init< GLenum >(( bp::arg("mode") )) );
             bp::scope Prim_scope( Prim_exposer );
             bp::implicitly_convertible< GLenum, osgUtil::Tessellator::Prim >();

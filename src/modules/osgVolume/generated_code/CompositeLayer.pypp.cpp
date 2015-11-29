@@ -196,18 +196,6 @@ struct CompositeLayer_wrapper : osgVolume::CompositeLayer, bp::wrapper< osgVolum
         return osg::Object::getUserData( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void setFileName( ::std::string const & filename ) {
         if( bp::override func_setFileName = this->get_override( "setFileName" ) )
             func_setFileName( filename );

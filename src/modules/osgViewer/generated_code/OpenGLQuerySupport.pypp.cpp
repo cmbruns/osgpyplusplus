@@ -36,18 +36,6 @@ struct OpenGLQuerySupport_wrapper : osgViewer::OpenGLQuerySupport, bp::wrapper< 
         osgViewer::OpenGLQuerySupport::initialize( boost::python::ptr(state), startTick );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_OpenGLQuerySupport_class(){

@@ -58,6 +58,13 @@ class OsgManipulatorWrapper(BaseWrapper):
 
         wrap_call_policies(self.mb)
 
+        # linux compile error HalfWayMapGenerator.pypp.cpp:13:113: error: `HalfWayMapGenerator_wrapper` was not declared in this scope
+        for cls_name in [
+                 "CommandManager",
+                 ]:
+            cls = osgManipulator.class_(cls_name)
+            cls.wrapper_alias = cls.decl_string
+
         self.wrap_all_osg_referenced(osgManipulator)
             
         hide_nonpublic(mb)

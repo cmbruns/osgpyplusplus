@@ -28,7 +28,32 @@ class OsgUtilWrapper(BaseWrapper):
         
         wrap_call_policies(self.mb)
 
+        # linux compile error HalfWayMapGenerator.pypp.cpp:13:113: error: `HalfWayMapGenerator_wrapper` was not declared in this scope
+        for cls_name in [
+                 "HalfWayMapGenerator", 
+                 "HighlightMapGenerator",
+                 "TangentSpaceGenerator",
+                 "ReflectionMapGenerator",
+                 "ShaderGenCache",
+                 "DelaunayTriangulator",
+                 "CubeMapGenerator",
+                 ]:
+            cls = osgUtil.class_(cls_name)
+            cls.wrapper_alias = cls.decl_string
+
         self.wrap_all_osg_referenced(osgUtil)
+
+        for cls_inner in [
+                ["EdgeCollector","Edge"],
+                ["EdgeCollector","Edgeloop"],
+                ["EdgeCollector","Point"],
+                ["EdgeCollector","Triangle"],
+                ["IncrementalCompileOperation","CompileSet"],
+                ["Tessellator","Prim"],
+                ["CullVisitor","Identifier"],
+                ]:
+            cls = osgUtil.class_(cls_inner[0]).class_(cls_inner[1])
+            cls.held_type = 'osg::ref_ptr< %s >' % cls.decl_string # decl_string not wrapper_alias
 
         hide_nonpublic(mb)
 

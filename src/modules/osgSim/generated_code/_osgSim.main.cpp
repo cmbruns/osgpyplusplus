@@ -10,73 +10,73 @@
 
 #include "wrap_osgSim.h"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/AzimElevationSector.pypp.hpp"
+#include "AzimElevationSector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/AzimRange.pypp.hpp"
+#include "AzimRange.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/AzimSector.pypp.hpp"
+#include "AzimSector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/BlinkSequence.pypp.hpp"
+#include "BlinkSequence.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/ColorRange.pypp.hpp"
+#include "ColorRange.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/ConeSector.pypp.hpp"
+#include "ConeSector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/DOFTransform.pypp.hpp"
+#include "DOFTransform.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/DatabaseCacheReadCallback.pypp.hpp"
+#include "DatabaseCacheReadCallback.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/DirectionalSector.pypp.hpp"
+#include "DirectionalSector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/ElevationRange.pypp.hpp"
+#include "ElevationRange.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/ElevationSector.pypp.hpp"
+#include "ElevationSector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/ElevationSlice.pypp.hpp"
+#include "ElevationSlice.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/HeightAboveTerrain.pypp.hpp"
+#include "HeightAboveTerrain.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/Impostor.pypp.hpp"
+#include "Impostor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/ImpostorSprite.pypp.hpp"
+#include "ImpostorSprite.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/ImpostorSpriteManager.pypp.hpp"
+#include "ImpostorSpriteManager.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/InsertImpostorsVisitor.pypp.hpp"
+#include "InsertImpostorsVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/LightPoint.pypp.hpp"
+#include "LightPoint.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/LightPointList.pypp.hpp"
+#include "LightPointList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/LightPointNode.pypp.hpp"
+#include "LightPointNode.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/LightPointSystem.pypp.hpp"
+#include "LightPointSystem.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/LineOfSight.pypp.hpp"
+#include "LineOfSight.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/MultiSwitch.pypp.hpp"
+#include "MultiSwitch.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/ObjectRecordData.pypp.hpp"
+#include "ObjectRecordData.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/OverlayNode.pypp.hpp"
+#include "OverlayNode.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/ScalarBar.pypp.hpp"
+#include "ScalarBar.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/ScalarsToColors.pypp.hpp"
+#include "ScalarsToColors.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/Sector.pypp.hpp"
+#include "Sector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/SequenceGroup.pypp.hpp"
+#include "SequenceGroup.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/ShapeAttribute.pypp.hpp"
+#include "ShapeAttribute.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/ShapeAttributeList.pypp.hpp"
+#include "ShapeAttributeList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/SphereSegment.pypp.hpp"
+#include "SphereSegment.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/VisibilityGroup.pypp.hpp"
+#include "VisibilityGroup.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgSim/generated_code/vector_less__osg_scope_ref_ptr_less_osgSim_scope_ImpostorSprite_greater___greater_.pypp.hpp"
+#include "vector_less__osg_scope_ref_ptr_less_osgSim_scope_ImpostorSprite_greater___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

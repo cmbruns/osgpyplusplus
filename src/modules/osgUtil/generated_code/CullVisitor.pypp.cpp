@@ -9,29 +9,6 @@ namespace bp = boost::python;
 
 struct CullVisitor_wrapper : osgUtil::CullVisitor, bp::wrapper< osgUtil::CullVisitor > {
 
-    struct Identifier_wrapper : osgUtil::CullVisitor::Identifier, bp::wrapper< osgUtil::CullVisitor::Identifier > {
-    
-        Identifier_wrapper( )
-        : osgUtil::CullVisitor::Identifier( )
-          , bp::wrapper< osgUtil::CullVisitor::Identifier >(){
-            // null constructor
-        
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
-
     CullVisitor_wrapper( )
     : osgUtil::CullVisitor( )
       , bp::wrapper< osgUtil::CullVisitor >(){
@@ -483,18 +460,6 @@ struct CullVisitor_wrapper : osgUtil::CullVisitor, bp::wrapper< osgUtil::CullVis
         osg::CullSettings::setDefaults( );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_CullVisitor_class(){
@@ -503,7 +468,7 @@ void register_CullVisitor_class(){
         typedef bp::class_< CullVisitor_wrapper, bp::bases< ::osg::NodeVisitor >, osg::ref_ptr< CullVisitor_wrapper >, boost::noncopyable > CullVisitor_exposer_t;
         CullVisitor_exposer_t CullVisitor_exposer = CullVisitor_exposer_t( "CullVisitor", bp::no_init );
         bp::scope CullVisitor_scope( CullVisitor_exposer );
-        bp::class_< CullVisitor_wrapper::Identifier_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< CullVisitor_wrapper::Identifier_wrapper >, boost::noncopyable >( "Identifier", bp::init< >() );
+        bp::class_< osgUtil::CullVisitor::Identifier, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::CullVisitor::Identifier >, boost::noncopyable >( "Identifier", bp::init< >() );
         CullVisitor_exposer.def( bp::init< >() );
         { //::osgUtil::CullVisitor::addDrawable
         

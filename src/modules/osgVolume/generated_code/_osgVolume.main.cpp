@@ -12,61 +12,61 @@
 
 #include "wrap_osgVolume.h"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/AlphaFuncProperty.pypp.hpp"
+#include "AlphaFuncProperty.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/CollectPropertiesVisitor.pypp.hpp"
+#include "CollectPropertiesVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/CompositeLayer.pypp.hpp"
+#include "CompositeLayer.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/CompositeProperty.pypp.hpp"
+#include "CompositeProperty.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/FixedFunctionTechnique.pypp.hpp"
+#include "FixedFunctionTechnique.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/ImageDetails.pypp.hpp"
+#include "ImageDetails.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/ImageLayer.pypp.hpp"
+#include "ImageLayer.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/IsoSurfaceProperty.pypp.hpp"
+#include "IsoSurfaceProperty.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/Layer.pypp.hpp"
+#include "Layer.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/LightingProperty.pypp.hpp"
+#include "LightingProperty.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/Locator.pypp.hpp"
+#include "Locator.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/LocatorCallbacks.pypp.hpp"
+#include "LocatorCallbacks.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/MaximumIntensityProjectionProperty.pypp.hpp"
+#include "MaximumIntensityProjectionProperty.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/Property.pypp.hpp"
+#include "Property.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/PropertyAdjustmentCallback.pypp.hpp"
+#include "PropertyAdjustmentCallback.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/PropertyVisitor.pypp.hpp"
+#include "PropertyVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/RayTracedTechnique.pypp.hpp"
+#include "RayTracedTechnique.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/SampleDensityProperty.pypp.hpp"
+#include "SampleDensityProperty.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/SampleDensityWhenMovingProperty.pypp.hpp"
+#include "SampleDensityWhenMovingProperty.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/ScalarProperty.pypp.hpp"
+#include "ScalarProperty.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/SwitchProperty.pypp.hpp"
+#include "SwitchProperty.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/TileID.pypp.hpp"
+#include "TileID.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/TransferFunctionProperty.pypp.hpp"
+#include "TransferFunctionProperty.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/TransparencyProperty.pypp.hpp"
+#include "TransparencyProperty.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/Volume.pypp.hpp"
+#include "Volume.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/VolumeTechnique.pypp.hpp"
+#include "VolumeTechnique.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/VolumeTile.pypp.hpp"
+#include "VolumeTile.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgVolume/generated_code/_osgVolume_free_functions.pypp.hpp"
+#include "_osgVolume_free_functions.pypp.hpp"
 
 namespace bp = boost::python;
 

@@ -544,18 +544,6 @@ struct TerrainManipulator_wrapper : osgGA::TerrainManipulator, bp::wrapper< osgG
         return osgGA::OrbitManipulator::performMovementLeftMouseButton( eventTimeDelta, dx, dy );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void rotateTrackball( float const px0, float const py0, float const px1, float const py1, float const scale ){
         if( bp::override func_rotateTrackball = this->get_override( "rotateTrackball" ) )
             func_rotateTrackball( px0, py0, px1, py1, scale );

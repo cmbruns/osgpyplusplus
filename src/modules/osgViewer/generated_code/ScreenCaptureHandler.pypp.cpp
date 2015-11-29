@@ -41,18 +41,6 @@ struct ScreenCaptureHandler_wrapper : osgViewer::ScreenCaptureHandler, bp::wrapp
             }
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct WriteToFile_wrapper : osgViewer::ScreenCaptureHandler::WriteToFile, bp::wrapper< osgViewer::ScreenCaptureHandler::WriteToFile > {
@@ -81,18 +69,6 @@ struct ScreenCaptureHandler_wrapper : osgViewer::ScreenCaptureHandler, bp::wrapp
             else{
                 inst.operator()(image, context_id);
             }
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -234,18 +210,6 @@ struct ScreenCaptureHandler_wrapper : osgViewer::ScreenCaptureHandler, bp::wrapp
     
     char const * default_libraryName(  ) const  {
         return osgGA::GUIEventHandler::libraryName( );
-    }
-
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
     }
 
     virtual void setName( ::std::string const & name ) {

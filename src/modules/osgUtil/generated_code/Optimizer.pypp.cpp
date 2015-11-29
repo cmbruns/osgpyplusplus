@@ -384,18 +384,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
             osg::NodeVisitor::reset( );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct CombineLODsVisitor_wrapper : osgUtil::Optimizer::CombineLODsVisitor, bp::wrapper< osgUtil::Optimizer::CombineLODsVisitor > {
@@ -765,18 +753,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
         
         void default_reset(  ) {
             osg::NodeVisitor::reset( );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -1150,18 +1126,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
             osg::NodeVisitor::reset( );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct CopySharedSubgraphsVisitor_wrapper : osgUtil::Optimizer::CopySharedSubgraphsVisitor, bp::wrapper< osgUtil::Optimizer::CopySharedSubgraphsVisitor > {
@@ -1531,18 +1495,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
         
         void default_reset(  ) {
             osg::NodeVisitor::reset( );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -1916,18 +1868,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
             return osg::NodeVisitor::libraryName( );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor_wrapper : osgUtil::Optimizer::FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor, bp::wrapper< osgUtil::Optimizer::FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor > {
@@ -2297,18 +2237,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
         
         char const * default_libraryName(  ) const  {
             return osg::NodeVisitor::libraryName( );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -2682,18 +2610,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
             osg::NodeVisitor::reset( );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct IsOperationPermissibleForObjectCallback_wrapper : osgUtil::Optimizer::IsOperationPermissibleForObjectCallback, bp::wrapper< osgUtil::Optimizer::IsOperationPermissibleForObjectCallback > {
@@ -2751,18 +2667,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
         
         bool default_isOperationPermissibleForObjectImplementation( ::osgUtil::Optimizer const * optimizer, ::osg::Node const * node, unsigned int option ) const  {
             return osgUtil::Optimizer::IsOperationPermissibleForObjectCallback::isOperationPermissibleForObjectImplementation( boost::python::ptr(optimizer), boost::python::ptr(node), option );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -3136,18 +3040,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
             osg::NodeVisitor::reset( );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct MergeGeodesVisitor_wrapper : osgUtil::Optimizer::MergeGeodesVisitor, bp::wrapper< osgUtil::Optimizer::MergeGeodesVisitor > {
@@ -3517,18 +3409,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
         
         void default_reset(  ) {
             osg::NodeVisitor::reset( );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -3902,18 +3782,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
             osg::NodeVisitor::reset( );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct RemoveEmptyNodesVisitor_wrapper : osgUtil::Optimizer::RemoveEmptyNodesVisitor, bp::wrapper< osgUtil::Optimizer::RemoveEmptyNodesVisitor > {
@@ -4283,18 +4151,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
         
         void default_reset(  ) {
             osg::NodeVisitor::reset( );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -4668,18 +4524,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
             osg::NodeVisitor::reset( );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct RemoveRedundantNodesVisitor_wrapper : osgUtil::Optimizer::RemoveRedundantNodesVisitor, bp::wrapper< osgUtil::Optimizer::RemoveRedundantNodesVisitor > {
@@ -5049,18 +4893,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
         
         void default_reset(  ) {
             osg::NodeVisitor::reset( );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -5434,18 +5266,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
             osg::NodeVisitor::reset( );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct StateVisitor_wrapper : osgUtil::Optimizer::StateVisitor, bp::wrapper< osgUtil::Optimizer::StateVisitor > {
@@ -5815,18 +5635,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
         
         char const * default_libraryName(  ) const  {
             return osg::NodeVisitor::libraryName( );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -6200,18 +6008,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
             osg::NodeVisitor::reset( );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct TessellateVisitor_wrapper : osgUtil::Optimizer::TessellateVisitor, bp::wrapper< osgUtil::Optimizer::TessellateVisitor > {
@@ -6581,18 +6377,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
         
         void default_reset(  ) {
             osg::NodeVisitor::reset( );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -6966,18 +6750,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
             return osg::NodeVisitor::libraryName( );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct TextureVisitor_wrapper : osgUtil::Optimizer::TextureVisitor, bp::wrapper< osgUtil::Optimizer::TextureVisitor > {
@@ -7347,18 +7119,6 @@ struct Optimizer_wrapper : osgUtil::Optimizer, bp::wrapper< osgUtil::Optimizer >
         
         void default_reset(  ) {
             osg::NodeVisitor::reset( );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };

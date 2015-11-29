@@ -7,25 +7,9 @@
 
 namespace bp = boost::python;
 
-struct ObjectWrapperManager_wrapper : osgDB::ObjectWrapperManager, bp::wrapper< osgDB::ObjectWrapperManager > {
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
-
 void register_ObjectWrapperManager_class(){
 
-    bp::class_< ObjectWrapperManager_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< ObjectWrapperManager_wrapper >, boost::noncopyable >( "ObjectWrapperManager", bp::no_init )    
+    bp::class_< osgDB::ObjectWrapperManager, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgDB::ObjectWrapperManager >, boost::noncopyable >( "ObjectWrapperManager", bp::no_init )    
         .def( 
             "addCompressor"
             , (void ( ::osgDB::ObjectWrapperManager::* )( ::osgDB::BaseCompressor * ) )( &::osgDB::ObjectWrapperManager::addCompressor )

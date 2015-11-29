@@ -7,47 +7,10 @@
 
 namespace bp = boost::python;
 
-struct TemplateTarget_less__osg_scope_Quat__greater__wrapper : osgAnimation::TemplateTarget< osg::Quat >, bp::wrapper< osgAnimation::TemplateTarget< osg::Quat > > {
-
-    TemplateTarget_less__osg_scope_Quat__greater__wrapper( )
-    : osgAnimation::TemplateTarget<osg::Quat>( )
-      , bp::wrapper< osgAnimation::TemplateTarget< osg::Quat > >(){
-        // null constructor
-    
-    }
-
-    TemplateTarget_less__osg_scope_Quat__greater__wrapper(::osg::Quat const & v )
-    : osgAnimation::TemplateTarget<osg::Quat>( boost::ref(v) )
-      , bp::wrapper< osgAnimation::TemplateTarget< osg::Quat > >(){
-        // constructor
-    
-    }
-
-    TemplateTarget_less__osg_scope_Quat__greater__wrapper(::osgAnimation::TemplateTarget< osg::Quat > const & v )
-    : osgAnimation::TemplateTarget<osg::Quat>( boost::ref(v) )
-      , bp::wrapper< osgAnimation::TemplateTarget< osg::Quat > >(){
-        // copy constructor
-    
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
-
 void register_TemplateTarget_less__osg_scope_Quat__greater__class(){
 
     { //::osgAnimation::TemplateTarget< osg::Quat >
-        typedef bp::class_< TemplateTarget_less__osg_scope_Quat__greater__wrapper, bp::bases< osgAnimation::Target >, osg::ref_ptr< TemplateTarget_less__osg_scope_Quat__greater__wrapper > > TemplateTarget_less__osg_scope_Quat__greater__exposer_t;
+        typedef bp::class_< osgAnimation::TemplateTarget< osg::Quat >, bp::bases< osgAnimation::Target >, osg::ref_ptr< ::osgAnimation::TemplateTarget<osg::Quat> > > TemplateTarget_less__osg_scope_Quat__greater__exposer_t;
         TemplateTarget_less__osg_scope_Quat__greater__exposer_t TemplateTarget_less__osg_scope_Quat__greater__exposer = TemplateTarget_less__osg_scope_Quat__greater__exposer_t( "TemplateTarget_less__osg_scope_Quat__greater_", bp::init< >() );
         bp::scope TemplateTarget_less__osg_scope_Quat__greater__scope( TemplateTarget_less__osg_scope_Quat__greater__exposer );
         TemplateTarget_less__osg_scope_Quat__greater__exposer.def( bp::init< osg::Quat const & >(( bp::arg("v") )) );
@@ -95,7 +58,7 @@ void register_TemplateTarget_less__osg_scope_Quat__greater__class(){
                 "update"
                 , update_function_type( &::osgAnimation::TemplateTarget< osg::Quat >::update )
                 , ( bp::arg("weight"), bp::arg("val"), bp::arg("priority") )
-                , "  The priority is used to detect a change of priority\n  Its important to update animation target in priority\n  order. eg:\n  all animation with priority 1\n  all animation with priority 0\n  all animation with priority -1\n  ..." );
+                , "\n  The priority is used to detect a change of priority\n  Its important to update animation target in priority\n  order. eg:\n  all animation with priority 1\n  all animation with priority 0\n  all animation with priority -1\n  ...\n" );
         
         }
     }

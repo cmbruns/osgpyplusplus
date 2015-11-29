@@ -7,25 +7,9 @@
 
 namespace bp = boost::python;
 
-struct DynamicLibrary_wrapper : osgDB::DynamicLibrary, bp::wrapper< osgDB::DynamicLibrary > {
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
-
 void register_DynamicLibrary_class(){
 
-    bp::class_< DynamicLibrary_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< DynamicLibrary_wrapper >, boost::noncopyable >( "DynamicLibrary", bp::no_init )    
+    bp::class_< osgDB::DynamicLibrary, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgDB::DynamicLibrary >, boost::noncopyable >( "DynamicLibrary", bp::no_init )    
         .def( 
             "getFullName"
             , (::std::string const & ( ::osgDB::DynamicLibrary::* )(  ) const)( &::osgDB::DynamicLibrary::getFullName )

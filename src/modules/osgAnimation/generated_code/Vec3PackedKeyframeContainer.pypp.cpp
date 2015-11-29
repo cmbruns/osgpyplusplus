@@ -9,18 +9,6 @@ namespace bp = boost::python;
 
 struct TemplateKeyframeContainer_less__osgAnimation_scope_Vec3Packed__greater__wrapper : osgAnimation::TemplateKeyframeContainer< osgAnimation::Vec3Packed >, bp::wrapper< osgAnimation::TemplateKeyframeContainer< osgAnimation::Vec3Packed > > {
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
     virtual unsigned int size(  ) const {
         bp::override func_size = this->get_override( "size" );
         return func_size(  );

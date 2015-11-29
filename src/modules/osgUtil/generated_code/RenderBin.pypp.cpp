@@ -23,18 +23,6 @@ struct RenderBin_wrapper : osgUtil::RenderBin, bp::wrapper< osgUtil::RenderBin >
             func_drawImplementation( boost::python::ptr(bin), boost::ref(renderInfo), boost::ref(previous) );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct SortCallback_wrapper : osgUtil::RenderBin::SortCallback, bp::wrapper< osgUtil::RenderBin::SortCallback > {
@@ -49,18 +37,6 @@ struct RenderBin_wrapper : osgUtil::RenderBin, bp::wrapper< osgUtil::RenderBin >
         virtual void sortImplementation( ::osgUtil::RenderBin * arg0 ){
             bp::override func_sortImplementation = this->get_override( "sortImplementation" );
             func_sortImplementation( boost::python::ptr(arg0) );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -317,18 +293,6 @@ struct RenderBin_wrapper : osgUtil::RenderBin, bp::wrapper< osgUtil::RenderBin >
     
     ::osg::Referenced const * default_getUserData(  ) const  {
         return osg::Object::getUserData( );
-    }
-
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
     }
 
     virtual void setName( ::std::string const & name ) {

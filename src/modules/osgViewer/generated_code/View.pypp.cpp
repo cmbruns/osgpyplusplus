@@ -9,22 +9,6 @@ namespace bp = boost::python;
 
 struct View_wrapper : osgViewer::View, bp::wrapper< osgViewer::View > {
 
-    struct StereoSlaveCallback_wrapper : osgViewer::View::StereoSlaveCallback, bp::wrapper< osgViewer::View::StereoSlaveCallback > {
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
-
     View_wrapper( )
     : osgViewer::View( )
       , bp::wrapper< osgViewer::View >(){
@@ -212,18 +196,6 @@ struct View_wrapper : osgViewer::View, bp::wrapper< osgViewer::View > {
         return osg::Object::getUserData( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void setName( ::std::string const & name ) {
         if( bp::override func_setName = this->get_override( "setName" ) )
             func_setName( name );
@@ -268,7 +240,7 @@ void register_View_class(){
         typedef bp::class_< View_wrapper, bp::bases< ::osg::View, ::osgGA::GUIActionAdapter >, osg::ref_ptr< ::osgViewer::View >, boost::noncopyable > View_exposer_t;
         View_exposer_t View_exposer = View_exposer_t( "View", bp::no_init );
         bp::scope View_scope( View_exposer );
-        bp::class_< View_wrapper::StereoSlaveCallback_wrapper, bp::bases< ::osg::View::Slave::UpdateSlaveCallback >, osg::ref_ptr< ::osgViewer::View::StereoSlaveCallback >, boost::noncopyable >( "StereoSlaveCallback", bp::no_init )    
+        bp::class_< osgViewer::View::StereoSlaveCallback, bp::bases< ::osg::View::Slave::UpdateSlaveCallback >, osg::ref_ptr< ::osgViewer::View::StereoSlaveCallback >, boost::noncopyable >( "StereoSlaveCallback", bp::no_init )    
             .def_readwrite( "_ds", &osgViewer::View::StereoSlaveCallback::_ds )    
             .def_readwrite( "_eyeScale", &osgViewer::View::StereoSlaveCallback::_eyeScale );
         View_exposer.def( bp::init< >() );

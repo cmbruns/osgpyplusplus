@@ -664,18 +664,6 @@ struct OrbitManipulator_wrapper : osgGA::OrbitManipulator, bp::wrapper< osgGA::O
         return osgGA::StandardManipulator::isMouseMoving( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     static void rotateYawPitch( ::osg::Quat & rotation, double const yaw, double const pitch, ::osg::Vec3d const & localUp=osg::Vec3d(0.0, 0.0, 0.0) ){
         osgGA::StandardManipulator::rotateYawPitch( boost::ref(rotation), yaw, pitch, boost::ref(localUp) );
     }

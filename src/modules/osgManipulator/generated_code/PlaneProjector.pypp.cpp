@@ -35,18 +35,6 @@ struct PlaneProjector_wrapper : osgManipulator::PlaneProjector, bp::wrapper< osg
         return osgManipulator::PlaneProjector::project( boost::ref(pi), boost::ref(projectedPoint) );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_PlaneProjector_class(){

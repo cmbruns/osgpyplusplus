@@ -23,18 +23,6 @@ struct IntersectionVisitor_wrapper : osgUtil::IntersectionVisitor, bp::wrapper< 
             return func_readNodeFile( filename );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     IntersectionVisitor_wrapper(::osgUtil::Intersector * intersector=0, ::osgUtil::IntersectionVisitor::ReadCallback * readCallback=0 )
@@ -402,18 +390,6 @@ struct IntersectionVisitor_wrapper : osgUtil::IntersectionVisitor, bp::wrapper< 
     
     ::osg::Vec3 default_getViewPoint(  ) const  {
         return osg::NodeVisitor::getViewPoint( );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
     }
 
 };

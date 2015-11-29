@@ -143,18 +143,6 @@ struct ActionBlendIn_wrapper : osgAnimation::ActionBlendIn, bp::wrapper< osgAnim
         return osg::Object::getUserData( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void setLoop( unsigned int nb ) {
         if( bp::override func_setLoop = this->get_override( "setLoop" ) )
             func_setLoop( nb );

@@ -450,18 +450,6 @@ struct GraphicsWindow_wrapper : osgViewer::GraphicsWindow, bp::wrapper< osgViewe
         return osg::Object::getUserData( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void resizedImplementation( int x, int y, int width, int height ) {
         if( bp::override func_resizedImplementation = this->get_override( "resizedImplementation" ) )
             func_resizedImplementation( x, y, width, height );

@@ -7,33 +7,10 @@
 
 namespace bp = boost::python;
 
-struct ImpostorSpriteManager_wrapper : osgSim::ImpostorSpriteManager, bp::wrapper< osgSim::ImpostorSpriteManager > {
-
-    ImpostorSpriteManager_wrapper( )
-    : osgSim::ImpostorSpriteManager( )
-      , bp::wrapper< osgSim::ImpostorSpriteManager >(){
-        // null constructor
-    
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
-
 void register_ImpostorSpriteManager_class(){
 
-    bp::class_< ImpostorSpriteManager_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgSim::ImpostorSpriteManager >, boost::noncopyable >( "ImpostorSpriteManager", "\n Helper class for managing the reuse of ImpostorSprite resources.\n", bp::no_init )    
-        .def( bp::init< >("\n Helper class for managing the reuse of ImpostorSprite resources.\n") )    
+    bp::class_< osgSim::ImpostorSpriteManager, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgSim::ImpostorSpriteManager >, boost::noncopyable >( "ImpostorSpriteManager", " Helper class for managing the reuse of ImpostorSprite resources.", bp::no_init )    
+        .def( bp::init< >(" Helper class for managing the reuse of ImpostorSprite resources.") )    
         .def( 
             "createOrReuseImpostorSprite"
             , (::osgSim::ImpostorSprite * ( ::osgSim::ImpostorSpriteManager::* )( int,int,unsigned int ) )( &::osgSim::ImpostorSpriteManager::createOrReuseImpostorSprite )

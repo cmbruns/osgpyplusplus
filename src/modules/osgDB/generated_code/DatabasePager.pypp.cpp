@@ -54,18 +54,6 @@ struct DatabasePager_wrapper : osgDB::DatabasePager, bp::wrapper< osgDB::Databas
             OpenThreads::Thread::cancelCleanup( );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct PagedLODList_wrapper : osgDB::DatabasePager::PagedLODList, bp::wrapper< osgDB::DatabasePager::PagedLODList > {
@@ -105,18 +93,6 @@ struct DatabasePager_wrapper : osgDB::DatabasePager, bp::wrapper< osgDB::Databas
         virtual unsigned int size(  ){
             bp::override func_size = this->get_override( "size" );
             return func_size(  );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -258,18 +234,6 @@ struct DatabasePager_wrapper : osgDB::DatabasePager, bp::wrapper< osgDB::Databas
     
     void default_updateSceneGraph( ::osg::FrameStamp const & frameStamp ) {
         osgDB::DatabasePager::updateSceneGraph( boost::ref(frameStamp) );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
     }
 
 };

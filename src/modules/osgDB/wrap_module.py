@@ -53,8 +53,29 @@ class OsgDBWrapper(BaseWrapper):
         wrap_call_policies(self.mb)
 
         hide_nonpublic(self.mb)
+
+        # linux compile error HalfWayMapGenerator.pypp.cpp:13:113: error: `HalfWayMapGenerator_wrapper` was not declared in this scope
+        for cls_name in [
+                 "AuthenticationDetails",
+                 "DotOsgWrapper",
+                 "DynamicLibrary",
+                 "InputException",
+                 "ObjectWrapper",
+                 "ObjectWrapperManager",
+                 "OutputException",
+                 "ReaderWriterInfo",
+                 "XmlNode",
+                 ]:
+            cls = osgDB.class_(cls_name)
+            cls.wrapper_alias = cls.decl_string
         
         self.wrap_all_osg_referenced(osgDB)
+
+        for cls_inner in [
+                ["ImageOptions","TexCoordRange"],
+                ]:
+            cls = osgDB.class_(cls_inner[0]).class_(cls_inner[1])
+            cls.held_type = 'osg::ref_ptr< %s >' % cls.decl_string # decl_string not wrapper_alias
 
         self.wrap_options()
         self.wrap_input()

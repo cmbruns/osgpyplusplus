@@ -23,18 +23,6 @@ struct IncrementalCompileOperation_wrapper : osgUtil::IncrementalCompileOperatio
             return func_compileCompleted( boost::python::ptr(compileSet) );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct CompileOp_wrapper : osgUtil::IncrementalCompileOperation::CompileOp, bp::wrapper< osgUtil::IncrementalCompileOperation::CompileOp > {
@@ -54,18 +42,6 @@ struct IncrementalCompileOperation_wrapper : osgUtil::IncrementalCompileOperatio
         virtual double estimatedTimeForCompile( ::osgUtil::IncrementalCompileOperation::CompileInfo & compileInfo ) const {
             bp::override func_estimatedTimeForCompile = this->get_override( "estimatedTimeForCompile" );
             return func_estimatedTimeForCompile( boost::ref(compileInfo) );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -101,18 +77,6 @@ struct IncrementalCompileOperation_wrapper : osgUtil::IncrementalCompileOperatio
         
         double default_estimatedTimeForCompile( ::osgUtil::IncrementalCompileOperation::CompileInfo & compileInfo ) const  {
             return osgUtil::IncrementalCompileOperation::CompileDrawableOp::estimatedTimeForCompile( boost::ref(compileInfo) );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -176,55 +140,6 @@ struct IncrementalCompileOperation_wrapper : osgUtil::IncrementalCompileOperatio
             return osgUtil::IncrementalCompileOperation::CompileProgramOp::estimatedTimeForCompile( boost::ref(compileInfo) );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
-
-    struct CompileSet_wrapper : osgUtil::IncrementalCompileOperation::CompileSet, bp::wrapper< osgUtil::IncrementalCompileOperation::CompileSet > {
-    
-        CompileSet_wrapper( )
-        : osgUtil::IncrementalCompileOperation::CompileSet( )
-          , bp::wrapper< osgUtil::IncrementalCompileOperation::CompileSet >(){
-            // null constructor
-        
-        }
-    
-        CompileSet_wrapper(::osg::Node * subgraphToCompile )
-        : osgUtil::IncrementalCompileOperation::CompileSet( boost::python::ptr(subgraphToCompile) )
-          , bp::wrapper< osgUtil::IncrementalCompileOperation::CompileSet >(){
-            // constructor
-        
-        }
-    
-        CompileSet_wrapper(::osg::Group * attachmentPoint, ::osg::Node * subgraphToCompile )
-        : osgUtil::IncrementalCompileOperation::CompileSet( boost::python::ptr(attachmentPoint), boost::python::ptr(subgraphToCompile) )
-          , bp::wrapper< osgUtil::IncrementalCompileOperation::CompileSet >(){
-            // constructor
-        
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct CompileTextureOp_wrapper : osgUtil::IncrementalCompileOperation::CompileTextureOp, bp::wrapper< osgUtil::IncrementalCompileOperation::CompileTextureOp > {
@@ -260,18 +175,6 @@ struct IncrementalCompileOperation_wrapper : osgUtil::IncrementalCompileOperatio
             return osgUtil::IncrementalCompileOperation::CompileTextureOp::estimatedTimeForCompile( boost::ref(compileInfo) );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     IncrementalCompileOperation_wrapper( )
@@ -303,18 +206,6 @@ struct IncrementalCompileOperation_wrapper : osgUtil::IncrementalCompileOperatio
     
     void default_release(  ) {
         osg::Operation::release( );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
     }
 
 };
@@ -443,7 +334,7 @@ void register_IncrementalCompileOperation_class(){
             CompileProgramOp_exposer.def_readwrite( "_program", &osgUtil::IncrementalCompileOperation::CompileProgramOp::_program );
         }
         { //::osgUtil::IncrementalCompileOperation::CompileSet
-            typedef bp::class_< IncrementalCompileOperation_wrapper::CompileSet_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< IncrementalCompileOperation_wrapper::CompileSet_wrapper >, boost::noncopyable > CompileSet_exposer_t;
+            typedef bp::class_< osgUtil::IncrementalCompileOperation::CompileSet, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::IncrementalCompileOperation::CompileSet >, boost::noncopyable > CompileSet_exposer_t;
             CompileSet_exposer_t CompileSet_exposer = CompileSet_exposer_t( "CompileSet", bp::no_init );
             bp::scope CompileSet_scope( CompileSet_exposer );
             CompileSet_exposer.def( bp::init< >() );

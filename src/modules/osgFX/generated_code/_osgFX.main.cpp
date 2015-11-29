@@ -10,31 +10,31 @@
 
 #include "wrap_osgFX.h"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgFX/generated_code/AnisotropicLighting.pypp.hpp"
+#include "AnisotropicLighting.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgFX/generated_code/BumpMapping.pypp.hpp"
+#include "BumpMapping.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgFX/generated_code/Cartoon.pypp.hpp"
+#include "Cartoon.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgFX/generated_code/Effect.pypp.hpp"
+#include "Effect.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgFX/generated_code/EffectMap.pypp.hpp"
+#include "EffectMap.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgFX/generated_code/MultiTextureControl.pypp.hpp"
+#include "MultiTextureControl.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgFX/generated_code/Outline.pypp.hpp"
+#include "Outline.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgFX/generated_code/Registry.pypp.hpp"
+#include "Registry.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgFX/generated_code/Scribe.pypp.hpp"
+#include "Scribe.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgFX/generated_code/SpecularHighlights.pypp.hpp"
+#include "SpecularHighlights.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgFX/generated_code/Technique.pypp.hpp"
+#include "Technique.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgFX/generated_code/Validator.pypp.hpp"
+#include "Validator.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgFX/generated_code/_osgFX_free_functions.pypp.hpp"
+#include "_osgFX_free_functions.pypp.hpp"
 
 namespace bp = boost::python;
 

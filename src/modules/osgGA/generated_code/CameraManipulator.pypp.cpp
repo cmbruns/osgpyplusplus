@@ -25,18 +25,6 @@ struct CameraManipulator_wrapper : osgGA::CameraManipulator, bp::wrapper< osgGA:
             return func_getCoordinateFrame( boost::ref(position) );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     virtual char const * className(  ) const  {
@@ -412,18 +400,6 @@ struct CameraManipulator_wrapper : osgGA::CameraManipulator, bp::wrapper< osgGA:
         return osgGA::GUIEventHandler::libraryName( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void setName( ::std::string const & name ) {
         if( bp::override func_setName = this->get_override( "setName" ) )
             func_setName( name );
@@ -601,7 +577,7 @@ void register_CameraManipulator_class(){
             CameraManipulator_exposer.def( 
                 "getInverseMatrix"
                 , bp::pure_virtual( getInverseMatrix_function_type(&::osgGA::CameraManipulator::getInverseMatrix) )
-                , " get the position of the manipulator as a inverse matrix of the manipulator, typically used as a model view matrix." );
+                , "\n get the position of the manipulator as a inverse matrix of the manipulator, typically used as a model view matrix.\n" );
         
         }
         { //::osgGA::CameraManipulator::getMatrix
@@ -611,7 +587,7 @@ void register_CameraManipulator_class(){
             CameraManipulator_exposer.def( 
                 "getMatrix"
                 , bp::pure_virtual( getMatrix_function_type(&::osgGA::CameraManipulator::getMatrix) )
-                , " get the position of the manipulator as 4x4 Matrix." );
+                , "\n get the position of the manipulator as 4x4 Matrix.\n" );
         
         }
         { //::osgGA::CameraManipulator::getNode
@@ -666,7 +642,7 @@ void register_CameraManipulator_class(){
                 "handle"
                 , default_handle_function_type( &CameraManipulator_wrapper::default_handle )
                 , ( bp::arg("inst"), bp::arg("ea"), bp::arg("us") )
-                , " Handle events, return true if handled, false otherwise." );
+                , "\n Handle events, return true if handled, false otherwise.\n" );
         
         }
         { //::osgGA::CameraManipulator::home
@@ -677,7 +653,7 @@ void register_CameraManipulator_class(){
                 "home"
                 , default_home_function_type( &CameraManipulator_wrapper::default_home_9715462911072744dcf4ae663764b018 )
                 , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1") )
-                , "        Move the camera to the default position.\n        May be ignored by manipulators if home functionality is not appropriate." );
+                , "\n        Move the camera to the default position.\n        May be ignored by manipulators if home functionality is not appropriate.\n" );
         
         }
         { //::osgGA::CameraManipulator::home
@@ -688,7 +664,7 @@ void register_CameraManipulator_class(){
                 "home"
                 , default_home_function_type( &CameraManipulator_wrapper::default_home_60d9f789ca14c44af8e13acc6b7f8b5f )
                 , ( bp::arg("inst"), bp::arg("arg0") )
-                , "        Move the camera to the default position.\n        This version does not require GUIEventAdapter and GUIActionAdapter so may be\n        called from somewhere other than a handle() method in GUIEventHandler.  Application\n        must be aware of implications." );
+                , "\n        Move the camera to the default position.\n        This version does not require GUIEventAdapter and GUIActionAdapter so may be\n        called from somewhere other than a handle() method in GUIEventHandler.  Application\n        must be aware of implications.\n" );
         
         }
         { //::osgGA::CameraManipulator::init
@@ -699,7 +675,7 @@ void register_CameraManipulator_class(){
                 "init"
                 , default_init_function_type( &CameraManipulator_wrapper::default_init )
                 , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1") )
-                , "        Start/restart the manipulator.\n        FIXME: what does this actually mean? Provide examples." );
+                , "\n        Start/restart the manipulator.\n        FIXME: what does this actually mean? Provide examples.\n" );
         
         }
         { //::osgGA::CameraManipulator::setAutoComputeHomePosition
@@ -722,7 +698,7 @@ void register_CameraManipulator_class(){
                 "setByInverseMatrix"
                 , bp::pure_virtual( setByInverseMatrix_function_type(&::osgGA::CameraManipulator::setByInverseMatrix) )
                 , ( bp::arg("matrix") )
-                , " set the position of the matrix manipulator using a 4x4 Matrix." );
+                , "\n set the position of the matrix manipulator using a 4x4 Matrix.\n" );
         
         }
         { //::osgGA::CameraManipulator::setByMatrix
@@ -733,7 +709,7 @@ void register_CameraManipulator_class(){
                 "setByMatrix"
                 , bp::pure_virtual( setByMatrix_function_type(&::osgGA::CameraManipulator::setByMatrix) )
                 , ( bp::arg("matrix") )
-                , " set the position of the matrix manipulator using a 4x4 Matrix." );
+                , "\n set the position of the matrix manipulator using a 4x4 Matrix.\n" );
         
         }
         { //::osgGA::CameraManipulator::setCoordinateFrameCallback

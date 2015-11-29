@@ -399,18 +399,6 @@ struct DriveManipulator_wrapper : osgGA::DriveManipulator, bp::wrapper< osgGA::D
         return osgGA::GUIEventHandler::libraryName( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void setAutoComputeHomePosition( bool flag ) {
         if( bp::override func_setAutoComputeHomePosition = this->get_override( "setAutoComputeHomePosition" ) )
             func_setAutoComputeHomePosition( flag );
@@ -639,7 +627,7 @@ void register_DriveManipulator_class(){
             "home"
             , (void (*)( ::osgGA::CameraManipulator &,double ))( &DriveManipulator_wrapper::default_home_60d9f789ca14c44af8e13acc6b7f8b5f )
             , ( bp::arg("inst"), bp::arg("arg0") )
-            , "        Move the camera to the default position.\n        This version does not require GUIEventAdapter and GUIActionAdapter so may be\n        called from somewhere other than a handle() method in GUIEventHandler.  Application\n        must be aware of implications." )    
+            , "\n        Move the camera to the default position.\n        This version does not require GUIEventAdapter and GUIActionAdapter so may be\n        called from somewhere other than a handle() method in GUIEventHandler.  Application\n        must be aware of implications.\n" )    
         .def( 
             "isSameKindAs"
             , (bool ( ::osgGA::GUIEventHandler::* )( ::osg::Object const * ) const)(&::osgGA::GUIEventHandler::isSameKindAs)

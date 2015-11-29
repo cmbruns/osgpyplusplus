@@ -9,29 +9,6 @@ namespace bp = boost::python;
 
 struct ImageOptions_wrapper : osgDB::ImageOptions, bp::wrapper< osgDB::ImageOptions > {
 
-    struct TexCoordRange_wrapper : osgDB::ImageOptions::TexCoordRange, bp::wrapper< osgDB::ImageOptions::TexCoordRange > {
-    
-        TexCoordRange_wrapper( )
-        : osgDB::ImageOptions::TexCoordRange( )
-          , bp::wrapper< osgDB::ImageOptions::TexCoordRange >(){
-            // null constructor
-        
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
-
     ImageOptions_wrapper( )
     : osgDB::ImageOptions( )
       , bp::wrapper< osgDB::ImageOptions >(){
@@ -142,18 +119,6 @@ struct ImageOptions_wrapper : osgDB::ImageOptions, bp::wrapper< osgDB::ImageOpti
         return osg::Object::getUserData( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void setName( ::std::string const & name ) {
         if( bp::override func_setName = this->get_override( "setName" ) )
             func_setName( name );
@@ -228,7 +193,7 @@ void register_ImageOptions_class(){
             .def_readwrite( "windowWidth", &osgDB::ImageOptions::RatioWindow::windowWidth )    
             .def_readwrite( "windowX", &osgDB::ImageOptions::RatioWindow::windowX )    
             .def_readwrite( "windowY", &osgDB::ImageOptions::RatioWindow::windowY );
-        bp::class_< ImageOptions_wrapper::TexCoordRange_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< ImageOptions_wrapper::TexCoordRange_wrapper >, boost::noncopyable >( "TexCoordRange", bp::init< >() )    
+        bp::class_< osgDB::ImageOptions::TexCoordRange, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgDB::ImageOptions::TexCoordRange >, boost::noncopyable >( "TexCoordRange", bp::init< >() )    
             .def( 
                 "set"
                 , (void ( ::osgDB::ImageOptions::TexCoordRange::* )( double,double,double,double ) )( &::osgDB::ImageOptions::TexCoordRange::set )

@@ -7,32 +7,9 @@
 
 namespace bp = boost::python;
 
-struct TangentSpaceGenerator_wrapper : osgUtil::TangentSpaceGenerator, bp::wrapper< osgUtil::TangentSpaceGenerator > {
-
-    TangentSpaceGenerator_wrapper( )
-    : osgUtil::TangentSpaceGenerator( )
-      , bp::wrapper< osgUtil::TangentSpaceGenerator >(){
-        // null constructor
-    
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
-
 void register_TangentSpaceGenerator_class(){
 
-    bp::class_< TangentSpaceGenerator_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< TangentSpaceGenerator_wrapper >, boost::noncopyable >( "TangentSpaceGenerator", bp::no_init )    
+    bp::class_< osgUtil::TangentSpaceGenerator, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::TangentSpaceGenerator >, boost::noncopyable >( "TangentSpaceGenerator", bp::no_init )    
         .def( bp::init< >() )    
         .def( 
             "generate"

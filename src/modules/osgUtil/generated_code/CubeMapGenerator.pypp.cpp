@@ -7,25 +7,9 @@
 
 namespace bp = boost::python;
 
-struct CubeMapGenerator_wrapper : osgUtil::CubeMapGenerator, bp::wrapper< osgUtil::CubeMapGenerator > {
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
-
 void register_CubeMapGenerator_class(){
 
-    bp::class_< CubeMapGenerator_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< CubeMapGenerator_wrapper >, boost::noncopyable >( "CubeMapGenerator", bp::no_init )    
+    bp::class_< osgUtil::CubeMapGenerator, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::CubeMapGenerator >, boost::noncopyable >( "CubeMapGenerator", bp::no_init )    
         .def( 
             "generateMap"
             , (void ( ::osgUtil::CubeMapGenerator::* )( bool ) )( &::osgUtil::CubeMapGenerator::generateMap )

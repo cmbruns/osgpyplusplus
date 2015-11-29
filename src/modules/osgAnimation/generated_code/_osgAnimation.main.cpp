@@ -16,189 +16,189 @@
 
 #include "wrap_osgAnimation.h"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/Action.pypp.hpp"
+#include "Action.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/ActionAnimation.pypp.hpp"
+#include "ActionAnimation.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/ActionBlendIn.pypp.hpp"
+#include "ActionBlendIn.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/ActionBlendOut.pypp.hpp"
+#include "ActionBlendOut.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/ActionLayers.pypp.hpp"
+#include "ActionLayers.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/ActionStripAnimation.pypp.hpp"
+#include "ActionStripAnimation.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/ActionVisitor.pypp.hpp"
+#include "ActionVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/Animation.pypp.hpp"
+#include "Animation.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/AnimationManagerBase.pypp.hpp"
+#include "AnimationManagerBase.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/AnimationUpdateCallbackBase.pypp.hpp"
+#include "AnimationUpdateCallbackBase.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/AnimationUpdateCallback_less__osg_scope_NodeCallback__greater_.pypp.hpp"
+#include "AnimationUpdateCallback_less__osg_scope_NodeCallback__greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/AnimationUpdateCallback_less__osg_scope_StateAttributeCallback__greater_.pypp.hpp"
+#include "AnimationUpdateCallback_less__osg_scope_StateAttributeCallback__greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/BasicAnimationManager.pypp.hpp"
+#include "BasicAnimationManager.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/Bone.pypp.hpp"
+#include "Bone.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/BoneMap.pypp.hpp"
+#include "BoneMap.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/BoneMapVisitor.pypp.hpp"
+#include "BoneMapVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/BoneWeightList.pypp.hpp"
+#include "BoneWeightList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/Channel.pypp.hpp"
+#include "Channel.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/ChannelList.pypp.hpp"
+#include "ChannelList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/ClearActionVisitor.pypp.hpp"
+#include "ClearActionVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/CompositeMotion.pypp.hpp"
+#include "CompositeMotion.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InBackFunction.pypp.hpp"
+#include "InBackFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InBounceFunction.pypp.hpp"
+#include "InBounceFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InCircFunction.pypp.hpp"
+#include "InCircFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InCubicFunction.pypp.hpp"
+#include "InCubicFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InElasticFunction.pypp.hpp"
+#include "InElasticFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InExpoFunction.pypp.hpp"
+#include "InExpoFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InOutBackFunction.pypp.hpp"
+#include "InOutBackFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InOutBounceFunction.pypp.hpp"
+#include "InOutBounceFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InOutCircFunction.pypp.hpp"
+#include "InOutCircFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InOutCubicFunction.pypp.hpp"
+#include "InOutCubicFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InOutElasticFunction.pypp.hpp"
+#include "InOutElasticFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InOutExpoFunction.pypp.hpp"
+#include "InOutExpoFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InOutQuadFunction.pypp.hpp"
+#include "InOutQuadFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InOutQuartFunction.pypp.hpp"
+#include "InOutQuartFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InOutSineFunction.pypp.hpp"
+#include "InOutSineFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InQuadFunction.pypp.hpp"
+#include "InQuadFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InQuartFunction.pypp.hpp"
+#include "InQuartFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/InSineFunction.pypp.hpp"
+#include "InSineFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/Keyframe.pypp.hpp"
+#include "Keyframe.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/KeyframeContainer.pypp.hpp"
+#include "KeyframeContainer.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/LinearFunction.pypp.hpp"
+#include "LinearFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/LinkVisitor.pypp.hpp"
+#include "LinkVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/Motion.pypp.hpp"
+#include "Motion.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/MotionList.pypp.hpp"
+#include "MotionList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/OutBackFunction.pypp.hpp"
+#include "OutBackFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/OutBounceFunction.pypp.hpp"
+#include "OutBounceFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/OutCircFunction.pypp.hpp"
+#include "OutCircFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/OutCubicFunction.pypp.hpp"
+#include "OutCubicFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/OutElasticFunction.pypp.hpp"
+#include "OutElasticFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/OutExpoFunction.pypp.hpp"
+#include "OutExpoFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/OutQuadFunction.pypp.hpp"
+#include "OutQuadFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/OutQuartFunction.pypp.hpp"
+#include "OutQuartFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/OutSineFunction.pypp.hpp"
+#include "OutSineFunction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/RigGeometry.pypp.hpp"
+#include "RigGeometry.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/RigTransform.pypp.hpp"
+#include "RigTransform.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/RigTransformHardware.pypp.hpp"
+#include "RigTransformHardware.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/RigTransformSoftware.pypp.hpp"
+#include "RigTransformSoftware.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/RunAction.pypp.hpp"
+#include "RunAction.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/Sampler.pypp.hpp"
+#include "Sampler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/Skeleton.pypp.hpp"
+#include "Skeleton.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/StackedMatrixElement.pypp.hpp"
+#include "StackedMatrixElement.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/StackedQuaternionElement.pypp.hpp"
+#include "StackedQuaternionElement.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/StackedRotateAxisElement.pypp.hpp"
+#include "StackedRotateAxisElement.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/StackedScaleElement.pypp.hpp"
+#include "StackedScaleElement.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/StackedTransform.pypp.hpp"
+#include "StackedTransform.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/StackedTransformElement.pypp.hpp"
+#include "StackedTransformElement.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/StackedTranslateElement.pypp.hpp"
+#include "StackedTranslateElement.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/StatsActionVisitor.pypp.hpp"
+#include "StatsActionVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/StatsHandler.pypp.hpp"
+#include "StatsHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/Target.pypp.hpp"
+#include "Target.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/TemplateTarget_less__float__greater_.pypp.hpp"
+#include "TemplateTarget_less__float__greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/TemplateTarget_less__osg_scope_Matrixf__greater_.pypp.hpp"
+#include "TemplateTarget_less__osg_scope_Matrixf__greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/TemplateTarget_less__osg_scope_Quat__greater_.pypp.hpp"
+#include "TemplateTarget_less__osg_scope_Quat__greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/Timeline.pypp.hpp"
+#include "Timeline.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/TimelineAnimationManager.pypp.hpp"
+#include "TimelineAnimationManager.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/UniqVertexSetToBoneSetList.pypp.hpp"
+#include "UniqVertexSetToBoneSetList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/UpdateActionVisitor.pypp.hpp"
+#include "UpdateActionVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/UpdateBone.pypp.hpp"
+#include "UpdateBone.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/UpdateMaterial.pypp.hpp"
+#include "UpdateMaterial.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/UpdateMatrixTransform.pypp.hpp"
+#include "UpdateMatrixTransform.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/Vec3ArrayPacked.pypp.hpp"
+#include "Vec3ArrayPacked.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/Vec3Packed.pypp.hpp"
+#include "Vec3Packed.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/Vec3PackedKeyframeContainer.pypp.hpp"
+#include "Vec3PackedKeyframeContainer.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/VertexIndexToBoneWeightMap.pypp.hpp"
+#include "VertexIndexToBoneWeightMap.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/VertexInfluence.pypp.hpp"
+#include "VertexInfluence.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/VertexInfluenceMap.pypp.hpp"
+#include "VertexInfluenceMap.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/VertexInfluenceSet.pypp.hpp"
+#include "VertexInfluenceSet.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/vector_less__osgAnimation_scope_Vec3Packed__greater_.pypp.hpp"
+#include "vector_less__osgAnimation_scope_Vec3Packed__greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/vector_less__osgAnimation_scope_VertexInfluenceSet_scope_BoneWeight__greater_.pypp.hpp"
+#include "vector_less__osgAnimation_scope_VertexInfluenceSet_scope_BoneWeight__greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/vector_less__osg_scope_ref_ptr_less_osgAnimation_scope_Animation_greater___greater_.pypp.hpp"
+#include "vector_less__osg_scope_ref_ptr_less_osgAnimation_scope_Animation_greater___greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgAnimation/generated_code/vector_less__std_scope_pair_less_unsigned_int_comma__osg_scope_ref_ptr_less_osgAnimation_scope_Action_greater___greater___greater_.pypp.hpp"
+#include "vector_less__std_scope_pair_less_unsigned_int_comma__osg_scope_ref_ptr_less_osgAnimation_scope_Action_greater___greater___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

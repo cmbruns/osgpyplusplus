@@ -7,40 +7,10 @@
 
 namespace bp = boost::python;
 
-struct DelaunayTriangulator_wrapper : osgUtil::DelaunayTriangulator, bp::wrapper< osgUtil::DelaunayTriangulator > {
-
-    DelaunayTriangulator_wrapper( )
-    : osgUtil::DelaunayTriangulator( )
-      , bp::wrapper< osgUtil::DelaunayTriangulator >(){
-        // null constructor
-    
-    }
-
-    DelaunayTriangulator_wrapper(::osg::Vec3Array * points, ::osg::Vec3Array * normals=0 )
-    : osgUtil::DelaunayTriangulator( boost::python::ptr(points), boost::python::ptr(normals) )
-      , bp::wrapper< osgUtil::DelaunayTriangulator >(){
-        // constructor
-    
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
-
 void register_DelaunayTriangulator_class(){
 
     { //::osgUtil::DelaunayTriangulator
-        typedef bp::class_< DelaunayTriangulator_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< DelaunayTriangulator_wrapper >, boost::noncopyable > DelaunayTriangulator_exposer_t;
+        typedef bp::class_< osgUtil::DelaunayTriangulator, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::DelaunayTriangulator >, boost::noncopyable > DelaunayTriangulator_exposer_t;
         DelaunayTriangulator_exposer_t DelaunayTriangulator_exposer = DelaunayTriangulator_exposer_t( "DelaunayTriangulator", bp::no_init );
         bp::scope DelaunayTriangulator_scope( DelaunayTriangulator_exposer );
         DelaunayTriangulator_exposer.def( bp::init< >() );

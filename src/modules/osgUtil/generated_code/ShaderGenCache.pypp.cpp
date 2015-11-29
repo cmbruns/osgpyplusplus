@@ -7,33 +7,10 @@
 
 namespace bp = boost::python;
 
-struct ShaderGenCache_wrapper : osgUtil::ShaderGenCache, bp::wrapper< osgUtil::ShaderGenCache > {
-
-    ShaderGenCache_wrapper( )
-    : osgUtil::ShaderGenCache( )
-      , bp::wrapper< osgUtil::ShaderGenCache >(){
-        // null constructor
-    
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
-
 void register_ShaderGenCache_class(){
 
     { //::osgUtil::ShaderGenCache
-        typedef bp::class_< ShaderGenCache_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< ShaderGenCache_wrapper >, boost::noncopyable > ShaderGenCache_exposer_t;
+        typedef bp::class_< osgUtil::ShaderGenCache, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::ShaderGenCache >, boost::noncopyable > ShaderGenCache_exposer_t;
         ShaderGenCache_exposer_t ShaderGenCache_exposer = ShaderGenCache_exposer_t( "ShaderGenCache", bp::no_init );
         bp::scope ShaderGenCache_scope( ShaderGenCache_exposer );
         bp::enum_< osgUtil::ShaderGenCache::StateMask>("StateMask")

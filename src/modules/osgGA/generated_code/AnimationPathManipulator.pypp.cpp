@@ -25,18 +25,6 @@ struct AnimationPathManipulator_wrapper : osgGA::AnimationPathManipulator, bp::w
             func_completed( boost::python::ptr(apm) );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     AnimationPathManipulator_wrapper(::osg::AnimationPath * animationPath=0 )
@@ -385,18 +373,6 @@ struct AnimationPathManipulator_wrapper : osgGA::AnimationPathManipulator, bp::w
     
     char const * default_libraryName(  ) const  {
         return osgGA::GUIEventHandler::libraryName( );
-    }
-
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
     }
 
     virtual void setAutoComputeHomePosition( bool flag ) {

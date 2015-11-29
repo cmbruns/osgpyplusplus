@@ -7,32 +7,9 @@
 
 namespace bp = boost::python;
 
-struct Target_wrapper : osgAnimation::Target, bp::wrapper< osgAnimation::Target > {
-
-    Target_wrapper( )
-    : osgAnimation::Target( )
-      , bp::wrapper< osgAnimation::Target >(){
-        // null constructor
-    
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
-
 void register_Target_class(){
 
-    bp::class_< Target_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< Target_wrapper >, boost::noncopyable >( "Target", bp::init< >() )    
+    bp::class_< osgAnimation::Target, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgAnimation::Target >, boost::noncopyable >( "Target", bp::init< >() )    
         .def( 
             "getCount"
             , (int ( ::osgAnimation::Target::* )(  ) const)( &::osgAnimation::Target::getCount ) )    

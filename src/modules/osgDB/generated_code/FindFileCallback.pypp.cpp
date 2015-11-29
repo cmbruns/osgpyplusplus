@@ -40,18 +40,6 @@ struct FindFileCallback_wrapper : osgDB::FindFileCallback, bp::wrapper< osgDB::F
         return osgDB::FindFileCallback::findLibraryFile( filename, boost::python::ptr(options), caseSensitivity );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_FindFileCallback_class(){

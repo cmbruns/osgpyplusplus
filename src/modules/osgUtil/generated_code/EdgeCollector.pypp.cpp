@@ -22,98 +22,6 @@ struct EdgeCollector_wrapper : osgUtil::EdgeCollector, bp::wrapper< osgUtil::Edg
         
     }
 
-    struct Edge_wrapper : osgUtil::EdgeCollector::Edge, bp::wrapper< osgUtil::EdgeCollector::Edge > {
-    
-        Edge_wrapper()
-        : osgUtil::EdgeCollector::Edge()
-          , bp::wrapper< osgUtil::EdgeCollector::Edge >(){
-            // null constructor
-            
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
-
-    struct Edgeloop_wrapper : osgUtil::EdgeCollector::Edgeloop, bp::wrapper< osgUtil::EdgeCollector::Edgeloop > {
-    
-        Edgeloop_wrapper()
-        : osgUtil::EdgeCollector::Edgeloop()
-          , bp::wrapper< osgUtil::EdgeCollector::Edgeloop >(){
-            // null constructor
-            
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
-
-    struct Point_wrapper : osgUtil::EdgeCollector::Point, bp::wrapper< osgUtil::EdgeCollector::Point > {
-    
-        Point_wrapper( )
-        : osgUtil::EdgeCollector::Point( )
-          , bp::wrapper< osgUtil::EdgeCollector::Point >(){
-            // null constructor
-        
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
-
-    struct Triangle_wrapper : osgUtil::EdgeCollector::Triangle, bp::wrapper< osgUtil::EdgeCollector::Triangle > {
-    
-        Triangle_wrapper( )
-        : osgUtil::EdgeCollector::Triangle( )
-          , bp::wrapper< osgUtil::EdgeCollector::Triangle >(){
-            // null constructor
-        
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
-
     static ::osg::Geometry * get__geometry(osgUtil::EdgeCollector const & inst ){
         return inst._geometry;
     }
@@ -130,7 +38,7 @@ void register_EdgeCollector_class(){
         typedef bp::class_< EdgeCollector_wrapper > EdgeCollector_exposer_t;
         EdgeCollector_exposer_t EdgeCollector_exposer = EdgeCollector_exposer_t( "EdgeCollector" );
         bp::scope EdgeCollector_scope( EdgeCollector_exposer );
-        bp::class_< EdgeCollector_wrapper::Edge_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< EdgeCollector_wrapper::Edge_wrapper >, boost::noncopyable >( "Edge" )    
+        bp::class_< osgUtil::EdgeCollector::Edge, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::EdgeCollector::Edge >, boost::noncopyable >( "Edge" )    
             .def( 
                 "addTriangle"
                 , (void ( ::osgUtil::EdgeCollector::Edge::* )( ::osgUtil::EdgeCollector::Triangle * ) )( &::osgUtil::EdgeCollector::Edge::addTriangle )
@@ -164,7 +72,7 @@ void register_EdgeCollector_class(){
             .def_readwrite( "_p1", &osgUtil::EdgeCollector::Edge::_p1 )    
             .def_readwrite( "_p2", &osgUtil::EdgeCollector::Edge::_p2 )    
             .def_readwrite( "_triangles", &osgUtil::EdgeCollector::Edge::_triangles );
-        bp::class_< EdgeCollector_wrapper::Edgeloop_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< EdgeCollector_wrapper::Edgeloop_wrapper >, boost::noncopyable >( "Edgeloop" )    
+        bp::class_< osgUtil::EdgeCollector::Edgeloop, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::EdgeCollector::Edgeloop >, boost::noncopyable >( "Edgeloop" )    
             .def( 
                 "isClosed"
                 , (bool ( ::osgUtil::EdgeCollector::Edgeloop::* )(  ) )( &::osgUtil::EdgeCollector::Edgeloop::isClosed ) )    
@@ -173,7 +81,7 @@ void register_EdgeCollector_class(){
                 , (::osg::UIntArray * ( ::osgUtil::EdgeCollector::Edgeloop::* )(  ) const)( &::osgUtil::EdgeCollector::Edgeloop::toIndexArray )
                 , bp::return_internal_reference< >() )    
             .def_readwrite( "_edgeList", &osgUtil::EdgeCollector::Edgeloop::_edgeList );
-        bp::class_< EdgeCollector_wrapper::Point_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< EdgeCollector_wrapper::Point_wrapper >, boost::noncopyable >( "Point", bp::init< >() )    
+        bp::class_< osgUtil::EdgeCollector::Point, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::EdgeCollector::Point >, boost::noncopyable >( "Point", bp::init< >() )    
             .def( 
                 "clear"
                 , (void ( ::osgUtil::EdgeCollector::Point::* )(  ) )( &::osgUtil::EdgeCollector::Point::clear ) )    
@@ -185,7 +93,7 @@ void register_EdgeCollector_class(){
             .def_readwrite( "_protected", &osgUtil::EdgeCollector::Point::_protected )    
             .def_readwrite( "_triangles", &osgUtil::EdgeCollector::Point::_triangles )    
             .def_readwrite( "_vertex", &osgUtil::EdgeCollector::Point::_vertex );
-        bp::class_< EdgeCollector_wrapper::Triangle_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< EdgeCollector_wrapper::Triangle_wrapper >, boost::noncopyable >( "Triangle", bp::init< >() )    
+        bp::class_< osgUtil::EdgeCollector::Triangle, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::EdgeCollector::Triangle >, boost::noncopyable >( "Triangle", bp::init< >() )    
             .def( 
                 "clear"
                 , (void ( ::osgUtil::EdgeCollector::Triangle::* )(  ) )( &::osgUtil::EdgeCollector::Triangle::clear ) )    

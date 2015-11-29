@@ -14,89 +14,89 @@
 
 #include "wrap_osgWidget.h"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/Box.pypp.hpp"
+#include "Box.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/Browser.pypp.hpp"
+#include "Browser.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/BrowserImage.pypp.hpp"
+#include "BrowserImage.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/BrowserManager.pypp.hpp"
+#include "BrowserManager.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/Callback.pypp.hpp"
+#include "Callback.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/CallbackInterface.pypp.hpp"
+#include "CallbackInterface.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/CameraSwitchHandler.pypp.hpp"
+#include "CameraSwitchHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/Canvas.pypp.hpp"
+#include "Canvas.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/Event.pypp.hpp"
+#include "Event.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/EventInterface.pypp.hpp"
+#include "EventInterface.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/Frame.pypp.hpp"
+#include "Frame.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/GeometryHints.pypp.hpp"
+#include "GeometryHints.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/Input.pypp.hpp"
+#include "Input.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/KeyboardHandler.pypp.hpp"
+#include "KeyboardHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/Label.pypp.hpp"
+#include "Label.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/LuaEngine.pypp.hpp"
+#include "LuaEngine.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/MouseHandler.pypp.hpp"
+#include "MouseHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/NotifyWidget.pypp.hpp"
+#include "NotifyWidget.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/NullWidget.pypp.hpp"
+#include "NullWidget.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/PdfImage.pypp.hpp"
+#include "PdfImage.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/PdfReader.pypp.hpp"
+#include "PdfReader.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/PythonEngine.pypp.hpp"
+#include "PythonEngine.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/ResizeHandler.pypp.hpp"
+#include "ResizeHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/ScriptEngine.pypp.hpp"
+#include "ScriptEngine.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/Style.pypp.hpp"
+#include "Style.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/StyleInterface.pypp.hpp"
+#include "StyleInterface.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/StyleManager.pypp.hpp"
+#include "StyleManager.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/Table.pypp.hpp"
+#include "Table.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/UIObjectParent_Widget_Vector.pypp.hpp"
+#include "UIObjectParent_Widget_Vector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/UIObjectParent_Window_Vector.pypp.hpp"
+#include "UIObjectParent_Window_Vector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/UIObjectParent_less__osgWidget_scope_Widget__greater_.pypp.hpp"
+#include "UIObjectParent_less__osgWidget_scope_Widget__greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/UIObjectParent_less__osgWidget_scope_Window__greater_.pypp.hpp"
+#include "UIObjectParent_less__osgWidget_scope_Window__greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/VncClient.pypp.hpp"
+#include "VncClient.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/VncImage.pypp.hpp"
+#include "VncImage.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/Widget.pypp.hpp"
+#include "Widget.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/Window.pypp.hpp"
+#include "Window.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/WindowList.pypp.hpp"
+#include "WindowList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/WindowManager.pypp.hpp"
+#include "WindowManager.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/_osgWidget_enumerations.pypp.hpp"
+#include "_osgWidget_enumerations.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/_osgWidget_free_functions.pypp.hpp"
+#include "_osgWidget_free_functions.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/_osgWidget_global_variables.pypp.hpp"
+#include "_osgWidget_global_variables.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgWidget/generated_code/list_less__osg_scope_observer_ptr_less_osgWidget_scope_Widget_greater___greater_.pypp.hpp"
+#include "list_less__osg_scope_observer_ptr_less_osgWidget_scope_Widget_greater___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

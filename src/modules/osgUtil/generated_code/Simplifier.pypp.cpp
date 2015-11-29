@@ -30,18 +30,6 @@ struct Simplifier_wrapper : osgUtil::Simplifier, bp::wrapper< osgUtil::Simplifie
             return osgUtil::Simplifier::ContinueSimplificationCallback::continueSimplification( boost::ref(simplifier), nextError, numOriginalPrimitives, numRemainingPrimitives );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     Simplifier_wrapper(double sampleRatio=1.0e+0, double maximumError=3.4028234663852885981170418348451692544e+38f, double maximumLength=0.0 )
@@ -421,18 +409,6 @@ struct Simplifier_wrapper : osgUtil::Simplifier, bp::wrapper< osgUtil::Simplifie
     
     void default_reset(  ) {
         osg::NodeVisitor::reset( );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
     }
 
 };

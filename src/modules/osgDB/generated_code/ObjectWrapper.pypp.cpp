@@ -7,39 +7,9 @@
 
 namespace bp = boost::python;
 
-struct ObjectWrapper_wrapper : osgDB::ObjectWrapper, bp::wrapper< osgDB::ObjectWrapper > {
-
-    ObjectWrapper_wrapper(::osg::Object * proto, ::std::string const & name, ::std::string const & associates )
-    : osgDB::ObjectWrapper( boost::python::ptr(proto), name, associates )
-      , bp::wrapper< osgDB::ObjectWrapper >(){
-        // constructor
-    
-    }
-
-    ObjectWrapper_wrapper(::osg::Object * proto, ::std::string const & domain, ::std::string const & name, ::std::string const & associates )
-    : osgDB::ObjectWrapper( boost::python::ptr(proto), domain, name, associates )
-      , bp::wrapper< osgDB::ObjectWrapper >(){
-        // constructor
-    
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
-};
-
 void register_ObjectWrapper_class(){
 
-    bp::class_< ObjectWrapper_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< ObjectWrapper_wrapper >, boost::noncopyable >( "ObjectWrapper", bp::no_init )    
+    bp::class_< osgDB::ObjectWrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgDB::ObjectWrapper >, boost::noncopyable >( "ObjectWrapper", bp::no_init )    
         .def( bp::init< osg::Object *, std::string const &, std::string const & >(( bp::arg("proto"), bp::arg("name"), bp::arg("associates") )) )    
         .def( bp::init< osg::Object *, std::string const &, std::string const &, std::string const & >(( bp::arg("proto"), bp::arg("domain"), bp::arg("name"), bp::arg("associates") )) )    
         .def( 
