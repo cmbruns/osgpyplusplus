@@ -6,17 +6,27 @@ sudo: required
 # Need trusty to get osg 3.2; I'm not supporting osg 3.0 at the moment
 dist: trusty
 env:
+  - OSG_MODULE=_osgAnimation
   - OSG_MODULE=_osgDB
+  - OSG_MODULE=_osgFX
   - OSG_MODULE=_osgGA
+  - OSG_MODULE=_osgManipulator
+  - OSG_MODULE=_osgParticle
+  - OSG_MODULE=_osgSim
+  - OSG_MODULE=_osgText
   - OSG_MODULE=_osgUtil
+  - OSG_MODULE=_osgViewer
+  - OSG_MODULE=_osgVolume
+  - OSG_MODULE=_osgWidget
 install:
   - sudo apt-get update -qq
   - sudo apt-get install -y libboost-python-dev
   - sudo apt-get install -y openscenegraph
   - sudo apt-get install -y libopenscenegraph-dev
+before_script:
   - mkdir build_cmake
   - cd build_cmake
   - cmake ..
 script:
-  - make -j8 $OSG_MODULE
+  - make -j4 $OSG_MODULE
 
