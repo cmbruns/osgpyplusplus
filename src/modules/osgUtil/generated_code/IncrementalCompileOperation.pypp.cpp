@@ -220,16 +220,19 @@ void register_IncrementalCompileOperation_class(){
             .def( 
                 "compileCompleted"
                 , bp::pure_virtual( (bool ( ::osgUtil::IncrementalCompileOperation::CompileCompletedCallback::* )( ::osgUtil::IncrementalCompileOperation::CompileSet * ) )(&::osgUtil::IncrementalCompileOperation::CompileCompletedCallback::compileCompleted) )
-                , ( bp::arg("compileSet") ) );
+                , ( bp::arg("compileSet") )
+                , "\n return true if the callback assumes responsibility for merging any associated subgraphs with the main scene graph\n return false if callback doesnt handle the merge, and instead requires the IncrementalCompileOperation to handle this for us\n" );
         bp::class_< IncrementalCompileOperation_wrapper::CompileOp_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< IncrementalCompileOperation_wrapper::CompileOp_wrapper >, boost::noncopyable >( "CompileOp", bp::no_init )    
             .def( 
                 "compile"
                 , bp::pure_virtual( (bool ( ::osgUtil::IncrementalCompileOperation::CompileOp::* )( ::osgUtil::IncrementalCompileOperation::CompileInfo & ) )(&::osgUtil::IncrementalCompileOperation::CompileOp::compile) )
-                , ( bp::arg("compileInfo") ) )    
+                , ( bp::arg("compileInfo") )
+                , "\n compile associated objects, return true if object as been fully compiled and this CompileOp can be removed from the to compile list.\n" )    
             .def( 
                 "estimatedTimeForCompile"
                 , bp::pure_virtual( (double ( ::osgUtil::IncrementalCompileOperation::CompileOp::* )( ::osgUtil::IncrementalCompileOperation::CompileInfo & ) const)(&::osgUtil::IncrementalCompileOperation::CompileOp::estimatedTimeForCompile) )
-                , ( bp::arg("compileInfo") ) );
+                , ( bp::arg("compileInfo") )
+                , "\n return an estimate for how many seconds the compile will take.\n" );
         { //::osgUtil::IncrementalCompileOperation::CompileDrawableOp
             typedef bp::class_< IncrementalCompileOperation_wrapper::CompileDrawableOp_wrapper, bp::bases< osgUtil::IncrementalCompileOperation::CompileOp >, osg::ref_ptr< IncrementalCompileOperation_wrapper::CompileDrawableOp_wrapper >, boost::noncopyable > CompileDrawableOp_exposer_t;
             CompileDrawableOp_exposer_t CompileDrawableOp_exposer = CompileDrawableOp_exposer_t( "CompileDrawableOp", bp::init< osg::Drawable * >(( bp::arg("drawable") )) );
@@ -424,7 +427,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "add"
                 , add_function_type( &::osgUtil::IncrementalCompileOperation::add )
-                , ( bp::arg("subgraphToCompile") ) );
+                , ( bp::arg("subgraphToCompile") )
+                , " Add a subgraph to be compiled." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::add
@@ -434,7 +438,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "add"
                 , add_function_type( &::osgUtil::IncrementalCompileOperation::add )
-                , ( bp::arg("attachmentPoint"), bp::arg("subgraphToCompile") ) );
+                , ( bp::arg("attachmentPoint"), bp::arg("subgraphToCompile") )
+                , " Add a subgraph to be compiled and add automatically to attachPoint on call to mergeCompiledSubgraphs." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::add
@@ -444,7 +449,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "add"
                 , add_function_type( &::osgUtil::IncrementalCompileOperation::add )
-                , ( bp::arg("compileSet"), bp::arg("callBuildCompileMap")=(bool)(true) ) );
+                , ( bp::arg("compileSet"), bp::arg("callBuildCompileMap")=(bool)(true) )
+                , " Add a CompileSet to be compiled." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::addGraphicsContext
@@ -473,7 +479,8 @@ void register_IncrementalCompileOperation_class(){
             
             IncrementalCompileOperation_exposer.def( 
                 "assignForceTextureDownloadGeometry"
-                , assignForceTextureDownloadGeometry_function_type( &::osgUtil::IncrementalCompileOperation::assignForceTextureDownloadGeometry ) );
+                , assignForceTextureDownloadGeometry_function_type( &::osgUtil::IncrementalCompileOperation::assignForceTextureDownloadGeometry )
+                , " Assign a geometry and associated StateSet than is applied after each texture compile to atttempt to force the OpenGL\n drive to download the texture object to OpenGL graphics card." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::compileAllForNextFrame
@@ -483,7 +490,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "compileAllForNextFrame"
                 , compileAllForNextFrame_function_type( &::osgUtil::IncrementalCompileOperation::compileAllForNextFrame )
-                , ( bp::arg("numFramesToDoCompileAll")=(unsigned int)(1) ) );
+                , ( bp::arg("numFramesToDoCompileAll")=(unsigned int)(1) )
+                , " tell the IncrementalCompileOperation to compile all pending objects during next draw traversal,\n  for specified number of frames." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::getCompileAllTillFrameNumber
@@ -588,7 +596,8 @@ void register_IncrementalCompileOperation_class(){
             
             IncrementalCompileOperation_exposer.def( 
                 "getMaximumNumOfObjectsToCompilePerFrame"
-                , getMaximumNumOfObjectsToCompilePerFrame_function_type( &::osgUtil::IncrementalCompileOperation::getMaximumNumOfObjectsToCompilePerFrame ) );
+                , getMaximumNumOfObjectsToCompilePerFrame_function_type( &::osgUtil::IncrementalCompileOperation::getMaximumNumOfObjectsToCompilePerFrame )
+                , " Get the maximum number of OpenGL objects that the page should attempt to compile per frame." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::getMinimumTimeAvailableForGLCompileAndDeletePerFrame
@@ -597,7 +606,8 @@ void register_IncrementalCompileOperation_class(){
             
             IncrementalCompileOperation_exposer.def( 
                 "getMinimumTimeAvailableForGLCompileAndDeletePerFrame"
-                , getMinimumTimeAvailableForGLCompileAndDeletePerFrame_function_type( &::osgUtil::IncrementalCompileOperation::getMinimumTimeAvailableForGLCompileAndDeletePerFrame ) );
+                , getMinimumTimeAvailableForGLCompileAndDeletePerFrame_function_type( &::osgUtil::IncrementalCompileOperation::getMinimumTimeAvailableForGLCompileAndDeletePerFrame )
+                , " Get the minimum amount of time that should be made available for compiling and delete OpenGL objects per frame.\n For usage see notes in setTargetFrameRate." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::getTargetFrameRate
@@ -606,7 +616,8 @@ void register_IncrementalCompileOperation_class(){
             
             IncrementalCompileOperation_exposer.def( 
                 "getTargetFrameRate"
-                , getTargetFrameRate_function_type( &::osgUtil::IncrementalCompileOperation::getTargetFrameRate ) );
+                , getTargetFrameRate_function_type( &::osgUtil::IncrementalCompileOperation::getTargetFrameRate )
+                , " Get the target frame rate that the IncrementalCompileOperation should assume." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::getToCompile
@@ -635,7 +646,8 @@ void register_IncrementalCompileOperation_class(){
             
             IncrementalCompileOperation_exposer.def( 
                 "isActive"
-                , isActive_function_type( &::osgUtil::IncrementalCompileOperation::isActive ) );
+                , isActive_function_type( &::osgUtil::IncrementalCompileOperation::isActive )
+                , " Return true if the IncrementCompileOperation is active." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::mergeCompiledSubgraphs
@@ -645,7 +657,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "mergeCompiledSubgraphs"
                 , mergeCompiledSubgraphs_function_type( &::osgUtil::IncrementalCompileOperation::mergeCompiledSubgraphs )
-                , ( bp::arg("frameStamp") ) );
+                , ( bp::arg("frameStamp") )
+                , " Merge subgraphs that have been compiled." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::operator()
@@ -667,7 +680,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "remove"
                 , remove_function_type( &::osgUtil::IncrementalCompileOperation::remove )
-                , ( bp::arg("compileSet") ) );
+                , ( bp::arg("compileSet") )
+                , " Remove CompileSet from list." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::removeContexts
@@ -707,7 +721,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "setCompileAllTillFrameNumber"
                 , setCompileAllTillFrameNumber_function_type( &::osgUtil::IncrementalCompileOperation::setCompileAllTillFrameNumber )
-                , ( bp::arg("fn") ) );
+                , ( bp::arg("fn") )
+                , " tell the IncrementalCompileOperation to compile all pending objects during next draw traversal,\n till specified frame number." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::setConservativeTimeRatio
@@ -717,7 +732,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "setConservativeTimeRatio"
                 , setConservativeTimeRatio_function_type( &::osgUtil::IncrementalCompileOperation::setConservativeTimeRatio )
-                , ( bp::arg("ratio") ) );
+                , ( bp::arg("ratio") )
+                , " ConservativeTimeRatio governs how much of the measured spare time in each frame is used for flushing deleted and compile new OpenGL objects.\n Default value is 0.5, valid range is 0.1 to 1.0.\n A ratio near 1.0 will lead to paged databases being compiled and merged quicker but increase the chances of frame drop.\n A ratio near 0.1 will lead to paged databases being compiled and merged closer but reduse the chances of frame drop." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::setCurrentFrameNumber
@@ -727,7 +743,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "setCurrentFrameNumber"
                 , setCurrentFrameNumber_function_type( &::osgUtil::IncrementalCompileOperation::setCurrentFrameNumber )
-                , ( bp::arg("fn") ) );
+                , ( bp::arg("fn") )
+                , " Set the current frame number that the IncrementalCompileOperation should use as a reference\n value for calculations based on current frame number.\n Note, this value is set by the mergeCompiledSubgraphs(..) method so one wont normally need to call\n set the CurrentFrameNumber manually." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::setFlushTimeRatio
@@ -737,7 +754,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "setFlushTimeRatio"
                 , setFlushTimeRatio_function_type( &::osgUtil::IncrementalCompileOperation::setFlushTimeRatio )
-                , ( bp::arg("ratio") ) );
+                , ( bp::arg("ratio") )
+                , " FlushTimeRatio governs how much of the spare time in each frame is used for flushing deleted OpenGL objects.\n Default value is 0.5, valid range is 0.1 to 0.9." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::setForceTextureDownloadGeometry
@@ -747,7 +765,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "setForceTextureDownloadGeometry"
                 , setForceTextureDownloadGeometry_function_type( &::osgUtil::IncrementalCompileOperation::setForceTextureDownloadGeometry )
-                , ( bp::arg("geom") ) );
+                , ( bp::arg("geom") )
+                , " Set the osg::Geometry to apply after each texture compile to atttempt to force the OpenGL\n drive to download the texture object to OpenGL graphics card." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::setMaximumNumOfObjectsToCompilePerFrame
@@ -757,7 +776,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "setMaximumNumOfObjectsToCompilePerFrame"
                 , setMaximumNumOfObjectsToCompilePerFrame_function_type( &::osgUtil::IncrementalCompileOperation::setMaximumNumOfObjectsToCompilePerFrame )
-                , ( bp::arg("num") ) );
+                , ( bp::arg("num") )
+                , " Set the maximum number of OpenGL objects that the page should attempt to compile per frame.\n Note, Lower values reduces chances of a frame drop but lower the rate that database will be paged in at.\n Default value is 8." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::setMinimumTimeAvailableForGLCompileAndDeletePerFrame
@@ -767,7 +787,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "setMinimumTimeAvailableForGLCompileAndDeletePerFrame"
                 , setMinimumTimeAvailableForGLCompileAndDeletePerFrame_function_type( &::osgUtil::IncrementalCompileOperation::setMinimumTimeAvailableForGLCompileAndDeletePerFrame )
-                , ( bp::arg("ta") ) );
+                , ( bp::arg("ta") )
+                , " Set the minimum amount of time (in seconds) that should be made available for compiling and delete OpenGL objects per frame.\n Default value is 0.001 (1 millisecond).\n For usage see notes in setTargetFrameRate." );
         
         }
         { //::osgUtil::IncrementalCompileOperation::setTargetFrameRate
@@ -777,7 +798,8 @@ void register_IncrementalCompileOperation_class(){
             IncrementalCompileOperation_exposer.def( 
                 "setTargetFrameRate"
                 , setTargetFrameRate_function_type( &::osgUtil::IncrementalCompileOperation::setTargetFrameRate )
-                , ( bp::arg("tfr") ) );
+                , ( bp::arg("tfr") )
+                , " Set the target frame rate that the IncrementalCompileOperation should assume.\n Typically one would set this to the value refresh rate of your display system i.e. 60Hz.\n Default value is 100.\n Usage notes.  The TargetFrameRate and the MinimumTimeAvailableForGLCompileAndDeletePerFrame\n parameters are not directly used by IncrementalCompileOperation, but are should be used as a guide for how\n long to set aside per frame for compiling and deleting OpenGL objects. The longer amount of\n time to set aside  the faster databases will be paged in but with increased chance of frame drops,\n the lower the amount of time the set aside the slower databases will paged it but with better\n chance of avoid any frame drops.  The default values are chosen to achieve the later when running\n on a modern mid to high end  PC.\n The way to compute the amount of available time use a scheme such as :\n    availableTime = maximum(1.0/targetFrameRate - timeTakenDuringUpdateCullAndDraw, minimumTimeAvailableForGLCompileAndDeletePerFrame)." );
         
         }
     }

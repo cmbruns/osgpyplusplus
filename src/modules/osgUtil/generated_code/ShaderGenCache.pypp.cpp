@@ -11,7 +11,7 @@ void register_ShaderGenCache_class(){
 
     { //::osgUtil::ShaderGenCache
         typedef bp::class_< osgUtil::ShaderGenCache, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::ShaderGenCache >, boost::noncopyable > ShaderGenCache_exposer_t;
-        ShaderGenCache_exposer_t ShaderGenCache_exposer = ShaderGenCache_exposer_t( "ShaderGenCache", bp::no_init );
+        ShaderGenCache_exposer_t ShaderGenCache_exposer = ShaderGenCache_exposer_t( "ShaderGenCache", "\n    Shader generator framework.\n Author:   Maciej Krol\n", bp::no_init );
         bp::scope ShaderGenCache_scope( ShaderGenCache_exposer );
         bp::enum_< osgUtil::ShaderGenCache::StateMask>("StateMask")
             .value("BLEND", osgUtil::ShaderGenCache::BLEND)

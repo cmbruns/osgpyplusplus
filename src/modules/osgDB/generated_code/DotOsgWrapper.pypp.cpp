@@ -11,7 +11,7 @@ void register_DotOsgWrapper_class(){
 
     { //::osgDB::DotOsgWrapper
         typedef bp::class_< osgDB::DotOsgWrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgDB::DotOsgWrapper >, boost::noncopyable > DotOsgWrapper_exposer_t;
-        DotOsgWrapper_exposer_t DotOsgWrapper_exposer = DotOsgWrapper_exposer_t( "DotOsgWrapper", bp::no_init );
+        DotOsgWrapper_exposer_t DotOsgWrapper_exposer = DotOsgWrapper_exposer_t( "DotOsgWrapper", "\n deprecated.\n", bp::no_init );
         bp::scope DotOsgWrapper_scope( DotOsgWrapper_exposer );
         bp::enum_< osgDB::DotOsgWrapper::ReadWriteMode>("ReadWriteMode")
             .value("READ_AND_WRITE", osgDB::DotOsgWrapper::READ_AND_WRITE)

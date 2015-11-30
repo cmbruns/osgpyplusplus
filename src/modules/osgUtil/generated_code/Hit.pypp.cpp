@@ -10,7 +10,7 @@ void register_Hit_class(){
 
     { //::osgUtil::Hit
         typedef bp::class_< osgUtil::Hit > Hit_exposer_t;
-        Hit_exposer_t Hit_exposer = Hit_exposer_t( "Hit", bp::init< >() );
+        Hit_exposer_t Hit_exposer = Hit_exposer_t( "Hit", bp::init< >(" Deprecated") );
         bp::scope Hit_scope( Hit_exposer );
         Hit_exposer.def( bp::init< osgUtil::Hit const & >(( bp::arg("hit") )) );
         { //::osgUtil::Hit::getDrawable

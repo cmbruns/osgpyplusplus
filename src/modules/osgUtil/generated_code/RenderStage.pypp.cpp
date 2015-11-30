@@ -365,13 +365,13 @@ void register_RenderStage_class(){
 
     { //::osgUtil::RenderStage
         typedef bp::class_< RenderStage_wrapper, bp::bases< osgUtil::RenderBin >, osg::ref_ptr< RenderStage_wrapper >, boost::noncopyable > RenderStage_exposer_t;
-        RenderStage_exposer_t RenderStage_exposer = RenderStage_exposer_t( "RenderStage", bp::no_init );
+        RenderStage_exposer_t RenderStage_exposer = RenderStage_exposer_t( "RenderStage", "\n RenderStage base class. Used for encapsulate a complete stage in\n rendering - setting up of viewport, the projection and model\n matrices and rendering the RenderBins enclosed with this RenderStage.\n RenderStage also has a dependency list of other RenderStages, each\n of which must be called before the rendering of this stage.  These\n pre rendering stages are used for advanced rendering techniques\n like multistage pixel shading or impostors.\n", bp::no_init );
         bp::scope RenderStage_scope( RenderStage_exposer );
         bp::class_< osgUtil::RenderStage::Attachment >( "Attachment" )    
             .def_readwrite( "_image", &osgUtil::RenderStage::Attachment::_image )    
             .def_readwrite( "_imageReadPixelDataType", &osgUtil::RenderStage::Attachment::_imageReadPixelDataType )    
             .def_readwrite( "_imageReadPixelFormat", &osgUtil::RenderStage::Attachment::_imageReadPixelFormat );
-        RenderStage_exposer.def( bp::init< >() );
+        RenderStage_exposer.def( bp::init< >("\n RenderStage base class. Used for encapsulate a complete stage in\n rendering - setting up of viewport, the projection and model\n matrices and rendering the RenderBins enclosed with this RenderStage.\n RenderStage also has a dependency list of other RenderStages, each\n of which must be called before the rendering of this stage.  These\n pre rendering stages are used for advanced rendering techniques\n like multistage pixel shading or impostors.\n") );
         RenderStage_exposer.def( bp::init< osgUtil::RenderBin::SortMode >(( bp::arg("mode") )) );
         bp::implicitly_convertible< osgUtil::RenderBin::SortMode, osgUtil::RenderStage >();
         { //::osgUtil::RenderStage::addPositionedAttribute
@@ -455,7 +455,8 @@ void register_RenderStage_class(){
             
             RenderStage_exposer.def( 
                 "clearReferencesToDependentCameras"
-                , clearReferencesToDependentCameras_function_type( &::osgUtil::RenderStage::clearReferencesToDependentCameras ) );
+                , clearReferencesToDependentCameras_function_type( &::osgUtil::RenderStage::clearReferencesToDependentCameras )
+                , "\n clear the references to any dependent cameras.\n" );
         
         }
         { //::osgUtil::RenderStage::clone
@@ -489,7 +490,8 @@ void register_RenderStage_class(){
             
             RenderStage_exposer.def( 
                 "collateReferencesToDependentCameras"
-                , collateReferencesToDependentCameras_function_type( &::osgUtil::RenderStage::collateReferencesToDependentCameras ) );
+                , collateReferencesToDependentCameras_function_type( &::osgUtil::RenderStage::collateReferencesToDependentCameras )
+                , "\n search through any pre and post RenderStage that reference a Camera, and take a reference to each of these cameras to prevent them being deleted while they are still be used by the drawing thread.\n" );
         
         }
         { //::osgUtil::RenderStage::computeNumberOfDynamicRenderLeaves
@@ -609,7 +611,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "getClearAccum"
                 , getClearAccum_function_type( &::osgUtil::RenderStage::getClearAccum )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the clear accum.\n" );
         
         }
         { //::osgUtil::RenderStage::getClearColor
@@ -619,7 +622,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "getClearColor"
                 , getClearColor_function_type( &::osgUtil::RenderStage::getClearColor )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the clear color.\n" );
         
         }
         { //::osgUtil::RenderStage::getClearDepth
@@ -628,7 +632,8 @@ void register_RenderStage_class(){
             
             RenderStage_exposer.def( 
                 "getClearDepth"
-                , getClearDepth_function_type( &::osgUtil::RenderStage::getClearDepth ) );
+                , getClearDepth_function_type( &::osgUtil::RenderStage::getClearDepth )
+                , "\n Get the clear depth.\n" );
         
         }
         { //::osgUtil::RenderStage::getClearMask
@@ -637,7 +642,8 @@ void register_RenderStage_class(){
             
             RenderStage_exposer.def( 
                 "getClearMask"
-                , getClearMask_function_type( &::osgUtil::RenderStage::getClearMask ) );
+                , getClearMask_function_type( &::osgUtil::RenderStage::getClearMask )
+                , "\n Get the clear mask.\n" );
         
         }
         { //::osgUtil::RenderStage::getClearStencil
@@ -646,7 +652,8 @@ void register_RenderStage_class(){
             
             RenderStage_exposer.def( 
                 "getClearStencil"
-                , getClearStencil_function_type( &::osgUtil::RenderStage::getClearStencil ) );
+                , getClearStencil_function_type( &::osgUtil::RenderStage::getClearStencil )
+                , "\n Get the clear color.\n" );
         
         }
         { //::osgUtil::RenderStage::getColorMask
@@ -684,7 +691,8 @@ void register_RenderStage_class(){
             
             RenderStage_exposer.def( 
                 "getDrawBuffer"
-                , getDrawBuffer_function_type( &::osgUtil::RenderStage::getDrawBuffer ) );
+                , getDrawBuffer_function_type( &::osgUtil::RenderStage::getDrawBuffer )
+                , "\n Get the draw buffer used at the start of each frame draw.\n" );
         
         }
         { //::osgUtil::RenderStage::getDrawBufferApplyMask
@@ -693,7 +701,8 @@ void register_RenderStage_class(){
             
             RenderStage_exposer.def( 
                 "getDrawBufferApplyMask"
-                , getDrawBufferApplyMask_function_type( &::osgUtil::RenderStage::getDrawBufferApplyMask ) );
+                , getDrawBufferApplyMask_function_type( &::osgUtil::RenderStage::getDrawBufferApplyMask )
+                , "\n Get the apply mask defining whether glDrawBuffer is called at each frame draw.\n" );
         
         }
         { //::osgUtil::RenderStage::getFrameBufferObject
@@ -791,7 +800,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "getInitialViewMatrix"
                 , getInitialViewMatrix_function_type( &::osgUtil::RenderStage::getInitialViewMatrix )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the initial view matrix.\n" );
         
         }
         { //::osgUtil::RenderStage::getMultisampleResolveFramebufferObject
@@ -830,7 +840,8 @@ void register_RenderStage_class(){
             
             RenderStage_exposer.def( 
                 "getReadBuffer"
-                , getReadBuffer_function_type( &::osgUtil::RenderStage::getReadBuffer ) );
+                , getReadBuffer_function_type( &::osgUtil::RenderStage::getReadBuffer )
+                , "\n Get the read buffer for any required copy operations to use.\n" );
         
         }
         { //::osgUtil::RenderStage::getReadBufferApplyMask
@@ -839,7 +850,8 @@ void register_RenderStage_class(){
             
             RenderStage_exposer.def( 
                 "getReadBufferApplyMask"
-                , getReadBufferApplyMask_function_type( &::osgUtil::RenderStage::getReadBufferApplyMask ) );
+                , getReadBufferApplyMask_function_type( &::osgUtil::RenderStage::getReadBufferApplyMask )
+                , "\n Get the apply mask defining whether glReadBuffer is called at each frame draw.\n" );
         
         }
         { //::osgUtil::RenderStage::getStats
@@ -849,7 +861,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "getStats"
                 , getStats_function_type( &::osgUtil::RenderStage::getStats )
-                , ( bp::arg("stats") ) );
+                , ( bp::arg("stats") )
+                , "\n Extract stats for current draw list.\n" );
         
         }
         { //::osgUtil::RenderStage::getTexture
@@ -869,7 +882,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "getViewport"
                 , getViewport_function_type( &::osgUtil::RenderStage::getViewport )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the const viewport.\n" );
         
         }
         { //::osgUtil::RenderStage::getViewport
@@ -879,7 +893,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "getViewport"
                 , getViewport_function_type( &::osgUtil::RenderStage::getViewport )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the viewport.\n" );
         
         }
         { //::osgUtil::RenderStage::isSameKindAs
@@ -924,7 +939,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "runCameraSetUp"
                 , runCameraSetUp_function_type( &::osgUtil::RenderStage::runCameraSetUp )
-                , ( bp::arg("renderInfo") ) );
+                , ( bp::arg("renderInfo") )
+                , "\n Attempt the set the RenderStage from the Camera settings.\n" );
         
         }
         { //::osgUtil::RenderStage::setCamera
@@ -954,7 +970,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setClearAccum"
                 , setClearAccum_function_type( &::osgUtil::RenderStage::setClearAccum )
-                , ( bp::arg("color") ) );
+                , ( bp::arg("color") )
+                , "\n Set the clear accum used in glClearAccum(..).\n glClearAcumm is only called if mask & GL_ACCUM_BUFFER_BIT is true.\n" );
         
         }
         { //::osgUtil::RenderStage::setClearColor
@@ -964,7 +981,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setClearColor"
                 , setClearColor_function_type( &::osgUtil::RenderStage::setClearColor )
-                , ( bp::arg("color") ) );
+                , ( bp::arg("color") )
+                , "\n Set the clear color used in glClearColor(..).\n glClearColor is only called if mask & GL_COLOR_BUFFER_BIT is true\n" );
         
         }
         { //::osgUtil::RenderStage::setClearDepth
@@ -974,7 +992,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setClearDepth"
                 , setClearDepth_function_type( &::osgUtil::RenderStage::setClearDepth )
-                , ( bp::arg("depth") ) );
+                , ( bp::arg("depth") )
+                , "\n Set the clear depth used in glClearDepth(..). Defaults to 1.0\n glClearDepth is only called if mask & GL_DEPTH_BUFFER_BIT is true.\n" );
         
         }
         { //::osgUtil::RenderStage::setClearMask
@@ -984,7 +1003,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setClearMask"
                 , setClearMask_function_type( &::osgUtil::RenderStage::setClearMask )
-                , ( bp::arg("mask") ) );
+                , ( bp::arg("mask") )
+                , "\n Set the clear mask used in glClear(..).\n Defaults to GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT.\n" );
         
         }
         { //::osgUtil::RenderStage::setClearStencil
@@ -994,7 +1014,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setClearStencil"
                 , setClearStencil_function_type( &::osgUtil::RenderStage::setClearStencil )
-                , ( bp::arg("stencil") ) );
+                , ( bp::arg("stencil") )
+                , "\n Set the clear stencil value used in glClearStencil(). Defaults to 0;\n glClearStencil is only called if mask & GL_STENCIL_BUFFER_BIT is true\n" );
         
         }
         { //::osgUtil::RenderStage::setColorMask
@@ -1014,7 +1035,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setDisableFboAfterRender"
                 , setDisableFboAfterRender_function_type( &::osgUtil::RenderStage::setDisableFboAfterRender )
-                , ( bp::arg("disable") ) );
+                , ( bp::arg("disable") )
+                , "\n Set whether the framebuffer object should be unbound after\n rendering. By default this is set to true. Set it to false if the\n unbinding is not required.\n" );
         
         }
         { //::osgUtil::RenderStage::setDrawBuffer
@@ -1024,7 +1046,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setDrawBuffer"
                 , setDrawBuffer_function_type( &::osgUtil::RenderStage::setDrawBuffer )
-                , ( bp::arg("buffer"), bp::arg("applyMask")=(bool)(true) ) );
+                , ( bp::arg("buffer"), bp::arg("applyMask")=(bool)(true) )
+                , "\n Set the draw buffer used at the start of each frame draw.\n" );
         
         }
         { //::osgUtil::RenderStage::setDrawBufferApplyMask
@@ -1034,7 +1057,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setDrawBufferApplyMask"
                 , setDrawBufferApplyMask_function_type( &::osgUtil::RenderStage::setDrawBufferApplyMask )
-                , ( bp::arg("applyMask") ) );
+                , ( bp::arg("applyMask") )
+                , "\n Set the apply mask defining whether glDrawBuffer is called at each frame draw.\n" );
         
         }
         { //::osgUtil::RenderStage::setFrameBufferObject
@@ -1044,7 +1068,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setFrameBufferObject"
                 , setFrameBufferObject_function_type( &::osgUtil::RenderStage::setFrameBufferObject )
-                , ( bp::arg("fbo") ) );
+                , ( bp::arg("fbo") )
+                , "\n Set a framebuffer object to render into. It is permissible for the\n framebuffer object to be multisampled, in which case you should also\n set a resolve framebuffer object - see setMultisampleResolveFramebufferObject().\n" );
         
         }
         { //::osgUtil::RenderStage::setGraphicsContext
@@ -1114,7 +1139,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setInitialViewMatrix"
                 , setInitialViewMatrix_function_type( &::osgUtil::RenderStage::setInitialViewMatrix )
-                , ( bp::arg("matrix") ) );
+                , ( bp::arg("matrix") )
+                , "\n Set the initial view matrix.\n" );
         
         }
         { //::osgUtil::RenderStage::setMultisampleResolveFramebufferObject
@@ -1124,7 +1150,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setMultisampleResolveFramebufferObject"
                 , setMultisampleResolveFramebufferObject_function_type( &::osgUtil::RenderStage::setMultisampleResolveFramebufferObject )
-                , ( bp::arg("fbo") ) );
+                , ( bp::arg("fbo") )
+                , "\n Sets the destination framebuffer object for glBlitFramebufferEXT to\n resolve a multisampled framebuffer object after the RenderStage is\n drawn. The resolve framebuffer object must not be multisampled. The\n resolve framebuffer object is only necessary if the primary framebuffer\n object is multisampled, if not then leave it set to null.\n" );
         
         }
         { //::osgUtil::RenderStage::setPositionalStateContainer
@@ -1144,7 +1171,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setReadBuffer"
                 , setReadBuffer_function_type( &::osgUtil::RenderStage::setReadBuffer )
-                , ( bp::arg("buffer"), bp::arg("applyMask")=(bool)(true) ) );
+                , ( bp::arg("buffer"), bp::arg("applyMask")=(bool)(true) )
+                , "\n Set the read buffer for any required copy operations to use.\n" );
         
         }
         { //::osgUtil::RenderStage::setReadBufferApplyMask
@@ -1154,7 +1182,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setReadBufferApplyMask"
                 , setReadBufferApplyMask_function_type( &::osgUtil::RenderStage::setReadBufferApplyMask )
-                , ( bp::arg("applyMask") ) );
+                , ( bp::arg("applyMask") )
+                , "\n Set the apply mask defining whether glReadBuffer is called at each frame draw.\n" );
         
         }
         { //::osgUtil::RenderStage::setTexture
@@ -1174,7 +1203,8 @@ void register_RenderStage_class(){
             RenderStage_exposer.def( 
                 "setViewport"
                 , setViewport_function_type( &::osgUtil::RenderStage::setViewport )
-                , ( bp::arg("viewport") ) );
+                , ( bp::arg("viewport") )
+                , "\n Set the viewport.\n" );
         
         }
         { //::osgUtil::RenderStage::sort

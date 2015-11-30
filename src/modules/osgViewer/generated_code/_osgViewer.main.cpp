@@ -14,71 +14,71 @@
 
 #include "wrap_osgViewer.h"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/Cameras.pypp.hpp"
+#include "Cameras.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/CompositeViewer.pypp.hpp"
+#include "CompositeViewer.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/DepthPartitionSettings.pypp.hpp"
+#include "DepthPartitionSettings.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/Devices.pypp.hpp"
+#include "Devices.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/EventHandlers.pypp.hpp"
+#include "EventHandlers.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/GraphicsWindow.pypp.hpp"
+#include "GraphicsWindow.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/GraphicsWindowEmbedded.pypp.hpp"
+#include "GraphicsWindowEmbedded.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/GraphicsWindowFunctionProxy.pypp.hpp"
+#include "GraphicsWindowFunctionProxy.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/HelpHandler.pypp.hpp"
+#include "HelpHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/InteractiveImageHandler.pypp.hpp"
+#include "InteractiveImageHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/Keystone.pypp.hpp"
+#include "Keystone.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/KeystoneHandler.pypp.hpp"
+#include "KeystoneHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/LODScaleHandler.pypp.hpp"
+#include "LODScaleHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/OpenGLQuerySupport.pypp.hpp"
+#include "OpenGLQuerySupport.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/RecordCameraPathHandler.pypp.hpp"
+#include "RecordCameraPathHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/Renderer.pypp.hpp"
+#include "Renderer.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/Scene.pypp.hpp"
+#include "Scene.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/ScreenCaptureHandler.pypp.hpp"
+#include "ScreenCaptureHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/StatsHandler.pypp.hpp"
+#include "StatsHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/ThreadingHandler.pypp.hpp"
+#include "ThreadingHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/ToggleSyncToVBlankHandler.pypp.hpp"
+#include "ToggleSyncToVBlankHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/View.pypp.hpp"
+#include "View.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/ViewConfig.pypp.hpp"
+#include "ViewConfig.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/Viewer.pypp.hpp"
+#include "Viewer.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/ViewerBase.pypp.hpp"
+#include "ViewerBase.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/WindowSizeHandler.pypp.hpp"
+#include "WindowSizeHandler.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/_osgViewer_free_functions.pypp.hpp"
+#include "_osgViewer_free_functions.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/list_less__osgViewer_scope_View_ptr___greater_.pypp.hpp"
+#include "list_less__osgViewer_scope_View_ptr___greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/vector_less__OpenThreads_scope_Thread_ptr___greater_.pypp.hpp"
+#include "vector_less__OpenThreads_scope_Thread_ptr___greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/vector_less__osgViewer_scope_GraphicsWindow_ptr___greater_.pypp.hpp"
+#include "vector_less__osgViewer_scope_GraphicsWindow_ptr___greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/vector_less__osgViewer_scope_Scene_ptr___greater_.pypp.hpp"
+#include "vector_less__osgViewer_scope_Scene_ptr___greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/vector_less__osgViewer_scope_View_ptr___greater_.pypp.hpp"
+#include "vector_less__osgViewer_scope_View_ptr___greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgViewer/generated_code/vector_less__osg_scope_OperationThread_ptr___greater_.pypp.hpp"
+#include "vector_less__osg_scope_OperationThread_ptr___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

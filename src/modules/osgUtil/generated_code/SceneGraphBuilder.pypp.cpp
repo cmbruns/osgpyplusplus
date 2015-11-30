@@ -8,7 +8,7 @@ namespace bp = boost::python;
 
 void register_SceneGraphBuilder_class(){
 
-    bp::class_< osgUtil::SceneGraphBuilder >( "SceneGraphBuilder", bp::init< >() )    
+    bp::class_< osgUtil::SceneGraphBuilder >( "SceneGraphBuilder", "\n A class for assisting the building ascene graphs that is equivilant to OpenGL 1.0 style calls.\n", bp::init< >("\n A class for assisting the building ascene graphs that is equivilant to OpenGL 1.0 style calls.\n") )    
         .def( 
             "Begin"
             , (void ( ::osgUtil::SceneGraphBuilder::* )( ::GLenum ) )( &::osgUtil::SceneGraphBuilder::Begin )

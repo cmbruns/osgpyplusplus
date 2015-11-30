@@ -9,11 +9,12 @@ namespace bp = boost::python;
 
 void register_CubeMapGenerator_class(){
 
-    bp::class_< osgUtil::CubeMapGenerator, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::CubeMapGenerator >, boost::noncopyable >( "CubeMapGenerator", bp::no_init )    
+    bp::class_< osgUtil::CubeMapGenerator, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::CubeMapGenerator >, boost::noncopyable >( "CubeMapGenerator", "\n This is the base class for cube map generators.\n        It exposes the necessary interface to access the six generated images;\n        descendants should only override the compute_color() method.\n", bp::no_init )    
         .def( 
             "generateMap"
             , (void ( ::osgUtil::CubeMapGenerator::* )( bool ) )( &::osgUtil::CubeMapGenerator::generateMap )
-            , ( bp::arg("use_osg_system")=(bool)(true) ) )    
+            , ( bp::arg("use_osg_system")=(bool)(true) )
+            , "\n Generate the six cube images.\n            If use_osg_system is true, then the OSGs coordinate system is used instead\n            of the default OpenGL one.\n" )    
         .def( 
             "getImage"
             , (::osg::Image * ( ::osgUtil::CubeMapGenerator::* )( ::osg::TextureCubeMap::Face ) )( &::osgUtil::CubeMapGenerator::getImage )

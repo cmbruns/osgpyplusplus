@@ -149,7 +149,7 @@ void register_Options_class(){
 
     { //::osgDB::Options
         typedef bp::class_< Options_wrapper, bp::bases< ::osg::Object >, osg::ref_ptr< Options_wrapper >, boost::noncopyable > Options_exposer_t;
-        Options_exposer_t Options_exposer = Options_exposer_t( "Options", bp::no_init );
+        Options_exposer_t Options_exposer = Options_exposer_t( "Options", "\n Options base class used for passing options into plugins to control their operation.\n", bp::no_init );
         bp::scope Options_scope( Options_exposer );
         bp::enum_< osgDB::Options::BuildKdTreesHint>("BuildKdTreesHint")
             .value("NO_PREFERENCE", osgDB::Options::NO_PREFERENCE)
@@ -225,7 +225,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "getAuthenticationMap"
                 , getAuthenticationMap_function_type( &::osgDB::Options::getAuthenticationMap )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the password map to be used by plugins when access files from secure locations." );
         
         }
         { //::osgDB::Options::getBuildKdTreesHint
@@ -234,7 +235,8 @@ void register_Options_class(){
             
             Options_exposer.def( 
                 "getBuildKdTreesHint"
-                , getBuildKdTreesHint_function_type( &::osgDB::Options::getBuildKdTreesHint ) );
+                , getBuildKdTreesHint_function_type( &::osgDB::Options::getBuildKdTreesHint )
+                , " Get whether the KdTrees should be built for geometry in the loader model." );
         
         }
         { //::osgDB::Options::getDatabasePathList
@@ -244,7 +246,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "getDatabasePathList"
                 , getDatabasePathList_function_type( &::osgDB::Options::getDatabasePathList )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the database path which is used a hint of where to look when loading models." );
         
         }
         { //::osgDB::Options::getDatabasePathList
@@ -254,7 +257,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "getDatabasePathList"
                 , getDatabasePathList_function_type( &::osgDB::Options::getDatabasePathList )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const database path which is used a hint of where to look when loading models." );
         
         }
         { //::osgDB::Options::getFileCache
@@ -264,7 +268,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "getFileCache"
                 , getFileCache_function_type( &::osgDB::Options::getFileCache )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the FileCache that is used to manage local storage of files downloaded from the internet." );
         
         }
         { //::osgDB::Options::getFileLocationCallback
@@ -274,7 +279,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "getFileLocationCallback"
                 , getFileLocationCallback_function_type( &::osgDB::Options::getFileLocationCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the callback to use inform the DatabasePager whether a file is located on local or remote file system." );
         
         }
         { //::osgDB::Options::getFindFileCallback
@@ -284,7 +290,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "getFindFileCallback"
                 , getFindFileCallback_function_type( &::osgDB::Options::getFindFileCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const findFile callback." );
         
         }
         { //::osgDB::Options::getNumPluginData
@@ -293,7 +300,8 @@ void register_Options_class(){
             
             Options_exposer.def( 
                 "getNumPluginData"
-                , getNumPluginData_function_type( &::osgDB::Options::getNumPluginData ) );
+                , getNumPluginData_function_type( &::osgDB::Options::getNumPluginData )
+                , " Get number of PluginData values" );
         
         }
         { //::osgDB::Options::getNumPluginStringData
@@ -302,7 +310,8 @@ void register_Options_class(){
             
             Options_exposer.def( 
                 "getNumPluginStringData"
-                , getNumPluginStringData_function_type( &::osgDB::Options::getNumPluginStringData ) );
+                , getNumPluginStringData_function_type( &::osgDB::Options::getNumPluginStringData )
+                , " Get number of PluginStrData values" );
         
         }
         { //::osgDB::Options::getObjectCacheHint
@@ -311,7 +320,8 @@ void register_Options_class(){
             
             Options_exposer.def( 
                 "getObjectCacheHint"
-                , getObjectCacheHint_function_type( &::osgDB::Options::getObjectCacheHint ) );
+                , getObjectCacheHint_function_type( &::osgDB::Options::getObjectCacheHint )
+                , " Get whether the Registry::ObjectCache should be used by default." );
         
         }
         { //::osgDB::Options::getOptionString
@@ -321,7 +331,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "getOptionString"
                 , getOptionString_function_type( &::osgDB::Options::getOptionString )
-                , bp::return_value_policy< bp::copy_const_reference >() );
+                , bp::return_value_policy< bp::copy_const_reference >()
+                , " Get the general Options string." );
         
         }
         { //::osgDB::Options::getPluginStringData
@@ -332,7 +343,8 @@ void register_Options_class(){
                 "getPluginStringData"
                 , getPluginStringData_function_type( &::osgDB::Options::getPluginStringData )
                 , ( bp::arg("s") )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get a string from the PluginStrData" );
         
         }
         { //::osgDB::Options::getPluginStringData
@@ -342,7 +354,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "getPluginStringData"
                 , getPluginStringData_function_type( &::osgDB::Options::getPluginStringData )
-                , ( bp::arg("s") ) );
+                , ( bp::arg("s") )
+                , " Get a value from the PluginData" );
         
         }
         { //::osgDB::Options::getPrecisionHint
@@ -351,7 +364,8 @@ void register_Options_class(){
             
             Options_exposer.def( 
                 "getPrecisionHint"
-                , getPrecisionHint_function_type( &::osgDB::Options::getPrecisionHint ) );
+                , getPrecisionHint_function_type( &::osgDB::Options::getPrecisionHint )
+                , " Get which geometry attributes plugins should import at double precision." );
         
         }
         { //::osgDB::Options::getReadFileCallback
@@ -361,7 +375,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "getReadFileCallback"
                 , getReadFileCallback_function_type( &::osgDB::Options::getReadFileCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const readFile callback." );
         
         }
         { //::osgDB::Options::getTerrain
@@ -371,7 +386,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "getTerrain"
                 , getTerrain_function_type( &::osgDB::Options::getTerrain )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the terrain observer_ptr, use to decorate any osgTerrain subgraphs." );
         
         }
         { //::osgDB::Options::getWriteFileCallback
@@ -381,7 +397,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "getWriteFileCallback"
                 , getWriteFileCallback_function_type( &::osgDB::Options::getWriteFileCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const writeFile callback." );
         
         }
         { //::osgDB::Options::isSameKindAs
@@ -414,7 +431,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "parsePluginStringData"
                 , parsePluginStringData_function_type( &::osgDB::Options::parsePluginStringData )
-                , ( bp::arg("str"), bp::arg("separator1")=(char)(' '), bp::arg("separator2")=(char)('=') ) );
+                , ( bp::arg("str"), bp::arg("separator1")=(char)(' '), bp::arg("separator2")=(char)('=') )
+                , " Parse string into plugin string data. This will be automatically done in Options(const std::string&)" );
         
         }
         { //::osgDB::Options::removePluginData
@@ -424,7 +442,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "removePluginData"
                 , removePluginData_function_type( &::osgDB::Options::removePluginData )
-                , ( bp::arg("s") ) );
+                , ( bp::arg("s") )
+                , " Remove a value from the PluginData" );
         
         }
         { //::osgDB::Options::removePluginStringData
@@ -434,7 +453,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "removePluginStringData"
                 , removePluginStringData_function_type( &::osgDB::Options::removePluginStringData )
-                , ( bp::arg("s") ) );
+                , ( bp::arg("s") )
+                , " Remove a value from the PluginData" );
         
         }
         { //::osgDB::Options::setAuthenticationMap
@@ -444,7 +464,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setAuthenticationMap"
                 , setAuthenticationMap_function_type( &::osgDB::Options::setAuthenticationMap )
-                , ( bp::arg("authenticationMap") ) );
+                , ( bp::arg("authenticationMap") )
+                , " Set the password map to be used by plugins when access files from secure locations." );
         
         }
         { //::osgDB::Options::setBuildKdTreesHint
@@ -454,7 +475,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setBuildKdTreesHint"
                 , setBuildKdTreesHint_function_type( &::osgDB::Options::setBuildKdTreesHint )
-                , ( bp::arg("hint") ) );
+                , ( bp::arg("hint") )
+                , " Set whether the KdTrees should be built for geometry in the loader model." );
         
         }
         { //::osgDB::Options::setDatabasePath
@@ -464,7 +486,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setDatabasePath"
                 , setDatabasePath_function_type( &::osgDB::Options::setDatabasePath )
-                , ( bp::arg("str") ) );
+                , ( bp::arg("str") )
+                , " Set the database path to use a hint of where to look when loading models." );
         
         }
         { //::osgDB::Options::setFileCache
@@ -474,7 +497,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setFileCache"
                 , setFileCache_function_type( &::osgDB::Options::setFileCache )
-                , ( bp::arg("fileCache") ) );
+                , ( bp::arg("fileCache") )
+                , " Set the FileCache that is used to manage local storage of files downloaded from the internet." );
         
         }
         { //::osgDB::Options::setFileLocationCallback
@@ -484,7 +508,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setFileLocationCallback"
                 , setFileLocationCallback_function_type( &::osgDB::Options::setFileLocationCallback )
-                , ( bp::arg("cb") ) );
+                , ( bp::arg("cb") )
+                , " Set the callback to use inform the DatabasePager whether a file is located on local or remote file system." );
         
         }
         { //::osgDB::Options::setFindFileCallback
@@ -494,7 +519,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setFindFileCallback"
                 , setFindFileCallback_function_type( &::osgDB::Options::setFindFileCallback )
-                , ( bp::arg("cb") ) );
+                , ( bp::arg("cb") )
+                , " Set the find callback to use in place of the default findFile calls." );
         
         }
         { //::osgDB::Options::setObjectCacheHint
@@ -504,7 +530,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setObjectCacheHint"
                 , setObjectCacheHint_function_type( &::osgDB::Options::setObjectCacheHint )
-                , ( bp::arg("useObjectCache") ) );
+                , ( bp::arg("useObjectCache") )
+                , " Set whether the Registry::ObjectCache should be used by default." );
         
         }
         { //::osgDB::Options::setOptionString
@@ -514,7 +541,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setOptionString"
                 , setOptionString_function_type( &::osgDB::Options::setOptionString )
-                , ( bp::arg("str") ) );
+                , ( bp::arg("str") )
+                , " Set the general Options string." );
         
         }
         { //::osgDB::Options::setPluginData
@@ -524,7 +552,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setPluginData"
                 , setPluginData_function_type( &::osgDB::Options::setPluginData )
-                , ( bp::arg("s"), bp::arg("v") ) );
+                , ( bp::arg("s"), bp::arg("v") )
+                , " Sets a plugindata value PluginData with a string" );
         
         }
         { //::osgDB::Options::setPluginStringData
@@ -534,7 +563,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setPluginStringData"
                 , setPluginStringData_function_type( &::osgDB::Options::setPluginStringData )
-                , ( bp::arg("s"), bp::arg("v") ) );
+                , ( bp::arg("s"), bp::arg("v") )
+                , " Sets a plugindata value PluginData with a string" );
         
         }
         { //::osgDB::Options::setPrecisionHint
@@ -544,7 +574,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setPrecisionHint"
                 , setPrecisionHint_function_type( &::osgDB::Options::setPrecisionHint )
-                , ( bp::arg("hint") ) );
+                , ( bp::arg("hint") )
+                , " Set which geometry attributes plugins should import at double precision." );
         
         }
         { //::osgDB::Options::setReadFileCallback
@@ -554,7 +585,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setReadFileCallback"
                 , setReadFileCallback_function_type( &::osgDB::Options::setReadFileCallback )
-                , ( bp::arg("cb") ) );
+                , ( bp::arg("cb") )
+                , " Set the read callback to use in place of the default readFile calls." );
         
         }
         { //::osgDB::Options::setTerrain
@@ -564,7 +596,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setTerrain"
                 , setTerrain_function_type( &::osgDB::Options::setTerrain )
-                , ( bp::arg("terrain") ) );
+                , ( bp::arg("terrain") )
+                , " Set the terrain observer_ptr, use to decorate any osgTerrain subgraphs." );
         
         }
         { //::osgDB::Options::setWriteFileCallback
@@ -574,7 +607,8 @@ void register_Options_class(){
             Options_exposer.def( 
                 "setWriteFileCallback"
                 , setWriteFileCallback_function_type( &::osgDB::Options::setWriteFileCallback )
-                , ( bp::arg("cb") ) );
+                , ( bp::arg("cb") )
+                , " Set the callback to use in place of the default writeFile calls." );
         
         }
     }

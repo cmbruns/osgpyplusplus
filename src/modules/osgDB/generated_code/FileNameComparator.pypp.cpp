@@ -8,10 +8,11 @@ namespace bp = boost::python;
 
 void register_FileNameComparator_class(){
 
-    bp::class_< osgDB::FileNameComparator >( "FileNameComparator" )    
+    bp::class_< osgDB::FileNameComparator >( "FileNameComparator", "\n Functor for helping sort filename in alphabetical and numerical order when using in conjunction with std::sort.\n" )    
         .def( 
             "__call__"
             , (bool ( ::osgDB::FileNameComparator::* )( ::std::string const &,::std::string const & ) const)( &::osgDB::FileNameComparator::operator() )
-            , ( bp::arg("lhs"), bp::arg("rhs") ) );
+            , ( bp::arg("lhs"), bp::arg("rhs") )
+            , "\n Functor for helping sort filename in alphabetical and numerical order when using in conjunction with std::sort.\n" );
 
 }

@@ -37,7 +37,8 @@ void register_free_functions(){
         bp::def( 
             "concatPaths"
             , concatPaths_function_type( &::osgDB::concatPaths )
-            , ( bp::arg("left"), bp::arg("right") ) );
+            , ( bp::arg("left"), bp::arg("right") )
+            , " Concatenates two paths" );
     
     }
 
@@ -48,7 +49,8 @@ void register_free_functions(){
         bp::def( 
             "containsCurrentWorkingDirectoryReference"
             , containsCurrentWorkingDirectoryReference_function_type( &::osgDB::containsCurrentWorkingDirectoryReference )
-            , ( bp::arg("paths") ) );
+            , ( bp::arg("paths") )
+            , " Return true if FilePathList contains a filepath that is significies checking of the current working directory." );
     
     }
 
@@ -70,7 +72,8 @@ void register_free_functions(){
         bp::def( 
             "convertFileNameToNativeStyle"
             , convertFileNameToNativeStyle_function_type( &::osgDB::convertFileNameToNativeStyle )
-            , ( bp::arg("fileName") ) );
+            , ( bp::arg("fileName") )
+            , " Convert the path to contain only the current platforms path separators." );
     
     }
 
@@ -81,7 +84,8 @@ void register_free_functions(){
         bp::def( 
             "convertFileNameToUnixStyle"
             , convertFileNameToUnixStyle_function_type( &::osgDB::convertFileNameToUnixStyle )
-            , ( bp::arg("fileName") ) );
+            , ( bp::arg("fileName") )
+            , " Converts back slashes (\\) to forward slashes (/)." );
     
     }
 
@@ -92,7 +96,8 @@ void register_free_functions(){
         bp::def( 
             "convertFileNameToWindowsStyle"
             , convertFileNameToWindowsStyle_function_type( &::osgDB::convertFileNameToWindowsStyle )
-            , ( bp::arg("fileName") ) );
+            , ( bp::arg("fileName") )
+            , " Converts forward slashes (/) to back slashes (\\)." );
     
     }
 
@@ -169,7 +174,8 @@ void register_free_functions(){
         bp::def( 
             "convertStringPathIntoFilePathList"
             , convertStringPathIntoFilePathList_function_type( &::osgDB::convertStringPathIntoFilePathList )
-            , ( bp::arg("paths"), bp::arg("filepath") ) );
+            , ( bp::arg("paths"), bp::arg("filepath") )
+            , " convert a string containing a list of paths delimited either with ; (Windows) or : (All other platforms) into FilePath representation." );
     
     }
 
@@ -257,7 +263,8 @@ void register_free_functions(){
         bp::def( 
             "copyFile"
             , copyFile_function_type( &::osgDB::copyFile )
-            , ( bp::arg("source"), bp::arg("destination") ) );
+            , ( bp::arg("source"), bp::arg("destination") )
+            , " Copy a file to another location, overwriting if necessary.\n You must provide full path for both source and destination.\n Return: true on success, or if source and destination are the same.\n TODO Replace the implementation with filesystem functions from TR2 when available." );
     
     }
 
@@ -290,7 +297,8 @@ void register_free_functions(){
         bp::def( 
             "expandWildcardsInFilename"
             , expandWildcardsInFilename_function_type( &::osgDB::expandWildcardsInFilename )
-            , ( bp::arg("filename") ) );
+            , ( bp::arg("filename") )
+            , " Return the list of filenames that match the given filename with wildcards.\n Will only expand *, and will not expand wildcards in directory, only in\n filename part of the given filename.\n Return value will contain path+filename so that if ever the above\n limitation (expanding wildcards in directory) is fixed, client code will\n still work unchanged." );
     
     }
 
@@ -301,7 +309,8 @@ void register_free_functions(){
         bp::def( 
             "fileExists"
             , fileExists_function_type( &::osgDB::fileExists )
-            , ( bp::arg("filename") ) );
+            , ( bp::arg("filename") )
+            , " return true if a file exists." );
     
     }
 
@@ -312,7 +321,8 @@ void register_free_functions(){
         bp::def( 
             "fileType"
             , fileType_function_type( &::osgDB::fileType )
-            , ( bp::arg("filename") ) );
+            , ( bp::arg("filename") )
+            , " return type of file." );
     
     }
 
@@ -323,7 +333,8 @@ void register_free_functions(){
         bp::def( 
             "findDataFile"
             , findDataFile_function_type( &::osgDB::findDataFile )
-            , ( bp::arg("filename"), bp::arg("options"), bp::arg("caseSensitivity")=::osgDB::CASE_SENSITIVE ) );
+            , ( bp::arg("filename"), bp::arg("options"), bp::arg("caseSensitivity")=::osgDB::CASE_SENSITIVE )
+            , " Search for specified file in file system, checking first the database path set in the Options structure, then the DataFilePathList for possible paths,\n returning the full path of the first valid file found, return an empty string if no string is found." );
     
     }
 
@@ -334,7 +345,8 @@ void register_free_functions(){
         bp::def( 
             "findDataFile"
             , findDataFile_function_type( &::osgDB::findDataFile )
-            , ( bp::arg("filename"), bp::arg("caseSensitivity")=::osgDB::CASE_SENSITIVE ) );
+            , ( bp::arg("filename"), bp::arg("caseSensitivity")=::osgDB::CASE_SENSITIVE )
+            , " Search for specified file in file system, checking the DataFilePathList for possible paths,\n returning the full path of the first valid file found, return an empty string if no string is found." );
     
     }
 
@@ -345,7 +357,8 @@ void register_free_functions(){
         bp::def( 
             "findFileInDirectory"
             , findFileInDirectory_function_type( &::osgDB::findFileInDirectory )
-            , ( bp::arg("fileName"), bp::arg("dirName"), bp::arg("caseSensitivity")=::osgDB::CASE_SENSITIVE ) );
+            , ( bp::arg("fileName"), bp::arg("dirName"), bp::arg("caseSensitivity")=::osgDB::CASE_SENSITIVE )
+            , " return the directory/filename of a file if its is contained within specified directory.\n return  if directory does not contain file.  If caseInsensitive is set to true then\n a case insensitive comparison is used to compare fileName to directory contents.\n This is useful when unix programs attempt read case insensitive windows filenames." );
     
     }
 
@@ -356,7 +369,8 @@ void register_free_functions(){
         bp::def( 
             "findFileInPath"
             , findFileInPath_function_type( &::osgDB::findFileInPath )
-            , ( bp::arg("filename"), bp::arg("filePath"), bp::arg("caseSensitivity")=::osgDB::CASE_SENSITIVE ) );
+            , ( bp::arg("filename"), bp::arg("filePath"), bp::arg("caseSensitivity")=::osgDB::CASE_SENSITIVE )
+            , " find specified file in specified file path." );
     
     }
 
@@ -377,7 +391,8 @@ void register_free_functions(){
         
         bp::def( 
             "getCurrentWorkingDirectory"
-            , getCurrentWorkingDirectory_function_type( &::osgDB::getCurrentWorkingDirectory ) );
+            , getCurrentWorkingDirectory_function_type( &::osgDB::getCurrentWorkingDirectory )
+            , " Get current working directory." );
     
     }
 
@@ -399,7 +414,8 @@ void register_free_functions(){
         bp::def( 
             "getDirectoryContents"
             , getDirectoryContents_function_type( &::osgDB::getDirectoryContents )
-            , ( bp::arg("dirName") ) );
+            , ( bp::arg("dirName") )
+            , " Return the contents of a directory.\n Return value will contain filenames only, not absolute paths.\n Returns an empty array on any error." );
     
     }
 
@@ -410,7 +426,8 @@ void register_free_functions(){
         bp::def( 
             "getFileExtension"
             , getFileExtension_function_type( &::osgDB::getFileExtension )
-            , ( bp::arg("filename") ) );
+            , ( bp::arg("filename") )
+            , " Gets the extension without dot (Ex: /a/b/c.Ext => Ext)." );
     
     }
 
@@ -421,7 +438,8 @@ void register_free_functions(){
         bp::def( 
             "getFileExtensionIncludingDot"
             , getFileExtensionIncludingDot_function_type( &::osgDB::getFileExtensionIncludingDot )
-            , ( bp::arg("filename") ) );
+            , ( bp::arg("filename") )
+            , " Gets the extension including dot (Ex: /a/b/c.Ext => .Ext)." );
     
     }
 
@@ -432,7 +450,8 @@ void register_free_functions(){
         bp::def( 
             "getFilePath"
             , getFilePath_function_type( &::osgDB::getFilePath )
-            , ( bp::arg("filename") ) );
+            , ( bp::arg("filename") )
+            , " Gets the parent path from full name (Ex: /a/b/c.Ext => /a/b)." );
     
     }
 
@@ -454,7 +473,8 @@ void register_free_functions(){
         bp::def( 
             "getLowerCaseFileExtension"
             , getLowerCaseFileExtension_function_type( &::osgDB::getLowerCaseFileExtension )
-            , ( bp::arg("filename") ) );
+            , ( bp::arg("filename") )
+            , " Gets the lowercase extension without dot (Ex: /a/b/c.Ext => ext)." );
     
     }
 
@@ -465,7 +485,8 @@ void register_free_functions(){
         bp::def( 
             "getNameLessAllExtensions"
             , getNameLessAllExtensions_function_type( &::osgDB::getNameLessAllExtensions )
-            , ( bp::arg("fileName") ) );
+            , ( bp::arg("fileName") )
+            , " Gets file path without \\b all extensions (Ex: /a/b/c.Ext => /a/b/c ; file.ext1.ext2 => file)." );
     
     }
 
@@ -476,7 +497,8 @@ void register_free_functions(){
         bp::def( 
             "getNameLessExtension"
             , getNameLessExtension_function_type( &::osgDB::getNameLessExtension )
-            , ( bp::arg("fileName") ) );
+            , ( bp::arg("fileName") )
+            , " Gets file path without last extension (Ex: /a/b/c.Ext => /a/b/c ; file.ext1.ext2 => file.ext1)." );
     
     }
 
@@ -486,7 +508,8 @@ void register_free_functions(){
         
         bp::def( 
             "getNativePathSeparator"
-            , getNativePathSeparator_function_type( &::osgDB::getNativePathSeparator ) );
+            , getNativePathSeparator_function_type( &::osgDB::getNativePathSeparator )
+            , " Get the path separator for the current platform." );
     
     }
 
@@ -497,7 +520,8 @@ void register_free_functions(){
         bp::def( 
             "getPathElements"
             , getPathElements_function_type( &::osgDB::getPathElements )
-            , ( bp::arg("path"), bp::arg("out_elements") ) );
+            , ( bp::arg("path"), bp::arg("out_elements") )
+            , " Splits a path into elements between separators (including Windows root, if any)." );
     
     }
 
@@ -508,7 +532,8 @@ void register_free_functions(){
         bp::def( 
             "getPathRelative"
             , getPathRelative_function_type( &::osgDB::getPathRelative )
-            , ( bp::arg("from"), bp::arg("to") ) );
+            , ( bp::arg("from"), bp::arg("to") )
+            , " If to is in a subdirectory of from then this function returns the subpath, otherwise it just returns the file name.\n The function does \\b not automagically resolve paths as the system does, so be careful to give canonical paths.\n However, the function interprets slashes (/) ans backslashes (\\) as they were equal." );
     
     }
 
@@ -519,7 +544,8 @@ void register_free_functions(){
         bp::def( 
             "getPathRoot"
             , getPathRoot_function_type( &::osgDB::getPathRoot )
-            , ( bp::arg("path") ) );
+            , ( bp::arg("path") )
+            , " Gets root part of a path (/ or C:), or an empty string if none found." );
     
     }
 
@@ -530,7 +556,8 @@ void register_free_functions(){
         bp::def( 
             "getRealPath"
             , getRealPath_function_type( &::osgDB::getRealPath )
-            , ( bp::arg("path") ) );
+            , ( bp::arg("path") )
+            , " Removes .. and . dirs in a path" );
     
     }
 
@@ -574,7 +601,8 @@ void register_free_functions(){
         bp::def( 
             "getSimpleFileName"
             , getSimpleFileName_function_type( &::osgDB::getSimpleFileName )
-            , ( bp::arg("fileName") ) );
+            , ( bp::arg("fileName") )
+            , " Gets file name with extension (Ex: /a/b/c.Ext => c.Ext)." );
     
     }
 
@@ -585,7 +613,8 @@ void register_free_functions(){
         bp::def( 
             "getSortedDirectoryContents"
             , getSortedDirectoryContents_function_type( &::osgDB::getSortedDirectoryContents )
-            , ( bp::arg("dirName") ) );
+            , ( bp::arg("dirName") )
+            , " Return the contents of a directory, sorting the names into alphabetic and numberical order.\n Return value will contain filenames only, not absolute paths.\n Returns an empty array on any error." );
     
     }
 
@@ -596,7 +625,8 @@ void register_free_functions(){
         bp::def( 
             "getStrippedName"
             , getStrippedName_function_type( &::osgDB::getStrippedName )
-            , ( bp::arg("fileName") ) );
+            , ( bp::arg("fileName") )
+            , " Gets file name without last extension (Ex: /a/b/c.Ext => c ; file.ext1.ext2 => file.ext1)." );
     
     }
 
@@ -607,7 +637,8 @@ void register_free_functions(){
         bp::def( 
             "isAbsolutePath"
             , isAbsolutePath_function_type( &::osgDB::isAbsolutePath )
-            , ( bp::arg("path") ) );
+            , ( bp::arg("path") )
+            , " Tests if path is absolute, as !getPathRoot(path).empty()." );
     
     }
 
@@ -618,7 +649,8 @@ void register_free_functions(){
         bp::def( 
             "isFileNameNativeStyle"
             , isFileNameNativeStyle_function_type( &::osgDB::isFileNameNativeStyle )
-            , ( bp::arg("fileName") ) );
+            , ( bp::arg("fileName") )
+            , " Check if the path contains only the current platforms path separators." );
     
     }
 
@@ -639,7 +671,8 @@ void register_free_functions(){
         bp::def( 
             "makeDirectory"
             , makeDirectory_function_type( &::osgDB::makeDirectory )
-            , ( bp::arg("directoryPath") ) );
+            , ( bp::arg("directoryPath") )
+            , " Make a new directory.  Returns true if directory exists or was created." );
     
     }
 
@@ -650,7 +683,8 @@ void register_free_functions(){
         bp::def( 
             "makeDirectoryForFile"
             , makeDirectoryForFile_function_type( &::osgDB::makeDirectoryForFile )
-            , ( bp::arg("filePath") ) );
+            , ( bp::arg("filePath") )
+            , " Make a new directory for a given file." );
     
     }
 
@@ -661,7 +695,8 @@ void register_free_functions(){
         bp::def( 
             "open"
             , open_function_type( &::osgDB::open )
-            , ( bp::arg("fs"), bp::arg("filename"), bp::arg("mode") ) );
+            , ( bp::arg("fs"), bp::arg("filename"), bp::arg("mode") )
+            , " Convenience function for fstream open , std::ifstream, and std::ofstream to\n automatically handle UTF-8 to UTF-16 filename conversion. Always use one\n of these classes in any OpenSceneGraph code instead of the STL equivalent." );
     
     }
 
@@ -673,7 +708,8 @@ void register_free_functions(){
             "openArchive"
             , openArchive_function_type( &::osgDB::openArchive )
             , ( bp::arg("filename"), bp::arg("status"), bp::arg("indexBlockSizeHint"), bp::arg("options") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Open an archive for reading or writing." );
     
     }
 
@@ -685,7 +721,8 @@ void register_free_functions(){
             "openArchive"
             , openArchive_function_type( &::osgDB::openArchive )
             , ( bp::arg("filename"), bp::arg("status"), bp::arg("indexBlockSizeHint")=(unsigned int)(4096) )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Open an archive for reading or writing." );
     
     }
 
@@ -695,7 +732,8 @@ void register_free_functions(){
         
         bp::def( 
             "osgDBGetLibraryName"
-            , osgDBGetLibraryName_function_type( &::osgDBGetLibraryName ) );
+            , osgDBGetLibraryName_function_type( &::osgDBGetLibraryName )
+            , " getLibraryName() returns the library name in human friendly form." );
     
     }
 
@@ -705,7 +743,8 @@ void register_free_functions(){
         
         bp::def( 
             "osgDBGetVersion"
-            , osgDBGetVersion_function_type( &::osgDBGetVersion ) );
+            , osgDBGetVersion_function_type( &::osgDBGetVersion )
+            , " osgDBGetVersion() returns the library version number.\n Numbering convention : OpenSceneGraph-1.0 will return 1.0 from osgDBGetVersion.\n\n This C function can be also used to check for the existence of the OpenSceneGraph\n library using autoconf and its m4 macro AC_CHECK_LIB.\n\n Here is the code to add to your configure.in:\n Verbatim:\n #\n # Check for the OpenSceneGraph (OSG) DB library\n #\n AC_CHECK_LIB(osg, osgDBGetVersion, ,\n    [AC_MSG_ERROR(OpenSceneGraph DB library not found. See http://www.openscenegraph.org)],)\n E:ndverbatim" );
     
     }
 
@@ -738,7 +777,8 @@ void register_free_functions(){
         bp::def( 
             "readCommandLine"
             , readCommandLine_function_type( &::osgDB::readCommandLine )
-            , ( bp::arg("parser") ) );
+            , ( bp::arg("parser") )
+            , " read the command line arguments." );
     
     }
 
@@ -750,7 +790,8 @@ void register_free_functions(){
             "readHeightFieldFile"
             , readHeightFieldFile_function_type( &::osgDB::readHeightFieldFile )
             , ( bp::arg("filename") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::HeightField from file.\n Return valid osg::HeightField on success,\n return NULL on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -762,7 +803,8 @@ void register_free_functions(){
             "readHeightFieldFile"
             , readHeightFieldFile_function_type( &::osgDB::readHeightFieldFile )
             , ( bp::arg("filename"), bp::arg("options") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::HeightField from file.\n Return valid osg::HeightField on success,\n return NULL on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -774,7 +816,8 @@ void register_free_functions(){
             "readImageFile"
             , readImageFile_function_type( &::osgDB::readImageFile )
             , ( bp::arg("filename") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Image from file.\n Return valid osg::Image on success,\n return NULL on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -786,7 +829,8 @@ void register_free_functions(){
             "readImageFile"
             , readImageFile_function_type( &::osgDB::readImageFile )
             , ( bp::arg("filename"), bp::arg("options") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Image from file.\n Return valid osg::Image on success,\n return NULL on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -798,7 +842,8 @@ void register_free_functions(){
             "readNodeFile"
             , readNodeFile_function_type( &::osgDB::readNodeFile )
             , ( bp::arg("filename") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Node from file.\n Return valid osg::Node on success,\n return NULL on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -810,7 +855,8 @@ void register_free_functions(){
             "readNodeFile"
             , readNodeFile_function_type( &::osgDB::readNodeFile )
             , ( bp::arg("filename"), bp::arg("options") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Node from file.\n Return valid osg::Node on success,\n return NULL on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -822,7 +868,8 @@ void register_free_functions(){
             "readNodeFiles"
             , readNodeFiles_function_type( &::osgDB::readNodeFiles )
             , ( bp::arg("parser") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Node subgraph from files, creating a osg::Group to contain the nodes if more\n than one subgraph has been loaded." );
     
     }
 
@@ -834,7 +881,8 @@ void register_free_functions(){
             "readNodeFiles"
             , readNodeFiles_function_type( &::osgDB::readNodeFiles )
             , ( bp::arg("parser"), bp::arg("options") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Node subgraph from files, creating a osg::Group to contain the nodes if more\n than one subgraph has been loaded.\n Use the Options object to control cache operations and file search paths in osgDB::Registry." );
     
     }
 
@@ -846,7 +894,8 @@ void register_free_functions(){
             "readNodeFiles"
             , readNodeFiles_function_type( &::osgDB::readNodeFiles )
             , ( bp::arg("fileList") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Node subgraph from files, creating a osg::Group to contain the nodes if more\n than one subgraph has been loaded." );
     
     }
 
@@ -858,7 +907,8 @@ void register_free_functions(){
             "readNodeFiles"
             , readNodeFiles_function_type( &::osgDB::readNodeFiles )
             , ( bp::arg("fileList"), bp::arg("options") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Node subgraph from files, creating a osg::Group to contain the nodes if more\n than one subgraph has been loaded.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n Does NOT ignore strings beginning with a dash - character." );
     
     }
 
@@ -870,7 +920,8 @@ void register_free_functions(){
             "readObjectFile"
             , readObjectFile_function_type( &::osgDB::readObjectFile )
             , ( bp::arg("filename") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Object from file.\n Return valid osg::Object on success,\n return NULL on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -882,7 +933,8 @@ void register_free_functions(){
             "readObjectFile"
             , readObjectFile_function_type( &::osgDB::readObjectFile )
             , ( bp::arg("filename"), bp::arg("options") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Object from file.\n Return valid osg::Object on success,\n return NULL on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -893,7 +945,8 @@ void register_free_functions(){
         bp::def( 
             "readRefHeightFieldFile"
             , readRefHeightFieldFile_function_type( &::osgDB::readRefHeightFieldFile )
-            , ( bp::arg("filename") ) );
+            , ( bp::arg("filename") )
+            , " Read an osg::HeightField from file.\n Return an assigned osg::ref_ptr on success,\n return an osg::ref_ptr with a NULL pointer assigned to it on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -904,7 +957,8 @@ void register_free_functions(){
         bp::def( 
             "readRefHeightFieldFile"
             , readRefHeightFieldFile_function_type( &::osgDB::readRefHeightFieldFile )
-            , ( bp::arg("filename"), bp::arg("options") ) );
+            , ( bp::arg("filename"), bp::arg("options") )
+            , " Read an osg::HeightField from file.\n Return an assigned osg::ref_ptr on success,\n return an osg::ref_ptr with a NULL pointer assigned to it on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -915,7 +969,8 @@ void register_free_functions(){
         bp::def( 
             "readRefImageFile"
             , readRefImageFile_function_type( &::osgDB::readRefImageFile )
-            , ( bp::arg("filename") ) );
+            , ( bp::arg("filename") )
+            , " Read an osg::Image from file.\n Return an assigned osg::ref_ptr on success,\n return an osg::ref_ptr with a NULL pointer assigned to it on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -926,7 +981,8 @@ void register_free_functions(){
         bp::def( 
             "readRefImageFile"
             , readRefImageFile_function_type( &::osgDB::readRefImageFile )
-            , ( bp::arg("filename"), bp::arg("options") ) );
+            , ( bp::arg("filename"), bp::arg("options") )
+            , " Read an osg::Image from file.\n Return an assigned osg::ref_ptr on success,\n return an osg::ref_ptr with a NULL pointer assigned to it on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -937,7 +993,8 @@ void register_free_functions(){
         bp::def( 
             "readRefNodeFile"
             , readRefNodeFile_function_type( &::osgDB::readRefNodeFile )
-            , ( bp::arg("filename") ) );
+            , ( bp::arg("filename") )
+            , " Read an osg::Node from file.\n Return an assigned osg::ref_ptr on success,\n return an osg::ref_ptr with a NULL pointer assigned to it on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -948,7 +1005,8 @@ void register_free_functions(){
         bp::def( 
             "readRefNodeFile"
             , readRefNodeFile_function_type( &::osgDB::readRefNodeFile )
-            , ( bp::arg("filename"), bp::arg("options") ) );
+            , ( bp::arg("filename"), bp::arg("options") )
+            , " Read an osg::Node from file.\n Return an assigned osg::ref_ptr on success,\n return an osg::ref_ptr with a NULL pointer assigned to it on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -959,7 +1017,8 @@ void register_free_functions(){
         bp::def( 
             "readRefObjectFile"
             , readRefObjectFile_function_type( &::osgDB::readRefObjectFile )
-            , ( bp::arg("filename") ) );
+            , ( bp::arg("filename") )
+            , " Read an osg::Object from file.\n Return an assigned osg::ref_ptr on success,\n return an osg::ref_ptr with a NULL pointer assigned to it on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -970,7 +1029,8 @@ void register_free_functions(){
         bp::def( 
             "readRefObjectFile"
             , readRefObjectFile_function_type( &::osgDB::readRefObjectFile )
-            , ( bp::arg("filename"), bp::arg("options") ) );
+            , ( bp::arg("filename"), bp::arg("options") )
+            , " Read an osg::Object from file.\n Return an assigned osg::ref_ptr on success,\n return an osg::ref_ptr with a NULL pointer assigned to it on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -981,7 +1041,8 @@ void register_free_functions(){
         bp::def( 
             "readRefShaderFile"
             , readRefShaderFile_function_type( &::osgDB::readRefShaderFile )
-            , ( bp::arg("filename") ) );
+            , ( bp::arg("filename") )
+            , " Read an osg::Shader from file.\n Return an assigned osg::ref_ptr on success,\n return an osg::ref_ptr with a NULL pointer assigned to it on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -992,7 +1053,8 @@ void register_free_functions(){
         bp::def( 
             "readRefShaderFile"
             , readRefShaderFile_function_type( &::osgDB::readRefShaderFile )
-            , ( bp::arg("filename"), bp::arg("options") ) );
+            , ( bp::arg("filename"), bp::arg("options") )
+            , " Read an osg::Shader from file.\n Return an assigned osg::ref_ptr on success,\n return an osg::ref_ptr with a NULL pointer assigned to it on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -1004,7 +1066,8 @@ void register_free_functions(){
             "readShaderFile"
             , readShaderFile_function_type( &::osgDB::readShaderFile )
             , ( bp::arg("type"), bp::arg("filename") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Shader from file and set to specified shader type\n Return valid osg::Shader on success,\n return NULL on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -1016,7 +1079,8 @@ void register_free_functions(){
             "readShaderFile"
             , readShaderFile_function_type( &::osgDB::readShaderFile )
             , ( bp::arg("type"), bp::arg("filename"), bp::arg("options") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Shader from file and set to specified shader type.\n Return valid osg::Shader on success,\n return NULL on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -1028,7 +1092,8 @@ void register_free_functions(){
             "readShaderFile"
             , readShaderFile_function_type( &::osgDB::readShaderFile )
             , ( bp::arg("filename") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Shader from file.\n Return valid osg::Shader on success,\n return NULL on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -1040,7 +1105,8 @@ void register_free_functions(){
             "readShaderFile"
             , readShaderFile_function_type( &::osgDB::readShaderFile )
             , ( bp::arg("filename"), bp::arg("options") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " Read an osg::Shader from file.\n Return valid osg::Shader on success,\n return NULL on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to read the specified file." );
     
     }
 
@@ -1052,7 +1118,8 @@ void register_free_functions(){
             "readXmlFile"
             , readXmlFile_function_type( &::osgDB::readXmlFile )
             , ( bp::arg("filename") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " read an Xml file, find the file in osgDB::Registrys eaderWriter::Options DataFilePathList." );
     
     }
 
@@ -1064,7 +1131,8 @@ void register_free_functions(){
             "readXmlFile"
             , readXmlFile_function_type( &::osgDB::readXmlFile )
             , ( bp::arg("filename"), bp::arg("options") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " read an Xml file, find the file in Options DataFilePathList." );
     
     }
 
@@ -1076,7 +1144,8 @@ void register_free_functions(){
             "readXmlStream"
             , readXmlStream_function_type( &::osgDB::readXmlStream )
             , ( bp::arg("fin") )
-            , bp::return_value_policy< bp::reference_existing_object >() );
+            , bp::return_value_policy< bp::reference_existing_object >()
+            , " read an Xml from from an istream." );
     
     }
 
@@ -1087,7 +1156,8 @@ void register_free_functions(){
         bp::def( 
             "setCurrentWorkingDirectory"
             , setCurrentWorkingDirectory_function_type( &::osgDB::setCurrentWorkingDirectory )
-            , ( bp::arg("newCurrentWorkingDirectory") ) );
+            , ( bp::arg("newCurrentWorkingDirectory") )
+            , " Set current working directory." );
     
     }
 

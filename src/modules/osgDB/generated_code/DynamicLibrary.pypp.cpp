@@ -9,29 +9,34 @@ namespace bp = boost::python;
 
 void register_DynamicLibrary_class(){
 
-    bp::class_< osgDB::DynamicLibrary, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgDB::DynamicLibrary >, boost::noncopyable >( "DynamicLibrary", bp::no_init )    
+    bp::class_< osgDB::DynamicLibrary, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgDB::DynamicLibrary >, boost::noncopyable >( "DynamicLibrary", "\n DynamicLibrary - encapsulates the loading and unloading of dynamic libraries,\n    typically used for loading ReaderWriter plug-ins.\n", bp::no_init )    
         .def( 
             "getFullName"
             , (::std::string const & ( ::osgDB::DynamicLibrary::* )(  ) const)( &::osgDB::DynamicLibrary::getFullName )
-            , bp::return_value_policy< bp::copy_const_reference >() )    
+            , bp::return_value_policy< bp::copy_const_reference >()
+            , "\n return name of library including full path to it.\n" )    
         .def( 
             "getHandle"
             , (void * ( ::osgDB::DynamicLibrary::* )(  ) const)( &::osgDB::DynamicLibrary::getHandle )
-            , bp::return_value_policy< bp::return_opaque_pointer >() )    
+            , bp::return_value_policy< bp::return_opaque_pointer >()
+            , "\n return handle to .dso/.dll dynamic library itself.\n" )    
         .def( 
             "getName"
             , (::std::string const & ( ::osgDB::DynamicLibrary::* )(  ) const)( &::osgDB::DynamicLibrary::getName )
-            , bp::return_value_policy< bp::copy_const_reference >() )    
+            , bp::return_value_policy< bp::copy_const_reference >()
+            , "\n return name of library stripped of path.\n" )    
         .def( 
             "getProcAddress"
             , (void * ( ::osgDB::DynamicLibrary::* )( ::std::string const & ) )( &::osgDB::DynamicLibrary::getProcAddress )
             , ( bp::arg("procName") )
-            , bp::return_value_policy< bp::return_opaque_pointer >() )    
+            , bp::return_value_policy< bp::return_opaque_pointer >()
+            , "\n return address of function located in library.\n" )    
         .def( 
             "loadLibrary"
             , (::osgDB::DynamicLibrary * (*)( ::std::string const & ))( &::osgDB::DynamicLibrary::loadLibrary )
             , ( bp::arg("libraryName") )
-            , bp::return_internal_reference< >() )    
+            , bp::return_internal_reference< >()
+            , "\n returns a pointer to a DynamicLibrary object on successfully\n opening of library returns NULL on failure.\n" )    
         .staticmethod( "loadLibrary" );
 
 }

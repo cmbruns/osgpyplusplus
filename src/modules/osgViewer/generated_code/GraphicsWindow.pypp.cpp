@@ -516,7 +516,7 @@ void register_GraphicsWindow_class(){
 
     { //::osgViewer::GraphicsWindow
         typedef bp::class_< GraphicsWindow_wrapper, bp::bases< ::osg::GraphicsContext, ::osgGA::GUIActionAdapter >, osg::ref_ptr< GraphicsWindow_wrapper >, boost::noncopyable > GraphicsWindow_exposer_t;
-        GraphicsWindow_exposer_t GraphicsWindow_exposer = GraphicsWindow_exposer_t( "GraphicsWindow", bp::init< >() );
+        GraphicsWindow_exposer_t GraphicsWindow_exposer = GraphicsWindow_exposer_t( "GraphicsWindow", "\n Base class for providing Windowing API agnostic access to creating and managing graphics window and events.\n Note, the GraphicsWindow is subclassed from osg::GraphicsContext, and to provide an implemention youll need to implement its\n range of pure virtual functions, youll find these all have naming convention methodNameImplemention(..).\n GraphicsWindow adds the event queue on top of the GraphicsContext, thereby adding a mechanism for adapting Windowing events\n as well as basics graphics context work, you should wire up custom GraphicsWindowImplementation to push their events through\n into the EventQueue.\n", bp::init< >("\n Base class for providing Windowing API agnostic access to creating and managing graphics window and events.\n Note, the GraphicsWindow is subclassed from osg::GraphicsContext, and to provide an implemention youll need to implement its\n range of pure virtual functions, youll find these all have naming convention methodNameImplemention(..).\n GraphicsWindow adds the event queue on top of the GraphicsContext, thereby adding a mechanism for adapting Windowing events\n as well as basics graphics context work, you should wire up custom GraphicsWindowImplementation to push their events through\n into the EventQueue.\n") );
         bp::scope GraphicsWindow_scope( GraphicsWindow_exposer );
         bp::enum_< osgViewer::GraphicsWindow::MouseCursor>("MouseCursor")
             .value("InheritCursor", osgViewer::GraphicsWindow::InheritCursor)
@@ -635,7 +635,8 @@ void register_GraphicsWindow_class(){
             GraphicsWindow_exposer.def( 
                 "getViews"
                 , getViews_function_type( &::osgViewer::GraphicsWindow::getViews )
-                , ( bp::arg("views") ) );
+                , ( bp::arg("views") )
+                , " Returns the list of views (osgViewer::View) attached to this GraphicsWindow.\n  Internally, the method walks through all the cameras and collects all the views attached to the cameras." );
         
         }
         { //::osgViewer::GraphicsWindow::getWindowDecoration
@@ -667,7 +668,8 @@ void register_GraphicsWindow_class(){
             GraphicsWindow_exposer.def( 
                 "getWindowRectangle"
                 , default_getWindowRectangle_function_type( &GraphicsWindow_wrapper::default_getWindowRectangle )
-                , ( bp::arg("inst") ) );
+                , ( bp::arg("inst") )
+                , "\n Get the windows position and size.\n" );
         
         }
         { //::osgViewer::GraphicsWindow::grabFocus
@@ -870,7 +872,8 @@ void register_GraphicsWindow_class(){
             GraphicsWindow_exposer.def( 
                 "setWindowDecoration"
                 , setWindowDecoration_function_type( &::osgViewer::GraphicsWindow::setWindowDecoration )
-                , ( bp::arg("flag") ) );
+                , ( bp::arg("flag") )
+                , " Set Window decoration." );
         
         }
         { //::osgViewer::GraphicsWindow::setWindowDecorationImplementation
@@ -904,7 +907,8 @@ void register_GraphicsWindow_class(){
             GraphicsWindow_exposer.def( 
                 "setWindowRectangle"
                 , setWindowRectangle_function_type( &::osgViewer::GraphicsWindow::setWindowRectangle )
-                , ( bp::arg("x"), bp::arg("y"), bp::arg("width"), bp::arg("height") ) );
+                , ( bp::arg("x"), bp::arg("y"), bp::arg("width"), bp::arg("height") )
+                , " Set the windows position and size." );
         
         }
         { //::osgViewer::GraphicsWindow::setWindowRectangleImplementation

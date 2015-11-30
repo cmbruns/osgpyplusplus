@@ -11,7 +11,7 @@ void register_ReflectionMapGenerator_class(){
 
     { //::osgUtil::ReflectionMapGenerator
         typedef bp::class_< osgUtil::ReflectionMapGenerator, bp::bases< osgUtil::CubeMapGenerator >, osg::ref_ptr< ::osgUtil::ReflectionMapGenerator >, boost::noncopyable > ReflectionMapGenerator_exposer_t;
-        ReflectionMapGenerator_exposer_t ReflectionMapGenerator_exposer = ReflectionMapGenerator_exposer_t( "ReflectionMapGenerator", bp::no_init );
+        ReflectionMapGenerator_exposer_t ReflectionMapGenerator_exposer = ReflectionMapGenerator_exposer_t( "ReflectionMapGenerator", "\n This is the most simple cube map generator. It performs a direct association\n        between reflection vector and RGBA color (C = R).\n", bp::no_init );
         bp::scope ReflectionMapGenerator_scope( ReflectionMapGenerator_exposer );
         ReflectionMapGenerator_exposer.def( bp::init< bp::optional< int > >(( bp::arg("texture_size")=(int)(64) )) );
         bp::implicitly_convertible< int, osgUtil::ReflectionMapGenerator >();

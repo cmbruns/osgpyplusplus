@@ -380,7 +380,7 @@ struct UpdateVisitor_wrapper : osgUtil::UpdateVisitor, bp::wrapper< osgUtil::Upd
 
 void register_UpdateVisitor_class(){
 
-    bp::class_< UpdateVisitor_wrapper, bp::bases< ::osg::NodeVisitor >, osg::ref_ptr< UpdateVisitor_wrapper >, boost::noncopyable >( "UpdateVisitor", bp::init< >() )    
+    bp::class_< UpdateVisitor_wrapper, bp::bases< ::osg::NodeVisitor >, osg::ref_ptr< UpdateVisitor_wrapper >, boost::noncopyable >( "UpdateVisitor", "\n Basic UpdateVisitor implementation for animating a scene.\n This visitor traverses the scene graph, calling each nodes appCallback if\n it exists.\n", bp::init< >("\n Basic UpdateVisitor implementation for animating a scene.\n This visitor traverses the scene graph, calling each nodes appCallback if\n it exists.\n") )    
         .def( 
             "apply"
             , (void ( ::osgUtil::UpdateVisitor::* )( ::osg::Node & ) )(&::osgUtil::UpdateVisitor::apply)

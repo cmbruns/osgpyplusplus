@@ -23,7 +23,8 @@ void register_DelaunayTriangulator_class(){
             DelaunayTriangulator_exposer.def( 
                 "addInputConstraint"
                 , addInputConstraint_function_type( &::osgUtil::DelaunayTriangulator::addInputConstraint )
-                , ( bp::arg("dc") ) );
+                , ( bp::arg("dc") )
+                , "\n Add an input constraint loop.\n the edges of the loop will constrain the triangulation.\n if remove!=0, the internal triangles of the constraint will be removed;\n the user may the replace the constraint line with an equivalent geometry.\n GWM July 2005\n" );
         
         }
         { //::osgUtil::DelaunayTriangulator::getInputPointArray
@@ -33,7 +34,8 @@ void register_DelaunayTriangulator_class(){
             DelaunayTriangulator_exposer.def( 
                 "getInputPointArray"
                 , getInputPointArray_function_type( &::osgUtil::DelaunayTriangulator::getInputPointArray )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the const input point array.\n" );
         
         }
         { //::osgUtil::DelaunayTriangulator::getInputPointArray
@@ -43,7 +45,8 @@ void register_DelaunayTriangulator_class(){
             DelaunayTriangulator_exposer.def( 
                 "getInputPointArray"
                 , getInputPointArray_function_type( &::osgUtil::DelaunayTriangulator::getInputPointArray )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the input point array.\n" );
         
         }
         { //::osgUtil::DelaunayTriangulator::getOutputNormalArray
@@ -53,7 +56,8 @@ void register_DelaunayTriangulator_class(){
             DelaunayTriangulator_exposer.def( 
                 "getOutputNormalArray"
                 , getOutputNormalArray_function_type( &::osgUtil::DelaunayTriangulator::getOutputNormalArray )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the const output normal array (optional).\n" );
         
         }
         { //::osgUtil::DelaunayTriangulator::getOutputNormalArray
@@ -63,7 +67,8 @@ void register_DelaunayTriangulator_class(){
             DelaunayTriangulator_exposer.def( 
                 "getOutputNormalArray"
                 , getOutputNormalArray_function_type( &::osgUtil::DelaunayTriangulator::getOutputNormalArray )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the output normal array (optional).\n" );
         
         }
         { //::osgUtil::DelaunayTriangulator::getTriangles
@@ -73,7 +78,8 @@ void register_DelaunayTriangulator_class(){
             DelaunayTriangulator_exposer.def( 
                 "getTriangles"
                 , getTriangles_function_type( &::osgUtil::DelaunayTriangulator::getTriangles )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the generated primitive (call triangulate() first).\n" );
         
         }
         { //::osgUtil::DelaunayTriangulator::getTriangles
@@ -83,7 +89,8 @@ void register_DelaunayTriangulator_class(){
             DelaunayTriangulator_exposer.def( 
                 "getTriangles"
                 , getTriangles_function_type( &::osgUtil::DelaunayTriangulator::getTriangles )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the generated primitive (call triangulate() first).\n" );
         
         }
         { //::osgUtil::DelaunayTriangulator::removeInternalTriangles
@@ -93,7 +100,8 @@ void register_DelaunayTriangulator_class(){
             DelaunayTriangulator_exposer.def( 
                 "removeInternalTriangles"
                 , removeInternalTriangles_function_type( &::osgUtil::DelaunayTriangulator::removeInternalTriangles )
-                , ( bp::arg("constraint") ) );
+                , ( bp::arg("constraint") )
+                , "\n remove the triangles internal to the constraint loops.\n (Line strips cannot remove any internal triangles).\n" );
         
         }
         { //::osgUtil::DelaunayTriangulator::setInputPointArray
@@ -103,7 +111,8 @@ void register_DelaunayTriangulator_class(){
             DelaunayTriangulator_exposer.def( 
                 "setInputPointArray"
                 , setInputPointArray_function_type( &::osgUtil::DelaunayTriangulator::setInputPointArray )
-                , ( bp::arg("points") ) );
+                , ( bp::arg("points") )
+                , "\n Set the input point array.\n" );
         
         }
         { //::osgUtil::DelaunayTriangulator::setOutputNormalArray
@@ -113,7 +122,8 @@ void register_DelaunayTriangulator_class(){
             DelaunayTriangulator_exposer.def( 
                 "setOutputNormalArray"
                 , setOutputNormalArray_function_type( &::osgUtil::DelaunayTriangulator::setOutputNormalArray )
-                , ( bp::arg("normals") ) );
+                , ( bp::arg("normals") )
+                , "\n Set the output normal array (optional).\n" );
         
         }
         { //::osgUtil::DelaunayTriangulator::triangulate
@@ -122,7 +132,8 @@ void register_DelaunayTriangulator_class(){
             
             DelaunayTriangulator_exposer.def( 
                 "triangulate"
-                , triangulate_function_type( &::osgUtil::DelaunayTriangulator::triangulate ) );
+                , triangulate_function_type( &::osgUtil::DelaunayTriangulator::triangulate )
+                , "\n Start triangulation.\n" );
         
         }
     }

@@ -113,7 +113,7 @@ void register_PlaneIntersector_class(){
 
     { //::osgUtil::PlaneIntersector
         typedef bp::class_< PlaneIntersector_wrapper, bp::bases< osgUtil::Intersector >, osg::ref_ptr< PlaneIntersector_wrapper >, boost::noncopyable > PlaneIntersector_exposer_t;
-        PlaneIntersector_exposer_t PlaneIntersector_exposer = PlaneIntersector_exposer_t( "PlaneIntersector", bp::init< osg::Plane const &, bp::optional< osg::Polytope const & > >(( bp::arg("plane"), bp::arg("boundingPolytope")=osg::Polytope() )) );
+        PlaneIntersector_exposer_t PlaneIntersector_exposer = PlaneIntersector_exposer_t( "PlaneIntersector", "\n Concrete class for implementing polytope intersections with the scene graph.\n To be used in conjunction with IntersectionVisitor.\n", bp::init< osg::Plane const &, bp::optional< osg::Polytope const & > >(( bp::arg("plane"), bp::arg("boundingPolytope")=osg::Polytope() ), "\n Construct a PolytopeIntersector using speified polytope in MODEL coordinates.\n") );
         bp::scope PlaneIntersector_scope( PlaneIntersector_exposer );
         bp::class_< osgUtil::PlaneIntersector::Intersection >( "PlaneIntersection", bp::init< >() )    
             .def( bp::self < bp::self )    
@@ -123,7 +123,7 @@ void register_PlaneIntersector_class(){
             .def_readwrite( "nodePath", &osgUtil::PlaneIntersector::Intersection::nodePath )    
             .def_readwrite( "polyline", &osgUtil::PlaneIntersector::Intersection::polyline );
         bp::implicitly_convertible< osg::Plane const &, osgUtil::PlaneIntersector >();
-        PlaneIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, osg::Plane const &, bp::optional< osg::Polytope const & > >(( bp::arg("cf"), bp::arg("plane"), bp::arg("boundingPolytope")=osg::Polytope() )) );
+        PlaneIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, osg::Plane const &, bp::optional< osg::Polytope const & > >(( bp::arg("cf"), bp::arg("plane"), bp::arg("boundingPolytope")=osg::Polytope() ), "\n Construct a PolytopeIntersector using speified polytope in specified coordinate frame.\n") );
         { //::osgUtil::PlaneIntersector::clone
         
             typedef ::osgUtil::Intersector * ( ::osgUtil::PlaneIntersector::*clone_function_type )( ::osgUtil::IntersectionVisitor & ) ;

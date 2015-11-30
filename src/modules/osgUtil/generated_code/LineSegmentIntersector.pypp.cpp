@@ -120,7 +120,7 @@ void register_LineSegmentIntersector_class(){
 
     { //::osgUtil::LineSegmentIntersector
         typedef bp::class_< LineSegmentIntersector_wrapper, bp::bases< osgUtil::Intersector >, osg::ref_ptr< LineSegmentIntersector_wrapper >, boost::noncopyable > LineSegmentIntersector_exposer_t;
-        LineSegmentIntersector_exposer_t LineSegmentIntersector_exposer = LineSegmentIntersector_exposer_t( "LineSegmentIntersector", bp::init< osg::Vec3d const &, osg::Vec3d const & >(( bp::arg("start"), bp::arg("end") )) );
+        LineSegmentIntersector_exposer_t LineSegmentIntersector_exposer = LineSegmentIntersector_exposer_t( "LineSegmentIntersector", "\n Concrete class for implementing line intersections with the scene graph.\n To be used in conjunction with IntersectionVisitor.\n", bp::init< osg::Vec3d const &, osg::Vec3d const & >(( bp::arg("start"), bp::arg("end") ), "\n Construct a LineSegmentIntersector the runs between the specified start and end points in MODEL coordinates.\n") );
         bp::scope LineSegmentIntersector_scope( LineSegmentIntersector_exposer );
         bp::class_< osgUtil::LineSegmentIntersector::Intersection >( "Intersection", bp::init< >() )    
             .def( 
@@ -135,7 +135,8 @@ void register_LineSegmentIntersector_class(){
                 "getTextureLookUp"
                 , (::osg::Texture * ( ::osgUtil::LineSegmentIntersector::Intersection::* )( ::osg::Vec3 & ) const)( &::osgUtil::LineSegmentIntersector::Intersection::getTextureLookUp )
                 , ( bp::arg("tc") )
-                , bp::return_internal_reference< >() )    
+                , bp::return_internal_reference< >()
+                , "\n convinience function for mapping the intersection point to any textures assigned to the objects intersected.\n  Returns the Texture pointer and texture coords of object hit when a texture is available on the object, returns NULL otherwise.\n" )    
             .def( 
                 "getWorldIntersectNormal"
                 , (::osg::Vec3 ( ::osgUtil::LineSegmentIntersector::Intersection::* )(  ) const)( &::osgUtil::LineSegmentIntersector::Intersection::getWorldIntersectNormal ) )    
@@ -152,8 +153,8 @@ void register_LineSegmentIntersector_class(){
             .def_readwrite( "primitiveIndex", &osgUtil::LineSegmentIntersector::Intersection::primitiveIndex )    
             .def_readwrite( "ratio", &osgUtil::LineSegmentIntersector::Intersection::ratio )    
             .def_readwrite( "ratioList", &osgUtil::LineSegmentIntersector::Intersection::ratioList );
-        LineSegmentIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, osg::Vec3d const &, osg::Vec3d const & >(( bp::arg("cf"), bp::arg("start"), bp::arg("end") )) );
-        LineSegmentIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, double, double >(( bp::arg("cf"), bp::arg("x"), bp::arg("y") )) );
+        LineSegmentIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, osg::Vec3d const &, osg::Vec3d const & >(( bp::arg("cf"), bp::arg("start"), bp::arg("end") ), "\n Construct a LineSegmentIntersector the runs between the specified start and end points in the specified coordinate frame.\n") );
+        LineSegmentIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, double, double >(( bp::arg("cf"), bp::arg("x"), bp::arg("y") ), "\n Convenience constructor for supporting picking in WINDOW, or PROJECTION coordinates\n In WINDOW coordinates creates a start value of (x,y,0) and end value of (x,y,1).\n In PROJECTION coordinates (clip space cube) creates a start value of (x,y,-1) and end value of (x,y,1).\n In VIEW and MODEL coordinates creates a start value of (x,y,0) and end value of (x,y,1).\n") );
         { //::osgUtil::LineSegmentIntersector::clone
         
             typedef ::osgUtil::Intersector * ( ::osgUtil::LineSegmentIntersector::*clone_function_type )( ::osgUtil::IntersectionVisitor & ) ;

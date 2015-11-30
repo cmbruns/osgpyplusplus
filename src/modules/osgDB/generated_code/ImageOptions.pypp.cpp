@@ -175,29 +175,32 @@ void register_ImageOptions_class(){
             .value("PIXEL_WINDOW", osgDB::ImageOptions::PIXEL_WINDOW)
             .export_values()
             ;
-        bp::class_< osgDB::ImageOptions::PixelWindow >( "PixelWindow", bp::init< >() )    
+        bp::class_< osgDB::ImageOptions::PixelWindow >( "PixelWindow", " PixelWindow stores the window (in exact pixels) from the overall imagery from which to extract the osg::Image", bp::init< >(" PixelWindow stores the window (in exact pixels) from the overall imagery from which to extract the osg::Image") )    
             .def( 
                 "set"
                 , (void ( ::osgDB::ImageOptions::PixelWindow::* )( unsigned int,unsigned int,unsigned int,unsigned int ) )( &::osgDB::ImageOptions::PixelWindow::set )
-                , ( bp::arg("x"), bp::arg("y"), bp::arg("w"), bp::arg("h") ) )    
+                , ( bp::arg("x"), bp::arg("y"), bp::arg("w"), bp::arg("h") )
+                , " PixelWindow stores the window (in exact pixels) from the overall imagery from which to extract the osg::Image" )    
             .def_readwrite( "windowHeight", &osgDB::ImageOptions::PixelWindow::windowHeight )    
             .def_readwrite( "windowWidth", &osgDB::ImageOptions::PixelWindow::windowWidth )    
             .def_readwrite( "windowX", &osgDB::ImageOptions::PixelWindow::windowX )    
             .def_readwrite( "windowY", &osgDB::ImageOptions::PixelWindow::windowY );
-        bp::class_< osgDB::ImageOptions::RatioWindow >( "RatioWindow", bp::init< >() )    
+        bp::class_< osgDB::ImageOptions::RatioWindow >( "RatioWindow", " RatioWindow stores the window (as ratios of 0.0 to 1.0) from the overall imagery from which to extract the osg::Image", bp::init< >(" RatioWindow stores the window (as ratios of 0.0 to 1.0) from the overall imagery from which to extract the osg::Image") )    
             .def( 
                 "set"
                 , (void ( ::osgDB::ImageOptions::RatioWindow::* )( double,double,double,double ) )( &::osgDB::ImageOptions::RatioWindow::set )
-                , ( bp::arg("x"), bp::arg("y"), bp::arg("w"), bp::arg("h") ) )    
+                , ( bp::arg("x"), bp::arg("y"), bp::arg("w"), bp::arg("h") )
+                , " RatioWindow stores the window (as ratios of 0.0 to 1.0) from the overall imagery from which to extract the osg::Image" )    
             .def_readwrite( "windowHeight", &osgDB::ImageOptions::RatioWindow::windowHeight )    
             .def_readwrite( "windowWidth", &osgDB::ImageOptions::RatioWindow::windowWidth )    
             .def_readwrite( "windowX", &osgDB::ImageOptions::RatioWindow::windowX )    
             .def_readwrite( "windowY", &osgDB::ImageOptions::RatioWindow::windowY );
-        bp::class_< osgDB::ImageOptions::TexCoordRange, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgDB::ImageOptions::TexCoordRange >, boost::noncopyable >( "TexCoordRange", bp::init< >() )    
+        bp::class_< osgDB::ImageOptions::TexCoordRange, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgDB::ImageOptions::TexCoordRange >, boost::noncopyable >( "TexCoordRange", " Used as UserData attached to generated osg::Images", bp::init< >(" Used as UserData attached to generated osg::Images") )    
             .def( 
                 "set"
                 , (void ( ::osgDB::ImageOptions::TexCoordRange::* )( double,double,double,double ) )( &::osgDB::ImageOptions::TexCoordRange::set )
-                , ( bp::arg("x"), bp::arg("y"), bp::arg("w"), bp::arg("h") ) )    
+                , ( bp::arg("x"), bp::arg("y"), bp::arg("w"), bp::arg("h") )
+                , " Used as UserData attached to generated osg::Images" )    
             .def_readwrite( "_h", &osgDB::ImageOptions::TexCoordRange::_h )    
             .def_readwrite( "_w", &osgDB::ImageOptions::TexCoordRange::_w )    
             .def_readwrite( "_x", &osgDB::ImageOptions::TexCoordRange::_x )    

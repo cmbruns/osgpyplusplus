@@ -176,7 +176,7 @@ struct ThreadingHandler_wrapper : osgViewer::ThreadingHandler, bp::wrapper< osgV
 
 void register_ThreadingHandler_class(){
 
-    bp::class_< ThreadingHandler_wrapper, bp::bases< ::osgGA::GUIEventHandler >, osg::ref_ptr< ThreadingHandler_wrapper >, boost::noncopyable >( "ThreadingHandler", bp::init< >() )    
+    bp::class_< ThreadingHandler_wrapper, bp::bases< ::osgGA::GUIEventHandler >, osg::ref_ptr< ThreadingHandler_wrapper >, boost::noncopyable >( "ThreadingHandler", "\n Event handler allowing to change the viewer threading model\n", bp::init< >("\n Event handler allowing to change the viewer threading model\n") )    
         .def( 
             "getChangeEndBarrierPosition"
             , (bool ( ::osgViewer::ThreadingHandler::* )(  ) const)( &::osgViewer::ThreadingHandler::getChangeEndBarrierPosition ) )    

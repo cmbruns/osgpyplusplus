@@ -244,7 +244,7 @@ void register_Statistics_class(){
 
     { //::osgUtil::Statistics
         typedef bp::class_< Statistics_wrapper, bp::bases< ::osg::PrimitiveFunctor > > Statistics_exposer_t;
-        Statistics_exposer_t Statistics_exposer = Statistics_exposer_t( "Statistics", bp::init< >() );
+        Statistics_exposer_t Statistics_exposer = Statistics_exposer_t( "Statistics", "\n Statistics base class. Used to extract primitive information from\n the renderBin(s).  Add a case of getStats(osgUtil::Statistics *stat)\n for any new drawable (or drawable derived class) that you generate\n (eg see Geometry.cpp).  There are 20 types of drawable counted - actually only\n 14 cases can occur in reality.  these represent sets of GL_POINTS, GL_LINES\n GL_LINESTRIPS, LOOPS, TRIANGLES, TRI-fans, tristrips, quads, quadstrips etc\n The number of triangles rendered is inferred:\n each triangle = 1 triangle (number of vertices/3)\n each quad = 2 triangles (nverts/2)\n each trifan or tristrip = (length-2) triangles and so on.\n", bp::init< >() );
         bp::scope Statistics_scope( Statistics_exposer );
         bp::enum_< osgUtil::Statistics::StatsType>("StatsType")
             .value("STAT_NONE", osgUtil::Statistics::STAT_NONE)
@@ -263,7 +263,8 @@ void register_Statistics_class(){
             
             Statistics_exposer.def( 
                 "GetPrimitivesBegin"
-                , GetPrimitivesBegin_function_type( &::osgUtil::Statistics::GetPrimitivesBegin ) );
+                , GetPrimitivesBegin_function_type( &::osgUtil::Statistics::GetPrimitivesBegin )
+                , " deprecated" );
         
         }
         { //::osgUtil::Statistics::GetPrimitivesEnd
@@ -272,7 +273,8 @@ void register_Statistics_class(){
             
             Statistics_exposer.def( 
                 "GetPrimitivesEnd"
-                , GetPrimitivesEnd_function_type( &::osgUtil::Statistics::GetPrimitivesEnd ) );
+                , GetPrimitivesEnd_function_type( &::osgUtil::Statistics::GetPrimitivesEnd )
+                , " deprecated" );
         
         }
         { //::osgUtil::Statistics::add

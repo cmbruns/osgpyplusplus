@@ -40,7 +40,7 @@ struct RenderLeaf_wrapper : osgUtil::RenderLeaf, bp::wrapper< osgUtil::RenderLea
 
 void register_RenderLeaf_class(){
 
-    bp::class_< RenderLeaf_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< RenderLeaf_wrapper >, boost::noncopyable >( "RenderLeaf", bp::init< osg::Drawable *, osg::RefMatrix *, osg::RefMatrix *, bp::optional< float, unsigned int > >(( bp::arg("drawable"), bp::arg("projection"), bp::arg("modelview"), bp::arg("depth")=0.0f, bp::arg("traversalNumber")=(unsigned int)(0) )) )    
+    bp::class_< RenderLeaf_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< RenderLeaf_wrapper >, boost::noncopyable >( "RenderLeaf", "\n Container class for all data required for rendering of drawables.\n", bp::init< osg::Drawable *, osg::RefMatrix *, osg::RefMatrix *, bp::optional< float, unsigned int > >(( bp::arg("drawable"), bp::arg("projection"), bp::arg("modelview"), bp::arg("depth")=0.0f, bp::arg("traversalNumber")=(unsigned int)(0) ), "\n Container class for all data required for rendering of drawables.\n") )    
         .def( 
             "getDrawable"
             , (::osg::Drawable const * ( ::osgUtil::RenderLeaf::* )(  ) const)( &::osgUtil::RenderLeaf::getDrawable )

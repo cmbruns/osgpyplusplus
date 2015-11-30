@@ -34,7 +34,7 @@ void register_Tessellator_class(){
 
     { //::osgUtil::Tessellator
         typedef bp::class_< Tessellator_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< Tessellator_wrapper >, boost::noncopyable > Tessellator_exposer_t;
-        Tessellator_exposer_t Tessellator_exposer = Tessellator_exposer_t( "Tessellator", bp::init< >() );
+        Tessellator_exposer_t Tessellator_exposer = Tessellator_exposer_t( "Tessellator", "\n Originally a simple class for tessellating a single polygon boundary.\n Using old style glu tessellation functions for portability.\n Upgraded Jan 2004 to use the modern glu tessellation functions.\n", bp::init< >("\n Originally a simple class for tessellating a single polygon boundary.\n Using old style glu tessellation functions for portability.\n Upgraded Jan 2004 to use the modern glu tessellation functions.\n") );
         bp::scope Tessellator_scope( Tessellator_exposer );
         bp::enum_< osgUtil::Tessellator::TessellationType>("TessellationType")
             .value("TESS_TYPE_GEOMETRY", osgUtil::Tessellator::TESS_TYPE_GEOMETRY)
@@ -65,7 +65,8 @@ void register_Tessellator_class(){
             Tessellator_exposer.def( 
                 "addVertex"
                 , addVertex_function_type( &::osgUtil::Tessellator::addVertex )
-                , ( bp::arg("vertex") ) );
+                , ( bp::arg("vertex") )
+                , " Add a vertex to the current contour, see gluTessVertex for details.\n Note the vertex pointer is returned at the end of tessellation and\n must not be left dangling or be overwritten until all results are\n collected." );
         
         }
         { //::osgUtil::Tessellator::beginContour
@@ -168,7 +169,8 @@ void register_Tessellator_class(){
             Tessellator_exposer.def( 
                 "retessellatePolygons"
                 , retessellatePolygons_function_type( &::osgUtil::Tessellator::retessellatePolygons )
-                , ( bp::arg("cxgeom") ) );
+                , ( bp::arg("cxgeom") )
+                , " Change the contours lists of the geometry into tessellated primitives (the\n list of primitives in the original geometry is stored in the Tessellator for\n possible re-use.\n The name remains retessellatePolygons although it now handles trifans, strips, quads etc.\n as well as Polygons so as to not break old codes relying on this function name." );
         
         }
         { //::osgUtil::Tessellator::setBoundaryOnly
@@ -178,7 +180,8 @@ void register_Tessellator_class(){
             Tessellator_exposer.def( 
                 "setBoundaryOnly"
                 , setBoundaryOnly_function_type( &::osgUtil::Tessellator::setBoundaryOnly )
-                , ( bp::arg("tt") ) );
+                , ( bp::arg("tt") )
+                , " Set and get tessellation request boundary only on/off" );
         
         }
         { //::osgUtil::Tessellator::setTessellationNormal
@@ -188,7 +191,8 @@ void register_Tessellator_class(){
             Tessellator_exposer.def( 
                 "setTessellationNormal"
                 , setTessellationNormal_function_type( &::osgUtil::Tessellator::setTessellationNormal )
-                , ( bp::arg("norm") ) );
+                , ( bp::arg("norm") )
+                , " Define the normal to the tessellated polygon - this provides a hint how to\n  tessellate the contours; see gluTessNormal in red book or man pages.\n  GWM July 2005. Can improve teselation\n  For example, if you know that all polygons lie in the x-y plane,\n   call gluTessNormal(tess, 0.0, 0.0, 1.0) before rendering any polygons." );
         
         }
         { //::osgUtil::Tessellator::setTessellationType
@@ -198,7 +202,8 @@ void register_Tessellator_class(){
             Tessellator_exposer.def( 
                 "setTessellationType"
                 , setTessellationType_function_type( &::osgUtil::Tessellator::setTessellationType )
-                , ( bp::arg("tt") ) );
+                , ( bp::arg("tt") )
+                , " Set and get tessellation type" );
         
         }
         { //::osgUtil::Tessellator::setWindingType
@@ -208,7 +213,8 @@ void register_Tessellator_class(){
             Tessellator_exposer.def( 
                 "setWindingType"
                 , setWindingType_function_type( &::osgUtil::Tessellator::setWindingType )
-                , ( bp::arg("wt") ) );
+                , ( bp::arg("wt") )
+                , " Set and get tessellation windong rule" );
         
         }
     }

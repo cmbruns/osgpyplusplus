@@ -9,7 +9,7 @@ namespace bp = boost::python;
 
 void register_HighlightMapGenerator_class(){
 
-    bp::class_< osgUtil::HighlightMapGenerator, bp::bases< osgUtil::CubeMapGenerator >, osg::ref_ptr< ::osgUtil::HighlightMapGenerator >, boost::noncopyable >( "HighlightMapGenerator", bp::no_init )    
-        .def( bp::init< osg::Vec3 const &, osg::Vec4 const &, float, bp::optional< int > >(( bp::arg("light_direction"), bp::arg("light_color"), bp::arg("specular_exponent"), bp::arg("texture_size")=(int)(64) )) );
+    bp::class_< osgUtil::HighlightMapGenerator, bp::bases< osgUtil::CubeMapGenerator >, osg::ref_ptr< ::osgUtil::HighlightMapGenerator >, boost::noncopyable >( "HighlightMapGenerator", "\n This cube map generator produces a specular highlight map.\n The vector-color association is: C = (R dot (-L)) ^ n, where C is the\n resulting color, R is the reflection vector, L is the light direction\n and n is the specular exponent.\n", bp::no_init )    
+        .def( bp::init< osg::Vec3 const &, osg::Vec4 const &, float, bp::optional< int > >(( bp::arg("light_direction"), bp::arg("light_color"), bp::arg("specular_exponent"), bp::arg("texture_size")=(int)(64) ), "\n This cube map generator produces a specular highlight map.\n The vector-color association is: C = (R dot (-L)) ^ n, where C is the\n resulting color, R is the reflection vector, L is the light direction\n and n is the specular exponent.\n") );
 
 }

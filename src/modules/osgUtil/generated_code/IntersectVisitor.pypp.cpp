@@ -382,7 +382,7 @@ void register_IntersectVisitor_class(){
 
     { //::osgUtil::IntersectVisitor
         typedef bp::class_< IntersectVisitor_wrapper, bp::bases< ::osg::NodeVisitor >, osg::ref_ptr< IntersectVisitor_wrapper >, boost::noncopyable > IntersectVisitor_exposer_t;
-        IntersectVisitor_exposer_t IntersectVisitor_exposer = IntersectVisitor_exposer_t( "IntersectVisitor", bp::init< >() );
+        IntersectVisitor_exposer_t IntersectVisitor_exposer = IntersectVisitor_exposer_t( "IntersectVisitor", "\n Deprecated - use IntersectionVisitor instead.\n", bp::init< >("\n Deprecated - use IntersectionVisitor instead.\n") );
         bp::scope IntersectVisitor_scope( IntersectVisitor_exposer );
         bp::enum_< osgUtil::IntersectVisitor::LODSelectionMode>("LODSelectionMode")
             .value("USE_HIGHEST_LEVEL_OF_DETAIL", osgUtil::IntersectVisitor::USE_HIGHEST_LEVEL_OF_DETAIL)
@@ -396,7 +396,8 @@ void register_IntersectVisitor_class(){
             IntersectVisitor_exposer.def( 
                 "addLineSegment"
                 , addLineSegment_function_type( &::osgUtil::IntersectVisitor::addLineSegment )
-                , ( bp::arg("seg") ) );
+                , ( bp::arg("seg") )
+                , " Add a line segment to use for intersection testing during scene traversal.\n Note, a maximum of 32 line segments can be added to a IntersectVistor,\n adding more than this will result in warning being emitted to the console\n and the excess segments being ignored." );
         
         }
         { //::osgUtil::IntersectVisitor::apply
@@ -595,7 +596,8 @@ void register_IntersectVisitor_class(){
             IntersectVisitor_exposer.def( 
                 "setEyePoint"
                 , setEyePoint_function_type( &::osgUtil::IntersectVisitor::setEyePoint )
-                , ( bp::arg("eye") ) );
+                , ( bp::arg("eye") )
+                , " Set the eye point in local coordinates.\n This is a pseudo-EyePoint for billboarding and LOD purposes.\n It is copied from the Start point of the most-recently-added segment\n of the intersection ray set (IntersectState::_segList)." );
         
         }
         { //::osgUtil::IntersectVisitor::setLODSelectionMode

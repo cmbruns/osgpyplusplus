@@ -533,7 +533,7 @@ void register_CompositeViewer_class(){
 
     { //::osgViewer::CompositeViewer
         typedef bp::class_< CompositeViewer_wrapper, bp::bases< osgViewer::ViewerBase >, osg::ref_ptr< CompositeViewer_wrapper >, boost::noncopyable > CompositeViewer_exposer_t;
-        CompositeViewer_exposer_t CompositeViewer_exposer = CompositeViewer_exposer_t( "CompositeViewer", bp::init< >() );
+        CompositeViewer_exposer_t CompositeViewer_exposer = CompositeViewer_exposer_t( "CompositeViewer", "\n CompositeViewer holds one or more views to one or more scenes.\n", bp::init< >("\n CompositeViewer holds one or more views to one or more scenes.\n") );
         bp::scope CompositeViewer_scope( CompositeViewer_exposer );
         CompositeViewer_exposer.def( bp::init< osg::ArgumentParser & >(( bp::arg("arguments") )) );
         bp::implicitly_convertible< osg::ArgumentParser &, osgViewer::CompositeViewer >();

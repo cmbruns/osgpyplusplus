@@ -112,7 +112,7 @@ void register_Output_class(){
 
     { //::osgDB::Output
         typedef bp::class_< Output_wrapper, boost::noncopyable > Output_exposer_t;
-        Output_exposer_t Output_exposer = Output_exposer_t( "Output", bp::init< >() );
+        Output_exposer_t Output_exposer = Output_exposer_t( "Output", "\n deprecated.\n", bp::init< >("\n deprecated.\n") );
         bp::scope Output_scope( Output_exposer );
         bp::enum_< osgDB::Output::PathNameHint>("PathNameHint")
             .value("AS_IS", osgDB::Output::AS_IS)
@@ -415,7 +415,8 @@ void register_Output_class(){
             Output_exposer.def( 
                 "wrapString"
                 , wrapString_function_type( &::osgDB::Output::wrapString )
-                , ( bp::arg("str") ) );
+                , ( bp::arg("str") )
+                , " wrap a string with  quotes and use \\ for any internal quotes." );
         
         }
         { //::osgDB::Output::wrapString
@@ -425,7 +426,8 @@ void register_Output_class(){
             Output_exposer.def( 
                 "wrapString"
                 , wrapString_function_type( &::osgDB::Output::wrapString )
-                , ( bp::arg("str") ) );
+                , ( bp::arg("str") )
+                , " wrap a string with  quotes and use \\ for any internal quotes." );
         
         }
         { //::osgDB::Output::writeBeginObject

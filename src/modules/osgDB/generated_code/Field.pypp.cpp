@@ -28,7 +28,7 @@ void register_Field_class(){
 
     { //::osgDB::Field
         typedef bp::class_< Field_wrapper > Field_exposer_t;
-        Field_exposer_t Field_exposer = Field_exposer_t( "Field", bp::init< >() );
+        Field_exposer_t Field_exposer = Field_exposer_t( "Field", "\n deprecated.\n", bp::init< >() );
         bp::scope Field_scope( Field_exposer );
         bp::scope().attr("MIN_CACHE_SIZE") = (int)osgDB::Field::MIN_CACHE_SIZE;
         bp::enum_< osgDB::Field::FieldType>("FieldType")

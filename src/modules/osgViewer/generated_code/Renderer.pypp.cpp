@@ -277,7 +277,8 @@ void register_Renderer_class(){
             Renderer_exposer.def( 
                 "setCameraRequiresSetUp"
                 , setCameraRequiresSetUp_function_type( &::osgViewer::Renderer::setCameraRequiresSetUp )
-                , ( bp::arg("flag") ) );
+                , ( bp::arg("flag") )
+                , " Force update of state associated with cameras." );
         
         }
         { //::osgViewer::Renderer::setCompileOnNextDraw

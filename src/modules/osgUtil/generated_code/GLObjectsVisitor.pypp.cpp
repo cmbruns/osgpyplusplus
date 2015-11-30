@@ -382,7 +382,7 @@ void register_GLObjectsVisitor_class(){
 
     { //::osgUtil::GLObjectsVisitor
         typedef bp::class_< GLObjectsVisitor_wrapper, bp::bases< ::osg::NodeVisitor >, osg::ref_ptr< GLObjectsVisitor_wrapper >, boost::noncopyable > GLObjectsVisitor_exposer_t;
-        GLObjectsVisitor_exposer_t GLObjectsVisitor_exposer = GLObjectsVisitor_exposer_t( "GLObjectsVisitor", bp::init< bp::optional< unsigned int > >(( bp::arg("mode")=(unsigned int)(268) )) );
+        GLObjectsVisitor_exposer_t GLObjectsVisitor_exposer = GLObjectsVisitor_exposer_t( "GLObjectsVisitor", "\n Visitor for traversing scene graph and setting each osg::Drawables _useDisplayList flag,\n with option to immediately compile osg::Drawable OpenGL Display lists and\n osg::StateAttributes.\n", bp::init< bp::optional< unsigned int > >(( bp::arg("mode")=(unsigned int)(268) ), "\n Construct a GLObjectsVisitor to traverse all children, operating on\n node according to specified mode, such as to compile or release\n display list/texture objects etc. Default mode is to compile\n GL objects.\n") );
         bp::scope GLObjectsVisitor_scope( GLObjectsVisitor_exposer );
         bp::enum_< osgUtil::GLObjectsVisitor::ModeValues>("ModeValues")
             .value("SWITCH_ON_DISPLAY_LISTS", osgUtil::GLObjectsVisitor::SWITCH_ON_DISPLAY_LISTS)
@@ -458,7 +458,8 @@ void register_GLObjectsVisitor_class(){
             
             GLObjectsVisitor_exposer.def( 
                 "getMode"
-                , getMode_function_type( &::osgUtil::GLObjectsVisitor::getMode ) );
+                , getMode_function_type( &::osgUtil::GLObjectsVisitor::getMode )
+                , " Get the operational mode." );
         
         }
         { //::osgUtil::GLObjectsVisitor::getRenderInfo
@@ -510,7 +511,8 @@ void register_GLObjectsVisitor_class(){
             GLObjectsVisitor_exposer.def( 
                 "setMode"
                 , setMode_function_type( &::osgUtil::GLObjectsVisitor::setMode )
-                , ( bp::arg("mode") ) );
+                , ( bp::arg("mode") )
+                , " Set the operational mode of what operations to do on the scene graph." );
         
         }
         { //::osgUtil::GLObjectsVisitor::setRenderInfo
@@ -530,7 +532,8 @@ void register_GLObjectsVisitor_class(){
             GLObjectsVisitor_exposer.def( 
                 "setState"
                 , setState_function_type( &::osgUtil::GLObjectsVisitor::setState )
-                , ( bp::arg("state") ) );
+                , ( bp::arg("state") )
+                , " Set the State to use during traversal." );
         
         }
     }

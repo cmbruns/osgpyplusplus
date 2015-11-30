@@ -11,9 +11,9 @@ void register_HalfWayMapGenerator_class(){
 
     { //::osgUtil::HalfWayMapGenerator
         typedef bp::class_< osgUtil::HalfWayMapGenerator, bp::bases< osgUtil::CubeMapGenerator >, osg::ref_ptr< ::osgUtil::HalfWayMapGenerator >, boost::noncopyable > HalfWayMapGenerator_exposer_t;
-        HalfWayMapGenerator_exposer_t HalfWayMapGenerator_exposer = HalfWayMapGenerator_exposer_t( "HalfWayMapGenerator", bp::no_init );
+        HalfWayMapGenerator_exposer_t HalfWayMapGenerator_exposer = HalfWayMapGenerator_exposer_t( "HalfWayMapGenerator", "\n This cube map generator produces an Half-way vector map, useful for\n hardware-based specular lighting effects.\n It computes: C = normalize(R - L), where C is the resulting color,\n R is the reflection vector and L is the light direction.\n", bp::no_init );
         bp::scope HalfWayMapGenerator_scope( HalfWayMapGenerator_exposer );
-        HalfWayMapGenerator_exposer.def( bp::init< osg::Vec3 const &, bp::optional< int > >(( bp::arg("light_direction"), bp::arg("texture_size")=(int)(64) )) );
+        HalfWayMapGenerator_exposer.def( bp::init< osg::Vec3 const &, bp::optional< int > >(( bp::arg("light_direction"), bp::arg("texture_size")=(int)(64) ), "\n This cube map generator produces an Half-way vector map, useful for\n hardware-based specular lighting effects.\n It computes: C = normalize(R - L), where C is the resulting color,\n R is the reflection vector and L is the light direction.\n") );
         bp::implicitly_convertible< osg::Vec3 const &, osgUtil::HalfWayMapGenerator >();
     }
 

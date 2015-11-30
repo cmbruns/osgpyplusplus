@@ -40,7 +40,7 @@ void register_FieldReader_class(){
 
     { //::osgDB::FieldReader
         typedef bp::class_< FieldReader_wrapper > FieldReader_exposer_t;
-        FieldReader_exposer_t FieldReader_exposer = FieldReader_exposer_t( "FieldReader", bp::init< >() );
+        FieldReader_exposer_t FieldReader_exposer = FieldReader_exposer_t( "FieldReader", "\n deprecated.\n", bp::init< >("\n deprecated.\n") );
         bp::scope FieldReader_scope( FieldReader_exposer );
         FieldReader_exposer.def( bp::init< osgDB::FieldReader const & >(( bp::arg("ic") )) );
         { //::osgDB::FieldReader::attach
@@ -79,7 +79,8 @@ void register_FieldReader_class(){
             
             FieldReader_exposer.def( 
                 "getNoNestedBrackets"
-                , getNoNestedBrackets_function_type( &::osgDB::FieldReader::getNoNestedBrackets ) );
+                , getNoNestedBrackets_function_type( &::osgDB::FieldReader::getNoNestedBrackets )
+                , " no of unmatched `{ encountered so far in file" );
         
         }
         { //::osgDB::FieldReader::ignoreField

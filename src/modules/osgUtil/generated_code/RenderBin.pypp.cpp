@@ -337,7 +337,7 @@ void register_RenderBin_class(){
 
     { //::osgUtil::RenderBin
         typedef bp::class_< RenderBin_wrapper, bp::bases< ::osg::Object >, osg::ref_ptr< RenderBin_wrapper >, boost::noncopyable > RenderBin_exposer_t;
-        RenderBin_exposer_t RenderBin_exposer = RenderBin_exposer_t( "RenderBin", bp::no_init );
+        RenderBin_exposer_t RenderBin_exposer = RenderBin_exposer_t( "RenderBin", "\n RenderBin base class. Renderbin contains geometries to be rendered as a group,\n renderbins are rendered once each.  They can improve efficiency or\n use different rendering algorithms.\n A renderBin can contain further renderBins producing a tree hierarchy of renderBins.\n", bp::no_init );
         bp::scope RenderBin_scope( RenderBin_exposer );
         bp::enum_< osgUtil::RenderBin::SortMode>("SortMode")
             .value("SORT_BY_STATE", osgUtil::RenderBin::SORT_BY_STATE)
@@ -687,7 +687,8 @@ void register_RenderBin_class(){
             RenderBin_exposer.def( 
                 "getStats"
                 , getStats_function_type( &::osgUtil::RenderBin::getStats )
-                , ( bp::arg("primStats") ) );
+                , ( bp::arg("primStats") )
+                , " Extract stats for current draw list." );
         
         }
         { //::osgUtil::RenderBin::isSameKindAs

@@ -724,7 +724,8 @@ void register_GraphicsWindowEmbedded_class(){
             GraphicsWindowEmbedded_exposer.def( 
                 "getWindowRectangle"
                 , default_getWindowRectangle_function_type( &GraphicsWindowEmbedded_wrapper::default_getWindowRectangle )
-                , ( bp::arg("inst") ) );
+                , ( bp::arg("inst") )
+                , "\n Get the windows position and size.\n" );
         
         }
         { //::osgViewer::GraphicsWindow::makeContextCurrentImplementation

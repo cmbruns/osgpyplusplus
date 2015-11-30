@@ -22,191 +22,191 @@
 
 #include "wrap_osgUtil.h"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/AddRangeOperator.pypp.hpp"
+#include "AddRangeOperator.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/BaseOptimizerVisitor.pypp.hpp"
+#include "BaseOptimizerVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/CompileOps.pypp.hpp"
+#include "CompileOps.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/CompileSets.pypp.hpp"
+#include "CompileSets.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/ContextSet.pypp.hpp"
+#include "ContextSet.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/CubeMapGenerator.pypp.hpp"
+#include "CubeMapGenerator.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/CullVisitor.pypp.hpp"
+#include "CullVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/DelaunayConstraint.pypp.hpp"
+#include "DelaunayConstraint.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/DelaunayTriangulator.pypp.hpp"
+#include "DelaunayTriangulator.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/DisplayRequirementsVisitor.pypp.hpp"
+#include "DisplayRequirementsVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/DrawElementTypeSimplifier.pypp.hpp"
+#include "DrawElementTypeSimplifier.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/DrawElementTypeSimplifierVisitor.pypp.hpp"
+#include "DrawElementTypeSimplifierVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/EdgeCollector.pypp.hpp"
+#include "EdgeCollector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/EdgeList.pypp.hpp"
+#include "EdgeList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/EdgeSet.pypp.hpp"
+#include "EdgeSet.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/GLObjectsOperation.pypp.hpp"
+#include "GLObjectsOperation.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/GLObjectsVisitor.pypp.hpp"
+#include "GLObjectsVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/GeodesToDivideList.pypp.hpp"
+#include "GeodesToDivideList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/GeometryCollector.pypp.hpp"
+#include "GeometryCollector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/GeometryList.pypp.hpp"
+#include "GeometryList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/HalfWayMapGenerator.pypp.hpp"
+#include "HalfWayMapGenerator.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/HighlightMapGenerator.pypp.hpp"
+#include "HighlightMapGenerator.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/Hit.pypp.hpp"
+#include "Hit.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/IncrementalCompileOperation.pypp.hpp"
+#include "IncrementalCompileOperation.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/IndexMeshVisitor.pypp.hpp"
+#include "IndexMeshVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/IntersectVisitor.pypp.hpp"
+#include "IntersectVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/IntersectionVisitor.pypp.hpp"
+#include "IntersectionVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/Intersector.pypp.hpp"
+#include "Intersector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/IntersectorGroup.pypp.hpp"
+#include "IntersectorGroup.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/Intersectors.pypp.hpp"
+#include "Intersectors.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/LessDepthSortFunctor.pypp.hpp"
+#include "LessDepthSortFunctor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/LineSegmentHitListMap.pypp.hpp"
+#include "LineSegmentHitListMap.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/LineSegmentIntersector.pypp.hpp"
+#include "LineSegmentIntersector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/MultiplyRangeOperator.pypp.hpp"
+#include "MultiplyRangeOperator.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/Optimizer.pypp.hpp"
+#include "Optimizer.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/PerlinNoise.pypp.hpp"
+#include "PerlinNoise.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/PickVisitor.pypp.hpp"
+#include "PickVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/PlaneIntersections.pypp.hpp"
+#include "PlaneIntersections.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/PlaneIntersector.pypp.hpp"
+#include "PlaneIntersector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/PointList.pypp.hpp"
+#include "PointList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/PointSet.pypp.hpp"
+#include "PointSet.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/PolytopeIntersections.pypp.hpp"
+#include "PolytopeIntersections.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/PolytopeIntersector.pypp.hpp"
+#include "PolytopeIntersector.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/PositionalStateContainer.pypp.hpp"
+#include "PositionalStateContainer.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/PrimList.pypp.hpp"
+#include "PrimList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/PrimitiveValueMap.pypp.hpp"
+#include "PrimitiveValueMap.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/PrintVisitor.pypp.hpp"
+#include "PrintVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/ProgramSet.pypp.hpp"
+#include "ProgramSet.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/ReflectionMapGenerator.pypp.hpp"
+#include "ReflectionMapGenerator.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/RenderBin.pypp.hpp"
+#include "RenderBin.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/RenderBinList.pypp.hpp"
+#include "RenderBinList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/RenderLeaf.pypp.hpp"
+#include "RenderLeaf.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/RenderLeafList.pypp.hpp"
+#include "RenderLeafList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/RenderStage.pypp.hpp"
+#include "RenderStage.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/ReversePrimitiveFunctor.pypp.hpp"
+#include "ReversePrimitiveFunctor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/SceneGraphBuilder.pypp.hpp"
+#include "SceneGraphBuilder.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/SceneView.pypp.hpp"
+#include "SceneView.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/ShaderGenCache.pypp.hpp"
+#include "ShaderGenCache.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/ShaderGenVisitor.pypp.hpp"
+#include "ShaderGenVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/Simplifier.pypp.hpp"
+#include "Simplifier.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/SmoothingVisitor.pypp.hpp"
+#include "SmoothingVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/StateGraph.pypp.hpp"
+#include "StateGraph.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/StateGraphList.pypp.hpp"
+#include "StateGraphList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/StateToCompile.pypp.hpp"
+#include "StateToCompile.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/Statistics.pypp.hpp"
+#include "Statistics.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/StatsVisitor.pypp.hpp"
+#include "StatsVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/TangentSpaceGenerator.pypp.hpp"
+#include "TangentSpaceGenerator.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/Tessellator.pypp.hpp"
+#include "Tessellator.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/TexUnitAttrMatrixListMap.pypp.hpp"
+#include "TexUnitAttrMatrixListMap.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/TextureSet.pypp.hpp"
+#include "TextureSet.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/TransformAttributeFunctor.pypp.hpp"
+#include "TransformAttributeFunctor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/TransformCallback.pypp.hpp"
+#include "TransformCallback.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/TriStripVisitor.pypp.hpp"
+#include "TriStripVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/TriangleSet.pypp.hpp"
+#include "TriangleSet.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/UpdateVisitor.pypp.hpp"
+#include "UpdateVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/VecList.pypp.hpp"
+#include "VecList.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/VertexAccessOrderVisitor.pypp.hpp"
+#include "VertexAccessOrderVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/VertexCacheMissVisitor.pypp.hpp"
+#include "VertexCacheMissVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/VertexCacheVisitor.pypp.hpp"
+#include "VertexCacheVisitor.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/_osgUtil_free_functions.pypp.hpp"
+#include "_osgUtil_free_functions.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/_osgUtil_global_variables.pypp.hpp"
+#include "_osgUtil_global_variables.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/dereference_clear.pypp.hpp"
+#include "dereference_clear.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/dereference_less.pypp.hpp"
+#include "dereference_less.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/list_less__osg_scope_ref_ptr_less_osgUtil_scope_EdgeCollector_scope_Edgeloop_greater___greater_.pypp.hpp"
+#include "list_less__osg_scope_ref_ptr_less_osgUtil_scope_EdgeCollector_scope_Edgeloop_greater___greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/set_less__osg_scope_Drawable_ptr___greater_.pypp.hpp"
+#include "set_less__osg_scope_Drawable_ptr___greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/set_less__osg_scope_Group_ptr___greater_.pypp.hpp"
+#include "set_less__osg_scope_Group_ptr___greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/set_less__osg_scope_Node_ptr___greater_.pypp.hpp"
+#include "set_less__osg_scope_Node_ptr___greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/set_less__osg_scope_StateSet_ptr___greater_.pypp.hpp"
+#include "set_less__osg_scope_StateSet_ptr___greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/std_list_tiarray_uint_5125.pypp.hpp"
+#include "std_list_tiarray_uint_5125.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/std_vector_pair_StateAttribute_RefMatrixd.pypp.hpp"
+#include "std_vector_pair_StateAttribute_RefMatrixd.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/vector_less__int__greater_.pypp.hpp"
+#include "vector_less__int__greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/vector_less__osgUtil_scope_Hit__greater_.pypp.hpp"
+#include "vector_less__osgUtil_scope_Hit__greater_.pypp.hpp"
 
-#include "/home/cmbruns/git/osgpyplusplus/src/modules/osgUtil/generated_code/vector_less__osg_scope_ref_ptr_less_osgUtil_scope_RenderLeaf_greater___greater_.pypp.hpp"
+#include "vector_less__osg_scope_ref_ptr_less_osgUtil_scope_RenderLeaf_greater___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

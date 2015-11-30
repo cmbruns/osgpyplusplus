@@ -13,7 +13,7 @@ void register_ObjectsSet_class(){
 
     { //::std::map< osg::Object const*, osgDB::ExternalFileWriter::ObjectData >
         typedef bp::class_< std::map< osg::Object const*, osgDB::ExternalFileWriter::ObjectData > > ObjectsSet_exposer_t;
-        ObjectsSet_exposer_t ObjectsSet_exposer = ObjectsSet_exposer_t( "ObjectsSet" );
+        ObjectsSet_exposer_t ObjectsSet_exposer = ObjectsSet_exposer_t( "ObjectsSet", "\n  A standard container made up of (key,value) pairs, which can be\n  retrieved based on a key, in logarithmic time.\n\n  fngroup associative_containers\n\n  Tparam: _Key  Type of key objects.\n  Tparam:  _Tp  Type of mapped objects.\n  Tparam: _Compare  Comparison function object type, defaults to less<_Key>.\n  Tparam: _Alloc  Allocator type, defaults to\n                  allocator<pair<const _Key, _Tp>.\n\n  Meets the requirements of a <a href=tables.html#65>container</a>, a\n  <a href=tables.html#66>reversible container</a>, and an\n  <a href=tables.html#69>associative container</a> (using unique keys).\n  For a @c map<Key,T> the key_type is Key, the mapped_type is T, and the\n  value_type is std::pair<const Key,T>.\n\n  Maps support bidirectional iterators.\n\n  The private tree data is declared exactly the same way for map and\n  multimap; the distinction is made entirely in how the tree functions are\n  called (*_unique versus *_equal, same as the standard).\n" );
         bp::scope ObjectsSet_scope( ObjectsSet_exposer );
         ObjectsSet_exposer.def( bp::indexing::map_suite< std::map< osg::Object const*, osgDB::ExternalFileWriter::ObjectData > >() );
     }

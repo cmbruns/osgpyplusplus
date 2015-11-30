@@ -8,6 +8,6 @@ namespace bp = boost::python;
 
 void register_RegisterDotOsgWrapperProxy_class(){
 
-    bp::class_< osgDB::RegisterDotOsgWrapperProxy >( "RegisterDotOsgWrapperProxy", bp::no_init );
+    bp::class_< osgDB::RegisterDotOsgWrapperProxy >( "RegisterDotOsgWrapperProxy", "\n deprecated.\n", bp::no_init );
 
 }

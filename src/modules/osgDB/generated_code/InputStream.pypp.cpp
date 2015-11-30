@@ -215,7 +215,8 @@ void register_InputStream_class(){
             InputStream_exposer.def( 
                 "setInputIterator"
                 , setInputIterator_function_type( &::osgDB::InputStream::setInputIterator )
-                , ( bp::arg("ii") ) );
+                , ( bp::arg("ii") )
+                , "\n set an input iterator, used directly when not using InputStream with a traditional file releated stream.\n" );
         
         }
         { //::osgDB::InputStream::start
@@ -225,7 +226,8 @@ void register_InputStream_class(){
             InputStream_exposer.def( 
                 "start"
                 , start_function_type( &::osgDB::InputStream::start )
-                , ( bp::arg("arg0") ) );
+                , ( bp::arg("arg0") )
+                , "\n start reading from InputStream treating it as a traditional file releated stream, handles headers and versioning\n" );
         
         }
         { //::osgDB::InputStream::throwException

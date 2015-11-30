@@ -392,7 +392,7 @@ struct DisplayRequirementsVisitor_wrapper : osgUtil::DisplayRequirementsVisitor,
 
 void register_DisplayRequirementsVisitor_class(){
 
-    bp::class_< DisplayRequirementsVisitor_wrapper, bp::bases< ::osg::NodeVisitor >, osg::ref_ptr< DisplayRequirementsVisitor_wrapper >, boost::noncopyable >( "DisplayRequirementsVisitor", bp::init< >() )    
+    bp::class_< DisplayRequirementsVisitor_wrapper, bp::bases< ::osg::NodeVisitor >, osg::ref_ptr< DisplayRequirementsVisitor_wrapper >, boost::noncopyable >( "DisplayRequirementsVisitor", "\n A visitor for traversing a scene graph establishing which OpenGL visuals are\n required to support rendering of that scene graph.  The results can then be used by\n applications to set up their windows with the correct visuals.  Have a look at\n src/osgGLUT/Viewer.cpps Viewer::open() method for an example of how to use it.\n", bp::init< >("\n Default to traversing all children, and requiresDoubleBuffer,\n requiresRGB and requiresDepthBuffer to true and with\n alpha and stencil off.\n") )    
         .def( 
             "apply"
             , (void ( ::osgUtil::DisplayRequirementsVisitor::* )( ::osg::Node & ) )(&::osgUtil::DisplayRequirementsVisitor::apply)
@@ -415,7 +415,8 @@ void register_DisplayRequirementsVisitor_class(){
         .def( 
             "getDisplaySettings"
             , (::osg::DisplaySettings const * ( ::osgUtil::DisplayRequirementsVisitor::* )(  ) const)( &::osgUtil::DisplayRequirementsVisitor::getDisplaySettings )
-            , bp::return_internal_reference< >() )    
+            , bp::return_internal_reference< >()
+            , " Get the DisplaySettings" )    
         .def( 
             "libraryName"
             , (char const * ( ::osgUtil::DisplayRequirementsVisitor::* )(  ) const)(&::osgUtil::DisplayRequirementsVisitor::libraryName)
@@ -423,6 +424,7 @@ void register_DisplayRequirementsVisitor_class(){
         .def( 
             "setDisplaySettings"
             , (void ( ::osgUtil::DisplayRequirementsVisitor::* )( ::osg::DisplaySettings * ) )( &::osgUtil::DisplayRequirementsVisitor::setDisplaySettings )
-            , ( bp::arg("ds") ) );
+            , ( bp::arg("ds") )
+            , " Set the DisplaySettings." );
 
 }

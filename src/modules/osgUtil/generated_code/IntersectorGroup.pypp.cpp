@@ -104,14 +104,16 @@ struct IntersectorGroup_wrapper : osgUtil::IntersectorGroup, bp::wrapper< osgUti
 
 void register_IntersectorGroup_class(){
 
-    bp::class_< IntersectorGroup_wrapper, bp::bases< osgUtil::Intersector >, osg::ref_ptr< IntersectorGroup_wrapper >, boost::noncopyable >( "IntersectorGroup", bp::init< >() )    
+    bp::class_< IntersectorGroup_wrapper, bp::bases< osgUtil::Intersector >, osg::ref_ptr< IntersectorGroup_wrapper >, boost::noncopyable >( "IntersectorGroup", "\n Concrete class for passing multiple intersectors through the scene graph.\n To be used in conjunction with IntersectionVisitor.\n", bp::init< >("\n Concrete class for passing multiple intersectors through the scene graph.\n To be used in conjunction with IntersectionVisitor.\n") )    
         .def( 
             "addIntersector"
             , (void ( ::osgUtil::IntersectorGroup::* )( ::osgUtil::Intersector * ) )( &::osgUtil::IntersectorGroup::addIntersector )
-            , ( bp::arg("intersector") ) )    
+            , ( bp::arg("intersector") )
+            , " Add an Intersector." )    
         .def( 
             "clear"
-            , (void ( ::osgUtil::IntersectorGroup::* )(  ) )( &::osgUtil::IntersectorGroup::clear ) )    
+            , (void ( ::osgUtil::IntersectorGroup::* )(  ) )( &::osgUtil::IntersectorGroup::clear )
+            , " Clear the list of intersectors." )    
         .def( 
             "clone"
             , (::osgUtil::Intersector * ( ::osgUtil::IntersectorGroup::* )( ::osgUtil::IntersectionVisitor & ) )(&::osgUtil::IntersectorGroup::clone)
@@ -129,7 +131,8 @@ void register_IntersectorGroup_class(){
         .def( 
             "getIntersectors"
             , (::std::vector< osg::ref_ptr<osgUtil::Intersector> > & ( ::osgUtil::IntersectorGroup::* )(  ) )( &::osgUtil::IntersectorGroup::getIntersectors )
-            , bp::return_internal_reference< >() )    
+            , bp::return_internal_reference< >()
+            , " Get the list of intersector." )    
         .def( 
             "intersect"
             , (void ( ::osgUtil::IntersectorGroup::* )( ::osgUtil::IntersectionVisitor &,::osg::Drawable * ) )(&::osgUtil::IntersectorGroup::intersect)

@@ -568,7 +568,7 @@ void register_ReaderWriter_class(){
 
     { //::osgDB::ReaderWriter
         typedef bp::class_< ReaderWriter_wrapper, bp::bases< ::osg::Object >, osg::ref_ptr< ReaderWriter_wrapper >, boost::noncopyable > ReaderWriter_exposer_t;
-        ReaderWriter_exposer_t ReaderWriter_exposer = ReaderWriter_exposer_t( "ReaderWriter", bp::init< >() );
+        ReaderWriter_exposer_t ReaderWriter_exposer = ReaderWriter_exposer_t( "ReaderWriter", "\n Pure virtual base class for reading and writing of non native formats.\n", bp::init< >("\n Pure virtual base class for reading and writing of non native formats.\n") );
         bp::scope ReaderWriter_scope( ReaderWriter_exposer );
         bp::enum_< osgDB::ReaderWriter::ArchiveStatus>("ArchiveStatus")
             .value("READ", osgDB::ReaderWriter::READ)
@@ -1011,7 +1011,8 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "featureAsString"
                 , featureAsString_function_type( &::osgDB::ReaderWriter::featureAsString )
-                , ( bp::arg("feature") ) );
+                , ( bp::arg("feature") )
+                , " Return feature as string" );
         
         }
         { //::osgDB::ReaderWriter::fileExists
@@ -1241,7 +1242,8 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "supportsExtension"
                 , supportsExtension_function_type( &::osgDB::ReaderWriter::supportsExtension )
-                , ( bp::arg("ext"), bp::arg("description") ) );
+                , ( bp::arg("ext"), bp::arg("description") )
+                , " Specify ext string as a supported file extension.\n Please note, this method should usually only be used internally by subclasses of ReaderWriter. Only in special cases\n will a ReaderWriter implementation be able to handle a file extension that it wasnt originally designed for.\n To know whether its safe to inject a new file extension into an existing ReaderWriter you will need to review the\n the source code and dependencies of that ReaderWriter." );
         
         }
         { //::osgDB::ReaderWriter::supportsOption
@@ -1251,7 +1253,8 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "supportsOption"
                 , supportsOption_function_type( &::osgDB::ReaderWriter::supportsOption )
-                , ( bp::arg("opt"), bp::arg("description") ) );
+                , ( bp::arg("opt"), bp::arg("description") )
+                , " Specify option string as a supported option string.\n Please note, this should usually only be used internally by subclasses of ReaderWriter." );
         
         }
         { //::osgDB::ReaderWriter::supportsProtocol
@@ -1261,7 +1264,8 @@ void register_ReaderWriter_class(){
             ReaderWriter_exposer.def( 
                 "supportsProtocol"
                 , supportsProtocol_function_type( &::osgDB::ReaderWriter::supportsProtocol )
-                , ( bp::arg("fmt"), bp::arg("description") ) );
+                , ( bp::arg("fmt"), bp::arg("description") )
+                , " Specify fmt string as a supported protocol.\n Please note, this method should usually only be used internally by subclasses of ReaderWriter, Only in special cases\n will a ReaderWriter implementation be able to handle a protocol format that it wasnt originally designed for.\n To know whether its safe to inject a new protocol format into an existing ReaderWriter you will need to review\n the source code and dependencies of that ReaderWriter." );
         
         }
         { //::osgDB::ReaderWriter::writeHeightField

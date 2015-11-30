@@ -24,10 +24,11 @@ struct basic_type_wrapper_wrapper : osgDB::basic_type_wrapper, bp::wrapper< osgD
 
 void register_basic_type_wrapper_class(){
 
-    bp::class_< basic_type_wrapper_wrapper, boost::noncopyable >( "basic_type_wrapper" )    
+    bp::class_< basic_type_wrapper_wrapper, boost::noncopyable >( "basic_type_wrapper", "\n basic structure for custom runtime inheritance checking\n" )    
         .def( 
             "matches"
             , bp::pure_virtual( (bool ( ::osgDB::basic_type_wrapper::* )( ::osg::Object const * ) const)(&::osgDB::basic_type_wrapper::matches) )
-            , ( bp::arg("proto") ) );
+            , ( bp::arg("proto") )
+            , "\n basic structure for custom runtime inheritance checking\n" );
 
 }

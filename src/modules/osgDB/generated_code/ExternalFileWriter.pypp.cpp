@@ -16,14 +16,14 @@ void register_ExternalFileWriter_class(){
 
     { //::osgDB::ExternalFileWriter
         typedef bp::class_< osgDB::ExternalFileWriter, boost::noncopyable > ExternalFileWriter_exposer_t;
-        ExternalFileWriter_exposer_t ExternalFileWriter_exposer = ExternalFileWriter_exposer_t( "ExternalFileWriter", bp::init< std::string const &, std::string const &, bool, bp::optional< unsigned int > >(( bp::arg("srcDirectory"), bp::arg("destDirectory"), bp::arg("keepRelativePaths"), bp::arg("allowUpDirs")=(unsigned int)(0) )) );
+        ExternalFileWriter_exposer_t ExternalFileWriter_exposer = ExternalFileWriter_exposer_t( "ExternalFileWriter", "\n Helper allowing intelligent writing of external files (images, shaders, etc.), regarding to a main file (a scene), especially in plugins.\n Goals are:\n   - Enable writing out objects only once (even if referenced multiple times)\n   - Handle duplicates (avoid writing two different objects at the same place, renaming files as needed)\n   - Handle directory creation when paths dont just exist\n   - Generate writing paths which may keep original directory structure (depending on user wishes). Ex:\n       Reading: model.osg and images/img1.jpg\n          Writing with    keepRelativePaths: /somePath/newmodel.osg and /somePath/images/img1.jpg\n          Writing without keepRelativePaths: /somePath/newmodel.osg and /somePath/img1.jpg\nAuthor: Sukender\nTODO Handling of naming constraints (such as 8.3 names in 3DS)\n", bp::init< std::string const &, std::string const &, bool, bp::optional< unsigned int > >(( bp::arg("srcDirectory"), bp::arg("destDirectory"), bp::arg("keepRelativePaths"), bp::arg("allowUpDirs")=(unsigned int)(0) ), "\n Builds the helper class with all options.\n@param srcDirectory: Directory of the initial main file (if any), used as a base when relativising objects names. Not used if keepRelativePaths==false.\n@param destDirectory: Directory where to write the main file.\n@param keepRelativePaths: If true, then relative paths of source objects are kept if possible (ex: If an image is initially imageDir/image.jpg relatively to the source dir, then wed like to get destDir/imageDir/image.jpg). If false, then only the simple file name is used to write the object file.\n@param allowUpDirs: When relativising objects paths, sets the maximum number of directories the objects can be written up the destination directory. Not used if keepRelativePaths==false. Examples: If an image is initially ../image.jpg relatively to the source dir *AND* if we allow one dir level up, then wed like to get destDirParent/destDir/../image.jpg (= destDirParent/image.jpg). If we *DO NOT* allow one dir level up, then wed like to get destDir/image.jpg.\n") );
         bp::scope ExternalFileWriter_scope( ExternalFileWriter_exposer );
         bp::class_< osgDB::ExternalFileWriter::ObjectData >( "ObjectData", bp::init< >() )    
             .def( bp::init< std::string const &, std::string const &, bool >(( bp::arg("absolutePath"), bp::arg("relativePath"), bp::arg("written") )) )    
             .def_readwrite( "absolutePath", &osgDB::ExternalFileWriter::ObjectData::absolutePath )    
             .def_readwrite( "relativePath", &osgDB::ExternalFileWriter::ObjectData::relativePath )    
-            .def_readwrite( "written", &osgDB::ExternalFileWriter::ObjectData::written );
-        ExternalFileWriter_exposer.def( bp::init< std::string const & >(( bp::arg("destDirectory") )) );
+            .def_readwrite( "written", &osgDB::ExternalFileWriter::ObjectData::written, "\n Says if write succeded or not.\n" );
+        ExternalFileWriter_exposer.def( bp::init< std::string const & >(( bp::arg("destDirectory") ), "\n Short constructor used when not relativising objects paths, or when having no initial model file (which is pretty the same here).\n") );
         bp::implicitly_convertible< std::string const &, osgDB::ExternalFileWriter >();
         { //::osgDB::ExternalFileWriter::getObjects
         
@@ -32,7 +32,8 @@ void register_ExternalFileWriter_class(){
             ExternalFileWriter_exposer.def( 
                 "getObjects"
                 , getObjects_function_type( &::osgDB::ExternalFileWriter::getObjects )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Returns the written objects.\n" );
         
         }
         { //::osgDB::ExternalFileWriter::write
@@ -42,7 +43,8 @@ void register_ExternalFileWriter_class(){
             ExternalFileWriter_exposer.def( 
                 "write"
                 , write_function_type( &write_450b6356464d3b168ed8fbce635bbd4a )
-                , ( bp::arg("inst"), bp::arg("obj"), bp::arg("options"), bp::arg("out_absolutePath")=0l, bp::arg("out_relativePath")=0l ) );
+                , ( bp::arg("inst"), bp::arg("obj"), bp::arg("options"), bp::arg("out_absolutePath")=0l, bp::arg("out_relativePath")=0l )
+                , " Writes the current object if not already done.\n@param obj: Object to write, using corresponding osgDB::write method.\n@param options: Writing options to pass to corresponding osgDB::write method.\n@param [out]: out_absolutePath Pointer to a string to be filled with absolute writing path, or NULL.\n@param [out]: out_relativePath Pointer to a string to be filled with write path relative to the destination directory if possible (absolute path if not), or NULL.\nReturn: true on success, false otherwise." );
         
         }
     }

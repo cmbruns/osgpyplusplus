@@ -238,12 +238,12 @@ void register_View_class(){
 
     { //::osgViewer::View
         typedef bp::class_< View_wrapper, bp::bases< ::osg::View, ::osgGA::GUIActionAdapter >, osg::ref_ptr< ::osgViewer::View >, boost::noncopyable > View_exposer_t;
-        View_exposer_t View_exposer = View_exposer_t( "View", bp::no_init );
+        View_exposer_t View_exposer = View_exposer_t( "View", "\n View holds a single view on a scene, this view may be composed of one or more slave cameras.\n", bp::no_init );
         bp::scope View_scope( View_exposer );
         bp::class_< osgViewer::View::StereoSlaveCallback, bp::bases< ::osg::View::Slave::UpdateSlaveCallback >, osg::ref_ptr< ::osgViewer::View::StereoSlaveCallback >, boost::noncopyable >( "StereoSlaveCallback", bp::no_init )    
             .def_readwrite( "_ds", &osgViewer::View::StereoSlaveCallback::_ds )    
             .def_readwrite( "_eyeScale", &osgViewer::View::StereoSlaveCallback::_eyeScale );
-        View_exposer.def( bp::init< >() );
+        View_exposer.def( bp::init< >("\n View holds a single view on a scene, this view may be composed of one or more slave cameras.\n") );
         { //::osgViewer::View::addDevice
         
             typedef void ( ::osgViewer::View::*addDevice_function_type )( ::osgGA::Device * ) ;
@@ -251,7 +251,8 @@ void register_View_class(){
             View_exposer.def( 
                 "addDevice"
                 , addDevice_function_type( &::osgViewer::View::addDevice )
-                , ( bp::arg("eventSource") ) );
+                , ( bp::arg("eventSource") )
+                , "\n Add a Device.\n The Device is polled on each new frame via its Device::checkEvents() method and any events generated then collected via Device::getEventQueue()\n" );
         
         }
         { //::osgViewer::View::addEventHandler
@@ -261,7 +262,8 @@ void register_View_class(){
             View_exposer.def( 
                 "addEventHandler"
                 , addEventHandler_function_type( &::osgViewer::View::addEventHandler )
-                , ( bp::arg("eventHandler") ) );
+                , ( bp::arg("eventHandler") )
+                , "\n Add an EventHandler that adds handling of events to the View.\n" );
         
         }
         { //::osgViewer::View::apply
@@ -271,7 +273,8 @@ void register_View_class(){
             View_exposer.def( 
                 "apply"
                 , apply_function_type( &::osgViewer::View::apply )
-                , ( bp::arg("config") ) );
+                , ( bp::arg("config") )
+                , "\n Apply a viewer configuration to set up Cameras and Windowing.\n" );
         
         }
         { //::osgViewer::View::asView
@@ -380,7 +383,8 @@ void register_View_class(){
             
             View_exposer.def( 
                 "computeActiveCoordinateSystemNodePath"
-                , computeActiveCoordinateSystemNodePath_function_type( &::osgViewer::View::computeActiveCoordinateSystemNodePath ) );
+                , computeActiveCoordinateSystemNodePath_function_type( &::osgViewer::View::computeActiveCoordinateSystemNodePath )
+                , "\n Compute the NodePath to any active CoordinateSystemNode present in the Scene.\n" );
         
         }
         { //::osgViewer::View::containsCamera
@@ -390,7 +394,8 @@ void register_View_class(){
             View_exposer.def( 
                 "containsCamera"
                 , containsCamera_function_type( &::osgViewer::View::containsCamera )
-                , ( bp::arg("camera") ) );
+                , ( bp::arg("camera") )
+                , "\n Return true if this view contains a specified camera.\n" );
         
         }
         { //::osgViewer::View::createDistortionTexture
@@ -411,7 +416,8 @@ void register_View_class(){
             View_exposer.def( 
                 "getCameraManipulator"
                 , getCameraManipulator_function_type( &::osgViewer::View::getCameraManipulator )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the Views CameraManipulator.\n" );
         
         }
         { //::osgViewer::View::getCameraManipulator
@@ -421,7 +427,8 @@ void register_View_class(){
             View_exposer.def( 
                 "getCameraManipulator"
                 , getCameraManipulator_function_type( &::osgViewer::View::getCameraManipulator )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the const Views CameraManipulator.\n" );
         
         }
         { //::osgViewer::View::getCoordinateSystemNodePath
@@ -430,7 +437,8 @@ void register_View_class(){
             
             View_exposer.def( 
                 "getCoordinateSystemNodePath"
-                , getCoordinateSystemNodePath_function_type( &::osgViewer::View::getCoordinateSystemNodePath ) );
+                , getCoordinateSystemNodePath_function_type( &::osgViewer::View::getCoordinateSystemNodePath )
+                , "\n Get the NodePath to any active CoordinateSystemNode present in the Scene.\n" );
         
         }
         { //::osgViewer::View::getDatabasePager
@@ -440,7 +448,8 @@ void register_View_class(){
             View_exposer.def( 
                 "getDatabasePager"
                 , getDatabasePager_function_type( &::osgViewer::View::getDatabasePager )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the Views database pager.\n" );
         
         }
         { //::osgViewer::View::getDatabasePager
@@ -450,7 +459,8 @@ void register_View_class(){
             View_exposer.def( 
                 "getDatabasePager"
                 , getDatabasePager_function_type( &::osgViewer::View::getDatabasePager )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the const Views database pager.\n" );
         
         }
         { //::osgViewer::View::getDevices
@@ -480,7 +490,8 @@ void register_View_class(){
             View_exposer.def( 
                 "getDisplaySettings"
                 , getDisplaySettings_function_type( &::osgViewer::View::getDisplaySettings )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Set the DisplaySettings object associated with this view.\n" );
         
         }
         { //::osgViewer::View::getDisplaySettings
@@ -490,7 +501,8 @@ void register_View_class(){
             View_exposer.def( 
                 "getDisplaySettings"
                 , getDisplaySettings_function_type( &::osgViewer::View::getDisplaySettings )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Set the DisplaySettings object associated with this view.\n" );
         
         }
         { //::osgViewer::View::getEventHandlers
@@ -500,7 +512,8 @@ void register_View_class(){
             View_exposer.def( 
                 "getEventHandlers"
                 , getEventHandlers_function_type( &::osgViewer::View::getEventHandlers )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the Views list of EventHandlers.\n" );
         
         }
         { //::osgViewer::View::getEventHandlers
@@ -510,7 +523,8 @@ void register_View_class(){
             View_exposer.def( 
                 "getEventHandlers"
                 , getEventHandlers_function_type( &::osgViewer::View::getEventHandlers )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the const Views list of EventHandlers.\n" );
         
         }
         { //::osgViewer::View::getEventQueue
@@ -539,7 +553,8 @@ void register_View_class(){
             
             View_exposer.def( 
                 "getFusionDistanceMode"
-                , getFusionDistanceMode_function_type( &::osgViewer::View::getFusionDistanceMode ) );
+                , getFusionDistanceMode_function_type( &::osgViewer::View::getFusionDistanceMode )
+                , "\n Get the FusionDistanceMode.\n" );
         
         }
         { //::osgViewer::View::getFusionDistanceValue
@@ -548,7 +563,8 @@ void register_View_class(){
             
             View_exposer.def( 
                 "getFusionDistanceValue"
-                , getFusionDistanceValue_function_type( &::osgViewer::View::getFusionDistanceValue ) );
+                , getFusionDistanceValue_function_type( &::osgViewer::View::getFusionDistanceValue )
+                , "\n Get the FusionDistanceValue. Note, only used for USE_FUSION_DISTANCE_VALUE & PROPORTIONAL_TO_SCREEN_DISTANCE modes.\n" );
         
         }
         { //::osgViewer::View::getImagePager
@@ -558,7 +574,8 @@ void register_View_class(){
             View_exposer.def( 
                 "getImagePager"
                 , getImagePager_function_type( &::osgViewer::View::getImagePager )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the Views image pager.\n" );
         
         }
         { //::osgViewer::View::getImagePager
@@ -568,7 +585,8 @@ void register_View_class(){
             View_exposer.def( 
                 "getImagePager"
                 , getImagePager_function_type( &::osgViewer::View::getImagePager )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the const Views image pager.\n" );
         
         }
         { //::osgViewer::View::getLastAppliedViewConfig
@@ -618,7 +636,8 @@ void register_View_class(){
             View_exposer.def( 
                 "getSceneData"
                 , getSceneData_function_type( &::osgViewer::View::getSceneData )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the Views scene graph.\n" );
         
         }
         { //::osgViewer::View::getSceneData
@@ -628,7 +647,8 @@ void register_View_class(){
             View_exposer.def( 
                 "getSceneData"
                 , getSceneData_function_type( &::osgViewer::View::getSceneData )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Get the const Views scene graph.\n" );
         
         }
         { //::osgViewer::View::getStartTick
@@ -647,7 +667,8 @@ void register_View_class(){
             View_exposer.def( 
                 "getViewerBase"
                 , getViewerBase_function_type( &::osgViewer::View::getViewerBase )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Provide a mechanism for getting the viewer object from this osgViewer::View.\n In the case of a osgViewer::Viewer the ViewerBase will effectively point to this object as Viewer subclasses from View.\n In the case of a osgViewer::CompsoiteViewer the ViewerBase will point to the CompositeViewer that owns this View.\n" );
         
         }
         { //::osgViewer::View::home
@@ -656,7 +677,8 @@ void register_View_class(){
             
             View_exposer.def( 
                 "home"
-                , home_function_type( &::osgViewer::View::home ) );
+                , home_function_type( &::osgViewer::View::home )
+                , "\n Set the view to the CameraManipulators home position, if none is attached home() it does nothing.\n Note, to set the home position use getCamaraManipulator()->setHomePosition(...).\n" );
         
         }
         { //::osgViewer::View::init
@@ -698,7 +720,8 @@ void register_View_class(){
             View_exposer.def( 
                 "removeDevice"
                 , removeDevice_function_type( &::osgViewer::View::removeDevice )
-                , ( bp::arg("eventSource") ) );
+                , ( bp::arg("eventSource") )
+                , "\n Remove a Device.\n" );
         
         }
         { //::osgViewer::View::removeEventHandler
@@ -708,7 +731,8 @@ void register_View_class(){
             View_exposer.def( 
                 "removeEventHandler"
                 , removeEventHandler_function_type( &::osgViewer::View::removeEventHandler )
-                , ( bp::arg("eventHandler") ) );
+                , ( bp::arg("eventHandler") )
+                , "\n Remove an EventHandler from View.\n" );
         
         }
         { //::osgViewer::View::requestContinuousUpdate
@@ -754,7 +778,8 @@ void register_View_class(){
                 "setCameraManipulator"
                 , setCameraManipulator_function_type( &::osgViewer::View::setCameraManipulator )
                 , ( bp::arg("manipulator"), bp::arg("resetPosition")=(bool)(true) )
-                , bp::with_custodian_and_ward< 1, 2 >() );
+                , bp::with_custodian_and_ward< 1, 2 >()
+                , "\n Set the CameraManipulator that moves the Views master Camera position in response to events.\n The parameter resetPosition determines whether manipulator is set to its home position.\n" );
         
         }
         { //::osgViewer::View::setCoordinateSystemNodePath
@@ -764,7 +789,8 @@ void register_View_class(){
             View_exposer.def( 
                 "setCoordinateSystemNodePath"
                 , setCoordinateSystemNodePath_function_type( &::osgViewer::View::setCoordinateSystemNodePath )
-                , ( bp::arg("nodePath") ) );
+                , ( bp::arg("nodePath") )
+                , "\n Set the NodePath to any active CoordinateSystemNode present in the Scene.\n The CoordinateSystemNode path is used to help applications and CamaraManipulators handle geocentric coordinates systems,\n so that the local up direction is known at any position on the whole earth.\n" );
         
         }
         { //::osgViewer::View::setDatabasePager
@@ -774,7 +800,8 @@ void register_View_class(){
             View_exposer.def( 
                 "setDatabasePager"
                 , setDatabasePager_function_type( &::osgViewer::View::setDatabasePager )
-                , ( bp::arg("dp") ) );
+                , ( bp::arg("dp") )
+                , "\n Set the Views database pager.\n" );
         
         }
         { //::osgViewer::View::setDisplaySettings
@@ -784,7 +811,8 @@ void register_View_class(){
             View_exposer.def( 
                 "setDisplaySettings"
                 , setDisplaySettings_function_type( &::osgViewer::View::setDisplaySettings )
-                , ( bp::arg("ds") ) );
+                , ( bp::arg("ds") )
+                , "\n Set the DisplaySettings object associated with this view.\n" );
         
         }
         { //::osgViewer::View::setEventQueue
@@ -804,7 +832,8 @@ void register_View_class(){
             View_exposer.def( 
                 "setFusionDistance"
                 , setFusionDistance_function_type( &::osgViewer::View::setFusionDistance )
-                , ( bp::arg("mode"), bp::arg("value")=1.0e+0f ) );
+                , ( bp::arg("mode"), bp::arg("value")=1.0e+0f )
+                , "\n Set the FusionDistanceMode and Value. Note, only used when working in stereo.\n" );
         
         }
         { //::osgViewer::View::setImagePager
@@ -814,7 +843,8 @@ void register_View_class(){
             View_exposer.def( 
                 "setImagePager"
                 , setImagePager_function_type( &::osgViewer::View::setImagePager )
-                , ( bp::arg("ip") ) );
+                , ( bp::arg("ip") )
+                , "\n Set the Views image pager.\n" );
         
         }
         { //::osgViewer::View::setSceneData
@@ -848,7 +878,8 @@ void register_View_class(){
             View_exposer.def( 
                 "setUpDepthPartition"
                 , setUpDepthPartition_function_type( &::osgViewer::View::setUpDepthPartition )
-                , ( bp::arg("dsp")=bp::object() ) );
+                , ( bp::arg("dsp")=bp::object() )
+                , "\n Convenience method for setting up multiple slave cameras with depth partitioning on each of the views active cameras.\n" );
         
         }
         { //::osgViewer::View::setUpDepthPartitionForCamera
@@ -858,7 +889,8 @@ void register_View_class(){
             View_exposer.def( 
                 "setUpDepthPartitionForCamera"
                 , setUpDepthPartitionForCamera_function_type( &::osgViewer::View::setUpDepthPartitionForCamera )
-                , ( bp::arg("cameraToPartition"), bp::arg("dps")=bp::object() ) );
+                , ( bp::arg("cameraToPartition"), bp::arg("dps")=bp::object() )
+                , "\n Convenience method for setting up depth partitioning on the specified camera.\n" );
         
         }
         { //::osgViewer::View::setUpViewAcrossAllScreens
@@ -867,7 +899,8 @@ void register_View_class(){
             
             View_exposer.def( 
                 "setUpViewAcrossAllScreens"
-                , setUpViewAcrossAllScreens_function_type( &::osgViewer::View::setUpViewAcrossAllScreens ) );
+                , setUpViewAcrossAllScreens_function_type( &::osgViewer::View::setUpViewAcrossAllScreens )
+                , "\n deprecated, use view.apply(new osgViewer::AcrossAllWindows()).\n" );
         
         }
         { //::osgViewer::View::setUpViewFor3DSphericalDisplay
@@ -877,7 +910,8 @@ void register_View_class(){
             View_exposer.def( 
                 "setUpViewFor3DSphericalDisplay"
                 , setUpViewFor3DSphericalDisplay_function_type( &::osgViewer::View::setUpViewFor3DSphericalDisplay )
-                , ( bp::arg("radius")=1.0e+0, bp::arg("collar")=4.50000000000000011102230246251565404236316680908203125e-1, bp::arg("screenNum")=(unsigned int)(0), bp::arg("intensityMap")=bp::object(), bp::arg("projectorMatrix")=osg::Matrixd() ) );
+                , ( bp::arg("radius")=1.0e+0, bp::arg("collar")=4.50000000000000011102230246251565404236316680908203125e-1, bp::arg("screenNum")=(unsigned int)(0), bp::arg("intensityMap")=bp::object(), bp::arg("projectorMatrix")=osg::Matrixd() )
+                , "\n deprecated, use view.apply(new osgViewer::SphericalDisplay(radius, collar, screenNum, intensityMap, projectorMatrix)).\n" );
         
         }
         { //::osgViewer::View::setUpViewForPanoramicSphericalDisplay
@@ -887,7 +921,8 @@ void register_View_class(){
             View_exposer.def( 
                 "setUpViewForPanoramicSphericalDisplay"
                 , setUpViewForPanoramicSphericalDisplay_function_type( &::osgViewer::View::setUpViewForPanoramicSphericalDisplay )
-                , ( bp::arg("radius")=1.0e+0, bp::arg("collar")=4.50000000000000011102230246251565404236316680908203125e-1, bp::arg("screenNum")=(unsigned int)(0), bp::arg("intensityMap")=bp::object(), bp::arg("projectorMatrix")=osg::Matrixd() ) );
+                , ( bp::arg("radius")=1.0e+0, bp::arg("collar")=4.50000000000000011102230246251565404236316680908203125e-1, bp::arg("screenNum")=(unsigned int)(0), bp::arg("intensityMap")=bp::object(), bp::arg("projectorMatrix")=osg::Matrixd() )
+                , "\n depreacted, use view.apply(new osgViewer::PanoramicSphericalDisplay(radius, collar, screenNum, intensityMap, projectorMatrix)).\n" );
         
         }
         { //::osgViewer::View::setUpViewForWoWVxDisplay
@@ -897,7 +932,8 @@ void register_View_class(){
             View_exposer.def( 
                 "setUpViewForWoWVxDisplay"
                 , setUpViewForWoWVxDisplay_function_type( &::osgViewer::View::setUpViewForWoWVxDisplay )
-                , ( bp::arg("screenNum"), bp::arg("wow_content"), bp::arg("wow_factor"), bp::arg("wow_offset"), bp::arg("wow_disparity_Zd"), bp::arg("wow_disparity_vz"), bp::arg("wow_disparity_M"), bp::arg("wow_disparity_C") ) );
+                , ( bp::arg("screenNum"), bp::arg("wow_content"), bp::arg("wow_factor"), bp::arg("wow_offset"), bp::arg("wow_disparity_Zd"), bp::arg("wow_disparity_vz"), bp::arg("wow_disparity_M"), bp::arg("wow_disparity_C") )
+                , "\n deprecated. use view.apply(new osgViewer::WoWVxDisplay(type (20 to 42), screenNum).\n" );
         
         }
         { //::osgViewer::View::setUpViewInWindow
@@ -907,7 +943,8 @@ void register_View_class(){
             View_exposer.def( 
                 "setUpViewInWindow"
                 , setUpViewInWindow_function_type( &::osgViewer::View::setUpViewInWindow )
-                , ( bp::arg("x"), bp::arg("y"), bp::arg("width"), bp::arg("height"), bp::arg("screenNum")=(unsigned int)(0) ) );
+                , ( bp::arg("x"), bp::arg("y"), bp::arg("width"), bp::arg("height"), bp::arg("screenNum")=(unsigned int)(0) )
+                , "\n depreacted, use view.apply(new osgViewer::SingleWindow(x,y,width,screenNum)).\n" );
         
         }
         { //::osgViewer::View::setUpViewOnSingleScreen
@@ -917,7 +954,8 @@ void register_View_class(){
             View_exposer.def( 
                 "setUpViewOnSingleScreen"
                 , setUpViewOnSingleScreen_function_type( &::osgViewer::View::setUpViewOnSingleScreen )
-                , ( bp::arg("screenNum")=(unsigned int)(0) ) );
+                , ( bp::arg("screenNum")=(unsigned int)(0) )
+                , "\n deprecated, use view.apply(new osgViewer::SingleScreen(screenNum)).\n" );
         
         }
         { //::osgViewer::View::take

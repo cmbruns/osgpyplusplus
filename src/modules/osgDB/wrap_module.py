@@ -160,11 +160,8 @@ class OsgDBWrapper(BaseWrapper):
         cls.no_init = False # Important! So derived class can call parent constructor
         cls.held_type = 'osg::ref_ptr< %s >' % cls.wrapper_alias # Important! So overridden method gets called
         
-        
-        self.mb.build_code_creator(module_name='_osgDB')
-        self.mb.split_module(os.path.join(os.path.abspath('.'), 'generated_code'))
-        # Create a file to indicate completion of wrapping script
-        open(os.path.join(os.path.abspath('.'), 'generated_code', 'generate_module.stamp'), "w").close()
+        # Write results
+        self.generate_module_code("_osgDB")
     
     def wrap_databasepager(self):
         databasepager = self.mb.class_("DatabasePager")

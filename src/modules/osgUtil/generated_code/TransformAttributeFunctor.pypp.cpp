@@ -208,7 +208,7 @@ void register_TransformAttributeFunctor_class(){
 
     { //::osgUtil::TransformAttributeFunctor
         typedef bp::class_< TransformAttributeFunctor_wrapper, bp::bases< ::osg::Drawable::AttributeFunctor > > TransformAttributeFunctor_exposer_t;
-        TransformAttributeFunctor_exposer_t TransformAttributeFunctor_exposer = TransformAttributeFunctor_exposer_t( "TransformAttributeFunctor", bp::init< osg::Matrix const & >(( bp::arg("m") )) );
+        TransformAttributeFunctor_exposer_t TransformAttributeFunctor_exposer = TransformAttributeFunctor_exposer_t( "TransformAttributeFunctor", "\n Functor for transforming a drawables vertex and normal attributes by specified matrix.\n typically used for flattening transform down onto drawable leaves.\n", bp::init< osg::Matrix const & >(( bp::arg("m") ), "\n Construct a functor to transform a drawables vertex and normal attributes by specified matrix.\n") );
         bp::scope TransformAttributeFunctor_scope( TransformAttributeFunctor_exposer );
         bp::implicitly_convertible< osg::Matrix const &, osgUtil::TransformAttributeFunctor >();
         { //::osgUtil::TransformAttributeFunctor::apply

@@ -176,7 +176,7 @@ struct ToggleSyncToVBlankHandler_wrapper : osgViewer::ToggleSyncToVBlankHandler,
 
 void register_ToggleSyncToVBlankHandler_class(){
 
-    bp::class_< ToggleSyncToVBlankHandler_wrapper, bp::bases< ::osgGA::GUIEventHandler >, osg::ref_ptr< ToggleSyncToVBlankHandler_wrapper >, boost::noncopyable >( "ToggleSyncToVBlankHandler", bp::init< >() )    
+    bp::class_< ToggleSyncToVBlankHandler_wrapper, bp::bases< ::osgGA::GUIEventHandler >, osg::ref_ptr< ToggleSyncToVBlankHandler_wrapper >, boost::noncopyable >( "ToggleSyncToVBlankHandler", "\n Event handler for toggling SyncToVBlank.\n", bp::init< >("\n Event handler for toggling SyncToVBlank.\n") )    
         .def( 
             "getKeyEventToggleSyncToVBlankHandler"
             , (int ( ::osgViewer::ToggleSyncToVBlankHandler::* )(  ) const)( &::osgViewer::ToggleSyncToVBlankHandler::getKeyEventToggleSyncToVBlankHandler ) )    

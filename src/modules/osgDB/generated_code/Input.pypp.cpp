@@ -146,7 +146,7 @@ struct Input_wrapper : osgDB::Input, bp::wrapper< osgDB::Input > {
 
 void register_Input_class(){
 
-    bp::class_< Input_wrapper, bp::bases< osgDB::FieldReaderIterator > >( "Input", bp::init< >() )    
+    bp::class_< Input_wrapper, bp::bases< osgDB::FieldReaderIterator > >( "Input", "\n deprecated.\n", bp::init< >("\n deprecated.\n") )    
         .def( 
             "getOptions"
             , (::osgDB::Options const * ( ::osgDB::Input::* )(  ) const)( &::osgDB::Input::getOptions )

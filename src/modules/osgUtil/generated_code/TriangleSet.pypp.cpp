@@ -13,7 +13,7 @@ void register_TriangleSet_class(){
 
     { //::std::set< osg::ref_ptr<osgUtil::EdgeCollector::Triangle> >
         typedef bp::class_< std::set< osg::ref_ptr<osgUtil::EdgeCollector::Triangle> > > TriangleSet_exposer_t;
-        TriangleSet_exposer_t TriangleSet_exposer = TriangleSet_exposer_t( "TriangleSet" );
+        TriangleSet_exposer_t TriangleSet_exposer = TriangleSet_exposer_t( "TriangleSet", "\n  A standard container made up of unique keys, which can be\n  retrieved in logarithmic time.\n\n  fngroup associative_containers\n\n  Tparam: _Key  Type of key objects.\n  Tparam: _Compare  Comparison function object type, defaults to less<_Key>.\n  Tparam: _Alloc  Allocator type, defaults to allocator<_Key>.\n\n  Meets the requirements of a <a href=tables.html#65>container</a>, a\n  <a href=tables.html#66>reversible container</a>, and an\n  <a href=tables.html#69>associative container</a> (using unique keys).\n\n  Sets support bidirectional iterators.\n\n  The private tree data is declared exactly the same way for set and\n  multiset; the distinction is made entirely in how the tree functions are\n  called (*_unique versus *_equal, same as the standard).\n" );
         bp::scope TriangleSet_scope( TriangleSet_exposer );
         TriangleSet_exposer.def( bp::indexing::set_suite< std::set< osg::ref_ptr<osgUtil::EdgeCollector::Triangle> > >() );
     }

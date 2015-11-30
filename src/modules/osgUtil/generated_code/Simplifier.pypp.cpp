@@ -417,7 +417,7 @@ void register_Simplifier_class(){
 
     { //::osgUtil::Simplifier
         typedef bp::class_< Simplifier_wrapper, bp::bases< ::osg::NodeVisitor >, osg::ref_ptr< Simplifier_wrapper >, boost::noncopyable > Simplifier_exposer_t;
-        Simplifier_exposer_t Simplifier_exposer = Simplifier_exposer_t( "Simplifier", bp::init< bp::optional< double, double, double > >(( bp::arg("sampleRatio")=1.0e+0, bp::arg("maximumError")=3.4028234663852885981170418348451692544e+38f, bp::arg("maximumLength")=0.0 )) );
+        Simplifier_exposer_t Simplifier_exposer = Simplifier_exposer_t( "Simplifier", "\n A simplifier for reducing the number of traingles in osg::Geometry.\n", bp::init< bp::optional< double, double, double > >(( bp::arg("sampleRatio")=1.0e+0, bp::arg("maximumError")=3.4028234663852885981170418348451692544e+38f, bp::arg("maximumLength")=0.0 ), "\n A simplifier for reducing the number of traingles in osg::Geometry.\n") );
         bp::scope Simplifier_scope( Simplifier_exposer );
         bp::class_< Simplifier_wrapper::ContinueSimplificationCallback_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< Simplifier_wrapper::ContinueSimplificationCallback_wrapper >, boost::noncopyable >( "ContinueSimplificationCallback", bp::no_init )    
             .def( 
@@ -574,7 +574,8 @@ void register_Simplifier_class(){
             Simplifier_exposer.def( 
                 "setMaximumError"
                 , setMaximumError_function_type( &::osgUtil::Simplifier::setMaximumError )
-                , ( bp::arg("error") ) );
+                , ( bp::arg("error") )
+                , " Set the maximum point error that all point removals must be less than to permit removal of a point.\n Note, Only used when down sampling. i.e. sampleRatio < 1.0" );
         
         }
         { //::osgUtil::Simplifier::setMaximumLength
@@ -584,7 +585,8 @@ void register_Simplifier_class(){
             Simplifier_exposer.def( 
                 "setMaximumLength"
                 , setMaximumLength_function_type( &::osgUtil::Simplifier::setMaximumLength )
-                , ( bp::arg("length") ) );
+                , ( bp::arg("length") )
+                , " Set the maximum length target that all edges must be shorted than.\n Note, Only used when up sampling i.e. sampleRatio > 1.0." );
         
         }
         { //::osgUtil::Simplifier::setSampleRatio
@@ -614,7 +616,8 @@ void register_Simplifier_class(){
             Simplifier_exposer.def( 
                 "simplify"
                 , simplify_function_type( &::osgUtil::Simplifier::simplify )
-                , ( bp::arg("geometry") ) );
+                , ( bp::arg("geometry") )
+                , " simply the geometry." );
         
         }
         { //::osgUtil::Simplifier::simplify
@@ -624,7 +627,8 @@ void register_Simplifier_class(){
             Simplifier_exposer.def( 
                 "simplify"
                 , simplify_function_type( &::osgUtil::Simplifier::simplify )
-                , ( bp::arg("geometry"), bp::arg("protectedPoints") ) );
+                , ( bp::arg("geometry"), bp::arg("protectedPoints") )
+                , " simply the geometry, whilst protecting key points from being modified." );
         
         }
     }

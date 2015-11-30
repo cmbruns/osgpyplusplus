@@ -73,7 +73,7 @@ void register_Intersector_class(){
 
     { //::osgUtil::Intersector
         typedef bp::class_< Intersector_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< Intersector_wrapper >, boost::noncopyable > Intersector_exposer_t;
-        Intersector_exposer_t Intersector_exposer = Intersector_exposer_t( "Intersector", bp::no_init );
+        Intersector_exposer_t Intersector_exposer = Intersector_exposer_t( "Intersector", "\n Pure virtual base class for implementing custom intersection technique.\n To implement a specific intersection technique on must override all\n the pure virtue methods, concrete examples of how to do this can be seen in\n the LineSegmentIntersector.\n", bp::no_init );
         bp::scope Intersector_scope( Intersector_exposer );
         bp::enum_< osgUtil::Intersector::CoordinateFrame>("CoordinateFrame")
             .value("WINDOW", osgUtil::Intersector::WINDOW)

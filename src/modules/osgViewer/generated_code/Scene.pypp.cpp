@@ -25,7 +25,7 @@ struct Scene_wrapper : osgViewer::Scene, bp::wrapper< osgViewer::Scene > {
 
 void register_Scene_class(){
 
-    bp::class_< Scene_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< Scene_wrapper >, boost::noncopyable >( "Scene", bp::no_init )    
+    bp::class_< Scene_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< Scene_wrapper >, boost::noncopyable >( "Scene", "\n Scene holds the higher level reference to a single scene graph.\n", bp::no_init )    
         .def( 
             "className"
             , (char const * ( ::osgViewer::Scene::* )(  ) const)(&::osgViewer::Scene::className)
@@ -50,7 +50,8 @@ void register_Scene_class(){
             "getScene"
             , (::osgViewer::Scene * (*)( ::osg::Node * ))( &::osgViewer::Scene::getScene )
             , ( bp::arg("node") )
-            , bp::return_internal_reference< >() )    
+            , bp::return_internal_reference< >()
+            , " Get the Scene object that has the specified node assigned to it.\n return 0 if no Scene has yet been assigned the specified node." )    
         .def( 
             "getSceneData"
             , (::osg::Node * ( ::osgViewer::Scene::* )(  ) )( &::osgViewer::Scene::getSceneData )

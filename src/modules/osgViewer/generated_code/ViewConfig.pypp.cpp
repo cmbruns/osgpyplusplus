@@ -176,7 +176,7 @@ struct ViewConfig_wrapper : osgViewer::ViewConfig, bp::wrapper< osgViewer::ViewC
 
 void register_ViewConfig_class(){
 
-    bp::class_< ViewConfig_wrapper, bp::bases< ::osg::Object >, osg::ref_ptr< ViewConfig_wrapper >, boost::noncopyable >( "ViewConfig", bp::init< >() )    
+    bp::class_< ViewConfig_wrapper, bp::bases< ::osg::Object >, osg::ref_ptr< ViewConfig_wrapper >, boost::noncopyable >( "ViewConfig", "\n Base class for View configurations for setting up Camera and Windowing.\n", bp::init< >("\n Base class for View configurations for setting up Camera and Windowing.\n") )    
         .def( 
             "className"
             , (char const * ( ::osgViewer::ViewConfig::* )(  ) const)(&::osgViewer::ViewConfig::className)

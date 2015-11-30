@@ -362,7 +362,8 @@ void register_Keystone_class(){
             Keystone_exposer.def( 
                 "loadKeystoneFiles"
                 , loadKeystoneFiles_function_type( &::osgViewer::Keystone::loadKeystoneFiles )
-                , ( bp::arg("ds") ) );
+                , ( bp::arg("ds") )
+                , " convinience function that loads and assigns any keystone files specified in the DisplaySettings::KeystoneFileNames list, return true if Keystones assigned to DisplaySettings." );
         
         }
         { //::osgViewer::Keystone::reset
@@ -440,7 +441,8 @@ void register_Keystone_class(){
             
             Keystone_exposer.def( 
                 "writeToFile"
-                , writeToFile_function_type( &::osgViewer::Keystone::writeToFile ) );
+                , writeToFile_function_type( &::osgViewer::Keystone::writeToFile )
+                , " Write the file specified by the filename user value field. Return true if file successfully written." );
         
         }
         Keystone_exposer.staticmethod( "loadKeystoneFiles" );

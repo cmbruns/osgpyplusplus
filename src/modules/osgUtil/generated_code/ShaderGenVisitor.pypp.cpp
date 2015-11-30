@@ -455,7 +455,8 @@ void register_ShaderGenVisitor_class(){
             ShaderGenVisitor_exposer.def( 
                 "setRootStateSet"
                 , setRootStateSet_function_type( &::osgUtil::ShaderGenVisitor::setRootStateSet )
-                , ( bp::arg("stateSet") ) );
+                , ( bp::arg("stateSet") )
+                , "\n Top level state set applied as the first one.\n" );
         
         }
         { //::osgUtil::ShaderGenVisitor::setStateCache

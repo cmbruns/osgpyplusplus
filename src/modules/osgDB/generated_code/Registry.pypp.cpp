@@ -105,7 +105,7 @@ void register_Registry_class(){
 
     { //::osgDB::Registry
         typedef bp::class_< Registry_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< Registry_wrapper >, boost::noncopyable > Registry_exposer_t;
-        Registry_exposer_t Registry_exposer = Registry_exposer_t( "Registry", bp::no_init );
+        Registry_exposer_t Registry_exposer = Registry_exposer_t( "Registry", "\n    Registry is a singleton factory which stores\n    the reader/writers which are linked in\n    at runtime for reading non-native file formats.\n\n    The RegisterReaderWriterProxy can be used to automatically\n    register at runtime a reader/writer with the Registry.\n", bp::no_init );
         bp::scope Registry_scope( Registry_exposer );
         bp::enum_< osgDB::Registry::LoadStatus>("LoadStatus")
             .value("NOT_LOADED", osgDB::Registry::NOT_LOADED)
@@ -113,7 +113,7 @@ void register_Registry_class(){
             .value("LOADED", osgDB::Registry::LOADED)
             .export_values()
             ;
-        bp::class_< Registry_wrapper::ReadFunctor_wrapper, boost::noncopyable >( "ReadFunctor", bp::init< std::string const &, osgDB::Options const * >(( bp::arg("filename"), bp::arg("options") )) )    
+        bp::class_< Registry_wrapper::ReadFunctor_wrapper, boost::noncopyable >( "ReadFunctor", "\n Functor used in internal implementations.\n", bp::init< std::string const &, osgDB::Options const * >(( bp::arg("filename"), bp::arg("options") ), "\n Functor used in internal implementations.\n") )    
             .def( 
                 "cloneType"
                 , bp::pure_virtual( (::osgDB::Registry::ReadFunctor * ( ::osgDB::Registry::ReadFunctor::* )( ::std::string const &,::osgDB::Options const * ) const)(&::osgDB::Registry::ReadFunctor::cloneType) )
@@ -122,7 +122,8 @@ void register_Registry_class(){
             .def( 
                 "doRead"
                 , bp::pure_virtual( (::osgDB::ReaderWriter::ReadResult ( ::osgDB::Registry::ReadFunctor::* )( ::osgDB::ReaderWriter & ) const)(&::osgDB::Registry::ReadFunctor::doRead) )
-                , ( bp::arg("rw") ) )    
+                , ( bp::arg("rw") )
+                , "\n Functor used in internal implementations.\n" )    
             .def( 
                 "isValid"
                 , bp::pure_virtual( (bool ( ::osgDB::Registry::ReadFunctor::* )( ::osgDB::ReaderWriter::ReadResult & ) const)(&::osgDB::Registry::ReadFunctor::isValid) )
@@ -152,7 +153,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "addArchiveExtension"
                 , addArchiveExtension_function_type( &::osgDB::Registry::addArchiveExtension )
-                , ( bp::arg("ext") ) );
+                , ( bp::arg("ext") )
+                , " Add an Archive extension." );
         
         }
         { //::osgDB::Registry::addEntryToObjectCache
@@ -162,7 +164,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "addEntryToObjectCache"
                 , addEntryToObjectCache_function_type( &::osgDB::Registry::addEntryToObjectCache )
-                , ( bp::arg("filename"), bp::arg("object"), bp::arg("timestamp")=0.0 ) );
+                , ( bp::arg("filename"), bp::arg("object"), bp::arg("timestamp")=0.0 )
+                , " Add a filename,object,timestamp triple to the Registry::ObjectCache." );
         
         }
         { //::osgDB::Registry::addFileExtensionAlias
@@ -172,7 +175,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "addFileExtensionAlias"
                 , addFileExtensionAlias_function_type( &::osgDB::Registry::addFileExtensionAlias )
-                , ( bp::arg("mapExt"), bp::arg("toExt") ) );
+                , ( bp::arg("mapExt"), bp::arg("toExt") )
+                , " register an .fileextension alias to mapExt toExt, the later\n should the the extension name of the readerwriter plugin library.\n For example to map .tif files to the tiff loader, use\n addExtAlias(tif,tiff) which will enable .tif to be read\n by the libdb_tiff readerwriter plugin." );
         
         }
         { //::osgDB::Registry::addImageProcessor
@@ -192,7 +196,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "addMimeTypeExtensionMapping"
                 , addMimeTypeExtensionMapping_function_type( &::osgDB::Registry::addMimeTypeExtensionMapping )
-                , ( bp::arg("fromMimeType"), bp::arg("toExt") ) );
+                , ( bp::arg("fromMimeType"), bp::arg("toExt") )
+                , " Registers a mapping of a mime-type to an extension. A process fetching data\n over HTTP can use this facility to determine the proper ReaderWriter to use\n when there is no filename extension to rely upon." );
         
         }
         { //::osgDB::Registry::addReaderWriter
@@ -212,7 +217,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "addToArchiveCache"
                 , addToArchiveCache_function_type( &::osgDB::Registry::addToArchiveCache )
-                , ( bp::arg("fileName"), bp::arg("archive") ) );
+                , ( bp::arg("fileName"), bp::arg("archive") )
+                , " Add archive to archive cache so that future calls reference this archive." );
         
         }
         { //::osgDB::Registry::clearArchiveCache
@@ -221,7 +227,8 @@ void register_Registry_class(){
             
             Registry_exposer.def( 
                 "clearArchiveCache"
-                , clearArchiveCache_function_type( &::osgDB::Registry::clearArchiveCache ) );
+                , clearArchiveCache_function_type( &::osgDB::Registry::clearArchiveCache )
+                , " Remove all archives from the archive cache." );
         
         }
         { //::osgDB::Registry::clearObjectCache
@@ -230,7 +237,8 @@ void register_Registry_class(){
             
             Registry_exposer.def( 
                 "clearObjectCache"
-                , clearObjectCache_function_type( &::osgDB::Registry::clearObjectCache ) );
+                , clearObjectCache_function_type( &::osgDB::Registry::clearObjectCache )
+                , " Remove all objects in the cache regardless of having external references or expiry times." );
         
         }
         { //::osgDB::Registry::closeAllLibraries
@@ -239,7 +247,8 @@ void register_Registry_class(){
             
             Registry_exposer.def( 
                 "closeAllLibraries"
-                , closeAllLibraries_function_type( &::osgDB::Registry::closeAllLibraries ) );
+                , closeAllLibraries_function_type( &::osgDB::Registry::closeAllLibraries )
+                , " close all libraries." );
         
         }
         { //::osgDB::Registry::closeLibrary
@@ -249,7 +258,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "closeLibrary"
                 , closeLibrary_function_type( &::osgDB::Registry::closeLibrary )
-                , ( bp::arg("fileName") ) );
+                , ( bp::arg("fileName") )
+                , " close the attached library with specified name." );
         
         }
         { //::osgDB::Registry::createLibraryNameForExtension
@@ -259,7 +269,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "createLibraryNameForExtension"
                 , createLibraryNameForExtension_function_type( &::osgDB::Registry::createLibraryNameForExtension )
-                , ( bp::arg("ext") ) );
+                , ( bp::arg("ext") )
+                , " create the platform specific library name associated with file extension." );
         
         }
         { //::osgDB::Registry::createLibraryNameForFile
@@ -269,7 +280,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "createLibraryNameForFile"
                 , createLibraryNameForFile_function_type( &::osgDB::Registry::createLibraryNameForFile )
-                , ( bp::arg("fileName") ) );
+                , ( bp::arg("fileName") )
+                , " create the platform specific library name associated with file." );
         
         }
         { //::osgDB::Registry::createLibraryNameForNodeKit
@@ -279,7 +291,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "createLibraryNameForNodeKit"
                 , createLibraryNameForNodeKit_function_type( &::osgDB::Registry::createLibraryNameForNodeKit )
-                , ( bp::arg("name") ) );
+                , ( bp::arg("name") )
+                , " create the platform specific library name associated with nodekit library name." );
         
         }
         { //::osgDB::Registry::findDataFile
@@ -339,7 +352,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getAuthenticationMap"
                 , getAuthenticationMap_function_type( &::osgDB::Registry::getAuthenticationMap )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the password map to be used by plugins when access files from secure locations." );
         
         }
         { //::osgDB::Registry::getAuthenticationMap
@@ -349,7 +363,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getAuthenticationMap"
                 , getAuthenticationMap_function_type( &::osgDB::Registry::getAuthenticationMap )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the password map to be used by plugins when access files from secure locations." );
         
         }
         { //::osgDB::Registry::getBuildKdTreesHint
@@ -358,7 +373,8 @@ void register_Registry_class(){
             
             Registry_exposer.def( 
                 "getBuildKdTreesHint"
-                , getBuildKdTreesHint_function_type( &::osgDB::Registry::getBuildKdTreesHint ) );
+                , getBuildKdTreesHint_function_type( &::osgDB::Registry::getBuildKdTreesHint )
+                , " Get whether the KdTrees should be built for geometry in the loader model." );
         
         }
         { //::osgDB::Registry::getCreateNodeFromImage
@@ -377,7 +393,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getDataFilePathList"
                 , getDataFilePathList_function_type( &::osgDB::Registry::getDataFilePathList )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " get the data file path which is used when search for data files." );
         
         }
         { //::osgDB::Registry::getDataFilePathList
@@ -387,7 +404,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getDataFilePathList"
                 , getDataFilePathList_function_type( &::osgDB::Registry::getDataFilePathList )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " get the const data file path which is used when search for data files." );
         
         }
         { //::osgDB::Registry::getDeprecatedDotOsgObjectWrapperManager
@@ -397,7 +415,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getDeprecatedDotOsgObjectWrapperManager"
                 , getDeprecatedDotOsgObjectWrapperManager_function_type( &::osgDB::Registry::getDeprecatedDotOsgObjectWrapperManager )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the ObjectWrapperManager that is used to store all the ObjectWrappers." );
         
         }
         { //::osgDB::Registry::getExpiryDelay
@@ -416,7 +435,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getFileCache"
                 , getFileCache_function_type( &::osgDB::Registry::getFileCache )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the FileCache that is used to manage local storage of files downloaded from the internet." );
         
         }
         { //::osgDB::Registry::getFileCache
@@ -426,7 +446,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getFileCache"
                 , getFileCache_function_type( &::osgDB::Registry::getFileCache )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const FileCache that is used to manage local storage of files downloaded from the internet." );
         
         }
         { //::osgDB::Registry::getFileLocationCallback
@@ -436,7 +457,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getFileLocationCallback"
                 , getFileLocationCallback_function_type( &::osgDB::Registry::getFileLocationCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the callback to use inform to the DatabasePager whether a file is located on local or remote file system." );
         
         }
         { //::osgDB::Registry::getFindFileCallback
@@ -446,7 +468,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getFindFileCallback"
                 , getFindFileCallback_function_type( &::osgDB::Registry::getFindFileCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the findFile callback." );
         
         }
         { //::osgDB::Registry::getFindFileCallback
@@ -456,7 +479,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getFindFileCallback"
                 , getFindFileCallback_function_type( &::osgDB::Registry::getFindFileCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const findFile callback." );
         
         }
         { //::osgDB::Registry::getFromArchiveCache
@@ -467,7 +491,8 @@ void register_Registry_class(){
                 "getFromArchiveCache"
                 , getFromArchiveCache_function_type( &::osgDB::Registry::getFromArchiveCache )
                 , ( bp::arg("fileName") )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get an Archive from the archive cache." );
         
         }
         { //::osgDB::Registry::getFromObjectCache
@@ -478,7 +503,8 @@ void register_Registry_class(){
                 "getFromObjectCache"
                 , getFromObjectCache_function_type( &::osgDB::Registry::getFromObjectCache )
                 , ( bp::arg("fileName") )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get an Object from the object cache" );
         
         }
         { //::osgDB::Registry::getImageProcessor
@@ -488,7 +514,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getImageProcessor"
                 , getImageProcessor_function_type( &::osgDB::Registry::getImageProcessor )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " get a image processor if available." );
         
         }
         { //::osgDB::Registry::getImageProcessorForExtension
@@ -499,7 +526,8 @@ void register_Registry_class(){
                 "getImageProcessorForExtension"
                 , getImageProcessorForExtension_function_type( &::osgDB::Registry::getImageProcessorForExtension )
                 , ( bp::arg("ext") )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " get a image processor which is associated specified extension." );
         
         }
         { //::osgDB::Registry::getImageProcessorList
@@ -509,7 +537,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getImageProcessorList"
                 , getImageProcessorList_function_type( &::osgDB::Registry::getImageProcessorList )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " get list of all registered ImageProcessors." );
         
         }
         { //::osgDB::Registry::getImageProcessorList
@@ -519,7 +548,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getImageProcessorList"
                 , getImageProcessorList_function_type( &::osgDB::Registry::getImageProcessorList )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " get const list of all registered ImageProcessors." );
         
         }
         { //::osgDB::Registry::getKdTreeBuilder
@@ -529,7 +559,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getKdTreeBuilder"
                 , getKdTreeBuilder_function_type( &::osgDB::Registry::getKdTreeBuilder )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the KdTreeBuilder visitor that is used to build KdTree on loaded models." );
         
         }
         { //::osgDB::Registry::getLibrary
@@ -540,7 +571,8 @@ void register_Registry_class(){
                 "getLibrary"
                 , getLibrary_function_type( &::osgDB::Registry::getLibrary )
                 , ( bp::arg("fileName") )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " get the attached library with specified name." );
         
         }
         { //::osgDB::Registry::getLibraryFilePathList
@@ -550,7 +582,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getLibraryFilePathList"
                 , getLibraryFilePathList_function_type( &::osgDB::Registry::getLibraryFilePathList )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " get the library file path which is used when search for library (dso/dlls) files." );
         
         }
         { //::osgDB::Registry::getLibraryFilePathList
@@ -560,7 +593,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getLibraryFilePathList"
                 , getLibraryFilePathList_function_type( &::osgDB::Registry::getLibraryFilePathList )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " get the const library file path which is used when search for library (dso/dlls) files." );
         
         }
         { //::osgDB::Registry::getMimeTypeExtensionMap
@@ -590,7 +624,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getObjectWrapperManager"
                 , getObjectWrapperManager_function_type( &::osgDB::Registry::getObjectWrapperManager )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the ObjectWrapperManager that is used to store all the ObjectWrappers." );
         
         }
         { //::osgDB::Registry::getOptions
@@ -620,7 +655,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getOrCreateSharedStateManager"
                 , getOrCreateSharedStateManager_function_type( &::osgDB::Registry::getOrCreateSharedStateManager )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the SharedStateManager, creating one if one is not already created." );
         
         }
         { //::osgDB::Registry::getReadFileCallback
@@ -630,7 +666,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getReadFileCallback"
                 , getReadFileCallback_function_type( &::osgDB::Registry::getReadFileCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the readFile callback." );
         
         }
         { //::osgDB::Registry::getReadFileCallback
@@ -640,7 +677,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getReadFileCallback"
                 , getReadFileCallback_function_type( &::osgDB::Registry::getReadFileCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const readFile callback." );
         
         }
         { //::osgDB::Registry::getReaderWriterForExtension
@@ -651,7 +689,8 @@ void register_Registry_class(){
                 "getReaderWriterForExtension"
                 , getReaderWriterForExtension_function_type( &::osgDB::Registry::getReaderWriterForExtension )
                 , ( bp::arg("ext") )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " get a reader writer which handles specified extension." );
         
         }
         { //::osgDB::Registry::getReaderWriterForMimeType
@@ -662,7 +701,8 @@ void register_Registry_class(){
                 "getReaderWriterForMimeType"
                 , getReaderWriterForMimeType_function_type( &::osgDB::Registry::getReaderWriterForMimeType )
                 , ( bp::arg("mimeType") )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " gets a reader/writer that handles the extension mapped to by one of\n the registered mime-types." );
         
         }
         { //::osgDB::Registry::getReaderWriterForProtocolAndExtension
@@ -683,7 +723,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getReaderWriterList"
                 , getReaderWriterList_function_type( &::osgDB::Registry::getReaderWriterList )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " get list of all registered ReaderWriters." );
         
         }
         { //::osgDB::Registry::getReaderWriterList
@@ -693,7 +734,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getReaderWriterList"
                 , getReaderWriterList_function_type( &::osgDB::Registry::getReaderWriterList )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " get const list of all registered ReaderWriters." );
         
         }
         { //::osgDB::Registry::getReaderWriterListForProtocol
@@ -703,7 +745,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getReaderWriterListForProtocol"
                 , getReaderWriterListForProtocol_function_type( &::osgDB::Registry::getReaderWriterListForProtocol )
-                , ( bp::arg("protocol"), bp::arg("results") ) );
+                , ( bp::arg("protocol"), bp::arg("results") )
+                , " get a list of registered ReaderWriters which can handle given protocol" );
         
         }
         { //::osgDB::Registry::getRefFromArchiveCache
@@ -713,7 +756,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getRefFromArchiveCache"
                 , getRefFromArchiveCache_function_type( &::osgDB::Registry::getRefFromArchiveCache )
-                , ( bp::arg("fileName") ) );
+                , ( bp::arg("fileName") )
+                , " Get an ref_ptr<Archive> from the archive cache." );
         
         }
         { //::osgDB::Registry::getRefFromObjectCache
@@ -723,7 +767,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getRefFromObjectCache"
                 , getRefFromObjectCache_function_type( &::osgDB::Registry::getRefFromObjectCache )
-                , ( bp::arg("fileName") ) );
+                , ( bp::arg("fileName") )
+                , " Get an ref_ptr<Object> from the object cache" );
         
         }
         { //::osgDB::Registry::getSharedStateManager
@@ -733,7 +778,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getSharedStateManager"
                 , getSharedStateManager_function_type( &::osgDB::Registry::getSharedStateManager )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the SharedStateManager. Return 0 if no SharedStateManager has been assigned." );
         
         }
         { //::osgDB::Registry::getWriteFileCallback
@@ -743,7 +789,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getWriteFileCallback"
                 , getWriteFileCallback_function_type( &::osgDB::Registry::getWriteFileCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the writeFile callback." );
         
         }
         { //::osgDB::Registry::getWriteFileCallback
@@ -753,7 +800,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "getWriteFileCallback"
                 , getWriteFileCallback_function_type( &::osgDB::Registry::getWriteFileCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const writeFile callback." );
         
         }
         { //::osgDB::Registry::initDataFilePathList
@@ -762,7 +810,8 @@ void register_Registry_class(){
             
             Registry_exposer.def( 
                 "initDataFilePathList"
-                , initDataFilePathList_function_type( &::osgDB::Registry::initDataFilePathList ) );
+                , initDataFilePathList_function_type( &::osgDB::Registry::initDataFilePathList )
+                , " initialize the Data FilePath by reading the OSG_FILE_PATH environmental variable." );
         
         }
         { //::osgDB::Registry::initFilePathLists
@@ -771,7 +820,8 @@ void register_Registry_class(){
             
             Registry_exposer.def( 
                 "initFilePathLists"
-                , initFilePathLists_function_type( &::osgDB::Registry::initFilePathLists ) );
+                , initFilePathLists_function_type( &::osgDB::Registry::initFilePathLists )
+                , " initialize both the Data and Library FilePaths, by default called by the\n constructor, so it should only be required if you want to force\n the re-reading of environmental variables." );
         
         }
         { //::osgDB::Registry::initLibraryFilePathList
@@ -780,7 +830,8 @@ void register_Registry_class(){
             
             Registry_exposer.def( 
                 "initLibraryFilePathList"
-                , initLibraryFilePathList_function_type( &::osgDB::Registry::initLibraryFilePathList ) );
+                , initLibraryFilePathList_function_type( &::osgDB::Registry::initLibraryFilePathList )
+                , " initialize the Library FilePath by reading the OSG_LIBRARY_PATH\n and the appropriate system environmental variables" );
         
         }
         { //::osgDB::Registry::instance
@@ -791,7 +842,8 @@ void register_Registry_class(){
                 "instance"
                 , instance_function_type( &::osgDB::Registry::instance )
                 , ( bp::arg("erase")=(bool)(false) )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "    Registry is a singleton factory which stores\n    the reader/writers which are linked in\n    at runtime for reading non-native file formats.\n\n    The RegisterReaderWriterProxy can be used to automatically\n    register at runtime a reader/writer with the Registry." );
         
         }
         { //::osgDB::Registry::isProtocolRegistered
@@ -801,7 +853,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "isProtocolRegistered"
                 , isProtocolRegistered_function_type( &::osgDB::Registry::isProtocolRegistered )
-                , ( bp::arg("protocol") ) );
+                , ( bp::arg("protocol") )
+                , " returns true, if named protocol is registered" );
         
         }
         { //::osgDB::Registry::loadLibrary
@@ -811,7 +864,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "loadLibrary"
                 , loadLibrary_function_type( &::osgDB::Registry::loadLibrary )
-                , ( bp::arg("fileName") ) );
+                , ( bp::arg("fileName") )
+                , " find the library in the OSG_LIBRARY_PATH and load it." );
         
         }
         { //::osgDB::Registry::openArchive
@@ -841,7 +895,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "readCommandLine"
                 , readCommandLine_function_type( &::osgDB::Registry::readCommandLine )
-                , ( bp::arg("commandLine") ) );
+                , ( bp::arg("commandLine") )
+                , " read the command line arguments." );
         
         }
         { //::osgDB::Registry::readHeightField
@@ -931,7 +986,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "readPluginAliasConfigurationFile"
                 , readPluginAliasConfigurationFile_function_type( &::osgDB::Registry::readPluginAliasConfigurationFile )
-                , ( bp::arg("file") ) );
+                , ( bp::arg("file") )
+                , " Reads a file that configures extension mappings. File is ASCII text\n and each line contains the parameters to the addFileExtensionAlias\n method. Lines can be commented out with an initial # character." );
         
         }
         { //::osgDB::Registry::readShader
@@ -961,7 +1017,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "registerProtocol"
                 , registerProtocol_function_type( &::osgDB::Registry::registerProtocol )
-                , ( bp::arg("protocol") ) );
+                , ( bp::arg("protocol") )
+                , " registers a protocol" );
         
         }
         { //::osgDB::Registry::releaseGLObjects
@@ -971,7 +1028,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "releaseGLObjects"
                 , releaseGLObjects_function_type( &::osgDB::Registry::releaseGLObjects )
-                , ( bp::arg("state")=bp::object() ) );
+                , ( bp::arg("state")=bp::object() )
+                , " If State is non-zero, this function releases OpenGL objects for\n the specified graphics context. Otherwise, releases OpenGL objexts\n for all graphics contexts." );
         
         }
         { //::osgDB::Registry::removeExpiredObjectsInCache
@@ -981,7 +1039,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "removeExpiredObjectsInCache"
                 , removeExpiredObjectsInCache_function_type( &::osgDB::Registry::removeExpiredObjectsInCache )
-                , ( bp::arg("frameStamp") ) );
+                , ( bp::arg("frameStamp") )
+                , " Removed object in the cache which have a time stamp at or before the specified expiry time.\n This would typically be called once per frame by applications which are doing database paging,\n and need to prune objects that are no longer required, and called after the a called\n after the call to updateTimeStampOfObjectsInCacheWithExternalReferences(frameStamp)." );
         
         }
         { //::osgDB::Registry::removeFromArchiveCache
@@ -991,7 +1050,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "removeFromArchiveCache"
                 , removeFromArchiveCache_function_type( &::osgDB::Registry::removeFromArchiveCache )
-                , ( bp::arg("fileName") ) );
+                , ( bp::arg("fileName") )
+                , " Remove Archive from cache." );
         
         }
         { //::osgDB::Registry::removeFromObjectCache
@@ -1001,7 +1061,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "removeFromObjectCache"
                 , removeFromObjectCache_function_type( &::osgDB::Registry::removeFromObjectCache )
-                , ( bp::arg("fileName") ) );
+                , ( bp::arg("fileName") )
+                , " Remove Object from cache." );
         
         }
         { //::osgDB::Registry::removeImageProcessor
@@ -1031,7 +1092,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setAuthenticationMap"
                 , setAuthenticationMap_function_type( &::osgDB::Registry::setAuthenticationMap )
-                , ( bp::arg("authenticationMap") ) );
+                , ( bp::arg("authenticationMap") )
+                , " Set the password map to be used by plugins when access files from secure locations." );
         
         }
         { //::osgDB::Registry::setBuildKdTreesHint
@@ -1041,7 +1103,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setBuildKdTreesHint"
                 , setBuildKdTreesHint_function_type( &::osgDB::Registry::setBuildKdTreesHint )
-                , ( bp::arg("hint") ) );
+                , ( bp::arg("hint") )
+                , " Set whether the KdTrees should be built for geometry in the loader model." );
         
         }
         { //::osgDB::Registry::setCreateNodeFromImage
@@ -1061,7 +1124,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setDataFilePathList"
                 , setDataFilePathList_function_type( &::osgDB::Registry::setDataFilePathList )
-                , ( bp::arg("filepath") ) );
+                , ( bp::arg("filepath") )
+                , " Set the data file path using a list of paths stored in a FilePath, which is used when search for data files." );
         
         }
         { //::osgDB::Registry::setDataFilePathList
@@ -1071,7 +1135,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setDataFilePathList"
                 , setDataFilePathList_function_type( &::osgDB::Registry::setDataFilePathList )
-                , ( bp::arg("paths") ) );
+                , ( bp::arg("paths") )
+                , " Set the data file path using a single string delimited either with ; (Windows) or : (All other platforms), which is used when search for data files." );
         
         }
         { //::osgDB::Registry::setExpiryDelay
@@ -1081,7 +1146,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setExpiryDelay"
                 , setExpiryDelay_function_type( &::osgDB::Registry::setExpiryDelay )
-                , ( bp::arg("expiryDelay") ) );
+                , ( bp::arg("expiryDelay") )
+                , " set hint to viewer code calling removeExpiredObjectsInCache to specify how long it should give before expiring objects in Registry cache," );
         
         }
         { //::osgDB::Registry::setFileCache
@@ -1091,7 +1157,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setFileCache"
                 , setFileCache_function_type( &::osgDB::Registry::setFileCache )
-                , ( bp::arg("fileCache") ) );
+                , ( bp::arg("fileCache") )
+                , " Set the FileCache that is used to manage local storage of files downloaded from the internet." );
         
         }
         { //::osgDB::Registry::setFileLocationCallback
@@ -1101,7 +1168,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setFileLocationCallback"
                 , setFileLocationCallback_function_type( &::osgDB::Registry::setFileLocationCallback )
-                , ( bp::arg("cb") ) );
+                , ( bp::arg("cb") )
+                , " Set the callback to use inform to the DatabasePager whether a file is located on local or remote file system." );
         
         }
         { //::osgDB::Registry::setFindFileCallback
@@ -1111,7 +1179,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setFindFileCallback"
                 , setFindFileCallback_function_type( &::osgDB::Registry::setFindFileCallback )
-                , ( bp::arg("cb") ) );
+                , ( bp::arg("cb") )
+                , " Set the Registry callback to use in place of the default findFile calls." );
         
         }
         { //::osgDB::Registry::setKdTreeBuilder
@@ -1121,7 +1190,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setKdTreeBuilder"
                 , setKdTreeBuilder_function_type( &::osgDB::Registry::setKdTreeBuilder )
-                , ( bp::arg("builder") ) );
+                , ( bp::arg("builder") )
+                , " Set the KdTreeBuilder visitor that is used to build KdTree on loaded models." );
         
         }
         { //::osgDB::Registry::setLibraryFilePathList
@@ -1131,7 +1201,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setLibraryFilePathList"
                 , setLibraryFilePathList_function_type( &::osgDB::Registry::setLibraryFilePathList )
-                , ( bp::arg("filepath") ) );
+                , ( bp::arg("filepath") )
+                , " Set the library file path using a list of paths stored in a FilePath, which is used when search for data files." );
         
         }
         { //::osgDB::Registry::setLibraryFilePathList
@@ -1141,7 +1212,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setLibraryFilePathList"
                 , setLibraryFilePathList_function_type( &::osgDB::Registry::setLibraryFilePathList )
-                , ( bp::arg("paths") ) );
+                , ( bp::arg("paths") )
+                , " Set the library file path using a single string delimited either with ; (Windows) or : (All other platforms), which is used when search for data files." );
         
         }
         { //::osgDB::Registry::setOptions
@@ -1161,7 +1233,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setReadFileCallback"
                 , setReadFileCallback_function_type( &::osgDB::Registry::setReadFileCallback )
-                , ( bp::arg("cb") ) );
+                , ( bp::arg("cb") )
+                , " Set the Registry callback to use in place of the default readFile calls." );
         
         }
         { //::osgDB::Registry::setSharedStateManager
@@ -1171,7 +1244,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setSharedStateManager"
                 , setSharedStateManager_function_type( &::osgDB::Registry::setSharedStateManager )
-                , ( bp::arg("SharedStateManager") ) );
+                , ( bp::arg("SharedStateManager") )
+                , " Set the SharedStateManager." );
         
         }
         { //::osgDB::Registry::setWriteFileCallback
@@ -1181,7 +1255,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "setWriteFileCallback"
                 , setWriteFileCallback_function_type( &::osgDB::Registry::setWriteFileCallback )
-                , ( bp::arg("cb") ) );
+                , ( bp::arg("cb") )
+                , " Set the Registry callback to use in place of the default writeFile calls." );
         
         }
         { //::osgDB::Registry::updateTimeStampOfObjectsInCacheWithExternalReferences
@@ -1191,7 +1266,8 @@ void register_Registry_class(){
             Registry_exposer.def( 
                 "updateTimeStampOfObjectsInCacheWithExternalReferences"
                 , updateTimeStampOfObjectsInCacheWithExternalReferences_function_type( &::osgDB::Registry::updateTimeStampOfObjectsInCacheWithExternalReferences )
-                , ( bp::arg("frameStamp") ) );
+                , ( bp::arg("frameStamp") )
+                , " For each object in the cache which has an reference count greater than 1\n (and therefore referenced by elsewhere in the application) set the time stamp\n for that object in the cache to specified time.\n This would typically be called once per frame by applications which are doing database paging,\n and need to prune objects that are no longer required.\n The time used is taken from the FrameStamp::getReferenceTime()." );
         
         }
         { //::osgDB::Registry::writeHeightField

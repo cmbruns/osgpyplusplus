@@ -35,22 +35,25 @@ struct StateGraph_wrapper : osgUtil::StateGraph, bp::wrapper< osgUtil::StateGrap
 
 void register_StateGraph_class(){
 
-    bp::class_< StateGraph_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< StateGraph_wrapper >, boost::noncopyable >( "StateGraph", bp::init< >() )    
+    bp::class_< StateGraph_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< StateGraph_wrapper >, boost::noncopyable >( "StateGraph", "\n StateGraph - contained in a renderBin, defines the scene to be drawn.\n", bp::init< >() )    
         .def( bp::init< osgUtil::StateGraph *, osg::StateSet const * >(( bp::arg("parent"), bp::arg("stateset") )) )    
         .def( 
             "addLeaf"
             , (void ( ::osgUtil::StateGraph::* )( ::osgUtil::RenderLeaf * ) )( &::osgUtil::StateGraph::addLeaf )
-            , ( bp::arg("leaf") ) )    
+            , ( bp::arg("leaf") )
+            , " add a render leaf." )    
         .def( 
             "clean"
-            , (void ( ::osgUtil::StateGraph::* )(  ) )( &::osgUtil::StateGraph::clean ) )    
+            , (void ( ::osgUtil::StateGraph::* )(  ) )( &::osgUtil::StateGraph::clean )
+            , " Recursively clean the StateGraph of all its drawables, lights and depths.\n Leaves children intact, and ready to be populated again." )    
         .def( 
             "cloneType"
             , (::osgUtil::StateGraph * ( ::osgUtil::StateGraph::* )(  ) const)( &::osgUtil::StateGraph::cloneType )
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "empty"
-            , (bool ( ::osgUtil::StateGraph::* )(  ) const)( &::osgUtil::StateGraph::empty ) )    
+            , (bool ( ::osgUtil::StateGraph::* )(  ) const)( &::osgUtil::StateGraph::empty )
+            , " return true if all of drawables, lights and children are empty." )    
         .def( 
             "find_or_insert"
             , (::osgUtil::StateGraph * ( ::osgUtil::StateGraph::* )( ::osg::StateSet const * ) )( &::osgUtil::StateGraph::find_or_insert )
@@ -91,10 +94,12 @@ void register_StateGraph_class(){
             , ( bp::arg("sg_curr") ) )    
         .def( 
             "prune"
-            , (void ( ::osgUtil::StateGraph::* )(  ) )( &::osgUtil::StateGraph::prune ) )    
+            , (void ( ::osgUtil::StateGraph::* )(  ) )( &::osgUtil::StateGraph::prune )
+            , " Recursively prune the StateGraph of empty children." )    
         .def( 
             "reset"
-            , (void ( ::osgUtil::StateGraph::* )(  ) )( &::osgUtil::StateGraph::reset ) )    
+            , (void ( ::osgUtil::StateGraph::* )(  ) )( &::osgUtil::StateGraph::reset )
+            , " Reset the internal contents of a StateGraph, including deleting all children." )    
         .def( 
             "setStateSet"
             , (void ( ::osgUtil::StateGraph::* )( ::osg::StateSet const * ) )( &::osgUtil::StateGraph::setStateSet )

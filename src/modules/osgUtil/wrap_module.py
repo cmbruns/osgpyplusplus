@@ -91,10 +91,8 @@ class OsgUtilWrapper(BaseWrapper):
                 # Because "manage_new_object" causes trouble with protected destructors, so let's leak this memory
                 fn.call_policies = return_value_policy(reference_existing_object)
 
-        self.mb.build_code_creator(module_name='_osgUtil')
-        self.mb.split_module(os.path.join(os.path.abspath('.'), 'generated_code'))
-        # Create a file to indicate completion of wrapping script
-        open(os.path.join(os.path.abspath('.'), 'generated_code', 'generate_module.stamp'), "w").close()
+        # Write results
+        self.generate_module_code("_osgUtil")
         
 if __name__ == "__main__":
     wrapper = OsgUtilWrapper()

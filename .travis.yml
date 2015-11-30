@@ -18,3 +18,4 @@ script:
   - make -j2 _osgDB
   - make -j2 _osgGA
   - make -j2 _osg
+  - make -j2

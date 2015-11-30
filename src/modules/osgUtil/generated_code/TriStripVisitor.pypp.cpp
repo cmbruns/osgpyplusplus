@@ -382,7 +382,7 @@ void register_TriStripVisitor_class(){
 
     { //::osgUtil::TriStripVisitor
         typedef bp::class_< TriStripVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< TriStripVisitor_wrapper >, boost::noncopyable > TriStripVisitor_exposer_t;
-        TriStripVisitor_exposer_t TriStripVisitor_exposer = TriStripVisitor_exposer_t( "TriStripVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+        TriStripVisitor_exposer_t TriStripVisitor_exposer = TriStripVisitor_exposer_t( "TriStripVisitor", "\n A tri stripping visitor for converting Geometry surface primitives into tri strips.\n The current implemention is based upon Tanguy Fautres triangulation code.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() ), "\n default to traversing all children.\n") );
         bp::scope TriStripVisitor_scope( TriStripVisitor_exposer );
         bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::TriStripVisitor >();
         { //::osgUtil::TriStripVisitor::apply
@@ -461,7 +461,8 @@ void register_TriStripVisitor_class(){
             TriStripVisitor_exposer.def( 
                 "stripify"
                 , stripify_function_type( &::osgUtil::TriStripVisitor::stripify )
-                , ( bp::arg("drawable") ) );
+                , ( bp::arg("drawable") )
+                , " Convert mesh primitives in Geometry into Tri Strips.\n Converts all primitive types except points\n and lines, linestrips which it leaves unchanged." );
         
         }
         { //::osgUtil::TriStripVisitor::stripify
@@ -470,7 +471,8 @@ void register_TriStripVisitor_class(){
             
             TriStripVisitor_exposer.def( 
                 "stripify"
-                , stripify_function_type( &::osgUtil::TriStripVisitor::stripify ) );
+                , stripify_function_type( &::osgUtil::TriStripVisitor::stripify )
+                , " Stripify (make into strips of tria or quads) the accumulated list of Geometry drawables." );
         
         }
     }

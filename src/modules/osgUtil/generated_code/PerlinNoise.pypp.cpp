@@ -8,7 +8,7 @@ namespace bp = boost::python;
 
 void register_PerlinNoise_class(){
 
-    bp::class_< osgUtil::PerlinNoise >( "PerlinNoise", bp::init< >() )    
+    bp::class_< osgUtil::PerlinNoise >( "PerlinNoise", "\n                   Copyright (C) 2002  3Dlabs Inc. Ltd.\n", bp::init< >("\n                   Copyright (C) 2002  3Dlabs Inc. Ltd.\n") )    
         .def( 
             "PerlinNoise1D"
             , (double ( ::osgUtil::PerlinNoise::* )( double,double,double,int ) )( &::osgUtil::PerlinNoise::PerlinNoise1D )

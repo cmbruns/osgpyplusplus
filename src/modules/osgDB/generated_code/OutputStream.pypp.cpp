@@ -113,7 +113,8 @@ void register_OutputStream_class(){
             OutputStream_exposer.def( 
                 "setOutputIterator"
                 , setOutputIterator_function_type( &::osgDB::OutputStream::setOutputIterator )
-                , ( bp::arg("oi") ) );
+                , ( bp::arg("oi") )
+                , "\n set an output iterator, used directly when not using OutputStream with a traditional file releated stream.\n" );
         
         }
         { //::osgDB::OutputStream::setWriteImageHint
@@ -133,7 +134,8 @@ void register_OutputStream_class(){
             OutputStream_exposer.def( 
                 "start"
                 , start_function_type( &::osgDB::OutputStream::start )
-                , ( bp::arg("outIterator"), bp::arg("type") ) );
+                , ( bp::arg("outIterator"), bp::arg("type") )
+                , "\n start writing to OutputStream treating it as a traditional file releated stream, handles headers and versioning\n" );
         
         }
         { //::osgDB::OutputStream::throwException

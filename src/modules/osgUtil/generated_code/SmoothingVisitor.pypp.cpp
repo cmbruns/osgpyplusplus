@@ -380,7 +380,7 @@ struct SmoothingVisitor_wrapper : osgUtil::SmoothingVisitor, bp::wrapper< osgUti
 
 void register_SmoothingVisitor_class(){
 
-    bp::class_< SmoothingVisitor_wrapper, bp::bases< ::osg::NodeVisitor >, osg::ref_ptr< SmoothingVisitor_wrapper >, boost::noncopyable >( "SmoothingVisitor", bp::init< >() )    
+    bp::class_< SmoothingVisitor_wrapper, bp::bases< ::osg::NodeVisitor >, osg::ref_ptr< SmoothingVisitor_wrapper >, boost::noncopyable >( "SmoothingVisitor", "\n A smoothing visitor for calculating smoothed normals for\n osg::GeoSets which contains surface primitives.\n", bp::init< >("\n default to traversing all children.\n") )    
         .def( 
             "apply"
             , (void ( ::osgUtil::SmoothingVisitor::* )( ::osg::Geode & ) )(&::osgUtil::SmoothingVisitor::apply)
@@ -392,11 +392,13 @@ void register_SmoothingVisitor_class(){
         .def( 
             "setCreaseAngle"
             , (void ( ::osgUtil::SmoothingVisitor::* )( double ) )( &::osgUtil::SmoothingVisitor::setCreaseAngle )
-            , ( bp::arg("angle") ) )    
+            , ( bp::arg("angle") )
+            , " set the maximum angle, in radians, at which angle between adjacent triangles that normals are smoothed\n for edges that greater the shared vertices are duplicated" )    
         .def( 
             "smooth"
             , (void (*)( ::osg::Geometry &,double ))( &::osgUtil::SmoothingVisitor::smooth )
-            , ( bp::arg("geoset"), bp::arg("creaseAngle")=osg::PI ) )    
+            , ( bp::arg("geoset"), bp::arg("creaseAngle")=osg::PI )
+            , " smooth geoset by creating per vertex normals." )    
         .staticmethod( "smooth" );
 
 }

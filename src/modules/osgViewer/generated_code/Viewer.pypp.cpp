@@ -617,7 +617,7 @@ void register_Viewer_class(){
 
     { //::osgViewer::Viewer
         typedef bp::class_< Viewer_wrapper, bp::bases< osgViewer::ViewerBase, osgViewer::View >, osg::ref_ptr< ::osgViewer::Viewer >, boost::noncopyable > Viewer_exposer_t;
-        Viewer_exposer_t Viewer_exposer = Viewer_exposer_t( "Viewer", bp::init< >() );
+        Viewer_exposer_t Viewer_exposer = Viewer_exposer_t( "Viewer", "\n Viewer holds a single view on to a single scene.\n", bp::init< >("\n Viewer holds a single view on to a single scene.\n") );
         bp::scope Viewer_scope( Viewer_exposer );
         Viewer_exposer.def( bp::init< osg::ArgumentParser & >(( bp::arg("arguments") )) );
         bp::implicitly_convertible< osg::ArgumentParser &, osgViewer::Viewer >();

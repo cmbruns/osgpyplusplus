@@ -7148,7 +7148,7 @@ void register_Optimizer_class(){
 
     { //::osgUtil::Optimizer
         typedef bp::class_< Optimizer_wrapper > Optimizer_exposer_t;
-        Optimizer_exposer_t Optimizer_exposer = Optimizer_exposer_t( "Optimizer", bp::init< >() );
+        Optimizer_exposer_t Optimizer_exposer = Optimizer_exposer_t( "Optimizer", "\n Traverses scene graph to improve efficiency. See OptimizationOptions.\n For example of usage see examples/osgimpostor or osgviewer.\n", bp::init< >("\n Traverses scene graph to improve efficiency. See OptimizationOptions.\n For example of usage see examples/osgimpostor or osgviewer.\n") );
         bp::scope Optimizer_scope( Optimizer_exposer );
         bp::enum_< osgUtil::Optimizer::OptimizationOptions>("OptimizationOptions")
             .value("FLATTEN_STATIC_TRANSFORMS", osgUtil::Optimizer::FLATTEN_STATIC_TRANSFORMS)
@@ -7178,7 +7178,7 @@ void register_Optimizer_class(){
             ;
         { //::osgUtil::Optimizer::CheckGeometryVisitor
             typedef bp::class_< Optimizer_wrapper::CheckGeometryVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::CheckGeometryVisitor_wrapper >, boost::noncopyable > CheckGeometryVisitor_exposer_t;
-            CheckGeometryVisitor_exposer_t CheckGeometryVisitor_exposer = CheckGeometryVisitor_exposer_t( "CheckGeometryVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            CheckGeometryVisitor_exposer_t CheckGeometryVisitor_exposer = CheckGeometryVisitor_exposer_t( "CheckGeometryVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() ), "\n default to traversing all children.\n") );
             bp::scope CheckGeometryVisitor_scope( CheckGeometryVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::CheckGeometryVisitor >();
             { //::osgUtil::Optimizer::CheckGeometryVisitor::apply
@@ -7206,7 +7206,7 @@ void register_Optimizer_class(){
         }
         { //::osgUtil::Optimizer::CombineLODsVisitor
             typedef bp::class_< Optimizer_wrapper::CombineLODsVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::CombineLODsVisitor_wrapper >, boost::noncopyable > CombineLODsVisitor_exposer_t;
-            CombineLODsVisitor_exposer_t CombineLODsVisitor_exposer = CombineLODsVisitor_exposer_t( "CombineLODsVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            CombineLODsVisitor_exposer_t CombineLODsVisitor_exposer = CombineLODsVisitor_exposer_t( "CombineLODsVisitor", "\n Optimize the LOD groups, by combining adjacent LODs which have\n complementary ranges.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
             bp::scope CombineLODsVisitor_scope( CombineLODsVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::CombineLODsVisitor >();
             { //::osgUtil::Optimizer::CombineLODsVisitor::apply
@@ -7234,7 +7234,7 @@ void register_Optimizer_class(){
         }
         { //::osgUtil::Optimizer::CombineStaticTransformsVisitor
             typedef bp::class_< Optimizer_wrapper::CombineStaticTransformsVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::CombineStaticTransformsVisitor_wrapper >, boost::noncopyable > CombineStaticTransformsVisitor_exposer_t;
-            CombineStaticTransformsVisitor_exposer_t CombineStaticTransformsVisitor_exposer = CombineStaticTransformsVisitor_exposer_t( "CombineStaticTransformsVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            CombineStaticTransformsVisitor_exposer_t CombineStaticTransformsVisitor_exposer = CombineStaticTransformsVisitor_exposer_t( "CombineStaticTransformsVisitor", "\n Combine Static Transform nodes that sit above one another.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() ), "\n Combine Static Transform nodes that sit above one another.\n") );
             bp::scope CombineStaticTransformsVisitor_scope( CombineStaticTransformsVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::CombineStaticTransformsVisitor >();
             { //::osgUtil::Optimizer::CombineStaticTransformsVisitor::apply
@@ -7262,7 +7262,7 @@ void register_Optimizer_class(){
         }
         { //::osgUtil::Optimizer::CopySharedSubgraphsVisitor
             typedef bp::class_< Optimizer_wrapper::CopySharedSubgraphsVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::CopySharedSubgraphsVisitor_wrapper >, boost::noncopyable > CopySharedSubgraphsVisitor_exposer_t;
-            CopySharedSubgraphsVisitor_exposer_t CopySharedSubgraphsVisitor_exposer = CopySharedSubgraphsVisitor_exposer_t( "CopySharedSubgraphsVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            CopySharedSubgraphsVisitor_exposer_t CopySharedSubgraphsVisitor_exposer = CopySharedSubgraphsVisitor_exposer_t( "CopySharedSubgraphsVisitor", "\n Copy any shared subgraphs, enabling flattening of static transforms.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() ), "\n Copy any shared subgraphs, enabling flattening of static transforms.\n") );
             bp::scope CopySharedSubgraphsVisitor_scope( CopySharedSubgraphsVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::CopySharedSubgraphsVisitor >();
             { //::osgUtil::Optimizer::CopySharedSubgraphsVisitor::apply
@@ -7290,7 +7290,7 @@ void register_Optimizer_class(){
         }
         { //::osgUtil::Optimizer::FlattenBillboardVisitor
             typedef bp::class_< Optimizer_wrapper::FlattenBillboardVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::FlattenBillboardVisitor_wrapper >, boost::noncopyable > FlattenBillboardVisitor_exposer_t;
-            FlattenBillboardVisitor_exposer_t FlattenBillboardVisitor_exposer = FlattenBillboardVisitor_exposer_t( "FlattenBillboardVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            FlattenBillboardVisitor_exposer_t FlattenBillboardVisitor_exposer = FlattenBillboardVisitor_exposer_t( "FlattenBillboardVisitor", "\n Flatten MatrixTransform/Billboard pairs.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() ), "\n Flatten MatrixTransform/Billboard pairs.\n") );
             bp::scope FlattenBillboardVisitor_scope( FlattenBillboardVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::FlattenBillboardVisitor >();
             { //::osgUtil::Optimizer::FlattenBillboardVisitor::apply
@@ -7328,7 +7328,7 @@ void register_Optimizer_class(){
         }
         { //::osgUtil::Optimizer::FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor
             typedef bp::class_< Optimizer_wrapper::FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor_wrapper >, boost::noncopyable > FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor_exposer_t;
-            FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor_exposer_t FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor_exposer = FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor_exposer_t( "FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor_exposer_t FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor_exposer = FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor_exposer_t( "FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor", "\n FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor is similar\n to FlattenStaticTransformsVisitor in that it is designed to remove static transforms\n from the scene graph, pushing down the transforms to the geometry leaves of the scene graph,\n but with the difference that any subgraphs that are shared between different transforms\n are duplicated and flattened individually.  This results in more static transforms\n being removed, but also means that more data is generated, and as a result may\n not always be the most appropriate flatten visitor to use.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() ), "\n FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor is similar\n to FlattenStaticTransformsVisitor in that it is designed to remove static transforms\n from the scene graph, pushing down the transforms to the geometry leaves of the scene graph,\n but with the difference that any subgraphs that are shared between different transforms\n are duplicated and flattened individually.  This results in more static transforms\n being removed, but also means that more data is generated, and as a result may\n not always be the most appropriate flatten visitor to use.\n") );
             bp::scope FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor_scope( FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor >();
             { //::osgUtil::Optimizer::FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor::apply
@@ -7405,7 +7405,7 @@ void register_Optimizer_class(){
         }
         { //::osgUtil::Optimizer::FlattenStaticTransformsVisitor
             typedef bp::class_< Optimizer_wrapper::FlattenStaticTransformsVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::FlattenStaticTransformsVisitor_wrapper >, boost::noncopyable > FlattenStaticTransformsVisitor_exposer_t;
-            FlattenStaticTransformsVisitor_exposer_t FlattenStaticTransformsVisitor_exposer = FlattenStaticTransformsVisitor_exposer_t( "FlattenStaticTransformsVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            FlattenStaticTransformsVisitor_exposer_t FlattenStaticTransformsVisitor_exposer = FlattenStaticTransformsVisitor_exposer_t( "FlattenStaticTransformsVisitor", "\n Flatten Static Transform nodes by applying their transform to the\n geometry on the leaves of the scene graph, then removing the\n now redundant transforms.  Static transformed subgraphs that have multiple\n parental paths above them are not flattened, if you require this then\n the subgraphs have to be duplicated - for this use the\n FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() ), "\n Flatten Static Transform nodes by applying their transform to the\n geometry on the leaves of the scene graph, then removing the\n now redundant transforms.  Static transformed subgraphs that have multiple\n parental paths above them are not flattened, if you require this then\n the subgraphs have to be duplicated - for this use the\n FlattenStaticTransformsDuplicatingSharedSubgraphsVisitor.\n") );
             bp::scope FlattenStaticTransformsVisitor_scope( FlattenStaticTransformsVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::FlattenStaticTransformsVisitor >();
             { //::osgUtil::Optimizer::FlattenStaticTransformsVisitor::apply
@@ -7491,7 +7491,7 @@ void register_Optimizer_class(){
             
             }
         }
-        bp::class_< Optimizer_wrapper::IsOperationPermissibleForObjectCallback_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< Optimizer_wrapper::IsOperationPermissibleForObjectCallback_wrapper >, boost::noncopyable >( "IsOperationPermissibleForObjectCallback" )    
+        bp::class_< Optimizer_wrapper::IsOperationPermissibleForObjectCallback_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< Optimizer_wrapper::IsOperationPermissibleForObjectCallback_wrapper >, boost::noncopyable >( "IsOperationPermissibleForObjectCallback", "\n Callback for customizing what operations are permitted on objects in the scene graph.\n" )    
             .def( 
                 "isOperationPermissibleForObjectImplementation"
                 , (bool ( ::osgUtil::Optimizer::IsOperationPermissibleForObjectCallback::* )( ::osgUtil::Optimizer const *,::osg::StateSet const *,unsigned int ) const)(&::osgUtil::Optimizer::IsOperationPermissibleForObjectCallback::isOperationPermissibleForObjectImplementation)
@@ -7514,7 +7514,7 @@ void register_Optimizer_class(){
                 , ( bp::arg("optimizer"), bp::arg("node"), bp::arg("option") ) );
         { //::osgUtil::Optimizer::MakeFastGeometryVisitor
             typedef bp::class_< Optimizer_wrapper::MakeFastGeometryVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::MakeFastGeometryVisitor_wrapper >, boost::noncopyable > MakeFastGeometryVisitor_exposer_t;
-            MakeFastGeometryVisitor_exposer_t MakeFastGeometryVisitor_exposer = MakeFastGeometryVisitor_exposer_t( "MakeFastGeometryVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            MakeFastGeometryVisitor_exposer_t MakeFastGeometryVisitor_exposer = MakeFastGeometryVisitor_exposer_t( "MakeFastGeometryVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() ), "\n default to traversing all children.\n") );
             bp::scope MakeFastGeometryVisitor_scope( MakeFastGeometryVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::MakeFastGeometryVisitor >();
             { //::osgUtil::Optimizer::MakeFastGeometryVisitor::apply
@@ -7542,7 +7542,7 @@ void register_Optimizer_class(){
         }
         { //::osgUtil::Optimizer::MergeGeodesVisitor
             typedef bp::class_< Optimizer_wrapper::MergeGeodesVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::MergeGeodesVisitor_wrapper >, boost::noncopyable > MergeGeodesVisitor_exposer_t;
-            MergeGeodesVisitor_exposer_t MergeGeodesVisitor_exposer = MergeGeodesVisitor_exposer_t( "MergeGeodesVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            MergeGeodesVisitor_exposer_t MergeGeodesVisitor_exposer = MergeGeodesVisitor_exposer_t( "MergeGeodesVisitor", "\n Combine geodes\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() ), "\n default to traversing all children.\n") );
             bp::scope MergeGeodesVisitor_scope( MergeGeodesVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::MergeGeodesVisitor >();
             { //::osgUtil::Optimizer::MergeGeodesVisitor::apply
@@ -7570,7 +7570,7 @@ void register_Optimizer_class(){
         }
         { //::osgUtil::Optimizer::MergeGeometryVisitor
             typedef bp::class_< Optimizer_wrapper::MergeGeometryVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::MergeGeometryVisitor_wrapper >, boost::noncopyable > MergeGeometryVisitor_exposer_t;
-            MergeGeometryVisitor_exposer_t MergeGeometryVisitor_exposer = MergeGeometryVisitor_exposer_t( "MergeGeometryVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            MergeGeometryVisitor_exposer_t MergeGeometryVisitor_exposer = MergeGeometryVisitor_exposer_t( "MergeGeometryVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() ), "\n default to traversing all children.\n") );
             bp::scope MergeGeometryVisitor_scope( MergeGeometryVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::MergeGeometryVisitor >();
             { //::osgUtil::Optimizer::MergeGeometryVisitor::apply
@@ -7693,7 +7693,8 @@ void register_Optimizer_class(){
                 MergeGeometryVisitor_exposer.def( 
                     "setTargetMaximumNumberOfVertices"
                     , setTargetMaximumNumberOfVertices_function_type( &::osgUtil::Optimizer::MergeGeometryVisitor::setTargetMaximumNumberOfVertices )
-                    , ( bp::arg("num") ) );
+                    , ( bp::arg("num") )
+                    , " default to traversing all children." );
             
             }
             MergeGeometryVisitor_exposer.staticmethod( "geometryContainsSharedArrays" );
@@ -7702,7 +7703,7 @@ void register_Optimizer_class(){
         }
         { //::osgUtil::Optimizer::RemoveEmptyNodesVisitor
             typedef bp::class_< Optimizer_wrapper::RemoveEmptyNodesVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::RemoveEmptyNodesVisitor_wrapper >, boost::noncopyable > RemoveEmptyNodesVisitor_exposer_t;
-            RemoveEmptyNodesVisitor_exposer_t RemoveEmptyNodesVisitor_exposer = RemoveEmptyNodesVisitor_exposer_t( "RemoveEmptyNodesVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            RemoveEmptyNodesVisitor_exposer_t RemoveEmptyNodesVisitor_exposer = RemoveEmptyNodesVisitor_exposer_t( "RemoveEmptyNodesVisitor", "\n Remove rendundant nodes, such as groups with one single child.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
             bp::scope RemoveEmptyNodesVisitor_scope( RemoveEmptyNodesVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::RemoveEmptyNodesVisitor >();
             { //::osgUtil::Optimizer::RemoveEmptyNodesVisitor::apply
@@ -7742,7 +7743,7 @@ void register_Optimizer_class(){
         }
         { //::osgUtil::Optimizer::RemoveLoadedProxyNodesVisitor
             typedef bp::class_< Optimizer_wrapper::RemoveLoadedProxyNodesVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::RemoveLoadedProxyNodesVisitor_wrapper >, boost::noncopyable > RemoveLoadedProxyNodesVisitor_exposer_t;
-            RemoveLoadedProxyNodesVisitor_exposer_t RemoveLoadedProxyNodesVisitor_exposer = RemoveLoadedProxyNodesVisitor_exposer_t( "RemoveLoadedProxyNodesVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            RemoveLoadedProxyNodesVisitor_exposer_t RemoveLoadedProxyNodesVisitor_exposer = RemoveLoadedProxyNodesVisitor_exposer_t( "RemoveLoadedProxyNodesVisitor", "\n Remove loaded proxy nodes.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
             bp::scope RemoveLoadedProxyNodesVisitor_scope( RemoveLoadedProxyNodesVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::RemoveLoadedProxyNodesVisitor >();
             { //::osgUtil::Optimizer::RemoveLoadedProxyNodesVisitor::apply
@@ -7770,7 +7771,7 @@ void register_Optimizer_class(){
         }
         { //::osgUtil::Optimizer::RemoveRedundantNodesVisitor
             typedef bp::class_< Optimizer_wrapper::RemoveRedundantNodesVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::RemoveRedundantNodesVisitor_wrapper >, boost::noncopyable > RemoveRedundantNodesVisitor_exposer_t;
-            RemoveRedundantNodesVisitor_exposer_t RemoveRedundantNodesVisitor_exposer = RemoveRedundantNodesVisitor_exposer_t( "RemoveRedundantNodesVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            RemoveRedundantNodesVisitor_exposer_t RemoveRedundantNodesVisitor_exposer = RemoveRedundantNodesVisitor_exposer_t( "RemoveRedundantNodesVisitor", "\n Remove redundant nodes, such as groups with one single child.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
             bp::scope RemoveRedundantNodesVisitor_scope( RemoveRedundantNodesVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::RemoveRedundantNodesVisitor >();
             { //::osgUtil::Optimizer::RemoveRedundantNodesVisitor::apply
@@ -7820,7 +7821,7 @@ void register_Optimizer_class(){
         }
         { //::osgUtil::Optimizer::SpatializeGroupsVisitor
             typedef bp::class_< Optimizer_wrapper::SpatializeGroupsVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::SpatializeGroupsVisitor_wrapper >, boost::noncopyable > SpatializeGroupsVisitor_exposer_t;
-            SpatializeGroupsVisitor_exposer_t SpatializeGroupsVisitor_exposer = SpatializeGroupsVisitor_exposer_t( "SpatializeGroupsVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            SpatializeGroupsVisitor_exposer_t SpatializeGroupsVisitor_exposer = SpatializeGroupsVisitor_exposer_t( "SpatializeGroupsVisitor", "\n Spatialize scene into a balanced quad/oct tree.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() ), "\n Spatialize scene into a balanced quad/oct tree.\n") );
             bp::scope SpatializeGroupsVisitor_scope( SpatializeGroupsVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::SpatializeGroupsVisitor >();
             { //::osgUtil::Optimizer::SpatializeGroupsVisitor::apply
@@ -7880,7 +7881,7 @@ void register_Optimizer_class(){
             SpatializeGroupsVisitor_exposer.def_readwrite( "_geodesToDivideList", &osgUtil::Optimizer::SpatializeGroupsVisitor::_geodesToDivideList );
             SpatializeGroupsVisitor_exposer.def_readwrite( "_groupsToDivideList", &osgUtil::Optimizer::SpatializeGroupsVisitor::_groupsToDivideList );
         }
-        bp::class_< Optimizer_wrapper::StateVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::StateVisitor_wrapper >, boost::noncopyable >( "StateVisitor", bp::init< bool, bool, bool, bp::optional< osgUtil::Optimizer * > >(( bp::arg("combineDynamicState"), bp::arg("combineStaticState"), bp::arg("combineUnspecifiedState"), bp::arg("optimizer")=bp::object() )) )    
+        bp::class_< Optimizer_wrapper::StateVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::StateVisitor_wrapper >, boost::noncopyable >( "StateVisitor", "\n Optimize State in the scene graph by removing duplicate state,\n replacing it with shared instances, both for StateAttributes,\n and whole StateSets.\n", bp::init< bool, bool, bool, bp::optional< osgUtil::Optimizer * > >(( bp::arg("combineDynamicState"), bp::arg("combineStaticState"), bp::arg("combineUnspecifiedState"), bp::arg("optimizer")=bp::object() ), "\n default to traversing all children.\n") )    
             .def( 
                 "apply"
                 , (void ( ::osgUtil::Optimizer::StateVisitor::* )( ::osg::Node & ) )(&::osgUtil::Optimizer::StateVisitor::apply)
@@ -7900,7 +7901,7 @@ void register_Optimizer_class(){
                 , (void ( Optimizer_wrapper::StateVisitor_wrapper::* )(  ) )(&Optimizer_wrapper::StateVisitor_wrapper::default_reset) );
         { //::osgUtil::Optimizer::StaticObjectDetectionVisitor
             typedef bp::class_< Optimizer_wrapper::StaticObjectDetectionVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::StaticObjectDetectionVisitor_wrapper >, boost::noncopyable > StaticObjectDetectionVisitor_exposer_t;
-            StaticObjectDetectionVisitor_exposer_t StaticObjectDetectionVisitor_exposer = StaticObjectDetectionVisitor_exposer_t( "StaticObjectDetectionVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            StaticObjectDetectionVisitor_exposer_t StaticObjectDetectionVisitor_exposer = StaticObjectDetectionVisitor_exposer_t( "StaticObjectDetectionVisitor", "\n Optimize the setting of StateSet and Geometry objects in scene so that they have a STATIC DataVariance\n when they dont have any callbacks associated with them.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() ), "\n default to traversing all children.\n") );
             bp::scope StaticObjectDetectionVisitor_scope( StaticObjectDetectionVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::StaticObjectDetectionVisitor >();
             { //::osgUtil::Optimizer::StaticObjectDetectionVisitor::apply
@@ -7930,7 +7931,7 @@ void register_Optimizer_class(){
         }
         { //::osgUtil::Optimizer::TessellateVisitor
             typedef bp::class_< Optimizer_wrapper::TessellateVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::TessellateVisitor_wrapper >, boost::noncopyable > TessellateVisitor_exposer_t;
-            TessellateVisitor_exposer_t TessellateVisitor_exposer = TessellateVisitor_exposer_t( "TessellateVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            TessellateVisitor_exposer_t TessellateVisitor_exposer = TessellateVisitor_exposer_t( "TessellateVisitor", "\n Tessellate all geodes, to remove POLYGONS.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
             bp::scope TessellateVisitor_scope( TessellateVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::TessellateVisitor >();
             { //::osgUtil::Optimizer::TessellateVisitor::apply
@@ -7947,7 +7948,7 @@ void register_Optimizer_class(){
             }
             TessellateVisitor_exposer.def_readwrite( "_groupList", &osgUtil::Optimizer::TessellateVisitor::_groupList );
         }
-        bp::class_< osgUtil::Optimizer::TextureAtlasBuilder >( "TextureAtlasBuilder", bp::init< >() )    
+        bp::class_< osgUtil::Optimizer::TextureAtlasBuilder >( "TextureAtlasBuilder", " Texture Atlas Builder creates a set of textures/images which each contain multiple images.\n Texture Atlas are used to make it possible to use much wider batching of data.", bp::init< >(" Texture Atlas Builder creates a set of textures/images which each contain multiple images.\n Texture Atlas are used to make it possible to use much wider batching of data.") )    
             .def( 
                 "addSource"
                 , (void ( ::osgUtil::Optimizer::TextureAtlasBuilder::* )( ::osg::Image const * ) )( &::osgUtil::Optimizer::TextureAtlasBuilder::addSource )
@@ -8036,7 +8037,7 @@ void register_Optimizer_class(){
                 , ( bp::arg("width"), bp::arg("height") ) );
         { //::osgUtil::Optimizer::TextureAtlasVisitor
             typedef bp::class_< Optimizer_wrapper::TextureAtlasVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::TextureAtlasVisitor_wrapper >, boost::noncopyable > TextureAtlasVisitor_exposer_t;
-            TextureAtlasVisitor_exposer_t TextureAtlasVisitor_exposer = TextureAtlasVisitor_exposer_t( "TextureAtlasVisitor", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() )) );
+            TextureAtlasVisitor_exposer_t TextureAtlasVisitor_exposer = TextureAtlasVisitor_exposer_t( "TextureAtlasVisitor", "\n Optimize texture usage in the scene graph by combining textures into texture atlas\n Use of texture atlas cuts down on the number of seperate states in the scene, reducing\n state changes and improving the chances of using larger batches of geometry.\n", bp::init< bp::optional< osgUtil::Optimizer * > >(( bp::arg("optimizer")=bp::object() ), "\n default to traversing all children.\n") );
             bp::scope TextureAtlasVisitor_scope( TextureAtlasVisitor_exposer );
             bp::implicitly_convertible< osgUtil::Optimizer *, osgUtil::Optimizer::TextureAtlasVisitor >();
             { //::osgUtil::Optimizer::TextureAtlasVisitor::apply
@@ -8070,7 +8071,8 @@ void register_Optimizer_class(){
                 TextureAtlasVisitor_exposer.def( 
                     "getTextureAtlasBuilder"
                     , getTextureAtlasBuilder_function_type( &::osgUtil::Optimizer::TextureAtlasVisitor::getTextureAtlasBuilder )
-                    , bp::return_internal_reference< >() );
+                    , bp::return_internal_reference< >()
+                    , " default to traversing all children." );
             
             }
             { //::osgUtil::Optimizer::TextureAtlasVisitor::optimize
@@ -8094,7 +8096,7 @@ void register_Optimizer_class(){
             
             }
         }
-        bp::class_< Optimizer_wrapper::TextureVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::TextureVisitor_wrapper >, boost::noncopyable >( "TextureVisitor", bp::init< bool, bool, bool, bool, bool, float, bp::optional< osgUtil::Optimizer * > >(( bp::arg("changeAutoUnRef"), bp::arg("valueAutoUnRef"), bp::arg("changeClientImageStorage"), bp::arg("valueClientImageStorage"), bp::arg("changeAnisotropy"), bp::arg("valueAnisotropy"), bp::arg("optimizer")=bp::object() )) )    
+        bp::class_< Optimizer_wrapper::TextureVisitor_wrapper, bp::bases< osgUtil::BaseOptimizerVisitor >, osg::ref_ptr< Optimizer_wrapper::TextureVisitor_wrapper >, boost::noncopyable >( "TextureVisitor", "\n For all textures apply settings.\n", bp::init< bool, bool, bool, bool, bool, float, bp::optional< osgUtil::Optimizer * > >(( bp::arg("changeAutoUnRef"), bp::arg("valueAutoUnRef"), bp::arg("changeClientImageStorage"), bp::arg("valueClientImageStorage"), bp::arg("changeAnisotropy"), bp::arg("valueAnisotropy"), bp::arg("optimizer")=bp::object() ), "\n For all textures apply settings.\n") )    
             .def( 
                 "apply"
                 , (void ( ::osgUtil::Optimizer::TextureVisitor::* )( ::osg::Geode & ) )(&::osgUtil::Optimizer::TextureVisitor::apply)
@@ -8126,7 +8128,8 @@ void register_Optimizer_class(){
             Optimizer_exposer.def( 
                 "getIsOperationPermissibleForObjectCallback"
                 , getIsOperationPermissibleForObjectCallback_function_type( &::osgUtil::Optimizer::getIsOperationPermissibleForObjectCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the callback for customizing what operations are permitted on objects in the scene graph." );
         
         }
         { //::osgUtil::Optimizer::getIsOperationPermissibleForObjectCallback
@@ -8136,7 +8139,8 @@ void register_Optimizer_class(){
             Optimizer_exposer.def( 
                 "getIsOperationPermissibleForObjectCallback"
                 , getIsOperationPermissibleForObjectCallback_function_type( &::osgUtil::Optimizer::getIsOperationPermissibleForObjectCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the callback for customizing what operations are permitted on objects in the scene graph." );
         
         }
         { //::osgUtil::Optimizer::getPermissibleOptimizationsForObject
@@ -8236,7 +8240,8 @@ void register_Optimizer_class(){
             Optimizer_exposer.def( 
                 "optimize"
                 , optimize_function_type( &::osgUtil::Optimizer::optimize )
-                , ( bp::arg("node") ) );
+                , ( bp::arg("node") )
+                , " Traverse the node and its subgraph with a series of optimization\n visitors, specified by the OptimizationOptions." );
         
         }
         { //::osgUtil::Optimizer::optimize
@@ -8257,7 +8262,8 @@ void register_Optimizer_class(){
             
             Optimizer_exposer.def( 
                 "reset"
-                , reset_function_type( &::osgUtil::Optimizer::reset ) );
+                , reset_function_type( &::osgUtil::Optimizer::reset )
+                , " Reset internal data to initial state - the getPermissibleOptionsMap is cleared." );
         
         }
         { //::osgUtil::Optimizer::setIsOperationPermissibleForObjectCallback
@@ -8267,7 +8273,8 @@ void register_Optimizer_class(){
             Optimizer_exposer.def( 
                 "setIsOperationPermissibleForObjectCallback"
                 , setIsOperationPermissibleForObjectCallback_function_type( &::osgUtil::Optimizer::setIsOperationPermissibleForObjectCallback )
-                , ( bp::arg("callback") ) );
+                , ( bp::arg("callback") )
+                , " Set the callback for customizing what operations are permitted on objects in the scene graph." );
         
         }
         { //::osgUtil::Optimizer::setPermissibleOptimizationsForObject

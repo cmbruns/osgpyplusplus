@@ -40,7 +40,7 @@ void register_FieldReaderIterator_class(){
 
     { //::osgDB::FieldReaderIterator
         typedef bp::class_< FieldReaderIterator_wrapper > FieldReaderIterator_exposer_t;
-        FieldReaderIterator_exposer_t FieldReaderIterator_exposer = FieldReaderIterator_exposer_t( "FieldReaderIterator", bp::init< >() );
+        FieldReaderIterator_exposer_t FieldReaderIterator_exposer = FieldReaderIterator_exposer_t( "FieldReaderIterator", "\n deprecated.\n", bp::init< >() );
         bp::scope FieldReaderIterator_scope( FieldReaderIterator_exposer );
         bp::scope().attr("MINIMUM_FIELD_READER_QUEUE_SIZE") = (int)osgDB::FieldReaderIterator::MINIMUM_FIELD_READER_QUEUE_SIZE;
         FieldReaderIterator_exposer.def( bp::init< osgDB::FieldReaderIterator const & >(( bp::arg("ic") )) );
@@ -50,7 +50,8 @@ void register_FieldReaderIterator_class(){
             
             FieldReaderIterator_exposer.def( 
                 "advanceOverCurrentFieldOrBlock"
-                , advanceOverCurrentFieldOrBlock_function_type( &::osgDB::FieldReaderIterator::advanceOverCurrentFieldOrBlock ) );
+                , advanceOverCurrentFieldOrBlock_function_type( &::osgDB::FieldReaderIterator::advanceOverCurrentFieldOrBlock )
+                , " increments the iterator of the next simple field or\n whole block if the current field[0] is an open bracket" );
         
         }
         { //::osgDB::FieldReaderIterator::advanceToEndOfBlock

@@ -242,7 +242,7 @@ void register_DatabasePager_class(){
 
     { //::osgDB::DatabasePager
         typedef bp::class_< DatabasePager_wrapper, bp::bases< ::osg::NodeVisitor::DatabaseRequestHandler >, osg::ref_ptr< DatabasePager_wrapper >, boost::noncopyable > DatabasePager_exposer_t;
-        DatabasePager_exposer_t DatabasePager_exposer = DatabasePager_exposer_t( "DatabasePager", bp::no_init );
+        DatabasePager_exposer_t DatabasePager_exposer = DatabasePager_exposer_t( "DatabasePager", "\n Database paging class which manages the loading of files in a background thread,\n and synchronizing of loaded models with the main scene graph.\n", bp::no_init );
         bp::scope DatabasePager_scope( DatabasePager_exposer );
         bp::enum_< osgDB::DatabasePager::DrawablePolicy>("DrawablePolicy")
             .value("DO_NOT_MODIFY_DRAWABLE_SETTINGS", osgDB::DatabasePager::DO_NOT_MODIFY_DRAWABLE_SETTINGS)
@@ -431,7 +431,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "create"
                 , create_function_type( &::osgDB::DatabasePager::create )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " create a DatabasePager by cloning DatabasePager::prototype()." );
         
         }
         { //::osgDB::DatabasePager::getAcceptNewDatabaseRequests
@@ -440,7 +441,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getAcceptNewDatabaseRequests"
-                , getAcceptNewDatabaseRequests_function_type( &::osgDB::DatabasePager::getAcceptNewDatabaseRequests ) );
+                , getAcceptNewDatabaseRequests_function_type( &::osgDB::DatabasePager::getAcceptNewDatabaseRequests )
+                , " Get whether new database request calls are accepted or ignored." );
         
         }
         { //::osgDB::DatabasePager::getApplyPBOToImages
@@ -449,7 +451,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getApplyPBOToImages"
-                , getApplyPBOToImages_function_type( &::osgDB::DatabasePager::getApplyPBOToImages ) );
+                , getApplyPBOToImages_function_type( &::osgDB::DatabasePager::getApplyPBOToImages )
+                , " Get whether newly loaded textures should have a PixelBufferObject assigned to them.." );
         
         }
         { //::osgDB::DatabasePager::getAverageTimeToMergeTiles
@@ -458,7 +461,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getAverageTimeToMergeTiles"
-                , getAverageTimeToMergeTiles_function_type( &::osgDB::DatabasePager::getAverageTimeToMergeTiles ) );
+                , getAverageTimeToMergeTiles_function_type( &::osgDB::DatabasePager::getAverageTimeToMergeTiles )
+                , " Get the average time between the first request for a tile to be loaded and the time of its merge into the main scene graph." );
         
         }
         { //::osgDB::DatabasePager::getDataToCompileListSize
@@ -467,7 +471,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getDataToCompileListSize"
-                , getDataToCompileListSize_function_type( &::osgDB::DatabasePager::getDataToCompileListSize ) );
+                , getDataToCompileListSize_function_type( &::osgDB::DatabasePager::getDataToCompileListSize )
+                , " Report how many items are in the _dataToCompileList queue" );
         
         }
         { //::osgDB::DatabasePager::getDataToMergeListSize
@@ -476,7 +481,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getDataToMergeListSize"
-                , getDataToMergeListSize_function_type( &::osgDB::DatabasePager::getDataToMergeListSize ) );
+                , getDataToMergeListSize_function_type( &::osgDB::DatabasePager::getDataToMergeListSize )
+                , " Report how many items are in the _dataToMergeList queue" );
         
         }
         { //::osgDB::DatabasePager::getDatabasePagerThreadPause
@@ -485,7 +491,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getDatabasePagerThreadPause"
-                , getDatabasePagerThreadPause_function_type( &::osgDB::DatabasePager::getDatabasePagerThreadPause ) );
+                , getDatabasePagerThreadPause_function_type( &::osgDB::DatabasePager::getDatabasePagerThreadPause )
+                , " Get whether the database pager thread should is paused or not." );
         
         }
         { //::osgDB::DatabasePager::getDatabaseThread
@@ -516,7 +523,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getDeleteRemovedSubgraphsInDatabaseThread"
-                , getDeleteRemovedSubgraphsInDatabaseThread_function_type( &::osgDB::DatabasePager::getDeleteRemovedSubgraphsInDatabaseThread ) );
+                , getDeleteRemovedSubgraphsInDatabaseThread_function_type( &::osgDB::DatabasePager::getDeleteRemovedSubgraphsInDatabaseThread )
+                , " Get whether the removed subgraphs should be deleted in the database thread or not." );
         
         }
         { //::osgDB::DatabasePager::getDoPreCompile
@@ -525,7 +533,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getDoPreCompile"
-                , getDoPreCompile_function_type( &::osgDB::DatabasePager::getDoPreCompile ) );
+                , getDoPreCompile_function_type( &::osgDB::DatabasePager::getDoPreCompile )
+                , " Get whether the database pager should pre compile OpenGL objects before allowing\n them to be merged into the scene graph." );
         
         }
         { //::osgDB::DatabasePager::getDrawablePolicy
@@ -534,7 +543,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getDrawablePolicy"
-                , getDrawablePolicy_function_type( &::osgDB::DatabasePager::getDrawablePolicy ) );
+                , getDrawablePolicy_function_type( &::osgDB::DatabasePager::getDrawablePolicy )
+                , " Get how loaded drawables should be handled w.r.t their display list/vertex buffer object/vertex array settings." );
         
         }
         { //::osgDB::DatabasePager::getFileRequestListSize
@@ -543,7 +553,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getFileRequestListSize"
-                , getFileRequestListSize_function_type( &::osgDB::DatabasePager::getFileRequestListSize ) );
+                , getFileRequestListSize_function_type( &::osgDB::DatabasePager::getFileRequestListSize )
+                , " Report how many items are in the _fileRequestList queue" );
         
         }
         { //::osgDB::DatabasePager::getIncrementalCompileOperation
@@ -553,7 +564,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "getIncrementalCompileOperation"
                 , getIncrementalCompileOperation_function_type( &::osgDB::DatabasePager::getIncrementalCompileOperation )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the incremental compile operation." );
         
         }
         { //::osgDB::DatabasePager::getMaxAnisotropyPolicy
@@ -563,7 +575,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "getMaxAnisotropyPolicy"
                 , getMaxAnisotropyPolicy_function_type( &::osgDB::DatabasePager::getMaxAnisotropyPolicy )
-                , ( bp::arg("changeAnisotropy"), bp::arg("valueAnisotropy") ) );
+                , ( bp::arg("changeAnisotropy"), bp::arg("valueAnisotropy") )
+                , " Set whether newly loaded textures should have their MaxAnisotopy set to a specified value." );
         
         }
         { //::osgDB::DatabasePager::getMaximumTimeToMergeTile
@@ -572,7 +585,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getMaximumTimeToMergeTile"
-                , getMaximumTimeToMergeTile_function_type( &::osgDB::DatabasePager::getMaximumTimeToMergeTile ) );
+                , getMaximumTimeToMergeTile_function_type( &::osgDB::DatabasePager::getMaximumTimeToMergeTile )
+                , " Get the maximum time between the first request for a tile to be loaded and the time of its merge into the main scene graph." );
         
         }
         { //::osgDB::DatabasePager::getMinimumTimeToMergeTile
@@ -581,7 +595,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getMinimumTimeToMergeTile"
-                , getMinimumTimeToMergeTile_function_type( &::osgDB::DatabasePager::getMinimumTimeToMergeTile ) );
+                , getMinimumTimeToMergeTile_function_type( &::osgDB::DatabasePager::getMinimumTimeToMergeTile )
+                , " Get the minimum time between the first request for a tile to be loaded and the time of its merge into the main scene graph." );
         
         }
         { //::osgDB::DatabasePager::getNumDatabaseThreads
@@ -599,7 +614,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getNumFramesActive"
-                , getNumFramesActive_function_type( &::osgDB::DatabasePager::getNumFramesActive ) );
+                , getNumFramesActive_function_type( &::osgDB::DatabasePager::getNumFramesActive )
+                , " Get the number of frames that are currently active." );
         
         }
         { //::osgDB::DatabasePager::getRequestsInProgress
@@ -608,7 +624,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getRequestsInProgress"
-                , getRequestsInProgress_function_type( &::osgDB::DatabasePager::getRequestsInProgress ) );
+                , getRequestsInProgress_function_type( &::osgDB::DatabasePager::getRequestsInProgress )
+                , " Report whether any requests are in the pager." );
         
         }
         { //::osgDB::DatabasePager::getTargetMaximumNumberOfPageLOD
@@ -617,7 +634,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "getTargetMaximumNumberOfPageLOD"
-                , getTargetMaximumNumberOfPageLOD_function_type( &::osgDB::DatabasePager::getTargetMaximumNumberOfPageLOD ) );
+                , getTargetMaximumNumberOfPageLOD_function_type( &::osgDB::DatabasePager::getTargetMaximumNumberOfPageLOD )
+                , " Get the target maximum number of PagedLOD to maintain in memory." );
         
         }
         { //::osgDB::DatabasePager::getUnrefImageDataAfterApplyPolicy
@@ -627,7 +645,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "getUnrefImageDataAfterApplyPolicy"
                 , getUnrefImageDataAfterApplyPolicy_function_type( &::osgDB::DatabasePager::getUnrefImageDataAfterApplyPolicy )
-                , ( bp::arg("changeAutoUnRef"), bp::arg("valueAutoUnRef") ) );
+                , ( bp::arg("changeAutoUnRef"), bp::arg("valueAutoUnRef") )
+                , " Get whether newly loaded textures should have their UnrefImageDataAfterApply set to a specified value." );
         
         }
         { //::osgDB::DatabasePager::isRunning
@@ -648,7 +667,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "prototype"
                 , prototype_function_type( &::osgDB::DatabasePager::prototype )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " get the prototype singleton used by DatabasePager::create()." );
         
         }
         { //::osgDB::DatabasePager::registerPagedLODs
@@ -681,7 +701,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "requiresUpdateSceneGraph"
-                , requiresUpdateSceneGraph_function_type( &::osgDB::DatabasePager::requiresUpdateSceneGraph ) );
+                , requiresUpdateSceneGraph_function_type( &::osgDB::DatabasePager::requiresUpdateSceneGraph )
+                , " Return true if there are pending updates to the scene graph that require a call to updateSceneGraph(double)." );
         
         }
         { //::osgDB::DatabasePager::resetStats
@@ -690,7 +711,8 @@ void register_DatabasePager_class(){
             
             DatabasePager_exposer.def( 
                 "resetStats"
-                , resetStats_function_type( &::osgDB::DatabasePager::resetStats ) );
+                , resetStats_function_type( &::osgDB::DatabasePager::resetStats )
+                , " Reset the Stats variables." );
         
         }
         { //::osgDB::DatabasePager::setAcceptNewDatabaseRequests
@@ -700,7 +722,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "setAcceptNewDatabaseRequests"
                 , setAcceptNewDatabaseRequests_function_type( &::osgDB::DatabasePager::setAcceptNewDatabaseRequests )
-                , ( bp::arg("acceptNewRequests") ) );
+                , ( bp::arg("acceptNewRequests") )
+                , " Set whether new database request calls are accepted or ignored." );
         
         }
         { //::osgDB::DatabasePager::setApplyPBOToImages
@@ -710,7 +733,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "setApplyPBOToImages"
                 , setApplyPBOToImages_function_type( &::osgDB::DatabasePager::setApplyPBOToImages )
-                , ( bp::arg("assignPBOToImages") ) );
+                , ( bp::arg("assignPBOToImages") )
+                , " Set whether newly loaded textures should have a PixelBufferObject assigned to them to aid download to the GPU." );
         
         }
         { //::osgDB::DatabasePager::setDatabasePagerThreadPause
@@ -720,7 +744,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "setDatabasePagerThreadPause"
                 , setDatabasePagerThreadPause_function_type( &::osgDB::DatabasePager::setDatabasePagerThreadPause )
-                , ( bp::arg("pause") ) );
+                , ( bp::arg("pause") )
+                , " Set whether the database pager thread should be paused or not." );
         
         }
         { //::osgDB::DatabasePager::setDeleteRemovedSubgraphsInDatabaseThread
@@ -730,7 +755,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "setDeleteRemovedSubgraphsInDatabaseThread"
                 , setDeleteRemovedSubgraphsInDatabaseThread_function_type( &::osgDB::DatabasePager::setDeleteRemovedSubgraphsInDatabaseThread )
-                , ( bp::arg("flag") ) );
+                , ( bp::arg("flag") )
+                , " Set whether the removed subgraphs should be deleted in the database thread or not." );
         
         }
         { //::osgDB::DatabasePager::setDoPreCompile
@@ -740,7 +766,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "setDoPreCompile"
                 , setDoPreCompile_function_type( &::osgDB::DatabasePager::setDoPreCompile )
-                , ( bp::arg("flag") ) );
+                , ( bp::arg("flag") )
+                , " Set whether the database pager should pre compile OpenGL objects before allowing\n them to be merged into the scene graph.\n Pre compilation helps reduce the chances of frame drops, but also slows the\n speed at which tiles are merged as they have to be compiled first." );
         
         }
         { //::osgDB::DatabasePager::setDrawablePolicy
@@ -750,7 +777,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "setDrawablePolicy"
                 , setDrawablePolicy_function_type( &::osgDB::DatabasePager::setDrawablePolicy )
-                , ( bp::arg("policy") ) );
+                , ( bp::arg("policy") )
+                , " Set how loaded drawables should be handled w.r.t their display list/vertex buffer object/vertex array settings." );
         
         }
         { //::osgDB::DatabasePager::setIncrementalCompileOperation
@@ -760,7 +788,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "setIncrementalCompileOperation"
                 , setIncrementalCompileOperation_function_type( &::osgDB::DatabasePager::setIncrementalCompileOperation )
-                , ( bp::arg("ico") ) );
+                , ( bp::arg("ico") )
+                , " Set the incremental compile operation.\n Used to manage the OpenGL object compilation and merging of subgraphs in a way that avoids overloading\n the rendering of frame with too many new objects in one frame." );
         
         }
         { //::osgDB::DatabasePager::setMaxAnisotropyPolicy
@@ -770,7 +799,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "setMaxAnisotropyPolicy"
                 , setMaxAnisotropyPolicy_function_type( &::osgDB::DatabasePager::setMaxAnisotropyPolicy )
-                , ( bp::arg("changeAnisotropy"), bp::arg("valueAnisotropy") ) );
+                , ( bp::arg("changeAnisotropy"), bp::arg("valueAnisotropy") )
+                , " Set whether newly loaded textures should have their MaxAnisotopy set to a specified value." );
         
         }
         { //::osgDB::DatabasePager::setSchedulePriority
@@ -780,7 +810,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "setSchedulePriority"
                 , setSchedulePriority_function_type( &::osgDB::DatabasePager::setSchedulePriority )
-                , ( bp::arg("priority") ) );
+                , ( bp::arg("priority") )
+                , " Set the priority of the database pager thread(s)." );
         
         }
         { //::osgDB::DatabasePager::setTargetMaximumNumberOfPageLOD
@@ -790,7 +821,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "setTargetMaximumNumberOfPageLOD"
                 , setTargetMaximumNumberOfPageLOD_function_type( &::osgDB::DatabasePager::setTargetMaximumNumberOfPageLOD )
-                , ( bp::arg("target") ) );
+                , ( bp::arg("target") )
+                , " Set the target maximum number of PagedLOD to maintain in memory.\n Note, if more than the target number are required for rendering of a frame then these active PagedLOD are excempt from being expiried.\n But once the number of active drops back below the target the inactive PagedLOD will be trimmed back to the target number." );
         
         }
         { //::osgDB::DatabasePager::setUnrefImageDataAfterApplyPolicy
@@ -800,7 +832,8 @@ void register_DatabasePager_class(){
             DatabasePager_exposer.def( 
                 "setUnrefImageDataAfterApplyPolicy"
                 , setUnrefImageDataAfterApplyPolicy_function_type( &::osgDB::DatabasePager::setUnrefImageDataAfterApplyPolicy )
-                , ( bp::arg("changeAutoUnRef"), bp::arg("valueAutoUnRef") ) );
+                , ( bp::arg("changeAutoUnRef"), bp::arg("valueAutoUnRef") )
+                , " Set whether newly loaded textures should have their UnrefImageDataAfterApply set to a specified value." );
         
         }
         { //::osgDB::DatabasePager::setUpThreads

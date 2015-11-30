@@ -365,7 +365,7 @@ void register_SceneView_class(){
 
     { //::osgUtil::SceneView
         typedef bp::class_< SceneView_wrapper, bp::bases< ::osg::Object, ::osg::CullSettings >, osg::ref_ptr< SceneView_wrapper >, boost::noncopyable > SceneView_exposer_t;
-        SceneView_exposer_t SceneView_exposer = SceneView_exposer_t( "SceneView", bp::no_init );
+        SceneView_exposer_t SceneView_exposer = SceneView_exposer_t( "SceneView", "\n SceneView is deprecated, and is now just kept for backwards compatibility.\n It is recommend that you use osgViewer::Viewer/Composite in combination\n with osgViewer::GraphicsWindowEmbedded for embedded rendering support as\n this provides a greater range of functionality and consistency of API.\n", bp::no_init );
         bp::scope SceneView_scope( SceneView_exposer );
         bp::enum_< osgUtil::SceneView::ActiveUniforms>("ActiveUniforms")
             .value("FRAME_NUMBER_UNIFORM", osgUtil::SceneView::FRAME_NUMBER_UNIFORM)
@@ -394,11 +394,12 @@ void register_SceneView_class(){
             .value("STANDARD_SETTINGS", osgUtil::SceneView::STANDARD_SETTINGS)
             .export_values()
             ;
-        bp::class_< SceneView_wrapper::ComputeStereoMatricesCallback_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< SceneView_wrapper::ComputeStereoMatricesCallback_wrapper >, boost::noncopyable >( "ComputeStereoMatricesCallback", bp::no_init )    
+        bp::class_< SceneView_wrapper::ComputeStereoMatricesCallback_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< SceneView_wrapper::ComputeStereoMatricesCallback_wrapper >, boost::noncopyable >( "ComputeStereoMatricesCallback", "\n Callback for overidding the default method for compute the offset projection and view matrices.\n", bp::no_init )    
             .def( 
                 "computeLeftEyeProjection"
                 , bp::pure_virtual( (::osg::Matrixd ( ::osgUtil::SceneView::ComputeStereoMatricesCallback::* )( ::osg::Matrixd const & ) const)(&::osgUtil::SceneView::ComputeStereoMatricesCallback::computeLeftEyeProjection) )
-                , ( bp::arg("projection") ) )    
+                , ( bp::arg("projection") )
+                , "\n Callback for overidding the default method for compute the offset projection and view matrices.\n" )    
             .def( 
                 "computeLeftEyeView"
                 , bp::pure_virtual( (::osg::Matrixd ( ::osgUtil::SceneView::ComputeStereoMatricesCallback::* )( ::osg::Matrixd const & ) const)(&::osgUtil::SceneView::ComputeStereoMatricesCallback::computeLeftEyeView) )
@@ -411,7 +412,7 @@ void register_SceneView_class(){
                 "computeRightEyeView"
                 , bp::pure_virtual( (::osg::Matrixd ( ::osgUtil::SceneView::ComputeStereoMatricesCallback::* )( ::osg::Matrixd const & ) const)(&::osgUtil::SceneView::ComputeStereoMatricesCallback::computeRightEyeView) )
                 , ( bp::arg("view") ) );
-        SceneView_exposer.def( bp::init< bp::optional< osg::DisplaySettings * > >(( bp::arg("ds")=0l )) );
+        SceneView_exposer.def( bp::init< bp::optional< osg::DisplaySettings * > >(( bp::arg("ds")=0l ), "\n Construct a default scene view.\n") );
         bp::implicitly_convertible< osg::DisplaySettings *, osgUtil::SceneView >();
         { //::osgUtil::SceneView::className
         
@@ -430,7 +431,8 @@ void register_SceneView_class(){
             
             SceneView_exposer.def( 
                 "clearReferencesToDependentCameras"
-                , clearReferencesToDependentCameras_function_type( &::osgUtil::SceneView::clearReferencesToDependentCameras ) );
+                , clearReferencesToDependentCameras_function_type( &::osgUtil::SceneView::clearReferencesToDependentCameras )
+                , " clear the refence to any any dependent cameras." );
         
         }
         { //::osgUtil::SceneView::clone
@@ -464,7 +466,8 @@ void register_SceneView_class(){
             
             SceneView_exposer.def( 
                 "collateReferencesToDependentCameras"
-                , collateReferencesToDependentCameras_function_type( &::osgUtil::SceneView::collateReferencesToDependentCameras ) );
+                , collateReferencesToDependentCameras_function_type( &::osgUtil::SceneView::collateReferencesToDependentCameras )
+                , " search through any pre and post RenderStages that reference a Camera, and take a reference to each of these cameras to prevent them being deleted while they are still be used by the drawing thread." );
         
         }
         { //::osgUtil::SceneView::computeLeftEyeProjection
@@ -606,7 +609,8 @@ void register_SceneView_class(){
             
             SceneView_exposer.def( 
                 "getActiveUniforms"
-                , getActiveUniforms_function_type( &::osgUtil::SceneView::getActiveUniforms ) );
+                , getActiveUniforms_function_type( &::osgUtil::SceneView::getActiveUniforms )
+                , " Get the uniforms that SceneView should set set up on each frame." );
         
         }
         { //::osgUtil::SceneView::getAutomaticFlush
@@ -625,7 +629,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getCamera"
                 , getCamera_function_type( &::osgUtil::SceneView::getCamera )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the camera used to represent the camera view of this SceneView." );
         
         }
         { //::osgUtil::SceneView::getCamera
@@ -635,7 +640,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getCamera"
                 , getCamera_function_type( &::osgUtil::SceneView::getCamera )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const camera used to represent the camera view of this SceneView." );
         
         }
         { //::osgUtil::SceneView::getClearColor
@@ -645,7 +651,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getClearColor"
                 , getClearColor_function_type( &::osgUtil::SceneView::getClearColor )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the color used in glClearColor." );
         
         }
         { //::osgUtil::SceneView::getCollectOccludersVisitor
@@ -755,7 +762,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getDisplaySettings"
                 , getDisplaySettings_function_type( &::osgUtil::SceneView::getDisplaySettings )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const DisplaySettings" );
         
         }
         { //::osgUtil::SceneView::getDisplaySettings
@@ -765,7 +773,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getDisplaySettings"
                 , getDisplaySettings_function_type( &::osgUtil::SceneView::getDisplaySettings )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the DisplaySettings" );
         
         }
         { //::osgUtil::SceneView::getDrawBufferValue
@@ -774,7 +783,8 @@ void register_SceneView_class(){
             
             SceneView_exposer.def( 
                 "getDrawBufferValue"
-                , getDrawBufferValue_function_type( &::osgUtil::SceneView::getDrawBufferValue ) );
+                , getDrawBufferValue_function_type( &::osgUtil::SceneView::getDrawBufferValue )
+                , " Get the draw buffer value used at the start of each frame draw." );
         
         }
         { //::osgUtil::SceneView::getDynamicObjectCount
@@ -783,7 +793,8 @@ void register_SceneView_class(){
             
             SceneView_exposer.def( 
                 "getDynamicObjectCount"
-                , getDynamicObjectCount_function_type( &::osgUtil::SceneView::getDynamicObjectCount ) );
+                , getDynamicObjectCount_function_type( &::osgUtil::SceneView::getDynamicObjectCount )
+                , " Compute the number of dynamic objects that will be held in the rendering backend" );
         
         }
         { //::osgUtil::SceneView::getFrameStamp
@@ -793,7 +804,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getFrameStamp"
                 , getFrameStamp_function_type( &::osgUtil::SceneView::getFrameStamp )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the frame stamp for the current frame." );
         
         }
         { //::osgUtil::SceneView::getFusionDistanceMode
@@ -802,7 +814,8 @@ void register_SceneView_class(){
             
             SceneView_exposer.def( 
                 "getFusionDistanceMode"
-                , getFusionDistanceMode_function_type( &::osgUtil::SceneView::getFusionDistanceMode ) );
+                , getFusionDistanceMode_function_type( &::osgUtil::SceneView::getFusionDistanceMode )
+                , " Get the FusionDistanceMode." );
         
         }
         { //::osgUtil::SceneView::getFusionDistanceValue
@@ -811,7 +824,8 @@ void register_SceneView_class(){
             
             SceneView_exposer.def( 
                 "getFusionDistanceValue"
-                , getFusionDistanceValue_function_type( &::osgUtil::SceneView::getFusionDistanceValue ) );
+                , getFusionDistanceValue_function_type( &::osgUtil::SceneView::getFusionDistanceValue )
+                , " Get the FusionDistanceValue. Note, only used for USE_FUSION_DISTANCE_VALUE & PROPORTIONAL_TO_SCREEN_DISTANCE modes." );
         
         }
         { //::osgUtil::SceneView::getGlobalStateSet
@@ -909,7 +923,8 @@ void register_SceneView_class(){
             
             SceneView_exposer.def( 
                 "getNumSceneData"
-                , getNumSceneData_function_type( &::osgUtil::SceneView::getNumSceneData ) );
+                , getNumSceneData_function_type( &::osgUtil::SceneView::getNumSceneData )
+                , " Get the number of scene data subgraphs added to the SceneViews camera." );
         
         }
         { //::osgUtil::SceneView::getPrioritizeTextures
@@ -918,7 +933,8 @@ void register_SceneView_class(){
             
             SceneView_exposer.def( 
                 "getPrioritizeTextures"
-                , getPrioritizeTextures_function_type( &::osgUtil::SceneView::getPrioritizeTextures ) );
+                , getPrioritizeTextures_function_type( &::osgUtil::SceneView::getPrioritizeTextures )
+                , " Get whether the draw method should call renderer->prioritizeTexture." );
         
         }
         { //::osgUtil::SceneView::getProjectionMatrix
@@ -928,7 +944,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getProjectionMatrix"
                 , getProjectionMatrix_function_type( &::osgUtil::SceneView::getProjectionMatrix )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the projection matrix." );
         
         }
         { //::osgUtil::SceneView::getProjectionMatrix
@@ -938,7 +955,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getProjectionMatrix"
                 , getProjectionMatrix_function_type( &::osgUtil::SceneView::getProjectionMatrix )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const projection matrix." );
         
         }
         { //::osgUtil::SceneView::getProjectionMatrixAsFrustum
@@ -948,7 +966,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getProjectionMatrixAsFrustum"
                 , getProjectionMatrixAsFrustum_function_type( &::osgUtil::SceneView::getProjectionMatrixAsFrustum )
-                , ( bp::arg("left"), bp::arg("right"), bp::arg("bottom"), bp::arg("top"), bp::arg("zNear"), bp::arg("zFar") ) );
+                , ( bp::arg("left"), bp::arg("right"), bp::arg("bottom"), bp::arg("top"), bp::arg("zNear"), bp::arg("zFar") )
+                , " Get the frustum setting of a perspective projection matrix.\n Returns false if matrix is not a perspective matrix, where parameter values are undefined." );
         
         }
         { //::osgUtil::SceneView::getProjectionMatrixAsOrtho
@@ -958,7 +977,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getProjectionMatrixAsOrtho"
                 , getProjectionMatrixAsOrtho_function_type( &::osgUtil::SceneView::getProjectionMatrixAsOrtho )
-                , ( bp::arg("left"), bp::arg("right"), bp::arg("bottom"), bp::arg("top"), bp::arg("zNear"), bp::arg("zFar") ) );
+                , ( bp::arg("left"), bp::arg("right"), bp::arg("bottom"), bp::arg("top"), bp::arg("zNear"), bp::arg("zFar") )
+                , " Get the orthographic settings of the orthographic projection matrix.\n Returns false if matrix is not an orthographic matrix, where parameter values are undefined." );
         
         }
         { //::osgUtil::SceneView::getProjectionMatrixAsPerspective
@@ -968,7 +988,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getProjectionMatrixAsPerspective"
                 , getProjectionMatrixAsPerspective_function_type( &::osgUtil::SceneView::getProjectionMatrixAsPerspective )
-                , ( bp::arg("fovy"), bp::arg("aspectRatio"), bp::arg("zNear"), bp::arg("zFar") ) );
+                , ( bp::arg("fovy"), bp::arg("aspectRatio"), bp::arg("zNear"), bp::arg("zFar") )
+                , " Get the frustum setting of a symmetric perspective projection matrix.\n Returns false if matrix is not a perspective matrix, where parameter values are undefined.\n Note, if matrix is not a symmetric perspective matrix then the shear will be lost.\n Asymmetric matrices occur when stereo, power walls, caves and reality center display are used.\n In these configurations one should use the getProjectionMatrixAsFrustum method instead." );
         
         }
         { //::osgUtil::SceneView::getRedrawInterlacedStereoStencilMask
@@ -977,7 +998,8 @@ void register_SceneView_class(){
             
             SceneView_exposer.def( 
                 "getRedrawInterlacedStereoStencilMask"
-                , getRedrawInterlacedStereoStencilMask_function_type( &::osgUtil::SceneView::getRedrawInterlacedStereoStencilMask ) );
+                , getRedrawInterlacedStereoStencilMask_function_type( &::osgUtil::SceneView::getRedrawInterlacedStereoStencilMask )
+                , " Get the redraw interlaced stereo stencil mask request flag." );
         
         }
         { //::osgUtil::SceneView::getRenderInfo
@@ -1068,7 +1090,8 @@ void register_SceneView_class(){
                 "getSceneData"
                 , getSceneData_function_type( &::osgUtil::SceneView::getSceneData )
                 , ( bp::arg("childNo")=(unsigned int)(0) )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the scene data to view. The data will typically be\n  an osg::Scene but can be any osg::Node type." );
         
         }
         { //::osgUtil::SceneView::getSceneData
@@ -1079,7 +1102,8 @@ void register_SceneView_class(){
                 "getSceneData"
                 , getSceneData_function_type( &::osgUtil::SceneView::getSceneData )
                 , ( bp::arg("childNo")=(unsigned int)(0) )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const scene data which to view. The data will typically be\n  an osg::Scene but can be any osg::Node type." );
         
         }
         { //::osgUtil::SceneView::getSecondaryStateSet
@@ -1189,7 +1213,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getStats"
                 , getStats_function_type( &::osgUtil::SceneView::getStats )
-                , ( bp::arg("primStats") ) );
+                , ( bp::arg("primStats") )
+                , " Extract stats for current draw list." );
         
         }
         { //::osgUtil::SceneView::getUpdateVisitor
@@ -1239,7 +1264,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getViewMatrix"
                 , getViewMatrix_function_type( &::osgUtil::SceneView::getViewMatrix )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the view matrix." );
         
         }
         { //::osgUtil::SceneView::getViewMatrix
@@ -1249,7 +1275,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getViewMatrix"
                 , getViewMatrix_function_type( &::osgUtil::SceneView::getViewMatrix )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const view matrix." );
         
         }
         { //::osgUtil::SceneView::getViewMatrixAsLookAt
@@ -1259,7 +1286,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getViewMatrixAsLookAt"
                 , getViewMatrixAsLookAt_function_type( &::osgUtil::SceneView::getViewMatrixAsLookAt )
-                , ( bp::arg("eye"), bp::arg("center"), bp::arg("up"), bp::arg("lookDistance")=1.0e+0f ) );
+                , ( bp::arg("eye"), bp::arg("center"), bp::arg("up"), bp::arg("lookDistance")=1.0e+0f )
+                , " Get the position and orientation components of a modelview matrix, using the same convention as gluLookAt." );
         
         }
         { //::osgUtil::SceneView::getViewport
@@ -1269,7 +1297,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getViewport"
                 , getViewport_function_type( &::osgUtil::SceneView::getViewport )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the viewport." );
         
         }
         { //::osgUtil::SceneView::getViewport
@@ -1279,7 +1308,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "getViewport"
                 , getViewport_function_type( &::osgUtil::SceneView::getViewport )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const viewport." );
         
         }
         { //::osgUtil::SceneView::inheritCullSettings
@@ -1347,7 +1377,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "projectObjectIntoWindow"
                 , projectObjectIntoWindow_function_type( &::osgUtil::SceneView::projectObjectIntoWindow )
-                , ( bp::arg("object"), bp::arg("window") ) );
+                , ( bp::arg("object"), bp::arg("window") )
+                , " Calculate the window coordinates of a point in object coordinates.\n            Note, current implementation requires that SceneView::draw() has been previously called\n            for projectWindowIntoObject to produce valid values. Consistent with OpenGL,\n            window coordinates are calculated relative to the bottom left of the window,\n            whereas window APIs normally have the top left as the origin,\n            so you may need to pass in (mouseX,window_height-mouseY,...).\n            Returns true on successful projection." );
         
         }
         { //::osgUtil::SceneView::projectWindowIntoObject
@@ -1357,7 +1388,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "projectWindowIntoObject"
                 , projectWindowIntoObject_function_type( &::osgUtil::SceneView::projectWindowIntoObject )
-                , ( bp::arg("window"), bp::arg("object") ) );
+                , ( bp::arg("window"), bp::arg("object") )
+                , " Calculate the object coordinates of a point in window coordinates.\n            Note, current implementation requires that SceneView::draw() has been previously called\n            for projectWindowIntoObject to produce valid values. Consistent with OpenGL,\n            window coordinates are calculated relative to the bottom left of the window.\n            Returns true on successful projection." );
         
         }
         { //::osgUtil::SceneView::projectWindowXYIntoObject
@@ -1367,7 +1399,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "projectWindowXYIntoObject"
                 , projectWindowXYIntoObject_function_type( &::osgUtil::SceneView::projectWindowXYIntoObject )
-                , ( bp::arg("x"), bp::arg("y"), bp::arg("near_point"), bp::arg("far_point") ) );
+                , ( bp::arg("x"), bp::arg("y"), bp::arg("near_point"), bp::arg("far_point") )
+                , " Calculate the object coordinates of a window x,y when projected onto the near and far planes.\n            Note, current implementation requires that SceneView::draw() has been previously called\n            for projectWindowIntoObject to produce valid values. Consistent with OpenGL,\n            window coordinates are calculated relative to the bottom left of the window.\n            Returns true on successful projection." );
         
         }
         { //::osgUtil::SceneView::releaseAllGLObjects
@@ -1388,7 +1421,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setActiveUniforms"
                 , setActiveUniforms_function_type( &::osgUtil::SceneView::setActiveUniforms )
-                , ( bp::arg("activeUniforms") ) );
+                , ( bp::arg("activeUniforms") )
+                , " Set the uniforms that SceneView should set set up on each frame." );
         
         }
         { //::osgUtil::SceneView::setAutomaticFlush
@@ -1398,7 +1432,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setAutomaticFlush"
                 , setAutomaticFlush_function_type( &::osgUtil::SceneView::setAutomaticFlush )
-                , ( bp::arg("automaticFlush") ) );
+                , ( bp::arg("automaticFlush") )
+                , " Set whether the SceneView should automatically call flushDeletedObjects() on each new frame." );
         
         }
         { //::osgUtil::SceneView::setCamera
@@ -1408,7 +1443,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setCamera"
                 , setCamera_function_type( &::osgUtil::SceneView::setCamera )
-                , ( bp::arg("camera"), bp::arg("assumeOwnershipOfCamera")=(bool)(true) ) );
+                , ( bp::arg("camera"), bp::arg("assumeOwnershipOfCamera")=(bool)(true) )
+                , " Set the camera used to represent the camera view of this SceneView." );
         
         }
         { //::osgUtil::SceneView::setClearColor
@@ -1418,7 +1454,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setClearColor"
                 , setClearColor_function_type( &::osgUtil::SceneView::setClearColor )
-                , ( bp::arg("color") ) );
+                , ( bp::arg("color") )
+                , " Set the color used in glClearColor().\n            Defaults to an off blue color." );
         
         }
         { //::osgUtil::SceneView::setCollectOccludersVisitor
@@ -1501,7 +1538,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setDisplaySettings"
                 , setDisplaySettings_function_type( &::osgUtil::SceneView::setDisplaySettings )
-                , ( bp::arg("vs") ) );
+                , ( bp::arg("vs") )
+                , " Set the DisplaySettings." );
         
         }
         { //::osgUtil::SceneView::setDrawBufferValue
@@ -1511,7 +1549,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setDrawBufferValue"
                 , setDrawBufferValue_function_type( &::osgUtil::SceneView::setDrawBufferValue )
-                , ( bp::arg("drawBufferValue") ) );
+                , ( bp::arg("drawBufferValue") )
+                , " Set the draw buffer value used at the start of each frame draw.  Note, overridden in quad buffer stereo mode" );
         
         }
         { //::osgUtil::SceneView::setFrameStamp
@@ -1521,7 +1560,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setFrameStamp"
                 , setFrameStamp_function_type( &::osgUtil::SceneView::setFrameStamp )
-                , ( bp::arg("fs") ) );
+                , ( bp::arg("fs") )
+                , " Set the frame stamp for the current frame." );
         
         }
         { //::osgUtil::SceneView::setFusionDistance
@@ -1531,7 +1571,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setFusionDistance"
                 , setFusionDistance_function_type( &::osgUtil::SceneView::setFusionDistance )
-                , ( bp::arg("mode"), bp::arg("value")=1.0e+0f ) );
+                , ( bp::arg("mode"), bp::arg("value")=1.0e+0f )
+                , " Set the FusionDistanceMode and Value. Note, is used only when working in stereo." );
         
         }
         { //::osgUtil::SceneView::setGlobalStateSet
@@ -1591,7 +1632,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setPrioritizeTextures"
                 , setPrioritizeTextures_function_type( &::osgUtil::SceneView::setPrioritizeTextures )
-                , ( bp::arg("pt") ) );
+                , ( bp::arg("pt") )
+                , " Set whether the draw method should call renderer->prioritizeTexture." );
         
         }
         { //::osgUtil::SceneView::setProjectionMatrix
@@ -1601,7 +1643,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setProjectionMatrix"
                 , setProjectionMatrix_function_type( &::osgUtil::SceneView::setProjectionMatrix )
-                , ( bp::arg("matrix") ) );
+                , ( bp::arg("matrix") )
+                , " Set the projection matrix. Can be thought of as setting the lens of a camera." );
         
         }
         { //::osgUtil::SceneView::setProjectionMatrix
@@ -1611,7 +1654,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setProjectionMatrix"
                 , setProjectionMatrix_function_type( &::osgUtil::SceneView::setProjectionMatrix )
-                , ( bp::arg("matrix") ) );
+                , ( bp::arg("matrix") )
+                , " Set the projection matrix. Can be thought of as setting the lens of a camera." );
         
         }
         { //::osgUtil::SceneView::setProjectionMatrixAsFrustum
@@ -1621,7 +1665,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setProjectionMatrixAsFrustum"
                 , setProjectionMatrixAsFrustum_function_type( &::osgUtil::SceneView::setProjectionMatrixAsFrustum )
-                , ( bp::arg("left"), bp::arg("right"), bp::arg("bottom"), bp::arg("top"), bp::arg("zNear"), bp::arg("zFar") ) );
+                , ( bp::arg("left"), bp::arg("right"), bp::arg("bottom"), bp::arg("top"), bp::arg("zNear"), bp::arg("zFar") )
+                , " Set to a perspective projection. See OpenGL glFrustum documentation for further details." );
         
         }
         { //::osgUtil::SceneView::setProjectionMatrixAsOrtho
@@ -1631,7 +1676,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setProjectionMatrixAsOrtho"
                 , setProjectionMatrixAsOrtho_function_type( &::osgUtil::SceneView::setProjectionMatrixAsOrtho )
-                , ( bp::arg("left"), bp::arg("right"), bp::arg("bottom"), bp::arg("top"), bp::arg("zNear"), bp::arg("zFar") ) );
+                , ( bp::arg("left"), bp::arg("right"), bp::arg("bottom"), bp::arg("top"), bp::arg("zNear"), bp::arg("zFar") )
+                , " Set to an orthographic projection. See OpenGL glOrtho documentation for further details." );
         
         }
         { //::osgUtil::SceneView::setProjectionMatrixAsOrtho2D
@@ -1641,7 +1687,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setProjectionMatrixAsOrtho2D"
                 , setProjectionMatrixAsOrtho2D_function_type( &::osgUtil::SceneView::setProjectionMatrixAsOrtho2D )
-                , ( bp::arg("left"), bp::arg("right"), bp::arg("bottom"), bp::arg("top") ) );
+                , ( bp::arg("left"), bp::arg("right"), bp::arg("bottom"), bp::arg("top") )
+                , " Set to a 2D orthographic projection. See OpenGL glOrtho2D documentation for further details." );
         
         }
         { //::osgUtil::SceneView::setProjectionMatrixAsPerspective
@@ -1651,7 +1698,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setProjectionMatrixAsPerspective"
                 , setProjectionMatrixAsPerspective_function_type( &::osgUtil::SceneView::setProjectionMatrixAsPerspective )
-                , ( bp::arg("fovy"), bp::arg("aspectRatio"), bp::arg("zNear"), bp::arg("zFar") ) );
+                , ( bp::arg("fovy"), bp::arg("aspectRatio"), bp::arg("zNear"), bp::arg("zFar") )
+                , " Create a symmetrical perspective projection, See OpenGL gluPerspective documentation for further details.\n Aspect ratio is defined as width/height." );
         
         }
         { //::osgUtil::SceneView::setRedrawInterlacedStereoStencilMask
@@ -1661,7 +1709,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setRedrawInterlacedStereoStencilMask"
                 , setRedrawInterlacedStereoStencilMask_function_type( &::osgUtil::SceneView::setRedrawInterlacedStereoStencilMask )
-                , ( bp::arg("flag") ) );
+                , ( bp::arg("flag") )
+                , " Manually set the redraw interlaced stereo stencil mask request flag to control whether to redraw the stencil buffer on the next frame." );
         
         }
         { //::osgUtil::SceneView::setRenderInfo
@@ -1730,7 +1779,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setSceneData"
                 , setSceneData_function_type( &::osgUtil::SceneView::setSceneData )
-                , ( bp::arg("node") ) );
+                , ( bp::arg("node") )
+                , " Set the data to view. The data will typically be\n  an osg::Scene but can be any osg::Node type." );
         
         }
         { //::osgUtil::SceneView::setSecondaryStateSet
@@ -1810,7 +1860,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setViewMatrix"
                 , setViewMatrix_function_type( &::osgUtil::SceneView::setViewMatrix )
-                , ( bp::arg("matrix") ) );
+                , ( bp::arg("matrix") )
+                , " Set the view matrix. Can be thought of as setting the position of the world relative to the camera in camera coordinates." );
         
         }
         { //::osgUtil::SceneView::setViewMatrix
@@ -1820,7 +1871,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setViewMatrix"
                 , setViewMatrix_function_type( &::osgUtil::SceneView::setViewMatrix )
-                , ( bp::arg("matrix") ) );
+                , ( bp::arg("matrix") )
+                , " Set the view matrix. Can be thought of as setting the position of the world relative to the camera in camera coordinates." );
         
         }
         { //::osgUtil::SceneView::setViewMatrixAsLookAt
@@ -1830,7 +1882,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setViewMatrixAsLookAt"
                 , setViewMatrixAsLookAt_function_type( &::osgUtil::SceneView::setViewMatrixAsLookAt )
-                , ( bp::arg("eye"), bp::arg("center"), bp::arg("up") ) );
+                , ( bp::arg("eye"), bp::arg("center"), bp::arg("up") )
+                , " Set the position and orientation components of the view matrix, using the same convention as gluLookAt." );
         
         }
         { //::osgUtil::SceneView::setViewport
@@ -1840,7 +1893,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setViewport"
                 , setViewport_function_type( &::osgUtil::SceneView::setViewport )
-                , ( bp::arg("viewport") ) );
+                , ( bp::arg("viewport") )
+                , " Set the viewport of the scene view to use specified osg::Viewport." );
         
         }
         { //::osgUtil::SceneView::setViewport
@@ -1850,7 +1904,8 @@ void register_SceneView_class(){
             SceneView_exposer.def( 
                 "setViewport"
                 , setViewport_function_type( &::osgUtil::SceneView::setViewport )
-                , ( bp::arg("x"), bp::arg("y"), bp::arg("width"), bp::arg("height") ) );
+                , ( bp::arg("x"), bp::arg("y"), bp::arg("width"), bp::arg("height") )
+                , " Set the viewport of the scene view to specified dimensions." );
         
         }
         { //::osgUtil::SceneView::update

@@ -11,7 +11,7 @@ void register_XmlNode_class(){
 
     { //::osgDB::XmlNode
         typedef bp::class_< osgDB::XmlNode, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgDB::XmlNode >, boost::noncopyable > XmlNode_exposer_t;
-        XmlNode_exposer_t XmlNode_exposer = XmlNode_exposer_t( "XmlNode", bp::init< >() );
+        XmlNode_exposer_t XmlNode_exposer = XmlNode_exposer_t( "XmlNode", "\n XmlNode class for very basic reading and writing of xml files.\n", bp::init< >("\n XmlNode class for very basic reading and writing of xml files.\n") );
         bp::scope XmlNode_scope( XmlNode_exposer );
         bp::enum_< osgDB::XmlNode::NodeType>("NodeType")
             .value("UNASSIGNED", osgDB::XmlNode::UNASSIGNED)

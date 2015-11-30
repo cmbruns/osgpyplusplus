@@ -398,19 +398,20 @@ void register_IntersectionVisitor_class(){
 
     { //::osgUtil::IntersectionVisitor
         typedef bp::class_< IntersectionVisitor_wrapper, bp::bases< ::osg::NodeVisitor >, osg::ref_ptr< IntersectionVisitor_wrapper >, boost::noncopyable > IntersectionVisitor_exposer_t;
-        IntersectionVisitor_exposer_t IntersectionVisitor_exposer = IntersectionVisitor_exposer_t( "IntersectionVisitor", bp::init< bp::optional< osgUtil::Intersector *, osgUtil::IntersectionVisitor::ReadCallback * > >(( bp::arg("intersector")=bp::object(), bp::arg("readCallback")=bp::object() )) );
+        IntersectionVisitor_exposer_t IntersectionVisitor_exposer = IntersectionVisitor_exposer_t( "IntersectionVisitor", "\n InteresectionVisitor is used to testing for intersections with the scene, traversing the scene using generic osgUtil::Intersectors to test against the scene.\n To implement different types of intersection techniques, one implements custom versions of the osgUtil::Intersector, and then\n pass the constructed intersector to the IntersectionVisitor.\n", bp::init< bp::optional< osgUtil::Intersector *, osgUtil::IntersectionVisitor::ReadCallback * > >(( bp::arg("intersector")=bp::object(), bp::arg("readCallback")=bp::object() )) );
         bp::scope IntersectionVisitor_scope( IntersectionVisitor_exposer );
         bp::enum_< osgUtil::IntersectionVisitor::LODSelectionMode>("LODSelectionMode")
             .value("USE_HIGHEST_LEVEL_OF_DETAIL", osgUtil::IntersectionVisitor::USE_HIGHEST_LEVEL_OF_DETAIL)
             .value("USE_EYE_POINT_FOR_LOD_LEVEL_SELECTION", osgUtil::IntersectionVisitor::USE_EYE_POINT_FOR_LOD_LEVEL_SELECTION)
             .export_values()
             ;
-        bp::class_< IntersectionVisitor_wrapper::ReadCallback_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< IntersectionVisitor_wrapper::ReadCallback_wrapper >, boost::noncopyable >( "ReadCallback", bp::no_init )    
+        bp::class_< IntersectionVisitor_wrapper::ReadCallback_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< IntersectionVisitor_wrapper::ReadCallback_wrapper >, boost::noncopyable >( "ReadCallback", "\n Callback used to implement the reading of external files, allowing support for paged databases to be\n integrated with IntersectionVisitor.  A concrete implementation can be found in osgDB.\n Note, this loose coupling approach is required as osgUtil is independent from osgDB where the file reading\n is implemented, and osgDB itself is dependent upon osgUtil so a circular dependency would result from\n tighter integration.\n", bp::no_init )    
             .def( 
                 "readNodeFile"
                 , bp::pure_virtual( (::osg::Node * ( ::osgUtil::IntersectionVisitor::ReadCallback::* )( ::std::string const & ) )(&::osgUtil::IntersectionVisitor::ReadCallback::readNodeFile) )
                 , ( bp::arg("filename") )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n Callback used to implement the reading of external files, allowing support for paged databases to be\n integrated with IntersectionVisitor.  A concrete implementation can be found in osgDB.\n Note, this loose coupling approach is required as osgUtil is independent from osgDB where the file reading\n is implemented, and osgDB itself is dependent upon osgUtil so a circular dependency would result from\n tighter integration.\n" );
         bp::implicitly_convertible< osgUtil::Intersector *, osgUtil::IntersectionVisitor >();
         { //::osgUtil::IntersectionVisitor::apply
         
@@ -570,7 +571,8 @@ void register_IntersectionVisitor_class(){
             IntersectionVisitor_exposer.def( 
                 "getIntersector"
                 , getIntersector_function_type( &::osgUtil::IntersectionVisitor::getIntersector )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the intersector that will be used to intersect with the scene, and to store any hits that occur." );
         
         }
         { //::osgUtil::IntersectionVisitor::getIntersector
@@ -580,7 +582,8 @@ void register_IntersectionVisitor_class(){
             IntersectionVisitor_exposer.def( 
                 "getIntersector"
                 , getIntersector_function_type( &::osgUtil::IntersectionVisitor::getIntersector )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const intersector that will be used to intersect with the scene, and to store any hits that occur." );
         
         }
         { //::osgUtil::IntersectionVisitor::getLODSelectionMode
@@ -589,7 +592,8 @@ void register_IntersectionVisitor_class(){
             
             IntersectionVisitor_exposer.def( 
                 "getLODSelectionMode"
-                , getLODSelectionMode_function_type( &::osgUtil::IntersectionVisitor::getLODSelectionMode ) );
+                , getLODSelectionMode_function_type( &::osgUtil::IntersectionVisitor::getLODSelectionMode )
+                , " Get the LOD selection scheme." );
         
         }
         { //::osgUtil::IntersectionVisitor::getModelMatrix
@@ -639,7 +643,8 @@ void register_IntersectionVisitor_class(){
             IntersectionVisitor_exposer.def( 
                 "getReadCallback"
                 , getReadCallback_function_type( &::osgUtil::IntersectionVisitor::getReadCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the read callback." );
         
         }
         { //::osgUtil::IntersectionVisitor::getReadCallback
@@ -649,7 +654,8 @@ void register_IntersectionVisitor_class(){
             IntersectionVisitor_exposer.def( 
                 "getReadCallback"
                 , getReadCallback_function_type( &::osgUtil::IntersectionVisitor::getReadCallback )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the const read callback." );
         
         }
         { //::osgUtil::IntersectionVisitor::getReferenceEyePoint
@@ -659,7 +665,8 @@ void register_IntersectionVisitor_class(){
             IntersectionVisitor_exposer.def( 
                 "getReferenceEyePoint"
                 , getReferenceEyePoint_function_type( &::osgUtil::IntersectionVisitor::getReferenceEyePoint )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , " Get the reference eye point." );
         
         }
         { //::osgUtil::IntersectionVisitor::getReferenceEyePointCoordinateFrame
@@ -668,7 +675,8 @@ void register_IntersectionVisitor_class(){
             
             IntersectionVisitor_exposer.def( 
                 "getReferenceEyePointCoordinateFrame"
-                , getReferenceEyePointCoordinateFrame_function_type( &::osgUtil::IntersectionVisitor::getReferenceEyePointCoordinateFrame ) );
+                , getReferenceEyePointCoordinateFrame_function_type( &::osgUtil::IntersectionVisitor::getReferenceEyePointCoordinateFrame )
+                , " Get the coordinate frame of the reference eye point." );
         
         }
         { //::osgUtil::IntersectionVisitor::getUseKdTreeWhenAvailable
@@ -677,7 +685,8 @@ void register_IntersectionVisitor_class(){
             
             IntersectionVisitor_exposer.def( 
                 "getUseKdTreeWhenAvailable"
-                , getUseKdTreeWhenAvailable_function_type( &::osgUtil::IntersectionVisitor::getUseKdTreeWhenAvailable ) );
+                , getUseKdTreeWhenAvailable_function_type( &::osgUtil::IntersectionVisitor::getUseKdTreeWhenAvailable )
+                , " Set whether the intersectors should use KdTrees." );
         
         }
         { //::osgUtil::IntersectionVisitor::getViewMatrix
@@ -845,7 +854,8 @@ void register_IntersectionVisitor_class(){
             IntersectionVisitor_exposer.def( 
                 "setIntersector"
                 , setIntersector_function_type( &::osgUtil::IntersectionVisitor::setIntersector )
-                , ( bp::arg("intersector") ) );
+                , ( bp::arg("intersector") )
+                , " Set the intersector that will be used to intersect with the scene, and to store any hits that occur." );
         
         }
         { //::osgUtil::IntersectionVisitor::setLODSelectionMode
@@ -855,7 +865,8 @@ void register_IntersectionVisitor_class(){
             IntersectionVisitor_exposer.def( 
                 "setLODSelectionMode"
                 , setLODSelectionMode_function_type( &::osgUtil::IntersectionVisitor::setLODSelectionMode )
-                , ( bp::arg("mode") ) );
+                , ( bp::arg("mode") )
+                , " Set the LOD selection scheme." );
         
         }
         { //::osgUtil::IntersectionVisitor::setReadCallback
@@ -865,7 +876,8 @@ void register_IntersectionVisitor_class(){
             IntersectionVisitor_exposer.def( 
                 "setReadCallback"
                 , setReadCallback_function_type( &::osgUtil::IntersectionVisitor::setReadCallback )
-                , ( bp::arg("rc") ) );
+                , ( bp::arg("rc") )
+                , " Set the read callback." );
         
         }
         { //::osgUtil::IntersectionVisitor::setReferenceEyePoint
@@ -875,7 +887,8 @@ void register_IntersectionVisitor_class(){
             IntersectionVisitor_exposer.def( 
                 "setReferenceEyePoint"
                 , setReferenceEyePoint_function_type( &::osgUtil::IntersectionVisitor::setReferenceEyePoint )
-                , ( bp::arg("ep") ) );
+                , ( bp::arg("ep") )
+                , " Set the reference eye point that is used for nodes that require an eye point to position themselves, such as billboards." );
         
         }
         { //::osgUtil::IntersectionVisitor::setReferenceEyePointCoordinateFrame
@@ -885,7 +898,8 @@ void register_IntersectionVisitor_class(){
             IntersectionVisitor_exposer.def( 
                 "setReferenceEyePointCoordinateFrame"
                 , setReferenceEyePointCoordinateFrame_function_type( &::osgUtil::IntersectionVisitor::setReferenceEyePointCoordinateFrame )
-                , ( bp::arg("cf") ) );
+                , ( bp::arg("cf") )
+                , " Set the coordinate frame of the reference eye point." );
         
         }
         { //::osgUtil::IntersectionVisitor::setUseKdTreeWhenAvailable
@@ -895,7 +909,8 @@ void register_IntersectionVisitor_class(){
             IntersectionVisitor_exposer.def( 
                 "setUseKdTreeWhenAvailable"
                 , setUseKdTreeWhenAvailable_function_type( &::osgUtil::IntersectionVisitor::setUseKdTreeWhenAvailable )
-                , ( bp::arg("useKdTrees") ) );
+                , ( bp::arg("useKdTrees") )
+                , " Set whether the intersectors should use KdTrees when they are found on the scene graph." );
         
         }
     }

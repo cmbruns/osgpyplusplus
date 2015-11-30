@@ -466,7 +466,7 @@ void register_CullVisitor_class(){
 
     { //::osgUtil::CullVisitor
         typedef bp::class_< CullVisitor_wrapper, bp::bases< ::osg::NodeVisitor >, osg::ref_ptr< CullVisitor_wrapper >, boost::noncopyable > CullVisitor_exposer_t;
-        CullVisitor_exposer_t CullVisitor_exposer = CullVisitor_exposer_t( "CullVisitor", bp::no_init );
+        CullVisitor_exposer_t CullVisitor_exposer = CullVisitor_exposer_t( "CullVisitor", "\n Basic NodeVisitor implementation for rendering a scene.\n This visitor traverses the scene graph, collecting transparent and\n opaque osg::Drawables into a depth sorted transparent bin and a state\n sorted opaque bin.  The opaque bin is rendered first, and then the\n transparent bin is rendered in order from the furthest osg::Drawable\n from the eye to the one nearest the eye.\n", bp::no_init );
         bp::scope CullVisitor_scope( CullVisitor_exposer );
         bp::class_< osgUtil::CullVisitor::Identifier, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::CullVisitor::Identifier >, boost::noncopyable >( "Identifier", bp::init< >() );
         CullVisitor_exposer.def( bp::init< >() );
@@ -487,7 +487,8 @@ void register_CullVisitor_class(){
             CullVisitor_exposer.def( 
                 "addDrawableAndDepth"
                 , addDrawableAndDepth_function_type( &::osgUtil::CullVisitor::addDrawableAndDepth )
-                , ( bp::arg("drawable"), bp::arg("matrix"), bp::arg("depth") ) );
+                , ( bp::arg("drawable"), bp::arg("matrix"), bp::arg("depth") )
+                , "\n Add a drawable and depth to current render graph.\n" );
         
         }
         { //::osgUtil::CullVisitor::addPositionedAttribute
@@ -497,7 +498,8 @@ void register_CullVisitor_class(){
             CullVisitor_exposer.def( 
                 "addPositionedAttribute"
                 , addPositionedAttribute_function_type( &::osgUtil::CullVisitor::addPositionedAttribute )
-                , ( bp::arg("matrix"), bp::arg("attr") ) );
+                , ( bp::arg("matrix"), bp::arg("attr") )
+                , "\n Add an attribute which is positioned relative to the modelview matrix.\n" );
         
         }
         { //::osgUtil::CullVisitor::addPositionedTextureAttribute
@@ -507,7 +509,8 @@ void register_CullVisitor_class(){
             CullVisitor_exposer.def( 
                 "addPositionedTextureAttribute"
                 , addPositionedTextureAttribute_function_type( &::osgUtil::CullVisitor::addPositionedTextureAttribute )
-                , ( bp::arg("textureUnit"), bp::arg("matrix"), bp::arg("attr") ) );
+                , ( bp::arg("textureUnit"), bp::arg("matrix"), bp::arg("attr") )
+                , "\n Add an attribute which is positioned relative to the modelview matrix.\n" );
         
         }
         { //::osgUtil::CullVisitor::apply
@@ -697,7 +700,8 @@ void register_CullVisitor_class(){
             CullVisitor_exposer.def( 
                 "clampProjectionMatrix"
                 , clampProjectionMatrix_function_type( &::osgUtil::CullVisitor::clampProjectionMatrix )
-                , ( bp::arg("projection"), bp::arg("znear"), bp::arg("zfar") ) );
+                , ( bp::arg("projection"), bp::arg("znear"), bp::arg("zfar") )
+                , "\n Clamp the projection float matrix to computed near and far values, use callback if it exists,\n otherwise use default CullVisitor implementation.\n" );
         
         }
         { //::osgUtil::CullVisitor::clampProjectionMatrix
@@ -707,7 +711,8 @@ void register_CullVisitor_class(){
             CullVisitor_exposer.def( 
                 "clampProjectionMatrix"
                 , clampProjectionMatrix_function_type( &::osgUtil::CullVisitor::clampProjectionMatrix )
-                , ( bp::arg("projection"), bp::arg("znear"), bp::arg("zfar") ) );
+                , ( bp::arg("projection"), bp::arg("znear"), bp::arg("zfar") )
+                , "\n Clamp the projection double matrix to computed near and far values, use callback if it exists,\n otherwise use default CullVisitor implementation.\n" );
         
         }
         { //::osgUtil::CullVisitor::clampProjectionMatrixImplementation
@@ -763,7 +768,8 @@ void register_CullVisitor_class(){
             
             CullVisitor_exposer.def( 
                 "computeNearPlane"
-                , computeNearPlane_function_type( &::osgUtil::CullVisitor::computeNearPlane ) );
+                , computeNearPlane_function_type( &::osgUtil::CullVisitor::computeNearPlane )
+                , "\n compute near plane based on the polgon intersection of primtives in near plane candidate list of drawables.\n Note, you have to set ComputeNearFarMode to COMPUTE_NEAR_FAR_USING_PRIMITIVES to be able to near plane candidate drawables to be recorded by the cull traversal.\n" );
         
         }
         { //::osgUtil::CullVisitor::create
@@ -773,7 +779,8 @@ void register_CullVisitor_class(){
             CullVisitor_exposer.def( 
                 "create"
                 , create_function_type( &::osgUtil::CullVisitor::create )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n create a CullVisitor by cloning CullVisitor::prototype().\n" );
         
         }
         { //::osgUtil::CullVisitor::getCalculatedFarPlane
@@ -1000,7 +1007,8 @@ void register_CullVisitor_class(){
             
             CullVisitor_exposer.def( 
                 "popStateSet"
-                , popStateSet_function_type( &::osgUtil::CullVisitor::popStateSet ) );
+                , popStateSet_function_type( &::osgUtil::CullVisitor::popStateSet )
+                , "\n Pop the top state set and hence associated state group.\n Move the current state group to the parent of the popped\n state group.\n" );
         
         }
         { //::osgUtil::CullVisitor::prototype
@@ -1010,7 +1018,8 @@ void register_CullVisitor_class(){
             CullVisitor_exposer.def( 
                 "prototype"
                 , prototype_function_type( &::osgUtil::CullVisitor::prototype )
-                , bp::return_internal_reference< >() );
+                , bp::return_internal_reference< >()
+                , "\n get the prototype singleton used by CullVisitor::create().\n" );
         
         }
         { //::osgUtil::CullVisitor::pushStateSet
@@ -1020,7 +1029,8 @@ void register_CullVisitor_class(){
             CullVisitor_exposer.def( 
                 "pushStateSet"
                 , pushStateSet_function_type( &::osgUtil::CullVisitor::pushStateSet )
-                , ( bp::arg("ss") ) );
+                , ( bp::arg("ss") )
+                , "\n Push state set on the current state group.\n If the state exists in a child state group of the current\n state group then move the current state group to that child.\n Otherwise, create a new state group for the state set, add\n it to the current state group then move the current state\n group pointer to the new state group.\n" );
         
         }
         { //::osgUtil::CullVisitor::reset

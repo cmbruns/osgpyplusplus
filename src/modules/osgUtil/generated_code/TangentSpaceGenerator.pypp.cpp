@@ -9,8 +9,8 @@ namespace bp = boost::python;
 
 void register_TangentSpaceGenerator_class(){
 
-    bp::class_< osgUtil::TangentSpaceGenerator, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::TangentSpaceGenerator >, boost::noncopyable >( "TangentSpaceGenerator", bp::no_init )    
-        .def( bp::init< >() )    
+    bp::class_< osgUtil::TangentSpaceGenerator, bp::bases< ::osg::Referenced >, osg::ref_ptr< ::osgUtil::TangentSpaceGenerator >, boost::noncopyable >( "TangentSpaceGenerator", "\n The TangentSpaceGenerator class generates three arrays containing tangent-space basis vectors.\n It takes a texture-mapped Geometry object as input, traverses its primitive sets and computes\n Tangent, Normal and Binormal vectors for each vertex, storing them into arrays.\n The resulting arrays can be used as vertex program varying (per-vertex) parameters,\n enabling advanced effects like bump-mapping.\n To use this class, simply call the generate() method specifying the Geometry object\n you want to process and the texture unit that contains UV mapping for the normal map;\n then you can retrieve the TBN arrays by calling getTangentArray(), getNormalArray()\n and getBinormalArray() methods.\n", bp::no_init )    
+        .def( bp::init< >("\n The TangentSpaceGenerator class generates three arrays containing tangent-space basis vectors.\n It takes a texture-mapped Geometry object as input, traverses its primitive sets and computes\n Tangent, Normal and Binormal vectors for each vertex, storing them into arrays.\n The resulting arrays can be used as vertex program varying (per-vertex) parameters,\n enabling advanced effects like bump-mapping.\n To use this class, simply call the generate() method specifying the Geometry object\n you want to process and the texture unit that contains UV mapping for the normal map;\n then you can retrieve the TBN arrays by calling getTangentArray(), getNormalArray()\n and getBinormalArray() methods.\n") )    
         .def( 
             "generate"
             , (void ( ::osgUtil::TangentSpaceGenerator::* )( ::osg::Geometry *,int ) )( &::osgUtil::TangentSpaceGenerator::generate )

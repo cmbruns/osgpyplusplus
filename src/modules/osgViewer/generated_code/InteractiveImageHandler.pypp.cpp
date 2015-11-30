@@ -209,11 +209,11 @@ void register_InteractiveImageHandler_class(){
 
     { //::osgViewer::InteractiveImageHandler
         typedef bp::class_< InteractiveImageHandler_wrapper, bp::bases< ::osgGA::GUIEventHandler, ::osg::Drawable::CullCallback >, osg::ref_ptr< InteractiveImageHandler_wrapper >, boost::noncopyable > InteractiveImageHandler_exposer_t;
-        InteractiveImageHandler_exposer_t InteractiveImageHandler_exposer = InteractiveImageHandler_exposer_t( "InteractiveImageHandler", bp::no_init );
+        InteractiveImageHandler_exposer_t InteractiveImageHandler_exposer = InteractiveImageHandler_exposer_t( "InteractiveImageHandler", "\n InteractiveImage is an event handler that computes the mouse coordinates in an images coordinate frame\n and then passes keyboard and mouse events to it.  This event handler is useful for vnc or browser\n surfaces in the 3D scene.\n", bp::no_init );
         bp::scope InteractiveImageHandler_scope( InteractiveImageHandler_exposer );
-        InteractiveImageHandler_exposer.def( bp::init< osg::Image * >(( bp::arg("image") )) );
+        InteractiveImageHandler_exposer.def( bp::init< osg::Image * >(( bp::arg("image") ), "\n Constructor to use when the InteractiveImage is in the 3D scene (i.e. not in a fullscreen HUD overlay).\n") );
         bp::implicitly_convertible< osg::Image *, osgViewer::InteractiveImageHandler >();
-        InteractiveImageHandler_exposer.def( bp::init< osg::Image *, osg::Texture2D *, osg::Camera * >(( bp::arg("image"), bp::arg("texture"), bp::arg("camera") )) );
+        InteractiveImageHandler_exposer.def( bp::init< osg::Image *, osg::Texture2D *, osg::Camera * >(( bp::arg("image"), bp::arg("texture"), bp::arg("camera") ), "\n Constructor to use when the InteractiveImage is in a fullscreen HUD overlay.\n") );
         { //::osgViewer::InteractiveImageHandler::className
         
             typedef char const * ( ::osgViewer::InteractiveImageHandler::*className_function_type )(  ) const;
