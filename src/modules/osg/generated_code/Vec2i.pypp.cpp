@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "indexing_helpers.h"
-#include "vec2i.pypp.hpp"
+#include "Vec2i.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -27,7 +27,7 @@ void register_Vec2i_class(){
         Vec2i_exposer.def( bp::self == bp::self );
         { //::osg::Vec2i::operator[]
         
-            typedef int & ( ::osg::Vec2i::*__getitem___function_type)( int ) ;
+            typedef int & ( ::osg::Vec2i::*__getitem___function_type )( int ) ;
             
             Vec2i_exposer.def( 
                 "__getitem__"
@@ -38,7 +38,7 @@ void register_Vec2i_class(){
         }
         { //::osg::Vec2i::operator[]
         
-            typedef int ( ::osg::Vec2i::*__getitem___function_type)( int ) const;
+            typedef int ( ::osg::Vec2i::*__getitem___function_type )( int ) const;
             
             Vec2i_exposer.def( 
                 "__getitem__"
@@ -48,7 +48,7 @@ void register_Vec2i_class(){
         }
         { //::osg::Vec2i::set
         
-            typedef void ( ::osg::Vec2i::*set_function_type)( int,int ) ;
+            typedef void ( ::osg::Vec2i::*set_function_type )( int,int ) ;
             
             Vec2i_exposer.def( 
                 "set"
@@ -58,7 +58,7 @@ void register_Vec2i_class(){
         }
         { //::osg::Vec2i::set
         
-            typedef void ( ::osg::Vec2i::*set_function_type)( ::osg::Vec2i const & ) ;
+            typedef void ( ::osg::Vec2i::*set_function_type )( ::osg::Vec2i const & ) ;
             
             Vec2i_exposer.def( 
                 "set"
@@ -68,7 +68,7 @@ void register_Vec2i_class(){
         }
         { //property "x"[fget=::osg::Vec2i::x]
         
-            typedef int & ( ::osg::Vec2i::*fget)(  ) ;
+            typedef int & ( ::osg::Vec2i::*fget )(  ) ;
             
             Vec2i_exposer.add_property( 
                 "x"
@@ -79,7 +79,7 @@ void register_Vec2i_class(){
         }
         { //property "x"[fget=::osg::Vec2i::x]
         
-            typedef int ( ::osg::Vec2i::*fget)(  ) const;
+            typedef int ( ::osg::Vec2i::*fget )(  ) const;
             
             Vec2i_exposer.add_property( 
                 "x"
@@ -88,7 +88,7 @@ void register_Vec2i_class(){
         }
         { //property "y"[fget=::osg::Vec2i::y]
         
-            typedef int & ( ::osg::Vec2i::*fget)(  ) ;
+            typedef int & ( ::osg::Vec2i::*fget )(  ) ;
             
             Vec2i_exposer.add_property( 
                 "y"
@@ -99,7 +99,7 @@ void register_Vec2i_class(){
         }
         { //property "y"[fget=::osg::Vec2i::y]
         
-            typedef int ( ::osg::Vec2i::*fget)(  ) const;
+            typedef int ( ::osg::Vec2i::*fget )(  ) const;
             
             Vec2i_exposer.add_property( 
                 "y"
@@ -108,7 +108,7 @@ void register_Vec2i_class(){
         }
         { //property "r"[fget=::osg::Vec2i::r]
         
-            typedef int & ( ::osg::Vec2i::*fget)(  ) ;
+            typedef int & ( ::osg::Vec2i::*fget )(  ) ;
             
             Vec2i_exposer.add_property( 
                 "r"
@@ -119,7 +119,7 @@ void register_Vec2i_class(){
         }
         { //property "r"[fget=::osg::Vec2i::r]
         
-            typedef int ( ::osg::Vec2i::*fget)(  ) const;
+            typedef int ( ::osg::Vec2i::*fget )(  ) const;
             
             Vec2i_exposer.add_property( 
                 "r"
@@ -128,7 +128,7 @@ void register_Vec2i_class(){
         }
         { //property "g"[fget=::osg::Vec2i::g]
         
-            typedef int & ( ::osg::Vec2i::*fget)(  ) ;
+            typedef int & ( ::osg::Vec2i::*fget )(  ) ;
             
             Vec2i_exposer.add_property( 
                 "g"
@@ -139,7 +139,7 @@ void register_Vec2i_class(){
         }
         { //property "g"[fget=::osg::Vec2i::g]
         
-            typedef int ( ::osg::Vec2i::*fget)(  ) const;
+            typedef int ( ::osg::Vec2i::*fget )(  ) const;
             
             Vec2i_exposer.add_property( 
                 "g"
@@ -147,9 +147,9 @@ void register_Vec2i_class(){
         
         }
         Vec2i_exposer.def(bp::indexing::container_suite<
-                            osg::Vec2i, 
-                            bp::indexing::all_methods, 
-                            OsgVec_algorithms<osg::Vec2i, osg::Vec2i::value_type, osg::Vec2i::num_components> >());
+                                    osg::Vec2i, 
+                                    bp::indexing::all_methods, 
+                                    OsgVec_algorithms<osg::Vec2i, osg::Vec2i::value_type, osg::Vec2i::num_components> >());
     }
 
 }

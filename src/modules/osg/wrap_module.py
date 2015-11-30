@@ -116,6 +116,15 @@ class OsgWrapper(BaseWrapper):
         for fn_name in [
                 "gluErrorString", # TODO - requires more work to convert GLubyte* to string...
                 "gluNewTess", # GluTesselator object may be opaque?
+                "gluDeleteTess", # GluTesselator object may be opaque?
+                "gluGetTessProperty",
+                "gluTessBeginContour",
+                "gluTessBeginPolygon",
+                "gluTessEndContour",
+                "gluTessEndPolygon",
+                "gluTessNormal",
+                "gluTessProperty",
+                "gluTessVertex",
                 "initOQState", # link error
                 "initOQDebugState", # link error
                 ]:
@@ -293,6 +302,7 @@ class OsgWrapper(BaseWrapper):
             # hack_osg_arg(cls, "textureObjectValid", 1)
             slc.member_functions("generateTextureObject", allow_empty=True).exclude()
             slc.member_functions("textureObjectValid", allow_empty=True).exclude()
+            slc.exclude() # linux
 
         cls = osg.class_("TextureRectangle").class_("SubloadCallback")
         hack_osg_arg(cls, "load", "arg0")
@@ -383,6 +393,27 @@ class OsgWrapper(BaseWrapper):
         self.mb.class_("ClusterCullingCallback").exclude()
         
         self.mb.class_("ValueObject").constructors(arg_types=[None, None]).exclude()
+
+        # Compile error on linux AnimationPathCallback computeDataVariance
+        # self.mb.class_("AnimationPathCallback").member_functions("computeDataVariance").exclude()
+        # self.mb.class_("Object").member_functions("computeDataVariance").exclude()
+        # self.mb.class_("Object").member_functions("setUserData").exclude()
+        # self.mb.class_("Object").member_functions("setThreadSafeRefUnref").exclude()
+        self.mb.class_("AnimationPathCallback").exclude()
+        for fn_name in [
+                 "computeDataVariance",
+                 "getUserData",
+                 "resizeGLObjectBuffers", 
+                 "setName", 
+                 "setThreadSafeRefUnref",
+                 "setUserData",
+                 ]:
+            # cls = osg.class_("Drawable").class_("UpdateCallback")
+            cls = osg.class_("Object")
+            cls.member_functions(fn_name).exclude()
+        osg.class_("Referenced").member_functions("setThreadSafeRefUnref").exclude()
+
+        osg.class_("QueryGeometry").exclude()
 
         # Indexing for variable-sized VecXArrays
         for alias in ["Vec2Array", "Vec3Array", "Vec4Array", "UIntArray", ]:

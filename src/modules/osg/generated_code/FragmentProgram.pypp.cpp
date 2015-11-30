@@ -4,38 +4,11 @@
 #include "__call_policies.pypp.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "fragmentprogram.pypp.hpp"
+#include "FragmentProgram.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct FragmentProgram_wrapper : osg::FragmentProgram, bp::wrapper< osg::FragmentProgram > {
-
-    struct Extensions_wrapper : osg::FragmentProgram::Extensions, bp::wrapper< osg::FragmentProgram::Extensions > {
-    
-        Extensions_wrapper(unsigned int contextID )
-        : osg::FragmentProgram::Extensions( contextID )
-          , bp::wrapper< osg::FragmentProgram::Extensions >(){
-            // constructor
-        
-        }
-    
-        static void lowestCommonDenominator( ::osg::FragmentProgram::Extensions & inst, ::osg::FragmentProgram::Extensions & rhs ){
-            inst.lowestCommonDenominator(rhs);
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
 
     FragmentProgram_wrapper( )
     : osg::FragmentProgram( )
@@ -200,18 +173,6 @@ struct FragmentProgram_wrapper : osg::FragmentProgram, bp::wrapper< osg::Fragmen
         return osg::StateAttribute::checkValidityOfAssociatedModes( boost::ref(arg0) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
     virtual unsigned int getMember(  ) const  {
         if( bp::override func_getMember = this->get_override( "getMember" ) )
             return func_getMember(  );
@@ -222,30 +183,6 @@ struct FragmentProgram_wrapper : osg::FragmentProgram, bp::wrapper< osg::Fragmen
     
     unsigned int default_getMember(  ) const  {
         return osg::StateAttribute::getMember( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
     }
 
     virtual bool isTextureAttribute(  ) const  {
@@ -260,43 +197,11 @@ struct FragmentProgram_wrapper : osg::FragmentProgram, bp::wrapper< osg::Fragmen
         return osg::StateAttribute::isTextureAttribute( );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
+
+static void lowestCommonDenominator_d820478c022203e3c4f19765195d8992( ::osg::FragmentProgram::Extensions & inst, ::osg::FragmentProgram::Extensions & rhs ){
+    inst.lowestCommonDenominator(rhs);
+}
 
 void register_FragmentProgram_class(){
 
@@ -305,14 +210,14 @@ void register_FragmentProgram_class(){
         FragmentProgram_exposer_t FragmentProgram_exposer = FragmentProgram_exposer_t( "FragmentProgram", "\n FragmentProgram - encapsulates the OpenGL ARB fragment program state.\n", bp::no_init );
         bp::scope FragmentProgram_scope( FragmentProgram_exposer );
         { //::osg::FragmentProgram::Extensions
-            typedef bp::class_< FragmentProgram_wrapper::Extensions_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::FragmentProgram::Extensions > > Extensions_exposer_t;
+            typedef bp::class_< osg::FragmentProgram::Extensions, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::FragmentProgram::Extensions > > Extensions_exposer_t;
             Extensions_exposer_t Extensions_exposer = Extensions_exposer_t( "Extensions", "\n Extensions class which encapsulates the querying of extensions and\n associated function pointers, and provide convenience wrappers to\n check for the extensions or use the associated functions.\n", bp::no_init );
             bp::scope Extensions_scope( Extensions_exposer );
             Extensions_exposer.def( bp::init< unsigned int >(( bp::arg("contextID") ), "\n Extensions class which encapsulates the querying of extensions and\n associated function pointers, and provide convenience wrappers to\n check for the extensions or use the associated functions.\n") );
             bp::implicitly_convertible< unsigned int, osg::FragmentProgram::Extensions >();
             { //::osg::FragmentProgram::Extensions::glBindProgram
             
-                typedef void ( ::osg::FragmentProgram::Extensions::*glBindProgram_function_type)( ::GLenum,::GLuint ) const;
+                typedef void ( ::osg::FragmentProgram::Extensions::*glBindProgram_function_type )( ::GLenum,::GLuint ) const;
                 
                 Extensions_exposer.def( 
                     "glBindProgram"
@@ -322,7 +227,7 @@ void register_FragmentProgram_class(){
             }
             { //::osg::FragmentProgram::Extensions::glDeletePrograms
             
-                typedef void ( ::osg::FragmentProgram::Extensions::*glDeletePrograms_function_type)( ::GLsizei,::GLuint * ) const;
+                typedef void ( ::osg::FragmentProgram::Extensions::*glDeletePrograms_function_type )( ::GLsizei,::GLuint * ) const;
                 
                 Extensions_exposer.def( 
                     "glDeletePrograms"
@@ -332,7 +237,7 @@ void register_FragmentProgram_class(){
             }
             { //::osg::FragmentProgram::Extensions::glGenPrograms
             
-                typedef void ( ::osg::FragmentProgram::Extensions::*glGenPrograms_function_type)( ::GLsizei,::GLuint * ) const;
+                typedef void ( ::osg::FragmentProgram::Extensions::*glGenPrograms_function_type )( ::GLsizei,::GLuint * ) const;
                 
                 Extensions_exposer.def( 
                     "glGenPrograms"
@@ -342,7 +247,7 @@ void register_FragmentProgram_class(){
             }
             { //::osg::FragmentProgram::Extensions::glProgramLocalParameter4fv
             
-                typedef void ( ::osg::FragmentProgram::Extensions::*glProgramLocalParameter4fv_function_type)( ::GLenum,::GLuint,::GLfloat const * ) const;
+                typedef void ( ::osg::FragmentProgram::Extensions::*glProgramLocalParameter4fv_function_type )( ::GLenum,::GLuint,::GLfloat const * ) const;
                 
                 Extensions_exposer.def( 
                     "glProgramLocalParameter4fv"
@@ -352,7 +257,7 @@ void register_FragmentProgram_class(){
             }
             { //::osg::FragmentProgram::Extensions::glProgramString
             
-                typedef void ( ::osg::FragmentProgram::Extensions::*glProgramString_function_type)( ::GLenum,::GLenum,::GLsizei,void const * ) const;
+                typedef void ( ::osg::FragmentProgram::Extensions::*glProgramString_function_type )( ::GLenum,::GLenum,::GLsizei,void const * ) const;
                 
                 Extensions_exposer.def( 
                     "glProgramString"
@@ -362,7 +267,7 @@ void register_FragmentProgram_class(){
             }
             { //::osg::FragmentProgram::Extensions::isFragmentProgramSupported
             
-                typedef bool ( ::osg::FragmentProgram::Extensions::*isFragmentProgramSupported_function_type)(  ) const;
+                typedef bool ( ::osg::FragmentProgram::Extensions::*isFragmentProgramSupported_function_type )(  ) const;
                 
                 Extensions_exposer.def( 
                     "isFragmentProgramSupported"
@@ -375,13 +280,13 @@ void register_FragmentProgram_class(){
                 
                 Extensions_exposer.def( 
                     "lowestCommonDenominator"
-                    , lowestCommonDenominator_function_type( &FragmentProgram_wrapper::Extensions_wrapper::lowestCommonDenominator )
+                    , lowestCommonDenominator_function_type( &lowestCommonDenominator_d820478c022203e3c4f19765195d8992 )
                     , ( bp::arg("inst"), bp::arg("rhs") ) );
             
             }
             { //::osg::FragmentProgram::Extensions::setFragmentProgramSupported
             
-                typedef void ( ::osg::FragmentProgram::Extensions::*setFragmentProgramSupported_function_type)( bool ) ;
+                typedef void ( ::osg::FragmentProgram::Extensions::*setFragmentProgramSupported_function_type )( bool ) ;
                 
                 Extensions_exposer.def( 
                     "setFragmentProgramSupported"
@@ -391,7 +296,7 @@ void register_FragmentProgram_class(){
             }
             { //::osg::FragmentProgram::Extensions::setupGLExtensions
             
-                typedef void ( ::osg::FragmentProgram::Extensions::*setupGLExtensions_function_type)( unsigned int ) ;
+                typedef void ( ::osg::FragmentProgram::Extensions::*setupGLExtensions_function_type )( unsigned int ) ;
                 
                 Extensions_exposer.def( 
                     "setupGLExtensions"
@@ -399,24 +304,12 @@ void register_FragmentProgram_class(){
                     , ( bp::arg("contextID") ) );
             
             }
-            { //::osg::Referenced::setThreadSafeRefUnref
-            
-                typedef void ( ::osg::Referenced::*setThreadSafeRefUnref_function_type)( bool ) ;
-                typedef void ( FragmentProgram_wrapper::Extensions_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-                
-                Extensions_exposer.def( 
-                    "setThreadSafeRefUnref"
-                    , setThreadSafeRefUnref_function_type(&::osg::Referenced::setThreadSafeRefUnref)
-                    , default_setThreadSafeRefUnref_function_type(&FragmentProgram_wrapper::Extensions_wrapper::default_setThreadSafeRefUnref)
-                    , ( bp::arg("threadSafe") ) );
-            
-            }
         }
         FragmentProgram_exposer.def( bp::init< >("\n FragmentProgram - encapsulates the OpenGL ARB fragment program state.\n") );
         { //::osg::FragmentProgram::apply
         
-            typedef void ( ::osg::FragmentProgram::*apply_function_type)( ::osg::State & ) const;
-            typedef void ( FragmentProgram_wrapper::*default_apply_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::FragmentProgram::*apply_function_type )( ::osg::State & ) const;
+            typedef void ( FragmentProgram_wrapper::*default_apply_function_type )( ::osg::State & ) const;
             
             FragmentProgram_exposer.def( 
                 "apply"
@@ -427,8 +320,8 @@ void register_FragmentProgram_class(){
         }
         { //::osg::FragmentProgram::className
         
-            typedef char const * ( ::osg::FragmentProgram::*className_function_type)(  ) const;
-            typedef char const * ( FragmentProgram_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::FragmentProgram::*className_function_type )(  ) const;
+            typedef char const * ( FragmentProgram_wrapper::*default_className_function_type )(  ) const;
             
             FragmentProgram_exposer.def( 
                 "className"
@@ -438,8 +331,8 @@ void register_FragmentProgram_class(){
         }
         { //::osg::FragmentProgram::clone
         
-            typedef ::osg::Object * ( ::osg::FragmentProgram::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( FragmentProgram_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::FragmentProgram::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( FragmentProgram_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             FragmentProgram_exposer.def( 
                 "clone"
@@ -451,8 +344,8 @@ void register_FragmentProgram_class(){
         }
         { //::osg::FragmentProgram::cloneType
         
-            typedef ::osg::Object * ( ::osg::FragmentProgram::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( FragmentProgram_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::FragmentProgram::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( FragmentProgram_wrapper::*default_cloneType_function_type )(  ) const;
             
             FragmentProgram_exposer.def( 
                 "cloneType"
@@ -463,8 +356,8 @@ void register_FragmentProgram_class(){
         }
         { //::osg::FragmentProgram::compileGLObjects
         
-            typedef void ( ::osg::FragmentProgram::*compileGLObjects_function_type)( ::osg::State & ) const;
-            typedef void ( FragmentProgram_wrapper::*default_compileGLObjects_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::FragmentProgram::*compileGLObjects_function_type )( ::osg::State & ) const;
+            typedef void ( FragmentProgram_wrapper::*default_compileGLObjects_function_type )( ::osg::State & ) const;
             
             FragmentProgram_exposer.def( 
                 "compileGLObjects"
@@ -481,17 +374,17 @@ void register_FragmentProgram_class(){
                 "deleteFragmentProgramObject"
                 , deleteFragmentProgramObject_function_type( &::osg::FragmentProgram::deleteFragmentProgramObject )
                 , ( bp::arg("contextID"), bp::arg("handle") )
-                , " use deleteFragmentProgramObject instead of glDeletePrograms to allow\n OpenGL Fragment Program objects to be cached until they can be deleted\n by the OpenGL context in which they were created, specified\n by contextID." );
+                , "\n use deleteFragmentProgramObject instead of glDeletePrograms to allow\n OpenGL Fragment Program objects to be cached until they can be deleted\n by the OpenGL context in which they were created, specified\n by contextID.\n" );
         
         }
         { //::osg::FragmentProgram::dirtyFragmentProgramObject
         
-            typedef void ( ::osg::FragmentProgram::*dirtyFragmentProgramObject_function_type)(  ) ;
+            typedef void ( ::osg::FragmentProgram::*dirtyFragmentProgramObject_function_type )(  ) ;
             
             FragmentProgram_exposer.def( 
                 "dirtyFragmentProgramObject"
                 , dirtyFragmentProgramObject_function_type( &::osg::FragmentProgram::dirtyFragmentProgramObject )
-                , " Force a recompile on next apply() of associated OpenGL vertex program objects." );
+                , "\n Force a recompile on next apply() of associated OpenGL vertex program objects.\n" );
         
         }
         { //::osg::FragmentProgram::discardDeletedFragmentProgramObjects
@@ -502,7 +395,7 @@ void register_FragmentProgram_class(){
                 "discardDeletedFragmentProgramObjects"
                 , discardDeletedFragmentProgramObjects_function_type( &::osg::FragmentProgram::discardDeletedFragmentProgramObjects )
                 , ( bp::arg("contextID") )
-                , " discard all the cached fragment programs which need to be deleted\n in the OpenGL context related to contextID.\n Note, unlike flush no OpenGL calls are made, instead the handles are all removed.\n this call is useful for when an OpenGL context has been destroyed." );
+                , "\n discard all the cached fragment programs which need to be deleted\n in the OpenGL context related to contextID.\n Note, unlike flush no OpenGL calls are made, instead the handles are all removed.\n this call is useful for when an OpenGL context has been destroyed.\n" );
         
         }
         { //::osg::FragmentProgram::flushDeletedFragmentProgramObjects
@@ -513,7 +406,7 @@ void register_FragmentProgram_class(){
                 "flushDeletedFragmentProgramObjects"
                 , flushDeletedFragmentProgramObjects_function_type( &::osg::FragmentProgram::flushDeletedFragmentProgramObjects )
                 , ( bp::arg("contextID"), bp::arg("currentTime"), bp::arg("availableTime") )
-                , " flush all the cached fragment programs which need to be deleted\n in the OpenGL context related to contextID." );
+                , "\n flush all the cached fragment programs which need to be deleted\n in the OpenGL context related to contextID.\n" );
         
         }
         { //::osg::FragmentProgram::getExtensions
@@ -525,80 +418,80 @@ void register_FragmentProgram_class(){
                 , getExtensions_function_type( &::osg::FragmentProgram::getExtensions )
                 , ( bp::arg("contextID"), bp::arg("createIfNotInitalized") )
                 , bp::return_internal_reference< >()
-                , " Function to call to get the extension of a specified context.\n If the Extension object for that context has not yet been created and the\n createIfNotInitalized flag has been set to false then returns NULL.\n If createIfNotInitalized is true then the Extensions object is\n automatically created.  However, in this case the extension object will\n only be created with the graphics context associated with ContextID.." );
+                , "\n Function to call to get the extension of a specified context.\n If the Extension object for that context has not yet been created and the\n createIfNotInitalized flag has been set to false then returns NULL.\n If createIfNotInitalized is true then the Extensions object is\n automatically created.  However, in this case the extension object will\n only be created with the graphics context associated with ContextID..\n" );
         
         }
         { //::osg::FragmentProgram::getFragmentProgram
         
-            typedef ::std::string const & ( ::osg::FragmentProgram::*getFragmentProgram_function_type)(  ) const;
+            typedef ::std::string const & ( ::osg::FragmentProgram::*getFragmentProgram_function_type )(  ) const;
             
             FragmentProgram_exposer.def( 
                 "getFragmentProgram"
                 , getFragmentProgram_function_type( &::osg::FragmentProgram::getFragmentProgram )
                 , bp::return_value_policy< bp::copy_const_reference >()
-                , " Get the fragment program." );
+                , "\n Get the fragment program.\n" );
         
         }
         { //::osg::FragmentProgram::getFragmentProgramID
         
-            typedef ::GLuint & ( ::osg::FragmentProgram::*getFragmentProgramID_function_type)( unsigned int ) const;
+            typedef ::GLuint & ( ::osg::FragmentProgram::*getFragmentProgramID_function_type )( unsigned int ) const;
             
             FragmentProgram_exposer.def( 
                 "getFragmentProgramID"
                 , getFragmentProgramID_function_type( &::osg::FragmentProgram::getFragmentProgramID )
                 , ( bp::arg("contextID") )
                 , bp::return_value_policy< bp::copy_non_const_reference >()
-                , " Get the handle to the fragment program id for the current context." );
+                , "\n Get the handle to the fragment program id for the current context.\n" );
         
         }
         { //::osg::FragmentProgram::getLocalParameters
         
-            typedef ::std::map< unsigned int, osg::Vec4f > & ( ::osg::FragmentProgram::*getLocalParameters_function_type)(  ) ;
+            typedef ::std::map< unsigned int, osg::Vec4f > & ( ::osg::FragmentProgram::*getLocalParameters_function_type )(  ) ;
             
             FragmentProgram_exposer.def( 
                 "getLocalParameters"
                 , getLocalParameters_function_type( &::osg::FragmentProgram::getLocalParameters )
                 , bp::return_internal_reference< >()
-                , " Get list of Program Parameters" );
+                , "\n Get list of Program Parameters\n" );
         
         }
         { //::osg::FragmentProgram::getLocalParameters
         
-            typedef ::std::map< unsigned int, osg::Vec4f > const & ( ::osg::FragmentProgram::*getLocalParameters_function_type)(  ) const;
+            typedef ::std::map< unsigned int, osg::Vec4f > const & ( ::osg::FragmentProgram::*getLocalParameters_function_type )(  ) const;
             
             FragmentProgram_exposer.def( 
                 "getLocalParameters"
                 , getLocalParameters_function_type( &::osg::FragmentProgram::getLocalParameters )
                 , bp::return_internal_reference< >()
-                , " Get const list of Program Parameters" );
+                , "\n Get const list of Program Parameters\n" );
         
         }
         { //::osg::FragmentProgram::getMatrices
         
-            typedef ::std::map< unsigned int, osg::Matrixd > & ( ::osg::FragmentProgram::*getMatrices_function_type)(  ) ;
+            typedef ::std::map< unsigned int, osg::Matrixd > & ( ::osg::FragmentProgram::*getMatrices_function_type )(  ) ;
             
             FragmentProgram_exposer.def( 
                 "getMatrices"
                 , getMatrices_function_type( &::osg::FragmentProgram::getMatrices )
                 , bp::return_internal_reference< >()
-                , " Get list of Matrices" );
+                , "\n Get list of Matrices\n" );
         
         }
         { //::osg::FragmentProgram::getMatrices
         
-            typedef ::std::map< unsigned int, osg::Matrixd > const & ( ::osg::FragmentProgram::*getMatrices_function_type)(  ) const;
+            typedef ::std::map< unsigned int, osg::Matrixd > const & ( ::osg::FragmentProgram::*getMatrices_function_type )(  ) const;
             
             FragmentProgram_exposer.def( 
                 "getMatrices"
                 , getMatrices_function_type( &::osg::FragmentProgram::getMatrices )
                 , bp::return_internal_reference< >()
-                , " Get list of Matrices" );
+                , "\n Get list of Matrices\n" );
         
         }
         { //::osg::FragmentProgram::getModeUsage
         
-            typedef bool ( ::osg::FragmentProgram::*getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
-            typedef bool ( FragmentProgram_wrapper::*default_getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( ::osg::FragmentProgram::*getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( FragmentProgram_wrapper::*default_getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
             
             FragmentProgram_exposer.def( 
                 "getModeUsage"
@@ -609,8 +502,8 @@ void register_FragmentProgram_class(){
         }
         { //::osg::FragmentProgram::getType
         
-            typedef ::osg::StateAttribute::Type ( ::osg::FragmentProgram::*getType_function_type)(  ) const;
-            typedef ::osg::StateAttribute::Type ( FragmentProgram_wrapper::*default_getType_function_type)(  ) const;
+            typedef ::osg::StateAttribute::Type ( ::osg::FragmentProgram::*getType_function_type )(  ) const;
+            typedef ::osg::StateAttribute::Type ( FragmentProgram_wrapper::*default_getType_function_type )(  ) const;
             
             FragmentProgram_exposer.def( 
                 "getType"
@@ -620,8 +513,8 @@ void register_FragmentProgram_class(){
         }
         { //::osg::FragmentProgram::isSameKindAs
         
-            typedef bool ( ::osg::FragmentProgram::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( FragmentProgram_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::FragmentProgram::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( FragmentProgram_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             FragmentProgram_exposer.def( 
                 "isSameKindAs"
@@ -632,8 +525,8 @@ void register_FragmentProgram_class(){
         }
         { //::osg::FragmentProgram::libraryName
         
-            typedef char const * ( ::osg::FragmentProgram::*libraryName_function_type)(  ) const;
-            typedef char const * ( FragmentProgram_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::FragmentProgram::*libraryName_function_type )(  ) const;
+            typedef char const * ( FragmentProgram_wrapper::*default_libraryName_function_type )(  ) const;
             
             FragmentProgram_exposer.def( 
                 "libraryName"
@@ -643,8 +536,8 @@ void register_FragmentProgram_class(){
         }
         { //::osg::FragmentProgram::resizeGLObjectBuffers
         
-            typedef void ( ::osg::FragmentProgram::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( FragmentProgram_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::FragmentProgram::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( FragmentProgram_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             FragmentProgram_exposer.def( 
                 "resizeGLObjectBuffers"
@@ -661,79 +554,79 @@ void register_FragmentProgram_class(){
                 "setExtensions"
                 , setExtensions_function_type( &::osg::FragmentProgram::setExtensions )
                 , ( bp::arg("contextID"), bp::arg("extensions") )
-                , " setExtensions allows users to override the extensions across graphics contexts.\n typically used when you have different extensions supported across graphics pipes\n but need to ensure that they all use the same low common denominator extensions." );
+                , "\n setExtensions allows users to override the extensions across graphics contexts.\n typically used when you have different extensions supported across graphics pipes\n but need to ensure that they all use the same low common denominator extensions.\n" );
         
         }
         { //::osg::FragmentProgram::setFragmentProgram
         
-            typedef void ( ::osg::FragmentProgram::*setFragmentProgram_function_type)( char const * ) ;
+            typedef void ( ::osg::FragmentProgram::*setFragmentProgram_function_type )( char const * ) ;
             
             FragmentProgram_exposer.def( 
                 "setFragmentProgram"
                 , setFragmentProgram_function_type( &::osg::FragmentProgram::setFragmentProgram )
                 , ( bp::arg("program") )
-                , " Set the fragment program using a C style string." );
+                , "\n Set the fragment program using a C style string.\n" );
         
         }
         { //::osg::FragmentProgram::setFragmentProgram
         
-            typedef void ( ::osg::FragmentProgram::*setFragmentProgram_function_type)( ::std::string const & ) ;
+            typedef void ( ::osg::FragmentProgram::*setFragmentProgram_function_type )( ::std::string const & ) ;
             
             FragmentProgram_exposer.def( 
                 "setFragmentProgram"
                 , setFragmentProgram_function_type( &::osg::FragmentProgram::setFragmentProgram )
                 , ( bp::arg("program") )
-                , " Set the fragment program using C++ style string." );
+                , "\n Set the fragment program using C++ style string.\n" );
         
         }
         { //::osg::FragmentProgram::setLocalParameters
         
-            typedef void ( ::osg::FragmentProgram::*setLocalParameters_function_type)( ::std::map< unsigned int, osg::Vec4f > const & ) ;
+            typedef void ( ::osg::FragmentProgram::*setLocalParameters_function_type )( ::std::map< unsigned int, osg::Vec4f > const & ) ;
             
             FragmentProgram_exposer.def( 
                 "setLocalParameters"
                 , setLocalParameters_function_type( &::osg::FragmentProgram::setLocalParameters )
                 , ( bp::arg("lpl") )
-                , " Set list of Program Parameters" );
+                , "\n Set list of Program Parameters\n" );
         
         }
         { //::osg::FragmentProgram::setMatrices
         
-            typedef void ( ::osg::FragmentProgram::*setMatrices_function_type)( ::std::map< unsigned int, osg::Matrixd > const & ) ;
+            typedef void ( ::osg::FragmentProgram::*setMatrices_function_type )( ::std::map< unsigned int, osg::Matrixd > const & ) ;
             
             FragmentProgram_exposer.def( 
                 "setMatrices"
                 , setMatrices_function_type( &::osg::FragmentProgram::setMatrices )
                 , ( bp::arg("matrices") )
-                , " Set list of Matrices" );
+                , "\n Set list of Matrices\n" );
         
         }
         { //::osg::FragmentProgram::setMatrix
         
-            typedef void ( ::osg::FragmentProgram::*setMatrix_function_type)( ::GLenum const,::osg::Matrix const & ) ;
+            typedef void ( ::osg::FragmentProgram::*setMatrix_function_type )( ::GLenum const,::osg::Matrix const & ) ;
             
             FragmentProgram_exposer.def( 
                 "setMatrix"
                 , setMatrix_function_type( &::osg::FragmentProgram::setMatrix )
                 , ( bp::arg("mode"), bp::arg("matrix") )
-                , " Matrix" );
+                , "\n Matrix\n" );
         
         }
         { //::osg::FragmentProgram::setProgramLocalParameter
         
-            typedef void ( ::osg::FragmentProgram::*setProgramLocalParameter_function_type)( ::GLuint const,::osg::Vec4 const & ) ;
+            typedef void ( ::osg::FragmentProgram::*setProgramLocalParameter_function_type )( ::GLuint const,::osg::Vec4 const & ) ;
             
             FragmentProgram_exposer.def( 
                 "setProgramLocalParameter"
                 , setProgramLocalParameter_function_type( &::osg::FragmentProgram::setProgramLocalParameter )
                 , ( bp::arg("index"), bp::arg("p") )
-                , " Set Program Parameters" );
+                , "\n Set Program Parameters\n" );
         
         }
         { //::osg::StateAttribute::asTexture
         
-            typedef ::osg::Texture * ( ::osg::StateAttribute::*asTexture_function_type)(  ) ;
-            typedef ::osg::Texture * ( FragmentProgram_wrapper::*default_asTexture_function_type)(  ) ;
+            typedef ::osg::Texture * ( ::osg::StateAttribute::*asTexture_function_type )(  ) ;
+            typedef ::osg::Texture * ( FragmentProgram_wrapper::*default_asTexture_function_type )(  ) ;
             
             FragmentProgram_exposer.def( 
                 "asTexture"
@@ -744,8 +637,8 @@ void register_FragmentProgram_class(){
         }
         { //::osg::StateAttribute::asTexture
         
-            typedef ::osg::Texture const * ( ::osg::StateAttribute::*asTexture_function_type)(  ) const;
-            typedef ::osg::Texture const * ( FragmentProgram_wrapper::*default_asTexture_function_type)(  ) const;
+            typedef ::osg::Texture const * ( ::osg::StateAttribute::*asTexture_function_type )(  ) const;
+            typedef ::osg::Texture const * ( FragmentProgram_wrapper::*default_asTexture_function_type )(  ) const;
             
             FragmentProgram_exposer.def( 
                 "asTexture"
@@ -756,8 +649,8 @@ void register_FragmentProgram_class(){
         }
         { //::osg::StateAttribute::checkValidityOfAssociatedModes
         
-            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
-            typedef bool ( FragmentProgram_wrapper::*default_checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
+            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
+            typedef bool ( FragmentProgram_wrapper::*default_checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
             
             FragmentProgram_exposer.def( 
                 "checkValidityOfAssociatedModes"
@@ -766,21 +659,10 @@ void register_FragmentProgram_class(){
                 , ( bp::arg("arg0") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( FragmentProgram_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            FragmentProgram_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&FragmentProgram_wrapper::default_computeDataVariance) );
-        
-        }
         { //::osg::StateAttribute::getMember
         
-            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type)(  ) const;
-            typedef unsigned int ( FragmentProgram_wrapper::*default_getMember_function_type)(  ) const;
+            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type )(  ) const;
+            typedef unsigned int ( FragmentProgram_wrapper::*default_getMember_function_type )(  ) const;
             
             FragmentProgram_exposer.def( 
                 "getMember"
@@ -788,86 +670,15 @@ void register_FragmentProgram_class(){
                 , default_getMember_function_type(&FragmentProgram_wrapper::default_getMember) );
         
         }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( FragmentProgram_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            FragmentProgram_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&FragmentProgram_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( FragmentProgram_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            FragmentProgram_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&FragmentProgram_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::StateAttribute::isTextureAttribute
         
-            typedef bool ( ::osg::StateAttribute::*isTextureAttribute_function_type)(  ) const;
-            typedef bool ( FragmentProgram_wrapper::*default_isTextureAttribute_function_type)(  ) const;
+            typedef bool ( ::osg::StateAttribute::*isTextureAttribute_function_type )(  ) const;
+            typedef bool ( FragmentProgram_wrapper::*default_isTextureAttribute_function_type )(  ) const;
             
             FragmentProgram_exposer.def( 
                 "isTextureAttribute"
                 , isTextureAttribute_function_type(&::osg::StateAttribute::isTextureAttribute)
                 , default_isTextureAttribute_function_type(&FragmentProgram_wrapper::default_isTextureAttribute) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( FragmentProgram_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            FragmentProgram_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&FragmentProgram_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            FragmentProgram_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( FragmentProgram_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            FragmentProgram_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&FragmentProgram_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( FragmentProgram_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            FragmentProgram_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&FragmentProgram_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
         FragmentProgram_exposer.staticmethod( "deleteFragmentProgramObject" );

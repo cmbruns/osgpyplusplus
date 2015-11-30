@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "valueobject.pypp.hpp"
+#include "ValueObject.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -623,90 +623,6 @@ struct ValueObject_wrapper : osg::ValueObject, bp::wrapper< osg::ValueObject > {
         return osg::ValueObject::set( boost::ref(arg0) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_ValueObject_class(){
@@ -718,212 +634,212 @@ void register_ValueObject_class(){
         bp::class_< ValueObject_wrapper::GetValueVisitor_wrapper >( "GetValueVisitor" )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( bool ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( bool ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( bool ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( bool ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( char ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( char ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( char ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( char ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( unsigned char ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( unsigned char ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( unsigned char ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( unsigned char ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( short int ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( short int ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( short int ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( short int ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( short unsigned int ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( short unsigned int ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( short unsigned int ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( short unsigned int ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( int ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( int ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( int ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( int ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( unsigned int ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( unsigned int ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( unsigned int ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( unsigned int ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( float ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( float ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( float ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( float ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( double ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( double ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( double ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( double ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::std::string const & ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::std::string const & ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::std::string const & ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::std::string const & ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Vec2f const & ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Vec2f const & ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Vec2f const & ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Vec2f const & ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Vec3f const & ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Vec3f const & ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Vec3f const & ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Vec3f const & ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Vec4f const & ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Vec4f const & ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Vec4f const & ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Vec4f const & ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Vec2d const & ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Vec2d const & ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Vec2d const & ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Vec2d const & ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Vec3d const & ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Vec3d const & ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Vec3d const & ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Vec3d const & ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Vec4d const & ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Vec4d const & ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Vec4d const & ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Vec4d const & ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Quat const & ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Quat const & ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Quat const & ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Quat const & ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Plane const & ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Plane const & ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Plane const & ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Plane const & ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Matrixf const & ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Matrixf const & ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Matrixf const & ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Matrixf const & ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Matrixd const & ))(&::osg::ValueObject::GetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Matrixd const & ))(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::GetValueVisitor::* )( ::osg::Matrixd const & ) )(&::osg::ValueObject::GetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::GetValueVisitor_wrapper::* )( ::osg::Matrixd const & ) )(&ValueObject_wrapper::GetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) );
         bp::class_< ValueObject_wrapper::SetValueVisitor_wrapper >( "SetValueVisitor" )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( bool & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( bool & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( bool & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( bool & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( char & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( char & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( char & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( char & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( unsigned char & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( unsigned char & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( unsigned char & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( unsigned char & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( short int & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( short int & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( short int & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( short int & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( short unsigned int & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( short unsigned int & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( short unsigned int & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( short unsigned int & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( int & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( int & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( int & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( int & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( unsigned int & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( unsigned int & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( unsigned int & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( unsigned int & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( float & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( float & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( float & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( float & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( double & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( double & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( double & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( double & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::std::string & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::std::string & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::std::string & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::std::string & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Vec2f & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Vec2f & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Vec2f & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Vec2f & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Vec3f & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Vec3f & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Vec3f & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Vec3f & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Vec4f & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Vec4f & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Vec4f & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Vec4f & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Vec2d & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Vec2d & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Vec2d & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Vec2d & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Vec3d & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Vec3d & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Vec3d & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Vec3d & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Vec4d & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Vec4d & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Vec4d & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Vec4d & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Quat & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Quat & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Quat & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Quat & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Plane & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Plane & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Plane & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Plane & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Matrixf & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Matrixf & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Matrixf & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Matrixf & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) )    
             .def( 
                 "apply"
-                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Matrixd & ))(&::osg::ValueObject::SetValueVisitor::apply)
-                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Matrixd & ))(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
+                , (void ( ::osg::ValueObject::SetValueVisitor::* )( ::osg::Matrixd & ) )(&::osg::ValueObject::SetValueVisitor::apply)
+                , (void ( ValueObject_wrapper::SetValueVisitor_wrapper::* )( ::osg::Matrixd & ) )(&ValueObject_wrapper::SetValueVisitor_wrapper::default_apply)
                 , ( bp::arg("arg0") ) );
         ValueObject_exposer.def( bp::init< >() );
         ValueObject_exposer.def( bp::init< std::string const & >(( bp::arg("name") )) );
         bp::implicitly_convertible< std::string const &, osg::ValueObject >();
         { //::osg::ValueObject::className
         
-            typedef char const * ( ::osg::ValueObject::*className_function_type)(  ) const;
-            typedef char const * ( ValueObject_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::ValueObject::*className_function_type )(  ) const;
+            typedef char const * ( ValueObject_wrapper::*default_className_function_type )(  ) const;
             
             ValueObject_exposer.def( 
                 "className"
@@ -933,8 +849,8 @@ void register_ValueObject_class(){
         }
         { //::osg::ValueObject::clone
         
-            typedef ::osg::Object * ( ::osg::ValueObject::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( ValueObject_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::ValueObject::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ValueObject_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             ValueObject_exposer.def( 
                 "clone"
@@ -946,8 +862,8 @@ void register_ValueObject_class(){
         }
         { //::osg::ValueObject::cloneType
         
-            typedef ::osg::Object * ( ::osg::ValueObject::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( ValueObject_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::ValueObject::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( ValueObject_wrapper::*default_cloneType_function_type )(  ) const;
             
             ValueObject_exposer.def( 
                 "cloneType"
@@ -958,8 +874,8 @@ void register_ValueObject_class(){
         }
         { //::osg::ValueObject::get
         
-            typedef bool ( ::osg::ValueObject::*get_function_type)( ::osg::ValueObject::GetValueVisitor & ) const;
-            typedef bool ( ValueObject_wrapper::*default_get_function_type)( ::osg::ValueObject::GetValueVisitor & ) const;
+            typedef bool ( ::osg::ValueObject::*get_function_type )( ::osg::ValueObject::GetValueVisitor & ) const;
+            typedef bool ( ValueObject_wrapper::*default_get_function_type )( ::osg::ValueObject::GetValueVisitor & ) const;
             
             ValueObject_exposer.def( 
                 "get"
@@ -970,8 +886,8 @@ void register_ValueObject_class(){
         }
         { //::osg::ValueObject::isSameKindAs
         
-            typedef bool ( ::osg::ValueObject::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( ValueObject_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::ValueObject::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( ValueObject_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             ValueObject_exposer.def( 
                 "isSameKindAs"
@@ -982,8 +898,8 @@ void register_ValueObject_class(){
         }
         { //::osg::ValueObject::libraryName
         
-            typedef char const * ( ::osg::ValueObject::*libraryName_function_type)(  ) const;
-            typedef char const * ( ValueObject_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::ValueObject::*libraryName_function_type )(  ) const;
+            typedef char const * ( ValueObject_wrapper::*default_libraryName_function_type )(  ) const;
             
             ValueObject_exposer.def( 
                 "libraryName"
@@ -993,108 +909,14 @@ void register_ValueObject_class(){
         }
         { //::osg::ValueObject::set
         
-            typedef bool ( ::osg::ValueObject::*set_function_type)( ::osg::ValueObject::SetValueVisitor & ) ;
-            typedef bool ( ValueObject_wrapper::*default_set_function_type)( ::osg::ValueObject::SetValueVisitor & ) ;
+            typedef bool ( ::osg::ValueObject::*set_function_type )( ::osg::ValueObject::SetValueVisitor & ) ;
+            typedef bool ( ValueObject_wrapper::*default_set_function_type )( ::osg::ValueObject::SetValueVisitor & ) ;
             
             ValueObject_exposer.def( 
                 "set"
                 , set_function_type(&::osg::ValueObject::set)
                 , default_set_function_type(&ValueObject_wrapper::default_set)
                 , ( bp::arg("arg0") ) );
-        
-        }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( ValueObject_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            ValueObject_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&ValueObject_wrapper::default_computeDataVariance) );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( ValueObject_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            ValueObject_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&ValueObject_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( ValueObject_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            ValueObject_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&ValueObject_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::resizeGLObjectBuffers
-        
-            typedef void ( ::osg::Object::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( ValueObject_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            
-            ValueObject_exposer.def( 
-                "resizeGLObjectBuffers"
-                , resizeGLObjectBuffers_function_type(&::osg::Object::resizeGLObjectBuffers)
-                , default_resizeGLObjectBuffers_function_type(&ValueObject_wrapper::default_resizeGLObjectBuffers)
-                , ( bp::arg("arg0") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( ValueObject_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            ValueObject_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&ValueObject_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            ValueObject_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( ValueObject_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            ValueObject_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&ValueObject_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( ValueObject_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            ValueObject_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&ValueObject_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
     }

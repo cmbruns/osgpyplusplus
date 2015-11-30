@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgga.h"
+#include "wrap_osgGA.h"
 #include "wrap_referenced.h"
-#include "animationpathmanipulator.pypp.hpp"
+#include "AnimationPathManipulator.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -23,18 +23,6 @@ struct AnimationPathManipulator_wrapper : osgGA::AnimationPathManipulator, bp::w
         virtual void completed( ::osgGA::AnimationPathManipulator const * apm ){
             bp::override func_completed = this->get_override( "completed" );
             func_completed( boost::python::ptr(apm) );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -233,7 +221,7 @@ struct AnimationPathManipulator_wrapper : osgGA::AnimationPathManipulator, bp::w
         osg::Object::computeDataVariance( );
     }
 
-    virtual void computeHomePosition( ::osg::Camera const * camera=0, bool useBoundingBox=false ) {
+    virtual void computeHomePosition( ::osg::Camera const * camera=0l, bool useBoundingBox=false ) {
         if( bp::override func_computeHomePosition = this->get_override( "computeHomePosition" ) )
             func_computeHomePosition( boost::python::ptr(camera), useBoundingBox );
         else{
@@ -241,7 +229,7 @@ struct AnimationPathManipulator_wrapper : osgGA::AnimationPathManipulator, bp::w
         }
     }
     
-    void default_computeHomePosition( ::osg::Camera const * camera=0, bool useBoundingBox=false ) {
+    void default_computeHomePosition( ::osg::Camera const * camera=0l, bool useBoundingBox=false ) {
         osgGA::CameraManipulator::computeHomePosition( boost::python::ptr(camera), useBoundingBox );
     }
 
@@ -387,18 +375,6 @@ struct AnimationPathManipulator_wrapper : osgGA::AnimationPathManipulator, bp::w
         return osgGA::GUIEventHandler::libraryName( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void setAutoComputeHomePosition( bool flag ) {
         if( bp::override func_setAutoComputeHomePosition = this->get_override( "setAutoComputeHomePosition" ) )
             func_setAutoComputeHomePosition( flag );
@@ -506,15 +482,15 @@ void register_AnimationPathManipulator_class(){
         bp::class_< AnimationPathManipulator_wrapper::AnimationCompletedCallback_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< AnimationPathManipulator_wrapper::AnimationCompletedCallback_wrapper >, boost::noncopyable >( "AnimationCompletedCallback", bp::no_init )    
             .def( 
                 "completed"
-                , bp::pure_virtual( (void ( ::osgGA::AnimationPathManipulator::AnimationCompletedCallback::* )( ::osgGA::AnimationPathManipulator const * ))(&::osgGA::AnimationPathManipulator::AnimationCompletedCallback::completed) )
+                , bp::pure_virtual( (void ( ::osgGA::AnimationPathManipulator::AnimationCompletedCallback::* )( ::osgGA::AnimationPathManipulator const * ) )(&::osgGA::AnimationPathManipulator::AnimationCompletedCallback::completed) )
                 , ( bp::arg("apm") ) );
         bp::implicitly_convertible< osg::AnimationPath *, osgGA::AnimationPathManipulator >();
         AnimationPathManipulator_exposer.def( bp::init< std::string const & >(( bp::arg("filename") )) );
         bp::implicitly_convertible< std::string const &, osgGA::AnimationPathManipulator >();
         { //::osgGA::AnimationPathManipulator::className
         
-            typedef char const * ( ::osgGA::AnimationPathManipulator::*className_function_type)(  ) const;
-            typedef char const * ( AnimationPathManipulator_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osgGA::AnimationPathManipulator::*className_function_type )(  ) const;
+            typedef char const * ( AnimationPathManipulator_wrapper::*default_className_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "className"
@@ -524,7 +500,7 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::getAnimationCompletedCallback
         
-            typedef ::osgGA::AnimationPathManipulator::AnimationCompletedCallback * ( ::osgGA::AnimationPathManipulator::*getAnimationCompletedCallback_function_type)(  ) ;
+            typedef ::osgGA::AnimationPathManipulator::AnimationCompletedCallback * ( ::osgGA::AnimationPathManipulator::*getAnimationCompletedCallback_function_type )(  ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "getAnimationCompletedCallback"
@@ -534,7 +510,7 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::getAnimationCompletedCallback
         
-            typedef ::osgGA::AnimationPathManipulator::AnimationCompletedCallback const * ( ::osgGA::AnimationPathManipulator::*getAnimationCompletedCallback_function_type)(  ) const;
+            typedef ::osgGA::AnimationPathManipulator::AnimationCompletedCallback const * ( ::osgGA::AnimationPathManipulator::*getAnimationCompletedCallback_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "getAnimationCompletedCallback"
@@ -544,7 +520,7 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::getAnimationPath
         
-            typedef ::osg::AnimationPath * ( ::osgGA::AnimationPathManipulator::*getAnimationPath_function_type)(  ) ;
+            typedef ::osg::AnimationPath * ( ::osgGA::AnimationPathManipulator::*getAnimationPath_function_type )(  ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "getAnimationPath"
@@ -554,7 +530,7 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::getAnimationPath
         
-            typedef ::osg::AnimationPath const * ( ::osgGA::AnimationPathManipulator::*getAnimationPath_function_type)(  ) const;
+            typedef ::osg::AnimationPath const * ( ::osgGA::AnimationPathManipulator::*getAnimationPath_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "getAnimationPath"
@@ -564,8 +540,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::getInverseMatrix
         
-            typedef ::osg::Matrixd ( ::osgGA::AnimationPathManipulator::*getInverseMatrix_function_type)(  ) const;
-            typedef ::osg::Matrixd ( AnimationPathManipulator_wrapper::*default_getInverseMatrix_function_type)(  ) const;
+            typedef ::osg::Matrixd ( ::osgGA::AnimationPathManipulator::*getInverseMatrix_function_type )(  ) const;
+            typedef ::osg::Matrixd ( AnimationPathManipulator_wrapper::*default_getInverseMatrix_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "getInverseMatrix"
@@ -575,8 +551,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::getMatrix
         
-            typedef ::osg::Matrixd ( ::osgGA::AnimationPathManipulator::*getMatrix_function_type)(  ) const;
-            typedef ::osg::Matrixd ( AnimationPathManipulator_wrapper::*default_getMatrix_function_type)(  ) const;
+            typedef ::osg::Matrixd ( ::osgGA::AnimationPathManipulator::*getMatrix_function_type )(  ) const;
+            typedef ::osg::Matrixd ( AnimationPathManipulator_wrapper::*default_getMatrix_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "getMatrix"
@@ -586,7 +562,7 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::getPrintOutTimingInfo
         
-            typedef bool ( ::osgGA::AnimationPathManipulator::*getPrintOutTimingInfo_function_type)(  ) const;
+            typedef bool ( ::osgGA::AnimationPathManipulator::*getPrintOutTimingInfo_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "getPrintOutTimingInfo"
@@ -595,7 +571,7 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::getTimeOffset
         
-            typedef double ( ::osgGA::AnimationPathManipulator::*getTimeOffset_function_type)(  ) const;
+            typedef double ( ::osgGA::AnimationPathManipulator::*getTimeOffset_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "getTimeOffset"
@@ -604,7 +580,7 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::getTimeScale
         
-            typedef double ( ::osgGA::AnimationPathManipulator::*getTimeScale_function_type)(  ) const;
+            typedef double ( ::osgGA::AnimationPathManipulator::*getTimeScale_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "getTimeScale"
@@ -613,8 +589,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::getUsage
         
-            typedef void ( ::osgGA::AnimationPathManipulator::*getUsage_function_type)( ::osg::ApplicationUsage & ) const;
-            typedef void ( AnimationPathManipulator_wrapper::*default_getUsage_function_type)( ::osg::ApplicationUsage & ) const;
+            typedef void ( ::osgGA::AnimationPathManipulator::*getUsage_function_type )( ::osg::ApplicationUsage & ) const;
+            typedef void ( AnimationPathManipulator_wrapper::*default_getUsage_function_type )( ::osg::ApplicationUsage & ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "getUsage"
@@ -645,8 +621,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::home
         
-            typedef void ( ::osgGA::AnimationPathManipulator::*home_function_type)( double ) ;
-            typedef void ( AnimationPathManipulator_wrapper::*default_home_function_type)( double ) ;
+            typedef void ( ::osgGA::AnimationPathManipulator::*home_function_type )( double ) ;
+            typedef void ( AnimationPathManipulator_wrapper::*default_home_function_type )( double ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "home"
@@ -667,7 +643,7 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::setAnimationCompletedCallback
         
-            typedef void ( ::osgGA::AnimationPathManipulator::*setAnimationCompletedCallback_function_type)( ::osgGA::AnimationPathManipulator::AnimationCompletedCallback * ) ;
+            typedef void ( ::osgGA::AnimationPathManipulator::*setAnimationCompletedCallback_function_type )( ::osgGA::AnimationPathManipulator::AnimationCompletedCallback * ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "setAnimationCompletedCallback"
@@ -677,7 +653,7 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::setAnimationPath
         
-            typedef void ( ::osgGA::AnimationPathManipulator::*setAnimationPath_function_type)( ::osg::AnimationPath * ) ;
+            typedef void ( ::osgGA::AnimationPathManipulator::*setAnimationPath_function_type )( ::osg::AnimationPath * ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "setAnimationPath"
@@ -687,8 +663,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::setByInverseMatrix
         
-            typedef void ( ::osgGA::AnimationPathManipulator::*setByInverseMatrix_function_type)( ::osg::Matrixd const & ) ;
-            typedef void ( AnimationPathManipulator_wrapper::*default_setByInverseMatrix_function_type)( ::osg::Matrixd const & ) ;
+            typedef void ( ::osgGA::AnimationPathManipulator::*setByInverseMatrix_function_type )( ::osg::Matrixd const & ) ;
+            typedef void ( AnimationPathManipulator_wrapper::*default_setByInverseMatrix_function_type )( ::osg::Matrixd const & ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "setByInverseMatrix"
@@ -699,8 +675,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::setByMatrix
         
-            typedef void ( ::osgGA::AnimationPathManipulator::*setByMatrix_function_type)( ::osg::Matrixd const & ) ;
-            typedef void ( AnimationPathManipulator_wrapper::*default_setByMatrix_function_type)( ::osg::Matrixd const & ) ;
+            typedef void ( ::osgGA::AnimationPathManipulator::*setByMatrix_function_type )( ::osg::Matrixd const & ) ;
+            typedef void ( AnimationPathManipulator_wrapper::*default_setByMatrix_function_type )( ::osg::Matrixd const & ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "setByMatrix"
@@ -711,7 +687,7 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::setPrintOutTimingInfo
         
-            typedef void ( ::osgGA::AnimationPathManipulator::*setPrintOutTimingInfo_function_type)( bool ) ;
+            typedef void ( ::osgGA::AnimationPathManipulator::*setPrintOutTimingInfo_function_type )( bool ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "setPrintOutTimingInfo"
@@ -721,7 +697,7 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::setTimeOffset
         
-            typedef void ( ::osgGA::AnimationPathManipulator::*setTimeOffset_function_type)( double ) ;
+            typedef void ( ::osgGA::AnimationPathManipulator::*setTimeOffset_function_type )( double ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "setTimeOffset"
@@ -731,7 +707,7 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::setTimeScale
         
-            typedef void ( ::osgGA::AnimationPathManipulator::*setTimeScale_function_type)( double ) ;
+            typedef void ( ::osgGA::AnimationPathManipulator::*setTimeScale_function_type )( double ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "setTimeScale"
@@ -741,7 +717,7 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::AnimationPathManipulator::valid
         
-            typedef bool ( ::osgGA::AnimationPathManipulator::*valid_function_type)(  ) const;
+            typedef bool ( ::osgGA::AnimationPathManipulator::*valid_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "valid"
@@ -750,8 +726,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::clone
         
-            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( AnimationPathManipulator_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( AnimationPathManipulator_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "clone"
@@ -763,8 +739,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::cloneType
         
-            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( AnimationPathManipulator_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( AnimationPathManipulator_wrapper::*default_cloneType_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "cloneType"
@@ -775,20 +751,20 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::CameraManipulator::computeHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*computeHomePosition_function_type)( ::osg::Camera const *,bool ) ;
-            typedef void ( AnimationPathManipulator_wrapper::*default_computeHomePosition_function_type)( ::osg::Camera const *,bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*computeHomePosition_function_type )( ::osg::Camera const *,bool ) ;
+            typedef void ( AnimationPathManipulator_wrapper::*default_computeHomePosition_function_type )( ::osg::Camera const *,bool ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "computeHomePosition"
                 , computeHomePosition_function_type(&::osgGA::CameraManipulator::computeHomePosition)
                 , default_computeHomePosition_function_type(&AnimationPathManipulator_wrapper::default_computeHomePosition)
-                , ( bp::arg("camera")=bp::object(), bp::arg("useBoundingBox")=(bool)(false) ) );
+                , ( bp::arg("camera")=0l, bp::arg("useBoundingBox")=(bool)(false) ) );
         
         }
         { //::osgGA::GUIEventHandler::event
         
-            typedef void ( ::osgGA::GUIEventHandler::*event_function_type)( ::osg::NodeVisitor *,::osg::Drawable * ) ;
-            typedef void ( AnimationPathManipulator_wrapper::*default_event_function_type)( ::osg::NodeVisitor *,::osg::Drawable * ) ;
+            typedef void ( ::osgGA::GUIEventHandler::*event_function_type )( ::osg::NodeVisitor *,::osg::Drawable * ) ;
+            typedef void ( AnimationPathManipulator_wrapper::*default_event_function_type )( ::osg::NodeVisitor *,::osg::Drawable * ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "event"
@@ -799,8 +775,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getFusionDistanceMode
         
-            typedef ::osgUtil::SceneView::FusionDistanceMode ( ::osgGA::CameraManipulator::*getFusionDistanceMode_function_type)(  ) const;
-            typedef ::osgUtil::SceneView::FusionDistanceMode ( AnimationPathManipulator_wrapper::*default_getFusionDistanceMode_function_type)(  ) const;
+            typedef ::osgUtil::SceneView::FusionDistanceMode ( ::osgGA::CameraManipulator::*getFusionDistanceMode_function_type )(  ) const;
+            typedef ::osgUtil::SceneView::FusionDistanceMode ( AnimationPathManipulator_wrapper::*default_getFusionDistanceMode_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "getFusionDistanceMode"
@@ -810,8 +786,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getFusionDistanceValue
         
-            typedef float ( ::osgGA::CameraManipulator::*getFusionDistanceValue_function_type)(  ) const;
-            typedef float ( AnimationPathManipulator_wrapper::*default_getFusionDistanceValue_function_type)(  ) const;
+            typedef float ( ::osgGA::CameraManipulator::*getFusionDistanceValue_function_type )(  ) const;
+            typedef float ( AnimationPathManipulator_wrapper::*default_getFusionDistanceValue_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "getFusionDistanceValue"
@@ -821,8 +797,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*getHomePosition_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
-            typedef void ( AnimationPathManipulator_wrapper::*default_getHomePosition_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( ::osgGA::CameraManipulator::*getHomePosition_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( AnimationPathManipulator_wrapper::*default_getHomePosition_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "getHomePosition"
@@ -833,8 +809,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getNode
         
-            typedef ::osg::Node const * ( ::osgGA::CameraManipulator::*getNode_function_type)(  ) const;
-            typedef ::osg::Node const * ( AnimationPathManipulator_wrapper::*default_getNode_function_type)(  ) const;
+            typedef ::osg::Node const * ( ::osgGA::CameraManipulator::*getNode_function_type )(  ) const;
+            typedef ::osg::Node const * ( AnimationPathManipulator_wrapper::*default_getNode_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "getNode"
@@ -845,8 +821,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getNode
         
-            typedef ::osg::Node * ( ::osgGA::CameraManipulator::*getNode_function_type)(  ) ;
-            typedef ::osg::Node * ( AnimationPathManipulator_wrapper::*default_getNode_function_type)(  ) ;
+            typedef ::osg::Node * ( ::osgGA::CameraManipulator::*getNode_function_type )(  ) ;
+            typedef ::osg::Node * ( AnimationPathManipulator_wrapper::*default_getNode_function_type )(  ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "getNode"
@@ -868,8 +844,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::isSameKindAs
         
-            typedef bool ( ::osgGA::GUIEventHandler::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( AnimationPathManipulator_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osgGA::GUIEventHandler::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( AnimationPathManipulator_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "isSameKindAs"
@@ -880,8 +856,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::libraryName
         
-            typedef char const * ( ::osgGA::GUIEventHandler::*libraryName_function_type)(  ) const;
-            typedef char const * ( AnimationPathManipulator_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osgGA::GUIEventHandler::*libraryName_function_type )(  ) const;
+            typedef char const * ( AnimationPathManipulator_wrapper::*default_libraryName_function_type )(  ) const;
             
             AnimationPathManipulator_exposer.def( 
                 "libraryName"
@@ -891,8 +867,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setAutoComputeHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*setAutoComputeHomePosition_function_type)( bool ) ;
-            typedef void ( AnimationPathManipulator_wrapper::*default_setAutoComputeHomePosition_function_type)( bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setAutoComputeHomePosition_function_type )( bool ) ;
+            typedef void ( AnimationPathManipulator_wrapper::*default_setAutoComputeHomePosition_function_type )( bool ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "setAutoComputeHomePosition"
@@ -903,8 +879,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setCoordinateFrameCallback
         
-            typedef void ( ::osgGA::CameraManipulator::*setCoordinateFrameCallback_function_type)( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
-            typedef void ( AnimationPathManipulator_wrapper::*default_setCoordinateFrameCallback_function_type)( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setCoordinateFrameCallback_function_type )( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
+            typedef void ( AnimationPathManipulator_wrapper::*default_setCoordinateFrameCallback_function_type )( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "setCoordinateFrameCallback"
@@ -915,8 +891,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*setHomePosition_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
-            typedef void ( AnimationPathManipulator_wrapper::*default_setHomePosition_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setHomePosition_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
+            typedef void ( AnimationPathManipulator_wrapper::*default_setHomePosition_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "setHomePosition"
@@ -927,8 +903,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setNode
         
-            typedef void ( ::osgGA::CameraManipulator::*setNode_function_type)( ::osg::Node * ) ;
-            typedef void ( AnimationPathManipulator_wrapper::*default_setNode_function_type)( ::osg::Node * ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setNode_function_type )( ::osg::Node * ) ;
+            typedef void ( AnimationPathManipulator_wrapper::*default_setNode_function_type )( ::osg::Node * ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "setNode"
@@ -939,8 +915,8 @@ void register_AnimationPathManipulator_class(){
         }
         { //::osgGA::CameraManipulator::updateCamera
         
-            typedef void ( ::osgGA::CameraManipulator::*updateCamera_function_type)( ::osg::Camera & ) ;
-            typedef void ( AnimationPathManipulator_wrapper::*default_updateCamera_function_type)( ::osg::Camera & ) ;
+            typedef void ( ::osgGA::CameraManipulator::*updateCamera_function_type )( ::osg::Camera & ) ;
+            typedef void ( AnimationPathManipulator_wrapper::*default_updateCamera_function_type )( ::osg::Camera & ) ;
             
             AnimationPathManipulator_exposer.def( 
                 "updateCamera"

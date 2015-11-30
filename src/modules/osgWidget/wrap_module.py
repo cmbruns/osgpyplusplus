@@ -80,6 +80,11 @@ class osgWidgetWrapper(BaseWrapper):
         osgWidget.class_("Event").member_functions("getData").exclude() # return void*
         osgWidget.class_("Callback").member_functions("getData").exclude() # return void*
 
+        # Linux compile error 
+        for cls in osgWidget.classes(lambda c: c.name.startswith("UIObjectParent")):
+            cls.member_functions("begin").exclude()
+            cls.member_functions("end").exclude()
+
         self.generate_module_code('_osgWidget')
 
 if __name__ == "__main__":

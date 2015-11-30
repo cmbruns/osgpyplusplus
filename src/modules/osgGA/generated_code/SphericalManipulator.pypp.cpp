@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgga.h"
+#include "wrap_osgGA.h"
 #include "wrap_referenced.h"
-#include "sphericalmanipulator.pypp.hpp"
+#include "SphericalManipulator.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -289,7 +289,7 @@ struct SphericalManipulator_wrapper : osgGA::SphericalManipulator, bp::wrapper< 
         osg::Object::computeDataVariance( );
     }
 
-    virtual void computeHomePosition( ::osg::Camera const * camera=0, bool useBoundingBox=false ) {
+    virtual void computeHomePosition( ::osg::Camera const * camera=0l, bool useBoundingBox=false ) {
         if( bp::override func_computeHomePosition = this->get_override( "computeHomePosition" ) )
             func_computeHomePosition( boost::python::ptr(camera), useBoundingBox );
         else{
@@ -297,7 +297,7 @@ struct SphericalManipulator_wrapper : osgGA::SphericalManipulator, bp::wrapper< 
         }
     }
     
-    void default_computeHomePosition( ::osg::Camera const * camera=0, bool useBoundingBox=false ) {
+    void default_computeHomePosition( ::osg::Camera const * camera=0l, bool useBoundingBox=false ) {
         osgGA::CameraManipulator::computeHomePosition( boost::python::ptr(camera), useBoundingBox );
     }
 
@@ -393,18 +393,6 @@ struct SphericalManipulator_wrapper : osgGA::SphericalManipulator, bp::wrapper< 
     
     char const * default_libraryName(  ) const  {
         return osgGA::GUIEventHandler::libraryName( );
-    }
-
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
     }
 
     virtual void setAutoComputeHomePosition( bool flag ) {
@@ -509,7 +497,7 @@ void register_SphericalManipulator_class(){
         SphericalManipulator_exposer.def( bp::init< >() );
         { //::osgGA::SphericalManipulator::calcMovement
         
-            typedef bool ( SphericalManipulator_wrapper::*calcMovement_function_type)(  ) ;
+            typedef bool ( SphericalManipulator_wrapper::*calcMovement_function_type )(  ) ;
             
             SphericalManipulator_exposer.def( 
                 "calcMovement"
@@ -519,8 +507,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::className
         
-            typedef char const * ( ::osgGA::SphericalManipulator::*className_function_type)(  ) const;
-            typedef char const * ( SphericalManipulator_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osgGA::SphericalManipulator::*className_function_type )(  ) const;
+            typedef char const * ( SphericalManipulator_wrapper::*default_className_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "className"
@@ -530,8 +518,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::computeHomePosition
         
-            typedef void ( ::osgGA::SphericalManipulator::*computeHomePosition_function_type)(  ) ;
-            typedef void ( SphericalManipulator_wrapper::*default_computeHomePosition_function_type)(  ) ;
+            typedef void ( ::osgGA::SphericalManipulator::*computeHomePosition_function_type )(  ) ;
+            typedef void ( SphericalManipulator_wrapper::*default_computeHomePosition_function_type )(  ) ;
             
             SphericalManipulator_exposer.def( 
                 "computeHomePosition"
@@ -541,7 +529,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::computeViewPosition
         
-            typedef void ( ::osgGA::SphericalManipulator::*computeViewPosition_function_type)( ::osg::BoundingSphere const &,double &,double &,::osg::Vec3d & ) ;
+            typedef void ( ::osgGA::SphericalManipulator::*computeViewPosition_function_type )( ::osg::BoundingSphere const &,double &,double &,::osg::Vec3d & ) ;
             
             SphericalManipulator_exposer.def( 
                 "computeViewPosition"
@@ -551,7 +539,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::flushMouseEventStack
         
-            typedef void ( SphericalManipulator_wrapper::*flushMouseEventStack_function_type)(  ) ;
+            typedef void ( SphericalManipulator_wrapper::*flushMouseEventStack_function_type )(  ) ;
             
             SphericalManipulator_exposer.def( 
                 "flushMouseEventStack"
@@ -561,7 +549,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getAllowThrow
         
-            typedef bool ( ::osgGA::SphericalManipulator::*getAllowThrow_function_type)(  ) const;
+            typedef bool ( ::osgGA::SphericalManipulator::*getAllowThrow_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getAllowThrow"
@@ -571,7 +559,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getCenter
         
-            typedef ::osg::Vec3d const & ( ::osgGA::SphericalManipulator::*getCenter_function_type)(  ) const;
+            typedef ::osg::Vec3d const & ( ::osgGA::SphericalManipulator::*getCenter_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getCenter"
@@ -581,7 +569,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getDistance
         
-            typedef double ( ::osgGA::SphericalManipulator::*getDistance_function_type)(  ) const;
+            typedef double ( ::osgGA::SphericalManipulator::*getDistance_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getDistance"
@@ -590,7 +578,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getElevtion
         
-            typedef double ( ::osgGA::SphericalManipulator::*getElevtion_function_type)(  ) const;
+            typedef double ( ::osgGA::SphericalManipulator::*getElevtion_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getElevtion"
@@ -599,8 +587,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getFusionDistanceMode
         
-            typedef ::osgUtil::SceneView::FusionDistanceMode ( ::osgGA::SphericalManipulator::*getFusionDistanceMode_function_type)(  ) const;
-            typedef ::osgUtil::SceneView::FusionDistanceMode ( SphericalManipulator_wrapper::*default_getFusionDistanceMode_function_type)(  ) const;
+            typedef ::osgUtil::SceneView::FusionDistanceMode ( ::osgGA::SphericalManipulator::*getFusionDistanceMode_function_type )(  ) const;
+            typedef ::osgUtil::SceneView::FusionDistanceMode ( SphericalManipulator_wrapper::*default_getFusionDistanceMode_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getFusionDistanceMode"
@@ -610,8 +598,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getFusionDistanceValue
         
-            typedef float ( ::osgGA::SphericalManipulator::*getFusionDistanceValue_function_type)(  ) const;
-            typedef float ( SphericalManipulator_wrapper::*default_getFusionDistanceValue_function_type)(  ) const;
+            typedef float ( ::osgGA::SphericalManipulator::*getFusionDistanceValue_function_type )(  ) const;
+            typedef float ( SphericalManipulator_wrapper::*default_getFusionDistanceValue_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getFusionDistanceValue"
@@ -621,7 +609,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getHeading
         
-            typedef double ( ::osgGA::SphericalManipulator::*getHeading_function_type)(  ) const;
+            typedef double ( ::osgGA::SphericalManipulator::*getHeading_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getHeading"
@@ -630,7 +618,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getHomeDistance
         
-            typedef double ( ::osgGA::SphericalManipulator::*getHomeDistance_function_type)(  ) const;
+            typedef double ( ::osgGA::SphericalManipulator::*getHomeDistance_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getHomeDistance"
@@ -639,8 +627,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getInverseMatrix
         
-            typedef ::osg::Matrixd ( ::osgGA::SphericalManipulator::*getInverseMatrix_function_type)(  ) const;
-            typedef ::osg::Matrixd ( SphericalManipulator_wrapper::*default_getInverseMatrix_function_type)(  ) const;
+            typedef ::osg::Matrixd ( ::osgGA::SphericalManipulator::*getInverseMatrix_function_type )(  ) const;
+            typedef ::osg::Matrixd ( SphericalManipulator_wrapper::*default_getInverseMatrix_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getInverseMatrix"
@@ -650,8 +638,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getMatrix
         
-            typedef ::osg::Matrixd ( ::osgGA::SphericalManipulator::*getMatrix_function_type)(  ) const;
-            typedef ::osg::Matrixd ( SphericalManipulator_wrapper::*default_getMatrix_function_type)(  ) const;
+            typedef ::osg::Matrixd ( ::osgGA::SphericalManipulator::*getMatrix_function_type )(  ) const;
+            typedef ::osg::Matrixd ( SphericalManipulator_wrapper::*default_getMatrix_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getMatrix"
@@ -661,7 +649,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getMinimumZoomScale
         
-            typedef double ( ::osgGA::SphericalManipulator::*getMinimumZoomScale_function_type)(  ) const;
+            typedef double ( ::osgGA::SphericalManipulator::*getMinimumZoomScale_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getMinimumZoomScale"
@@ -671,8 +659,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getNode
         
-            typedef ::osg::Node const * ( ::osgGA::SphericalManipulator::*getNode_function_type)(  ) const;
-            typedef ::osg::Node const * ( SphericalManipulator_wrapper::*default_getNode_function_type)(  ) const;
+            typedef ::osg::Node const * ( ::osgGA::SphericalManipulator::*getNode_function_type )(  ) const;
+            typedef ::osg::Node const * ( SphericalManipulator_wrapper::*default_getNode_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getNode"
@@ -683,8 +671,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getNode
         
-            typedef ::osg::Node * ( ::osgGA::SphericalManipulator::*getNode_function_type)(  ) ;
-            typedef ::osg::Node * ( SphericalManipulator_wrapper::*default_getNode_function_type)(  ) ;
+            typedef ::osg::Node * ( ::osgGA::SphericalManipulator::*getNode_function_type )(  ) ;
+            typedef ::osg::Node * ( SphericalManipulator_wrapper::*default_getNode_function_type )(  ) ;
             
             SphericalManipulator_exposer.def( 
                 "getNode"
@@ -695,7 +683,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getRotationMode
         
-            typedef ::osgGA::SphericalManipulator::RotationMode ( ::osgGA::SphericalManipulator::*getRotationMode_function_type)(  ) const;
+            typedef ::osgGA::SphericalManipulator::RotationMode ( ::osgGA::SphericalManipulator::*getRotationMode_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getRotationMode"
@@ -704,7 +692,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getScroolWheelZoomDelta
         
-            typedef double ( ::osgGA::SphericalManipulator::*getScroolWheelZoomDelta_function_type)(  ) const;
+            typedef double ( ::osgGA::SphericalManipulator::*getScroolWheelZoomDelta_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "getScroolWheelZoomDelta"
@@ -714,8 +702,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::getUsage
         
-            typedef void ( ::osgGA::SphericalManipulator::*getUsage_function_type)( ::osg::ApplicationUsage & ) const;
-            typedef void ( SphericalManipulator_wrapper::*default_getUsage_function_type)( ::osg::ApplicationUsage & ) const;
+            typedef void ( ::osgGA::SphericalManipulator::*getUsage_function_type )( ::osg::ApplicationUsage & ) const;
+            typedef void ( SphericalManipulator_wrapper::*default_getUsage_function_type )( ::osg::ApplicationUsage & ) const;
             
             SphericalManipulator_exposer.def( 
                 "getUsage"
@@ -769,7 +757,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::isMouseMoving
         
-            typedef bool ( SphericalManipulator_wrapper::*isMouseMoving_function_type)(  ) ;
+            typedef bool ( SphericalManipulator_wrapper::*isMouseMoving_function_type )(  ) ;
             
             SphericalManipulator_exposer.def( 
                 "isMouseMoving"
@@ -779,7 +767,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::setAllowThrow
         
-            typedef void ( ::osgGA::SphericalManipulator::*setAllowThrow_function_type)( bool ) ;
+            typedef void ( ::osgGA::SphericalManipulator::*setAllowThrow_function_type )( bool ) ;
             
             SphericalManipulator_exposer.def( 
                 "setAllowThrow"
@@ -790,8 +778,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::setByInverseMatrix
         
-            typedef void ( ::osgGA::SphericalManipulator::*setByInverseMatrix_function_type)( ::osg::Matrixd const & ) ;
-            typedef void ( SphericalManipulator_wrapper::*default_setByInverseMatrix_function_type)( ::osg::Matrixd const & ) ;
+            typedef void ( ::osgGA::SphericalManipulator::*setByInverseMatrix_function_type )( ::osg::Matrixd const & ) ;
+            typedef void ( SphericalManipulator_wrapper::*default_setByInverseMatrix_function_type )( ::osg::Matrixd const & ) ;
             
             SphericalManipulator_exposer.def( 
                 "setByInverseMatrix"
@@ -802,8 +790,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::setByMatrix
         
-            typedef void ( ::osgGA::SphericalManipulator::*setByMatrix_function_type)( ::osg::Matrixd const & ) ;
-            typedef void ( SphericalManipulator_wrapper::*default_setByMatrix_function_type)( ::osg::Matrixd const & ) ;
+            typedef void ( ::osgGA::SphericalManipulator::*setByMatrix_function_type )( ::osg::Matrixd const & ) ;
+            typedef void ( SphericalManipulator_wrapper::*default_setByMatrix_function_type )( ::osg::Matrixd const & ) ;
             
             SphericalManipulator_exposer.def( 
                 "setByMatrix"
@@ -814,7 +802,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::setCenter
         
-            typedef void ( ::osgGA::SphericalManipulator::*setCenter_function_type)( ::osg::Vec3d const & ) ;
+            typedef void ( ::osgGA::SphericalManipulator::*setCenter_function_type )( ::osg::Vec3d const & ) ;
             
             SphericalManipulator_exposer.def( 
                 "setCenter"
@@ -824,7 +812,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::setDistance
         
-            typedef bool ( ::osgGA::SphericalManipulator::*setDistance_function_type)( double ) ;
+            typedef bool ( ::osgGA::SphericalManipulator::*setDistance_function_type )( double ) ;
             
             SphericalManipulator_exposer.def( 
                 "setDistance"
@@ -834,7 +822,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::setElevation
         
-            typedef void ( ::osgGA::SphericalManipulator::*setElevation_function_type)( double ) ;
+            typedef void ( ::osgGA::SphericalManipulator::*setElevation_function_type )( double ) ;
             
             SphericalManipulator_exposer.def( 
                 "setElevation"
@@ -844,7 +832,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::setHeading
         
-            typedef void ( ::osgGA::SphericalManipulator::*setHeading_function_type)( double ) ;
+            typedef void ( ::osgGA::SphericalManipulator::*setHeading_function_type )( double ) ;
             
             SphericalManipulator_exposer.def( 
                 "setHeading"
@@ -854,7 +842,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::setMinimumZoomScale
         
-            typedef void ( ::osgGA::SphericalManipulator::*setMinimumZoomScale_function_type)( double ) ;
+            typedef void ( ::osgGA::SphericalManipulator::*setMinimumZoomScale_function_type )( double ) ;
             
             SphericalManipulator_exposer.def( 
                 "setMinimumZoomScale"
@@ -865,8 +853,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::setNode
         
-            typedef void ( ::osgGA::SphericalManipulator::*setNode_function_type)( ::osg::Node * ) ;
-            typedef void ( SphericalManipulator_wrapper::*default_setNode_function_type)( ::osg::Node * ) ;
+            typedef void ( ::osgGA::SphericalManipulator::*setNode_function_type )( ::osg::Node * ) ;
+            typedef void ( SphericalManipulator_wrapper::*default_setNode_function_type )( ::osg::Node * ) ;
             
             SphericalManipulator_exposer.def( 
                 "setNode"
@@ -877,7 +865,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::setRotationMode
         
-            typedef void ( ::osgGA::SphericalManipulator::*setRotationMode_function_type)( ::osgGA::SphericalManipulator::RotationMode ) ;
+            typedef void ( ::osgGA::SphericalManipulator::*setRotationMode_function_type )( ::osgGA::SphericalManipulator::RotationMode ) ;
             
             SphericalManipulator_exposer.def( 
                 "setRotationMode"
@@ -887,7 +875,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::setScroolWheelZoomDelta
         
-            typedef void ( ::osgGA::SphericalManipulator::*setScroolWheelZoomDelta_function_type)( double ) ;
+            typedef void ( ::osgGA::SphericalManipulator::*setScroolWheelZoomDelta_function_type )( double ) ;
             
             SphericalManipulator_exposer.def( 
                 "setScroolWheelZoomDelta"
@@ -898,7 +886,7 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::SphericalManipulator::zoomOn
         
-            typedef void ( ::osgGA::SphericalManipulator::*zoomOn_function_type)( ::osg::BoundingSphere const & ) ;
+            typedef void ( ::osgGA::SphericalManipulator::*zoomOn_function_type )( ::osg::BoundingSphere const & ) ;
             
             SphericalManipulator_exposer.def( 
                 "zoomOn"
@@ -908,8 +896,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::clone
         
-            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( SphericalManipulator_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( SphericalManipulator_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             SphericalManipulator_exposer.def( 
                 "clone"
@@ -921,8 +909,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::cloneType
         
-            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( SphericalManipulator_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( SphericalManipulator_wrapper::*default_cloneType_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "cloneType"
@@ -933,20 +921,20 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::CameraManipulator::computeHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*computeHomePosition_function_type)( ::osg::Camera const *,bool ) ;
-            typedef void ( SphericalManipulator_wrapper::*default_computeHomePosition_function_type)( ::osg::Camera const *,bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*computeHomePosition_function_type )( ::osg::Camera const *,bool ) ;
+            typedef void ( SphericalManipulator_wrapper::*default_computeHomePosition_function_type )( ::osg::Camera const *,bool ) ;
             
             SphericalManipulator_exposer.def( 
                 "computeHomePosition"
                 , computeHomePosition_function_type(&::osgGA::CameraManipulator::computeHomePosition)
                 , default_computeHomePosition_function_type(&SphericalManipulator_wrapper::default_computeHomePosition)
-                , ( bp::arg("camera")=bp::object(), bp::arg("useBoundingBox")=(bool)(false) ) );
+                , ( bp::arg("camera")=0l, bp::arg("useBoundingBox")=(bool)(false) ) );
         
         }
         { //::osgGA::GUIEventHandler::event
         
-            typedef void ( ::osgGA::GUIEventHandler::*event_function_type)( ::osg::NodeVisitor *,::osg::Drawable * ) ;
-            typedef void ( SphericalManipulator_wrapper::*default_event_function_type)( ::osg::NodeVisitor *,::osg::Drawable * ) ;
+            typedef void ( ::osgGA::GUIEventHandler::*event_function_type )( ::osg::NodeVisitor *,::osg::Drawable * ) ;
+            typedef void ( SphericalManipulator_wrapper::*default_event_function_type )( ::osg::NodeVisitor *,::osg::Drawable * ) ;
             
             SphericalManipulator_exposer.def( 
                 "event"
@@ -957,8 +945,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*getHomePosition_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
-            typedef void ( SphericalManipulator_wrapper::*default_getHomePosition_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( ::osgGA::CameraManipulator::*getHomePosition_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( SphericalManipulator_wrapper::*default_getHomePosition_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
             
             SphericalManipulator_exposer.def( 
                 "getHomePosition"
@@ -980,8 +968,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::isSameKindAs
         
-            typedef bool ( ::osgGA::GUIEventHandler::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( SphericalManipulator_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osgGA::GUIEventHandler::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( SphericalManipulator_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             SphericalManipulator_exposer.def( 
                 "isSameKindAs"
@@ -992,8 +980,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::libraryName
         
-            typedef char const * ( ::osgGA::GUIEventHandler::*libraryName_function_type)(  ) const;
-            typedef char const * ( SphericalManipulator_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osgGA::GUIEventHandler::*libraryName_function_type )(  ) const;
+            typedef char const * ( SphericalManipulator_wrapper::*default_libraryName_function_type )(  ) const;
             
             SphericalManipulator_exposer.def( 
                 "libraryName"
@@ -1003,8 +991,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setAutoComputeHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*setAutoComputeHomePosition_function_type)( bool ) ;
-            typedef void ( SphericalManipulator_wrapper::*default_setAutoComputeHomePosition_function_type)( bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setAutoComputeHomePosition_function_type )( bool ) ;
+            typedef void ( SphericalManipulator_wrapper::*default_setAutoComputeHomePosition_function_type )( bool ) ;
             
             SphericalManipulator_exposer.def( 
                 "setAutoComputeHomePosition"
@@ -1015,8 +1003,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setCoordinateFrameCallback
         
-            typedef void ( ::osgGA::CameraManipulator::*setCoordinateFrameCallback_function_type)( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
-            typedef void ( SphericalManipulator_wrapper::*default_setCoordinateFrameCallback_function_type)( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setCoordinateFrameCallback_function_type )( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
+            typedef void ( SphericalManipulator_wrapper::*default_setCoordinateFrameCallback_function_type )( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
             
             SphericalManipulator_exposer.def( 
                 "setCoordinateFrameCallback"
@@ -1027,8 +1015,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*setHomePosition_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
-            typedef void ( SphericalManipulator_wrapper::*default_setHomePosition_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setHomePosition_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
+            typedef void ( SphericalManipulator_wrapper::*default_setHomePosition_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
             
             SphericalManipulator_exposer.def( 
                 "setHomePosition"
@@ -1039,8 +1027,8 @@ void register_SphericalManipulator_class(){
         }
         { //::osgGA::CameraManipulator::updateCamera
         
-            typedef void ( ::osgGA::CameraManipulator::*updateCamera_function_type)( ::osg::Camera & ) ;
-            typedef void ( SphericalManipulator_wrapper::*default_updateCamera_function_type)( ::osg::Camera & ) ;
+            typedef void ( ::osgGA::CameraManipulator::*updateCamera_function_type )( ::osg::Camera & ) ;
+            typedef void ( SphericalManipulator_wrapper::*default_updateCamera_function_type )( ::osg::Camera & ) ;
             
             SphericalManipulator_exposer.def( 
                 "updateCamera"

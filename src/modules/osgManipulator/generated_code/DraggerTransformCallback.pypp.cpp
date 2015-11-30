@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgmanipulator.h"
+#include "wrap_osgManipulator.h"
 #include "wrap_referenced.h"
-#include "draggertransformcallback.pypp.hpp"
+#include "DraggerTransformCallback.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -268,18 +268,6 @@ struct DraggerTransformCallback_wrapper : osgManipulator::DraggerTransformCallba
         return osgManipulator::DraggerCallback::libraryName( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void setName( ::std::string const & name ) {
         if( bp::override func_setName = this->get_override( "setName" ) )
             func_setName( name );
@@ -337,7 +325,7 @@ void register_DraggerTransformCallback_class(){
         bp::implicitly_convertible< osg::MatrixTransform *, osgManipulator::DraggerTransformCallback >();
         { //::osgManipulator::DraggerTransformCallback::getTransform
         
-            typedef ::osg::MatrixTransform * ( ::osgManipulator::DraggerTransformCallback::*getTransform_function_type)(  ) ;
+            typedef ::osg::MatrixTransform * ( ::osgManipulator::DraggerTransformCallback::*getTransform_function_type )(  ) ;
             
             DraggerTransformCallback_exposer.def( 
                 "getTransform"
@@ -347,7 +335,7 @@ void register_DraggerTransformCallback_class(){
         }
         { //::osgManipulator::DraggerTransformCallback::getTransform
         
-            typedef ::osg::MatrixTransform const * ( ::osgManipulator::DraggerTransformCallback::*getTransform_function_type)(  ) const;
+            typedef ::osg::MatrixTransform const * ( ::osgManipulator::DraggerTransformCallback::*getTransform_function_type )(  ) const;
             
             DraggerTransformCallback_exposer.def( 
                 "getTransform"
@@ -427,8 +415,8 @@ void register_DraggerTransformCallback_class(){
         }
         { //::osgManipulator::DraggerCallback::className
         
-            typedef char const * ( ::osgManipulator::DraggerCallback::*className_function_type)(  ) const;
-            typedef char const * ( DraggerTransformCallback_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osgManipulator::DraggerCallback::*className_function_type )(  ) const;
+            typedef char const * ( DraggerTransformCallback_wrapper::*default_className_function_type )(  ) const;
             
             DraggerTransformCallback_exposer.def( 
                 "className"
@@ -438,8 +426,8 @@ void register_DraggerTransformCallback_class(){
         }
         { //::osgManipulator::DraggerCallback::clone
         
-            typedef ::osg::Object * ( ::osgManipulator::DraggerCallback::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( DraggerTransformCallback_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osgManipulator::DraggerCallback::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( DraggerTransformCallback_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             DraggerTransformCallback_exposer.def( 
                 "clone"
@@ -451,8 +439,8 @@ void register_DraggerTransformCallback_class(){
         }
         { //::osgManipulator::DraggerCallback::cloneType
         
-            typedef ::osg::Object * ( ::osgManipulator::DraggerCallback::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( DraggerTransformCallback_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osgManipulator::DraggerCallback::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( DraggerTransformCallback_wrapper::*default_cloneType_function_type )(  ) const;
             
             DraggerTransformCallback_exposer.def( 
                 "cloneType"
@@ -463,8 +451,8 @@ void register_DraggerTransformCallback_class(){
         }
         { //::osgManipulator::DraggerCallback::isSameKindAs
         
-            typedef bool ( ::osgManipulator::DraggerCallback::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( DraggerTransformCallback_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osgManipulator::DraggerCallback::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( DraggerTransformCallback_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             DraggerTransformCallback_exposer.def( 
                 "isSameKindAs"
@@ -475,8 +463,8 @@ void register_DraggerTransformCallback_class(){
         }
         { //::osgManipulator::DraggerCallback::libraryName
         
-            typedef char const * ( ::osgManipulator::DraggerCallback::*libraryName_function_type)(  ) const;
-            typedef char const * ( DraggerTransformCallback_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osgManipulator::DraggerCallback::*libraryName_function_type )(  ) const;
+            typedef char const * ( DraggerTransformCallback_wrapper::*default_libraryName_function_type )(  ) const;
             
             DraggerTransformCallback_exposer.def( 
                 "libraryName"

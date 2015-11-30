@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgmanipulator.h"
+#include "wrap_osgManipulator.h"
 #include "wrap_referenced.h"
-#include "scaleuniformcommand.pypp.hpp"
+#include "ScaleUniformCommand.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -73,18 +73,6 @@ struct ScaleUniformCommand_wrapper : osgManipulator::ScaleUniformCommand, bp::wr
         return osgManipulator::ScaleUniformCommand::getMotionMatrix( );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_ScaleUniformCommand_class(){
@@ -97,32 +85,32 @@ void register_ScaleUniformCommand_class(){
             , ( bp::arg("inst"), bp::arg("constraint") ) )    
         .def( 
             "accept"
-            , (void ( ::osgManipulator::ScaleUniformCommand::* )( ::osgManipulator::DraggerCallback & ))(&::osgManipulator::ScaleUniformCommand::accept)
-            , (void ( ScaleUniformCommand_wrapper::* )( ::osgManipulator::DraggerCallback & ))(&ScaleUniformCommand_wrapper::default_accept)
+            , (void ( ::osgManipulator::ScaleUniformCommand::* )( ::osgManipulator::DraggerCallback & ) )(&::osgManipulator::ScaleUniformCommand::accept)
+            , (void ( ScaleUniformCommand_wrapper::* )( ::osgManipulator::DraggerCallback & ) )(&ScaleUniformCommand_wrapper::default_accept)
             , ( bp::arg("callback") ) )    
         .def( 
             "createCommandInverse"
-            , (::osgManipulator::MotionCommand * ( ::osgManipulator::ScaleUniformCommand::* )(  ))(&::osgManipulator::ScaleUniformCommand::createCommandInverse)
-            , (::osgManipulator::MotionCommand * ( ScaleUniformCommand_wrapper::* )(  ))(&ScaleUniformCommand_wrapper::default_createCommandInverse)
+            , (::osgManipulator::MotionCommand * ( ::osgManipulator::ScaleUniformCommand::* )(  ) )(&::osgManipulator::ScaleUniformCommand::createCommandInverse)
+            , (::osgManipulator::MotionCommand * ( ScaleUniformCommand_wrapper::* )(  ) )(&ScaleUniformCommand_wrapper::default_createCommandInverse)
             , bp::return_internal_reference< >() )    
         .def( 
             "getMotionMatrix"
-            , (::osg::Matrix ( ::osgManipulator::ScaleUniformCommand::* )(  )const)(&::osgManipulator::ScaleUniformCommand::getMotionMatrix)
-            , (::osg::Matrix ( ScaleUniformCommand_wrapper::* )(  )const)(&ScaleUniformCommand_wrapper::default_getMotionMatrix) )    
+            , (::osg::Matrix ( ::osgManipulator::ScaleUniformCommand::* )(  ) const)(&::osgManipulator::ScaleUniformCommand::getMotionMatrix)
+            , (::osg::Matrix ( ScaleUniformCommand_wrapper::* )(  ) const)(&ScaleUniformCommand_wrapper::default_getMotionMatrix) )    
         .def( 
             "getScale"
-            , (double ( ::osgManipulator::ScaleUniformCommand::* )(  )const)( &::osgManipulator::ScaleUniformCommand::getScale ) )    
+            , (double ( ::osgManipulator::ScaleUniformCommand::* )(  ) const)( &::osgManipulator::ScaleUniformCommand::getScale ) )    
         .def( 
             "getScaleCenter"
-            , (::osg::Vec3d const & ( ::osgManipulator::ScaleUniformCommand::* )(  )const)( &::osgManipulator::ScaleUniformCommand::getScaleCenter )
+            , (::osg::Vec3d const & ( ::osgManipulator::ScaleUniformCommand::* )(  ) const)( &::osgManipulator::ScaleUniformCommand::getScaleCenter )
             , bp::return_internal_reference< >() )    
         .def( 
             "setScale"
-            , (void ( ::osgManipulator::ScaleUniformCommand::* )( double ))( &::osgManipulator::ScaleUniformCommand::setScale )
+            , (void ( ::osgManipulator::ScaleUniformCommand::* )( double ) )( &::osgManipulator::ScaleUniformCommand::setScale )
             , ( bp::arg("s") ) )    
         .def( 
             "setScaleCenter"
-            , (void ( ::osgManipulator::ScaleUniformCommand::* )( ::osg::Vec3d const & ))( &::osgManipulator::ScaleUniformCommand::setScaleCenter )
+            , (void ( ::osgManipulator::ScaleUniformCommand::* )( ::osg::Vec3d const & ) )( &::osgManipulator::ScaleUniformCommand::setScaleCenter )
             , ( bp::arg("center") ) );
 
 }

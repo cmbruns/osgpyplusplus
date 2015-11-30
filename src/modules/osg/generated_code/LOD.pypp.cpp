@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "lod.pypp.hpp"
+#include "LOD.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -280,42 +280,6 @@ struct LOD_wrapper : osg::LOD, bp::wrapper< osg::LOD > {
         osg::Node::ascend( boost::ref(nv) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
     virtual bool insertChild( unsigned int index, ::osg::Node * child ) {
         if( bp::override func_insertChild = this->get_override( "insertChild" ) )
             return func_insertChild( index, boost::python::ptr(child) );
@@ -364,18 +328,6 @@ struct LOD_wrapper : osg::LOD, bp::wrapper< osg::LOD > {
         return osg::Group::setChild( i, boost::python::ptr(node) );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
     virtual void setThreadSafeRefUnref( bool threadSafe ) {
         if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
             func_setThreadSafeRefUnref( threadSafe );
@@ -386,18 +338,6 @@ struct LOD_wrapper : osg::LOD, bp::wrapper< osg::LOD > {
     
     void default_setThreadSafeRefUnref( bool threadSafe ) {
         osg::Group::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
     }
 
 };
@@ -422,8 +362,8 @@ void register_LOD_class(){
         LOD_exposer.def( bp::init< >("\n LOD - Level Of Detail group node which allows switching between children\n    depending on distance from eye point.\n    Typical uses are for load balancing - objects further away from\n    the eye point are rendered at a lower level of detail, and at times\n    of high stress on the graphics pipeline lower levels of detail can\n    also be chosen by adjusting the viewerss Camera/CullSettings LODScale value.\n    Each child has a corresponding valid range consisting of a minimum\n    and maximum distance. Given a distance to the viewer (d), LOD displays\n    a child if min <= d < max. LOD may display multiple children simultaneously\n    if their corresponding ranges overlap. Children can be in any order,\n    and dont need to be sorted by range or amount of detail. If the number of\n    ranges (m) is less than the number of children (n), then children m+1 through\n    n are ignored.\n") );
         { //::osg::LOD::accept
         
-            typedef void ( ::osg::LOD::*accept_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( LOD_wrapper::*default_accept_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::LOD::*accept_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( LOD_wrapper::*default_accept_function_type )( ::osg::NodeVisitor & ) ;
             
             LOD_exposer.def( 
                 "accept"
@@ -434,8 +374,8 @@ void register_LOD_class(){
         }
         { //::osg::LOD::addChild
         
-            typedef bool ( ::osg::LOD::*addChild_function_type)( ::osg::Node * ) ;
-            typedef bool ( LOD_wrapper::*default_addChild_function_type)( ::osg::Node * ) ;
+            typedef bool ( ::osg::LOD::*addChild_function_type )( ::osg::Node * ) ;
+            typedef bool ( LOD_wrapper::*default_addChild_function_type )( ::osg::Node * ) ;
             
             LOD_exposer.def( 
                 "addChild"
@@ -446,8 +386,8 @@ void register_LOD_class(){
         }
         { //::osg::LOD::addChild
         
-            typedef bool ( ::osg::LOD::*addChild_function_type)( ::osg::Node *,float,float ) ;
-            typedef bool ( LOD_wrapper::*default_addChild_function_type)( ::osg::Node *,float,float ) ;
+            typedef bool ( ::osg::LOD::*addChild_function_type )( ::osg::Node *,float,float ) ;
+            typedef bool ( LOD_wrapper::*default_addChild_function_type )( ::osg::Node *,float,float ) ;
             
             LOD_exposer.def( 
                 "addChild"
@@ -458,8 +398,8 @@ void register_LOD_class(){
         }
         { //::osg::LOD::className
         
-            typedef char const * ( ::osg::LOD::*className_function_type)(  ) const;
-            typedef char const * ( LOD_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::LOD::*className_function_type )(  ) const;
+            typedef char const * ( LOD_wrapper::*default_className_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "className"
@@ -469,8 +409,8 @@ void register_LOD_class(){
         }
         { //::osg::LOD::clone
         
-            typedef ::osg::Object * ( ::osg::LOD::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( LOD_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::LOD::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( LOD_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             LOD_exposer.def( 
                 "clone"
@@ -482,8 +422,8 @@ void register_LOD_class(){
         }
         { //::osg::LOD::cloneType
         
-            typedef ::osg::Object * ( ::osg::LOD::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( LOD_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::LOD::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( LOD_wrapper::*default_cloneType_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "cloneType"
@@ -494,8 +434,8 @@ void register_LOD_class(){
         }
         { //::osg::LOD::computeBound
         
-            typedef ::osg::BoundingSphere ( ::osg::LOD::*computeBound_function_type)(  ) const;
-            typedef ::osg::BoundingSphere ( LOD_wrapper::*default_computeBound_function_type)(  ) const;
+            typedef ::osg::BoundingSphere ( ::osg::LOD::*computeBound_function_type )(  ) const;
+            typedef ::osg::BoundingSphere ( LOD_wrapper::*default_computeBound_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "computeBound"
@@ -505,7 +445,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::getCenter
         
-            typedef ::osg::Vec3f const & ( ::osg::LOD::*getCenter_function_type)(  ) const;
+            typedef ::osg::Vec3f const & ( ::osg::LOD::*getCenter_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "getCenter"
@@ -516,7 +456,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::getCenterMode
         
-            typedef ::osg::LOD::CenterMode ( ::osg::LOD::*getCenterMode_function_type)(  ) const;
+            typedef ::osg::LOD::CenterMode ( ::osg::LOD::*getCenterMode_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "getCenterMode"
@@ -526,7 +466,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::getMaxRange
         
-            typedef float ( ::osg::LOD::*getMaxRange_function_type)( unsigned int ) const;
+            typedef float ( ::osg::LOD::*getMaxRange_function_type )( unsigned int ) const;
             
             LOD_exposer.def( 
                 "getMaxRange"
@@ -537,7 +477,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::getMinRange
         
-            typedef float ( ::osg::LOD::*getMinRange_function_type)( unsigned int ) const;
+            typedef float ( ::osg::LOD::*getMinRange_function_type )( unsigned int ) const;
             
             LOD_exposer.def( 
                 "getMinRange"
@@ -548,7 +488,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::getNumRanges
         
-            typedef unsigned int ( ::osg::LOD::*getNumRanges_function_type)(  ) const;
+            typedef unsigned int ( ::osg::LOD::*getNumRanges_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "getNumRanges"
@@ -558,7 +498,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::getRadius
         
-            typedef float ( ::osg::LOD::*getRadius_function_type)(  ) const;
+            typedef float ( ::osg::LOD::*getRadius_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "getRadius"
@@ -568,7 +508,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::getRangeList
         
-            typedef ::std::vector< std::pair<float, float> > const & ( ::osg::LOD::*getRangeList_function_type)(  ) const;
+            typedef ::std::vector< std::pair<float, float> > const & ( ::osg::LOD::*getRangeList_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "getRangeList"
@@ -579,7 +519,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::getRangeMode
         
-            typedef ::osg::LOD::RangeMode ( ::osg::LOD::*getRangeMode_function_type)(  ) const;
+            typedef ::osg::LOD::RangeMode ( ::osg::LOD::*getRangeMode_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "getRangeMode"
@@ -589,8 +529,8 @@ void register_LOD_class(){
         }
         { //::osg::LOD::isSameKindAs
         
-            typedef bool ( ::osg::LOD::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( LOD_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::LOD::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( LOD_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             LOD_exposer.def( 
                 "isSameKindAs"
@@ -601,8 +541,8 @@ void register_LOD_class(){
         }
         { //::osg::LOD::libraryName
         
-            typedef char const * ( ::osg::LOD::*libraryName_function_type)(  ) const;
-            typedef char const * ( LOD_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::LOD::*libraryName_function_type )(  ) const;
+            typedef char const * ( LOD_wrapper::*default_libraryName_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "libraryName"
@@ -612,8 +552,8 @@ void register_LOD_class(){
         }
         { //::osg::LOD::removeChildren
         
-            typedef bool ( ::osg::LOD::*removeChildren_function_type)( unsigned int,unsigned int ) ;
-            typedef bool ( LOD_wrapper::*default_removeChildren_function_type)( unsigned int,unsigned int ) ;
+            typedef bool ( ::osg::LOD::*removeChildren_function_type )( unsigned int,unsigned int ) ;
+            typedef bool ( LOD_wrapper::*default_removeChildren_function_type )( unsigned int,unsigned int ) ;
             
             LOD_exposer.def( 
                 "removeChildren"
@@ -624,7 +564,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::setCenter
         
-            typedef void ( ::osg::LOD::*setCenter_function_type)( ::osg::Vec3f const & ) ;
+            typedef void ( ::osg::LOD::*setCenter_function_type )( ::osg::Vec3f const & ) ;
             
             LOD_exposer.def( 
                 "setCenter"
@@ -635,7 +575,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::setCenterMode
         
-            typedef void ( ::osg::LOD::*setCenterMode_function_type)( ::osg::LOD::CenterMode ) ;
+            typedef void ( ::osg::LOD::*setCenterMode_function_type )( ::osg::LOD::CenterMode ) ;
             
             LOD_exposer.def( 
                 "setCenterMode"
@@ -646,7 +586,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::setRadius
         
-            typedef void ( ::osg::LOD::*setRadius_function_type)( float ) ;
+            typedef void ( ::osg::LOD::*setRadius_function_type )( float ) ;
             
             LOD_exposer.def( 
                 "setRadius"
@@ -657,7 +597,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::setRange
         
-            typedef void ( ::osg::LOD::*setRange_function_type)( unsigned int,float,float ) ;
+            typedef void ( ::osg::LOD::*setRange_function_type )( unsigned int,float,float ) ;
             
             LOD_exposer.def( 
                 "setRange"
@@ -668,7 +608,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::setRangeList
         
-            typedef void ( ::osg::LOD::*setRangeList_function_type)( ::std::vector< std::pair<float, float> > const & ) ;
+            typedef void ( ::osg::LOD::*setRangeList_function_type )( ::std::vector< std::pair<float, float> > const & ) ;
             
             LOD_exposer.def( 
                 "setRangeList"
@@ -679,7 +619,7 @@ void register_LOD_class(){
         }
         { //::osg::LOD::setRangeMode
         
-            typedef void ( ::osg::LOD::*setRangeMode_function_type)( ::osg::LOD::RangeMode ) ;
+            typedef void ( ::osg::LOD::*setRangeMode_function_type )( ::osg::LOD::RangeMode ) ;
             
             LOD_exposer.def( 
                 "setRangeMode"
@@ -690,8 +630,8 @@ void register_LOD_class(){
         }
         { //::osg::LOD::traverse
         
-            typedef void ( ::osg::LOD::*traverse_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( LOD_wrapper::*default_traverse_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::LOD::*traverse_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( LOD_wrapper::*default_traverse_function_type )( ::osg::NodeVisitor & ) ;
             
             LOD_exposer.def( 
                 "traverse"
@@ -702,8 +642,8 @@ void register_LOD_class(){
         }
         { //::osg::Node::asCamera
         
-            typedef ::osg::Camera * ( ::osg::Node::*asCamera_function_type)(  ) ;
-            typedef ::osg::Camera * ( LOD_wrapper::*default_asCamera_function_type)(  ) ;
+            typedef ::osg::Camera * ( ::osg::Node::*asCamera_function_type )(  ) ;
+            typedef ::osg::Camera * ( LOD_wrapper::*default_asCamera_function_type )(  ) ;
             
             LOD_exposer.def( 
                 "asCamera"
@@ -714,8 +654,8 @@ void register_LOD_class(){
         }
         { //::osg::Node::asCamera
         
-            typedef ::osg::Camera const * ( ::osg::Node::*asCamera_function_type)(  ) const;
-            typedef ::osg::Camera const * ( LOD_wrapper::*default_asCamera_function_type)(  ) const;
+            typedef ::osg::Camera const * ( ::osg::Node::*asCamera_function_type )(  ) const;
+            typedef ::osg::Camera const * ( LOD_wrapper::*default_asCamera_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "asCamera"
@@ -726,8 +666,8 @@ void register_LOD_class(){
         }
         { //::osg::Node::asGeode
         
-            typedef ::osg::Geode * ( ::osg::Node::*asGeode_function_type)(  ) ;
-            typedef ::osg::Geode * ( LOD_wrapper::*default_asGeode_function_type)(  ) ;
+            typedef ::osg::Geode * ( ::osg::Node::*asGeode_function_type )(  ) ;
+            typedef ::osg::Geode * ( LOD_wrapper::*default_asGeode_function_type )(  ) ;
             
             LOD_exposer.def( 
                 "asGeode"
@@ -738,8 +678,8 @@ void register_LOD_class(){
         }
         { //::osg::Node::asGeode
         
-            typedef ::osg::Geode const * ( ::osg::Node::*asGeode_function_type)(  ) const;
-            typedef ::osg::Geode const * ( LOD_wrapper::*default_asGeode_function_type)(  ) const;
+            typedef ::osg::Geode const * ( ::osg::Node::*asGeode_function_type )(  ) const;
+            typedef ::osg::Geode const * ( LOD_wrapper::*default_asGeode_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "asGeode"
@@ -750,8 +690,8 @@ void register_LOD_class(){
         }
         { //::osg::Group::asGroup
         
-            typedef ::osg::Group * ( ::osg::Group::*asGroup_function_type)(  ) ;
-            typedef ::osg::Group * ( LOD_wrapper::*default_asGroup_function_type)(  ) ;
+            typedef ::osg::Group * ( ::osg::Group::*asGroup_function_type )(  ) ;
+            typedef ::osg::Group * ( LOD_wrapper::*default_asGroup_function_type )(  ) ;
             
             LOD_exposer.def( 
                 "asGroup"
@@ -762,8 +702,8 @@ void register_LOD_class(){
         }
         { //::osg::Group::asGroup
         
-            typedef ::osg::Group const * ( ::osg::Group::*asGroup_function_type)(  ) const;
-            typedef ::osg::Group const * ( LOD_wrapper::*default_asGroup_function_type)(  ) const;
+            typedef ::osg::Group const * ( ::osg::Group::*asGroup_function_type )(  ) const;
+            typedef ::osg::Group const * ( LOD_wrapper::*default_asGroup_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "asGroup"
@@ -774,8 +714,8 @@ void register_LOD_class(){
         }
         { //::osg::Node::asSwitch
         
-            typedef ::osg::Switch * ( ::osg::Node::*asSwitch_function_type)(  ) ;
-            typedef ::osg::Switch * ( LOD_wrapper::*default_asSwitch_function_type)(  ) ;
+            typedef ::osg::Switch * ( ::osg::Node::*asSwitch_function_type )(  ) ;
+            typedef ::osg::Switch * ( LOD_wrapper::*default_asSwitch_function_type )(  ) ;
             
             LOD_exposer.def( 
                 "asSwitch"
@@ -786,8 +726,8 @@ void register_LOD_class(){
         }
         { //::osg::Node::asSwitch
         
-            typedef ::osg::Switch const * ( ::osg::Node::*asSwitch_function_type)(  ) const;
-            typedef ::osg::Switch const * ( LOD_wrapper::*default_asSwitch_function_type)(  ) const;
+            typedef ::osg::Switch const * ( ::osg::Node::*asSwitch_function_type )(  ) const;
+            typedef ::osg::Switch const * ( LOD_wrapper::*default_asSwitch_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "asSwitch"
@@ -798,8 +738,8 @@ void register_LOD_class(){
         }
         { //::osg::Node::asTransform
         
-            typedef ::osg::Transform * ( ::osg::Node::*asTransform_function_type)(  ) ;
-            typedef ::osg::Transform * ( LOD_wrapper::*default_asTransform_function_type)(  ) ;
+            typedef ::osg::Transform * ( ::osg::Node::*asTransform_function_type )(  ) ;
+            typedef ::osg::Transform * ( LOD_wrapper::*default_asTransform_function_type )(  ) ;
             
             LOD_exposer.def( 
                 "asTransform"
@@ -810,8 +750,8 @@ void register_LOD_class(){
         }
         { //::osg::Node::asTransform
         
-            typedef ::osg::Transform const * ( ::osg::Node::*asTransform_function_type)(  ) const;
-            typedef ::osg::Transform const * ( LOD_wrapper::*default_asTransform_function_type)(  ) const;
+            typedef ::osg::Transform const * ( ::osg::Node::*asTransform_function_type )(  ) const;
+            typedef ::osg::Transform const * ( LOD_wrapper::*default_asTransform_function_type )(  ) const;
             
             LOD_exposer.def( 
                 "asTransform"
@@ -822,8 +762,8 @@ void register_LOD_class(){
         }
         { //::osg::Node::ascend
         
-            typedef void ( ::osg::Node::*ascend_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( LOD_wrapper::*default_ascend_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::Node::*ascend_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( LOD_wrapper::*default_ascend_function_type )( ::osg::NodeVisitor & ) ;
             
             LOD_exposer.def( 
                 "ascend"
@@ -832,45 +772,10 @@ void register_LOD_class(){
                 , ( bp::arg("nv") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( LOD_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            LOD_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&LOD_wrapper::default_computeDataVariance) );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( LOD_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            LOD_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&LOD_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( LOD_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            LOD_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&LOD_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::Group::insertChild
         
-            typedef bool ( ::osg::Group::*insertChild_function_type)( unsigned int,::osg::Node * ) ;
-            typedef bool ( LOD_wrapper::*default_insertChild_function_type)( unsigned int,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*insertChild_function_type )( unsigned int,::osg::Node * ) ;
+            typedef bool ( LOD_wrapper::*default_insertChild_function_type )( unsigned int,::osg::Node * ) ;
             
             LOD_exposer.def( 
                 "insertChild"
@@ -881,8 +786,8 @@ void register_LOD_class(){
         }
         { //::osg::Group::replaceChild
         
-            typedef bool ( ::osg::Group::*replaceChild_function_type)( ::osg::Node *,::osg::Node * ) ;
-            typedef bool ( LOD_wrapper::*default_replaceChild_function_type)( ::osg::Node *,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*replaceChild_function_type )( ::osg::Node *,::osg::Node * ) ;
+            typedef bool ( LOD_wrapper::*default_replaceChild_function_type )( ::osg::Node *,::osg::Node * ) ;
             
             LOD_exposer.def( 
                 "replaceChild"
@@ -893,8 +798,8 @@ void register_LOD_class(){
         }
         { //::osg::Group::resizeGLObjectBuffers
         
-            typedef void ( ::osg::Group::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( LOD_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::Group::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( LOD_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             LOD_exposer.def( 
                 "resizeGLObjectBuffers"
@@ -905,8 +810,8 @@ void register_LOD_class(){
         }
         { //::osg::Group::setChild
         
-            typedef bool ( ::osg::Group::*setChild_function_type)( unsigned int,::osg::Node * ) ;
-            typedef bool ( LOD_wrapper::*default_setChild_function_type)( unsigned int,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*setChild_function_type )( unsigned int,::osg::Node * ) ;
+            typedef bool ( LOD_wrapper::*default_setChild_function_type )( unsigned int,::osg::Node * ) ;
             
             LOD_exposer.def( 
                 "setChild"
@@ -915,51 +820,16 @@ void register_LOD_class(){
                 , ( bp::arg("i"), bp::arg("node") ) );
         
         }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( LOD_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            LOD_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&LOD_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            LOD_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
         { //::osg::Group::setThreadSafeRefUnref
         
-            typedef void ( ::osg::Group::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( LOD_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
+            typedef void ( ::osg::Group::*setThreadSafeRefUnref_function_type )( bool ) ;
+            typedef void ( LOD_wrapper::*default_setThreadSafeRefUnref_function_type )( bool ) ;
             
             LOD_exposer.def( 
                 "setThreadSafeRefUnref"
                 , setThreadSafeRefUnref_function_type(&::osg::Group::setThreadSafeRefUnref)
                 , default_setThreadSafeRefUnref_function_type(&LOD_wrapper::default_setThreadSafeRefUnref)
                 , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( LOD_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            LOD_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&LOD_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
     }

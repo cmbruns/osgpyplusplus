@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgga.h"
+#include "wrap_osgGA.h"
 #include "wrap_referenced.h"
-#include "statesetmanipulator.pypp.hpp"
+#include "StateSetManipulator.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -218,18 +218,6 @@ struct StateSetManipulator_wrapper : osgGA::StateSetManipulator, bp::wrapper< os
         return osgGA::GUIEventHandler::libraryName( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void setName( ::std::string const & name ) {
         if( bp::override func_setName = this->get_override( "setName" ) )
             func_setName( name );
@@ -278,8 +266,8 @@ void register_StateSetManipulator_class(){
         bp::implicitly_convertible< osg::StateSet *, osgGA::StateSetManipulator >();
         { //::osgGA::StateSetManipulator::className
         
-            typedef char const * ( ::osgGA::StateSetManipulator::*className_function_type)(  ) const;
-            typedef char const * ( StateSetManipulator_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osgGA::StateSetManipulator::*className_function_type )(  ) const;
+            typedef char const * ( StateSetManipulator_wrapper::*default_className_function_type )(  ) const;
             
             StateSetManipulator_exposer.def( 
                 "className"
@@ -289,7 +277,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::cyclePolygonMode
         
-            typedef void ( ::osgGA::StateSetManipulator::*cyclePolygonMode_function_type)(  ) ;
+            typedef void ( ::osgGA::StateSetManipulator::*cyclePolygonMode_function_type )(  ) ;
             
             StateSetManipulator_exposer.def( 
                 "cyclePolygonMode"
@@ -298,7 +286,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::getBackfaceEnabled
         
-            typedef bool ( ::osgGA::StateSetManipulator::*getBackfaceEnabled_function_type)(  ) const;
+            typedef bool ( ::osgGA::StateSetManipulator::*getBackfaceEnabled_function_type )(  ) const;
             
             StateSetManipulator_exposer.def( 
                 "getBackfaceEnabled"
@@ -307,7 +295,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::getKeyEventCyclePolygonMode
         
-            typedef int ( ::osgGA::StateSetManipulator::*getKeyEventCyclePolygonMode_function_type)(  ) const;
+            typedef int ( ::osgGA::StateSetManipulator::*getKeyEventCyclePolygonMode_function_type )(  ) const;
             
             StateSetManipulator_exposer.def( 
                 "getKeyEventCyclePolygonMode"
@@ -316,7 +304,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::getKeyEventToggleBackfaceCulling
         
-            typedef int ( ::osgGA::StateSetManipulator::*getKeyEventToggleBackfaceCulling_function_type)(  ) const;
+            typedef int ( ::osgGA::StateSetManipulator::*getKeyEventToggleBackfaceCulling_function_type )(  ) const;
             
             StateSetManipulator_exposer.def( 
                 "getKeyEventToggleBackfaceCulling"
@@ -325,7 +313,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::getKeyEventToggleLighting
         
-            typedef int ( ::osgGA::StateSetManipulator::*getKeyEventToggleLighting_function_type)(  ) const;
+            typedef int ( ::osgGA::StateSetManipulator::*getKeyEventToggleLighting_function_type )(  ) const;
             
             StateSetManipulator_exposer.def( 
                 "getKeyEventToggleLighting"
@@ -334,7 +322,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::getKeyEventToggleTexturing
         
-            typedef int ( ::osgGA::StateSetManipulator::*getKeyEventToggleTexturing_function_type)(  ) const;
+            typedef int ( ::osgGA::StateSetManipulator::*getKeyEventToggleTexturing_function_type )(  ) const;
             
             StateSetManipulator_exposer.def( 
                 "getKeyEventToggleTexturing"
@@ -343,7 +331,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::getLightingEnabled
         
-            typedef bool ( ::osgGA::StateSetManipulator::*getLightingEnabled_function_type)(  ) const;
+            typedef bool ( ::osgGA::StateSetManipulator::*getLightingEnabled_function_type )(  ) const;
             
             StateSetManipulator_exposer.def( 
                 "getLightingEnabled"
@@ -352,7 +340,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::getMaximumNumOfTextureUnits
         
-            typedef unsigned int ( ::osgGA::StateSetManipulator::*getMaximumNumOfTextureUnits_function_type)(  ) const;
+            typedef unsigned int ( ::osgGA::StateSetManipulator::*getMaximumNumOfTextureUnits_function_type )(  ) const;
             
             StateSetManipulator_exposer.def( 
                 "getMaximumNumOfTextureUnits"
@@ -361,7 +349,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::getPolygonMode
         
-            typedef ::osg::PolygonMode::Mode ( ::osgGA::StateSetManipulator::*getPolygonMode_function_type)(  ) const;
+            typedef ::osg::PolygonMode::Mode ( ::osgGA::StateSetManipulator::*getPolygonMode_function_type )(  ) const;
             
             StateSetManipulator_exposer.def( 
                 "getPolygonMode"
@@ -370,8 +358,8 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::getStateSet
         
-            typedef ::osg::StateSet * ( ::osgGA::StateSetManipulator::*getStateSet_function_type)(  ) ;
-            typedef ::osg::StateSet * ( StateSetManipulator_wrapper::*default_getStateSet_function_type)(  ) ;
+            typedef ::osg::StateSet * ( ::osgGA::StateSetManipulator::*getStateSet_function_type )(  ) ;
+            typedef ::osg::StateSet * ( StateSetManipulator_wrapper::*default_getStateSet_function_type )(  ) ;
             
             StateSetManipulator_exposer.def( 
                 "getStateSet"
@@ -382,8 +370,8 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::getStateSet
         
-            typedef ::osg::StateSet const * ( ::osgGA::StateSetManipulator::*getStateSet_function_type)(  ) const;
-            typedef ::osg::StateSet const * ( StateSetManipulator_wrapper::*default_getStateSet_function_type)(  ) const;
+            typedef ::osg::StateSet const * ( ::osgGA::StateSetManipulator::*getStateSet_function_type )(  ) const;
+            typedef ::osg::StateSet const * ( StateSetManipulator_wrapper::*default_getStateSet_function_type )(  ) const;
             
             StateSetManipulator_exposer.def( 
                 "getStateSet"
@@ -394,7 +382,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::getTextureEnabled
         
-            typedef bool ( ::osgGA::StateSetManipulator::*getTextureEnabled_function_type)(  ) const;
+            typedef bool ( ::osgGA::StateSetManipulator::*getTextureEnabled_function_type )(  ) const;
             
             StateSetManipulator_exposer.def( 
                 "getTextureEnabled"
@@ -403,8 +391,8 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::getUsage
         
-            typedef void ( ::osgGA::StateSetManipulator::*getUsage_function_type)( ::osg::ApplicationUsage & ) const;
-            typedef void ( StateSetManipulator_wrapper::*default_getUsage_function_type)( ::osg::ApplicationUsage & ) const;
+            typedef void ( ::osgGA::StateSetManipulator::*getUsage_function_type )( ::osg::ApplicationUsage & ) const;
+            typedef void ( StateSetManipulator_wrapper::*default_getUsage_function_type )( ::osg::ApplicationUsage & ) const;
             
             StateSetManipulator_exposer.def( 
                 "getUsage"
@@ -426,7 +414,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::setBackfaceEnabled
         
-            typedef void ( ::osgGA::StateSetManipulator::*setBackfaceEnabled_function_type)( bool ) ;
+            typedef void ( ::osgGA::StateSetManipulator::*setBackfaceEnabled_function_type )( bool ) ;
             
             StateSetManipulator_exposer.def( 
                 "setBackfaceEnabled"
@@ -436,7 +424,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::setKeyEventCyclePolygonMode
         
-            typedef void ( ::osgGA::StateSetManipulator::*setKeyEventCyclePolygonMode_function_type)( int ) ;
+            typedef void ( ::osgGA::StateSetManipulator::*setKeyEventCyclePolygonMode_function_type )( int ) ;
             
             StateSetManipulator_exposer.def( 
                 "setKeyEventCyclePolygonMode"
@@ -446,7 +434,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::setKeyEventToggleBackfaceCulling
         
-            typedef void ( ::osgGA::StateSetManipulator::*setKeyEventToggleBackfaceCulling_function_type)( int ) ;
+            typedef void ( ::osgGA::StateSetManipulator::*setKeyEventToggleBackfaceCulling_function_type )( int ) ;
             
             StateSetManipulator_exposer.def( 
                 "setKeyEventToggleBackfaceCulling"
@@ -456,7 +444,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::setKeyEventToggleLighting
         
-            typedef void ( ::osgGA::StateSetManipulator::*setKeyEventToggleLighting_function_type)( int ) ;
+            typedef void ( ::osgGA::StateSetManipulator::*setKeyEventToggleLighting_function_type )( int ) ;
             
             StateSetManipulator_exposer.def( 
                 "setKeyEventToggleLighting"
@@ -466,7 +454,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::setKeyEventToggleTexturing
         
-            typedef void ( ::osgGA::StateSetManipulator::*setKeyEventToggleTexturing_function_type)( int ) ;
+            typedef void ( ::osgGA::StateSetManipulator::*setKeyEventToggleTexturing_function_type )( int ) ;
             
             StateSetManipulator_exposer.def( 
                 "setKeyEventToggleTexturing"
@@ -476,7 +464,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::setLightingEnabled
         
-            typedef void ( ::osgGA::StateSetManipulator::*setLightingEnabled_function_type)( bool ) ;
+            typedef void ( ::osgGA::StateSetManipulator::*setLightingEnabled_function_type )( bool ) ;
             
             StateSetManipulator_exposer.def( 
                 "setLightingEnabled"
@@ -486,7 +474,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::setMaximumNumOfTextureUnits
         
-            typedef void ( ::osgGA::StateSetManipulator::*setMaximumNumOfTextureUnits_function_type)( unsigned int ) ;
+            typedef void ( ::osgGA::StateSetManipulator::*setMaximumNumOfTextureUnits_function_type )( unsigned int ) ;
             
             StateSetManipulator_exposer.def( 
                 "setMaximumNumOfTextureUnits"
@@ -496,7 +484,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::setPolygonMode
         
-            typedef void ( ::osgGA::StateSetManipulator::*setPolygonMode_function_type)( ::osg::PolygonMode::Mode ) ;
+            typedef void ( ::osgGA::StateSetManipulator::*setPolygonMode_function_type )( ::osg::PolygonMode::Mode ) ;
             
             StateSetManipulator_exposer.def( 
                 "setPolygonMode"
@@ -506,8 +494,8 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::setStateSet
         
-            typedef void ( ::osgGA::StateSetManipulator::*setStateSet_function_type)( ::osg::StateSet * ) ;
-            typedef void ( StateSetManipulator_wrapper::*default_setStateSet_function_type)( ::osg::StateSet * ) ;
+            typedef void ( ::osgGA::StateSetManipulator::*setStateSet_function_type )( ::osg::StateSet * ) ;
+            typedef void ( StateSetManipulator_wrapper::*default_setStateSet_function_type )( ::osg::StateSet * ) ;
             
             StateSetManipulator_exposer.def( 
                 "setStateSet"
@@ -518,7 +506,7 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::StateSetManipulator::setTextureEnabled
         
-            typedef void ( ::osgGA::StateSetManipulator::*setTextureEnabled_function_type)( bool ) ;
+            typedef void ( ::osgGA::StateSetManipulator::*setTextureEnabled_function_type )( bool ) ;
             
             StateSetManipulator_exposer.def( 
                 "setTextureEnabled"
@@ -528,8 +516,8 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::clone
         
-            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( StateSetManipulator_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( StateSetManipulator_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             StateSetManipulator_exposer.def( 
                 "clone"
@@ -541,8 +529,8 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::cloneType
         
-            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( StateSetManipulator_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( StateSetManipulator_wrapper::*default_cloneType_function_type )(  ) const;
             
             StateSetManipulator_exposer.def( 
                 "cloneType"
@@ -553,8 +541,8 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::event
         
-            typedef void ( ::osgGA::GUIEventHandler::*event_function_type)( ::osg::NodeVisitor *,::osg::Drawable * ) ;
-            typedef void ( StateSetManipulator_wrapper::*default_event_function_type)( ::osg::NodeVisitor *,::osg::Drawable * ) ;
+            typedef void ( ::osgGA::GUIEventHandler::*event_function_type )( ::osg::NodeVisitor *,::osg::Drawable * ) ;
+            typedef void ( StateSetManipulator_wrapper::*default_event_function_type )( ::osg::NodeVisitor *,::osg::Drawable * ) ;
             
             StateSetManipulator_exposer.def( 
                 "event"
@@ -576,8 +564,8 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::isSameKindAs
         
-            typedef bool ( ::osgGA::GUIEventHandler::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( StateSetManipulator_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osgGA::GUIEventHandler::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( StateSetManipulator_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             StateSetManipulator_exposer.def( 
                 "isSameKindAs"
@@ -588,8 +576,8 @@ void register_StateSetManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::libraryName
         
-            typedef char const * ( ::osgGA::GUIEventHandler::*libraryName_function_type)(  ) const;
-            typedef char const * ( StateSetManipulator_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osgGA::GUIEventHandler::*libraryName_function_type )(  ) const;
+            typedef char const * ( StateSetManipulator_wrapper::*default_libraryName_function_type )(  ) const;
             
             StateSetManipulator_exposer.def( 
                 "libraryName"

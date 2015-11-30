@@ -22,7 +22,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # Python
-find_package(PythonLibs REQUIRED)
+find_package(PythonLibs 2.7 REQUIRED)
 mark_as_advanced(CLEAR PYTHON_INCLUDE_DIRS)
 mark_as_advanced(CLEAR PYTHON_LIBRARIES)
 include_directories(${PYTHON_INCLUDE_DIRS})
@@ -48,83 +48,85 @@ find_path(OSG_INCLUDE_DIR "osg/Node"
     PATHS ${OSG_DIR}/include)
 include_directories(${OSG_INCLUDE_DIR})
 find_library(OPENTHREADS_LIBRARY 
-    NAME OpenThreads
-    PATHS ${OSG_DIR}/lib
+    NAMES OpenThreads openthreads openthreads14
+    PATHS ${OSG_DIR}/lib /usr/lib
 )
 find_library(OSG_LIBRARY 
     NAME osg
     PATHS ${OSG_DIR}/lib
 )
 find_library(OSGGA_LIBRARY 
-    NAME osgGA
+    NAMES osgGA osgga
     PATHS ${OSG_DIR}/lib
 )
 
 # Copy DLLs to staging area for newborn python extension modules
 
-# 1) OpenSceneGraph
-file(GLOB OSG_RUNTIME_LIBS "${OSG_DIR}/bin/*.dll")
-file(GLOB OSG_RUNTIME_DEBUG_LIBS "${OSG_DIR}/bin/*d.dll")
-set(OSG_PLUGIN_FOLDER "osgPlugins-${OSG_VERSION_STRING}")
-file(GLOB OSG_PLUGIN_LIBS "${OSG_DIR}/bin/${OSG_PLUGIN_FOLDER}/*.dll")
-file(GLOB OSG_PLUGIN_DEBUG_LIBS "${OSG_DIR}/bin/${OSG_PLUGIN_FOLDER}/*d.dll")
-# Copy release libraries, but not debug libraries
-list(REMOVE_ITEM OSG_RUNTIME_LIBS ${OSG_RUNTIME_DEBUG_LIBS} "foo")
-list(REMOVE_ITEM OSG_PLUGIN_LIBS ${OSG_PLUGIN_DEBUG_LIBS} "foo")
-foreach(LIB ${OSG_RUNTIME_LIBS})
-    file(COPY ${LIB} DESTINATION "${STAGING_FOLDER}/osgpypp")
-endforeach()
-foreach(LIB ${OSG_PLUGIN_LIBS})
-    file(COPY ${LIB} DESTINATION "${STAGING_FOLDER}/osgpypp/${OSG_PLUGIN_FOLDER}/")
-endforeach()
+if (WIN32)
+    # 1) OpenSceneGraph
+    file(GLOB OSG_RUNTIME_LIBS "${OSG_DIR}/bin/*.dll")
+    file(GLOB OSG_RUNTIME_DEBUG_LIBS "${OSG_DIR}/bin/*d.dll")
+    set(OSG_PLUGIN_FOLDER "osgPlugins-${OSG_VERSION_STRING}")
+    file(GLOB OSG_PLUGIN_LIBS "${OSG_DIR}/bin/${OSG_PLUGIN_FOLDER}/*.dll")
+    file(GLOB OSG_PLUGIN_DEBUG_LIBS "${OSG_DIR}/bin/${OSG_PLUGIN_FOLDER}/*d.dll")
+    # Copy release libraries, but not debug libraries
+    list(REMOVE_ITEM OSG_RUNTIME_LIBS ${OSG_RUNTIME_DEBUG_LIBS} "foo")
+    list(REMOVE_ITEM OSG_PLUGIN_LIBS ${OSG_PLUGIN_DEBUG_LIBS} "foo")
+    foreach(LIB ${OSG_RUNTIME_LIBS})
+        file(COPY ${LIB} DESTINATION "${STAGING_FOLDER}/osgpypp")
+    endforeach()
+    foreach(LIB ${OSG_PLUGIN_LIBS})
+        file(COPY ${LIB} DESTINATION "${STAGING_FOLDER}/osgpypp/${OSG_PLUGIN_FOLDER}/")
+    endforeach()
 
-# 2a) ZLIB - Maybe copy libs on Windows only? - needed by osgDB
-find_package(ZLIB)
-if (ZLIB_FOUND)
-    message(STATUS "${ZLIB_INCLUDE_DIR}/../bin/")
-    find_file(
-        ZLIB_RUNTIME_LIBRARY
-        NAMES zlib1.dll
-        PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
-    )
-    find_library(
-        ZLIB_RUNTIME_LIBRARY
-        NAMES zlib1 z
-        PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
-    )
-    file(COPY "${ZLIB_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
-    
-    # 2b) jpeg library
-    find_file(
-        JPEG_RUNTIME_LIBRARY
-        NAMES jpeg62.dll
-        PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
-    )
-    find_library(
-        JPEG_RUNTIME_LIBRARY
-        NAMES jpeg62 jpeg
-        PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
-    )
-    if (JPEG_RUNTIME_LIBRARY)
-        message(STATUS ${JPEG_RUNTIME_LIBRARY})
-        file(COPY "${JPEG_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
+    # 2a) ZLIB - Maybe copy libs on Windows only? - needed by osgDB
+    find_package(ZLIB)
+    if (ZLIB_FOUND)
+        message(STATUS "${ZLIB_INCLUDE_DIR}/../bin/")
+        find_file(
+            ZLIB_RUNTIME_LIBRARY
+            NAMES zlib1.dll
+            PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
+        )
+        find_library(
+            ZLIB_RUNTIME_LIBRARY
+            NAMES zlib1 z
+            PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
+        )
+        file(COPY "${ZLIB_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
+        
+        # 2b) jpeg library
+        find_file(
+            JPEG_RUNTIME_LIBRARY
+            NAMES jpeg62.dll
+            PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
+        )
+        find_library(
+            JPEG_RUNTIME_LIBRARY
+            NAMES jpeg62 jpeg
+            PATHS "${ZLIB_INCLUDE_DIR}/../bin/"
+        )
+        if (JPEG_RUNTIME_LIBRARY)
+            message(STATUS ${JPEG_RUNTIME_LIBRARY})
+            file(COPY "${JPEG_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
+        endif()
     endif()
-endif()
 
 
-# 3) boost python 
-get_filename_component(BOOSTPYTHON_LIB_BASE "${Boost_PYTHON_LIBRARY_RELEASE}" NAME_WE)
-find_file(
-    BOOST_PYTHON_RUNTIME_LIBRARY
-    NAMES "${BOOSTPYTHON_LIB_BASE}.dll"
-    PATHS "${Boost_LIBRARY_DIR}"
-)
-file(COPY "${BOOST_PYTHON_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
-# 4) Collada library, needed for DAE loader plugin; OSG must have been built with DAE plugin too...
-find_file(
-    COLLADA_RUNTIME_LIBRARY
-    NAMES libcollada14dom21.dll)
-file(COPY "${COLLADA_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
+    # 3) boost python 
+    get_filename_component(BOOSTPYTHON_LIB_BASE "${Boost_PYTHON_LIBRARY_RELEASE}" NAME_WE)
+    find_file(
+        BOOST_PYTHON_RUNTIME_LIBRARY
+        NAMES "${BOOSTPYTHON_LIB_BASE}.dll"
+        PATHS "${Boost_LIBRARY_DIR}"
+    )
+    file(COPY "${BOOST_PYTHON_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
+    # 4) Collada library, needed for DAE loader plugin; OSG must have been built with DAE plugin too...
+    find_file(
+        COLLADA_RUNTIME_LIBRARY
+        NAMES libcollada14dom21.dll)
+    file(COPY "${COLLADA_RUNTIME_LIBRARY}" DESTINATION "${STAGING_FOLDER}/osgpypp")
+endif(WIN32)
 
 set(OSGPYPP_REGENERATE_BINDINGS FALSE CACHE BOOL "Whether to regenerate boost python C++ binding source code")
 
@@ -132,6 +134,7 @@ SET( CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${MODULE_STAGING_FOLDER}")
 SET( CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${MODULE_STAGING_FOLDER}")
 SET( CMAKE_LIBRARY_OUTPUT_DIRECTORY_DEBUG "${MODULE_STAGING_FOLDER}")
 SET( CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE "${MODULE_STAGING_FOLDER}")
+SET( CMAKE_LIBRARY_OUTPUT_DIRECTORY "${MODULE_STAGING_FOLDER}")
 SET( CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG "${MODULE_STAGING_FOLDER}")
 SET( CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${MODULE_STAGING_FOLDER}")
 
@@ -156,6 +159,9 @@ function (OSGPYPP_WRAP_MODULE MODULE_NAME)
         ${PYTHON_LIBRARY_RELEASE}
         ${OSG_LIBRARY}
     )
+
+    # python module names are not prefixed with "lib"
+    set_target_properties(${MODULE_NAME} PROPERTIES PREFIX "")
     # On Windows python extension modules have suffix ".pyd"
     if(WIN32)
         set_target_properties(${MODULE_NAME} PROPERTIES SUFFIX .pyd)
@@ -169,7 +175,10 @@ function (OSGPYPP_WRAP_MODULE MODULE_NAME)
             REQUIRED
             PATHS "C:/Program Files (x86)/gccxml/bin/")
         set(WRAP_SCRIPT wrap_module.py)
-        set(GCCXML_COMPILER msvc9) # TODO
+        set(GCCXML_COMPILER gcc)
+        if (WIN32)
+            set(GCCXML_COMPILER msvc9)
+        endif(WIN32)
         # Create file generate_std.stamp to indicate successful completion of 
         # generate step. Because it is possible that no generated sources will be updated.
         set(GEN_STAMP "${CMAKE_CURRENT_SOURCE_DIR}/generated_code/generate_module.stamp")
@@ -183,7 +192,7 @@ function (OSGPYPP_WRAP_MODULE MODULE_NAME)
             OUTPUT "${GEN_STAMP}"
             DEPENDS
                 ${WRAP_SCRIPT}
-                "${CMAKE_SOURCE_DIRECTORY}/src/modules/wrap_helpers.py"
+                "${CMAKE_SOURCE_DIR}/src/modules/wrap_helpers.py"
                 ${MODULE_OTHER_SRCS}
             WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}"
             COMMENT "Creating ${MODULE_NAME} wrapper source files.  Examine generate_${MODULE_NAME}_source.err file for details"
@@ -223,13 +232,17 @@ add_custom_target(InstallOsgPyPPLocally DEPENDS
     _osgAnimation _osgSim _osgParticle)
 
 # Only use the first two values in the python version for the install version, e.g. "2.7"
-string(REGEX MATCH "^[0-9]+\\.[0-9]+" PY_TARGET_VERSION ${PYTHONLIBS_VERSION_STRING})
+string(REGEX MATCH "^[0-9]+\\.[0-9]+" PY_TARGET_VERSION "${PYTHONLIBS_VERSION_STRING}")
 # message(${PY_TARGET_VERSION})
-add_custom_target(InstallerWin32 ALL
-    # We shoehorned version into X.Y.Z format so we can use msi instead of wininst
-    ${PYTHON_EXECUTABLE} setup.py bdist_msi --target-version=${PY_TARGET_VERSION}
-    DEPENDS InstallOsgPyPPLocally
-    WORKING_DIRECTORY "${MODULE_STAGING_FOLDER}/.."
-    COMMENT Creating Windows installer...
-    SOURCES CMakeLists.txt "${PROJECT_SOURCE_DIR}/src/setup.py.in"
+
+if (WIN32)
+    add_custom_target(InstallerWin32 ALL
+        # We shoehorned version into X.Y.Z format so we can use msi instead of wininst
+        ${PYTHON_EXECUTABLE} setup.py bdist_msi --target-version=${PY_TARGET_VERSION}
+        DEPENDS InstallOsgPyPPLocally
+        WORKING_DIRECTORY "${MODULE_STAGING_FOLDER}/.."
+        COMMENT Creating Windows installer...
+        SOURCES CMakeLists.txt "${PROJECT_SOURCE_DIR}/src/setup.py.in"
 )    
+endif(WIN32)
+

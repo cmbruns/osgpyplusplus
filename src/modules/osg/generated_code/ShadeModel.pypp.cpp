@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "shademodel.pypp.hpp"
+#include "ShadeModel.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -148,18 +148,6 @@ struct ShadeModel_wrapper : osg::ShadeModel, bp::wrapper< osg::ShadeModel > {
         osg::StateAttribute::compileGLObjects( boost::ref(arg0) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
     virtual unsigned int getMember(  ) const  {
         if( bp::override func_getMember = this->get_override( "getMember" ) )
             return func_getMember(  );
@@ -182,30 +170,6 @@ struct ShadeModel_wrapper : osg::ShadeModel, bp::wrapper< osg::ShadeModel > {
     
     bool default_getModeUsage( ::osg::StateAttribute::ModeUsage & arg0 ) const  {
         return osg::StateAttribute::getModeUsage( boost::ref(arg0) );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
     }
 
     virtual bool isTextureAttribute(  ) const  {
@@ -232,42 +196,6 @@ struct ShadeModel_wrapper : osg::ShadeModel, bp::wrapper< osg::ShadeModel > {
         osg::StateAttribute::resizeGLObjectBuffers( arg0 );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_ShadeModel_class(){
@@ -285,8 +213,8 @@ void register_ShadeModel_class(){
         bp::implicitly_convertible< osg::ShadeModel::Mode, osg::ShadeModel >();
         { //::osg::ShadeModel::apply
         
-            typedef void ( ::osg::ShadeModel::*apply_function_type)( ::osg::State & ) const;
-            typedef void ( ShadeModel_wrapper::*default_apply_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::ShadeModel::*apply_function_type )( ::osg::State & ) const;
+            typedef void ( ShadeModel_wrapper::*default_apply_function_type )( ::osg::State & ) const;
             
             ShadeModel_exposer.def( 
                 "apply"
@@ -297,8 +225,8 @@ void register_ShadeModel_class(){
         }
         { //::osg::ShadeModel::className
         
-            typedef char const * ( ::osg::ShadeModel::*className_function_type)(  ) const;
-            typedef char const * ( ShadeModel_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::ShadeModel::*className_function_type )(  ) const;
+            typedef char const * ( ShadeModel_wrapper::*default_className_function_type )(  ) const;
             
             ShadeModel_exposer.def( 
                 "className"
@@ -308,8 +236,8 @@ void register_ShadeModel_class(){
         }
         { //::osg::ShadeModel::clone
         
-            typedef ::osg::Object * ( ::osg::ShadeModel::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( ShadeModel_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::ShadeModel::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ShadeModel_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             ShadeModel_exposer.def( 
                 "clone"
@@ -321,8 +249,8 @@ void register_ShadeModel_class(){
         }
         { //::osg::ShadeModel::cloneType
         
-            typedef ::osg::Object * ( ::osg::ShadeModel::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( ShadeModel_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::ShadeModel::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( ShadeModel_wrapper::*default_cloneType_function_type )(  ) const;
             
             ShadeModel_exposer.def( 
                 "cloneType"
@@ -333,7 +261,7 @@ void register_ShadeModel_class(){
         }
         { //::osg::ShadeModel::getMode
         
-            typedef ::osg::ShadeModel::Mode ( ::osg::ShadeModel::*getMode_function_type)(  ) const;
+            typedef ::osg::ShadeModel::Mode ( ::osg::ShadeModel::*getMode_function_type )(  ) const;
             
             ShadeModel_exposer.def( 
                 "getMode"
@@ -342,8 +270,8 @@ void register_ShadeModel_class(){
         }
         { //::osg::ShadeModel::getType
         
-            typedef ::osg::StateAttribute::Type ( ::osg::ShadeModel::*getType_function_type)(  ) const;
-            typedef ::osg::StateAttribute::Type ( ShadeModel_wrapper::*default_getType_function_type)(  ) const;
+            typedef ::osg::StateAttribute::Type ( ::osg::ShadeModel::*getType_function_type )(  ) const;
+            typedef ::osg::StateAttribute::Type ( ShadeModel_wrapper::*default_getType_function_type )(  ) const;
             
             ShadeModel_exposer.def( 
                 "getType"
@@ -353,8 +281,8 @@ void register_ShadeModel_class(){
         }
         { //::osg::ShadeModel::isSameKindAs
         
-            typedef bool ( ::osg::ShadeModel::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( ShadeModel_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::ShadeModel::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( ShadeModel_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             ShadeModel_exposer.def( 
                 "isSameKindAs"
@@ -365,8 +293,8 @@ void register_ShadeModel_class(){
         }
         { //::osg::ShadeModel::libraryName
         
-            typedef char const * ( ::osg::ShadeModel::*libraryName_function_type)(  ) const;
-            typedef char const * ( ShadeModel_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::ShadeModel::*libraryName_function_type )(  ) const;
+            typedef char const * ( ShadeModel_wrapper::*default_libraryName_function_type )(  ) const;
             
             ShadeModel_exposer.def( 
                 "libraryName"
@@ -376,7 +304,7 @@ void register_ShadeModel_class(){
         }
         { //::osg::ShadeModel::setMode
         
-            typedef void ( ::osg::ShadeModel::*setMode_function_type)( ::osg::ShadeModel::Mode ) ;
+            typedef void ( ::osg::ShadeModel::*setMode_function_type )( ::osg::ShadeModel::Mode ) ;
             
             ShadeModel_exposer.def( 
                 "setMode"
@@ -386,8 +314,8 @@ void register_ShadeModel_class(){
         }
         { //::osg::StateAttribute::asTexture
         
-            typedef ::osg::Texture * ( ::osg::StateAttribute::*asTexture_function_type)(  ) ;
-            typedef ::osg::Texture * ( ShadeModel_wrapper::*default_asTexture_function_type)(  ) ;
+            typedef ::osg::Texture * ( ::osg::StateAttribute::*asTexture_function_type )(  ) ;
+            typedef ::osg::Texture * ( ShadeModel_wrapper::*default_asTexture_function_type )(  ) ;
             
             ShadeModel_exposer.def( 
                 "asTexture"
@@ -398,8 +326,8 @@ void register_ShadeModel_class(){
         }
         { //::osg::StateAttribute::asTexture
         
-            typedef ::osg::Texture const * ( ::osg::StateAttribute::*asTexture_function_type)(  ) const;
-            typedef ::osg::Texture const * ( ShadeModel_wrapper::*default_asTexture_function_type)(  ) const;
+            typedef ::osg::Texture const * ( ::osg::StateAttribute::*asTexture_function_type )(  ) const;
+            typedef ::osg::Texture const * ( ShadeModel_wrapper::*default_asTexture_function_type )(  ) const;
             
             ShadeModel_exposer.def( 
                 "asTexture"
@@ -410,8 +338,8 @@ void register_ShadeModel_class(){
         }
         { //::osg::StateAttribute::checkValidityOfAssociatedModes
         
-            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
-            typedef bool ( ShadeModel_wrapper::*default_checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
+            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
+            typedef bool ( ShadeModel_wrapper::*default_checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
             
             ShadeModel_exposer.def( 
                 "checkValidityOfAssociatedModes"
@@ -422,8 +350,8 @@ void register_ShadeModel_class(){
         }
         { //::osg::StateAttribute::compileGLObjects
         
-            typedef void ( ::osg::StateAttribute::*compileGLObjects_function_type)( ::osg::State & ) const;
-            typedef void ( ShadeModel_wrapper::*default_compileGLObjects_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::StateAttribute::*compileGLObjects_function_type )( ::osg::State & ) const;
+            typedef void ( ShadeModel_wrapper::*default_compileGLObjects_function_type )( ::osg::State & ) const;
             
             ShadeModel_exposer.def( 
                 "compileGLObjects"
@@ -432,21 +360,10 @@ void register_ShadeModel_class(){
                 , ( bp::arg("arg0") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( ShadeModel_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            ShadeModel_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&ShadeModel_wrapper::default_computeDataVariance) );
-        
-        }
         { //::osg::StateAttribute::getMember
         
-            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type)(  ) const;
-            typedef unsigned int ( ShadeModel_wrapper::*default_getMember_function_type)(  ) const;
+            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type )(  ) const;
+            typedef unsigned int ( ShadeModel_wrapper::*default_getMember_function_type )(  ) const;
             
             ShadeModel_exposer.def( 
                 "getMember"
@@ -456,8 +373,8 @@ void register_ShadeModel_class(){
         }
         { //::osg::StateAttribute::getModeUsage
         
-            typedef bool ( ::osg::StateAttribute::*getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
-            typedef bool ( ShadeModel_wrapper::*default_getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( ::osg::StateAttribute::*getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( ShadeModel_wrapper::*default_getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
             
             ShadeModel_exposer.def( 
                 "getModeUsage"
@@ -466,34 +383,10 @@ void register_ShadeModel_class(){
                 , ( bp::arg("arg0") ) );
         
         }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( ShadeModel_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            ShadeModel_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&ShadeModel_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( ShadeModel_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            ShadeModel_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&ShadeModel_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::StateAttribute::isTextureAttribute
         
-            typedef bool ( ::osg::StateAttribute::*isTextureAttribute_function_type)(  ) const;
-            typedef bool ( ShadeModel_wrapper::*default_isTextureAttribute_function_type)(  ) const;
+            typedef bool ( ::osg::StateAttribute::*isTextureAttribute_function_type )(  ) const;
+            typedef bool ( ShadeModel_wrapper::*default_isTextureAttribute_function_type )(  ) const;
             
             ShadeModel_exposer.def( 
                 "isTextureAttribute"
@@ -503,61 +396,14 @@ void register_ShadeModel_class(){
         }
         { //::osg::StateAttribute::resizeGLObjectBuffers
         
-            typedef void ( ::osg::StateAttribute::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( ShadeModel_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::StateAttribute::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( ShadeModel_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             ShadeModel_exposer.def( 
                 "resizeGLObjectBuffers"
                 , resizeGLObjectBuffers_function_type(&::osg::StateAttribute::resizeGLObjectBuffers)
                 , default_resizeGLObjectBuffers_function_type(&ShadeModel_wrapper::default_resizeGLObjectBuffers)
                 , ( bp::arg("arg0") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( ShadeModel_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            ShadeModel_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&ShadeModel_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            ShadeModel_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( ShadeModel_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            ShadeModel_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&ShadeModel_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( ShadeModel_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            ShadeModel_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&ShadeModel_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
     }

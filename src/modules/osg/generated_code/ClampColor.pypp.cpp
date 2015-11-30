@@ -4,38 +4,11 @@
 #include "__call_policies.pypp.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "clampcolor.pypp.hpp"
+#include "ClampColor.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct ClampColor_wrapper : osg::ClampColor, bp::wrapper< osg::ClampColor > {
-
-    struct Extensions_wrapper : osg::ClampColor::Extensions, bp::wrapper< osg::ClampColor::Extensions > {
-    
-        Extensions_wrapper(unsigned int contextID )
-        : osg::ClampColor::Extensions( contextID )
-          , bp::wrapper< osg::ClampColor::Extensions >(){
-            // constructor
-        
-        }
-    
-        static void lowestCommonDenominator( ::osg::ClampColor::Extensions & inst, ::osg::ClampColor::Extensions & rhs ){
-            inst.lowestCommonDenominator(rhs);
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
 
     ClampColor_wrapper( )
     : osg::ClampColor( )
@@ -183,18 +156,6 @@ struct ClampColor_wrapper : osg::ClampColor, bp::wrapper< osg::ClampColor > {
         osg::StateAttribute::compileGLObjects( boost::ref(arg0) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
     virtual unsigned int getMember(  ) const  {
         if( bp::override func_getMember = this->get_override( "getMember" ) )
             return func_getMember(  );
@@ -217,30 +178,6 @@ struct ClampColor_wrapper : osg::ClampColor, bp::wrapper< osg::ClampColor > {
     
     bool default_getModeUsage( ::osg::StateAttribute::ModeUsage & arg0 ) const  {
         return osg::StateAttribute::getModeUsage( boost::ref(arg0) );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
     }
 
     virtual bool isTextureAttribute(  ) const  {
@@ -267,43 +204,11 @@ struct ClampColor_wrapper : osg::ClampColor, bp::wrapper< osg::ClampColor > {
         osg::StateAttribute::resizeGLObjectBuffers( arg0 );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
+
+static void lowestCommonDenominator_7a1e797580bc0ec283fbb72a989f213d( ::osg::ClampColor::Extensions & inst, ::osg::ClampColor::Extensions & rhs ){
+    inst.lowestCommonDenominator(rhs);
+}
 
 void register_ClampColor_class(){
 
@@ -312,14 +217,14 @@ void register_ClampColor_class(){
         ClampColor_exposer_t ClampColor_exposer = ClampColor_exposer_t( "ClampColor", "\n Encapsulates OpenGL ClampColor state.\n", bp::no_init );
         bp::scope ClampColor_scope( ClampColor_exposer );
         { //::osg::ClampColor::Extensions
-            typedef bp::class_< ClampColor_wrapper::Extensions_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::ClampColor::Extensions > > Extensions_exposer_t;
+            typedef bp::class_< osg::ClampColor::Extensions, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::ClampColor::Extensions > > Extensions_exposer_t;
             Extensions_exposer_t Extensions_exposer = Extensions_exposer_t( "Extensions", "\n Encapsulates queries of extension availability, obtains extension\n function pointers, and provides convenience wrappers for\n calling extension functions.\n", bp::no_init );
             bp::scope Extensions_scope( Extensions_exposer );
             Extensions_exposer.def( bp::init< unsigned int >(( bp::arg("contextID") ), "\n Encapsulates queries of extension availability, obtains extension\n function pointers, and provides convenience wrappers for\n calling extension functions.\n") );
             bp::implicitly_convertible< unsigned int, osg::ClampColor::Extensions >();
             { //::osg::ClampColor::Extensions::glClampColor
             
-                typedef void ( ::osg::ClampColor::Extensions::*glClampColor_function_type)( ::GLenum,::GLenum ) const;
+                typedef void ( ::osg::ClampColor::Extensions::*glClampColor_function_type )( ::GLenum,::GLenum ) const;
                 
                 Extensions_exposer.def( 
                     "glClampColor"
@@ -329,7 +234,7 @@ void register_ClampColor_class(){
             }
             { //::osg::ClampColor::Extensions::isClampColorSupported
             
-                typedef bool ( ::osg::ClampColor::Extensions::*isClampColorSupported_function_type)(  ) const;
+                typedef bool ( ::osg::ClampColor::Extensions::*isClampColorSupported_function_type )(  ) const;
                 
                 Extensions_exposer.def( 
                     "isClampColorSupported"
@@ -342,13 +247,13 @@ void register_ClampColor_class(){
                 
                 Extensions_exposer.def( 
                     "lowestCommonDenominator"
-                    , lowestCommonDenominator_function_type( &ClampColor_wrapper::Extensions_wrapper::lowestCommonDenominator )
+                    , lowestCommonDenominator_function_type( &lowestCommonDenominator_7a1e797580bc0ec283fbb72a989f213d )
                     , ( bp::arg("inst"), bp::arg("rhs") ) );
             
             }
             { //::osg::ClampColor::Extensions::setClampColorSupported
             
-                typedef void ( ::osg::ClampColor::Extensions::*setClampColorSupported_function_type)( bool ) ;
+                typedef void ( ::osg::ClampColor::Extensions::*setClampColorSupported_function_type )( bool ) ;
                 
                 Extensions_exposer.def( 
                     "setClampColorSupported"
@@ -358,7 +263,7 @@ void register_ClampColor_class(){
             }
             { //::osg::ClampColor::Extensions::setupGLExtensions
             
-                typedef void ( ::osg::ClampColor::Extensions::*setupGLExtensions_function_type)( unsigned int ) ;
+                typedef void ( ::osg::ClampColor::Extensions::*setupGLExtensions_function_type )( unsigned int ) ;
                 
                 Extensions_exposer.def( 
                     "setupGLExtensions"
@@ -366,25 +271,13 @@ void register_ClampColor_class(){
                     , ( bp::arg("contextID") ) );
             
             }
-            { //::osg::Referenced::setThreadSafeRefUnref
-            
-                typedef void ( ::osg::Referenced::*setThreadSafeRefUnref_function_type)( bool ) ;
-                typedef void ( ClampColor_wrapper::Extensions_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-                
-                Extensions_exposer.def( 
-                    "setThreadSafeRefUnref"
-                    , setThreadSafeRefUnref_function_type(&::osg::Referenced::setThreadSafeRefUnref)
-                    , default_setThreadSafeRefUnref_function_type(&ClampColor_wrapper::Extensions_wrapper::default_setThreadSafeRefUnref)
-                    , ( bp::arg("threadSafe") ) );
-            
-            }
         }
         ClampColor_exposer.def( bp::init< >("\n Encapsulates OpenGL ClampColor state.\n") );
         ClampColor_exposer.def( bp::init< GLenum, GLenum, GLenum >(( bp::arg("vertexMode"), bp::arg("fragmentMode"), bp::arg("readMode") )) );
         { //::osg::ClampColor::apply
         
-            typedef void ( ::osg::ClampColor::*apply_function_type)( ::osg::State & ) const;
-            typedef void ( ClampColor_wrapper::*default_apply_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::ClampColor::*apply_function_type )( ::osg::State & ) const;
+            typedef void ( ClampColor_wrapper::*default_apply_function_type )( ::osg::State & ) const;
             
             ClampColor_exposer.def( 
                 "apply"
@@ -395,8 +288,8 @@ void register_ClampColor_class(){
         }
         { //::osg::ClampColor::className
         
-            typedef char const * ( ::osg::ClampColor::*className_function_type)(  ) const;
-            typedef char const * ( ClampColor_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::ClampColor::*className_function_type )(  ) const;
+            typedef char const * ( ClampColor_wrapper::*default_className_function_type )(  ) const;
             
             ClampColor_exposer.def( 
                 "className"
@@ -406,8 +299,8 @@ void register_ClampColor_class(){
         }
         { //::osg::ClampColor::clone
         
-            typedef ::osg::Object * ( ::osg::ClampColor::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( ClampColor_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::ClampColor::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ClampColor_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             ClampColor_exposer.def( 
                 "clone"
@@ -419,8 +312,8 @@ void register_ClampColor_class(){
         }
         { //::osg::ClampColor::cloneType
         
-            typedef ::osg::Object * ( ::osg::ClampColor::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( ClampColor_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::ClampColor::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( ClampColor_wrapper::*default_cloneType_function_type )(  ) const;
             
             ClampColor_exposer.def( 
                 "cloneType"
@@ -431,7 +324,7 @@ void register_ClampColor_class(){
         }
         { //::osg::ClampColor::getClampFragmentColor
         
-            typedef ::GLenum ( ::osg::ClampColor::*getClampFragmentColor_function_type)(  ) const;
+            typedef ::GLenum ( ::osg::ClampColor::*getClampFragmentColor_function_type )(  ) const;
             
             ClampColor_exposer.def( 
                 "getClampFragmentColor"
@@ -440,7 +333,7 @@ void register_ClampColor_class(){
         }
         { //::osg::ClampColor::getClampReadColor
         
-            typedef ::GLenum ( ::osg::ClampColor::*getClampReadColor_function_type)(  ) const;
+            typedef ::GLenum ( ::osg::ClampColor::*getClampReadColor_function_type )(  ) const;
             
             ClampColor_exposer.def( 
                 "getClampReadColor"
@@ -449,7 +342,7 @@ void register_ClampColor_class(){
         }
         { //::osg::ClampColor::getClampVertexColor
         
-            typedef ::GLenum ( ::osg::ClampColor::*getClampVertexColor_function_type)(  ) const;
+            typedef ::GLenum ( ::osg::ClampColor::*getClampVertexColor_function_type )(  ) const;
             
             ClampColor_exposer.def( 
                 "getClampVertexColor"
@@ -465,13 +358,13 @@ void register_ClampColor_class(){
                 , getExtensions_function_type( &::osg::ClampColor::getExtensions )
                 , ( bp::arg("contextID"), bp::arg("createIfNotInitalized") )
                 , bp::return_internal_reference< >()
-                , " Returns the Extensions object for the given context.\n If createIfNotInitalized is true and the Extensions object doesnt\n exist, getExtensions() creates it on the given context.\n Returns NULL if createIfNotInitalized is false and the Extensions\n object doesnt exist." );
+                , "\n Returns the Extensions object for the given context.\n If createIfNotInitalized is true and the Extensions object doesnt\n exist, getExtensions() creates it on the given context.\n Returns NULL if createIfNotInitalized is false and the Extensions\n object doesnt exist.\n" );
         
         }
         { //::osg::ClampColor::getType
         
-            typedef ::osg::StateAttribute::Type ( ::osg::ClampColor::*getType_function_type)(  ) const;
-            typedef ::osg::StateAttribute::Type ( ClampColor_wrapper::*default_getType_function_type)(  ) const;
+            typedef ::osg::StateAttribute::Type ( ::osg::ClampColor::*getType_function_type )(  ) const;
+            typedef ::osg::StateAttribute::Type ( ClampColor_wrapper::*default_getType_function_type )(  ) const;
             
             ClampColor_exposer.def( 
                 "getType"
@@ -481,8 +374,8 @@ void register_ClampColor_class(){
         }
         { //::osg::ClampColor::isSameKindAs
         
-            typedef bool ( ::osg::ClampColor::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( ClampColor_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::ClampColor::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( ClampColor_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             ClampColor_exposer.def( 
                 "isSameKindAs"
@@ -493,8 +386,8 @@ void register_ClampColor_class(){
         }
         { //::osg::ClampColor::libraryName
         
-            typedef char const * ( ::osg::ClampColor::*libraryName_function_type)(  ) const;
-            typedef char const * ( ClampColor_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::ClampColor::*libraryName_function_type )(  ) const;
+            typedef char const * ( ClampColor_wrapper::*default_libraryName_function_type )(  ) const;
             
             ClampColor_exposer.def( 
                 "libraryName"
@@ -504,7 +397,7 @@ void register_ClampColor_class(){
         }
         { //::osg::ClampColor::setClampFragmentColor
         
-            typedef void ( ::osg::ClampColor::*setClampFragmentColor_function_type)( ::GLenum ) ;
+            typedef void ( ::osg::ClampColor::*setClampFragmentColor_function_type )( ::GLenum ) ;
             
             ClampColor_exposer.def( 
                 "setClampFragmentColor"
@@ -514,7 +407,7 @@ void register_ClampColor_class(){
         }
         { //::osg::ClampColor::setClampReadColor
         
-            typedef void ( ::osg::ClampColor::*setClampReadColor_function_type)( ::GLenum ) ;
+            typedef void ( ::osg::ClampColor::*setClampReadColor_function_type )( ::GLenum ) ;
             
             ClampColor_exposer.def( 
                 "setClampReadColor"
@@ -524,7 +417,7 @@ void register_ClampColor_class(){
         }
         { //::osg::ClampColor::setClampVertexColor
         
-            typedef void ( ::osg::ClampColor::*setClampVertexColor_function_type)( ::GLenum ) ;
+            typedef void ( ::osg::ClampColor::*setClampVertexColor_function_type )( ::GLenum ) ;
             
             ClampColor_exposer.def( 
                 "setClampVertexColor"
@@ -540,13 +433,13 @@ void register_ClampColor_class(){
                 "setExtensions"
                 , setExtensions_function_type( &::osg::ClampColor::setExtensions )
                 , ( bp::arg("contextID"), bp::arg("extensions") )
-                , " setExtensions() allows users to override the extensions across graphics contexts.\n Typically used when you have different extensions supported across graphics pipes,\n but need to ensure that they all use the same low common denominator extensions." );
+                , "\n setExtensions() allows users to override the extensions across graphics contexts.\n Typically used when you have different extensions supported across graphics pipes,\n but need to ensure that they all use the same low common denominator extensions.\n" );
         
         }
         { //::osg::StateAttribute::asTexture
         
-            typedef ::osg::Texture * ( ::osg::StateAttribute::*asTexture_function_type)(  ) ;
-            typedef ::osg::Texture * ( ClampColor_wrapper::*default_asTexture_function_type)(  ) ;
+            typedef ::osg::Texture * ( ::osg::StateAttribute::*asTexture_function_type )(  ) ;
+            typedef ::osg::Texture * ( ClampColor_wrapper::*default_asTexture_function_type )(  ) ;
             
             ClampColor_exposer.def( 
                 "asTexture"
@@ -557,8 +450,8 @@ void register_ClampColor_class(){
         }
         { //::osg::StateAttribute::asTexture
         
-            typedef ::osg::Texture const * ( ::osg::StateAttribute::*asTexture_function_type)(  ) const;
-            typedef ::osg::Texture const * ( ClampColor_wrapper::*default_asTexture_function_type)(  ) const;
+            typedef ::osg::Texture const * ( ::osg::StateAttribute::*asTexture_function_type )(  ) const;
+            typedef ::osg::Texture const * ( ClampColor_wrapper::*default_asTexture_function_type )(  ) const;
             
             ClampColor_exposer.def( 
                 "asTexture"
@@ -569,8 +462,8 @@ void register_ClampColor_class(){
         }
         { //::osg::StateAttribute::checkValidityOfAssociatedModes
         
-            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
-            typedef bool ( ClampColor_wrapper::*default_checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
+            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
+            typedef bool ( ClampColor_wrapper::*default_checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
             
             ClampColor_exposer.def( 
                 "checkValidityOfAssociatedModes"
@@ -581,8 +474,8 @@ void register_ClampColor_class(){
         }
         { //::osg::StateAttribute::compileGLObjects
         
-            typedef void ( ::osg::StateAttribute::*compileGLObjects_function_type)( ::osg::State & ) const;
-            typedef void ( ClampColor_wrapper::*default_compileGLObjects_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::StateAttribute::*compileGLObjects_function_type )( ::osg::State & ) const;
+            typedef void ( ClampColor_wrapper::*default_compileGLObjects_function_type )( ::osg::State & ) const;
             
             ClampColor_exposer.def( 
                 "compileGLObjects"
@@ -591,21 +484,10 @@ void register_ClampColor_class(){
                 , ( bp::arg("arg0") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( ClampColor_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            ClampColor_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&ClampColor_wrapper::default_computeDataVariance) );
-        
-        }
         { //::osg::StateAttribute::getMember
         
-            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type)(  ) const;
-            typedef unsigned int ( ClampColor_wrapper::*default_getMember_function_type)(  ) const;
+            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type )(  ) const;
+            typedef unsigned int ( ClampColor_wrapper::*default_getMember_function_type )(  ) const;
             
             ClampColor_exposer.def( 
                 "getMember"
@@ -615,8 +497,8 @@ void register_ClampColor_class(){
         }
         { //::osg::StateAttribute::getModeUsage
         
-            typedef bool ( ::osg::StateAttribute::*getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
-            typedef bool ( ClampColor_wrapper::*default_getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( ::osg::StateAttribute::*getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( ClampColor_wrapper::*default_getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
             
             ClampColor_exposer.def( 
                 "getModeUsage"
@@ -625,34 +507,10 @@ void register_ClampColor_class(){
                 , ( bp::arg("arg0") ) );
         
         }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( ClampColor_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            ClampColor_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&ClampColor_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( ClampColor_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            ClampColor_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&ClampColor_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::StateAttribute::isTextureAttribute
         
-            typedef bool ( ::osg::StateAttribute::*isTextureAttribute_function_type)(  ) const;
-            typedef bool ( ClampColor_wrapper::*default_isTextureAttribute_function_type)(  ) const;
+            typedef bool ( ::osg::StateAttribute::*isTextureAttribute_function_type )(  ) const;
+            typedef bool ( ClampColor_wrapper::*default_isTextureAttribute_function_type )(  ) const;
             
             ClampColor_exposer.def( 
                 "isTextureAttribute"
@@ -662,61 +520,14 @@ void register_ClampColor_class(){
         }
         { //::osg::StateAttribute::resizeGLObjectBuffers
         
-            typedef void ( ::osg::StateAttribute::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( ClampColor_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::StateAttribute::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( ClampColor_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             ClampColor_exposer.def( 
                 "resizeGLObjectBuffers"
                 , resizeGLObjectBuffers_function_type(&::osg::StateAttribute::resizeGLObjectBuffers)
                 , default_resizeGLObjectBuffers_function_type(&ClampColor_wrapper::default_resizeGLObjectBuffers)
                 , ( bp::arg("arg0") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( ClampColor_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            ClampColor_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&ClampColor_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            ClampColor_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( ClampColor_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            ClampColor_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&ClampColor_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( ClampColor_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            ClampColor_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&ClampColor_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
         ClampColor_exposer.staticmethod( "getExtensions" );

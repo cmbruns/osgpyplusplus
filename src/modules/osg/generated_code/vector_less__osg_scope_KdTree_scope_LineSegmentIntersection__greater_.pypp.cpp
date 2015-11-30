@@ -5,7 +5,7 @@
 #include "indexing_suite/vector.hpp"
 #include "wrap_osg.h"
 #include "_LineSegmentIntersection__value_traits.pypp.hpp"
-#include "vector_less__osg_scope_kdtree_scope_linesegmentintersection__greater_.pypp.hpp"
+#include "vector_less__osg_scope_KdTree_scope_LineSegmentIntersection__greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

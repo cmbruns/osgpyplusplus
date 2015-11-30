@@ -26,7 +26,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef OSGPYPP_DEFAULT_H
 #define OSGPYPP_DEFAULT_H
 
+#ifdef _MSC_VER
 #define NOMINMAX
 #include <windows.h>
+#endif
 
 #endif // OSGPYPP_DEFAULT_H

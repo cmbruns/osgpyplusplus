@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osganimation.h"
+#include "wrap_osgAnimation.h"
 #include "wrap_referenced.h"
-#include "statshandler.pypp.hpp"
+#include "StatsHandler.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -88,18 +88,6 @@ struct AnimStatsHandler_wrapper : osgAnimation::StatsHandler, bp::wrapper< osgAn
         return osg::Object::getUserData( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void setName( ::std::string const & name ) {
         if( bp::override func_setName = this->get_override( "setName" ) )
             func_setName( name );
@@ -152,7 +140,7 @@ void register_StatsHandler_class(){
             ;
         { //::osgAnimation::StatsHandler::getBlockMultiplier
         
-            typedef double ( ::osgAnimation::StatsHandler::*getBlockMultiplier_function_type)(  ) const;
+            typedef double ( ::osgAnimation::StatsHandler::*getBlockMultiplier_function_type )(  ) const;
             
             StatsHandler_exposer.def( 
                 "getBlockMultiplier"
@@ -161,7 +149,7 @@ void register_StatsHandler_class(){
         }
         { //::osgAnimation::StatsHandler::getCamera
         
-            typedef ::osg::Camera * ( ::osgAnimation::StatsHandler::*getCamera_function_type)(  ) ;
+            typedef ::osg::Camera * ( ::osgAnimation::StatsHandler::*getCamera_function_type )(  ) ;
             
             StatsHandler_exposer.def( 
                 "getCamera"
@@ -171,7 +159,7 @@ void register_StatsHandler_class(){
         }
         { //::osgAnimation::StatsHandler::getCamera
         
-            typedef ::osg::Camera const * ( ::osgAnimation::StatsHandler::*getCamera_function_type)(  ) const;
+            typedef ::osg::Camera const * ( ::osgAnimation::StatsHandler::*getCamera_function_type )(  ) const;
             
             StatsHandler_exposer.def( 
                 "getCamera"
@@ -181,7 +169,7 @@ void register_StatsHandler_class(){
         }
         { //::osgAnimation::StatsHandler::getKeyEventPrintsOutStats
         
-            typedef int ( ::osgAnimation::StatsHandler::*getKeyEventPrintsOutStats_function_type)(  ) const;
+            typedef int ( ::osgAnimation::StatsHandler::*getKeyEventPrintsOutStats_function_type )(  ) const;
             
             StatsHandler_exposer.def( 
                 "getKeyEventPrintsOutStats"
@@ -190,7 +178,7 @@ void register_StatsHandler_class(){
         }
         { //::osgAnimation::StatsHandler::getKeyEventTogglesOnScreenStats
         
-            typedef int ( ::osgAnimation::StatsHandler::*getKeyEventTogglesOnScreenStats_function_type)(  ) const;
+            typedef int ( ::osgAnimation::StatsHandler::*getKeyEventTogglesOnScreenStats_function_type )(  ) const;
             
             StatsHandler_exposer.def( 
                 "getKeyEventTogglesOnScreenStats"
@@ -199,8 +187,8 @@ void register_StatsHandler_class(){
         }
         { //::osgAnimation::StatsHandler::getUsage
         
-            typedef void ( ::osgAnimation::StatsHandler::*getUsage_function_type)( ::osg::ApplicationUsage & ) const;
-            typedef void ( AnimStatsHandler_wrapper::*default_getUsage_function_type)( ::osg::ApplicationUsage & ) const;
+            typedef void ( ::osgAnimation::StatsHandler::*getUsage_function_type )( ::osg::ApplicationUsage & ) const;
+            typedef void ( AnimStatsHandler_wrapper::*default_getUsage_function_type )( ::osg::ApplicationUsage & ) const;
             
             StatsHandler_exposer.def( 
                 "getUsage"
@@ -221,7 +209,7 @@ void register_StatsHandler_class(){
         }
         { //::osgAnimation::StatsHandler::reset
         
-            typedef void ( ::osgAnimation::StatsHandler::*reset_function_type)(  ) ;
+            typedef void ( ::osgAnimation::StatsHandler::*reset_function_type )(  ) ;
             
             StatsHandler_exposer.def( 
                 "reset"
@@ -230,7 +218,7 @@ void register_StatsHandler_class(){
         }
         { //::osgAnimation::StatsHandler::setKeyEventPrintsOutStats
         
-            typedef void ( ::osgAnimation::StatsHandler::*setKeyEventPrintsOutStats_function_type)( int ) ;
+            typedef void ( ::osgAnimation::StatsHandler::*setKeyEventPrintsOutStats_function_type )( int ) ;
             
             StatsHandler_exposer.def( 
                 "setKeyEventPrintsOutStats"
@@ -240,7 +228,7 @@ void register_StatsHandler_class(){
         }
         { //::osgAnimation::StatsHandler::setKeyEventTogglesOnScreenStats
         
-            typedef void ( ::osgAnimation::StatsHandler::*setKeyEventTogglesOnScreenStats_function_type)( int ) ;
+            typedef void ( ::osgAnimation::StatsHandler::*setKeyEventTogglesOnScreenStats_function_type )( int ) ;
             
             StatsHandler_exposer.def( 
                 "setKeyEventTogglesOnScreenStats"

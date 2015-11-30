@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "texturebuffer.pypp.hpp"
+#include "TextureBuffer.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -263,18 +263,6 @@ struct TextureBuffer_wrapper : osg::TextureBuffer, bp::wrapper< osg::TextureBuff
         osg::Texture::compileGLObjects( boost::ref(state) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
     virtual unsigned int getMember(  ) const  {
         if( bp::override func_getMember = this->get_override( "getMember" ) )
             return func_getMember(  );
@@ -297,30 +285,6 @@ struct TextureBuffer_wrapper : osg::TextureBuffer, bp::wrapper< osg::TextureBuff
     
     bool default_getModeUsage( ::osg::StateAttribute::ModeUsage & usage ) const  {
         return osg::Texture::getModeUsage( boost::ref(usage) );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
     }
 
     virtual bool isTextureAttribute(  ) const  {
@@ -347,42 +311,6 @@ struct TextureBuffer_wrapper : osg::TextureBuffer, bp::wrapper< osg::TextureBuff
         osg::Texture::resizeGLObjectBuffers( maxSize );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_TextureBuffer_class(){
@@ -396,8 +324,8 @@ void register_TextureBuffer_class(){
         bp::implicitly_convertible< osg::Image *, osg::TextureBuffer >();
         { //::osg::TextureBuffer::allocateMipmap
         
-            typedef void ( ::osg::TextureBuffer::*allocateMipmap_function_type)( ::osg::State & ) const;
-            typedef void ( TextureBuffer_wrapper::*default_allocateMipmap_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::TextureBuffer::*allocateMipmap_function_type )( ::osg::State & ) const;
+            typedef void ( TextureBuffer_wrapper::*default_allocateMipmap_function_type )( ::osg::State & ) const;
             
             TextureBuffer_exposer.def( 
                 "allocateMipmap"
@@ -408,8 +336,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::apply
         
-            typedef void ( ::osg::TextureBuffer::*apply_function_type)( ::osg::State & ) const;
-            typedef void ( TextureBuffer_wrapper::*default_apply_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::TextureBuffer::*apply_function_type )( ::osg::State & ) const;
+            typedef void ( TextureBuffer_wrapper::*default_apply_function_type )( ::osg::State & ) const;
             
             TextureBuffer_exposer.def( 
                 "apply"
@@ -420,7 +348,7 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::bindBufferAs
         
-            typedef void ( ::osg::TextureBuffer::*bindBufferAs_function_type)( unsigned int,::GLenum ) ;
+            typedef void ( ::osg::TextureBuffer::*bindBufferAs_function_type )( unsigned int,::GLenum ) ;
             
             TextureBuffer_exposer.def( 
                 "bindBufferAs"
@@ -431,8 +359,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::className
         
-            typedef char const * ( ::osg::TextureBuffer::*className_function_type)(  ) const;
-            typedef char const * ( TextureBuffer_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::TextureBuffer::*className_function_type )(  ) const;
+            typedef char const * ( TextureBuffer_wrapper::*default_className_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "className"
@@ -442,8 +370,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::clone
         
-            typedef ::osg::Object * ( ::osg::TextureBuffer::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( TextureBuffer_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::TextureBuffer::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( TextureBuffer_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             TextureBuffer_exposer.def( 
                 "clone"
@@ -455,8 +383,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::cloneType
         
-            typedef ::osg::Object * ( ::osg::TextureBuffer::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( TextureBuffer_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::TextureBuffer::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( TextureBuffer_wrapper::*default_cloneType_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "cloneType"
@@ -467,7 +395,7 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::getImage
         
-            typedef ::osg::Image * ( ::osg::TextureBuffer::*getImage_function_type)(  ) ;
+            typedef ::osg::Image * ( ::osg::TextureBuffer::*getImage_function_type )(  ) ;
             
             TextureBuffer_exposer.def( 
                 "getImage"
@@ -478,7 +406,7 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::getImage
         
-            typedef ::osg::Image const * ( ::osg::TextureBuffer::*getImage_function_type)(  ) const;
+            typedef ::osg::Image const * ( ::osg::TextureBuffer::*getImage_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "getImage"
@@ -489,8 +417,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::getImage
         
-            typedef ::osg::Image * ( ::osg::TextureBuffer::*getImage_function_type)( unsigned int ) ;
-            typedef ::osg::Image * ( TextureBuffer_wrapper::*default_getImage_function_type)( unsigned int ) ;
+            typedef ::osg::Image * ( ::osg::TextureBuffer::*getImage_function_type )( unsigned int ) ;
+            typedef ::osg::Image * ( TextureBuffer_wrapper::*default_getImage_function_type )( unsigned int ) ;
             
             TextureBuffer_exposer.def( 
                 "getImage"
@@ -502,8 +430,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::getImage
         
-            typedef ::osg::Image const * ( ::osg::TextureBuffer::*getImage_function_type)( unsigned int ) const;
-            typedef ::osg::Image const * ( TextureBuffer_wrapper::*default_getImage_function_type)( unsigned int ) const;
+            typedef ::osg::Image const * ( ::osg::TextureBuffer::*getImage_function_type )( unsigned int ) const;
+            typedef ::osg::Image const * ( TextureBuffer_wrapper::*default_getImage_function_type )( unsigned int ) const;
             
             TextureBuffer_exposer.def( 
                 "getImage"
@@ -515,7 +443,7 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::getModifiedCount
         
-            typedef unsigned int & ( ::osg::TextureBuffer::*getModifiedCount_function_type)( unsigned int ) const;
+            typedef unsigned int & ( ::osg::TextureBuffer::*getModifiedCount_function_type )( unsigned int ) const;
             
             TextureBuffer_exposer.def( 
                 "getModifiedCount"
@@ -526,8 +454,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::getNumImages
         
-            typedef unsigned int ( ::osg::TextureBuffer::*getNumImages_function_type)(  ) const;
-            typedef unsigned int ( TextureBuffer_wrapper::*default_getNumImages_function_type)(  ) const;
+            typedef unsigned int ( ::osg::TextureBuffer::*getNumImages_function_type )(  ) const;
+            typedef unsigned int ( TextureBuffer_wrapper::*default_getNumImages_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "getNumImages"
@@ -537,8 +465,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::getTextureDepth
         
-            typedef int ( ::osg::TextureBuffer::*getTextureDepth_function_type)(  ) const;
-            typedef int ( TextureBuffer_wrapper::*default_getTextureDepth_function_type)(  ) const;
+            typedef int ( ::osg::TextureBuffer::*getTextureDepth_function_type )(  ) const;
+            typedef int ( TextureBuffer_wrapper::*default_getTextureDepth_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "getTextureDepth"
@@ -548,8 +476,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::getTextureHeight
         
-            typedef int ( ::osg::TextureBuffer::*getTextureHeight_function_type)(  ) const;
-            typedef int ( TextureBuffer_wrapper::*default_getTextureHeight_function_type)(  ) const;
+            typedef int ( ::osg::TextureBuffer::*getTextureHeight_function_type )(  ) const;
+            typedef int ( TextureBuffer_wrapper::*default_getTextureHeight_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "getTextureHeight"
@@ -559,8 +487,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::getTextureTarget
         
-            typedef ::GLenum ( ::osg::TextureBuffer::*getTextureTarget_function_type)(  ) const;
-            typedef ::GLenum ( TextureBuffer_wrapper::*default_getTextureTarget_function_type)(  ) const;
+            typedef ::GLenum ( ::osg::TextureBuffer::*getTextureTarget_function_type )(  ) const;
+            typedef ::GLenum ( TextureBuffer_wrapper::*default_getTextureTarget_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "getTextureTarget"
@@ -570,8 +498,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::getTextureWidth
         
-            typedef int ( ::osg::TextureBuffer::*getTextureWidth_function_type)(  ) const;
-            typedef int ( TextureBuffer_wrapper::*default_getTextureWidth_function_type)(  ) const;
+            typedef int ( ::osg::TextureBuffer::*getTextureWidth_function_type )(  ) const;
+            typedef int ( TextureBuffer_wrapper::*default_getTextureWidth_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "getTextureWidth"
@@ -581,8 +509,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::getType
         
-            typedef ::osg::StateAttribute::Type ( ::osg::TextureBuffer::*getType_function_type)(  ) const;
-            typedef ::osg::StateAttribute::Type ( TextureBuffer_wrapper::*default_getType_function_type)(  ) const;
+            typedef ::osg::StateAttribute::Type ( ::osg::TextureBuffer::*getType_function_type )(  ) const;
+            typedef ::osg::StateAttribute::Type ( TextureBuffer_wrapper::*default_getType_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "getType"
@@ -592,7 +520,7 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::getUsageHint
         
-            typedef ::GLenum ( ::osg::TextureBuffer::*getUsageHint_function_type)(  ) const;
+            typedef ::GLenum ( ::osg::TextureBuffer::*getUsageHint_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "getUsageHint"
@@ -601,8 +529,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::isSameKindAs
         
-            typedef bool ( ::osg::TextureBuffer::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( TextureBuffer_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::TextureBuffer::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( TextureBuffer_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             TextureBuffer_exposer.def( 
                 "isSameKindAs"
@@ -613,8 +541,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::libraryName
         
-            typedef char const * ( ::osg::TextureBuffer::*libraryName_function_type)(  ) const;
-            typedef char const * ( TextureBuffer_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::TextureBuffer::*libraryName_function_type )(  ) const;
+            typedef char const * ( TextureBuffer_wrapper::*default_libraryName_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "libraryName"
@@ -624,7 +552,7 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::setImage
         
-            typedef void ( ::osg::TextureBuffer::*setImage_function_type)( ::osg::Image * ) ;
+            typedef void ( ::osg::TextureBuffer::*setImage_function_type )( ::osg::Image * ) ;
             
             TextureBuffer_exposer.def( 
                 "setImage"
@@ -635,8 +563,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::setImage
         
-            typedef void ( ::osg::TextureBuffer::*setImage_function_type)( unsigned int,::osg::Image * ) ;
-            typedef void ( TextureBuffer_wrapper::*default_setImage_function_type)( unsigned int,::osg::Image * ) ;
+            typedef void ( ::osg::TextureBuffer::*setImage_function_type )( unsigned int,::osg::Image * ) ;
+            typedef void ( TextureBuffer_wrapper::*default_setImage_function_type )( unsigned int,::osg::Image * ) ;
             
             TextureBuffer_exposer.def( 
                 "setImage"
@@ -647,7 +575,7 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::setTextureWidth
         
-            typedef void ( ::osg::TextureBuffer::*setTextureWidth_function_type)( int ) ;
+            typedef void ( ::osg::TextureBuffer::*setTextureWidth_function_type )( int ) ;
             
             TextureBuffer_exposer.def( 
                 "setTextureWidth"
@@ -658,7 +586,7 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::setUsageHint
         
-            typedef void ( ::osg::TextureBuffer::*setUsageHint_function_type)( ::GLenum ) ;
+            typedef void ( ::osg::TextureBuffer::*setUsageHint_function_type )( ::GLenum ) ;
             
             TextureBuffer_exposer.def( 
                 "setUsageHint"
@@ -668,7 +596,7 @@ void register_TextureBuffer_class(){
         }
         { //::osg::TextureBuffer::unbindBufferAs
         
-            typedef void ( ::osg::TextureBuffer::*unbindBufferAs_function_type)( unsigned int,::GLenum ) ;
+            typedef void ( ::osg::TextureBuffer::*unbindBufferAs_function_type )( unsigned int,::GLenum ) ;
             
             TextureBuffer_exposer.def( 
                 "unbindBufferAs"
@@ -678,8 +606,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::Texture::asTexture
         
-            typedef ::osg::Texture * ( ::osg::Texture::*asTexture_function_type)(  ) ;
-            typedef ::osg::Texture * ( TextureBuffer_wrapper::*default_asTexture_function_type)(  ) ;
+            typedef ::osg::Texture * ( ::osg::Texture::*asTexture_function_type )(  ) ;
+            typedef ::osg::Texture * ( TextureBuffer_wrapper::*default_asTexture_function_type )(  ) ;
             
             TextureBuffer_exposer.def( 
                 "asTexture"
@@ -690,8 +618,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::Texture::asTexture
         
-            typedef ::osg::Texture const * ( ::osg::Texture::*asTexture_function_type)(  ) const;
-            typedef ::osg::Texture const * ( TextureBuffer_wrapper::*default_asTexture_function_type)(  ) const;
+            typedef ::osg::Texture const * ( ::osg::Texture::*asTexture_function_type )(  ) const;
+            typedef ::osg::Texture const * ( TextureBuffer_wrapper::*default_asTexture_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "asTexture"
@@ -702,8 +630,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::StateAttribute::checkValidityOfAssociatedModes
         
-            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
-            typedef bool ( TextureBuffer_wrapper::*default_checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
+            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
+            typedef bool ( TextureBuffer_wrapper::*default_checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
             
             TextureBuffer_exposer.def( 
                 "checkValidityOfAssociatedModes"
@@ -714,8 +642,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::Texture::compileGLObjects
         
-            typedef void ( ::osg::Texture::*compileGLObjects_function_type)( ::osg::State & ) const;
-            typedef void ( TextureBuffer_wrapper::*default_compileGLObjects_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::Texture::*compileGLObjects_function_type )( ::osg::State & ) const;
+            typedef void ( TextureBuffer_wrapper::*default_compileGLObjects_function_type )( ::osg::State & ) const;
             
             TextureBuffer_exposer.def( 
                 "compileGLObjects"
@@ -724,21 +652,10 @@ void register_TextureBuffer_class(){
                 , ( bp::arg("state") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( TextureBuffer_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            TextureBuffer_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&TextureBuffer_wrapper::default_computeDataVariance) );
-        
-        }
         { //::osg::StateAttribute::getMember
         
-            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type)(  ) const;
-            typedef unsigned int ( TextureBuffer_wrapper::*default_getMember_function_type)(  ) const;
+            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type )(  ) const;
+            typedef unsigned int ( TextureBuffer_wrapper::*default_getMember_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "getMember"
@@ -748,8 +665,8 @@ void register_TextureBuffer_class(){
         }
         { //::osg::Texture::getModeUsage
         
-            typedef bool ( ::osg::Texture::*getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
-            typedef bool ( TextureBuffer_wrapper::*default_getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( ::osg::Texture::*getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( TextureBuffer_wrapper::*default_getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
             
             TextureBuffer_exposer.def( 
                 "getModeUsage"
@@ -758,34 +675,10 @@ void register_TextureBuffer_class(){
                 , ( bp::arg("usage") ) );
         
         }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( TextureBuffer_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            TextureBuffer_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&TextureBuffer_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( TextureBuffer_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            TextureBuffer_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&TextureBuffer_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::Texture::isTextureAttribute
         
-            typedef bool ( ::osg::Texture::*isTextureAttribute_function_type)(  ) const;
-            typedef bool ( TextureBuffer_wrapper::*default_isTextureAttribute_function_type)(  ) const;
+            typedef bool ( ::osg::Texture::*isTextureAttribute_function_type )(  ) const;
+            typedef bool ( TextureBuffer_wrapper::*default_isTextureAttribute_function_type )(  ) const;
             
             TextureBuffer_exposer.def( 
                 "isTextureAttribute"
@@ -795,61 +688,14 @@ void register_TextureBuffer_class(){
         }
         { //::osg::Texture::resizeGLObjectBuffers
         
-            typedef void ( ::osg::Texture::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( TextureBuffer_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::Texture::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( TextureBuffer_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             TextureBuffer_exposer.def( 
                 "resizeGLObjectBuffers"
                 , resizeGLObjectBuffers_function_type(&::osg::Texture::resizeGLObjectBuffers)
                 , default_resizeGLObjectBuffers_function_type(&TextureBuffer_wrapper::default_resizeGLObjectBuffers)
                 , ( bp::arg("maxSize") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( TextureBuffer_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            TextureBuffer_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&TextureBuffer_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            TextureBuffer_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( TextureBuffer_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            TextureBuffer_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&TextureBuffer_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( TextureBuffer_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            TextureBuffer_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&TextureBuffer_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
     }

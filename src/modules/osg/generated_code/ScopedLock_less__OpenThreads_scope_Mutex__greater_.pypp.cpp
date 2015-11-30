@@ -2,7 +2,7 @@
 
 #include "boost/python.hpp"
 #include "wrap_osg.h"
-#include "scopedlock_less__openthreads_scope_mutex__greater_.pypp.hpp"
+#include "ScopedLock_less__OpenThreads_scope_Mutex__greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

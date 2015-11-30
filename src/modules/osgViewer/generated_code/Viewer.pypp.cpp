@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__convenience.pypp.hpp"
 #include "__call_policies.pypp.hpp"
-#include "wrap_osgviewer.h"
+#include "wrap_osgViewer.h"
 #include "wrap_referenced.h"
-#include "viewer.pypp.hpp"
+#include "Viewer.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -25,7 +25,7 @@ struct Viewer_wrapper : osgViewer::Viewer, bp::wrapper< osgViewer::Viewer > {
     
     }
 
-    virtual void advance( double simulationTime=1.79769313486231570814527423731704356798070567526e+308 ) {
+    virtual void advance( double simulationTime=1.79769313486231570814527423731704356798070567525844996599e+308 ) {
         if( bp::override func_advance = this->get_override( "advance" ) )
             func_advance( simulationTime );
         else{
@@ -33,7 +33,7 @@ struct Viewer_wrapper : osgViewer::Viewer, bp::wrapper< osgViewer::Viewer > {
         }
     }
     
-    void default_advance( double simulationTime=1.79769313486231570814527423731704356798070567526e+308 ) {
+    void default_advance( double simulationTime=1.79769313486231570814527423731704356798070567525844996599e+308 ) {
         osgViewer::Viewer::advance( simulationTime );
     }
 
@@ -409,7 +409,7 @@ struct Viewer_wrapper : osgViewer::Viewer, bp::wrapper< osgViewer::Viewer > {
         osg::Object::computeDataVariance( );
     }
 
-    virtual void frame( double simulationTime=1.79769313486231570814527423731704356798070567526e+308 ) {
+    virtual void frame( double simulationTime=1.79769313486231570814527423731704356798070567525844996599e+308 ) {
         if( bp::override func_frame = this->get_override( "frame" ) )
             func_frame( simulationTime );
         else{
@@ -417,7 +417,7 @@ struct Viewer_wrapper : osgViewer::Viewer, bp::wrapper< osgViewer::Viewer > {
         }
     }
     
-    void default_frame( double simulationTime=1.79769313486231570814527423731704356798070567526e+308 ) {
+    void default_frame( double simulationTime=1.79769313486231570814527423731704356798070567525844996599e+308 ) {
         osgViewer::ViewerBase::frame( simulationTime );
     }
 
@@ -513,18 +513,6 @@ struct Viewer_wrapper : osgViewer::Viewer, bp::wrapper< osgViewer::Viewer > {
     
     void default_requestWarpPointer( float x, float y ) {
         osgViewer::View::requestWarpPointer( x, y );
-    }
-
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
     }
 
     virtual void setName( ::std::string const & name ) {
@@ -629,26 +617,26 @@ void register_Viewer_class(){
 
     { //::osgViewer::Viewer
         typedef bp::class_< Viewer_wrapper, bp::bases< osgViewer::ViewerBase, osgViewer::View >, osg::ref_ptr< ::osgViewer::Viewer >, boost::noncopyable > Viewer_exposer_t;
-        Viewer_exposer_t Viewer_exposer = Viewer_exposer_t( "Viewer", bp::init< >() );
+        Viewer_exposer_t Viewer_exposer = Viewer_exposer_t( "Viewer", "\n Viewer holds a single view on to a single scene.\n", bp::init< >("\n Viewer holds a single view on to a single scene.\n") );
         bp::scope Viewer_scope( Viewer_exposer );
         Viewer_exposer.def( bp::init< osg::ArgumentParser & >(( bp::arg("arguments") )) );
         bp::implicitly_convertible< osg::ArgumentParser &, osgViewer::Viewer >();
         { //::osgViewer::Viewer::advance
         
-            typedef void ( ::osgViewer::Viewer::*advance_function_type)( double ) ;
-            typedef void ( Viewer_wrapper::*default_advance_function_type)( double ) ;
+            typedef void ( ::osgViewer::Viewer::*advance_function_type )( double ) ;
+            typedef void ( Viewer_wrapper::*default_advance_function_type )( double ) ;
             
             Viewer_exposer.def( 
                 "advance"
                 , advance_function_type(&::osgViewer::Viewer::advance)
                 , default_advance_function_type(&Viewer_wrapper::default_advance)
-                , ( bp::arg("simulationTime")=1.79769313486231570814527423731704356798070567526e+308 ) );
+                , ( bp::arg("simulationTime")=1.79769313486231570814527423731704356798070567525844996599e+308 ) );
         
         }
         { //::osgViewer::Viewer::checkEvents
         
-            typedef bool ( ::osgViewer::Viewer::*checkEvents_function_type)(  ) ;
-            typedef bool ( Viewer_wrapper::*default_checkEvents_function_type)(  ) ;
+            typedef bool ( ::osgViewer::Viewer::*checkEvents_function_type )(  ) ;
+            typedef bool ( Viewer_wrapper::*default_checkEvents_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "checkEvents"
@@ -658,8 +646,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::checkNeedToDoFrame
         
-            typedef bool ( ::osgViewer::Viewer::*checkNeedToDoFrame_function_type)(  ) ;
-            typedef bool ( Viewer_wrapper::*default_checkNeedToDoFrame_function_type)(  ) ;
+            typedef bool ( ::osgViewer::Viewer::*checkNeedToDoFrame_function_type )(  ) ;
+            typedef bool ( Viewer_wrapper::*default_checkNeedToDoFrame_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "checkNeedToDoFrame"
@@ -669,8 +657,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::className
         
-            typedef char const * ( ::osgViewer::Viewer::*className_function_type)(  ) const;
-            typedef char const * ( Viewer_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osgViewer::Viewer::*className_function_type )(  ) const;
+            typedef char const * ( Viewer_wrapper::*default_className_function_type )(  ) const;
             
             Viewer_exposer.def( 
                 "className"
@@ -680,8 +668,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::clone
         
-            typedef ::osg::Object * ( ::osgViewer::Viewer::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( Viewer_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osgViewer::Viewer::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( Viewer_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             Viewer_exposer.def( 
                 "clone"
@@ -693,8 +681,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::cloneType
         
-            typedef ::osg::Object * ( ::osgViewer::Viewer::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( Viewer_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osgViewer::Viewer::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( Viewer_wrapper::*default_cloneType_function_type )(  ) const;
             
             Viewer_exposer.def( 
                 "cloneType"
@@ -705,8 +693,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::elapsedTime
         
-            typedef double ( ::osgViewer::Viewer::*elapsedTime_function_type)(  ) ;
-            typedef double ( Viewer_wrapper::*default_elapsedTime_function_type)(  ) ;
+            typedef double ( ::osgViewer::Viewer::*elapsedTime_function_type )(  ) ;
+            typedef double ( Viewer_wrapper::*default_elapsedTime_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "elapsedTime"
@@ -716,8 +704,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::eventTraversal
         
-            typedef void ( ::osgViewer::Viewer::*eventTraversal_function_type)(  ) ;
-            typedef void ( Viewer_wrapper::*default_eventTraversal_function_type)(  ) ;
+            typedef void ( ::osgViewer::Viewer::*eventTraversal_function_type )(  ) ;
+            typedef void ( Viewer_wrapper::*default_eventTraversal_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "eventTraversal"
@@ -727,8 +715,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::getAllThreads
         
-            typedef void ( ::osgViewer::Viewer::*getAllThreads_function_type)( ::std::vector< OpenThreads::Thread* > &,bool ) ;
-            typedef void ( Viewer_wrapper::*default_getAllThreads_function_type)( ::std::vector< OpenThreads::Thread* > &,bool ) ;
+            typedef void ( ::osgViewer::Viewer::*getAllThreads_function_type )( ::std::vector< OpenThreads::Thread* > &,bool ) ;
+            typedef void ( Viewer_wrapper::*default_getAllThreads_function_type )( ::std::vector< OpenThreads::Thread* > &,bool ) ;
             
             Viewer_exposer.def( 
                 "getAllThreads"
@@ -739,8 +727,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::getCameras
         
-            typedef void ( ::osgViewer::Viewer::*getCameras_function_type)( ::std::vector< osg::Camera* > &,bool ) ;
-            typedef void ( Viewer_wrapper::*default_getCameras_function_type)( ::std::vector< osg::Camera* > &,bool ) ;
+            typedef void ( ::osgViewer::Viewer::*getCameras_function_type )( ::std::vector< osg::Camera* > &,bool ) ;
+            typedef void ( Viewer_wrapper::*default_getCameras_function_type )( ::std::vector< osg::Camera* > &,bool ) ;
             
             Viewer_exposer.def( 
                 "getCameras"
@@ -751,8 +739,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::getContexts
         
-            typedef void ( ::osgViewer::Viewer::*getContexts_function_type)( ::std::vector< osg::GraphicsContext* > &,bool ) ;
-            typedef void ( Viewer_wrapper::*default_getContexts_function_type)( ::std::vector< osg::GraphicsContext* > &,bool ) ;
+            typedef void ( ::osgViewer::Viewer::*getContexts_function_type )( ::std::vector< osg::GraphicsContext* > &,bool ) ;
+            typedef void ( Viewer_wrapper::*default_getContexts_function_type )( ::std::vector< osg::GraphicsContext* > &,bool ) ;
             
             Viewer_exposer.def( 
                 "getContexts"
@@ -763,8 +751,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::getOperationThreads
         
-            typedef void ( ::osgViewer::Viewer::*getOperationThreads_function_type)( ::std::vector< osg::OperationThread* > &,bool ) ;
-            typedef void ( Viewer_wrapper::*default_getOperationThreads_function_type)( ::std::vector< osg::OperationThread* > &,bool ) ;
+            typedef void ( ::osgViewer::Viewer::*getOperationThreads_function_type )( ::std::vector< osg::OperationThread* > &,bool ) ;
+            typedef void ( Viewer_wrapper::*default_getOperationThreads_function_type )( ::std::vector< osg::OperationThread* > &,bool ) ;
             
             Viewer_exposer.def( 
                 "getOperationThreads"
@@ -775,8 +763,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::getScenes
         
-            typedef void ( ::osgViewer::Viewer::*getScenes_function_type)( ::std::vector< osgViewer::Scene* > &,bool ) ;
-            typedef void ( Viewer_wrapper::*default_getScenes_function_type)( ::std::vector< osgViewer::Scene* > &,bool ) ;
+            typedef void ( ::osgViewer::Viewer::*getScenes_function_type )( ::std::vector< osgViewer::Scene* > &,bool ) ;
+            typedef void ( Viewer_wrapper::*default_getScenes_function_type )( ::std::vector< osgViewer::Scene* > &,bool ) ;
             
             Viewer_exposer.def( 
                 "getScenes"
@@ -787,8 +775,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::getUsage
         
-            typedef void ( ::osgViewer::Viewer::*getUsage_function_type)( ::osg::ApplicationUsage & ) const;
-            typedef void ( Viewer_wrapper::*default_getUsage_function_type)( ::osg::ApplicationUsage & ) const;
+            typedef void ( ::osgViewer::Viewer::*getUsage_function_type )( ::osg::ApplicationUsage & ) const;
+            typedef void ( Viewer_wrapper::*default_getUsage_function_type )( ::osg::ApplicationUsage & ) const;
             
             Viewer_exposer.def( 
                 "getUsage"
@@ -799,8 +787,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::getViewerFrameStamp
         
-            typedef ::osg::FrameStamp * ( ::osgViewer::Viewer::*getViewerFrameStamp_function_type)(  ) ;
-            typedef ::osg::FrameStamp * ( Viewer_wrapper::*default_getViewerFrameStamp_function_type)(  ) ;
+            typedef ::osg::FrameStamp * ( ::osgViewer::Viewer::*getViewerFrameStamp_function_type )(  ) ;
+            typedef ::osg::FrameStamp * ( Viewer_wrapper::*default_getViewerFrameStamp_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "getViewerFrameStamp"
@@ -811,8 +799,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::getViewerStats
         
-            typedef ::osg::Stats * ( ::osgViewer::Viewer::*getViewerStats_function_type)(  ) ;
-            typedef ::osg::Stats * ( Viewer_wrapper::*default_getViewerStats_function_type)(  ) ;
+            typedef ::osg::Stats * ( ::osgViewer::Viewer::*getViewerStats_function_type )(  ) ;
+            typedef ::osg::Stats * ( Viewer_wrapper::*default_getViewerStats_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "getViewerStats"
@@ -823,8 +811,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::getViewerStats
         
-            typedef ::osg::Stats const * ( ::osgViewer::Viewer::*getViewerStats_function_type)(  ) const;
-            typedef ::osg::Stats const * ( Viewer_wrapper::*default_getViewerStats_function_type)(  ) const;
+            typedef ::osg::Stats const * ( ::osgViewer::Viewer::*getViewerStats_function_type )(  ) const;
+            typedef ::osg::Stats const * ( Viewer_wrapper::*default_getViewerStats_function_type )(  ) const;
             
             Viewer_exposer.def( 
                 "getViewerStats"
@@ -835,8 +823,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::getViews
         
-            typedef void ( ::osgViewer::Viewer::*getViews_function_type)( ::std::vector< osgViewer::View* > &,bool ) ;
-            typedef void ( Viewer_wrapper::*default_getViews_function_type)( ::std::vector< osgViewer::View* > &,bool ) ;
+            typedef void ( ::osgViewer::Viewer::*getViews_function_type )( ::std::vector< osgViewer::View* > &,bool ) ;
+            typedef void ( Viewer_wrapper::*default_getViews_function_type )( ::std::vector< osgViewer::View* > &,bool ) ;
             
             Viewer_exposer.def( 
                 "getViews"
@@ -847,8 +835,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::isRealized
         
-            typedef bool ( ::osgViewer::Viewer::*isRealized_function_type)(  ) const;
-            typedef bool ( Viewer_wrapper::*default_isRealized_function_type)(  ) const;
+            typedef bool ( ::osgViewer::Viewer::*isRealized_function_type )(  ) const;
+            typedef bool ( Viewer_wrapper::*default_isRealized_function_type )(  ) const;
             
             Viewer_exposer.def( 
                 "isRealized"
@@ -858,8 +846,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::isSameKindAs
         
-            typedef bool ( ::osgViewer::Viewer::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( Viewer_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osgViewer::Viewer::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( Viewer_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             Viewer_exposer.def( 
                 "isSameKindAs"
@@ -870,8 +858,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::libraryName
         
-            typedef char const * ( ::osgViewer::Viewer::*libraryName_function_type)(  ) const;
-            typedef char const * ( Viewer_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osgViewer::Viewer::*libraryName_function_type )(  ) const;
+            typedef char const * ( Viewer_wrapper::*default_libraryName_function_type )(  ) const;
             
             Viewer_exposer.def( 
                 "libraryName"
@@ -881,8 +869,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::readConfiguration
         
-            typedef bool ( ::osgViewer::Viewer::*readConfiguration_function_type)( ::std::string const & ) ;
-            typedef bool ( Viewer_wrapper::*default_readConfiguration_function_type)( ::std::string const & ) ;
+            typedef bool ( ::osgViewer::Viewer::*readConfiguration_function_type )( ::std::string const & ) ;
+            typedef bool ( Viewer_wrapper::*default_readConfiguration_function_type )( ::std::string const & ) ;
             
             Viewer_exposer.def( 
                 "readConfiguration"
@@ -893,8 +881,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::realize
         
-            typedef void ( ::osgViewer::Viewer::*realize_function_type)(  ) ;
-            typedef void ( Viewer_wrapper::*default_realize_function_type)(  ) ;
+            typedef void ( ::osgViewer::Viewer::*realize_function_type )(  ) ;
+            typedef void ( Viewer_wrapper::*default_realize_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "realize"
@@ -904,8 +892,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::run
         
-            typedef int ( ::osgViewer::Viewer::*run_function_type)(  ) ;
-            typedef int ( Viewer_wrapper::*default_run_function_type)(  ) ;
+            typedef int ( ::osgViewer::Viewer::*run_function_type )(  ) ;
+            typedef int ( Viewer_wrapper::*default_run_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "run"
@@ -915,7 +903,7 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::setReferenceTime
         
-            typedef void ( ::osgViewer::Viewer::*setReferenceTime_function_type)( double ) ;
+            typedef void ( ::osgViewer::Viewer::*setReferenceTime_function_type )( double ) ;
             
             Viewer_exposer.def( 
                 "setReferenceTime"
@@ -925,8 +913,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::setSceneData
         
-            typedef void ( ::osgViewer::Viewer::*setSceneData_function_type)( ::osg::Node * ) ;
-            typedef void ( Viewer_wrapper::*default_setSceneData_function_type)( ::osg::Node * ) ;
+            typedef void ( ::osgViewer::Viewer::*setSceneData_function_type )( ::osg::Node * ) ;
+            typedef void ( Viewer_wrapper::*default_setSceneData_function_type )( ::osg::Node * ) ;
             
             Viewer_exposer.def( 
                 "setSceneData"
@@ -937,8 +925,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::setStartTick
         
-            typedef void ( ::osgViewer::Viewer::*setStartTick_function_type)( ::osg::Timer_t ) ;
-            typedef void ( Viewer_wrapper::*default_setStartTick_function_type)( ::osg::Timer_t ) ;
+            typedef void ( ::osgViewer::Viewer::*setStartTick_function_type )( ::osg::Timer_t ) ;
+            typedef void ( Viewer_wrapper::*default_setStartTick_function_type )( ::osg::Timer_t ) ;
             
             Viewer_exposer.def( 
                 "setStartTick"
@@ -949,8 +937,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::setUpViewerAsEmbeddedInWindow
         
-            typedef ::osgViewer::GraphicsWindowEmbedded * ( ::osgViewer::Viewer::*setUpViewerAsEmbeddedInWindow_function_type)( int,int,int,int ) ;
-            typedef ::osgViewer::GraphicsWindowEmbedded * ( Viewer_wrapper::*default_setUpViewerAsEmbeddedInWindow_function_type)( int,int,int,int ) ;
+            typedef ::osgViewer::GraphicsWindowEmbedded * ( ::osgViewer::Viewer::*setUpViewerAsEmbeddedInWindow_function_type )( int,int,int,int ) ;
+            typedef ::osgViewer::GraphicsWindowEmbedded * ( Viewer_wrapper::*default_setUpViewerAsEmbeddedInWindow_function_type )( int,int,int,int ) ;
             
             Viewer_exposer.def( 
                 "setUpViewerAsEmbeddedInWindow"
@@ -962,8 +950,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::setViewerStats
         
-            typedef void ( ::osgViewer::Viewer::*setViewerStats_function_type)( ::osg::Stats * ) ;
-            typedef void ( Viewer_wrapper::*default_setViewerStats_function_type)( ::osg::Stats * ) ;
+            typedef void ( ::osgViewer::Viewer::*setViewerStats_function_type )( ::osg::Stats * ) ;
+            typedef void ( Viewer_wrapper::*default_setViewerStats_function_type )( ::osg::Stats * ) ;
             
             Viewer_exposer.def( 
                 "setViewerStats"
@@ -974,8 +962,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::take
         
-            typedef void ( ::osgViewer::Viewer::*take_function_type)( ::osg::View & ) ;
-            typedef void ( Viewer_wrapper::*default_take_function_type)( ::osg::View & ) ;
+            typedef void ( ::osgViewer::Viewer::*take_function_type )( ::osg::View & ) ;
+            typedef void ( Viewer_wrapper::*default_take_function_type )( ::osg::View & ) ;
             
             Viewer_exposer.def( 
                 "take"
@@ -986,8 +974,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::Viewer::updateTraversal
         
-            typedef void ( ::osgViewer::Viewer::*updateTraversal_function_type)(  ) ;
-            typedef void ( Viewer_wrapper::*default_updateTraversal_function_type)(  ) ;
+            typedef void ( ::osgViewer::Viewer::*updateTraversal_function_type )(  ) ;
+            typedef void ( Viewer_wrapper::*default_updateTraversal_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "updateTraversal"
@@ -997,8 +985,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::View::asView
         
-            typedef ::osg::View * ( ::osgViewer::View::*asView_function_type)(  ) ;
-            typedef ::osg::View * ( Viewer_wrapper::*default_asView_function_type)(  ) ;
+            typedef ::osg::View * ( ::osgViewer::View::*asView_function_type )(  ) ;
+            typedef ::osg::View * ( Viewer_wrapper::*default_asView_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "asView"
@@ -1009,14 +997,14 @@ void register_Viewer_class(){
         }
         { //::osgViewer::ViewerBase::frame
         
-            typedef void ( ::osgViewer::ViewerBase::*frame_function_type)( double ) ;
-            typedef void ( Viewer_wrapper::*default_frame_function_type)( double ) ;
+            typedef void ( ::osgViewer::ViewerBase::*frame_function_type )( double ) ;
+            typedef void ( Viewer_wrapper::*default_frame_function_type )( double ) ;
             
             Viewer_exposer.def( 
                 "frame"
                 , frame_function_type(&::osgViewer::ViewerBase::frame)
                 , default_frame_function_type(&Viewer_wrapper::default_frame)
-                , ( bp::arg("simulationTime")=1.79769313486231570814527423731704356798070567526e+308 ) );
+                , ( bp::arg("simulationTime")=1.79769313486231570814527423731704356798070567525844996599e+308 ) );
         
         }
         { //::osgViewer::ViewerBase::getWindows
@@ -1031,8 +1019,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::ViewerBase::renderingTraversals
         
-            typedef void ( ::osgViewer::ViewerBase::*renderingTraversals_function_type)(  ) ;
-            typedef void ( Viewer_wrapper::*default_renderingTraversals_function_type)(  ) ;
+            typedef void ( ::osgViewer::ViewerBase::*renderingTraversals_function_type )(  ) ;
+            typedef void ( Viewer_wrapper::*default_renderingTraversals_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "renderingTraversals"
@@ -1042,8 +1030,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::View::requestContinuousUpdate
         
-            typedef void ( ::osgViewer::View::*requestContinuousUpdate_function_type)( bool ) ;
-            typedef void ( Viewer_wrapper::*default_requestContinuousUpdate_function_type)( bool ) ;
+            typedef void ( ::osgViewer::View::*requestContinuousUpdate_function_type )( bool ) ;
+            typedef void ( Viewer_wrapper::*default_requestContinuousUpdate_function_type )( bool ) ;
             
             Viewer_exposer.def( 
                 "requestContinuousUpdate"
@@ -1054,8 +1042,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::View::requestRedraw
         
-            typedef void ( ::osgViewer::View::*requestRedraw_function_type)(  ) ;
-            typedef void ( Viewer_wrapper::*default_requestRedraw_function_type)(  ) ;
+            typedef void ( ::osgViewer::View::*requestRedraw_function_type )(  ) ;
+            typedef void ( Viewer_wrapper::*default_requestRedraw_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "requestRedraw"
@@ -1065,8 +1053,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::View::requestWarpPointer
         
-            typedef void ( ::osgViewer::View::*requestWarpPointer_function_type)( float,float ) ;
-            typedef void ( Viewer_wrapper::*default_requestWarpPointer_function_type)( float,float ) ;
+            typedef void ( ::osgViewer::View::*requestWarpPointer_function_type )( float,float ) ;
+            typedef void ( Viewer_wrapper::*default_requestWarpPointer_function_type )( float,float ) ;
             
             Viewer_exposer.def( 
                 "requestWarpPointer"
@@ -1077,8 +1065,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::ViewerBase::setThreadingModel
         
-            typedef void ( ::osgViewer::ViewerBase::*setThreadingModel_function_type)( ::osgViewer::ViewerBase::ThreadingModel ) ;
-            typedef void ( Viewer_wrapper::*default_setThreadingModel_function_type)( ::osgViewer::ViewerBase::ThreadingModel ) ;
+            typedef void ( ::osgViewer::ViewerBase::*setThreadingModel_function_type )( ::osgViewer::ViewerBase::ThreadingModel ) ;
+            typedef void ( Viewer_wrapper::*default_setThreadingModel_function_type )( ::osgViewer::ViewerBase::ThreadingModel ) ;
             
             Viewer_exposer.def( 
                 "setThreadingModel"
@@ -1089,8 +1077,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::ViewerBase::setUpThreading
         
-            typedef void ( ::osgViewer::ViewerBase::*setUpThreading_function_type)(  ) ;
-            typedef void ( Viewer_wrapper::*default_setUpThreading_function_type)(  ) ;
+            typedef void ( ::osgViewer::ViewerBase::*setUpThreading_function_type )(  ) ;
+            typedef void ( Viewer_wrapper::*default_setUpThreading_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "setUpThreading"
@@ -1100,8 +1088,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::ViewerBase::startThreading
         
-            typedef void ( ::osgViewer::ViewerBase::*startThreading_function_type)(  ) ;
-            typedef void ( Viewer_wrapper::*default_startThreading_function_type)(  ) ;
+            typedef void ( ::osgViewer::ViewerBase::*startThreading_function_type )(  ) ;
+            typedef void ( Viewer_wrapper::*default_startThreading_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "startThreading"
@@ -1111,8 +1099,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::ViewerBase::stopThreading
         
-            typedef void ( ::osgViewer::ViewerBase::*stopThreading_function_type)(  ) ;
-            typedef void ( Viewer_wrapper::*default_stopThreading_function_type)(  ) ;
+            typedef void ( ::osgViewer::ViewerBase::*stopThreading_function_type )(  ) ;
+            typedef void ( Viewer_wrapper::*default_stopThreading_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "stopThreading"
@@ -1122,8 +1110,8 @@ void register_Viewer_class(){
         }
         { //::osgViewer::ViewerBase::suggestBestThreadingModel
         
-            typedef ::osgViewer::ViewerBase::ThreadingModel ( ::osgViewer::ViewerBase::*suggestBestThreadingModel_function_type)(  ) ;
-            typedef ::osgViewer::ViewerBase::ThreadingModel ( Viewer_wrapper::*default_suggestBestThreadingModel_function_type)(  ) ;
+            typedef ::osgViewer::ViewerBase::ThreadingModel ( ::osgViewer::ViewerBase::*suggestBestThreadingModel_function_type )(  ) ;
+            typedef ::osgViewer::ViewerBase::ThreadingModel ( Viewer_wrapper::*default_suggestBestThreadingModel_function_type )(  ) ;
             
             Viewer_exposer.def( 
                 "suggestBestThreadingModel"

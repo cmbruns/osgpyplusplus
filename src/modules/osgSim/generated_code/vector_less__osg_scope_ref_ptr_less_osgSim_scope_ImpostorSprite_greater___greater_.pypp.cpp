@@ -3,8 +3,8 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
-#include "wrap_osgsim.h"
-#include "vector_less__osg_scope_ref_ptr_less_osgsim_scope_impostorsprite_greater___greater_.pypp.hpp"
+#include "wrap_osgSim.h"
+#include "vector_less__osg_scope_ref_ptr_less_osgSim_scope_ImpostorSprite_greater___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

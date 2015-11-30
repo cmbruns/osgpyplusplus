@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "shadercomposer.pypp.hpp"
+#include "ShaderComposer.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -112,90 +112,6 @@ struct ShaderComposer_wrapper : osg::ShaderComposer, bp::wrapper< osg::ShaderCom
         return osg::ShaderComposer::libraryName( );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_ShaderComposer_class(){
@@ -204,83 +120,44 @@ void register_ShaderComposer_class(){
         .def( bp::init< >() )    
         .def( 
             "addShaderToProgram"
-            , (void ( ::osg::ShaderComposer::* )( ::osg::Program *,::std::vector< const osg::Shader* > const & ))(&::osg::ShaderComposer::addShaderToProgram)
-            , (void ( ShaderComposer_wrapper::* )( ::osg::Program *,::std::vector< const osg::Shader* > const & ))(&ShaderComposer_wrapper::default_addShaderToProgram)
+            , (void ( ::osg::ShaderComposer::* )( ::osg::Program *,::std::vector< const osg::Shader* > const & ) )(&::osg::ShaderComposer::addShaderToProgram)
+            , (void ( ShaderComposer_wrapper::* )( ::osg::Program *,::std::vector< const osg::Shader* > const & ) )(&ShaderComposer_wrapper::default_addShaderToProgram)
             , ( bp::arg("program"), bp::arg("shaders") ) )    
         .def( 
             "className"
-            , (char const * ( ::osg::ShaderComposer::* )(  )const)(&::osg::ShaderComposer::className)
-            , (char const * ( ShaderComposer_wrapper::* )(  )const)(&ShaderComposer_wrapper::default_className) )    
+            , (char const * ( ::osg::ShaderComposer::* )(  ) const)(&::osg::ShaderComposer::className)
+            , (char const * ( ShaderComposer_wrapper::* )(  ) const)(&ShaderComposer_wrapper::default_className) )    
         .def( 
             "clone"
-            , (::osg::Object * ( ::osg::ShaderComposer::* )( ::osg::CopyOp const & )const)(&::osg::ShaderComposer::clone)
-            , (::osg::Object * ( ShaderComposer_wrapper::* )( ::osg::CopyOp const & )const)(&ShaderComposer_wrapper::default_clone)
+            , (::osg::Object * ( ::osg::ShaderComposer::* )( ::osg::CopyOp const & ) const)(&::osg::ShaderComposer::clone)
+            , (::osg::Object * ( ShaderComposer_wrapper::* )( ::osg::CopyOp const & ) const)(&ShaderComposer_wrapper::default_clone)
             , ( bp::arg("copyop") )
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "cloneType"
-            , (::osg::Object * ( ::osg::ShaderComposer::* )(  )const)(&::osg::ShaderComposer::cloneType)
-            , (::osg::Object * ( ShaderComposer_wrapper::* )(  )const)(&ShaderComposer_wrapper::default_cloneType)
+            , (::osg::Object * ( ::osg::ShaderComposer::* )(  ) const)(&::osg::ShaderComposer::cloneType)
+            , (::osg::Object * ( ShaderComposer_wrapper::* )(  ) const)(&ShaderComposer_wrapper::default_cloneType)
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "composeMain"
-            , (::osg::Shader * ( ::osg::ShaderComposer::* )( ::std::vector< const osg::Shader* > const & ))(&::osg::ShaderComposer::composeMain)
-            , (::osg::Shader * ( ShaderComposer_wrapper::* )( ::std::vector< const osg::Shader* > const & ))(&ShaderComposer_wrapper::default_composeMain)
+            , (::osg::Shader * ( ::osg::ShaderComposer::* )( ::std::vector< const osg::Shader* > const & ) )(&::osg::ShaderComposer::composeMain)
+            , (::osg::Shader * ( ShaderComposer_wrapper::* )( ::std::vector< const osg::Shader* > const & ) )(&ShaderComposer_wrapper::default_composeMain)
             , ( bp::arg("shaders") )
             , bp::return_internal_reference< >() )    
         .def( 
             "getOrCreateProgram"
-            , (::osg::Program * ( ::osg::ShaderComposer::* )( ::osg::ShaderComponents const & ))(&::osg::ShaderComposer::getOrCreateProgram)
-            , (::osg::Program * ( ShaderComposer_wrapper::* )( ::osg::ShaderComponents const & ))(&ShaderComposer_wrapper::default_getOrCreateProgram)
+            , (::osg::Program * ( ::osg::ShaderComposer::* )( ::osg::ShaderComponents const & ) )(&::osg::ShaderComposer::getOrCreateProgram)
+            , (::osg::Program * ( ShaderComposer_wrapper::* )( ::osg::ShaderComponents const & ) )(&ShaderComposer_wrapper::default_getOrCreateProgram)
             , ( bp::arg("shaderComponents") )
             , bp::return_internal_reference< >() )    
         .def( 
             "isSameKindAs"
-            , (bool ( ::osg::ShaderComposer::* )( ::osg::Object const * )const)(&::osg::ShaderComposer::isSameKindAs)
-            , (bool ( ShaderComposer_wrapper::* )( ::osg::Object const * )const)(&ShaderComposer_wrapper::default_isSameKindAs)
+            , (bool ( ::osg::ShaderComposer::* )( ::osg::Object const * ) const)(&::osg::ShaderComposer::isSameKindAs)
+            , (bool ( ShaderComposer_wrapper::* )( ::osg::Object const * ) const)(&ShaderComposer_wrapper::default_isSameKindAs)
             , ( bp::arg("obj") ) )    
         .def( 
             "libraryName"
-            , (char const * ( ::osg::ShaderComposer::* )(  )const)(&::osg::ShaderComposer::libraryName)
-            , (char const * ( ShaderComposer_wrapper::* )(  )const)(&ShaderComposer_wrapper::default_libraryName) )    
-        .def( 
-            "computeDataVariance"
-            , (void ( ::osg::Object::* )(  ))(&::osg::Object::computeDataVariance)
-            , (void ( ShaderComposer_wrapper::* )(  ))(&ShaderComposer_wrapper::default_computeDataVariance) )    
-        .def( 
-            "getUserData"
-            , (::osg::Referenced * ( ::osg::Object::* )(  ))(&::osg::Object::getUserData)
-            , (::osg::Referenced * ( ShaderComposer_wrapper::* )(  ))(&ShaderComposer_wrapper::default_getUserData)
-            , bp::return_internal_reference< >() )    
-        .def( 
-            "getUserData"
-            , (::osg::Referenced const * ( ::osg::Object::* )(  )const)(&::osg::Object::getUserData)
-            , (::osg::Referenced const * ( ShaderComposer_wrapper::* )(  )const)(&ShaderComposer_wrapper::default_getUserData)
-            , bp::return_internal_reference< >() )    
-        .def( 
-            "resizeGLObjectBuffers"
-            , (void ( ::osg::Object::* )( unsigned int ))(&::osg::Object::resizeGLObjectBuffers)
-            , (void ( ShaderComposer_wrapper::* )( unsigned int ))(&ShaderComposer_wrapper::default_resizeGLObjectBuffers)
-            , ( bp::arg("arg0") ) )    
-        .def( 
-            "setName"
-            , (void ( ::osg::Object::* )( ::std::string const & ))(&::osg::Object::setName)
-            , (void ( ShaderComposer_wrapper::* )( ::std::string const & ))(&ShaderComposer_wrapper::default_setName)
-            , ( bp::arg("name") ) )    
-        .def( 
-            "setName"
-            , (void ( ::osg::Object::* )( char const * ))( &::osg::Object::setName )
-            , ( bp::arg("name") )
-            , " Set the name of object using a C style string." )    
-        .def( 
-            "setThreadSafeRefUnref"
-            , (void ( ::osg::Object::* )( bool ))(&::osg::Object::setThreadSafeRefUnref)
-            , (void ( ShaderComposer_wrapper::* )( bool ))(&ShaderComposer_wrapper::default_setThreadSafeRefUnref)
-            , ( bp::arg("threadSafe") ) )    
-        .def( 
-            "setUserData"
-            , (void ( ::osg::Object::* )( ::osg::Referenced * ))(&::osg::Object::setUserData)
-            , (void ( ShaderComposer_wrapper::* )( ::osg::Referenced * ))(&ShaderComposer_wrapper::default_setUserData)
-            , ( bp::arg("obj") ) );
+            , (char const * ( ::osg::ShaderComposer::* )(  ) const)(&::osg::ShaderComposer::libraryName)
+            , (char const * ( ShaderComposer_wrapper::* )(  ) const)(&ShaderComposer_wrapper::default_libraryName) );
 
 }

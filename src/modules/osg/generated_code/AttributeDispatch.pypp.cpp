@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "attributedispatch.pypp.hpp"
+#include "AttributeDispatch.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -40,18 +40,6 @@ struct AttributeDispatch_wrapper : osg::AttributeDispatch, bp::wrapper< osg::Att
         osg::AttributeDispatch::operator()( arg0 );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_AttributeDispatch_class(){
@@ -59,18 +47,13 @@ void register_AttributeDispatch_class(){
     bp::class_< AttributeDispatch_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::AttributeDispatch >, boost::noncopyable >( "AttributeDispatch" )    
         .def( 
             "assign"
-            , (void ( ::osg::AttributeDispatch::* )( ::GLvoid const * ))(&::osg::AttributeDispatch::assign)
-            , (void ( AttributeDispatch_wrapper::* )( ::GLvoid const * ))(&AttributeDispatch_wrapper::default_assign)
+            , (void ( ::osg::AttributeDispatch::* )( ::GLvoid const * ) )(&::osg::AttributeDispatch::assign)
+            , (void ( AttributeDispatch_wrapper::* )( ::GLvoid const * ) )(&AttributeDispatch_wrapper::default_assign)
             , ( bp::arg("arg0") ) )    
         .def( 
             "__call__"
-            , (void ( ::osg::AttributeDispatch::* )( unsigned int ))(&::osg::AttributeDispatch::operator())
-            , (void ( AttributeDispatch_wrapper::* )( unsigned int ))(&AttributeDispatch_wrapper::default___call__)
-            , ( bp::arg("arg0") ) )    
-        .def( 
-            "setThreadSafeRefUnref"
-            , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-            , (void ( AttributeDispatch_wrapper::* )( bool ))(&AttributeDispatch_wrapper::default_setThreadSafeRefUnref)
-            , ( bp::arg("threadSafe") ) );
+            , (void ( ::osg::AttributeDispatch::* )( unsigned int ) )(&::osg::AttributeDispatch::operator())
+            , (void ( AttributeDispatch_wrapper::* )( unsigned int ) )(&AttributeDispatch_wrapper::default___call__)
+            , ( bp::arg("arg0") ) );
 
 }

@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "billboard.pypp.hpp"
+#include "Billboard.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -268,42 +268,6 @@ struct Billboard_wrapper : osg::Billboard, bp::wrapper< osg::Billboard > {
         osg::Node::ascend( boost::ref(nv) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
     virtual bool removeDrawables( unsigned int i, unsigned int numDrawablesToRemove=1 ) {
         if( bp::override func_removeDrawables = this->get_override( "removeDrawables" ) )
             return func_removeDrawables( i, numDrawablesToRemove );
@@ -352,18 +316,6 @@ struct Billboard_wrapper : osg::Billboard, bp::wrapper< osg::Billboard > {
         return osg::Geode::setDrawable( i, boost::python::ptr(drawable) );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
     virtual void setThreadSafeRefUnref( bool threadSafe ) {
         if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
             func_setThreadSafeRefUnref( threadSafe );
@@ -374,18 +326,6 @@ struct Billboard_wrapper : osg::Billboard, bp::wrapper< osg::Billboard > {
     
     void default_setThreadSafeRefUnref( bool threadSafe ) {
         osg::Geode::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
     }
 
     virtual void traverse( ::osg::NodeVisitor & arg0 ) {
@@ -417,8 +357,8 @@ void register_Billboard_class(){
         Billboard_exposer.def( bp::init< >() );
         { //::osg::Billboard::accept
         
-            typedef void ( ::osg::Billboard::*accept_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( Billboard_wrapper::*default_accept_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::Billboard::*accept_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( Billboard_wrapper::*default_accept_function_type )( ::osg::NodeVisitor & ) ;
             
             Billboard_exposer.def( 
                 "accept"
@@ -429,8 +369,8 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::addDrawable
         
-            typedef bool ( ::osg::Billboard::*addDrawable_function_type)( ::osg::Drawable * ) ;
-            typedef bool ( Billboard_wrapper::*default_addDrawable_function_type)( ::osg::Drawable * ) ;
+            typedef bool ( ::osg::Billboard::*addDrawable_function_type )( ::osg::Drawable * ) ;
+            typedef bool ( Billboard_wrapper::*default_addDrawable_function_type )( ::osg::Drawable * ) ;
             
             Billboard_exposer.def( 
                 "addDrawable"
@@ -441,8 +381,8 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::addDrawable
         
-            typedef bool ( ::osg::Billboard::*addDrawable_function_type)( ::osg::Drawable *,::osg::Vec3 const & ) ;
-            typedef bool ( Billboard_wrapper::*default_addDrawable_function_type)( ::osg::Drawable *,::osg::Vec3 const & ) ;
+            typedef bool ( ::osg::Billboard::*addDrawable_function_type )( ::osg::Drawable *,::osg::Vec3 const & ) ;
+            typedef bool ( Billboard_wrapper::*default_addDrawable_function_type )( ::osg::Drawable *,::osg::Vec3 const & ) ;
             
             Billboard_exposer.def( 
                 "addDrawable"
@@ -453,8 +393,8 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::className
         
-            typedef char const * ( ::osg::Billboard::*className_function_type)(  ) const;
-            typedef char const * ( Billboard_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::Billboard::*className_function_type )(  ) const;
+            typedef char const * ( Billboard_wrapper::*default_className_function_type )(  ) const;
             
             Billboard_exposer.def( 
                 "className"
@@ -464,8 +404,8 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::clone
         
-            typedef ::osg::Object * ( ::osg::Billboard::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( Billboard_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::Billboard::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( Billboard_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             Billboard_exposer.def( 
                 "clone"
@@ -477,8 +417,8 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::cloneType
         
-            typedef ::osg::Object * ( ::osg::Billboard::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( Billboard_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::Billboard::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( Billboard_wrapper::*default_cloneType_function_type )(  ) const;
             
             Billboard_exposer.def( 
                 "cloneType"
@@ -489,8 +429,8 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::computeBound
         
-            typedef ::osg::BoundingSphere ( ::osg::Billboard::*computeBound_function_type)(  ) const;
-            typedef ::osg::BoundingSphere ( Billboard_wrapper::*default_computeBound_function_type)(  ) const;
+            typedef ::osg::BoundingSphere ( ::osg::Billboard::*computeBound_function_type )(  ) const;
+            typedef ::osg::BoundingSphere ( Billboard_wrapper::*default_computeBound_function_type )(  ) const;
             
             Billboard_exposer.def( 
                 "computeBound"
@@ -500,7 +440,7 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::computeMatrix
         
-            typedef bool ( ::osg::Billboard::*computeMatrix_function_type)( ::osg::Matrix &,::osg::Vec3 const &,::osg::Vec3 const & ) const;
+            typedef bool ( ::osg::Billboard::*computeMatrix_function_type )( ::osg::Matrix &,::osg::Vec3 const &,::osg::Vec3 const & ) const;
             
             Billboard_exposer.def( 
                 "computeMatrix"
@@ -510,7 +450,7 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::getAxis
         
-            typedef ::osg::Vec3 const & ( ::osg::Billboard::*getAxis_function_type)(  ) const;
+            typedef ::osg::Vec3 const & ( ::osg::Billboard::*getAxis_function_type )(  ) const;
             
             Billboard_exposer.def( 
                 "getAxis"
@@ -521,7 +461,7 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::getMode
         
-            typedef ::osg::Billboard::Mode ( ::osg::Billboard::*getMode_function_type)(  ) const;
+            typedef ::osg::Billboard::Mode ( ::osg::Billboard::*getMode_function_type )(  ) const;
             
             Billboard_exposer.def( 
                 "getMode"
@@ -531,7 +471,7 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::getNormal
         
-            typedef ::osg::Vec3 const & ( ::osg::Billboard::*getNormal_function_type)(  ) const;
+            typedef ::osg::Vec3 const & ( ::osg::Billboard::*getNormal_function_type )(  ) const;
             
             Billboard_exposer.def( 
                 "getNormal"
@@ -542,7 +482,7 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::getPosition
         
-            typedef ::osg::Vec3 const & ( ::osg::Billboard::*getPosition_function_type)( unsigned int ) const;
+            typedef ::osg::Vec3 const & ( ::osg::Billboard::*getPosition_function_type )( unsigned int ) const;
             
             Billboard_exposer.def( 
                 "getPosition"
@@ -554,7 +494,7 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::getPositionList
         
-            typedef ::std::vector< osg::Vec3f > & ( ::osg::Billboard::*getPositionList_function_type)(  ) ;
+            typedef ::std::vector< osg::Vec3f > & ( ::osg::Billboard::*getPositionList_function_type )(  ) ;
             
             Billboard_exposer.def( 
                 "getPositionList"
@@ -565,7 +505,7 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::getPositionList
         
-            typedef ::std::vector< osg::Vec3f > const & ( ::osg::Billboard::*getPositionList_function_type)(  ) const;
+            typedef ::std::vector< osg::Vec3f > const & ( ::osg::Billboard::*getPositionList_function_type )(  ) const;
             
             Billboard_exposer.def( 
                 "getPositionList"
@@ -576,8 +516,8 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::isSameKindAs
         
-            typedef bool ( ::osg::Billboard::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( Billboard_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::Billboard::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( Billboard_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             Billboard_exposer.def( 
                 "isSameKindAs"
@@ -588,8 +528,8 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::libraryName
         
-            typedef char const * ( ::osg::Billboard::*libraryName_function_type)(  ) const;
-            typedef char const * ( Billboard_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::Billboard::*libraryName_function_type )(  ) const;
+            typedef char const * ( Billboard_wrapper::*default_libraryName_function_type )(  ) const;
             
             Billboard_exposer.def( 
                 "libraryName"
@@ -599,8 +539,8 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::removeDrawable
         
-            typedef bool ( ::osg::Billboard::*removeDrawable_function_type)( ::osg::Drawable * ) ;
-            typedef bool ( Billboard_wrapper::*default_removeDrawable_function_type)( ::osg::Drawable * ) ;
+            typedef bool ( ::osg::Billboard::*removeDrawable_function_type )( ::osg::Drawable * ) ;
+            typedef bool ( Billboard_wrapper::*default_removeDrawable_function_type )( ::osg::Drawable * ) ;
             
             Billboard_exposer.def( 
                 "removeDrawable"
@@ -611,7 +551,7 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::setAxis
         
-            typedef void ( ::osg::Billboard::*setAxis_function_type)( ::osg::Vec3 const & ) ;
+            typedef void ( ::osg::Billboard::*setAxis_function_type )( ::osg::Vec3 const & ) ;
             
             Billboard_exposer.def( 
                 "setAxis"
@@ -622,7 +562,7 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::setMode
         
-            typedef void ( ::osg::Billboard::*setMode_function_type)( ::osg::Billboard::Mode ) ;
+            typedef void ( ::osg::Billboard::*setMode_function_type )( ::osg::Billboard::Mode ) ;
             
             Billboard_exposer.def( 
                 "setMode"
@@ -633,7 +573,7 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::setNormal
         
-            typedef void ( ::osg::Billboard::*setNormal_function_type)( ::osg::Vec3 const & ) ;
+            typedef void ( ::osg::Billboard::*setNormal_function_type )( ::osg::Vec3 const & ) ;
             
             Billboard_exposer.def( 
                 "setNormal"
@@ -644,7 +584,7 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::setPosition
         
-            typedef void ( ::osg::Billboard::*setPosition_function_type)( unsigned int,::osg::Vec3 const & ) ;
+            typedef void ( ::osg::Billboard::*setPosition_function_type )( unsigned int,::osg::Vec3 const & ) ;
             
             Billboard_exposer.def( 
                 "setPosition"
@@ -655,7 +595,7 @@ void register_Billboard_class(){
         }
         { //::osg::Billboard::setPositionList
         
-            typedef void ( ::osg::Billboard::*setPositionList_function_type)( ::std::vector< osg::Vec3f > & ) ;
+            typedef void ( ::osg::Billboard::*setPositionList_function_type )( ::std::vector< osg::Vec3f > & ) ;
             
             Billboard_exposer.def( 
                 "setPositionList"
@@ -666,8 +606,8 @@ void register_Billboard_class(){
         }
         { //::osg::Node::asCamera
         
-            typedef ::osg::Camera * ( ::osg::Node::*asCamera_function_type)(  ) ;
-            typedef ::osg::Camera * ( Billboard_wrapper::*default_asCamera_function_type)(  ) ;
+            typedef ::osg::Camera * ( ::osg::Node::*asCamera_function_type )(  ) ;
+            typedef ::osg::Camera * ( Billboard_wrapper::*default_asCamera_function_type )(  ) ;
             
             Billboard_exposer.def( 
                 "asCamera"
@@ -678,8 +618,8 @@ void register_Billboard_class(){
         }
         { //::osg::Node::asCamera
         
-            typedef ::osg::Camera const * ( ::osg::Node::*asCamera_function_type)(  ) const;
-            typedef ::osg::Camera const * ( Billboard_wrapper::*default_asCamera_function_type)(  ) const;
+            typedef ::osg::Camera const * ( ::osg::Node::*asCamera_function_type )(  ) const;
+            typedef ::osg::Camera const * ( Billboard_wrapper::*default_asCamera_function_type )(  ) const;
             
             Billboard_exposer.def( 
                 "asCamera"
@@ -690,8 +630,8 @@ void register_Billboard_class(){
         }
         { //::osg::Geode::asGeode
         
-            typedef ::osg::Geode * ( ::osg::Geode::*asGeode_function_type)(  ) ;
-            typedef ::osg::Geode * ( Billboard_wrapper::*default_asGeode_function_type)(  ) ;
+            typedef ::osg::Geode * ( ::osg::Geode::*asGeode_function_type )(  ) ;
+            typedef ::osg::Geode * ( Billboard_wrapper::*default_asGeode_function_type )(  ) ;
             
             Billboard_exposer.def( 
                 "asGeode"
@@ -702,8 +642,8 @@ void register_Billboard_class(){
         }
         { //::osg::Geode::asGeode
         
-            typedef ::osg::Geode const * ( ::osg::Geode::*asGeode_function_type)(  ) const;
-            typedef ::osg::Geode const * ( Billboard_wrapper::*default_asGeode_function_type)(  ) const;
+            typedef ::osg::Geode const * ( ::osg::Geode::*asGeode_function_type )(  ) const;
+            typedef ::osg::Geode const * ( Billboard_wrapper::*default_asGeode_function_type )(  ) const;
             
             Billboard_exposer.def( 
                 "asGeode"
@@ -714,8 +654,8 @@ void register_Billboard_class(){
         }
         { //::osg::Node::asGroup
         
-            typedef ::osg::Group * ( ::osg::Node::*asGroup_function_type)(  ) ;
-            typedef ::osg::Group * ( Billboard_wrapper::*default_asGroup_function_type)(  ) ;
+            typedef ::osg::Group * ( ::osg::Node::*asGroup_function_type )(  ) ;
+            typedef ::osg::Group * ( Billboard_wrapper::*default_asGroup_function_type )(  ) ;
             
             Billboard_exposer.def( 
                 "asGroup"
@@ -726,8 +666,8 @@ void register_Billboard_class(){
         }
         { //::osg::Node::asGroup
         
-            typedef ::osg::Group const * ( ::osg::Node::*asGroup_function_type)(  ) const;
-            typedef ::osg::Group const * ( Billboard_wrapper::*default_asGroup_function_type)(  ) const;
+            typedef ::osg::Group const * ( ::osg::Node::*asGroup_function_type )(  ) const;
+            typedef ::osg::Group const * ( Billboard_wrapper::*default_asGroup_function_type )(  ) const;
             
             Billboard_exposer.def( 
                 "asGroup"
@@ -738,8 +678,8 @@ void register_Billboard_class(){
         }
         { //::osg::Node::asSwitch
         
-            typedef ::osg::Switch * ( ::osg::Node::*asSwitch_function_type)(  ) ;
-            typedef ::osg::Switch * ( Billboard_wrapper::*default_asSwitch_function_type)(  ) ;
+            typedef ::osg::Switch * ( ::osg::Node::*asSwitch_function_type )(  ) ;
+            typedef ::osg::Switch * ( Billboard_wrapper::*default_asSwitch_function_type )(  ) ;
             
             Billboard_exposer.def( 
                 "asSwitch"
@@ -750,8 +690,8 @@ void register_Billboard_class(){
         }
         { //::osg::Node::asSwitch
         
-            typedef ::osg::Switch const * ( ::osg::Node::*asSwitch_function_type)(  ) const;
-            typedef ::osg::Switch const * ( Billboard_wrapper::*default_asSwitch_function_type)(  ) const;
+            typedef ::osg::Switch const * ( ::osg::Node::*asSwitch_function_type )(  ) const;
+            typedef ::osg::Switch const * ( Billboard_wrapper::*default_asSwitch_function_type )(  ) const;
             
             Billboard_exposer.def( 
                 "asSwitch"
@@ -762,8 +702,8 @@ void register_Billboard_class(){
         }
         { //::osg::Node::asTransform
         
-            typedef ::osg::Transform * ( ::osg::Node::*asTransform_function_type)(  ) ;
-            typedef ::osg::Transform * ( Billboard_wrapper::*default_asTransform_function_type)(  ) ;
+            typedef ::osg::Transform * ( ::osg::Node::*asTransform_function_type )(  ) ;
+            typedef ::osg::Transform * ( Billboard_wrapper::*default_asTransform_function_type )(  ) ;
             
             Billboard_exposer.def( 
                 "asTransform"
@@ -774,8 +714,8 @@ void register_Billboard_class(){
         }
         { //::osg::Node::asTransform
         
-            typedef ::osg::Transform const * ( ::osg::Node::*asTransform_function_type)(  ) const;
-            typedef ::osg::Transform const * ( Billboard_wrapper::*default_asTransform_function_type)(  ) const;
+            typedef ::osg::Transform const * ( ::osg::Node::*asTransform_function_type )(  ) const;
+            typedef ::osg::Transform const * ( Billboard_wrapper::*default_asTransform_function_type )(  ) const;
             
             Billboard_exposer.def( 
                 "asTransform"
@@ -786,8 +726,8 @@ void register_Billboard_class(){
         }
         { //::osg::Node::ascend
         
-            typedef void ( ::osg::Node::*ascend_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( Billboard_wrapper::*default_ascend_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::Node::*ascend_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( Billboard_wrapper::*default_ascend_function_type )( ::osg::NodeVisitor & ) ;
             
             Billboard_exposer.def( 
                 "ascend"
@@ -796,45 +736,10 @@ void register_Billboard_class(){
                 , ( bp::arg("nv") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( Billboard_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            Billboard_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&Billboard_wrapper::default_computeDataVariance) );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( Billboard_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            Billboard_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Billboard_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( Billboard_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            Billboard_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Billboard_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::Geode::removeDrawables
         
-            typedef bool ( ::osg::Geode::*removeDrawables_function_type)( unsigned int,unsigned int ) ;
-            typedef bool ( Billboard_wrapper::*default_removeDrawables_function_type)( unsigned int,unsigned int ) ;
+            typedef bool ( ::osg::Geode::*removeDrawables_function_type )( unsigned int,unsigned int ) ;
+            typedef bool ( Billboard_wrapper::*default_removeDrawables_function_type )( unsigned int,unsigned int ) ;
             
             Billboard_exposer.def( 
                 "removeDrawables"
@@ -845,8 +750,8 @@ void register_Billboard_class(){
         }
         { //::osg::Geode::replaceDrawable
         
-            typedef bool ( ::osg::Geode::*replaceDrawable_function_type)( ::osg::Drawable *,::osg::Drawable * ) ;
-            typedef bool ( Billboard_wrapper::*default_replaceDrawable_function_type)( ::osg::Drawable *,::osg::Drawable * ) ;
+            typedef bool ( ::osg::Geode::*replaceDrawable_function_type )( ::osg::Drawable *,::osg::Drawable * ) ;
+            typedef bool ( Billboard_wrapper::*default_replaceDrawable_function_type )( ::osg::Drawable *,::osg::Drawable * ) ;
             
             Billboard_exposer.def( 
                 "replaceDrawable"
@@ -857,8 +762,8 @@ void register_Billboard_class(){
         }
         { //::osg::Geode::resizeGLObjectBuffers
         
-            typedef void ( ::osg::Geode::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( Billboard_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::Geode::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( Billboard_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             Billboard_exposer.def( 
                 "resizeGLObjectBuffers"
@@ -869,8 +774,8 @@ void register_Billboard_class(){
         }
         { //::osg::Geode::setDrawable
         
-            typedef bool ( ::osg::Geode::*setDrawable_function_type)( unsigned int,::osg::Drawable * ) ;
-            typedef bool ( Billboard_wrapper::*default_setDrawable_function_type)( unsigned int,::osg::Drawable * ) ;
+            typedef bool ( ::osg::Geode::*setDrawable_function_type )( unsigned int,::osg::Drawable * ) ;
+            typedef bool ( Billboard_wrapper::*default_setDrawable_function_type )( unsigned int,::osg::Drawable * ) ;
             
             Billboard_exposer.def( 
                 "setDrawable"
@@ -879,33 +784,10 @@ void register_Billboard_class(){
                 , ( bp::arg("i"), bp::arg("drawable") ) );
         
         }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( Billboard_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            Billboard_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&Billboard_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            Billboard_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
         { //::osg::Geode::setThreadSafeRefUnref
         
-            typedef void ( ::osg::Geode::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( Billboard_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
+            typedef void ( ::osg::Geode::*setThreadSafeRefUnref_function_type )( bool ) ;
+            typedef void ( Billboard_wrapper::*default_setThreadSafeRefUnref_function_type )( bool ) ;
             
             Billboard_exposer.def( 
                 "setThreadSafeRefUnref"
@@ -914,22 +796,10 @@ void register_Billboard_class(){
                 , ( bp::arg("threadSafe") ) );
         
         }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( Billboard_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            Billboard_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&Billboard_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
-        
-        }
         { //::osg::Node::traverse
         
-            typedef void ( ::osg::Node::*traverse_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( Billboard_wrapper::*default_traverse_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::Node::*traverse_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( Billboard_wrapper::*default_traverse_function_type )( ::osg::NodeVisitor & ) ;
             
             Billboard_exposer.def( 
                 "traverse"

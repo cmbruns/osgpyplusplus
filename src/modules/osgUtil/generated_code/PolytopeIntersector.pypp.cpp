@@ -4,9 +4,9 @@
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
 #include "__array_1.pypp.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "wrap_referenced.h"
-#include "polytopeintersector.pypp.hpp"
+#include "PolytopeIntersector.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -138,25 +138,13 @@ struct PolytopeIntersector_wrapper : osgUtil::PolytopeIntersector, bp::wrapper< 
         osgUtil::PolytopeIntersector::reset( );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_PolytopeIntersector_class(){
 
     { //::osgUtil::PolytopeIntersector
         typedef bp::class_< PolytopeIntersector_wrapper, bp::bases< osgUtil::Intersector >, osg::ref_ptr< PolytopeIntersector_wrapper >, boost::noncopyable > PolytopeIntersector_exposer_t;
-        PolytopeIntersector_exposer_t PolytopeIntersector_exposer = PolytopeIntersector_exposer_t( "PolytopeIntersector", bp::init< osg::Polytope const & >(( bp::arg("polytope") )) );
+        PolytopeIntersector_exposer_t PolytopeIntersector_exposer = PolytopeIntersector_exposer_t( "PolytopeIntersector", "\n Concrete class for implementing polytope intersections with the scene graph.\n To be used in conjunction with IntersectionVisitor.\n", bp::init< osg::Polytope const & >(( bp::arg("polytope") ), "\n Construct a PolytopeIntersector using specified polytope in MODEL coordinates.\n") );
         bp::scope PolytopeIntersector_scope( PolytopeIntersector_exposer );
         bp::scope().attr("DimZero") = (int)osgUtil::PolytopeIntersector::DimZero;
         bp::scope().attr("DimOne") = (int)osgUtil::PolytopeIntersector::DimOne;
@@ -168,7 +156,7 @@ void register_PolytopeIntersector_class(){
             bp::scope PolytopeIntersection_scope( PolytopeIntersection_exposer );
             bp::scope().attr("MaxNumIntesectionPoints") = (int)osgUtil::PolytopeIntersector::Intersection::MaxNumIntesectionPoints;
             PolytopeIntersection_exposer.def( bp::self < bp::self );
-            PolytopeIntersection_exposer.def_readwrite( "distance", &osgUtil::PolytopeIntersector::Intersection::distance );
+            PolytopeIntersection_exposer.def_readwrite( "distance", &osgUtil::PolytopeIntersector::Intersection::distance, " distance from reference plane" );
             PolytopeIntersection_exposer.def_readwrite( "drawable", &osgUtil::PolytopeIntersector::Intersection::drawable );
             pyplusplus::containers::static_sized::register_array_1< ::osg::Vec3d, 6, bp::return_internal_reference< > >( "__array_1__scope_osg_scope_Vec3d_6" );
             { //osgUtil::PolytopeIntersector::Intersection::intersectionPoints [variable], type=osg::Vec3d[6]
@@ -179,20 +167,20 @@ void register_PolytopeIntersector_class(){
                     , bp::make_function( array_wrapper_creator(&PolytopeIntersector_wrapper::Intersection_wrapper::pyplusplus_intersectionPoints_wrapper)
                                         , bp::with_custodian_and_ward_postcall< 0, 1 >() ) );
             }
-            PolytopeIntersection_exposer.def_readwrite( "localIntersectionPoint", &osgUtil::PolytopeIntersector::Intersection::localIntersectionPoint );
+            PolytopeIntersection_exposer.def_readwrite( "localIntersectionPoint", &osgUtil::PolytopeIntersector::Intersection::localIntersectionPoint, " center of all intersection points" );
             PolytopeIntersection_exposer.def_readwrite( "matrix", &osgUtil::PolytopeIntersector::Intersection::matrix );
-            PolytopeIntersection_exposer.def_readwrite( "maxDistance", &osgUtil::PolytopeIntersector::Intersection::maxDistance );
+            PolytopeIntersection_exposer.def_readwrite( "maxDistance", &osgUtil::PolytopeIntersector::Intersection::maxDistance, " maximum distance of intersection points from reference plane" );
             PolytopeIntersection_exposer.def_readwrite( "nodePath", &osgUtil::PolytopeIntersector::Intersection::nodePath );
             PolytopeIntersection_exposer.def_readwrite( "numIntersectionPoints", &osgUtil::PolytopeIntersector::Intersection::numIntersectionPoints );
-            PolytopeIntersection_exposer.def_readwrite( "primitiveIndex", &osgUtil::PolytopeIntersector::Intersection::primitiveIndex );
+            PolytopeIntersection_exposer.def_readwrite( "primitiveIndex", &osgUtil::PolytopeIntersector::Intersection::primitiveIndex, " primitive index" );
         }
         bp::implicitly_convertible< osg::Polytope const &, osgUtil::PolytopeIntersector >();
-        PolytopeIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, osg::Polytope const & >(( bp::arg("cf"), bp::arg("polytope") )) );
-        PolytopeIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, double, double, double, double >(( bp::arg("cf"), bp::arg("xMin"), bp::arg("yMin"), bp::arg("xMax"), bp::arg("yMax") )) );
+        PolytopeIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, osg::Polytope const & >(( bp::arg("cf"), bp::arg("polytope") ), "\n Construct a PolytopeIntersector using specified polytope in specified coordinate frame.\n") );
+        PolytopeIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, double, double, double, double >(( bp::arg("cf"), bp::arg("xMin"), bp::arg("yMin"), bp::arg("xMax"), bp::arg("yMax") ), "\n Convenience constructor for supporting picking in WINDOW, or PROJECTION coordinates\n In WINDOW coordinates (clip space cube) creates a five sided polytope box that has a front face at 0.0 and sides around box xMin, yMin, xMax, yMax.\n In PROJECTION coordinates (clip space cube) creates a five sided polytope box that has a front face at -1 and sides around box xMin, yMin, xMax, yMax.\n In VIEW and MODEL coordinates (clip space cube) creates a five sided polytope box that has a front face at 0.0 and sides around box xMin, yMin, xMax, yMax.\n") );
         { //::osgUtil::PolytopeIntersector::clone
         
-            typedef ::osgUtil::Intersector * ( ::osgUtil::PolytopeIntersector::*clone_function_type)( ::osgUtil::IntersectionVisitor & ) ;
-            typedef ::osgUtil::Intersector * ( PolytopeIntersector_wrapper::*default_clone_function_type)( ::osgUtil::IntersectionVisitor & ) ;
+            typedef ::osgUtil::Intersector * ( ::osgUtil::PolytopeIntersector::*clone_function_type )( ::osgUtil::IntersectionVisitor & ) ;
+            typedef ::osgUtil::Intersector * ( PolytopeIntersector_wrapper::*default_clone_function_type )( ::osgUtil::IntersectionVisitor & ) ;
             
             PolytopeIntersector_exposer.def( 
                 "clone"
@@ -204,8 +192,8 @@ void register_PolytopeIntersector_class(){
         }
         { //::osgUtil::PolytopeIntersector::containsIntersections
         
-            typedef bool ( ::osgUtil::PolytopeIntersector::*containsIntersections_function_type)(  ) ;
-            typedef bool ( PolytopeIntersector_wrapper::*default_containsIntersections_function_type)(  ) ;
+            typedef bool ( ::osgUtil::PolytopeIntersector::*containsIntersections_function_type )(  ) ;
+            typedef bool ( PolytopeIntersector_wrapper::*default_containsIntersections_function_type )(  ) ;
             
             PolytopeIntersector_exposer.def( 
                 "containsIntersections"
@@ -225,7 +213,7 @@ void register_PolytopeIntersector_class(){
         }
         { //::osgUtil::PolytopeIntersector::getDimensionMask
         
-            typedef unsigned int ( ::osgUtil::PolytopeIntersector::*getDimensionMask_function_type)(  ) const;
+            typedef unsigned int ( ::osgUtil::PolytopeIntersector::*getDimensionMask_function_type )(  ) const;
             
             PolytopeIntersector_exposer.def( 
                 "getDimensionMask"
@@ -234,7 +222,7 @@ void register_PolytopeIntersector_class(){
         }
         { //::osgUtil::PolytopeIntersector::getFirstIntersection
         
-            typedef ::osgUtil::PolytopeIntersector::Intersection ( ::osgUtil::PolytopeIntersector::*getFirstIntersection_function_type)(  ) ;
+            typedef ::osgUtil::PolytopeIntersector::Intersection ( ::osgUtil::PolytopeIntersector::*getFirstIntersection_function_type )(  ) ;
             
             PolytopeIntersector_exposer.def( 
                 "getFirstIntersection"
@@ -243,7 +231,7 @@ void register_PolytopeIntersector_class(){
         }
         { //::osgUtil::PolytopeIntersector::getIntersections
         
-            typedef ::std::set< osgUtil::PolytopeIntersector::Intersection > & ( ::osgUtil::PolytopeIntersector::*getIntersections_function_type)(  ) ;
+            typedef ::std::set< osgUtil::PolytopeIntersector::Intersection > & ( ::osgUtil::PolytopeIntersector::*getIntersections_function_type )(  ) ;
             
             PolytopeIntersector_exposer.def( 
                 "getIntersections"
@@ -253,7 +241,7 @@ void register_PolytopeIntersector_class(){
         }
         { //::osgUtil::PolytopeIntersector::getReferencePlane
         
-            typedef ::osg::Plane const & ( ::osgUtil::PolytopeIntersector::*getReferencePlane_function_type)(  ) const;
+            typedef ::osg::Plane const & ( ::osgUtil::PolytopeIntersector::*getReferencePlane_function_type )(  ) const;
             
             PolytopeIntersector_exposer.def( 
                 "getReferencePlane"
@@ -263,7 +251,7 @@ void register_PolytopeIntersector_class(){
         }
         { //::osgUtil::PolytopeIntersector::insertIntersection
         
-            typedef void ( ::osgUtil::PolytopeIntersector::*insertIntersection_function_type)( ::osgUtil::PolytopeIntersector::Intersection const & ) ;
+            typedef void ( ::osgUtil::PolytopeIntersector::*insertIntersection_function_type )( ::osgUtil::PolytopeIntersector::Intersection const & ) ;
             
             PolytopeIntersector_exposer.def( 
                 "insertIntersection"
@@ -273,8 +261,8 @@ void register_PolytopeIntersector_class(){
         }
         { //::osgUtil::PolytopeIntersector::intersect
         
-            typedef void ( ::osgUtil::PolytopeIntersector::*intersect_function_type)( ::osgUtil::IntersectionVisitor &,::osg::Drawable * ) ;
-            typedef void ( PolytopeIntersector_wrapper::*default_intersect_function_type)( ::osgUtil::IntersectionVisitor &,::osg::Drawable * ) ;
+            typedef void ( ::osgUtil::PolytopeIntersector::*intersect_function_type )( ::osgUtil::IntersectionVisitor &,::osg::Drawable * ) ;
+            typedef void ( PolytopeIntersector_wrapper::*default_intersect_function_type )( ::osgUtil::IntersectionVisitor &,::osg::Drawable * ) ;
             
             PolytopeIntersector_exposer.def( 
                 "intersect"
@@ -285,8 +273,8 @@ void register_PolytopeIntersector_class(){
         }
         { //::osgUtil::PolytopeIntersector::leave
         
-            typedef void ( ::osgUtil::PolytopeIntersector::*leave_function_type)(  ) ;
-            typedef void ( PolytopeIntersector_wrapper::*default_leave_function_type)(  ) ;
+            typedef void ( ::osgUtil::PolytopeIntersector::*leave_function_type )(  ) ;
+            typedef void ( PolytopeIntersector_wrapper::*default_leave_function_type )(  ) ;
             
             PolytopeIntersector_exposer.def( 
                 "leave"
@@ -296,8 +284,8 @@ void register_PolytopeIntersector_class(){
         }
         { //::osgUtil::PolytopeIntersector::reset
         
-            typedef void ( ::osgUtil::PolytopeIntersector::*reset_function_type)(  ) ;
-            typedef void ( PolytopeIntersector_wrapper::*default_reset_function_type)(  ) ;
+            typedef void ( ::osgUtil::PolytopeIntersector::*reset_function_type )(  ) ;
+            typedef void ( PolytopeIntersector_wrapper::*default_reset_function_type )(  ) ;
             
             PolytopeIntersector_exposer.def( 
                 "reset"
@@ -307,22 +295,24 @@ void register_PolytopeIntersector_class(){
         }
         { //::osgUtil::PolytopeIntersector::setDimensionMask
         
-            typedef void ( ::osgUtil::PolytopeIntersector::*setDimensionMask_function_type)( unsigned int ) ;
+            typedef void ( ::osgUtil::PolytopeIntersector::*setDimensionMask_function_type )( unsigned int ) ;
             
             PolytopeIntersector_exposer.def( 
                 "setDimensionMask"
                 , setDimensionMask_function_type( &::osgUtil::PolytopeIntersector::setDimensionMask )
-                , ( bp::arg("dimensionMask") ) );
+                , ( bp::arg("dimensionMask") )
+                , " set the dimension mask.\n As polytope-triangle and polytope-quad intersections are expensive to compute\n it is possible to turn them off by calling setDimensionMask( DimZero | DimOne )" );
         
         }
         { //::osgUtil::PolytopeIntersector::setReferencePlane
         
-            typedef void ( ::osgUtil::PolytopeIntersector::*setReferencePlane_function_type)( ::osg::Plane const & ) ;
+            typedef void ( ::osgUtil::PolytopeIntersector::*setReferencePlane_function_type )( ::osg::Plane const & ) ;
             
             PolytopeIntersector_exposer.def( 
                 "setReferencePlane"
                 , setReferencePlane_function_type( &::osgUtil::PolytopeIntersector::setReferencePlane )
-                , ( bp::arg("plane") ) );
+                , ( bp::arg("plane") )
+                , " set the plane used to sort the intersections.\n The intersections are sorted by the distance of the localIntersectionPoint\n and the reference plane. The default for the reference plane is the\n last plane of the polytope." );
         
         }
     }

@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "drawelementsubyte.pypp.hpp"
+#include "DrawElementsUByte.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -294,18 +294,6 @@ struct DrawElementsUByte_wrapper : osg::DrawElementsUByte, bp::wrapper< osg::Dra
         return osg::PrimitiveSet::asPrimitiveSet( );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
     virtual void computeRange(  ) const  {
         if( bp::override func_computeRange = this->get_override( "computeRange" ) )
             func_computeRange(  );
@@ -354,30 +342,6 @@ struct DrawElementsUByte_wrapper : osg::DrawElementsUByte, bp::wrapper< osg::Dra
         return osg::PrimitiveSet::getNumPrimitives( );
     }
 
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
     virtual void resizeGLObjectBuffers( unsigned int maxSize ) {
         if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
             func_resizeGLObjectBuffers( maxSize );
@@ -388,42 +352,6 @@ struct DrawElementsUByte_wrapper : osg::DrawElementsUByte, bp::wrapper< osg::Dra
     
     void default_resizeGLObjectBuffers( unsigned int maxSize ) {
         osg::BufferData::resizeGLObjectBuffers( maxSize );
-    }
-
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
     }
 
 };
@@ -440,8 +368,8 @@ void register_DrawElementsUByte_class(){
         DrawElementsUByte_exposer.def( bp::init< GLenum, unsigned int >(( bp::arg("mode"), bp::arg("no") ), "\n @param no: Number of intended elements. This will be the size of the underlying vector.\n") );
         { //::osg::DrawElementsUByte::accept
         
-            typedef void ( ::osg::DrawElementsUByte::*accept_function_type)( ::osg::PrimitiveFunctor & ) const;
-            typedef void ( DrawElementsUByte_wrapper::*default_accept_function_type)( ::osg::PrimitiveFunctor & ) const;
+            typedef void ( ::osg::DrawElementsUByte::*accept_function_type )( ::osg::PrimitiveFunctor & ) const;
+            typedef void ( DrawElementsUByte_wrapper::*default_accept_function_type )( ::osg::PrimitiveFunctor & ) const;
             
             DrawElementsUByte_exposer.def( 
                 "accept"
@@ -452,8 +380,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::accept
         
-            typedef void ( ::osg::DrawElementsUByte::*accept_function_type)( ::osg::PrimitiveIndexFunctor & ) const;
-            typedef void ( DrawElementsUByte_wrapper::*default_accept_function_type)( ::osg::PrimitiveIndexFunctor & ) const;
+            typedef void ( ::osg::DrawElementsUByte::*accept_function_type )( ::osg::PrimitiveIndexFunctor & ) const;
+            typedef void ( DrawElementsUByte_wrapper::*default_accept_function_type )( ::osg::PrimitiveIndexFunctor & ) const;
             
             DrawElementsUByte_exposer.def( 
                 "accept"
@@ -464,8 +392,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::addElement
         
-            typedef void ( ::osg::DrawElementsUByte::*addElement_function_type)( unsigned int ) ;
-            typedef void ( DrawElementsUByte_wrapper::*default_addElement_function_type)( unsigned int ) ;
+            typedef void ( ::osg::DrawElementsUByte::*addElement_function_type )( unsigned int ) ;
+            typedef void ( DrawElementsUByte_wrapper::*default_addElement_function_type )( unsigned int ) ;
             
             DrawElementsUByte_exposer.def( 
                 "addElement"
@@ -476,8 +404,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::className
         
-            typedef char const * ( ::osg::DrawElementsUByte::*className_function_type)(  ) const;
-            typedef char const * ( DrawElementsUByte_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::DrawElementsUByte::*className_function_type )(  ) const;
+            typedef char const * ( DrawElementsUByte_wrapper::*default_className_function_type )(  ) const;
             
             DrawElementsUByte_exposer.def( 
                 "className"
@@ -487,8 +415,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::clone
         
-            typedef ::osg::Object * ( ::osg::DrawElementsUByte::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( DrawElementsUByte_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::DrawElementsUByte::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( DrawElementsUByte_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             DrawElementsUByte_exposer.def( 
                 "clone"
@@ -500,8 +428,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::cloneType
         
-            typedef ::osg::Object * ( ::osg::DrawElementsUByte::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( DrawElementsUByte_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::DrawElementsUByte::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( DrawElementsUByte_wrapper::*default_cloneType_function_type )(  ) const;
             
             DrawElementsUByte_exposer.def( 
                 "cloneType"
@@ -512,8 +440,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::draw
         
-            typedef void ( ::osg::DrawElementsUByte::*draw_function_type)( ::osg::State &,bool ) const;
-            typedef void ( DrawElementsUByte_wrapper::*default_draw_function_type)( ::osg::State &,bool ) const;
+            typedef void ( ::osg::DrawElementsUByte::*draw_function_type )( ::osg::State &,bool ) const;
+            typedef void ( DrawElementsUByte_wrapper::*default_draw_function_type )( ::osg::State &,bool ) const;
             
             DrawElementsUByte_exposer.def( 
                 "draw"
@@ -524,8 +452,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::getDataPointer
         
-            typedef ::GLvoid const * ( ::osg::DrawElementsUByte::*getDataPointer_function_type)(  ) const;
-            typedef ::GLvoid const * ( DrawElementsUByte_wrapper::*default_getDataPointer_function_type)(  ) const;
+            typedef ::GLvoid const * ( ::osg::DrawElementsUByte::*getDataPointer_function_type )(  ) const;
+            typedef ::GLvoid const * ( DrawElementsUByte_wrapper::*default_getDataPointer_function_type )(  ) const;
             
             DrawElementsUByte_exposer.def( 
                 "getDataPointer"
@@ -536,8 +464,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::getElement
         
-            typedef unsigned int ( ::osg::DrawElementsUByte::*getElement_function_type)( unsigned int ) ;
-            typedef unsigned int ( DrawElementsUByte_wrapper::*default_getElement_function_type)( unsigned int ) ;
+            typedef unsigned int ( ::osg::DrawElementsUByte::*getElement_function_type )( unsigned int ) ;
+            typedef unsigned int ( DrawElementsUByte_wrapper::*default_getElement_function_type )( unsigned int ) ;
             
             DrawElementsUByte_exposer.def( 
                 "getElement"
@@ -548,8 +476,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::getNumIndices
         
-            typedef unsigned int ( ::osg::DrawElementsUByte::*getNumIndices_function_type)(  ) const;
-            typedef unsigned int ( DrawElementsUByte_wrapper::*default_getNumIndices_function_type)(  ) const;
+            typedef unsigned int ( ::osg::DrawElementsUByte::*getNumIndices_function_type )(  ) const;
+            typedef unsigned int ( DrawElementsUByte_wrapper::*default_getNumIndices_function_type )(  ) const;
             
             DrawElementsUByte_exposer.def( 
                 "getNumIndices"
@@ -559,8 +487,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::getTotalDataSize
         
-            typedef unsigned int ( ::osg::DrawElementsUByte::*getTotalDataSize_function_type)(  ) const;
-            typedef unsigned int ( DrawElementsUByte_wrapper::*default_getTotalDataSize_function_type)(  ) const;
+            typedef unsigned int ( ::osg::DrawElementsUByte::*getTotalDataSize_function_type )(  ) const;
+            typedef unsigned int ( DrawElementsUByte_wrapper::*default_getTotalDataSize_function_type )(  ) const;
             
             DrawElementsUByte_exposer.def( 
                 "getTotalDataSize"
@@ -570,8 +498,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::index
         
-            typedef unsigned int ( ::osg::DrawElementsUByte::*index_function_type)( unsigned int ) const;
-            typedef unsigned int ( DrawElementsUByte_wrapper::*default_index_function_type)( unsigned int ) const;
+            typedef unsigned int ( ::osg::DrawElementsUByte::*index_function_type )( unsigned int ) const;
+            typedef unsigned int ( DrawElementsUByte_wrapper::*default_index_function_type )( unsigned int ) const;
             
             DrawElementsUByte_exposer.def( 
                 "index"
@@ -582,8 +510,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::isSameKindAs
         
-            typedef bool ( ::osg::DrawElementsUByte::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( DrawElementsUByte_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::DrawElementsUByte::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( DrawElementsUByte_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             DrawElementsUByte_exposer.def( 
                 "isSameKindAs"
@@ -594,8 +522,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::libraryName
         
-            typedef char const * ( ::osg::DrawElementsUByte::*libraryName_function_type)(  ) const;
-            typedef char const * ( DrawElementsUByte_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::DrawElementsUByte::*libraryName_function_type )(  ) const;
+            typedef char const * ( DrawElementsUByte_wrapper::*default_libraryName_function_type )(  ) const;
             
             DrawElementsUByte_exposer.def( 
                 "libraryName"
@@ -605,8 +533,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::offsetIndices
         
-            typedef void ( ::osg::DrawElementsUByte::*offsetIndices_function_type)( int ) ;
-            typedef void ( DrawElementsUByte_wrapper::*default_offsetIndices_function_type)( int ) ;
+            typedef void ( ::osg::DrawElementsUByte::*offsetIndices_function_type )( int ) ;
+            typedef void ( DrawElementsUByte_wrapper::*default_offsetIndices_function_type )( int ) ;
             
             DrawElementsUByte_exposer.def( 
                 "offsetIndices"
@@ -617,8 +545,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::reserveElements
         
-            typedef void ( ::osg::DrawElementsUByte::*reserveElements_function_type)( unsigned int ) ;
-            typedef void ( DrawElementsUByte_wrapper::*default_reserveElements_function_type)( unsigned int ) ;
+            typedef void ( ::osg::DrawElementsUByte::*reserveElements_function_type )( unsigned int ) ;
+            typedef void ( DrawElementsUByte_wrapper::*default_reserveElements_function_type )( unsigned int ) ;
             
             DrawElementsUByte_exposer.def( 
                 "reserveElements"
@@ -629,8 +557,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::setElement
         
-            typedef void ( ::osg::DrawElementsUByte::*setElement_function_type)( unsigned int,unsigned int ) ;
-            typedef void ( DrawElementsUByte_wrapper::*default_setElement_function_type)( unsigned int,unsigned int ) ;
+            typedef void ( ::osg::DrawElementsUByte::*setElement_function_type )( unsigned int,unsigned int ) ;
+            typedef void ( DrawElementsUByte_wrapper::*default_setElement_function_type )( unsigned int,unsigned int ) ;
             
             DrawElementsUByte_exposer.def( 
                 "setElement"
@@ -641,8 +569,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElementsUByte::supportsBufferObject
         
-            typedef bool ( ::osg::DrawElementsUByte::*supportsBufferObject_function_type)(  ) const;
-            typedef bool ( DrawElementsUByte_wrapper::*default_supportsBufferObject_function_type)(  ) const;
+            typedef bool ( ::osg::DrawElementsUByte::*supportsBufferObject_function_type )(  ) const;
+            typedef bool ( DrawElementsUByte_wrapper::*default_supportsBufferObject_function_type )(  ) const;
             
             DrawElementsUByte_exposer.def( 
                 "supportsBufferObject"
@@ -652,8 +580,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::BufferData::asArray
         
-            typedef ::osg::Array * ( ::osg::BufferData::*asArray_function_type)(  ) ;
-            typedef ::osg::Array * ( DrawElementsUByte_wrapper::*default_asArray_function_type)(  ) ;
+            typedef ::osg::Array * ( ::osg::BufferData::*asArray_function_type )(  ) ;
+            typedef ::osg::Array * ( DrawElementsUByte_wrapper::*default_asArray_function_type )(  ) ;
             
             DrawElementsUByte_exposer.def( 
                 "asArray"
@@ -664,8 +592,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::BufferData::asArray
         
-            typedef ::osg::Array const * ( ::osg::BufferData::*asArray_function_type)(  ) const;
-            typedef ::osg::Array const * ( DrawElementsUByte_wrapper::*default_asArray_function_type)(  ) const;
+            typedef ::osg::Array const * ( ::osg::BufferData::*asArray_function_type )(  ) const;
+            typedef ::osg::Array const * ( DrawElementsUByte_wrapper::*default_asArray_function_type )(  ) const;
             
             DrawElementsUByte_exposer.def( 
                 "asArray"
@@ -676,8 +604,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::PrimitiveSet::asPrimitiveSet
         
-            typedef ::osg::PrimitiveSet * ( ::osg::PrimitiveSet::*asPrimitiveSet_function_type)(  ) ;
-            typedef ::osg::PrimitiveSet * ( DrawElementsUByte_wrapper::*default_asPrimitiveSet_function_type)(  ) ;
+            typedef ::osg::PrimitiveSet * ( ::osg::PrimitiveSet::*asPrimitiveSet_function_type )(  ) ;
+            typedef ::osg::PrimitiveSet * ( DrawElementsUByte_wrapper::*default_asPrimitiveSet_function_type )(  ) ;
             
             DrawElementsUByte_exposer.def( 
                 "asPrimitiveSet"
@@ -688,8 +616,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::PrimitiveSet::asPrimitiveSet
         
-            typedef ::osg::PrimitiveSet const * ( ::osg::PrimitiveSet::*asPrimitiveSet_function_type)(  ) const;
-            typedef ::osg::PrimitiveSet const * ( DrawElementsUByte_wrapper::*default_asPrimitiveSet_function_type)(  ) const;
+            typedef ::osg::PrimitiveSet const * ( ::osg::PrimitiveSet::*asPrimitiveSet_function_type )(  ) const;
+            typedef ::osg::PrimitiveSet const * ( DrawElementsUByte_wrapper::*default_asPrimitiveSet_function_type )(  ) const;
             
             DrawElementsUByte_exposer.def( 
                 "asPrimitiveSet"
@@ -698,21 +626,10 @@ void register_DrawElementsUByte_class(){
                 , bp::return_internal_reference< >() );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( DrawElementsUByte_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            DrawElementsUByte_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&DrawElementsUByte_wrapper::default_computeDataVariance) );
-        
-        }
         { //::osg::PrimitiveSet::computeRange
         
-            typedef void ( ::osg::PrimitiveSet::*computeRange_function_type)(  ) const;
-            typedef void ( DrawElementsUByte_wrapper::*default_computeRange_function_type)(  ) const;
+            typedef void ( ::osg::PrimitiveSet::*computeRange_function_type )(  ) const;
+            typedef void ( DrawElementsUByte_wrapper::*default_computeRange_function_type )(  ) const;
             
             DrawElementsUByte_exposer.def( 
                 "computeRange"
@@ -722,8 +639,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElements::getDrawElements
         
-            typedef ::osg::DrawElements * ( ::osg::DrawElements::*getDrawElements_function_type)(  ) ;
-            typedef ::osg::DrawElements * ( DrawElementsUByte_wrapper::*default_getDrawElements_function_type)(  ) ;
+            typedef ::osg::DrawElements * ( ::osg::DrawElements::*getDrawElements_function_type )(  ) ;
+            typedef ::osg::DrawElements * ( DrawElementsUByte_wrapper::*default_getDrawElements_function_type )(  ) ;
             
             DrawElementsUByte_exposer.def( 
                 "getDrawElements"
@@ -734,8 +651,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::DrawElements::getDrawElements
         
-            typedef ::osg::DrawElements const * ( ::osg::DrawElements::*getDrawElements_function_type)(  ) const;
-            typedef ::osg::DrawElements const * ( DrawElementsUByte_wrapper::*default_getDrawElements_function_type)(  ) const;
+            typedef ::osg::DrawElements const * ( ::osg::DrawElements::*getDrawElements_function_type )(  ) const;
+            typedef ::osg::DrawElements const * ( DrawElementsUByte_wrapper::*default_getDrawElements_function_type )(  ) const;
             
             DrawElementsUByte_exposer.def( 
                 "getDrawElements"
@@ -746,8 +663,8 @@ void register_DrawElementsUByte_class(){
         }
         { //::osg::PrimitiveSet::getNumPrimitives
         
-            typedef unsigned int ( ::osg::PrimitiveSet::*getNumPrimitives_function_type)(  ) const;
-            typedef unsigned int ( DrawElementsUByte_wrapper::*default_getNumPrimitives_function_type)(  ) const;
+            typedef unsigned int ( ::osg::PrimitiveSet::*getNumPrimitives_function_type )(  ) const;
+            typedef unsigned int ( DrawElementsUByte_wrapper::*default_getNumPrimitives_function_type )(  ) const;
             
             DrawElementsUByte_exposer.def( 
                 "getNumPrimitives"
@@ -755,87 +672,16 @@ void register_DrawElementsUByte_class(){
                 , default_getNumPrimitives_function_type(&DrawElementsUByte_wrapper::default_getNumPrimitives) );
         
         }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( DrawElementsUByte_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            DrawElementsUByte_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&DrawElementsUByte_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( DrawElementsUByte_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            DrawElementsUByte_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&DrawElementsUByte_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::BufferData::resizeGLObjectBuffers
         
-            typedef void ( ::osg::BufferData::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( DrawElementsUByte_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::BufferData::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( DrawElementsUByte_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             DrawElementsUByte_exposer.def( 
                 "resizeGLObjectBuffers"
                 , resizeGLObjectBuffers_function_type(&::osg::BufferData::resizeGLObjectBuffers)
                 , default_resizeGLObjectBuffers_function_type(&DrawElementsUByte_wrapper::default_resizeGLObjectBuffers)
                 , ( bp::arg("maxSize") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( DrawElementsUByte_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            DrawElementsUByte_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&DrawElementsUByte_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            DrawElementsUByte_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( DrawElementsUByte_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            DrawElementsUByte_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&DrawElementsUByte_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( DrawElementsUByte_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            DrawElementsUByte_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&DrawElementsUByte_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
     }

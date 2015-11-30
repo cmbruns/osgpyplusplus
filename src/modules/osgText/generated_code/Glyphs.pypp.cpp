@@ -3,8 +3,8 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/vector.hpp"
-#include "wrap_osgtext.h"
-#include "glyphs.pypp.hpp"
+#include "wrap_osgText.h"
+#include "Glyphs.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -12,7 +12,7 @@ void register_Glyphs_class(){
 
     { //::std::vector< osgText::Glyph* >
         typedef bp::class_< std::vector< osgText::Glyph* > > Glyphs_exposer_t;
-        Glyphs_exposer_t Glyphs_exposer = Glyphs_exposer_t( "Glyphs" );
+        Glyphs_exposer_t Glyphs_exposer = Glyphs_exposer_t( "Glyphs", "\n  A standard container which offers fixed time access to\n  individual elements in any order.\n\n  fngroup sequences\n\n  Tparam: _Tp  Type of element.\n  Tparam: _Alloc  Allocator type, defaults to allocator<_Tp>.\n\n  Meets the requirements of a <a href=tables.html#65>container</a>, a\n  <a href=tables.html#66>reversible container</a>, and a\n  <a href=tables.html#67>sequence</a>, including the\n  <a href=tables.html#68>optional sequence requirements</a> with the\n  %exception of @c push_front and @c pop_front.\n\n  In some terminology a %vector can be described as a dynamic\n  C-style array, it offers fast and efficient access to individual\n  elements in any order and saves the user from worrying about\n  memory and size allocation.  Subscripting ( @c [] ) access is\n  also provided as with C-style arrays.\n" );
         bp::scope Glyphs_scope( Glyphs_exposer );
         Glyphs_exposer.def( bp::indexing::vector_suite< std::vector< osgText::Glyph* > >::with_policies(bp::return_internal_reference< >()) );
     }

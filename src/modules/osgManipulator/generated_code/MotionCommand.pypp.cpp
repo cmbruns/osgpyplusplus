@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgmanipulator.h"
+#include "wrap_osgManipulator.h"
 #include "wrap_referenced.h"
-#include "motioncommand.pypp.hpp"
+#include "MotionCommand.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -52,18 +52,6 @@ struct MotionCommand_wrapper : osgManipulator::MotionCommand, bp::wrapper< osgMa
         return func_getMotionMatrix(  );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_MotionCommand_class(){
@@ -91,8 +79,8 @@ void register_MotionCommand_class(){
         }
         { //::osgManipulator::MotionCommand::accept
         
-            typedef void ( ::osgManipulator::MotionCommand::*accept_function_type)( ::osgManipulator::DraggerCallback & ) ;
-            typedef void ( MotionCommand_wrapper::*default_accept_function_type)( ::osgManipulator::DraggerCallback & ) ;
+            typedef void ( ::osgManipulator::MotionCommand::*accept_function_type )( ::osgManipulator::DraggerCallback & ) ;
+            typedef void ( MotionCommand_wrapper::*default_accept_function_type )( ::osgManipulator::DraggerCallback & ) ;
             
             MotionCommand_exposer.def( 
                 "accept"
@@ -103,7 +91,7 @@ void register_MotionCommand_class(){
         }
         { //::osgManipulator::MotionCommand::createCommandInverse
         
-            typedef ::osgManipulator::MotionCommand * ( ::osgManipulator::MotionCommand::*createCommandInverse_function_type)(  ) ;
+            typedef ::osgManipulator::MotionCommand * ( ::osgManipulator::MotionCommand::*createCommandInverse_function_type )(  ) ;
             
             MotionCommand_exposer.def( 
                 "createCommandInverse"
@@ -114,7 +102,7 @@ void register_MotionCommand_class(){
         }
         { //::osgManipulator::MotionCommand::getLocalToWorld
         
-            typedef ::osg::Matrix const & ( ::osgManipulator::MotionCommand::*getLocalToWorld_function_type)(  ) const;
+            typedef ::osg::Matrix const & ( ::osgManipulator::MotionCommand::*getLocalToWorld_function_type )(  ) const;
             
             MotionCommand_exposer.def( 
                 "getLocalToWorld"
@@ -125,7 +113,7 @@ void register_MotionCommand_class(){
         }
         { //::osgManipulator::MotionCommand::getMotionMatrix
         
-            typedef ::osg::Matrix ( ::osgManipulator::MotionCommand::*getMotionMatrix_function_type)(  ) const;
+            typedef ::osg::Matrix ( ::osgManipulator::MotionCommand::*getMotionMatrix_function_type )(  ) const;
             
             MotionCommand_exposer.def( 
                 "getMotionMatrix"
@@ -135,7 +123,7 @@ void register_MotionCommand_class(){
         }
         { //::osgManipulator::MotionCommand::getStage
         
-            typedef ::osgManipulator::MotionCommand::Stage ( ::osgManipulator::MotionCommand::*getStage_function_type)(  ) const;
+            typedef ::osgManipulator::MotionCommand::Stage ( ::osgManipulator::MotionCommand::*getStage_function_type )(  ) const;
             
             MotionCommand_exposer.def( 
                 "getStage"
@@ -144,7 +132,7 @@ void register_MotionCommand_class(){
         }
         { //::osgManipulator::MotionCommand::getWorldToLocal
         
-            typedef ::osg::Matrix const & ( ::osgManipulator::MotionCommand::*getWorldToLocal_function_type)(  ) const;
+            typedef ::osg::Matrix const & ( ::osgManipulator::MotionCommand::*getWorldToLocal_function_type )(  ) const;
             
             MotionCommand_exposer.def( 
                 "getWorldToLocal"
@@ -155,7 +143,7 @@ void register_MotionCommand_class(){
         }
         { //::osgManipulator::MotionCommand::setLocalToWorldAndWorldToLocal
         
-            typedef void ( ::osgManipulator::MotionCommand::*setLocalToWorldAndWorldToLocal_function_type)( ::osg::Matrix const &,::osg::Matrix const & ) ;
+            typedef void ( ::osgManipulator::MotionCommand::*setLocalToWorldAndWorldToLocal_function_type )( ::osg::Matrix const &,::osg::Matrix const & ) ;
             
             MotionCommand_exposer.def( 
                 "setLocalToWorldAndWorldToLocal"
@@ -166,7 +154,7 @@ void register_MotionCommand_class(){
         }
         { //::osgManipulator::MotionCommand::setStage
         
-            typedef void ( ::osgManipulator::MotionCommand::*setStage_function_type)( ::osgManipulator::MotionCommand::Stage const ) ;
+            typedef void ( ::osgManipulator::MotionCommand::*setStage_function_type )( ::osgManipulator::MotionCommand::Stage const ) ;
             
             MotionCommand_exposer.def( 
                 "setStage"

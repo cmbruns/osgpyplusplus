@@ -66,8 +66,9 @@ class BaseWrapper:
         parser.add_argument('--osg_include_path', 
                             default="C:/Program Files (x86)/OpenSceneGraph323vs2008/include", 
                             help="path to the OpenSceneGraph C++ header files",)
+        default_compiler = "msvc9"
         parser.add_argument('--gccxml_compiler', 
-                            default="msvc9", 
+                            default=default_compiler, 
                             help="name of C++ compiler",)
         args = parser.parse_args()
         #
@@ -94,9 +95,12 @@ class BaseWrapper:
     def generate_module_code(self, module_name):
         extractor = doxygen_doc_extractor()
         self.mb.build_code_creator(module_name=module_name , doc_extractor=extractor)
-        self.mb.split_module(os.path.join(os.path.abspath('.'), 'generated_code'))
+        # Make pyplusplus use relative paths in top-level module #includes
+        my_dir = os.path.join(os.path.abspath('.'), 'generated_code')
+        self.mb.code_creator.user_defined_directories.append(my_dir)
+        self.mb.split_module(my_dir)
         # Create a file to indicate completion of wrapping script
-        open(os.path.join(os.path.abspath('.'), 'generated_code', 'generate_module.stamp'), "w").close()
+        open(os.path.join(my_dir, 'generate_module.stamp'), "w").close()
 
     def wrap_all_osg_referenced(self, namespace):
         # Identify all classes derived from osg::Referenced, 

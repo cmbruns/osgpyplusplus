@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "clipnode.pypp.hpp"
+#include "ClipNode.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -244,42 +244,6 @@ struct ClipNode_wrapper : osg::ClipNode, bp::wrapper< osg::ClipNode > {
         osg::Node::ascend( boost::ref(nv) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
     virtual bool insertChild( unsigned int index, ::osg::Node * child ) {
         if( bp::override func_insertChild = this->get_override( "insertChild" ) )
             return func_insertChild( index, boost::python::ptr(child) );
@@ -340,18 +304,6 @@ struct ClipNode_wrapper : osg::ClipNode, bp::wrapper< osg::ClipNode > {
         return osg::Group::setChild( i, boost::python::ptr(node) );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
     virtual void setThreadSafeRefUnref( bool threadSafe ) {
         if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
             func_setThreadSafeRefUnref( threadSafe );
@@ -362,18 +314,6 @@ struct ClipNode_wrapper : osg::ClipNode, bp::wrapper< osg::ClipNode > {
     
     void default_setThreadSafeRefUnref( bool threadSafe ) {
         osg::Group::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
     }
 
     virtual void traverse( ::osg::NodeVisitor & nv ) {
@@ -404,8 +344,8 @@ void register_ClipNode_class(){
         ClipNode_exposer.def( bp::init< >() );
         { //::osg::ClipNode::accept
         
-            typedef void ( ::osg::ClipNode::*accept_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( ClipNode_wrapper::*default_accept_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::ClipNode::*accept_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( ClipNode_wrapper::*default_accept_function_type )( ::osg::NodeVisitor & ) ;
             
             ClipNode_exposer.def( 
                 "accept"
@@ -416,7 +356,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::addClipPlane
         
-            typedef bool ( ::osg::ClipNode::*addClipPlane_function_type)( ::osg::ClipPlane * ) ;
+            typedef bool ( ::osg::ClipNode::*addClipPlane_function_type )( ::osg::ClipPlane * ) ;
             
             ClipNode_exposer.def( 
                 "addClipPlane"
@@ -427,8 +367,8 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::className
         
-            typedef char const * ( ::osg::ClipNode::*className_function_type)(  ) const;
-            typedef char const * ( ClipNode_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::ClipNode::*className_function_type )(  ) const;
+            typedef char const * ( ClipNode_wrapper::*default_className_function_type )(  ) const;
             
             ClipNode_exposer.def( 
                 "className"
@@ -438,8 +378,8 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::clone
         
-            typedef ::osg::Object * ( ::osg::ClipNode::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( ClipNode_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::ClipNode::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ClipNode_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             ClipNode_exposer.def( 
                 "clone"
@@ -451,8 +391,8 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::cloneType
         
-            typedef ::osg::Object * ( ::osg::ClipNode::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( ClipNode_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::ClipNode::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( ClipNode_wrapper::*default_cloneType_function_type )(  ) const;
             
             ClipNode_exposer.def( 
                 "cloneType"
@@ -463,8 +403,8 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::computeBound
         
-            typedef ::osg::BoundingSphere ( ::osg::ClipNode::*computeBound_function_type)(  ) const;
-            typedef ::osg::BoundingSphere ( ClipNode_wrapper::*default_computeBound_function_type)(  ) const;
+            typedef ::osg::BoundingSphere ( ::osg::ClipNode::*computeBound_function_type )(  ) const;
+            typedef ::osg::BoundingSphere ( ClipNode_wrapper::*default_computeBound_function_type )(  ) const;
             
             ClipNode_exposer.def( 
                 "computeBound"
@@ -474,7 +414,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::createClipBox
         
-            typedef void ( ::osg::ClipNode::*createClipBox_function_type)( ::osg::BoundingBox const &,unsigned int ) ;
+            typedef void ( ::osg::ClipNode::*createClipBox_function_type )( ::osg::BoundingBox const &,unsigned int ) ;
             
             ClipNode_exposer.def( 
                 "createClipBox"
@@ -485,7 +425,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::getClipPlane
         
-            typedef ::osg::ClipPlane * ( ::osg::ClipNode::*getClipPlane_function_type)( unsigned int ) ;
+            typedef ::osg::ClipPlane * ( ::osg::ClipNode::*getClipPlane_function_type )( unsigned int ) ;
             
             ClipNode_exposer.def( 
                 "getClipPlane"
@@ -497,7 +437,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::getClipPlane
         
-            typedef ::osg::ClipPlane const * ( ::osg::ClipNode::*getClipPlane_function_type)( unsigned int ) const;
+            typedef ::osg::ClipPlane const * ( ::osg::ClipNode::*getClipPlane_function_type )( unsigned int ) const;
             
             ClipNode_exposer.def( 
                 "getClipPlane"
@@ -509,7 +449,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::getClipPlaneList
         
-            typedef ::std::vector< osg::ref_ptr<osg::ClipPlane> > & ( ::osg::ClipNode::*getClipPlaneList_function_type)(  ) ;
+            typedef ::std::vector< osg::ref_ptr<osg::ClipPlane> > & ( ::osg::ClipNode::*getClipPlaneList_function_type )(  ) ;
             
             ClipNode_exposer.def( 
                 "getClipPlaneList"
@@ -520,7 +460,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::getClipPlaneList
         
-            typedef ::std::vector< osg::ref_ptr<osg::ClipPlane> > const & ( ::osg::ClipNode::*getClipPlaneList_function_type)(  ) const;
+            typedef ::std::vector< osg::ref_ptr<osg::ClipPlane> > const & ( ::osg::ClipNode::*getClipPlaneList_function_type )(  ) const;
             
             ClipNode_exposer.def( 
                 "getClipPlaneList"
@@ -531,7 +471,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::getNumClipPlanes
         
-            typedef unsigned int ( ::osg::ClipNode::*getNumClipPlanes_function_type)(  ) const;
+            typedef unsigned int ( ::osg::ClipNode::*getNumClipPlanes_function_type )(  ) const;
             
             ClipNode_exposer.def( 
                 "getNumClipPlanes"
@@ -541,7 +481,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::getReferenceFrame
         
-            typedef ::osg::ClipNode::ReferenceFrame ( ::osg::ClipNode::*getReferenceFrame_function_type)(  ) const;
+            typedef ::osg::ClipNode::ReferenceFrame ( ::osg::ClipNode::*getReferenceFrame_function_type )(  ) const;
             
             ClipNode_exposer.def( 
                 "getReferenceFrame"
@@ -550,8 +490,8 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::isSameKindAs
         
-            typedef bool ( ::osg::ClipNode::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( ClipNode_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::ClipNode::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( ClipNode_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             ClipNode_exposer.def( 
                 "isSameKindAs"
@@ -562,8 +502,8 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::libraryName
         
-            typedef char const * ( ::osg::ClipNode::*libraryName_function_type)(  ) const;
-            typedef char const * ( ClipNode_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::ClipNode::*libraryName_function_type )(  ) const;
+            typedef char const * ( ClipNode_wrapper::*default_libraryName_function_type )(  ) const;
             
             ClipNode_exposer.def( 
                 "libraryName"
@@ -573,7 +513,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::removeClipPlane
         
-            typedef bool ( ::osg::ClipNode::*removeClipPlane_function_type)( ::osg::ClipPlane * ) ;
+            typedef bool ( ::osg::ClipNode::*removeClipPlane_function_type )( ::osg::ClipPlane * ) ;
             
             ClipNode_exposer.def( 
                 "removeClipPlane"
@@ -584,7 +524,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::removeClipPlane
         
-            typedef bool ( ::osg::ClipNode::*removeClipPlane_function_type)( unsigned int ) ;
+            typedef bool ( ::osg::ClipNode::*removeClipPlane_function_type )( unsigned int ) ;
             
             ClipNode_exposer.def( 
                 "removeClipPlane"
@@ -595,7 +535,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::setClipPlaneList
         
-            typedef void ( ::osg::ClipNode::*setClipPlaneList_function_type)( ::std::vector< osg::ref_ptr<osg::ClipPlane> > const & ) ;
+            typedef void ( ::osg::ClipNode::*setClipPlaneList_function_type )( ::std::vector< osg::ref_ptr<osg::ClipPlane> > const & ) ;
             
             ClipNode_exposer.def( 
                 "setClipPlaneList"
@@ -606,7 +546,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::setLocalStateSetModes
         
-            typedef void ( ::osg::ClipNode::*setLocalStateSetModes_function_type)( unsigned int ) ;
+            typedef void ( ::osg::ClipNode::*setLocalStateSetModes_function_type )( unsigned int ) ;
             
             ClipNode_exposer.def( 
                 "setLocalStateSetModes"
@@ -617,7 +557,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::setReferenceFrame
         
-            typedef void ( ::osg::ClipNode::*setReferenceFrame_function_type)( ::osg::ClipNode::ReferenceFrame ) ;
+            typedef void ( ::osg::ClipNode::*setReferenceFrame_function_type )( ::osg::ClipNode::ReferenceFrame ) ;
             
             ClipNode_exposer.def( 
                 "setReferenceFrame"
@@ -628,7 +568,7 @@ void register_ClipNode_class(){
         }
         { //::osg::ClipNode::setStateSetModes
         
-            typedef void ( ::osg::ClipNode::*setStateSetModes_function_type)( ::osg::StateSet &,unsigned int ) const;
+            typedef void ( ::osg::ClipNode::*setStateSetModes_function_type )( ::osg::StateSet &,unsigned int ) const;
             
             ClipNode_exposer.def( 
                 "setStateSetModes"
@@ -639,8 +579,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Group::addChild
         
-            typedef bool ( ::osg::Group::*addChild_function_type)( ::osg::Node * ) ;
-            typedef bool ( ClipNode_wrapper::*default_addChild_function_type)( ::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*addChild_function_type )( ::osg::Node * ) ;
+            typedef bool ( ClipNode_wrapper::*default_addChild_function_type )( ::osg::Node * ) ;
             
             ClipNode_exposer.def( 
                 "addChild"
@@ -651,8 +591,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Node::asCamera
         
-            typedef ::osg::Camera * ( ::osg::Node::*asCamera_function_type)(  ) ;
-            typedef ::osg::Camera * ( ClipNode_wrapper::*default_asCamera_function_type)(  ) ;
+            typedef ::osg::Camera * ( ::osg::Node::*asCamera_function_type )(  ) ;
+            typedef ::osg::Camera * ( ClipNode_wrapper::*default_asCamera_function_type )(  ) ;
             
             ClipNode_exposer.def( 
                 "asCamera"
@@ -663,8 +603,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Node::asCamera
         
-            typedef ::osg::Camera const * ( ::osg::Node::*asCamera_function_type)(  ) const;
-            typedef ::osg::Camera const * ( ClipNode_wrapper::*default_asCamera_function_type)(  ) const;
+            typedef ::osg::Camera const * ( ::osg::Node::*asCamera_function_type )(  ) const;
+            typedef ::osg::Camera const * ( ClipNode_wrapper::*default_asCamera_function_type )(  ) const;
             
             ClipNode_exposer.def( 
                 "asCamera"
@@ -675,8 +615,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Node::asGeode
         
-            typedef ::osg::Geode * ( ::osg::Node::*asGeode_function_type)(  ) ;
-            typedef ::osg::Geode * ( ClipNode_wrapper::*default_asGeode_function_type)(  ) ;
+            typedef ::osg::Geode * ( ::osg::Node::*asGeode_function_type )(  ) ;
+            typedef ::osg::Geode * ( ClipNode_wrapper::*default_asGeode_function_type )(  ) ;
             
             ClipNode_exposer.def( 
                 "asGeode"
@@ -687,8 +627,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Node::asGeode
         
-            typedef ::osg::Geode const * ( ::osg::Node::*asGeode_function_type)(  ) const;
-            typedef ::osg::Geode const * ( ClipNode_wrapper::*default_asGeode_function_type)(  ) const;
+            typedef ::osg::Geode const * ( ::osg::Node::*asGeode_function_type )(  ) const;
+            typedef ::osg::Geode const * ( ClipNode_wrapper::*default_asGeode_function_type )(  ) const;
             
             ClipNode_exposer.def( 
                 "asGeode"
@@ -699,8 +639,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Group::asGroup
         
-            typedef ::osg::Group * ( ::osg::Group::*asGroup_function_type)(  ) ;
-            typedef ::osg::Group * ( ClipNode_wrapper::*default_asGroup_function_type)(  ) ;
+            typedef ::osg::Group * ( ::osg::Group::*asGroup_function_type )(  ) ;
+            typedef ::osg::Group * ( ClipNode_wrapper::*default_asGroup_function_type )(  ) ;
             
             ClipNode_exposer.def( 
                 "asGroup"
@@ -711,8 +651,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Group::asGroup
         
-            typedef ::osg::Group const * ( ::osg::Group::*asGroup_function_type)(  ) const;
-            typedef ::osg::Group const * ( ClipNode_wrapper::*default_asGroup_function_type)(  ) const;
+            typedef ::osg::Group const * ( ::osg::Group::*asGroup_function_type )(  ) const;
+            typedef ::osg::Group const * ( ClipNode_wrapper::*default_asGroup_function_type )(  ) const;
             
             ClipNode_exposer.def( 
                 "asGroup"
@@ -723,8 +663,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Node::asSwitch
         
-            typedef ::osg::Switch * ( ::osg::Node::*asSwitch_function_type)(  ) ;
-            typedef ::osg::Switch * ( ClipNode_wrapper::*default_asSwitch_function_type)(  ) ;
+            typedef ::osg::Switch * ( ::osg::Node::*asSwitch_function_type )(  ) ;
+            typedef ::osg::Switch * ( ClipNode_wrapper::*default_asSwitch_function_type )(  ) ;
             
             ClipNode_exposer.def( 
                 "asSwitch"
@@ -735,8 +675,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Node::asSwitch
         
-            typedef ::osg::Switch const * ( ::osg::Node::*asSwitch_function_type)(  ) const;
-            typedef ::osg::Switch const * ( ClipNode_wrapper::*default_asSwitch_function_type)(  ) const;
+            typedef ::osg::Switch const * ( ::osg::Node::*asSwitch_function_type )(  ) const;
+            typedef ::osg::Switch const * ( ClipNode_wrapper::*default_asSwitch_function_type )(  ) const;
             
             ClipNode_exposer.def( 
                 "asSwitch"
@@ -747,8 +687,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Node::asTransform
         
-            typedef ::osg::Transform * ( ::osg::Node::*asTransform_function_type)(  ) ;
-            typedef ::osg::Transform * ( ClipNode_wrapper::*default_asTransform_function_type)(  ) ;
+            typedef ::osg::Transform * ( ::osg::Node::*asTransform_function_type )(  ) ;
+            typedef ::osg::Transform * ( ClipNode_wrapper::*default_asTransform_function_type )(  ) ;
             
             ClipNode_exposer.def( 
                 "asTransform"
@@ -759,8 +699,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Node::asTransform
         
-            typedef ::osg::Transform const * ( ::osg::Node::*asTransform_function_type)(  ) const;
-            typedef ::osg::Transform const * ( ClipNode_wrapper::*default_asTransform_function_type)(  ) const;
+            typedef ::osg::Transform const * ( ::osg::Node::*asTransform_function_type )(  ) const;
+            typedef ::osg::Transform const * ( ClipNode_wrapper::*default_asTransform_function_type )(  ) const;
             
             ClipNode_exposer.def( 
                 "asTransform"
@@ -771,8 +711,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Node::ascend
         
-            typedef void ( ::osg::Node::*ascend_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( ClipNode_wrapper::*default_ascend_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::Node::*ascend_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( ClipNode_wrapper::*default_ascend_function_type )( ::osg::NodeVisitor & ) ;
             
             ClipNode_exposer.def( 
                 "ascend"
@@ -781,45 +721,10 @@ void register_ClipNode_class(){
                 , ( bp::arg("nv") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( ClipNode_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            ClipNode_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&ClipNode_wrapper::default_computeDataVariance) );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( ClipNode_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            ClipNode_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&ClipNode_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( ClipNode_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            ClipNode_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&ClipNode_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::Group::insertChild
         
-            typedef bool ( ::osg::Group::*insertChild_function_type)( unsigned int,::osg::Node * ) ;
-            typedef bool ( ClipNode_wrapper::*default_insertChild_function_type)( unsigned int,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*insertChild_function_type )( unsigned int,::osg::Node * ) ;
+            typedef bool ( ClipNode_wrapper::*default_insertChild_function_type )( unsigned int,::osg::Node * ) ;
             
             ClipNode_exposer.def( 
                 "insertChild"
@@ -830,8 +735,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Group::removeChildren
         
-            typedef bool ( ::osg::Group::*removeChildren_function_type)( unsigned int,unsigned int ) ;
-            typedef bool ( ClipNode_wrapper::*default_removeChildren_function_type)( unsigned int,unsigned int ) ;
+            typedef bool ( ::osg::Group::*removeChildren_function_type )( unsigned int,unsigned int ) ;
+            typedef bool ( ClipNode_wrapper::*default_removeChildren_function_type )( unsigned int,unsigned int ) ;
             
             ClipNode_exposer.def( 
                 "removeChildren"
@@ -842,8 +747,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Group::replaceChild
         
-            typedef bool ( ::osg::Group::*replaceChild_function_type)( ::osg::Node *,::osg::Node * ) ;
-            typedef bool ( ClipNode_wrapper::*default_replaceChild_function_type)( ::osg::Node *,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*replaceChild_function_type )( ::osg::Node *,::osg::Node * ) ;
+            typedef bool ( ClipNode_wrapper::*default_replaceChild_function_type )( ::osg::Node *,::osg::Node * ) ;
             
             ClipNode_exposer.def( 
                 "replaceChild"
@@ -854,8 +759,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Group::resizeGLObjectBuffers
         
-            typedef void ( ::osg::Group::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( ClipNode_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::Group::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( ClipNode_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             ClipNode_exposer.def( 
                 "resizeGLObjectBuffers"
@@ -866,8 +771,8 @@ void register_ClipNode_class(){
         }
         { //::osg::Group::setChild
         
-            typedef bool ( ::osg::Group::*setChild_function_type)( unsigned int,::osg::Node * ) ;
-            typedef bool ( ClipNode_wrapper::*default_setChild_function_type)( unsigned int,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*setChild_function_type )( unsigned int,::osg::Node * ) ;
+            typedef bool ( ClipNode_wrapper::*default_setChild_function_type )( unsigned int,::osg::Node * ) ;
             
             ClipNode_exposer.def( 
                 "setChild"
@@ -876,33 +781,10 @@ void register_ClipNode_class(){
                 , ( bp::arg("i"), bp::arg("node") ) );
         
         }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( ClipNode_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            ClipNode_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&ClipNode_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            ClipNode_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
         { //::osg::Group::setThreadSafeRefUnref
         
-            typedef void ( ::osg::Group::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( ClipNode_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
+            typedef void ( ::osg::Group::*setThreadSafeRefUnref_function_type )( bool ) ;
+            typedef void ( ClipNode_wrapper::*default_setThreadSafeRefUnref_function_type )( bool ) ;
             
             ClipNode_exposer.def( 
                 "setThreadSafeRefUnref"
@@ -911,22 +793,10 @@ void register_ClipNode_class(){
                 , ( bp::arg("threadSafe") ) );
         
         }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( ClipNode_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            ClipNode_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&ClipNode_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
-        
-        }
         { //::osg::Group::traverse
         
-            typedef void ( ::osg::Group::*traverse_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( ClipNode_wrapper::*default_traverse_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::Group::*traverse_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( ClipNode_wrapper::*default_traverse_function_type )( ::osg::NodeVisitor & ) ;
             
             ClipNode_exposer.def( 
                 "traverse"

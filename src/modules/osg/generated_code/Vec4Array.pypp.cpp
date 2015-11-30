@@ -4,7 +4,7 @@
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
 #include "indexing_helpers.h"
-#include "vec4array.pypp.hpp"
+#include "Vec4Array.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -249,42 +249,6 @@ struct TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_
         return osg::Array::className( );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
     virtual bool isSameKindAs( ::osg::Object const * obj ) const  {
         if( bp::override func_isSameKindAs = this->get_override( "isSameKindAs" ) )
             return func_isSameKindAs( boost::python::ptr(obj) );
@@ -321,42 +285,6 @@ struct TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_
         osg::BufferData::resizeGLObjectBuffers( maxSize );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_Vec4Array_class(){
@@ -375,8 +303,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::accept
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef void ( exported_class_t::*accept_function_type)( ::osg::ArrayVisitor & ) ;
-            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_accept_function_type)( ::osg::ArrayVisitor & ) ;
+            typedef void ( exported_class_t::*accept_function_type )( ::osg::ArrayVisitor & ) ;
+            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_accept_function_type )( ::osg::ArrayVisitor & ) ;
             
             Vec4Array_exposer.def( 
                 "accept"
@@ -388,8 +316,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::accept
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef void ( exported_class_t::*accept_function_type)( ::osg::ConstArrayVisitor & ) const;
-            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_accept_function_type)( ::osg::ConstArrayVisitor & ) const;
+            typedef void ( exported_class_t::*accept_function_type )( ::osg::ConstArrayVisitor & ) const;
+            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_accept_function_type )( ::osg::ConstArrayVisitor & ) const;
             
             Vec4Array_exposer.def( 
                 "accept"
@@ -401,8 +329,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::accept
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef void ( exported_class_t::*accept_function_type)( unsigned int,::osg::ValueVisitor & ) ;
-            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_accept_function_type)( unsigned int,::osg::ValueVisitor & ) ;
+            typedef void ( exported_class_t::*accept_function_type )( unsigned int,::osg::ValueVisitor & ) ;
+            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_accept_function_type )( unsigned int,::osg::ValueVisitor & ) ;
             
             Vec4Array_exposer.def( 
                 "accept"
@@ -414,8 +342,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::accept
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef void ( exported_class_t::*accept_function_type)( unsigned int,::osg::ConstValueVisitor & ) const;
-            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_accept_function_type)( unsigned int,::osg::ConstValueVisitor & ) const;
+            typedef void ( exported_class_t::*accept_function_type )( unsigned int,::osg::ConstValueVisitor & ) const;
+            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_accept_function_type )( unsigned int,::osg::ConstValueVisitor & ) const;
             
             Vec4Array_exposer.def( 
                 "accept"
@@ -427,8 +355,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::clone
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef ::osg::Object * ( exported_class_t::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( exported_class_t::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             Vec4Array_exposer.def( 
                 "clone"
@@ -441,8 +369,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::cloneType
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef ::osg::Object * ( exported_class_t::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( exported_class_t::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_cloneType_function_type )(  ) const;
             
             Vec4Array_exposer.def( 
                 "cloneType"
@@ -454,8 +382,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::compare
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef int ( exported_class_t::*compare_function_type)( unsigned int,unsigned int ) const;
-            typedef int ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_compare_function_type)( unsigned int,unsigned int ) const;
+            typedef int ( exported_class_t::*compare_function_type )( unsigned int,unsigned int ) const;
+            typedef int ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_compare_function_type )( unsigned int,unsigned int ) const;
             
             Vec4Array_exposer.def( 
                 "compare"
@@ -467,8 +395,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::getDataPointer
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef ::GLvoid const * ( exported_class_t::*getDataPointer_function_type)(  ) const;
-            typedef ::GLvoid const * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_getDataPointer_function_type)(  ) const;
+            typedef ::GLvoid const * ( exported_class_t::*getDataPointer_function_type )(  ) const;
+            typedef ::GLvoid const * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_getDataPointer_function_type )(  ) const;
             
             Vec4Array_exposer.def( 
                 "getDataPointer"
@@ -480,8 +408,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::getElementSize
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*getElementSize_function_type)(  ) const;
-            typedef unsigned int ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_getElementSize_function_type)(  ) const;
+            typedef unsigned int ( exported_class_t::*getElementSize_function_type )(  ) const;
+            typedef unsigned int ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_getElementSize_function_type )(  ) const;
             
             Vec4Array_exposer.def( 
                 "getElementSize"
@@ -492,8 +420,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::getNumElements
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*getNumElements_function_type)(  ) const;
-            typedef unsigned int ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_getNumElements_function_type)(  ) const;
+            typedef unsigned int ( exported_class_t::*getNumElements_function_type )(  ) const;
+            typedef unsigned int ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_getNumElements_function_type )(  ) const;
             
             Vec4Array_exposer.def( 
                 "getNumElements"
@@ -504,8 +432,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::getTotalDataSize
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef unsigned int ( exported_class_t::*getTotalDataSize_function_type)(  ) const;
-            typedef unsigned int ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_getTotalDataSize_function_type)(  ) const;
+            typedef unsigned int ( exported_class_t::*getTotalDataSize_function_type )(  ) const;
+            typedef unsigned int ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_getTotalDataSize_function_type )(  ) const;
             
             Vec4Array_exposer.def( 
                 "getTotalDataSize"
@@ -516,8 +444,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::reserveArray
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef void ( exported_class_t::*reserveArray_function_type)( unsigned int ) ;
-            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_reserveArray_function_type)( unsigned int ) ;
+            typedef void ( exported_class_t::*reserveArray_function_type )( unsigned int ) ;
+            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_reserveArray_function_type )( unsigned int ) ;
             
             Vec4Array_exposer.def( 
                 "reserveArray"
@@ -529,8 +457,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::resizeArray
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef void ( exported_class_t::*resizeArray_function_type)( unsigned int ) ;
-            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_resizeArray_function_type)( unsigned int ) ;
+            typedef void ( exported_class_t::*resizeArray_function_type )( unsigned int ) ;
+            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_resizeArray_function_type )( unsigned int ) ;
             
             Vec4Array_exposer.def( 
                 "resizeArray"
@@ -542,8 +470,8 @@ void register_Vec4Array_class(){
         { //::osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 >::trim
         
             typedef osg::TemplateArray< osg::Vec4f, (osg::Array::Type)29, 4, 5126 > exported_class_t;
-            typedef void ( exported_class_t::*trim_function_type)(  ) ;
-            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_trim_function_type)(  ) ;
+            typedef void ( exported_class_t::*trim_function_type )(  ) ;
+            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_trim_function_type )(  ) ;
             
             Vec4Array_exposer.def( 
                 "trim"
@@ -553,8 +481,8 @@ void register_Vec4Array_class(){
         }
         { //::osg::Array::asArray
         
-            typedef ::osg::Array * ( ::osg::Array::*asArray_function_type)(  ) ;
-            typedef ::osg::Array * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_asArray_function_type)(  ) ;
+            typedef ::osg::Array * ( ::osg::Array::*asArray_function_type )(  ) ;
+            typedef ::osg::Array * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_asArray_function_type )(  ) ;
             
             Vec4Array_exposer.def( 
                 "asArray"
@@ -565,8 +493,8 @@ void register_Vec4Array_class(){
         }
         { //::osg::Array::asArray
         
-            typedef ::osg::Array const * ( ::osg::Array::*asArray_function_type)(  ) const;
-            typedef ::osg::Array const * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_asArray_function_type)(  ) const;
+            typedef ::osg::Array const * ( ::osg::Array::*asArray_function_type )(  ) const;
+            typedef ::osg::Array const * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_asArray_function_type )(  ) const;
             
             Vec4Array_exposer.def( 
                 "asArray"
@@ -577,8 +505,8 @@ void register_Vec4Array_class(){
         }
         { //::osg::Array::className
         
-            typedef char const * ( ::osg::Array::*className_function_type)(  ) const;
-            typedef char const * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::Array::*className_function_type )(  ) const;
+            typedef char const * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_className_function_type )(  ) const;
             
             Vec4Array_exposer.def( 
                 "className"
@@ -586,45 +514,10 @@ void register_Vec4Array_class(){
                 , default_className_function_type(&TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::default_className) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            Vec4Array_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::default_computeDataVariance) );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_getUserData_function_type)(  ) ;
-            
-            Vec4Array_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_getUserData_function_type)(  ) const;
-            
-            Vec4Array_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::Array::isSameKindAs
         
-            typedef bool ( ::osg::Array::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::Array::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             Vec4Array_exposer.def( 
                 "isSameKindAs"
@@ -635,8 +528,8 @@ void register_Vec4Array_class(){
         }
         { //::osg::Array::libraryName
         
-            typedef char const * ( ::osg::Array::*libraryName_function_type)(  ) const;
-            typedef char const * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::Array::*libraryName_function_type )(  ) const;
+            typedef char const * ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_libraryName_function_type )(  ) const;
             
             Vec4Array_exposer.def( 
                 "libraryName"
@@ -646,8 +539,8 @@ void register_Vec4Array_class(){
         }
         { //::osg::BufferData::resizeGLObjectBuffers
         
-            typedef void ( ::osg::BufferData::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::BufferData::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             Vec4Array_exposer.def( 
                 "resizeGLObjectBuffers"
@@ -656,57 +549,10 @@ void register_Vec4Array_class(){
                 , ( bp::arg("maxSize") ) );
         
         }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            Vec4Array_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            Vec4Array_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            Vec4Array_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            Vec4Array_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&TemplateArray_less__osg_scope_Vec4f_comma___obrace_osg_scope_Array_scope_Type_cbrace_29_comma__4_comma__5126__greater__wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
-        
-        }
         Vec4Array_exposer.def(bp::indexing::container_suite<
-                        osg::TemplateArray<osg::Vec4f, (osg::Array::Type)29, 4, 5126>, 
-                        bp::indexing::all_methods, 
-                        list_algorithms<OsgArray_container_traits<osg::TemplateArray<osg::Vec4f, (osg::Array::Type)29, 4, 5126>, osg::TemplateArray<osg::Vec4f, (osg::Array::Type)29, 4, 5126>::ElementDataType> > >());
+                                osg::TemplateArray<osg::Vec4f, (osg::Array::Type)29, 4, 5126>, 
+                                bp::indexing::all_methods, 
+                                list_algorithms<OsgArray_container_traits<osg::TemplateArray<osg::Vec4f, (osg::Array::Type)29, 4, 5126>, osg::TemplateArray<osg::Vec4f, (osg::Array::Type)29, 4, 5126>::ElementDataType> > >());
     }
 
 }

@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgga.h"
+#include "wrap_osgGA.h"
 #include "wrap_referenced.h"
-#include "cameramanipulator.pypp.hpp"
+#include "CameraManipulator.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -25,18 +25,6 @@ struct CameraManipulator_wrapper : osgGA::CameraManipulator, bp::wrapper< osgGA:
             return func_getCoordinateFrame( boost::ref(position) );
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     virtual char const * className(  ) const  {
@@ -51,7 +39,7 @@ struct CameraManipulator_wrapper : osgGA::CameraManipulator, bp::wrapper< osgGA:
         return osgGA::CameraManipulator::className( );
     }
 
-    virtual void computeHomePosition( ::osg::Camera const * camera=0, bool useBoundingBox=false ) {
+    virtual void computeHomePosition( ::osg::Camera const * camera=0l, bool useBoundingBox=false ) {
         if( bp::override func_computeHomePosition = this->get_override( "computeHomePosition" ) )
             func_computeHomePosition( boost::python::ptr(camera), useBoundingBox );
         else{
@@ -59,7 +47,7 @@ struct CameraManipulator_wrapper : osgGA::CameraManipulator, bp::wrapper< osgGA:
         }
     }
     
-    void default_computeHomePosition( ::osg::Camera const * camera=0, bool useBoundingBox=false ) {
+    void default_computeHomePosition( ::osg::Camera const * camera=0l, bool useBoundingBox=false ) {
         osgGA::CameraManipulator::computeHomePosition( boost::python::ptr(camera), useBoundingBox );
     }
 
@@ -412,18 +400,6 @@ struct CameraManipulator_wrapper : osgGA::CameraManipulator, bp::wrapper< osgGA:
         return osgGA::GUIEventHandler::libraryName( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void setName( ::std::string const & name ) {
         if( bp::override func_setName = this->get_override( "setName" ) )
             func_setName( name );
@@ -471,13 +447,13 @@ void register_CameraManipulator_class(){
         bp::class_< CameraManipulator_wrapper::CoordinateFrameCallback_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< CameraManipulator_wrapper::CoordinateFrameCallback_wrapper >, boost::noncopyable >( "CoordinateFrameCallback", "\n callback class to use to allow matrix manipulators to query the application for the local coordinate frame.\n", bp::no_init )    
             .def( 
                 "getCoordinateFrame"
-                , bp::pure_virtual( (::osg::CoordinateFrame ( ::osgGA::CameraManipulator::CoordinateFrameCallback::* )( ::osg::Vec3d const & )const)(&::osgGA::CameraManipulator::CoordinateFrameCallback::getCoordinateFrame) )
+                , bp::pure_virtual( (::osg::CoordinateFrame ( ::osgGA::CameraManipulator::CoordinateFrameCallback::* )( ::osg::Vec3d const & ) const)(&::osgGA::CameraManipulator::CoordinateFrameCallback::getCoordinateFrame) )
                 , ( bp::arg("position") )
                 , "\n callback class to use to allow matrix manipulators to query the application for the local coordinate frame.\n" );
         { //::osgGA::CameraManipulator::className
         
-            typedef char const * ( ::osgGA::CameraManipulator::*className_function_type)(  ) const;
-            typedef char const * ( CameraManipulator_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osgGA::CameraManipulator::*className_function_type )(  ) const;
+            typedef char const * ( CameraManipulator_wrapper::*default_className_function_type )(  ) const;
             
             CameraManipulator_exposer.def( 
                 "className"
@@ -487,19 +463,19 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::computeHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*computeHomePosition_function_type)( ::osg::Camera const *,bool ) ;
-            typedef void ( CameraManipulator_wrapper::*default_computeHomePosition_function_type)( ::osg::Camera const *,bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*computeHomePosition_function_type )( ::osg::Camera const *,bool ) ;
+            typedef void ( CameraManipulator_wrapper::*default_computeHomePosition_function_type )( ::osg::Camera const *,bool ) ;
             
             CameraManipulator_exposer.def( 
                 "computeHomePosition"
                 , computeHomePosition_function_type(&::osgGA::CameraManipulator::computeHomePosition)
                 , default_computeHomePosition_function_type(&CameraManipulator_wrapper::default_computeHomePosition)
-                , ( bp::arg("camera")=bp::object(), bp::arg("useBoundingBox")=(bool)(false) ) );
+                , ( bp::arg("camera")=0l, bp::arg("useBoundingBox")=(bool)(false) ) );
         
         }
         { //::osgGA::CameraManipulator::getAutoComputeHomePosition
         
-            typedef bool ( ::osgGA::CameraManipulator::*getAutoComputeHomePosition_function_type)(  ) const;
+            typedef bool ( ::osgGA::CameraManipulator::*getAutoComputeHomePosition_function_type )(  ) const;
             
             CameraManipulator_exposer.def( 
                 "getAutoComputeHomePosition"
@@ -509,7 +485,7 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getCoordinateFrame
         
-            typedef ::osg::CoordinateFrame ( ::osgGA::CameraManipulator::*getCoordinateFrame_function_type)( ::osg::Vec3d const & ) const;
+            typedef ::osg::CoordinateFrame ( ::osgGA::CameraManipulator::*getCoordinateFrame_function_type )( ::osg::Vec3d const & ) const;
             
             CameraManipulator_exposer.def( 
                 "getCoordinateFrame"
@@ -520,7 +496,7 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getCoordinateFrameCallback
         
-            typedef ::osgGA::CameraManipulator::CoordinateFrameCallback * ( ::osgGA::CameraManipulator::*getCoordinateFrameCallback_function_type)(  ) ;
+            typedef ::osgGA::CameraManipulator::CoordinateFrameCallback * ( ::osgGA::CameraManipulator::*getCoordinateFrameCallback_function_type )(  ) ;
             
             CameraManipulator_exposer.def( 
                 "getCoordinateFrameCallback"
@@ -531,7 +507,7 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getCoordinateFrameCallback
         
-            typedef ::osgGA::CameraManipulator::CoordinateFrameCallback const * ( ::osgGA::CameraManipulator::*getCoordinateFrameCallback_function_type)(  ) const;
+            typedef ::osgGA::CameraManipulator::CoordinateFrameCallback const * ( ::osgGA::CameraManipulator::*getCoordinateFrameCallback_function_type )(  ) const;
             
             CameraManipulator_exposer.def( 
                 "getCoordinateFrameCallback"
@@ -542,7 +518,7 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getFrontVector
         
-            typedef ::osg::Vec3d ( ::osgGA::CameraManipulator::*getFrontVector_function_type)( ::osg::CoordinateFrame const & ) const;
+            typedef ::osg::Vec3d ( ::osgGA::CameraManipulator::*getFrontVector_function_type )( ::osg::CoordinateFrame const & ) const;
             
             CameraManipulator_exposer.def( 
                 "getFrontVector"
@@ -552,8 +528,8 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getFusionDistanceMode
         
-            typedef ::osgUtil::SceneView::FusionDistanceMode ( ::osgGA::CameraManipulator::*getFusionDistanceMode_function_type)(  ) const;
-            typedef ::osgUtil::SceneView::FusionDistanceMode ( CameraManipulator_wrapper::*default_getFusionDistanceMode_function_type)(  ) const;
+            typedef ::osgUtil::SceneView::FusionDistanceMode ( ::osgGA::CameraManipulator::*getFusionDistanceMode_function_type )(  ) const;
+            typedef ::osgUtil::SceneView::FusionDistanceMode ( CameraManipulator_wrapper::*default_getFusionDistanceMode_function_type )(  ) const;
             
             CameraManipulator_exposer.def( 
                 "getFusionDistanceMode"
@@ -563,8 +539,8 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getFusionDistanceValue
         
-            typedef float ( ::osgGA::CameraManipulator::*getFusionDistanceValue_function_type)(  ) const;
-            typedef float ( CameraManipulator_wrapper::*default_getFusionDistanceValue_function_type)(  ) const;
+            typedef float ( ::osgGA::CameraManipulator::*getFusionDistanceValue_function_type )(  ) const;
+            typedef float ( CameraManipulator_wrapper::*default_getFusionDistanceValue_function_type )(  ) const;
             
             CameraManipulator_exposer.def( 
                 "getFusionDistanceValue"
@@ -574,8 +550,8 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*getHomePosition_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
-            typedef void ( CameraManipulator_wrapper::*default_getHomePosition_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( ::osgGA::CameraManipulator::*getHomePosition_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( CameraManipulator_wrapper::*default_getHomePosition_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
             
             CameraManipulator_exposer.def( 
                 "getHomePosition"
@@ -586,7 +562,7 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getIntersectTraversalMask
         
-            typedef unsigned int ( ::osgGA::CameraManipulator::*getIntersectTraversalMask_function_type)(  ) const;
+            typedef unsigned int ( ::osgGA::CameraManipulator::*getIntersectTraversalMask_function_type )(  ) const;
             
             CameraManipulator_exposer.def( 
                 "getIntersectTraversalMask"
@@ -596,28 +572,28 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getInverseMatrix
         
-            typedef ::osg::Matrixd ( ::osgGA::CameraManipulator::*getInverseMatrix_function_type)(  ) const;
+            typedef ::osg::Matrixd ( ::osgGA::CameraManipulator::*getInverseMatrix_function_type )(  ) const;
             
             CameraManipulator_exposer.def( 
                 "getInverseMatrix"
                 , bp::pure_virtual( getInverseMatrix_function_type(&::osgGA::CameraManipulator::getInverseMatrix) )
-                , " get the position of the manipulator as a inverse matrix of the manipulator, typically used as a model view matrix." );
+                , "\n get the position of the manipulator as a inverse matrix of the manipulator, typically used as a model view matrix.\n" );
         
         }
         { //::osgGA::CameraManipulator::getMatrix
         
-            typedef ::osg::Matrixd ( ::osgGA::CameraManipulator::*getMatrix_function_type)(  ) const;
+            typedef ::osg::Matrixd ( ::osgGA::CameraManipulator::*getMatrix_function_type )(  ) const;
             
             CameraManipulator_exposer.def( 
                 "getMatrix"
                 , bp::pure_virtual( getMatrix_function_type(&::osgGA::CameraManipulator::getMatrix) )
-                , " get the position of the manipulator as 4x4 Matrix." );
+                , "\n get the position of the manipulator as 4x4 Matrix.\n" );
         
         }
         { //::osgGA::CameraManipulator::getNode
         
-            typedef ::osg::Node const * ( ::osgGA::CameraManipulator::*getNode_function_type)(  ) const;
-            typedef ::osg::Node const * ( CameraManipulator_wrapper::*default_getNode_function_type)(  ) const;
+            typedef ::osg::Node const * ( ::osgGA::CameraManipulator::*getNode_function_type )(  ) const;
+            typedef ::osg::Node const * ( CameraManipulator_wrapper::*default_getNode_function_type )(  ) const;
             
             CameraManipulator_exposer.def( 
                 "getNode"
@@ -628,8 +604,8 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getNode
         
-            typedef ::osg::Node * ( ::osgGA::CameraManipulator::*getNode_function_type)(  ) ;
-            typedef ::osg::Node * ( CameraManipulator_wrapper::*default_getNode_function_type)(  ) ;
+            typedef ::osg::Node * ( ::osgGA::CameraManipulator::*getNode_function_type )(  ) ;
+            typedef ::osg::Node * ( CameraManipulator_wrapper::*default_getNode_function_type )(  ) ;
             
             CameraManipulator_exposer.def( 
                 "getNode"
@@ -640,7 +616,7 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getSideVector
         
-            typedef ::osg::Vec3d ( ::osgGA::CameraManipulator::*getSideVector_function_type)( ::osg::CoordinateFrame const & ) const;
+            typedef ::osg::Vec3d ( ::osgGA::CameraManipulator::*getSideVector_function_type )( ::osg::CoordinateFrame const & ) const;
             
             CameraManipulator_exposer.def( 
                 "getSideVector"
@@ -650,7 +626,7 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getUpVector
         
-            typedef ::osg::Vec3d ( ::osgGA::CameraManipulator::*getUpVector_function_type)( ::osg::CoordinateFrame const & ) const;
+            typedef ::osg::Vec3d ( ::osgGA::CameraManipulator::*getUpVector_function_type )( ::osg::CoordinateFrame const & ) const;
             
             CameraManipulator_exposer.def( 
                 "getUpVector"
@@ -666,7 +642,7 @@ void register_CameraManipulator_class(){
                 "handle"
                 , default_handle_function_type( &CameraManipulator_wrapper::default_handle )
                 , ( bp::arg("inst"), bp::arg("ea"), bp::arg("us") )
-                , " Handle events, return true if handled, false otherwise." );
+                , "\n Handle events, return true if handled, false otherwise.\n" );
         
         }
         { //::osgGA::CameraManipulator::home
@@ -677,7 +653,7 @@ void register_CameraManipulator_class(){
                 "home"
                 , default_home_function_type( &CameraManipulator_wrapper::default_home_9715462911072744dcf4ae663764b018 )
                 , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1") )
-                , "        Move the camera to the default position.\n        May be ignored by manipulators if home functionality is not appropriate." );
+                , "\n        Move the camera to the default position.\n        May be ignored by manipulators if home functionality is not appropriate.\n" );
         
         }
         { //::osgGA::CameraManipulator::home
@@ -688,7 +664,7 @@ void register_CameraManipulator_class(){
                 "home"
                 , default_home_function_type( &CameraManipulator_wrapper::default_home_60d9f789ca14c44af8e13acc6b7f8b5f )
                 , ( bp::arg("inst"), bp::arg("arg0") )
-                , "        Move the camera to the default position.\n        This version does not require GUIEventAdapter and GUIActionAdapter so may be\n        called from somewhere other than a handle() method in GUIEventHandler.  Application\n        must be aware of implications." );
+                , "\n        Move the camera to the default position.\n        This version does not require GUIEventAdapter and GUIActionAdapter so may be\n        called from somewhere other than a handle() method in GUIEventHandler.  Application\n        must be aware of implications.\n" );
         
         }
         { //::osgGA::CameraManipulator::init
@@ -699,13 +675,13 @@ void register_CameraManipulator_class(){
                 "init"
                 , default_init_function_type( &CameraManipulator_wrapper::default_init )
                 , ( bp::arg("inst"), bp::arg("arg0"), bp::arg("arg1") )
-                , "        Start/restart the manipulator.\n        FIXME: what does this actually mean? Provide examples." );
+                , "\n        Start/restart the manipulator.\n        FIXME: what does this actually mean? Provide examples.\n" );
         
         }
         { //::osgGA::CameraManipulator::setAutoComputeHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*setAutoComputeHomePosition_function_type)( bool ) ;
-            typedef void ( CameraManipulator_wrapper::*default_setAutoComputeHomePosition_function_type)( bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setAutoComputeHomePosition_function_type )( bool ) ;
+            typedef void ( CameraManipulator_wrapper::*default_setAutoComputeHomePosition_function_type )( bool ) ;
             
             CameraManipulator_exposer.def( 
                 "setAutoComputeHomePosition"
@@ -716,30 +692,30 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setByInverseMatrix
         
-            typedef void ( ::osgGA::CameraManipulator::*setByInverseMatrix_function_type)( ::osg::Matrixd const & ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setByInverseMatrix_function_type )( ::osg::Matrixd const & ) ;
             
             CameraManipulator_exposer.def( 
                 "setByInverseMatrix"
                 , bp::pure_virtual( setByInverseMatrix_function_type(&::osgGA::CameraManipulator::setByInverseMatrix) )
                 , ( bp::arg("matrix") )
-                , " set the position of the matrix manipulator using a 4x4 Matrix." );
+                , "\n set the position of the matrix manipulator using a 4x4 Matrix.\n" );
         
         }
         { //::osgGA::CameraManipulator::setByMatrix
         
-            typedef void ( ::osgGA::CameraManipulator::*setByMatrix_function_type)( ::osg::Matrixd const & ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setByMatrix_function_type )( ::osg::Matrixd const & ) ;
             
             CameraManipulator_exposer.def( 
                 "setByMatrix"
                 , bp::pure_virtual( setByMatrix_function_type(&::osgGA::CameraManipulator::setByMatrix) )
                 , ( bp::arg("matrix") )
-                , " set the position of the matrix manipulator using a 4x4 Matrix." );
+                , "\n set the position of the matrix manipulator using a 4x4 Matrix.\n" );
         
         }
         { //::osgGA::CameraManipulator::setCoordinateFrameCallback
         
-            typedef void ( ::osgGA::CameraManipulator::*setCoordinateFrameCallback_function_type)( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
-            typedef void ( CameraManipulator_wrapper::*default_setCoordinateFrameCallback_function_type)( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setCoordinateFrameCallback_function_type )( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
+            typedef void ( CameraManipulator_wrapper::*default_setCoordinateFrameCallback_function_type )( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
             
             CameraManipulator_exposer.def( 
                 "setCoordinateFrameCallback"
@@ -750,8 +726,8 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*setHomePosition_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
-            typedef void ( CameraManipulator_wrapper::*default_setHomePosition_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setHomePosition_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
+            typedef void ( CameraManipulator_wrapper::*default_setHomePosition_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
             
             CameraManipulator_exposer.def( 
                 "setHomePosition"
@@ -762,7 +738,7 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setIntersectTraversalMask
         
-            typedef void ( ::osgGA::CameraManipulator::*setIntersectTraversalMask_function_type)( unsigned int ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setIntersectTraversalMask_function_type )( unsigned int ) ;
             
             CameraManipulator_exposer.def( 
                 "setIntersectTraversalMask"
@@ -773,8 +749,8 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setNode
         
-            typedef void ( ::osgGA::CameraManipulator::*setNode_function_type)( ::osg::Node * ) ;
-            typedef void ( CameraManipulator_wrapper::*default_setNode_function_type)( ::osg::Node * ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setNode_function_type )( ::osg::Node * ) ;
+            typedef void ( CameraManipulator_wrapper::*default_setNode_function_type )( ::osg::Node * ) ;
             
             CameraManipulator_exposer.def( 
                 "setNode"
@@ -785,8 +761,8 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::CameraManipulator::updateCamera
         
-            typedef void ( ::osgGA::CameraManipulator::*updateCamera_function_type)( ::osg::Camera & ) ;
-            typedef void ( CameraManipulator_wrapper::*default_updateCamera_function_type)( ::osg::Camera & ) ;
+            typedef void ( ::osgGA::CameraManipulator::*updateCamera_function_type )( ::osg::Camera & ) ;
+            typedef void ( CameraManipulator_wrapper::*default_updateCamera_function_type )( ::osg::Camera & ) ;
             
             CameraManipulator_exposer.def( 
                 "updateCamera"
@@ -797,8 +773,8 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::clone
         
-            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( CameraManipulator_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( CameraManipulator_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             CameraManipulator_exposer.def( 
                 "clone"
@@ -810,8 +786,8 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::cloneType
         
-            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( CameraManipulator_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osgGA::GUIEventHandler::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( CameraManipulator_wrapper::*default_cloneType_function_type )(  ) const;
             
             CameraManipulator_exposer.def( 
                 "cloneType"
@@ -822,8 +798,8 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::event
         
-            typedef void ( ::osgGA::GUIEventHandler::*event_function_type)( ::osg::NodeVisitor *,::osg::Drawable * ) ;
-            typedef void ( CameraManipulator_wrapper::*default_event_function_type)( ::osg::NodeVisitor *,::osg::Drawable * ) ;
+            typedef void ( ::osgGA::GUIEventHandler::*event_function_type )( ::osg::NodeVisitor *,::osg::Drawable * ) ;
+            typedef void ( CameraManipulator_wrapper::*default_event_function_type )( ::osg::NodeVisitor *,::osg::Drawable * ) ;
             
             CameraManipulator_exposer.def( 
                 "event"
@@ -834,8 +810,8 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::getUsage
         
-            typedef void ( ::osgGA::GUIEventHandler::*getUsage_function_type)( ::osg::ApplicationUsage & ) const;
-            typedef void ( CameraManipulator_wrapper::*default_getUsage_function_type)( ::osg::ApplicationUsage & ) const;
+            typedef void ( ::osgGA::GUIEventHandler::*getUsage_function_type )( ::osg::ApplicationUsage & ) const;
+            typedef void ( CameraManipulator_wrapper::*default_getUsage_function_type )( ::osg::ApplicationUsage & ) const;
             
             CameraManipulator_exposer.def( 
                 "getUsage"
@@ -857,8 +833,8 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::isSameKindAs
         
-            typedef bool ( ::osgGA::GUIEventHandler::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( CameraManipulator_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osgGA::GUIEventHandler::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( CameraManipulator_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             CameraManipulator_exposer.def( 
                 "isSameKindAs"
@@ -869,8 +845,8 @@ void register_CameraManipulator_class(){
         }
         { //::osgGA::GUIEventHandler::libraryName
         
-            typedef char const * ( ::osgGA::GUIEventHandler::*libraryName_function_type)(  ) const;
-            typedef char const * ( CameraManipulator_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osgGA::GUIEventHandler::*libraryName_function_type )(  ) const;
+            typedef char const * ( CameraManipulator_wrapper::*default_libraryName_function_type )(  ) const;
             
             CameraManipulator_exposer.def( 
                 "libraryName"

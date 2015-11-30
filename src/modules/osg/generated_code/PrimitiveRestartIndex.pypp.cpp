@@ -4,38 +4,11 @@
 #include "__call_policies.pypp.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "primitiverestartindex.pypp.hpp"
+#include "PrimitiveRestartIndex.pypp.hpp"
 
 namespace bp = boost::python;
 
 struct PrimitiveRestartIndex_wrapper : osg::PrimitiveRestartIndex, bp::wrapper< osg::PrimitiveRestartIndex > {
-
-    struct Extensions_wrapper : osg::PrimitiveRestartIndex::Extensions, bp::wrapper< osg::PrimitiveRestartIndex::Extensions > {
-    
-        Extensions_wrapper(unsigned int contextID )
-        : osg::PrimitiveRestartIndex::Extensions( contextID )
-          , bp::wrapper< osg::PrimitiveRestartIndex::Extensions >(){
-            // constructor
-        
-        }
-    
-        static void lowestCommonDenominator( ::osg::PrimitiveRestartIndex::Extensions & inst, ::osg::PrimitiveRestartIndex::Extensions & rhs ){
-            inst.lowestCommonDenominator(rhs);
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
-    };
 
     PrimitiveRestartIndex_wrapper( )
     : osg::PrimitiveRestartIndex( )
@@ -183,18 +156,6 @@ struct PrimitiveRestartIndex_wrapper : osg::PrimitiveRestartIndex, bp::wrapper< 
         osg::StateAttribute::compileGLObjects( boost::ref(arg0) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
     virtual unsigned int getMember(  ) const  {
         if( bp::override func_getMember = this->get_override( "getMember" ) )
             return func_getMember(  );
@@ -217,30 +178,6 @@ struct PrimitiveRestartIndex_wrapper : osg::PrimitiveRestartIndex, bp::wrapper< 
     
     bool default_getModeUsage( ::osg::StateAttribute::ModeUsage & arg0 ) const  {
         return osg::StateAttribute::getModeUsage( boost::ref(arg0) );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
     }
 
     virtual bool isTextureAttribute(  ) const  {
@@ -267,43 +204,11 @@ struct PrimitiveRestartIndex_wrapper : osg::PrimitiveRestartIndex, bp::wrapper< 
         osg::StateAttribute::resizeGLObjectBuffers( arg0 );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
+
+static void lowestCommonDenominator_a2bd4434d4f0f40b404a7e7cbb18b5f7( ::osg::PrimitiveRestartIndex::Extensions & inst, ::osg::PrimitiveRestartIndex::Extensions & rhs ){
+    inst.lowestCommonDenominator(rhs);
+}
 
 void register_PrimitiveRestartIndex_class(){
 
@@ -312,14 +217,14 @@ void register_PrimitiveRestartIndex_class(){
         PrimitiveRestartIndex_exposer_t PrimitiveRestartIndex_exposer = PrimitiveRestartIndex_exposer_t( "PrimitiveRestartIndex", "\n  osg::PrimitiveRestartIndex does nothing if OpenGL 3.1 is not available.\n", bp::no_init );
         bp::scope PrimitiveRestartIndex_scope( PrimitiveRestartIndex_exposer );
         { //::osg::PrimitiveRestartIndex::Extensions
-            typedef bp::class_< PrimitiveRestartIndex_wrapper::Extensions_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::PrimitiveRestartIndex::Extensions > > Extensions_exposer_t;
+            typedef bp::class_< osg::PrimitiveRestartIndex::Extensions, bp::bases< osg::Referenced >, osg::ref_ptr< ::osg::PrimitiveRestartIndex::Extensions > > Extensions_exposer_t;
             Extensions_exposer_t Extensions_exposer = Extensions_exposer_t( "Extensions", "\n Extensions class which encapsulates the querying of extensions and\n associated function pointers, and provide convenience wrappers to\n check for the extensions or use the associated functions.\n", bp::no_init );
             bp::scope Extensions_scope( Extensions_exposer );
             Extensions_exposer.def( bp::init< unsigned int >(( bp::arg("contextID") ), "\n Extensions class which encapsulates the querying of extensions and\n associated function pointers, and provide convenience wrappers to\n check for the extensions or use the associated functions.\n") );
             bp::implicitly_convertible< unsigned int, osg::PrimitiveRestartIndex::Extensions >();
             { //::osg::PrimitiveRestartIndex::Extensions::glPrimitiveRestartIndex
             
-                typedef void ( ::osg::PrimitiveRestartIndex::Extensions::*glPrimitiveRestartIndex_function_type)( ::GLuint ) const;
+                typedef void ( ::osg::PrimitiveRestartIndex::Extensions::*glPrimitiveRestartIndex_function_type )( ::GLuint ) const;
                 
                 Extensions_exposer.def( 
                     "glPrimitiveRestartIndex"
@@ -329,7 +234,7 @@ void register_PrimitiveRestartIndex_class(){
             }
             { //::osg::PrimitiveRestartIndex::Extensions::isOpenGL31Supported
             
-                typedef bool ( ::osg::PrimitiveRestartIndex::Extensions::*isOpenGL31Supported_function_type)(  ) const;
+                typedef bool ( ::osg::PrimitiveRestartIndex::Extensions::*isOpenGL31Supported_function_type )(  ) const;
                 
                 Extensions_exposer.def( 
                     "isOpenGL31Supported"
@@ -338,7 +243,7 @@ void register_PrimitiveRestartIndex_class(){
             }
             { //::osg::PrimitiveRestartIndex::Extensions::isPrimitiveRestartIndexNVSupported
             
-                typedef bool ( ::osg::PrimitiveRestartIndex::Extensions::*isPrimitiveRestartIndexNVSupported_function_type)(  ) const;
+                typedef bool ( ::osg::PrimitiveRestartIndex::Extensions::*isPrimitiveRestartIndexNVSupported_function_type )(  ) const;
                 
                 Extensions_exposer.def( 
                     "isPrimitiveRestartIndexNVSupported"
@@ -351,30 +256,18 @@ void register_PrimitiveRestartIndex_class(){
                 
                 Extensions_exposer.def( 
                     "lowestCommonDenominator"
-                    , lowestCommonDenominator_function_type( &PrimitiveRestartIndex_wrapper::Extensions_wrapper::lowestCommonDenominator )
+                    , lowestCommonDenominator_function_type( &lowestCommonDenominator_a2bd4434d4f0f40b404a7e7cbb18b5f7 )
                     , ( bp::arg("inst"), bp::arg("rhs") ) );
             
             }
             { //::osg::PrimitiveRestartIndex::Extensions::setupGLExtensions
             
-                typedef void ( ::osg::PrimitiveRestartIndex::Extensions::*setupGLExtensions_function_type)( unsigned int ) ;
+                typedef void ( ::osg::PrimitiveRestartIndex::Extensions::*setupGLExtensions_function_type )( unsigned int ) ;
                 
                 Extensions_exposer.def( 
                     "setupGLExtensions"
                     , setupGLExtensions_function_type( &::osg::PrimitiveRestartIndex::Extensions::setupGLExtensions )
                     , ( bp::arg("contextID") ) );
-            
-            }
-            { //::osg::Referenced::setThreadSafeRefUnref
-            
-                typedef void ( ::osg::Referenced::*setThreadSafeRefUnref_function_type)( bool ) ;
-                typedef void ( PrimitiveRestartIndex_wrapper::Extensions_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-                
-                Extensions_exposer.def( 
-                    "setThreadSafeRefUnref"
-                    , setThreadSafeRefUnref_function_type(&::osg::Referenced::setThreadSafeRefUnref)
-                    , default_setThreadSafeRefUnref_function_type(&PrimitiveRestartIndex_wrapper::Extensions_wrapper::default_setThreadSafeRefUnref)
-                    , ( bp::arg("threadSafe") ) );
             
             }
         }
@@ -383,8 +276,8 @@ void register_PrimitiveRestartIndex_class(){
         bp::implicitly_convertible< unsigned int, osg::PrimitiveRestartIndex >();
         { //::osg::PrimitiveRestartIndex::apply
         
-            typedef void ( ::osg::PrimitiveRestartIndex::*apply_function_type)( ::osg::State & ) const;
-            typedef void ( PrimitiveRestartIndex_wrapper::*default_apply_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::PrimitiveRestartIndex::*apply_function_type )( ::osg::State & ) const;
+            typedef void ( PrimitiveRestartIndex_wrapper::*default_apply_function_type )( ::osg::State & ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "apply"
@@ -395,8 +288,8 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::PrimitiveRestartIndex::className
         
-            typedef char const * ( ::osg::PrimitiveRestartIndex::*className_function_type)(  ) const;
-            typedef char const * ( PrimitiveRestartIndex_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::PrimitiveRestartIndex::*className_function_type )(  ) const;
+            typedef char const * ( PrimitiveRestartIndex_wrapper::*default_className_function_type )(  ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "className"
@@ -406,8 +299,8 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::PrimitiveRestartIndex::clone
         
-            typedef ::osg::Object * ( ::osg::PrimitiveRestartIndex::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( PrimitiveRestartIndex_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::PrimitiveRestartIndex::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( PrimitiveRestartIndex_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "clone"
@@ -419,8 +312,8 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::PrimitiveRestartIndex::cloneType
         
-            typedef ::osg::Object * ( ::osg::PrimitiveRestartIndex::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( PrimitiveRestartIndex_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::PrimitiveRestartIndex::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( PrimitiveRestartIndex_wrapper::*default_cloneType_function_type )(  ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "cloneType"
@@ -442,7 +335,7 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::PrimitiveRestartIndex::getRestartIndex
         
-            typedef unsigned int ( ::osg::PrimitiveRestartIndex::*getRestartIndex_function_type)(  ) const;
+            typedef unsigned int ( ::osg::PrimitiveRestartIndex::*getRestartIndex_function_type )(  ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "getRestartIndex"
@@ -451,8 +344,8 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::PrimitiveRestartIndex::getType
         
-            typedef ::osg::StateAttribute::Type ( ::osg::PrimitiveRestartIndex::*getType_function_type)(  ) const;
-            typedef ::osg::StateAttribute::Type ( PrimitiveRestartIndex_wrapper::*default_getType_function_type)(  ) const;
+            typedef ::osg::StateAttribute::Type ( ::osg::PrimitiveRestartIndex::*getType_function_type )(  ) const;
+            typedef ::osg::StateAttribute::Type ( PrimitiveRestartIndex_wrapper::*default_getType_function_type )(  ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "getType"
@@ -462,8 +355,8 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::PrimitiveRestartIndex::isSameKindAs
         
-            typedef bool ( ::osg::PrimitiveRestartIndex::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( PrimitiveRestartIndex_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::PrimitiveRestartIndex::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( PrimitiveRestartIndex_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "isSameKindAs"
@@ -474,8 +367,8 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::PrimitiveRestartIndex::libraryName
         
-            typedef char const * ( ::osg::PrimitiveRestartIndex::*libraryName_function_type)(  ) const;
-            typedef char const * ( PrimitiveRestartIndex_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::PrimitiveRestartIndex::*libraryName_function_type )(  ) const;
+            typedef char const * ( PrimitiveRestartIndex_wrapper::*default_libraryName_function_type )(  ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "libraryName"
@@ -495,7 +388,7 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::PrimitiveRestartIndex::setRestartIndex
         
-            typedef void ( ::osg::PrimitiveRestartIndex::*setRestartIndex_function_type)( unsigned int ) ;
+            typedef void ( ::osg::PrimitiveRestartIndex::*setRestartIndex_function_type )( unsigned int ) ;
             
             PrimitiveRestartIndex_exposer.def( 
                 "setRestartIndex"
@@ -505,8 +398,8 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::StateAttribute::asTexture
         
-            typedef ::osg::Texture * ( ::osg::StateAttribute::*asTexture_function_type)(  ) ;
-            typedef ::osg::Texture * ( PrimitiveRestartIndex_wrapper::*default_asTexture_function_type)(  ) ;
+            typedef ::osg::Texture * ( ::osg::StateAttribute::*asTexture_function_type )(  ) ;
+            typedef ::osg::Texture * ( PrimitiveRestartIndex_wrapper::*default_asTexture_function_type )(  ) ;
             
             PrimitiveRestartIndex_exposer.def( 
                 "asTexture"
@@ -517,8 +410,8 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::StateAttribute::asTexture
         
-            typedef ::osg::Texture const * ( ::osg::StateAttribute::*asTexture_function_type)(  ) const;
-            typedef ::osg::Texture const * ( PrimitiveRestartIndex_wrapper::*default_asTexture_function_type)(  ) const;
+            typedef ::osg::Texture const * ( ::osg::StateAttribute::*asTexture_function_type )(  ) const;
+            typedef ::osg::Texture const * ( PrimitiveRestartIndex_wrapper::*default_asTexture_function_type )(  ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "asTexture"
@@ -529,8 +422,8 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::StateAttribute::checkValidityOfAssociatedModes
         
-            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
-            typedef bool ( PrimitiveRestartIndex_wrapper::*default_checkValidityOfAssociatedModes_function_type)( ::osg::State & ) const;
+            typedef bool ( ::osg::StateAttribute::*checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
+            typedef bool ( PrimitiveRestartIndex_wrapper::*default_checkValidityOfAssociatedModes_function_type )( ::osg::State & ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "checkValidityOfAssociatedModes"
@@ -541,8 +434,8 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::StateAttribute::compileGLObjects
         
-            typedef void ( ::osg::StateAttribute::*compileGLObjects_function_type)( ::osg::State & ) const;
-            typedef void ( PrimitiveRestartIndex_wrapper::*default_compileGLObjects_function_type)( ::osg::State & ) const;
+            typedef void ( ::osg::StateAttribute::*compileGLObjects_function_type )( ::osg::State & ) const;
+            typedef void ( PrimitiveRestartIndex_wrapper::*default_compileGLObjects_function_type )( ::osg::State & ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "compileGLObjects"
@@ -551,21 +444,10 @@ void register_PrimitiveRestartIndex_class(){
                 , ( bp::arg("arg0") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( PrimitiveRestartIndex_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            PrimitiveRestartIndex_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&PrimitiveRestartIndex_wrapper::default_computeDataVariance) );
-        
-        }
         { //::osg::StateAttribute::getMember
         
-            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type)(  ) const;
-            typedef unsigned int ( PrimitiveRestartIndex_wrapper::*default_getMember_function_type)(  ) const;
+            typedef unsigned int ( ::osg::StateAttribute::*getMember_function_type )(  ) const;
+            typedef unsigned int ( PrimitiveRestartIndex_wrapper::*default_getMember_function_type )(  ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "getMember"
@@ -575,8 +457,8 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::StateAttribute::getModeUsage
         
-            typedef bool ( ::osg::StateAttribute::*getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
-            typedef bool ( PrimitiveRestartIndex_wrapper::*default_getModeUsage_function_type)( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( ::osg::StateAttribute::*getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
+            typedef bool ( PrimitiveRestartIndex_wrapper::*default_getModeUsage_function_type )( ::osg::StateAttribute::ModeUsage & ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "getModeUsage"
@@ -585,34 +467,10 @@ void register_PrimitiveRestartIndex_class(){
                 , ( bp::arg("arg0") ) );
         
         }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( PrimitiveRestartIndex_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            PrimitiveRestartIndex_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&PrimitiveRestartIndex_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( PrimitiveRestartIndex_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            PrimitiveRestartIndex_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&PrimitiveRestartIndex_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::StateAttribute::isTextureAttribute
         
-            typedef bool ( ::osg::StateAttribute::*isTextureAttribute_function_type)(  ) const;
-            typedef bool ( PrimitiveRestartIndex_wrapper::*default_isTextureAttribute_function_type)(  ) const;
+            typedef bool ( ::osg::StateAttribute::*isTextureAttribute_function_type )(  ) const;
+            typedef bool ( PrimitiveRestartIndex_wrapper::*default_isTextureAttribute_function_type )(  ) const;
             
             PrimitiveRestartIndex_exposer.def( 
                 "isTextureAttribute"
@@ -622,61 +480,14 @@ void register_PrimitiveRestartIndex_class(){
         }
         { //::osg::StateAttribute::resizeGLObjectBuffers
         
-            typedef void ( ::osg::StateAttribute::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( PrimitiveRestartIndex_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::StateAttribute::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( PrimitiveRestartIndex_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             PrimitiveRestartIndex_exposer.def( 
                 "resizeGLObjectBuffers"
                 , resizeGLObjectBuffers_function_type(&::osg::StateAttribute::resizeGLObjectBuffers)
                 , default_resizeGLObjectBuffers_function_type(&PrimitiveRestartIndex_wrapper::default_resizeGLObjectBuffers)
                 , ( bp::arg("arg0") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( PrimitiveRestartIndex_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            PrimitiveRestartIndex_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&PrimitiveRestartIndex_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            PrimitiveRestartIndex_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( PrimitiveRestartIndex_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            PrimitiveRestartIndex_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&PrimitiveRestartIndex_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( PrimitiveRestartIndex_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            PrimitiveRestartIndex_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&PrimitiveRestartIndex_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
         PrimitiveRestartIndex_exposer.staticmethod( "getExtensions" );

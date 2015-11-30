@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgutil.h"
+#include "wrap_osgUtil.h"
 #include "wrap_referenced.h"
-#include "linesegmentintersector.pypp.hpp"
+#include "LineSegmentIntersector.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -114,46 +114,35 @@ struct LineSegmentIntersector_wrapper : osgUtil::LineSegmentIntersector, bp::wra
         osgUtil::LineSegmentIntersector::reset( );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_LineSegmentIntersector_class(){
 
     { //::osgUtil::LineSegmentIntersector
         typedef bp::class_< LineSegmentIntersector_wrapper, bp::bases< osgUtil::Intersector >, osg::ref_ptr< LineSegmentIntersector_wrapper >, boost::noncopyable > LineSegmentIntersector_exposer_t;
-        LineSegmentIntersector_exposer_t LineSegmentIntersector_exposer = LineSegmentIntersector_exposer_t( "LineSegmentIntersector", bp::init< osg::Vec3d const &, osg::Vec3d const & >(( bp::arg("start"), bp::arg("end") )) );
+        LineSegmentIntersector_exposer_t LineSegmentIntersector_exposer = LineSegmentIntersector_exposer_t( "LineSegmentIntersector", "\n Concrete class for implementing line intersections with the scene graph.\n To be used in conjunction with IntersectionVisitor.\n", bp::init< osg::Vec3d const &, osg::Vec3d const & >(( bp::arg("start"), bp::arg("end") ), "\n Construct a LineSegmentIntersector the runs between the specified start and end points in MODEL coordinates.\n") );
         bp::scope LineSegmentIntersector_scope( LineSegmentIntersector_exposer );
         bp::class_< osgUtil::LineSegmentIntersector::Intersection >( "Intersection", bp::init< >() )    
             .def( 
                 "getLocalIntersectNormal"
-                , (::osg::Vec3 const & ( ::osgUtil::LineSegmentIntersector::Intersection::* )(  )const)( &::osgUtil::LineSegmentIntersector::Intersection::getLocalIntersectNormal )
+                , (::osg::Vec3 const & ( ::osgUtil::LineSegmentIntersector::Intersection::* )(  ) const)( &::osgUtil::LineSegmentIntersector::Intersection::getLocalIntersectNormal )
                 , bp::return_internal_reference< >() )    
             .def( 
                 "getLocalIntersectPoint"
-                , (::osg::Vec3d const & ( ::osgUtil::LineSegmentIntersector::Intersection::* )(  )const)( &::osgUtil::LineSegmentIntersector::Intersection::getLocalIntersectPoint )
+                , (::osg::Vec3d const & ( ::osgUtil::LineSegmentIntersector::Intersection::* )(  ) const)( &::osgUtil::LineSegmentIntersector::Intersection::getLocalIntersectPoint )
                 , bp::return_internal_reference< >() )    
             .def( 
                 "getTextureLookUp"
-                , (::osg::Texture * ( ::osgUtil::LineSegmentIntersector::Intersection::* )( ::osg::Vec3 & )const)( &::osgUtil::LineSegmentIntersector::Intersection::getTextureLookUp )
+                , (::osg::Texture * ( ::osgUtil::LineSegmentIntersector::Intersection::* )( ::osg::Vec3 & ) const)( &::osgUtil::LineSegmentIntersector::Intersection::getTextureLookUp )
                 , ( bp::arg("tc") )
-                , bp::return_internal_reference< >() )    
+                , bp::return_internal_reference< >()
+                , "\n convinience function for mapping the intersection point to any textures assigned to the objects intersected.\n  Returns the Texture pointer and texture coords of object hit when a texture is available on the object, returns NULL otherwise.\n" )    
             .def( 
                 "getWorldIntersectNormal"
-                , (::osg::Vec3 ( ::osgUtil::LineSegmentIntersector::Intersection::* )(  )const)( &::osgUtil::LineSegmentIntersector::Intersection::getWorldIntersectNormal ) )    
+                , (::osg::Vec3 ( ::osgUtil::LineSegmentIntersector::Intersection::* )(  ) const)( &::osgUtil::LineSegmentIntersector::Intersection::getWorldIntersectNormal ) )    
             .def( 
                 "getWorldIntersectPoint"
-                , (::osg::Vec3d ( ::osgUtil::LineSegmentIntersector::Intersection::* )(  )const)( &::osgUtil::LineSegmentIntersector::Intersection::getWorldIntersectPoint ) )    
+                , (::osg::Vec3d ( ::osgUtil::LineSegmentIntersector::Intersection::* )(  ) const)( &::osgUtil::LineSegmentIntersector::Intersection::getWorldIntersectPoint ) )    
             .def( bp::self < bp::self )    
             .def_readwrite( "drawable", &osgUtil::LineSegmentIntersector::Intersection::drawable )    
             .def_readwrite( "indexList", &osgUtil::LineSegmentIntersector::Intersection::indexList )    
@@ -164,12 +153,12 @@ void register_LineSegmentIntersector_class(){
             .def_readwrite( "primitiveIndex", &osgUtil::LineSegmentIntersector::Intersection::primitiveIndex )    
             .def_readwrite( "ratio", &osgUtil::LineSegmentIntersector::Intersection::ratio )    
             .def_readwrite( "ratioList", &osgUtil::LineSegmentIntersector::Intersection::ratioList );
-        LineSegmentIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, osg::Vec3d const &, osg::Vec3d const & >(( bp::arg("cf"), bp::arg("start"), bp::arg("end") )) );
-        LineSegmentIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, double, double >(( bp::arg("cf"), bp::arg("x"), bp::arg("y") )) );
+        LineSegmentIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, osg::Vec3d const &, osg::Vec3d const & >(( bp::arg("cf"), bp::arg("start"), bp::arg("end") ), "\n Construct a LineSegmentIntersector the runs between the specified start and end points in the specified coordinate frame.\n") );
+        LineSegmentIntersector_exposer.def( bp::init< osgUtil::Intersector::CoordinateFrame, double, double >(( bp::arg("cf"), bp::arg("x"), bp::arg("y") ), "\n Convenience constructor for supporting picking in WINDOW, or PROJECTION coordinates\n In WINDOW coordinates creates a start value of (x,y,0) and end value of (x,y,1).\n In PROJECTION coordinates (clip space cube) creates a start value of (x,y,-1) and end value of (x,y,1).\n In VIEW and MODEL coordinates creates a start value of (x,y,0) and end value of (x,y,1).\n") );
         { //::osgUtil::LineSegmentIntersector::clone
         
-            typedef ::osgUtil::Intersector * ( ::osgUtil::LineSegmentIntersector::*clone_function_type)( ::osgUtil::IntersectionVisitor & ) ;
-            typedef ::osgUtil::Intersector * ( LineSegmentIntersector_wrapper::*default_clone_function_type)( ::osgUtil::IntersectionVisitor & ) ;
+            typedef ::osgUtil::Intersector * ( ::osgUtil::LineSegmentIntersector::*clone_function_type )( ::osgUtil::IntersectionVisitor & ) ;
+            typedef ::osgUtil::Intersector * ( LineSegmentIntersector_wrapper::*default_clone_function_type )( ::osgUtil::IntersectionVisitor & ) ;
             
             LineSegmentIntersector_exposer.def( 
                 "clone"
@@ -181,8 +170,8 @@ void register_LineSegmentIntersector_class(){
         }
         { //::osgUtil::LineSegmentIntersector::containsIntersections
         
-            typedef bool ( ::osgUtil::LineSegmentIntersector::*containsIntersections_function_type)(  ) ;
-            typedef bool ( LineSegmentIntersector_wrapper::*default_containsIntersections_function_type)(  ) ;
+            typedef bool ( ::osgUtil::LineSegmentIntersector::*containsIntersections_function_type )(  ) ;
+            typedef bool ( LineSegmentIntersector_wrapper::*default_containsIntersections_function_type )(  ) ;
             
             LineSegmentIntersector_exposer.def( 
                 "containsIntersections"
@@ -202,7 +191,7 @@ void register_LineSegmentIntersector_class(){
         }
         { //::osgUtil::LineSegmentIntersector::getEnd
         
-            typedef ::osg::Vec3d const & ( ::osgUtil::LineSegmentIntersector::*getEnd_function_type)(  ) const;
+            typedef ::osg::Vec3d const & ( ::osgUtil::LineSegmentIntersector::*getEnd_function_type )(  ) const;
             
             LineSegmentIntersector_exposer.def( 
                 "getEnd"
@@ -212,7 +201,7 @@ void register_LineSegmentIntersector_class(){
         }
         { //::osgUtil::LineSegmentIntersector::getFirstIntersection
         
-            typedef ::osgUtil::LineSegmentIntersector::Intersection ( ::osgUtil::LineSegmentIntersector::*getFirstIntersection_function_type)(  ) ;
+            typedef ::osgUtil::LineSegmentIntersector::Intersection ( ::osgUtil::LineSegmentIntersector::*getFirstIntersection_function_type )(  ) ;
             
             LineSegmentIntersector_exposer.def( 
                 "getFirstIntersection"
@@ -221,7 +210,7 @@ void register_LineSegmentIntersector_class(){
         }
         { //::osgUtil::LineSegmentIntersector::getIntersections
         
-            typedef ::std::multiset< osgUtil::LineSegmentIntersector::Intersection > & ( ::osgUtil::LineSegmentIntersector::*getIntersections_function_type)(  ) ;
+            typedef ::std::multiset< osgUtil::LineSegmentIntersector::Intersection > & ( ::osgUtil::LineSegmentIntersector::*getIntersections_function_type )(  ) ;
             
             LineSegmentIntersector_exposer.def( 
                 "getIntersections"
@@ -231,7 +220,7 @@ void register_LineSegmentIntersector_class(){
         }
         { //::osgUtil::LineSegmentIntersector::getStart
         
-            typedef ::osg::Vec3d const & ( ::osgUtil::LineSegmentIntersector::*getStart_function_type)(  ) const;
+            typedef ::osg::Vec3d const & ( ::osgUtil::LineSegmentIntersector::*getStart_function_type )(  ) const;
             
             LineSegmentIntersector_exposer.def( 
                 "getStart"
@@ -241,7 +230,7 @@ void register_LineSegmentIntersector_class(){
         }
         { //::osgUtil::LineSegmentIntersector::insertIntersection
         
-            typedef void ( ::osgUtil::LineSegmentIntersector::*insertIntersection_function_type)( ::osgUtil::LineSegmentIntersector::Intersection const & ) ;
+            typedef void ( ::osgUtil::LineSegmentIntersector::*insertIntersection_function_type )( ::osgUtil::LineSegmentIntersector::Intersection const & ) ;
             
             LineSegmentIntersector_exposer.def( 
                 "insertIntersection"
@@ -251,8 +240,8 @@ void register_LineSegmentIntersector_class(){
         }
         { //::osgUtil::LineSegmentIntersector::intersect
         
-            typedef void ( ::osgUtil::LineSegmentIntersector::*intersect_function_type)( ::osgUtil::IntersectionVisitor &,::osg::Drawable * ) ;
-            typedef void ( LineSegmentIntersector_wrapper::*default_intersect_function_type)( ::osgUtil::IntersectionVisitor &,::osg::Drawable * ) ;
+            typedef void ( ::osgUtil::LineSegmentIntersector::*intersect_function_type )( ::osgUtil::IntersectionVisitor &,::osg::Drawable * ) ;
+            typedef void ( LineSegmentIntersector_wrapper::*default_intersect_function_type )( ::osgUtil::IntersectionVisitor &,::osg::Drawable * ) ;
             
             LineSegmentIntersector_exposer.def( 
                 "intersect"
@@ -263,8 +252,8 @@ void register_LineSegmentIntersector_class(){
         }
         { //::osgUtil::LineSegmentIntersector::leave
         
-            typedef void ( ::osgUtil::LineSegmentIntersector::*leave_function_type)(  ) ;
-            typedef void ( LineSegmentIntersector_wrapper::*default_leave_function_type)(  ) ;
+            typedef void ( ::osgUtil::LineSegmentIntersector::*leave_function_type )(  ) ;
+            typedef void ( LineSegmentIntersector_wrapper::*default_leave_function_type )(  ) ;
             
             LineSegmentIntersector_exposer.def( 
                 "leave"
@@ -274,8 +263,8 @@ void register_LineSegmentIntersector_class(){
         }
         { //::osgUtil::LineSegmentIntersector::reset
         
-            typedef void ( ::osgUtil::LineSegmentIntersector::*reset_function_type)(  ) ;
-            typedef void ( LineSegmentIntersector_wrapper::*default_reset_function_type)(  ) ;
+            typedef void ( ::osgUtil::LineSegmentIntersector::*reset_function_type )(  ) ;
+            typedef void ( LineSegmentIntersector_wrapper::*default_reset_function_type )(  ) ;
             
             LineSegmentIntersector_exposer.def( 
                 "reset"
@@ -285,7 +274,7 @@ void register_LineSegmentIntersector_class(){
         }
         { //::osgUtil::LineSegmentIntersector::setEnd
         
-            typedef void ( ::osgUtil::LineSegmentIntersector::*setEnd_function_type)( ::osg::Vec3d const & ) ;
+            typedef void ( ::osgUtil::LineSegmentIntersector::*setEnd_function_type )( ::osg::Vec3d const & ) ;
             
             LineSegmentIntersector_exposer.def( 
                 "setEnd"
@@ -295,7 +284,7 @@ void register_LineSegmentIntersector_class(){
         }
         { //::osgUtil::LineSegmentIntersector::setStart
         
-            typedef void ( ::osgUtil::LineSegmentIntersector::*setStart_function_type)( ::osg::Vec3d const & ) ;
+            typedef void ( ::osgUtil::LineSegmentIntersector::*setStart_function_type )( ::osg::Vec3d const & ) ;
             
             LineSegmentIntersector_exposer.def( 
                 "setStart"

@@ -14,93 +14,93 @@
 
 #include "indexing_suite/list.hpp"
 
-#include "wrap_osgmanipulator.h"
+#include "wrap_osgManipulator.h"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/_osgmanipulator_free_functions.pypp.hpp"
+#include "AntiSquish.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/_osgmanipulator_global_variables.pypp.hpp"
+#include "CommandManager.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/antisquish.pypp.hpp"
+#include "CompositeDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/commandmanager.pypp.hpp"
+#include "Constraint.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/compositedragger.pypp.hpp"
+#include "Constraints.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/constraint.pypp.hpp"
+#include "CylinderPlaneProjector.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/constraints.pypp.hpp"
+#include "CylinderProjector.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/cylinderplaneprojector.pypp.hpp"
+#include "Dragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/cylinderprojector.pypp.hpp"
+#include "DraggerCallback.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/dragger.pypp.hpp"
+#include "DraggerTransformCallback.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/draggercallback.pypp.hpp"
+#include "GridConstraint.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/draggertransformcallback.pypp.hpp"
+#include "IntersectionList.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/gridconstraint.pypp.hpp"
+#include "LineProjector.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/intersectionlist.pypp.hpp"
+#include "MotionCommand.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/lineprojector.pypp.hpp"
+#include "PlaneProjector.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/motioncommand.pypp.hpp"
+#include "PointerInfo.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/planeprojector.pypp.hpp"
+#include "Projector.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/pointerinfo.pypp.hpp"
+#include "Rotate3DCommand.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/projector.pypp.hpp"
+#include "RotateCylinderDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/rotate3dcommand.pypp.hpp"
+#include "RotateSphereDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/rotatecylinderdragger.pypp.hpp"
+#include "Scale1DCommand.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/rotatespheredragger.pypp.hpp"
+#include "Scale1DDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/scale1dcommand.pypp.hpp"
+#include "Scale2DCommand.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/scale1ddragger.pypp.hpp"
+#include "Scale2DDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/scale2dcommand.pypp.hpp"
+#include "ScaleAxisDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/scale2ddragger.pypp.hpp"
+#include "ScaleUniformCommand.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/scaleaxisdragger.pypp.hpp"
+#include "Selections.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/scaleuniformcommand.pypp.hpp"
+#include "SpherePlaneProjector.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/selections.pypp.hpp"
+#include "SphereProjector.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/sphereplaneprojector.pypp.hpp"
+#include "TabBoxDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/sphereprojector.pypp.hpp"
+#include "TabBoxTrackballDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/tabboxdragger.pypp.hpp"
+#include "TabPlaneDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/tabboxtrackballdragger.pypp.hpp"
+#include "TabPlaneTrackballDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/tabplanedragger.pypp.hpp"
+#include "TrackballDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/tabplanetrackballdragger.pypp.hpp"
+#include "Translate1DDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/trackballdragger.pypp.hpp"
+#include "Translate2DDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/translate1ddragger.pypp.hpp"
+#include "TranslateAxisDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/translate2ddragger.pypp.hpp"
+#include "TranslateInLineCommand.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/translateaxisdragger.pypp.hpp"
+#include "TranslateInPlaneCommand.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/translateinlinecommand.pypp.hpp"
+#include "TranslatePlaneDragger.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/translateinplanecommand.pypp.hpp"
+#include "_osgManipulator_free_functions.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/translateplanedragger.pypp.hpp"
+#include "_osgManipulator_global_variables.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgmanipulator/generated_code/vector_less__osg_scope_ref_ptr_less_osgmanipulator_scope_draggercallback_greater___greater_.pypp.hpp"
+#include "vector_less__osg_scope_ref_ptr_less_osgManipulator_scope_DraggerCallback_greater___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

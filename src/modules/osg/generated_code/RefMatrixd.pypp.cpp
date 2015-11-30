@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "refmatrixd.pypp.hpp"
+#include "RefMatrixd.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -104,90 +104,6 @@ struct RefMatrixd_wrapper : osg::RefMatrixd, bp::wrapper< osg::RefMatrixd > {
         return osg::RefMatrixd::libraryName( );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_RefMatrixd_class(){
@@ -206,8 +122,8 @@ void register_RefMatrixd_class(){
         RefMatrixd_exposer.def( bp::init< double, double, double, double, double, double, double, double, double, double, double, double, double, double, double, double >(( bp::arg("a00"), bp::arg("a01"), bp::arg("a02"), bp::arg("a03"), bp::arg("a10"), bp::arg("a11"), bp::arg("a12"), bp::arg("a13"), bp::arg("a20"), bp::arg("a21"), bp::arg("a22"), bp::arg("a23"), bp::arg("a30"), bp::arg("a31"), bp::arg("a32"), bp::arg("a33") )) );
         { //::osg::RefMatrixd::className
         
-            typedef char const * ( ::osg::RefMatrixd::*className_function_type)(  ) const;
-            typedef char const * ( RefMatrixd_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::RefMatrixd::*className_function_type )(  ) const;
+            typedef char const * ( RefMatrixd_wrapper::*default_className_function_type )(  ) const;
             
             RefMatrixd_exposer.def( 
                 "className"
@@ -217,8 +133,8 @@ void register_RefMatrixd_class(){
         }
         { //::osg::RefMatrixd::clone
         
-            typedef ::osg::Object * ( ::osg::RefMatrixd::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( RefMatrixd_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::RefMatrixd::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( RefMatrixd_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             RefMatrixd_exposer.def( 
                 "clone"
@@ -230,8 +146,8 @@ void register_RefMatrixd_class(){
         }
         { //::osg::RefMatrixd::cloneType
         
-            typedef ::osg::Object * ( ::osg::RefMatrixd::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( RefMatrixd_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::RefMatrixd::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( RefMatrixd_wrapper::*default_cloneType_function_type )(  ) const;
             
             RefMatrixd_exposer.def( 
                 "cloneType"
@@ -242,8 +158,8 @@ void register_RefMatrixd_class(){
         }
         { //::osg::RefMatrixd::isSameKindAs
         
-            typedef bool ( ::osg::RefMatrixd::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( RefMatrixd_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::RefMatrixd::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( RefMatrixd_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             RefMatrixd_exposer.def( 
                 "isSameKindAs"
@@ -254,107 +170,13 @@ void register_RefMatrixd_class(){
         }
         { //::osg::RefMatrixd::libraryName
         
-            typedef char const * ( ::osg::RefMatrixd::*libraryName_function_type)(  ) const;
-            typedef char const * ( RefMatrixd_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::RefMatrixd::*libraryName_function_type )(  ) const;
+            typedef char const * ( RefMatrixd_wrapper::*default_libraryName_function_type )(  ) const;
             
             RefMatrixd_exposer.def( 
                 "libraryName"
                 , libraryName_function_type(&::osg::RefMatrixd::libraryName)
                 , default_libraryName_function_type(&RefMatrixd_wrapper::default_libraryName) );
-        
-        }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( RefMatrixd_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            RefMatrixd_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&RefMatrixd_wrapper::default_computeDataVariance) );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( RefMatrixd_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            RefMatrixd_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&RefMatrixd_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( RefMatrixd_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            RefMatrixd_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&RefMatrixd_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::resizeGLObjectBuffers
-        
-            typedef void ( ::osg::Object::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( RefMatrixd_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            
-            RefMatrixd_exposer.def( 
-                "resizeGLObjectBuffers"
-                , resizeGLObjectBuffers_function_type(&::osg::Object::resizeGLObjectBuffers)
-                , default_resizeGLObjectBuffers_function_type(&RefMatrixd_wrapper::default_resizeGLObjectBuffers)
-                , ( bp::arg("arg0") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( RefMatrixd_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            RefMatrixd_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&RefMatrixd_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            RefMatrixd_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( RefMatrixd_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            RefMatrixd_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&RefMatrixd_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( RefMatrixd_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            RefMatrixd_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&RefMatrixd_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
         RefMatrixd_exposer.def( bp::self_ns::str(bp::self) );

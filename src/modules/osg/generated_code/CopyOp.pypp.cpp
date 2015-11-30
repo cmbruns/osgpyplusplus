@@ -2,7 +2,7 @@
 
 #include "boost/python.hpp"
 #include "wrap_osg.h"
-#include "copyop.pypp.hpp"
+#include "CopyOp.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -33,7 +33,7 @@ void register_CopyOp_class(){
         bp::implicitly_convertible< unsigned int, osg::CopyOp >();
         { //::osg::CopyOp::getCopyFlags
         
-            typedef unsigned int ( ::osg::CopyOp::*getCopyFlags_function_type)(  ) const;
+            typedef unsigned int ( ::osg::CopyOp::*getCopyFlags_function_type )(  ) const;
             
             CopyOp_exposer.def( 
                 "getCopyFlags"
@@ -42,7 +42,7 @@ void register_CopyOp_class(){
         }
         { //::osg::CopyOp::setCopyFlags
         
-            typedef void ( ::osg::CopyOp::*setCopyFlags_function_type)( unsigned int ) ;
+            typedef void ( ::osg::CopyOp::*setCopyFlags_function_type )( unsigned int ) ;
             
             CopyOp_exposer.def( 
                 "setCopyFlags"

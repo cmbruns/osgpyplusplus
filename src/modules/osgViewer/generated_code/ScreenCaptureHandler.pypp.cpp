@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__convenience.pypp.hpp"
 #include "__call_policies.pypp.hpp"
-#include "wrap_osgviewer.h"
+#include "wrap_osgViewer.h"
 #include "wrap_referenced.h"
-#include "screencapturehandler.pypp.hpp"
+#include "ScreenCaptureHandler.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -41,18 +41,6 @@ struct ScreenCaptureHandler_wrapper : osgViewer::ScreenCaptureHandler, bp::wrapp
             }
         }
     
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    
     };
 
     struct WriteToFile_wrapper : osgViewer::ScreenCaptureHandler::WriteToFile, bp::wrapper< osgViewer::ScreenCaptureHandler::WriteToFile > {
@@ -81,18 +69,6 @@ struct ScreenCaptureHandler_wrapper : osgViewer::ScreenCaptureHandler, bp::wrapp
             else{
                 inst.operator()(image, context_id);
             }
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Referenced::setThreadSafeRefUnref( threadSafe );
         }
     
     };
@@ -236,18 +212,6 @@ struct ScreenCaptureHandler_wrapper : osgViewer::ScreenCaptureHandler, bp::wrapp
         return osgGA::GUIEventHandler::libraryName( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void setName( ::std::string const & name ) {
         if( bp::override func_setName = this->get_override( "setName" ) )
             func_setName( name );
@@ -290,16 +254,17 @@ void register_ScreenCaptureHandler_class(){
 
     { //::osgViewer::ScreenCaptureHandler
         typedef bp::class_< ScreenCaptureHandler_wrapper, bp::bases< ::osgGA::GUIEventHandler >, osg::ref_ptr< ScreenCaptureHandler_wrapper >, boost::noncopyable > ScreenCaptureHandler_exposer_t;
-        ScreenCaptureHandler_exposer_t ScreenCaptureHandler_exposer = ScreenCaptureHandler_exposer_t( "ScreenCaptureHandler", bp::init< bp::optional< osgViewer::ScreenCaptureHandler::CaptureOperation *, int > >(( bp::arg("defaultOperation")=bp::object(), bp::arg("numFrames")=(int)(1) )) );
+        ScreenCaptureHandler_exposer_t ScreenCaptureHandler_exposer = ScreenCaptureHandler_exposer_t( "ScreenCaptureHandler", "\n Event handler that will capture the screen on key press.\n", bp::init< bp::optional< osgViewer::ScreenCaptureHandler::CaptureOperation *, int > >(( bp::arg("defaultOperation")=bp::object(), bp::arg("numFrames")=(int)(1) ), "\n @param numFrames: >0: capture that number of frames. <0: capture all frames, call stopCapture() to stop it.\n") );
         bp::scope ScreenCaptureHandler_scope( ScreenCaptureHandler_exposer );
-        bp::class_< ScreenCaptureHandler_wrapper::CaptureOperation_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< ScreenCaptureHandler_wrapper::CaptureOperation_wrapper >, boost::noncopyable >( "CaptureOperation", bp::no_init )    
+        bp::class_< ScreenCaptureHandler_wrapper::CaptureOperation_wrapper, bp::bases< ::osg::Referenced >, osg::ref_ptr< ScreenCaptureHandler_wrapper::CaptureOperation_wrapper >, boost::noncopyable >( "CaptureOperation", "\n Abstract base class for what to do when a screen capture happens.\n", bp::no_init )    
             .def( 
                 "__call__"
                 , (void (*)( ::osgViewer::ScreenCaptureHandler::CaptureOperation &,::osg::Image &,unsigned int const ))( &ScreenCaptureHandler_wrapper::CaptureOperation_wrapper::default___call__ )
-                , ( bp::arg("inst"), bp::arg("image"), bp::arg("context_id") ) );
+                , ( bp::arg("inst"), bp::arg("image"), bp::arg("context_id") )
+                , "\n Abstract base class for what to do when a screen capture happens.\n" );
         { //::osgViewer::ScreenCaptureHandler::WriteToFile
             typedef bp::class_< ScreenCaptureHandler_wrapper::WriteToFile_wrapper, bp::bases< osgViewer::ScreenCaptureHandler::CaptureOperation >, osg::ref_ptr< ScreenCaptureHandler_wrapper::WriteToFile_wrapper >, boost::noncopyable > WriteToFile_exposer_t;
-            WriteToFile_exposer_t WriteToFile_exposer = WriteToFile_exposer_t( "WriteToFile", bp::init< std::string const &, std::string const &, bp::optional< osgViewer::ScreenCaptureHandler::WriteToFile::SavePolicy > >(( bp::arg("filename"), bp::arg("extension"), bp::arg("savePolicy")=(long)(::osgViewer::ScreenCaptureHandler::WriteToFile::SEQUENTIAL_NUMBER) )) );
+            WriteToFile_exposer_t WriteToFile_exposer = WriteToFile_exposer_t( "WriteToFile", "\n Concrete implementation of a CaptureOperation that writes the screen capture to a file.\n", bp::init< std::string const &, std::string const &, bp::optional< osgViewer::ScreenCaptureHandler::WriteToFile::SavePolicy > >(( bp::arg("filename"), bp::arg("extension"), bp::arg("savePolicy")=(long)(::osgViewer::ScreenCaptureHandler::WriteToFile::SEQUENTIAL_NUMBER) )) );
             bp::scope WriteToFile_scope( WriteToFile_exposer );
             bp::enum_< osgViewer::ScreenCaptureHandler::WriteToFile::SavePolicy>("SavePolicy")
                 .value("OVERWRITE", osgViewer::ScreenCaptureHandler::WriteToFile::OVERWRITE)
@@ -308,7 +273,7 @@ void register_ScreenCaptureHandler_class(){
                 ;
             { //::osgViewer::ScreenCaptureHandler::WriteToFile::getSavePolicy
             
-                typedef ::osgViewer::ScreenCaptureHandler::WriteToFile::SavePolicy ( ::osgViewer::ScreenCaptureHandler::WriteToFile::*getSavePolicy_function_type)(  ) const;
+                typedef ::osgViewer::ScreenCaptureHandler::WriteToFile::SavePolicy ( ::osgViewer::ScreenCaptureHandler::WriteToFile::*getSavePolicy_function_type )(  ) const;
                 
                 WriteToFile_exposer.def( 
                     "getSavePolicy"
@@ -327,7 +292,7 @@ void register_ScreenCaptureHandler_class(){
             }
             { //::osgViewer::ScreenCaptureHandler::WriteToFile::setSavePolicy
             
-                typedef void ( ::osgViewer::ScreenCaptureHandler::WriteToFile::*setSavePolicy_function_type)( ::osgViewer::ScreenCaptureHandler::WriteToFile::SavePolicy ) ;
+                typedef void ( ::osgViewer::ScreenCaptureHandler::WriteToFile::*setSavePolicy_function_type )( ::osgViewer::ScreenCaptureHandler::WriteToFile::SavePolicy ) ;
                 
                 WriteToFile_exposer.def( 
                     "setSavePolicy"
@@ -339,8 +304,8 @@ void register_ScreenCaptureHandler_class(){
         bp::implicitly_convertible< osgViewer::ScreenCaptureHandler::CaptureOperation *, osgViewer::ScreenCaptureHandler >();
         { //::osgViewer::ScreenCaptureHandler::captureNextFrame
         
-            typedef void ( ::osgViewer::ScreenCaptureHandler::*captureNextFrame_function_type)( ::osgViewer::ViewerBase & ) ;
-            typedef void ( ScreenCaptureHandler_wrapper::*default_captureNextFrame_function_type)( ::osgViewer::ViewerBase & ) ;
+            typedef void ( ::osgViewer::ScreenCaptureHandler::*captureNextFrame_function_type )( ::osgViewer::ViewerBase & ) ;
+            typedef void ( ScreenCaptureHandler_wrapper::*default_captureNextFrame_function_type )( ::osgViewer::ViewerBase & ) ;
             
             ScreenCaptureHandler_exposer.def( 
                 "captureNextFrame"
@@ -351,7 +316,7 @@ void register_ScreenCaptureHandler_class(){
         }
         { //::osgViewer::ScreenCaptureHandler::getCaptureOperation
         
-            typedef ::osgViewer::ScreenCaptureHandler::CaptureOperation * ( ::osgViewer::ScreenCaptureHandler::*getCaptureOperation_function_type)(  ) const;
+            typedef ::osgViewer::ScreenCaptureHandler::CaptureOperation * ( ::osgViewer::ScreenCaptureHandler::*getCaptureOperation_function_type )(  ) const;
             
             ScreenCaptureHandler_exposer.def( 
                 "getCaptureOperation"
@@ -361,16 +326,17 @@ void register_ScreenCaptureHandler_class(){
         }
         { //::osgViewer::ScreenCaptureHandler::getFramesToCapture
         
-            typedef int ( ::osgViewer::ScreenCaptureHandler::*getFramesToCapture_function_type)(  ) const;
+            typedef int ( ::osgViewer::ScreenCaptureHandler::*getFramesToCapture_function_type )(  ) const;
             
             ScreenCaptureHandler_exposer.def( 
                 "getFramesToCapture"
-                , getFramesToCapture_function_type( &::osgViewer::ScreenCaptureHandler::getFramesToCapture ) );
+                , getFramesToCapture_function_type( &::osgViewer::ScreenCaptureHandler::getFramesToCapture )
+                , " Get the number of frames to capture." );
         
         }
         { //::osgViewer::ScreenCaptureHandler::getKeyEventTakeScreenShot
         
-            typedef int ( ::osgViewer::ScreenCaptureHandler::*getKeyEventTakeScreenShot_function_type)(  ) const;
+            typedef int ( ::osgViewer::ScreenCaptureHandler::*getKeyEventTakeScreenShot_function_type )(  ) const;
             
             ScreenCaptureHandler_exposer.def( 
                 "getKeyEventTakeScreenShot"
@@ -379,7 +345,7 @@ void register_ScreenCaptureHandler_class(){
         }
         { //::osgViewer::ScreenCaptureHandler::getKeyEventToggleContinuousCapture
         
-            typedef int ( ::osgViewer::ScreenCaptureHandler::*getKeyEventToggleContinuousCapture_function_type)(  ) const;
+            typedef int ( ::osgViewer::ScreenCaptureHandler::*getKeyEventToggleContinuousCapture_function_type )(  ) const;
             
             ScreenCaptureHandler_exposer.def( 
                 "getKeyEventToggleContinuousCapture"
@@ -388,8 +354,8 @@ void register_ScreenCaptureHandler_class(){
         }
         { //::osgViewer::ScreenCaptureHandler::getUsage
         
-            typedef void ( ::osgViewer::ScreenCaptureHandler::*getUsage_function_type)( ::osg::ApplicationUsage & ) const;
-            typedef void ( ScreenCaptureHandler_wrapper::*default_getUsage_function_type)( ::osg::ApplicationUsage & ) const;
+            typedef void ( ::osgViewer::ScreenCaptureHandler::*getUsage_function_type )( ::osg::ApplicationUsage & ) const;
+            typedef void ( ScreenCaptureHandler_wrapper::*default_getUsage_function_type )( ::osg::ApplicationUsage & ) const;
             
             ScreenCaptureHandler_exposer.def( 
                 "getUsage"
@@ -400,7 +366,7 @@ void register_ScreenCaptureHandler_class(){
         }
         { //::osgViewer::ScreenCaptureHandler::setCaptureOperation
         
-            typedef void ( ::osgViewer::ScreenCaptureHandler::*setCaptureOperation_function_type)( ::osgViewer::ScreenCaptureHandler::CaptureOperation * ) ;
+            typedef void ( ::osgViewer::ScreenCaptureHandler::*setCaptureOperation_function_type )( ::osgViewer::ScreenCaptureHandler::CaptureOperation * ) ;
             
             ScreenCaptureHandler_exposer.def( 
                 "setCaptureOperation"
@@ -410,17 +376,18 @@ void register_ScreenCaptureHandler_class(){
         }
         { //::osgViewer::ScreenCaptureHandler::setFramesToCapture
         
-            typedef void ( ::osgViewer::ScreenCaptureHandler::*setFramesToCapture_function_type)( int ) ;
+            typedef void ( ::osgViewer::ScreenCaptureHandler::*setFramesToCapture_function_type )( int ) ;
             
             ScreenCaptureHandler_exposer.def( 
                 "setFramesToCapture"
                 , setFramesToCapture_function_type( &::osgViewer::ScreenCaptureHandler::setFramesToCapture )
-                , ( bp::arg("numFrames") ) );
+                , ( bp::arg("numFrames") )
+                , " Set the number of frames to capture.\n            @param numFrames: >0: capture that number of frames. <0: capture all frames, call stopCapture() to stop it." );
         
         }
         { //::osgViewer::ScreenCaptureHandler::setKeyEventTakeScreenShot
         
-            typedef void ( ::osgViewer::ScreenCaptureHandler::*setKeyEventTakeScreenShot_function_type)( int ) ;
+            typedef void ( ::osgViewer::ScreenCaptureHandler::*setKeyEventTakeScreenShot_function_type )( int ) ;
             
             ScreenCaptureHandler_exposer.def( 
                 "setKeyEventTakeScreenShot"
@@ -430,7 +397,7 @@ void register_ScreenCaptureHandler_class(){
         }
         { //::osgViewer::ScreenCaptureHandler::setKeyEventToggleContinuousCapture
         
-            typedef void ( ::osgViewer::ScreenCaptureHandler::*setKeyEventToggleContinuousCapture_function_type)( int ) ;
+            typedef void ( ::osgViewer::ScreenCaptureHandler::*setKeyEventToggleContinuousCapture_function_type )( int ) ;
             
             ScreenCaptureHandler_exposer.def( 
                 "setKeyEventToggleContinuousCapture"
@@ -440,20 +407,22 @@ void register_ScreenCaptureHandler_class(){
         }
         { //::osgViewer::ScreenCaptureHandler::startCapture
         
-            typedef void ( ::osgViewer::ScreenCaptureHandler::*startCapture_function_type)(  ) ;
+            typedef void ( ::osgViewer::ScreenCaptureHandler::*startCapture_function_type )(  ) ;
             
             ScreenCaptureHandler_exposer.def( 
                 "startCapture"
-                , startCapture_function_type( &::osgViewer::ScreenCaptureHandler::startCapture ) );
+                , startCapture_function_type( &::osgViewer::ScreenCaptureHandler::startCapture )
+                , " Start capturing any viewer(s) the handler is attached to at the\n            end of the next frame." );
         
         }
         { //::osgViewer::ScreenCaptureHandler::stopCapture
         
-            typedef void ( ::osgViewer::ScreenCaptureHandler::*stopCapture_function_type)(  ) ;
+            typedef void ( ::osgViewer::ScreenCaptureHandler::*stopCapture_function_type )(  ) ;
             
             ScreenCaptureHandler_exposer.def( 
                 "stopCapture"
-                , stopCapture_function_type( &::osgViewer::ScreenCaptureHandler::stopCapture ) );
+                , stopCapture_function_type( &::osgViewer::ScreenCaptureHandler::stopCapture )
+                , " Stop capturing." );
         
         }
     }

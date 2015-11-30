@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgdb.h"
+#include "wrap_osgDB.h"
 #include "wrap_referenced.h"
-#include "writefilecallback.pypp.hpp"
+#include "WriteFileCallback.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -126,18 +126,6 @@ struct WriteFileCallback_wrapper : osgDB::WriteFileCallback, bp::wrapper< osgDB:
             result = inst.writeShader(obj, fileName, options);
         }
         return bp::object( result );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
     }
 
 };

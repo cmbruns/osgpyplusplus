@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgmanipulator.h"
+#include "wrap_osgManipulator.h"
 #include "wrap_referenced.h"
-#include "scale1dcommand.pypp.hpp"
+#include "Scale1DCommand.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -73,18 +73,6 @@ struct Scale1DCommand_wrapper : osgManipulator::Scale1DCommand, bp::wrapper< osg
         return osgManipulator::Scale1DCommand::getMotionMatrix( );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_Scale1DCommand_class(){
@@ -97,46 +85,46 @@ void register_Scale1DCommand_class(){
             , ( bp::arg("inst"), bp::arg("constraint") ) )    
         .def( 
             "accept"
-            , (void ( ::osgManipulator::Scale1DCommand::* )( ::osgManipulator::DraggerCallback & ))(&::osgManipulator::Scale1DCommand::accept)
-            , (void ( Scale1DCommand_wrapper::* )( ::osgManipulator::DraggerCallback & ))(&Scale1DCommand_wrapper::default_accept)
+            , (void ( ::osgManipulator::Scale1DCommand::* )( ::osgManipulator::DraggerCallback & ) )(&::osgManipulator::Scale1DCommand::accept)
+            , (void ( Scale1DCommand_wrapper::* )( ::osgManipulator::DraggerCallback & ) )(&Scale1DCommand_wrapper::default_accept)
             , ( bp::arg("callback") ) )    
         .def( 
             "createCommandInverse"
-            , (::osgManipulator::MotionCommand * ( ::osgManipulator::Scale1DCommand::* )(  ))(&::osgManipulator::Scale1DCommand::createCommandInverse)
-            , (::osgManipulator::MotionCommand * ( Scale1DCommand_wrapper::* )(  ))(&Scale1DCommand_wrapper::default_createCommandInverse)
+            , (::osgManipulator::MotionCommand * ( ::osgManipulator::Scale1DCommand::* )(  ) )(&::osgManipulator::Scale1DCommand::createCommandInverse)
+            , (::osgManipulator::MotionCommand * ( Scale1DCommand_wrapper::* )(  ) )(&Scale1DCommand_wrapper::default_createCommandInverse)
             , bp::return_internal_reference< >() )    
         .def( 
             "getMinScale"
-            , (double ( ::osgManipulator::Scale1DCommand::* )(  )const)( &::osgManipulator::Scale1DCommand::getMinScale ) )    
+            , (double ( ::osgManipulator::Scale1DCommand::* )(  ) const)( &::osgManipulator::Scale1DCommand::getMinScale ) )    
         .def( 
             "getMotionMatrix"
-            , (::osg::Matrix ( ::osgManipulator::Scale1DCommand::* )(  )const)(&::osgManipulator::Scale1DCommand::getMotionMatrix)
-            , (::osg::Matrix ( Scale1DCommand_wrapper::* )(  )const)(&Scale1DCommand_wrapper::default_getMotionMatrix) )    
+            , (::osg::Matrix ( ::osgManipulator::Scale1DCommand::* )(  ) const)(&::osgManipulator::Scale1DCommand::getMotionMatrix)
+            , (::osg::Matrix ( Scale1DCommand_wrapper::* )(  ) const)(&Scale1DCommand_wrapper::default_getMotionMatrix) )    
         .def( 
             "getReferencePoint"
-            , (double ( ::osgManipulator::Scale1DCommand::* )(  )const)( &::osgManipulator::Scale1DCommand::getReferencePoint ) )    
+            , (double ( ::osgManipulator::Scale1DCommand::* )(  ) const)( &::osgManipulator::Scale1DCommand::getReferencePoint ) )    
         .def( 
             "getScale"
-            , (double ( ::osgManipulator::Scale1DCommand::* )(  )const)( &::osgManipulator::Scale1DCommand::getScale ) )    
+            , (double ( ::osgManipulator::Scale1DCommand::* )(  ) const)( &::osgManipulator::Scale1DCommand::getScale ) )    
         .def( 
             "getScaleCenter"
-            , (double ( ::osgManipulator::Scale1DCommand::* )(  )const)( &::osgManipulator::Scale1DCommand::getScaleCenter ) )    
+            , (double ( ::osgManipulator::Scale1DCommand::* )(  ) const)( &::osgManipulator::Scale1DCommand::getScaleCenter ) )    
         .def( 
             "setMinScale"
-            , (void ( ::osgManipulator::Scale1DCommand::* )( double ))( &::osgManipulator::Scale1DCommand::setMinScale )
+            , (void ( ::osgManipulator::Scale1DCommand::* )( double ) )( &::osgManipulator::Scale1DCommand::setMinScale )
             , ( bp::arg("min") ) )    
         .def( 
             "setReferencePoint"
-            , (void ( ::osgManipulator::Scale1DCommand::* )( double ))( &::osgManipulator::Scale1DCommand::setReferencePoint )
+            , (void ( ::osgManipulator::Scale1DCommand::* )( double ) )( &::osgManipulator::Scale1DCommand::setReferencePoint )
             , ( bp::arg("rp") )
             , " ReferencePoint is used only for snapping." )    
         .def( 
             "setScale"
-            , (void ( ::osgManipulator::Scale1DCommand::* )( double ))( &::osgManipulator::Scale1DCommand::setScale )
+            , (void ( ::osgManipulator::Scale1DCommand::* )( double ) )( &::osgManipulator::Scale1DCommand::setScale )
             , ( bp::arg("s") ) )    
         .def( 
             "setScaleCenter"
-            , (void ( ::osgManipulator::Scale1DCommand::* )( double ))( &::osgManipulator::Scale1DCommand::setScaleCenter )
+            , (void ( ::osgManipulator::Scale1DCommand::* )( double ) )( &::osgManipulator::Scale1DCommand::setScaleCenter )
             , ( bp::arg("center") ) );
 
 }

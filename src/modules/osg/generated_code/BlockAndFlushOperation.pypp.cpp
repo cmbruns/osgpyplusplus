@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "blockandflushoperation.pypp.hpp"
+#include "BlockAndFlushOperation.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -40,18 +40,6 @@ struct BlockAndFlushOperation_wrapper : osg::BlockAndFlushOperation, bp::wrapper
         osg::BlockAndFlushOperation::release( );
     }
 
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Referenced::setThreadSafeRefUnref( threadSafe );
-    }
-
 };
 
 void register_BlockAndFlushOperation_class(){
@@ -59,17 +47,12 @@ void register_BlockAndFlushOperation_class(){
     bp::class_< BlockAndFlushOperation_wrapper, bp::bases< osg::GraphicsOperation, OpenThreads::Block >, osg::ref_ptr< ::osg::BlockAndFlushOperation >, boost::noncopyable >( "BlockAndFlushOperation", bp::init< >() )    
         .def( 
             "__call__"
-            , (void ( ::osg::BlockAndFlushOperation::* )( ::osg::GraphicsContext * ))(&::osg::BlockAndFlushOperation::operator())
-            , (void ( BlockAndFlushOperation_wrapper::* )( ::osg::GraphicsContext * ))(&BlockAndFlushOperation_wrapper::default___call__)
+            , (void ( ::osg::BlockAndFlushOperation::* )( ::osg::GraphicsContext * ) )(&::osg::BlockAndFlushOperation::operator())
+            , (void ( BlockAndFlushOperation_wrapper::* )( ::osg::GraphicsContext * ) )(&BlockAndFlushOperation_wrapper::default___call__)
             , ( bp::arg("arg0") ) )    
         .def( 
             "release"
-            , (void ( ::osg::BlockAndFlushOperation::* )(  ))(&::osg::BlockAndFlushOperation::release)
-            , (void ( BlockAndFlushOperation_wrapper::* )(  ))(&BlockAndFlushOperation_wrapper::default_release) )    
-        .def( 
-            "setThreadSafeRefUnref"
-            , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-            , (void ( BlockAndFlushOperation_wrapper::* )( bool ))(&BlockAndFlushOperation_wrapper::default_setThreadSafeRefUnref)
-            , ( bp::arg("threadSafe") ) );
+            , (void ( ::osg::BlockAndFlushOperation::* )(  ) )(&::osg::BlockAndFlushOperation::release)
+            , (void ( BlockAndFlushOperation_wrapper::* )(  ) )(&BlockAndFlushOperation_wrapper::default_release) );
 
 }

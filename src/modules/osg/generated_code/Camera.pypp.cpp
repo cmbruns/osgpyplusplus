@@ -5,7 +5,7 @@
 #include "__convenience.pypp.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "camera.pypp.hpp"
+#include "Camera.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -109,90 +109,6 @@ struct Camera_wrapper : osg::Camera, bp::wrapper< osg::Camera > {
             else{
                 inst.operator()(arg0);
             }
-        }
-    
-        virtual void computeDataVariance(  ) {
-            if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-                func_computeDataVariance(  );
-            else{
-                this->osg::Object::computeDataVariance(  );
-            }
-        }
-        
-        void default_computeDataVariance(  ) {
-            osg::Object::computeDataVariance( );
-        }
-    
-        virtual ::osg::Referenced * getUserData(  ) {
-            if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-                return func_getUserData(  );
-            else{
-                return this->osg::Object::getUserData(  );
-            }
-        }
-        
-        ::osg::Referenced * default_getUserData(  ) {
-            return osg::Object::getUserData( );
-        }
-    
-        virtual ::osg::Referenced const * getUserData(  ) const  {
-            if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-                return func_getUserData(  );
-            else{
-                return this->osg::Object::getUserData(  );
-            }
-        }
-        
-        ::osg::Referenced const * default_getUserData(  ) const  {
-            return osg::Object::getUserData( );
-        }
-    
-        virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-            if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-                func_resizeGLObjectBuffers( arg0 );
-            else{
-                this->osg::Object::resizeGLObjectBuffers( arg0 );
-            }
-        }
-        
-        void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-            osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    
-        virtual void setName( ::std::string const & name ) {
-            if( bp::override func_setName = this->get_override( "setName" ) )
-                func_setName( name );
-            else{
-                this->osg::Object::setName( name );
-            }
-        }
-        
-        void default_setName( ::std::string const & name ) {
-            osg::Object::setName( name );
-        }
-    
-        virtual void setThreadSafeRefUnref( bool threadSafe ) {
-            if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                func_setThreadSafeRefUnref( threadSafe );
-            else{
-                this->osg::Object::setThreadSafeRefUnref( threadSafe );
-            }
-        }
-        
-        void default_setThreadSafeRefUnref( bool threadSafe ) {
-            osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    
-        virtual void setUserData( ::osg::Referenced * obj ) {
-            if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-                func_setUserData( boost::python::ptr(obj) );
-            else{
-                this->osg::Object::setUserData( boost::python::ptr(obj) );
-            }
-        }
-        
-        void default_setUserData( ::osg::Referenced * obj ) {
-            osg::Object::setUserData( boost::python::ptr(obj) );
         }
     
     };
@@ -528,42 +444,6 @@ struct Camera_wrapper : osg::Camera, bp::wrapper< osg::Camera > {
         return osg::Transform::computeBound( );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
     virtual void inheritCullSettings( ::osg::CullSettings const & settings ) {
         if( bp::override func_inheritCullSettings = this->get_override( "inheritCullSettings" ) )
             func_inheritCullSettings( boost::ref(settings) );
@@ -636,18 +516,6 @@ struct Camera_wrapper : osg::Camera, bp::wrapper< osg::Camera > {
         osg::CullSettings::setDefaults( );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
     virtual void setThreadSafeRefUnref( bool threadSafe ) {
         if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
             func_setThreadSafeRefUnref( threadSafe );
@@ -658,18 +526,6 @@ struct Camera_wrapper : osg::Camera, bp::wrapper< osg::Camera > {
     
     void default_setThreadSafeRefUnref( bool threadSafe ) {
         osg::Group::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
     }
 
     virtual void traverse( ::osg::NodeVisitor & nv ) {
@@ -750,13 +606,13 @@ void register_Camera_class(){
         bp::class_< osg::Camera::Attachment >( "Attachment", bp::init< >() )    
             .def( 
                 "depth"
-                , (int ( ::osg::Camera::Attachment::* )(  )const)( &::osg::Camera::Attachment::depth ) )    
+                , (int ( ::osg::Camera::Attachment::* )(  ) const)( &::osg::Camera::Attachment::depth ) )    
             .def( 
                 "height"
-                , (int ( ::osg::Camera::Attachment::* )(  )const)( &::osg::Camera::Attachment::height ) )    
+                , (int ( ::osg::Camera::Attachment::* )(  ) const)( &::osg::Camera::Attachment::height ) )    
             .def( 
                 "width"
-                , (int ( ::osg::Camera::Attachment::* )(  )const)( &::osg::Camera::Attachment::width ) )    
+                , (int ( ::osg::Camera::Attachment::* )(  ) const)( &::osg::Camera::Attachment::width ) )    
             .def_readwrite( "_face", &osg::Camera::Attachment::_face )    
             .def_readwrite( "_image", &osg::Camera::Attachment::_image )    
             .def_readwrite( "_internalFormat", &osg::Camera::Attachment::_internalFormat )    
@@ -768,82 +624,43 @@ void register_Camera_class(){
         bp::class_< Camera_wrapper::DrawCallback_wrapper, bp::bases< osg::Object >, osg::ref_ptr< Camera_wrapper::DrawCallback_wrapper >, boost::noncopyable >( "DrawCallback", "\n Draw callback for custom operations.\n", bp::init< >("\n Draw callback for custom operations.\n") )    
             .def( 
                 "className"
-                , (char const * ( ::osg::Camera::DrawCallback::* )(  )const)(&::osg::Camera::DrawCallback::className)
-                , (char const * ( Camera_wrapper::DrawCallback_wrapper::* )(  )const)(&Camera_wrapper::DrawCallback_wrapper::default_className) )    
+                , (char const * ( ::osg::Camera::DrawCallback::* )(  ) const)(&::osg::Camera::DrawCallback::className)
+                , (char const * ( Camera_wrapper::DrawCallback_wrapper::* )(  ) const)(&Camera_wrapper::DrawCallback_wrapper::default_className) )    
             .def( 
                 "clone"
-                , (::osg::Object * ( ::osg::Camera::DrawCallback::* )( ::osg::CopyOp const & )const)(&::osg::Camera::DrawCallback::clone)
-                , (::osg::Object * ( Camera_wrapper::DrawCallback_wrapper::* )( ::osg::CopyOp const & )const)(&Camera_wrapper::DrawCallback_wrapper::default_clone)
+                , (::osg::Object * ( ::osg::Camera::DrawCallback::* )( ::osg::CopyOp const & ) const)(&::osg::Camera::DrawCallback::clone)
+                , (::osg::Object * ( Camera_wrapper::DrawCallback_wrapper::* )( ::osg::CopyOp const & ) const)(&Camera_wrapper::DrawCallback_wrapper::default_clone)
                 , ( bp::arg("copyop") )
                 , bp::return_value_policy< bp::reference_existing_object >() )    
             .def( 
                 "cloneType"
-                , (::osg::Object * ( ::osg::Camera::DrawCallback::* )(  )const)(&::osg::Camera::DrawCallback::cloneType)
-                , (::osg::Object * ( Camera_wrapper::DrawCallback_wrapper::* )(  )const)(&Camera_wrapper::DrawCallback_wrapper::default_cloneType)
+                , (::osg::Object * ( ::osg::Camera::DrawCallback::* )(  ) const)(&::osg::Camera::DrawCallback::cloneType)
+                , (::osg::Object * ( Camera_wrapper::DrawCallback_wrapper::* )(  ) const)(&Camera_wrapper::DrawCallback_wrapper::default_cloneType)
                 , bp::return_value_policy< bp::reference_existing_object >() )    
             .def( 
                 "isSameKindAs"
-                , (bool ( ::osg::Camera::DrawCallback::* )( ::osg::Object const * )const)(&::osg::Camera::DrawCallback::isSameKindAs)
-                , (bool ( Camera_wrapper::DrawCallback_wrapper::* )( ::osg::Object const * )const)(&Camera_wrapper::DrawCallback_wrapper::default_isSameKindAs)
+                , (bool ( ::osg::Camera::DrawCallback::* )( ::osg::Object const * ) const)(&::osg::Camera::DrawCallback::isSameKindAs)
+                , (bool ( Camera_wrapper::DrawCallback_wrapper::* )( ::osg::Object const * ) const)(&Camera_wrapper::DrawCallback_wrapper::default_isSameKindAs)
                 , ( bp::arg("obj") ) )    
             .def( 
                 "libraryName"
-                , (char const * ( ::osg::Camera::DrawCallback::* )(  )const)(&::osg::Camera::DrawCallback::libraryName)
-                , (char const * ( Camera_wrapper::DrawCallback_wrapper::* )(  )const)(&Camera_wrapper::DrawCallback_wrapper::default_libraryName) )    
+                , (char const * ( ::osg::Camera::DrawCallback::* )(  ) const)(&::osg::Camera::DrawCallback::libraryName)
+                , (char const * ( Camera_wrapper::DrawCallback_wrapper::* )(  ) const)(&Camera_wrapper::DrawCallback_wrapper::default_libraryName) )    
             .def( 
                 "__call__"
-                , (void ( ::osg::Camera::DrawCallback::* )( ::osg::RenderInfo & )const)(&::osg::Camera::DrawCallback::operator())
-                , (void ( Camera_wrapper::DrawCallback_wrapper::* )( ::osg::RenderInfo & )const)(&Camera_wrapper::DrawCallback_wrapper::default___call__)
+                , (void ( ::osg::Camera::DrawCallback::* )( ::osg::RenderInfo & ) const)(&::osg::Camera::DrawCallback::operator())
+                , (void ( Camera_wrapper::DrawCallback_wrapper::* )( ::osg::RenderInfo & ) const)(&Camera_wrapper::DrawCallback_wrapper::default___call__)
                 , ( bp::arg("renderInfo") ) )    
             .def( 
                 "__call__"
                 , (void (*)( ::osg::Camera::DrawCallback const &,::osg::Camera & ))( &Camera_wrapper::DrawCallback_wrapper::default_operator_call_8900c52bc7561d9994aad91cb1cd0699 )
                 , ( bp::arg("inst"), bp::arg("arg0") )
-                , "\n Functor method, provided for backwards compatibility, called by operator() (osg::RenderInfo& renderInfo) method.\n" )    
-            .def( 
-                "computeDataVariance"
-                , (void ( ::osg::Object::* )(  ))(&::osg::Object::computeDataVariance)
-                , (void ( Camera_wrapper::DrawCallback_wrapper::* )(  ))(&Camera_wrapper::DrawCallback_wrapper::default_computeDataVariance) )    
-            .def( 
-                "getUserData"
-                , (::osg::Referenced * ( ::osg::Object::* )(  ))(&::osg::Object::getUserData)
-                , (::osg::Referenced * ( Camera_wrapper::DrawCallback_wrapper::* )(  ))(&Camera_wrapper::DrawCallback_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() )    
-            .def( 
-                "getUserData"
-                , (::osg::Referenced const * ( ::osg::Object::* )(  )const)(&::osg::Object::getUserData)
-                , (::osg::Referenced const * ( Camera_wrapper::DrawCallback_wrapper::* )(  )const)(&Camera_wrapper::DrawCallback_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() )    
-            .def( 
-                "resizeGLObjectBuffers"
-                , (void ( ::osg::Object::* )( unsigned int ))(&::osg::Object::resizeGLObjectBuffers)
-                , (void ( Camera_wrapper::DrawCallback_wrapper::* )( unsigned int ))(&Camera_wrapper::DrawCallback_wrapper::default_resizeGLObjectBuffers)
-                , ( bp::arg("arg0") ) )    
-            .def( 
-                "setName"
-                , (void ( ::osg::Object::* )( ::std::string const & ))(&::osg::Object::setName)
-                , (void ( Camera_wrapper::DrawCallback_wrapper::* )( ::std::string const & ))(&Camera_wrapper::DrawCallback_wrapper::default_setName)
-                , ( bp::arg("name") ) )    
-            .def( 
-                "setName"
-                , (void ( ::osg::Object::* )( char const * ))( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." )    
-            .def( 
-                "setThreadSafeRefUnref"
-                , (void ( ::osg::Object::* )( bool ))(&::osg::Object::setThreadSafeRefUnref)
-                , (void ( Camera_wrapper::DrawCallback_wrapper::* )( bool ))(&Camera_wrapper::DrawCallback_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) )    
-            .def( 
-                "setUserData"
-                , (void ( ::osg::Object::* )( ::osg::Referenced * ))(&::osg::Object::setUserData)
-                , (void ( Camera_wrapper::DrawCallback_wrapper::* )( ::osg::Referenced * ))(&Camera_wrapper::DrawCallback_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
+                , "\n Functor method, provided for backwards compatibility, called by operator() (osg::RenderInfo& renderInfo) method.\n" );
         Camera_exposer.def( bp::init< >("\n Camera - is a subclass of Transform which represents encapsulates the settings of a Camera.\n") );
         { //::osg::Camera::accept
         
-            typedef void ( ::osg::Camera::*accept_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( Camera_wrapper::*default_accept_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::Camera::*accept_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( Camera_wrapper::*default_accept_function_type )( ::osg::NodeVisitor & ) ;
             
             Camera_exposer.def( 
                 "accept"
@@ -854,8 +671,8 @@ void register_Camera_class(){
         }
         { //::osg::Camera::asCamera
         
-            typedef ::osg::Camera * ( ::osg::Camera::*asCamera_function_type)(  ) ;
-            typedef ::osg::Camera * ( Camera_wrapper::*default_asCamera_function_type)(  ) ;
+            typedef ::osg::Camera * ( ::osg::Camera::*asCamera_function_type )(  ) ;
+            typedef ::osg::Camera * ( Camera_wrapper::*default_asCamera_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "asCamera"
@@ -866,8 +683,8 @@ void register_Camera_class(){
         }
         { //::osg::Camera::asCamera
         
-            typedef ::osg::Camera const * ( ::osg::Camera::*asCamera_function_type)(  ) const;
-            typedef ::osg::Camera const * ( Camera_wrapper::*default_asCamera_function_type)(  ) const;
+            typedef ::osg::Camera const * ( ::osg::Camera::*asCamera_function_type )(  ) const;
+            typedef ::osg::Camera const * ( Camera_wrapper::*default_asCamera_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "asCamera"
@@ -878,7 +695,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::attach
         
-            typedef void ( ::osg::Camera::*attach_function_type)( ::osg::Camera::BufferComponent,::GLenum ) ;
+            typedef void ( ::osg::Camera::*attach_function_type )( ::osg::Camera::BufferComponent,::GLenum ) ;
             
             Camera_exposer.def( 
                 "attach"
@@ -889,7 +706,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::attach
         
-            typedef void ( ::osg::Camera::*attach_function_type)( ::osg::Camera::BufferComponent,::osg::Texture *,unsigned int,unsigned int,bool,unsigned int,unsigned int ) ;
+            typedef void ( ::osg::Camera::*attach_function_type )( ::osg::Camera::BufferComponent,::osg::Texture *,unsigned int,unsigned int,bool,unsigned int,unsigned int ) ;
             
             Camera_exposer.def( 
                 "attach"
@@ -900,7 +717,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::attach
         
-            typedef void ( ::osg::Camera::*attach_function_type)( ::osg::Camera::BufferComponent,::osg::Image *,unsigned int,unsigned int ) ;
+            typedef void ( ::osg::Camera::*attach_function_type )( ::osg::Camera::BufferComponent,::osg::Image *,unsigned int,unsigned int ) ;
             
             Camera_exposer.def( 
                 "attach"
@@ -911,8 +728,8 @@ void register_Camera_class(){
         }
         { //::osg::Camera::className
         
-            typedef char const * ( ::osg::Camera::*className_function_type)(  ) const;
-            typedef char const * ( Camera_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::Camera::*className_function_type )(  ) const;
+            typedef char const * ( Camera_wrapper::*default_className_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "className"
@@ -922,8 +739,8 @@ void register_Camera_class(){
         }
         { //::osg::Camera::clone
         
-            typedef ::osg::Object * ( ::osg::Camera::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( Camera_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::Camera::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( Camera_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             Camera_exposer.def( 
                 "clone"
@@ -935,8 +752,8 @@ void register_Camera_class(){
         }
         { //::osg::Camera::cloneType
         
-            typedef ::osg::Object * ( ::osg::Camera::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( Camera_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::Camera::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( Camera_wrapper::*default_cloneType_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "cloneType"
@@ -947,8 +764,8 @@ void register_Camera_class(){
         }
         { //::osg::Camera::computeLocalToWorldMatrix
         
-            typedef bool ( ::osg::Camera::*computeLocalToWorldMatrix_function_type)( ::osg::Matrix &,::osg::NodeVisitor * ) const;
-            typedef bool ( Camera_wrapper::*default_computeLocalToWorldMatrix_function_type)( ::osg::Matrix &,::osg::NodeVisitor * ) const;
+            typedef bool ( ::osg::Camera::*computeLocalToWorldMatrix_function_type )( ::osg::Matrix &,::osg::NodeVisitor * ) const;
+            typedef bool ( Camera_wrapper::*default_computeLocalToWorldMatrix_function_type )( ::osg::Matrix &,::osg::NodeVisitor * ) const;
             
             Camera_exposer.def( 
                 "computeLocalToWorldMatrix"
@@ -959,8 +776,8 @@ void register_Camera_class(){
         }
         { //::osg::Camera::computeWorldToLocalMatrix
         
-            typedef bool ( ::osg::Camera::*computeWorldToLocalMatrix_function_type)( ::osg::Matrix &,::osg::NodeVisitor * ) const;
-            typedef bool ( Camera_wrapper::*default_computeWorldToLocalMatrix_function_type)( ::osg::Matrix &,::osg::NodeVisitor * ) const;
+            typedef bool ( ::osg::Camera::*computeWorldToLocalMatrix_function_type )( ::osg::Matrix &,::osg::NodeVisitor * ) const;
+            typedef bool ( Camera_wrapper::*default_computeWorldToLocalMatrix_function_type )( ::osg::Matrix &,::osg::NodeVisitor * ) const;
             
             Camera_exposer.def( 
                 "computeWorldToLocalMatrix"
@@ -971,7 +788,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::createCameraThread
         
-            typedef void ( ::osg::Camera::*createCameraThread_function_type)(  ) ;
+            typedef void ( ::osg::Camera::*createCameraThread_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "createCameraThread"
@@ -981,7 +798,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::detach
         
-            typedef void ( ::osg::Camera::*detach_function_type)( ::osg::Camera::BufferComponent ) ;
+            typedef void ( ::osg::Camera::*detach_function_type )( ::osg::Camera::BufferComponent ) ;
             
             Camera_exposer.def( 
                 "detach"
@@ -992,7 +809,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getAllowEventFocus
         
-            typedef bool ( ::osg::Camera::*getAllowEventFocus_function_type)(  ) const;
+            typedef bool ( ::osg::Camera::*getAllowEventFocus_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getAllowEventFocus"
@@ -1002,7 +819,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getBufferAttachmentMap
         
-            typedef ::std::map< osg::Camera::BufferComponent, osg::Camera::Attachment > & ( ::osg::Camera::*getBufferAttachmentMap_function_type)(  ) ;
+            typedef ::std::map< osg::Camera::BufferComponent, osg::Camera::Attachment > & ( ::osg::Camera::*getBufferAttachmentMap_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getBufferAttachmentMap"
@@ -1013,7 +830,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getBufferAttachmentMap
         
-            typedef ::std::map< osg::Camera::BufferComponent, osg::Camera::Attachment > const & ( ::osg::Camera::*getBufferAttachmentMap_function_type)(  ) const;
+            typedef ::std::map< osg::Camera::BufferComponent, osg::Camera::Attachment > const & ( ::osg::Camera::*getBufferAttachmentMap_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getBufferAttachmentMap"
@@ -1024,7 +841,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getCameraThread
         
-            typedef ::osg::OperationThread * ( ::osg::Camera::*getCameraThread_function_type)(  ) ;
+            typedef ::osg::OperationThread * ( ::osg::Camera::*getCameraThread_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getCameraThread"
@@ -1035,7 +852,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getCameraThread
         
-            typedef ::osg::OperationThread const * ( ::osg::Camera::*getCameraThread_function_type)(  ) const;
+            typedef ::osg::OperationThread const * ( ::osg::Camera::*getCameraThread_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getCameraThread"
@@ -1046,7 +863,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getClearAccum
         
-            typedef ::osg::Vec4 const & ( ::osg::Camera::*getClearAccum_function_type)(  ) const;
+            typedef ::osg::Vec4 const & ( ::osg::Camera::*getClearAccum_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getClearAccum"
@@ -1057,7 +874,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getClearColor
         
-            typedef ::osg::Vec4 const & ( ::osg::Camera::*getClearColor_function_type)(  ) const;
+            typedef ::osg::Vec4 const & ( ::osg::Camera::*getClearColor_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getClearColor"
@@ -1068,7 +885,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getClearDepth
         
-            typedef double ( ::osg::Camera::*getClearDepth_function_type)(  ) const;
+            typedef double ( ::osg::Camera::*getClearDepth_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getClearDepth"
@@ -1078,7 +895,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getClearMask
         
-            typedef ::GLbitfield ( ::osg::Camera::*getClearMask_function_type)(  ) const;
+            typedef ::GLbitfield ( ::osg::Camera::*getClearMask_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getClearMask"
@@ -1088,7 +905,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getClearStencil
         
-            typedef int ( ::osg::Camera::*getClearStencil_function_type)(  ) const;
+            typedef int ( ::osg::Camera::*getClearStencil_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getClearStencil"
@@ -1098,7 +915,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getColorMask
         
-            typedef ::osg::ColorMask const * ( ::osg::Camera::*getColorMask_function_type)(  ) const;
+            typedef ::osg::ColorMask const * ( ::osg::Camera::*getColorMask_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getColorMask"
@@ -1109,7 +926,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getColorMask
         
-            typedef ::osg::ColorMask * ( ::osg::Camera::*getColorMask_function_type)(  ) ;
+            typedef ::osg::ColorMask * ( ::osg::Camera::*getColorMask_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getColorMask"
@@ -1120,7 +937,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getDataChangeMutex
         
-            typedef ::OpenThreads::Mutex * ( ::osg::Camera::*getDataChangeMutex_function_type)(  ) const;
+            typedef ::OpenThreads::Mutex * ( ::osg::Camera::*getDataChangeMutex_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getDataChangeMutex"
@@ -1130,7 +947,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getDisplaySettings
         
-            typedef ::osg::DisplaySettings * ( ::osg::Camera::*getDisplaySettings_function_type)(  ) ;
+            typedef ::osg::DisplaySettings * ( ::osg::Camera::*getDisplaySettings_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getDisplaySettings"
@@ -1141,7 +958,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getDisplaySettings
         
-            typedef ::osg::DisplaySettings const * ( ::osg::Camera::*getDisplaySettings_function_type)(  ) const;
+            typedef ::osg::DisplaySettings const * ( ::osg::Camera::*getDisplaySettings_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getDisplaySettings"
@@ -1152,7 +969,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getDrawBuffer
         
-            typedef ::GLenum ( ::osg::Camera::*getDrawBuffer_function_type)(  ) const;
+            typedef ::GLenum ( ::osg::Camera::*getDrawBuffer_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getDrawBuffer"
@@ -1162,7 +979,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getFinalDrawCallback
         
-            typedef ::osg::Camera::DrawCallback * ( ::osg::Camera::*getFinalDrawCallback_function_type)(  ) ;
+            typedef ::osg::Camera::DrawCallback * ( ::osg::Camera::*getFinalDrawCallback_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getFinalDrawCallback"
@@ -1173,7 +990,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getFinalDrawCallback
         
-            typedef ::osg::Camera::DrawCallback const * ( ::osg::Camera::*getFinalDrawCallback_function_type)(  ) const;
+            typedef ::osg::Camera::DrawCallback const * ( ::osg::Camera::*getFinalDrawCallback_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getFinalDrawCallback"
@@ -1184,7 +1001,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getGraphicsContext
         
-            typedef ::osg::GraphicsContext * ( ::osg::Camera::*getGraphicsContext_function_type)(  ) ;
+            typedef ::osg::GraphicsContext * ( ::osg::Camera::*getGraphicsContext_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getGraphicsContext"
@@ -1195,7 +1012,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getGraphicsContext
         
-            typedef ::osg::GraphicsContext const * ( ::osg::Camera::*getGraphicsContext_function_type)(  ) const;
+            typedef ::osg::GraphicsContext const * ( ::osg::Camera::*getGraphicsContext_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getGraphicsContext"
@@ -1206,7 +1023,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getImplicitBufferAttachmentRenderMask
         
-            typedef int ( ::osg::Camera::*getImplicitBufferAttachmentRenderMask_function_type)( bool ) const;
+            typedef int ( ::osg::Camera::*getImplicitBufferAttachmentRenderMask_function_type )( bool ) const;
             
             Camera_exposer.def( 
                 "getImplicitBufferAttachmentRenderMask"
@@ -1217,7 +1034,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getImplicitBufferAttachmentResolveMask
         
-            typedef int ( ::osg::Camera::*getImplicitBufferAttachmentResolveMask_function_type)( bool ) const;
+            typedef int ( ::osg::Camera::*getImplicitBufferAttachmentResolveMask_function_type )( bool ) const;
             
             Camera_exposer.def( 
                 "getImplicitBufferAttachmentResolveMask"
@@ -1228,7 +1045,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getInitialDrawCallback
         
-            typedef ::osg::Camera::DrawCallback * ( ::osg::Camera::*getInitialDrawCallback_function_type)(  ) ;
+            typedef ::osg::Camera::DrawCallback * ( ::osg::Camera::*getInitialDrawCallback_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getInitialDrawCallback"
@@ -1239,7 +1056,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getInitialDrawCallback
         
-            typedef ::osg::Camera::DrawCallback const * ( ::osg::Camera::*getInitialDrawCallback_function_type)(  ) const;
+            typedef ::osg::Camera::DrawCallback const * ( ::osg::Camera::*getInitialDrawCallback_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getInitialDrawCallback"
@@ -1250,7 +1067,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getInverseViewMatrix
         
-            typedef ::osg::Matrixd ( ::osg::Camera::*getInverseViewMatrix_function_type)(  ) const;
+            typedef ::osg::Matrixd ( ::osg::Camera::*getInverseViewMatrix_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getInverseViewMatrix"
@@ -1260,7 +1077,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getPostDrawCallback
         
-            typedef ::osg::Camera::DrawCallback * ( ::osg::Camera::*getPostDrawCallback_function_type)(  ) ;
+            typedef ::osg::Camera::DrawCallback * ( ::osg::Camera::*getPostDrawCallback_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getPostDrawCallback"
@@ -1271,7 +1088,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getPostDrawCallback
         
-            typedef ::osg::Camera::DrawCallback const * ( ::osg::Camera::*getPostDrawCallback_function_type)(  ) const;
+            typedef ::osg::Camera::DrawCallback const * ( ::osg::Camera::*getPostDrawCallback_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getPostDrawCallback"
@@ -1282,7 +1099,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getPreDrawCallback
         
-            typedef ::osg::Camera::DrawCallback * ( ::osg::Camera::*getPreDrawCallback_function_type)(  ) ;
+            typedef ::osg::Camera::DrawCallback * ( ::osg::Camera::*getPreDrawCallback_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getPreDrawCallback"
@@ -1293,7 +1110,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getPreDrawCallback
         
-            typedef ::osg::Camera::DrawCallback const * ( ::osg::Camera::*getPreDrawCallback_function_type)(  ) const;
+            typedef ::osg::Camera::DrawCallback const * ( ::osg::Camera::*getPreDrawCallback_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getPreDrawCallback"
@@ -1304,7 +1121,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getProjectionMatrix
         
-            typedef ::osg::Matrixd & ( ::osg::Camera::*getProjectionMatrix_function_type)(  ) ;
+            typedef ::osg::Matrixd & ( ::osg::Camera::*getProjectionMatrix_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getProjectionMatrix"
@@ -1315,7 +1132,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getProjectionMatrix
         
-            typedef ::osg::Matrixd const & ( ::osg::Camera::*getProjectionMatrix_function_type)(  ) const;
+            typedef ::osg::Matrixd const & ( ::osg::Camera::*getProjectionMatrix_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getProjectionMatrix"
@@ -1326,7 +1143,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getProjectionMatrixAsFrustum
         
-            typedef bool ( ::osg::Camera::*getProjectionMatrixAsFrustum_function_type)( double &,double &,double &,double &,double &,double & ) const;
+            typedef bool ( ::osg::Camera::*getProjectionMatrixAsFrustum_function_type )( double &,double &,double &,double &,double &,double & ) const;
             
             Camera_exposer.def( 
                 "getProjectionMatrixAsFrustum"
@@ -1337,7 +1154,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getProjectionMatrixAsOrtho
         
-            typedef bool ( ::osg::Camera::*getProjectionMatrixAsOrtho_function_type)( double &,double &,double &,double &,double &,double & ) const;
+            typedef bool ( ::osg::Camera::*getProjectionMatrixAsOrtho_function_type )( double &,double &,double &,double &,double &,double & ) const;
             
             Camera_exposer.def( 
                 "getProjectionMatrixAsOrtho"
@@ -1348,7 +1165,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getProjectionMatrixAsPerspective
         
-            typedef bool ( ::osg::Camera::*getProjectionMatrixAsPerspective_function_type)( double &,double &,double &,double & ) const;
+            typedef bool ( ::osg::Camera::*getProjectionMatrixAsPerspective_function_type )( double &,double &,double &,double & ) const;
             
             Camera_exposer.def( 
                 "getProjectionMatrixAsPerspective"
@@ -1359,7 +1176,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getProjectionResizePolicy
         
-            typedef ::osg::Camera::ProjectionResizePolicy ( ::osg::Camera::*getProjectionResizePolicy_function_type)(  ) const;
+            typedef ::osg::Camera::ProjectionResizePolicy ( ::osg::Camera::*getProjectionResizePolicy_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getProjectionResizePolicy"
@@ -1369,7 +1186,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getReadBuffer
         
-            typedef ::GLenum ( ::osg::Camera::*getReadBuffer_function_type)(  ) const;
+            typedef ::GLenum ( ::osg::Camera::*getReadBuffer_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getReadBuffer"
@@ -1379,7 +1196,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getRenderOrder
         
-            typedef ::osg::Camera::RenderOrder ( ::osg::Camera::*getRenderOrder_function_type)(  ) const;
+            typedef ::osg::Camera::RenderOrder ( ::osg::Camera::*getRenderOrder_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getRenderOrder"
@@ -1389,7 +1206,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getRenderOrderNum
         
-            typedef int ( ::osg::Camera::*getRenderOrderNum_function_type)(  ) const;
+            typedef int ( ::osg::Camera::*getRenderOrderNum_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getRenderOrderNum"
@@ -1399,7 +1216,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getRenderTargetFallback
         
-            typedef ::osg::Camera::RenderTargetImplementation ( ::osg::Camera::*getRenderTargetFallback_function_type)(  ) const;
+            typedef ::osg::Camera::RenderTargetImplementation ( ::osg::Camera::*getRenderTargetFallback_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getRenderTargetFallback"
@@ -1409,7 +1226,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getRenderTargetImplementation
         
-            typedef ::osg::Camera::RenderTargetImplementation ( ::osg::Camera::*getRenderTargetImplementation_function_type)(  ) const;
+            typedef ::osg::Camera::RenderTargetImplementation ( ::osg::Camera::*getRenderTargetImplementation_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getRenderTargetImplementation"
@@ -1419,7 +1236,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getRenderer
         
-            typedef ::osg::GraphicsOperation * ( ::osg::Camera::*getRenderer_function_type)(  ) ;
+            typedef ::osg::GraphicsOperation * ( ::osg::Camera::*getRenderer_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getRenderer"
@@ -1430,7 +1247,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getRenderer
         
-            typedef ::osg::GraphicsOperation const * ( ::osg::Camera::*getRenderer_function_type)(  ) const;
+            typedef ::osg::GraphicsOperation const * ( ::osg::Camera::*getRenderer_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getRenderer"
@@ -1441,7 +1258,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getRenderingCache
         
-            typedef ::osg::Object * ( ::osg::Camera::*getRenderingCache_function_type)(  ) ;
+            typedef ::osg::Object * ( ::osg::Camera::*getRenderingCache_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getRenderingCache"
@@ -1452,7 +1269,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getRenderingCache
         
-            typedef ::osg::Object const * ( ::osg::Camera::*getRenderingCache_function_type)(  ) const;
+            typedef ::osg::Object const * ( ::osg::Camera::*getRenderingCache_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getRenderingCache"
@@ -1463,7 +1280,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getStats
         
-            typedef ::osg::Stats * ( ::osg::Camera::*getStats_function_type)(  ) ;
+            typedef ::osg::Stats * ( ::osg::Camera::*getStats_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getStats"
@@ -1474,7 +1291,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getStats
         
-            typedef ::osg::Stats const * ( ::osg::Camera::*getStats_function_type)(  ) const;
+            typedef ::osg::Stats const * ( ::osg::Camera::*getStats_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getStats"
@@ -1485,7 +1302,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getTransformOrder
         
-            typedef ::osg::Camera::TransformOrder ( ::osg::Camera::*getTransformOrder_function_type)(  ) const;
+            typedef ::osg::Camera::TransformOrder ( ::osg::Camera::*getTransformOrder_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getTransformOrder"
@@ -1495,7 +1312,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getView
         
-            typedef ::osg::View * ( ::osg::Camera::*getView_function_type)(  ) ;
+            typedef ::osg::View * ( ::osg::Camera::*getView_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getView"
@@ -1506,7 +1323,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getView
         
-            typedef ::osg::View const * ( ::osg::Camera::*getView_function_type)(  ) const;
+            typedef ::osg::View const * ( ::osg::Camera::*getView_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getView"
@@ -1517,7 +1334,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getViewMatrix
         
-            typedef ::osg::Matrixd & ( ::osg::Camera::*getViewMatrix_function_type)(  ) ;
+            typedef ::osg::Matrixd & ( ::osg::Camera::*getViewMatrix_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getViewMatrix"
@@ -1528,7 +1345,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getViewMatrix
         
-            typedef ::osg::Matrixd const & ( ::osg::Camera::*getViewMatrix_function_type)(  ) const;
+            typedef ::osg::Matrixd const & ( ::osg::Camera::*getViewMatrix_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getViewMatrix"
@@ -1539,7 +1356,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getViewMatrixAsLookAt
         
-            typedef void ( ::osg::Camera::*getViewMatrixAsLookAt_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d &,double ) const;
+            typedef void ( ::osg::Camera::*getViewMatrixAsLookAt_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d &,double ) const;
             
             Camera_exposer.def( 
                 "getViewMatrixAsLookAt"
@@ -1550,7 +1367,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getViewMatrixAsLookAt
         
-            typedef void ( ::osg::Camera::*getViewMatrixAsLookAt_function_type)( ::osg::Vec3f &,::osg::Vec3f &,::osg::Vec3f &,float ) const;
+            typedef void ( ::osg::Camera::*getViewMatrixAsLookAt_function_type )( ::osg::Vec3f &,::osg::Vec3f &,::osg::Vec3f &,float ) const;
             
             Camera_exposer.def( 
                 "getViewMatrixAsLookAt"
@@ -1561,7 +1378,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getViewport
         
-            typedef ::osg::Viewport const * ( ::osg::Camera::*getViewport_function_type)(  ) const;
+            typedef ::osg::Viewport const * ( ::osg::Camera::*getViewport_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "getViewport"
@@ -1572,7 +1389,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::getViewport
         
-            typedef ::osg::Viewport * ( ::osg::Camera::*getViewport_function_type)(  ) ;
+            typedef ::osg::Viewport * ( ::osg::Camera::*getViewport_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "getViewport"
@@ -1583,8 +1400,8 @@ void register_Camera_class(){
         }
         { //::osg::Camera::inheritCullSettings
         
-            typedef void ( ::osg::Camera::*inheritCullSettings_function_type)( ::osg::CullSettings const &,unsigned int ) ;
-            typedef void ( Camera_wrapper::*default_inheritCullSettings_function_type)( ::osg::CullSettings const &,unsigned int ) ;
+            typedef void ( ::osg::Camera::*inheritCullSettings_function_type )( ::osg::CullSettings const &,unsigned int ) ;
+            typedef void ( Camera_wrapper::*default_inheritCullSettings_function_type )( ::osg::CullSettings const &,unsigned int ) ;
             
             Camera_exposer.def( 
                 "inheritCullSettings"
@@ -1595,7 +1412,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::isRenderToTextureCamera
         
-            typedef bool ( ::osg::Camera::*isRenderToTextureCamera_function_type)(  ) const;
+            typedef bool ( ::osg::Camera::*isRenderToTextureCamera_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "isRenderToTextureCamera"
@@ -1605,8 +1422,8 @@ void register_Camera_class(){
         }
         { //::osg::Camera::isSameKindAs
         
-            typedef bool ( ::osg::Camera::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( Camera_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::Camera::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( Camera_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             Camera_exposer.def( 
                 "isSameKindAs"
@@ -1617,8 +1434,8 @@ void register_Camera_class(){
         }
         { //::osg::Camera::libraryName
         
-            typedef char const * ( ::osg::Camera::*libraryName_function_type)(  ) const;
-            typedef char const * ( Camera_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::Camera::*libraryName_function_type )(  ) const;
+            typedef char const * ( Camera_wrapper::*default_libraryName_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "libraryName"
@@ -1628,8 +1445,8 @@ void register_Camera_class(){
         }
         { //::osg::Camera::resizeGLObjectBuffers
         
-            typedef void ( ::osg::Camera::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( Camera_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::Camera::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( Camera_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             Camera_exposer.def( 
                 "resizeGLObjectBuffers"
@@ -1640,7 +1457,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setAllowEventFocus
         
-            typedef void ( ::osg::Camera::*setAllowEventFocus_function_type)( bool ) ;
+            typedef void ( ::osg::Camera::*setAllowEventFocus_function_type )( bool ) ;
             
             Camera_exposer.def( 
                 "setAllowEventFocus"
@@ -1651,7 +1468,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setCameraThread
         
-            typedef void ( ::osg::Camera::*setCameraThread_function_type)( ::osg::OperationThread * ) ;
+            typedef void ( ::osg::Camera::*setCameraThread_function_type )( ::osg::OperationThread * ) ;
             
             Camera_exposer.def( 
                 "setCameraThread"
@@ -1662,7 +1479,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setClearAccum
         
-            typedef void ( ::osg::Camera::*setClearAccum_function_type)( ::osg::Vec4 const & ) ;
+            typedef void ( ::osg::Camera::*setClearAccum_function_type )( ::osg::Vec4 const & ) ;
             
             Camera_exposer.def( 
                 "setClearAccum"
@@ -1673,7 +1490,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setClearColor
         
-            typedef void ( ::osg::Camera::*setClearColor_function_type)( ::osg::Vec4 const & ) ;
+            typedef void ( ::osg::Camera::*setClearColor_function_type )( ::osg::Vec4 const & ) ;
             
             Camera_exposer.def( 
                 "setClearColor"
@@ -1684,7 +1501,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setClearDepth
         
-            typedef void ( ::osg::Camera::*setClearDepth_function_type)( double ) ;
+            typedef void ( ::osg::Camera::*setClearDepth_function_type )( double ) ;
             
             Camera_exposer.def( 
                 "setClearDepth"
@@ -1695,7 +1512,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setClearMask
         
-            typedef void ( ::osg::Camera::*setClearMask_function_type)( ::GLbitfield ) ;
+            typedef void ( ::osg::Camera::*setClearMask_function_type )( ::GLbitfield ) ;
             
             Camera_exposer.def( 
                 "setClearMask"
@@ -1706,7 +1523,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setClearStencil
         
-            typedef void ( ::osg::Camera::*setClearStencil_function_type)( int ) ;
+            typedef void ( ::osg::Camera::*setClearStencil_function_type )( int ) ;
             
             Camera_exposer.def( 
                 "setClearStencil"
@@ -1717,7 +1534,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setColorMask
         
-            typedef void ( ::osg::Camera::*setColorMask_function_type)( ::osg::ColorMask * ) ;
+            typedef void ( ::osg::Camera::*setColorMask_function_type )( ::osg::ColorMask * ) ;
             
             Camera_exposer.def( 
                 "setColorMask"
@@ -1728,7 +1545,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setColorMask
         
-            typedef void ( ::osg::Camera::*setColorMask_function_type)( bool,bool,bool,bool ) ;
+            typedef void ( ::osg::Camera::*setColorMask_function_type )( bool,bool,bool,bool ) ;
             
             Camera_exposer.def( 
                 "setColorMask"
@@ -1739,7 +1556,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setDisplaySettings
         
-            typedef void ( ::osg::Camera::*setDisplaySettings_function_type)( ::osg::DisplaySettings * ) ;
+            typedef void ( ::osg::Camera::*setDisplaySettings_function_type )( ::osg::DisplaySettings * ) ;
             
             Camera_exposer.def( 
                 "setDisplaySettings"
@@ -1750,7 +1567,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setDrawBuffer
         
-            typedef void ( ::osg::Camera::*setDrawBuffer_function_type)( ::GLenum ) ;
+            typedef void ( ::osg::Camera::*setDrawBuffer_function_type )( ::GLenum ) ;
             
             Camera_exposer.def( 
                 "setDrawBuffer"
@@ -1761,7 +1578,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setFinalDrawCallback
         
-            typedef void ( ::osg::Camera::*setFinalDrawCallback_function_type)( ::osg::Camera::DrawCallback * ) ;
+            typedef void ( ::osg::Camera::*setFinalDrawCallback_function_type )( ::osg::Camera::DrawCallback * ) ;
             
             Camera_exposer.def( 
                 "setFinalDrawCallback"
@@ -1773,7 +1590,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setGraphicsContext
         
-            typedef void ( ::osg::Camera::*setGraphicsContext_function_type)( ::osg::GraphicsContext * ) ;
+            typedef void ( ::osg::Camera::*setGraphicsContext_function_type )( ::osg::GraphicsContext * ) ;
             
             Camera_exposer.def( 
                 "setGraphicsContext"
@@ -1784,7 +1601,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setImplicitBufferAttachmentMask
         
-            typedef void ( ::osg::Camera::*setImplicitBufferAttachmentMask_function_type)( int,int ) ;
+            typedef void ( ::osg::Camera::*setImplicitBufferAttachmentMask_function_type )( int,int ) ;
             
             Camera_exposer.def( 
                 "setImplicitBufferAttachmentMask"
@@ -1794,7 +1611,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setImplicitBufferAttachmentRenderMask
         
-            typedef void ( ::osg::Camera::*setImplicitBufferAttachmentRenderMask_function_type)( int ) ;
+            typedef void ( ::osg::Camera::*setImplicitBufferAttachmentRenderMask_function_type )( int ) ;
             
             Camera_exposer.def( 
                 "setImplicitBufferAttachmentRenderMask"
@@ -1804,7 +1621,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setImplicitBufferAttachmentResolveMask
         
-            typedef void ( ::osg::Camera::*setImplicitBufferAttachmentResolveMask_function_type)( int ) ;
+            typedef void ( ::osg::Camera::*setImplicitBufferAttachmentResolveMask_function_type )( int ) ;
             
             Camera_exposer.def( 
                 "setImplicitBufferAttachmentResolveMask"
@@ -1814,7 +1631,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setInitialDrawCallback
         
-            typedef void ( ::osg::Camera::*setInitialDrawCallback_function_type)( ::osg::Camera::DrawCallback * ) ;
+            typedef void ( ::osg::Camera::*setInitialDrawCallback_function_type )( ::osg::Camera::DrawCallback * ) ;
             
             Camera_exposer.def( 
                 "setInitialDrawCallback"
@@ -1826,7 +1643,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setPostDrawCallback
         
-            typedef void ( ::osg::Camera::*setPostDrawCallback_function_type)( ::osg::Camera::DrawCallback * ) ;
+            typedef void ( ::osg::Camera::*setPostDrawCallback_function_type )( ::osg::Camera::DrawCallback * ) ;
             
             Camera_exposer.def( 
                 "setPostDrawCallback"
@@ -1838,7 +1655,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setPreDrawCallback
         
-            typedef void ( ::osg::Camera::*setPreDrawCallback_function_type)( ::osg::Camera::DrawCallback * ) ;
+            typedef void ( ::osg::Camera::*setPreDrawCallback_function_type )( ::osg::Camera::DrawCallback * ) ;
             
             Camera_exposer.def( 
                 "setPreDrawCallback"
@@ -1850,7 +1667,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setProjectionMatrix
         
-            typedef void ( ::osg::Camera::*setProjectionMatrix_function_type)( ::osg::Matrixf const & ) ;
+            typedef void ( ::osg::Camera::*setProjectionMatrix_function_type )( ::osg::Matrixf const & ) ;
             
             Camera_exposer.def( 
                 "setProjectionMatrix"
@@ -1861,7 +1678,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setProjectionMatrix
         
-            typedef void ( ::osg::Camera::*setProjectionMatrix_function_type)( ::osg::Matrixd const & ) ;
+            typedef void ( ::osg::Camera::*setProjectionMatrix_function_type )( ::osg::Matrixd const & ) ;
             
             Camera_exposer.def( 
                 "setProjectionMatrix"
@@ -1872,7 +1689,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setProjectionMatrixAsFrustum
         
-            typedef void ( ::osg::Camera::*setProjectionMatrixAsFrustum_function_type)( double,double,double,double,double,double ) ;
+            typedef void ( ::osg::Camera::*setProjectionMatrixAsFrustum_function_type )( double,double,double,double,double,double ) ;
             
             Camera_exposer.def( 
                 "setProjectionMatrixAsFrustum"
@@ -1883,7 +1700,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setProjectionMatrixAsOrtho
         
-            typedef void ( ::osg::Camera::*setProjectionMatrixAsOrtho_function_type)( double,double,double,double,double,double ) ;
+            typedef void ( ::osg::Camera::*setProjectionMatrixAsOrtho_function_type )( double,double,double,double,double,double ) ;
             
             Camera_exposer.def( 
                 "setProjectionMatrixAsOrtho"
@@ -1894,7 +1711,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setProjectionMatrixAsOrtho2D
         
-            typedef void ( ::osg::Camera::*setProjectionMatrixAsOrtho2D_function_type)( double,double,double,double ) ;
+            typedef void ( ::osg::Camera::*setProjectionMatrixAsOrtho2D_function_type )( double,double,double,double ) ;
             
             Camera_exposer.def( 
                 "setProjectionMatrixAsOrtho2D"
@@ -1905,7 +1722,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setProjectionMatrixAsPerspective
         
-            typedef void ( ::osg::Camera::*setProjectionMatrixAsPerspective_function_type)( double,double,double,double ) ;
+            typedef void ( ::osg::Camera::*setProjectionMatrixAsPerspective_function_type )( double,double,double,double ) ;
             
             Camera_exposer.def( 
                 "setProjectionMatrixAsPerspective"
@@ -1916,7 +1733,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setProjectionResizePolicy
         
-            typedef void ( ::osg::Camera::*setProjectionResizePolicy_function_type)( ::osg::Camera::ProjectionResizePolicy ) ;
+            typedef void ( ::osg::Camera::*setProjectionResizePolicy_function_type )( ::osg::Camera::ProjectionResizePolicy ) ;
             
             Camera_exposer.def( 
                 "setProjectionResizePolicy"
@@ -1927,7 +1744,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setReadBuffer
         
-            typedef void ( ::osg::Camera::*setReadBuffer_function_type)( ::GLenum ) ;
+            typedef void ( ::osg::Camera::*setReadBuffer_function_type )( ::GLenum ) ;
             
             Camera_exposer.def( 
                 "setReadBuffer"
@@ -1938,7 +1755,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setRenderOrder
         
-            typedef void ( ::osg::Camera::*setRenderOrder_function_type)( ::osg::Camera::RenderOrder,int ) ;
+            typedef void ( ::osg::Camera::*setRenderOrder_function_type )( ::osg::Camera::RenderOrder,int ) ;
             
             Camera_exposer.def( 
                 "setRenderOrder"
@@ -1949,7 +1766,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setRenderTargetImplementation
         
-            typedef void ( ::osg::Camera::*setRenderTargetImplementation_function_type)( ::osg::Camera::RenderTargetImplementation ) ;
+            typedef void ( ::osg::Camera::*setRenderTargetImplementation_function_type )( ::osg::Camera::RenderTargetImplementation ) ;
             
             Camera_exposer.def( 
                 "setRenderTargetImplementation"
@@ -1960,7 +1777,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setRenderTargetImplementation
         
-            typedef void ( ::osg::Camera::*setRenderTargetImplementation_function_type)( ::osg::Camera::RenderTargetImplementation,::osg::Camera::RenderTargetImplementation ) ;
+            typedef void ( ::osg::Camera::*setRenderTargetImplementation_function_type )( ::osg::Camera::RenderTargetImplementation,::osg::Camera::RenderTargetImplementation ) ;
             
             Camera_exposer.def( 
                 "setRenderTargetImplementation"
@@ -1971,7 +1788,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setRenderer
         
-            typedef void ( ::osg::Camera::*setRenderer_function_type)( ::osg::GraphicsOperation * ) ;
+            typedef void ( ::osg::Camera::*setRenderer_function_type )( ::osg::GraphicsOperation * ) ;
             
             Camera_exposer.def( 
                 "setRenderer"
@@ -1982,7 +1799,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setRenderingCache
         
-            typedef void ( ::osg::Camera::*setRenderingCache_function_type)( ::osg::Object * ) ;
+            typedef void ( ::osg::Camera::*setRenderingCache_function_type )( ::osg::Object * ) ;
             
             Camera_exposer.def( 
                 "setRenderingCache"
@@ -1993,7 +1810,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setStats
         
-            typedef void ( ::osg::Camera::*setStats_function_type)( ::osg::Stats * ) ;
+            typedef void ( ::osg::Camera::*setStats_function_type )( ::osg::Stats * ) ;
             
             Camera_exposer.def( 
                 "setStats"
@@ -2004,7 +1821,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setTransformOrder
         
-            typedef void ( ::osg::Camera::*setTransformOrder_function_type)( ::osg::Camera::TransformOrder ) ;
+            typedef void ( ::osg::Camera::*setTransformOrder_function_type )( ::osg::Camera::TransformOrder ) ;
             
             Camera_exposer.def( 
                 "setTransformOrder"
@@ -2015,7 +1832,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setView
         
-            typedef void ( ::osg::Camera::*setView_function_type)( ::osg::View * ) ;
+            typedef void ( ::osg::Camera::*setView_function_type )( ::osg::View * ) ;
             
             Camera_exposer.def( 
                 "setView"
@@ -2026,7 +1843,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setViewMatrix
         
-            typedef void ( ::osg::Camera::*setViewMatrix_function_type)( ::osg::Matrixf const & ) ;
+            typedef void ( ::osg::Camera::*setViewMatrix_function_type )( ::osg::Matrixf const & ) ;
             
             Camera_exposer.def( 
                 "setViewMatrix"
@@ -2037,7 +1854,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setViewMatrix
         
-            typedef void ( ::osg::Camera::*setViewMatrix_function_type)( ::osg::Matrixd const & ) ;
+            typedef void ( ::osg::Camera::*setViewMatrix_function_type )( ::osg::Matrixd const & ) ;
             
             Camera_exposer.def( 
                 "setViewMatrix"
@@ -2048,7 +1865,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setViewMatrixAsLookAt
         
-            typedef void ( ::osg::Camera::*setViewMatrixAsLookAt_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const & ) ;
+            typedef void ( ::osg::Camera::*setViewMatrixAsLookAt_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const & ) ;
             
             Camera_exposer.def( 
                 "setViewMatrixAsLookAt"
@@ -2059,7 +1876,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setViewport
         
-            typedef void ( ::osg::Camera::*setViewport_function_type)( ::osg::Viewport * ) ;
+            typedef void ( ::osg::Camera::*setViewport_function_type )( ::osg::Viewport * ) ;
             
             Camera_exposer.def( 
                 "setViewport"
@@ -2070,7 +1887,7 @@ void register_Camera_class(){
         }
         { //::osg::Camera::setViewport
         
-            typedef void ( ::osg::Camera::*setViewport_function_type)( int,int,int,int ) ;
+            typedef void ( ::osg::Camera::*setViewport_function_type )( int,int,int,int ) ;
             
             Camera_exposer.def( 
                 "setViewport"
@@ -2082,8 +1899,8 @@ void register_Camera_class(){
         Camera_exposer.def_readonly( "FACE_CONTROLLED_BY_GEOMETRY_SHADER", osg::Camera::FACE_CONTROLLED_BY_GEOMETRY_SHADER );
         { //::osg::Group::addChild
         
-            typedef bool ( ::osg::Group::*addChild_function_type)( ::osg::Node * ) ;
-            typedef bool ( Camera_wrapper::*default_addChild_function_type)( ::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*addChild_function_type )( ::osg::Node * ) ;
+            typedef bool ( Camera_wrapper::*default_addChild_function_type )( ::osg::Node * ) ;
             
             Camera_exposer.def( 
                 "addChild"
@@ -2094,8 +1911,8 @@ void register_Camera_class(){
         }
         { //::osg::Node::asGeode
         
-            typedef ::osg::Geode * ( ::osg::Node::*asGeode_function_type)(  ) ;
-            typedef ::osg::Geode * ( Camera_wrapper::*default_asGeode_function_type)(  ) ;
+            typedef ::osg::Geode * ( ::osg::Node::*asGeode_function_type )(  ) ;
+            typedef ::osg::Geode * ( Camera_wrapper::*default_asGeode_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "asGeode"
@@ -2106,8 +1923,8 @@ void register_Camera_class(){
         }
         { //::osg::Node::asGeode
         
-            typedef ::osg::Geode const * ( ::osg::Node::*asGeode_function_type)(  ) const;
-            typedef ::osg::Geode const * ( Camera_wrapper::*default_asGeode_function_type)(  ) const;
+            typedef ::osg::Geode const * ( ::osg::Node::*asGeode_function_type )(  ) const;
+            typedef ::osg::Geode const * ( Camera_wrapper::*default_asGeode_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "asGeode"
@@ -2118,8 +1935,8 @@ void register_Camera_class(){
         }
         { //::osg::Group::asGroup
         
-            typedef ::osg::Group * ( ::osg::Group::*asGroup_function_type)(  ) ;
-            typedef ::osg::Group * ( Camera_wrapper::*default_asGroup_function_type)(  ) ;
+            typedef ::osg::Group * ( ::osg::Group::*asGroup_function_type )(  ) ;
+            typedef ::osg::Group * ( Camera_wrapper::*default_asGroup_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "asGroup"
@@ -2130,8 +1947,8 @@ void register_Camera_class(){
         }
         { //::osg::Group::asGroup
         
-            typedef ::osg::Group const * ( ::osg::Group::*asGroup_function_type)(  ) const;
-            typedef ::osg::Group const * ( Camera_wrapper::*default_asGroup_function_type)(  ) const;
+            typedef ::osg::Group const * ( ::osg::Group::*asGroup_function_type )(  ) const;
+            typedef ::osg::Group const * ( Camera_wrapper::*default_asGroup_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "asGroup"
@@ -2142,8 +1959,8 @@ void register_Camera_class(){
         }
         { //::osg::Transform::asMatrixTransform
         
-            typedef ::osg::MatrixTransform * ( ::osg::Transform::*asMatrixTransform_function_type)(  ) ;
-            typedef ::osg::MatrixTransform * ( Camera_wrapper::*default_asMatrixTransform_function_type)(  ) ;
+            typedef ::osg::MatrixTransform * ( ::osg::Transform::*asMatrixTransform_function_type )(  ) ;
+            typedef ::osg::MatrixTransform * ( Camera_wrapper::*default_asMatrixTransform_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "asMatrixTransform"
@@ -2154,8 +1971,8 @@ void register_Camera_class(){
         }
         { //::osg::Transform::asMatrixTransform
         
-            typedef ::osg::MatrixTransform const * ( ::osg::Transform::*asMatrixTransform_function_type)(  ) const;
-            typedef ::osg::MatrixTransform const * ( Camera_wrapper::*default_asMatrixTransform_function_type)(  ) const;
+            typedef ::osg::MatrixTransform const * ( ::osg::Transform::*asMatrixTransform_function_type )(  ) const;
+            typedef ::osg::MatrixTransform const * ( Camera_wrapper::*default_asMatrixTransform_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "asMatrixTransform"
@@ -2166,8 +1983,8 @@ void register_Camera_class(){
         }
         { //::osg::Transform::asPositionAttitudeTransform
         
-            typedef ::osg::PositionAttitudeTransform * ( ::osg::Transform::*asPositionAttitudeTransform_function_type)(  ) ;
-            typedef ::osg::PositionAttitudeTransform * ( Camera_wrapper::*default_asPositionAttitudeTransform_function_type)(  ) ;
+            typedef ::osg::PositionAttitudeTransform * ( ::osg::Transform::*asPositionAttitudeTransform_function_type )(  ) ;
+            typedef ::osg::PositionAttitudeTransform * ( Camera_wrapper::*default_asPositionAttitudeTransform_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "asPositionAttitudeTransform"
@@ -2178,8 +1995,8 @@ void register_Camera_class(){
         }
         { //::osg::Transform::asPositionAttitudeTransform
         
-            typedef ::osg::PositionAttitudeTransform const * ( ::osg::Transform::*asPositionAttitudeTransform_function_type)(  ) const;
-            typedef ::osg::PositionAttitudeTransform const * ( Camera_wrapper::*default_asPositionAttitudeTransform_function_type)(  ) const;
+            typedef ::osg::PositionAttitudeTransform const * ( ::osg::Transform::*asPositionAttitudeTransform_function_type )(  ) const;
+            typedef ::osg::PositionAttitudeTransform const * ( Camera_wrapper::*default_asPositionAttitudeTransform_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "asPositionAttitudeTransform"
@@ -2190,8 +2007,8 @@ void register_Camera_class(){
         }
         { //::osg::Node::asSwitch
         
-            typedef ::osg::Switch * ( ::osg::Node::*asSwitch_function_type)(  ) ;
-            typedef ::osg::Switch * ( Camera_wrapper::*default_asSwitch_function_type)(  ) ;
+            typedef ::osg::Switch * ( ::osg::Node::*asSwitch_function_type )(  ) ;
+            typedef ::osg::Switch * ( Camera_wrapper::*default_asSwitch_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "asSwitch"
@@ -2202,8 +2019,8 @@ void register_Camera_class(){
         }
         { //::osg::Node::asSwitch
         
-            typedef ::osg::Switch const * ( ::osg::Node::*asSwitch_function_type)(  ) const;
-            typedef ::osg::Switch const * ( Camera_wrapper::*default_asSwitch_function_type)(  ) const;
+            typedef ::osg::Switch const * ( ::osg::Node::*asSwitch_function_type )(  ) const;
+            typedef ::osg::Switch const * ( Camera_wrapper::*default_asSwitch_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "asSwitch"
@@ -2214,8 +2031,8 @@ void register_Camera_class(){
         }
         { //::osg::Transform::asTransform
         
-            typedef ::osg::Transform * ( ::osg::Transform::*asTransform_function_type)(  ) ;
-            typedef ::osg::Transform * ( Camera_wrapper::*default_asTransform_function_type)(  ) ;
+            typedef ::osg::Transform * ( ::osg::Transform::*asTransform_function_type )(  ) ;
+            typedef ::osg::Transform * ( Camera_wrapper::*default_asTransform_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "asTransform"
@@ -2226,8 +2043,8 @@ void register_Camera_class(){
         }
         { //::osg::Transform::asTransform
         
-            typedef ::osg::Transform const * ( ::osg::Transform::*asTransform_function_type)(  ) const;
-            typedef ::osg::Transform const * ( Camera_wrapper::*default_asTransform_function_type)(  ) const;
+            typedef ::osg::Transform const * ( ::osg::Transform::*asTransform_function_type )(  ) const;
+            typedef ::osg::Transform const * ( Camera_wrapper::*default_asTransform_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "asTransform"
@@ -2238,8 +2055,8 @@ void register_Camera_class(){
         }
         { //::osg::Node::ascend
         
-            typedef void ( ::osg::Node::*ascend_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( Camera_wrapper::*default_ascend_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::Node::*ascend_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( Camera_wrapper::*default_ascend_function_type )( ::osg::NodeVisitor & ) ;
             
             Camera_exposer.def( 
                 "ascend"
@@ -2250,8 +2067,8 @@ void register_Camera_class(){
         }
         { //::osg::Transform::computeBound
         
-            typedef ::osg::BoundingSphere ( ::osg::Transform::*computeBound_function_type)(  ) const;
-            typedef ::osg::BoundingSphere ( Camera_wrapper::*default_computeBound_function_type)(  ) const;
+            typedef ::osg::BoundingSphere ( ::osg::Transform::*computeBound_function_type )(  ) const;
+            typedef ::osg::BoundingSphere ( Camera_wrapper::*default_computeBound_function_type )(  ) const;
             
             Camera_exposer.def( 
                 "computeBound"
@@ -2259,45 +2076,10 @@ void register_Camera_class(){
                 , default_computeBound_function_type(&Camera_wrapper::default_computeBound) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( Camera_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            Camera_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&Camera_wrapper::default_computeDataVariance) );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( Camera_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            Camera_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Camera_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( Camera_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            Camera_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Camera_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::CullSettings::inheritCullSettings
         
-            typedef void ( ::osg::CullSettings::*inheritCullSettings_function_type)( ::osg::CullSettings const & ) ;
-            typedef void ( Camera_wrapper::*default_inheritCullSettings_function_type)( ::osg::CullSettings const & ) ;
+            typedef void ( ::osg::CullSettings::*inheritCullSettings_function_type )( ::osg::CullSettings const & ) ;
+            typedef void ( Camera_wrapper::*default_inheritCullSettings_function_type )( ::osg::CullSettings const & ) ;
             
             Camera_exposer.def( 
                 "inheritCullSettings"
@@ -2308,8 +2090,8 @@ void register_Camera_class(){
         }
         { //::osg::Group::insertChild
         
-            typedef bool ( ::osg::Group::*insertChild_function_type)( unsigned int,::osg::Node * ) ;
-            typedef bool ( Camera_wrapper::*default_insertChild_function_type)( unsigned int,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*insertChild_function_type )( unsigned int,::osg::Node * ) ;
+            typedef bool ( Camera_wrapper::*default_insertChild_function_type )( unsigned int,::osg::Node * ) ;
             
             Camera_exposer.def( 
                 "insertChild"
@@ -2320,8 +2102,8 @@ void register_Camera_class(){
         }
         { //::osg::Group::removeChildren
         
-            typedef bool ( ::osg::Group::*removeChildren_function_type)( unsigned int,unsigned int ) ;
-            typedef bool ( Camera_wrapper::*default_removeChildren_function_type)( unsigned int,unsigned int ) ;
+            typedef bool ( ::osg::Group::*removeChildren_function_type )( unsigned int,unsigned int ) ;
+            typedef bool ( Camera_wrapper::*default_removeChildren_function_type )( unsigned int,unsigned int ) ;
             
             Camera_exposer.def( 
                 "removeChildren"
@@ -2332,8 +2114,8 @@ void register_Camera_class(){
         }
         { //::osg::Group::replaceChild
         
-            typedef bool ( ::osg::Group::*replaceChild_function_type)( ::osg::Node *,::osg::Node * ) ;
-            typedef bool ( Camera_wrapper::*default_replaceChild_function_type)( ::osg::Node *,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*replaceChild_function_type )( ::osg::Node *,::osg::Node * ) ;
+            typedef bool ( Camera_wrapper::*default_replaceChild_function_type )( ::osg::Node *,::osg::Node * ) ;
             
             Camera_exposer.def( 
                 "replaceChild"
@@ -2344,8 +2126,8 @@ void register_Camera_class(){
         }
         { //::osg::Group::setChild
         
-            typedef bool ( ::osg::Group::*setChild_function_type)( unsigned int,::osg::Node * ) ;
-            typedef bool ( Camera_wrapper::*default_setChild_function_type)( unsigned int,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*setChild_function_type )( unsigned int,::osg::Node * ) ;
+            typedef bool ( Camera_wrapper::*default_setChild_function_type )( unsigned int,::osg::Node * ) ;
             
             Camera_exposer.def( 
                 "setChild"
@@ -2356,8 +2138,8 @@ void register_Camera_class(){
         }
         { //::osg::CullSettings::setDefaults
         
-            typedef void ( ::osg::CullSettings::*setDefaults_function_type)(  ) ;
-            typedef void ( Camera_wrapper::*default_setDefaults_function_type)(  ) ;
+            typedef void ( ::osg::CullSettings::*setDefaults_function_type )(  ) ;
+            typedef void ( Camera_wrapper::*default_setDefaults_function_type )(  ) ;
             
             Camera_exposer.def( 
                 "setDefaults"
@@ -2365,33 +2147,10 @@ void register_Camera_class(){
                 , default_setDefaults_function_type(&Camera_wrapper::default_setDefaults) );
         
         }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( Camera_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            Camera_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&Camera_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            Camera_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
         { //::osg::Group::setThreadSafeRefUnref
         
-            typedef void ( ::osg::Group::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( Camera_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
+            typedef void ( ::osg::Group::*setThreadSafeRefUnref_function_type )( bool ) ;
+            typedef void ( Camera_wrapper::*default_setThreadSafeRefUnref_function_type )( bool ) ;
             
             Camera_exposer.def( 
                 "setThreadSafeRefUnref"
@@ -2400,22 +2159,10 @@ void register_Camera_class(){
                 , ( bp::arg("threadSafe") ) );
         
         }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( Camera_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            Camera_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&Camera_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
-        
-        }
         { //::osg::Group::traverse
         
-            typedef void ( ::osg::Group::*traverse_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( Camera_wrapper::*default_traverse_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::Group::*traverse_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( Camera_wrapper::*default_traverse_function_type )( ::osg::NodeVisitor & ) ;
             
             Camera_exposer.def( 
                 "traverse"

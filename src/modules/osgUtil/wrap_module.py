@@ -28,7 +28,32 @@ class OsgUtilWrapper(BaseWrapper):
         
         wrap_call_policies(self.mb)
 
+        # linux compile error HalfWayMapGenerator.pypp.cpp:13:113: error: `HalfWayMapGenerator_wrapper` was not declared in this scope
+        for cls_name in [
+                 "HalfWayMapGenerator", 
+                 "HighlightMapGenerator",
+                 "TangentSpaceGenerator",
+                 "ReflectionMapGenerator",
+                 "ShaderGenCache",
+                 "DelaunayTriangulator",
+                 "CubeMapGenerator",
+                 ]:
+            cls = osgUtil.class_(cls_name)
+            cls.wrapper_alias = cls.decl_string
+
         self.wrap_all_osg_referenced(osgUtil)
+
+        for cls_inner in [
+                ["EdgeCollector","Edge"],
+                ["EdgeCollector","Edgeloop"],
+                ["EdgeCollector","Point"],
+                ["EdgeCollector","Triangle"],
+                ["IncrementalCompileOperation","CompileSet"],
+                ["Tessellator","Prim"],
+                ["CullVisitor","Identifier"],
+                ]:
+            cls = osgUtil.class_(cls_inner[0]).class_(cls_inner[1])
+            cls.held_type = 'osg::ref_ptr< %s >' % cls.decl_string # decl_string not wrapper_alias
 
         hide_nonpublic(mb)
 
@@ -66,10 +91,8 @@ class OsgUtilWrapper(BaseWrapper):
                 # Because "manage_new_object" causes trouble with protected destructors, so let's leak this memory
                 fn.call_policies = return_value_policy(reference_existing_object)
 
-        self.mb.build_code_creator(module_name='_osgUtil')
-        self.mb.split_module(os.path.join(os.path.abspath('.'), 'generated_code'))
-        # Create a file to indicate completion of wrapping script
-        open(os.path.join(os.path.abspath('.'), 'generated_code', 'generate_module.stamp'), "w").close()
+        # Write results
+        self.generate_module_code("_osgUtil")
         
 if __name__ == "__main__":
     wrapper = OsgUtilWrapper()

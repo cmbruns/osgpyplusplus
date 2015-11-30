@@ -58,6 +58,13 @@ class OsgManipulatorWrapper(BaseWrapper):
 
         wrap_call_policies(self.mb)
 
+        # linux compile error HalfWayMapGenerator.pypp.cpp:13:113: error: `HalfWayMapGenerator_wrapper` was not declared in this scope
+        for cls_name in [
+                 "CommandManager",
+                 ]:
+            cls = osgManipulator.class_(cls_name)
+            cls.wrapper_alias = cls.decl_string
+
         self.wrap_all_osg_referenced(osgManipulator)
             
         hide_nonpublic(mb)
@@ -83,6 +90,8 @@ class OsgManipulatorWrapper(BaseWrapper):
         for cls in osgManipulator.classes(lambda c: c.name.endswith("Callback")):
             hack_osg_arg(cls, "receive", "command")
             hack_osg_arg(cls, "receive", "arg0")
+
+        osgManipulator.class_("CompositeDragger").member_function("findDragger").exclude()
 
         self.generate_module_code('_osgManipulator')
 

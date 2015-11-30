@@ -76,10 +76,8 @@ class OsgViewerWrapper(BaseWrapper):
 
         hide_nonpublic(mb)
         
-        self.mb.build_code_creator(module_name='_osgViewer')
-        self.mb.split_module(os.path.join(os.path.abspath('.'), 'generated_code'))
-        # Create a file to indicate completion of wrapping script
-        open(os.path.join(os.path.abspath('.'), 'generated_code', 'generate_module.stamp'), "w").close()
+        # Write results
+        self.generate_module_code("_osgViewer")
 
     def wrap_screencapturehandler(self):
         cls = self.mb.class_("ScreenCaptureHandler")

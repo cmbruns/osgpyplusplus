@@ -3,8 +3,8 @@
 #include "boost/python.hpp"
 #include "indexing_suite/container_suite.hpp"
 #include "indexing_suite/list.hpp"
-#include "wrap_osgdb.h"
-#include "list_less__osg_scope_ref_ptr_less_osgdb_scope_readerwriterinfo_greater___greater_.pypp.hpp"
+#include "wrap_osgDB.h"
+#include "list_less__osg_scope_ref_ptr_less_osgDB_scope_ReaderWriterInfo_greater___greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

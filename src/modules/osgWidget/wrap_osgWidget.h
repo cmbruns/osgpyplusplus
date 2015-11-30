@@ -9,7 +9,7 @@
 #include "../default.h"
 
 // External headers needed for osgUtil classes to compile:
-// <none yet>
+#include <osg/PositionAttitudeTransform>
 
 // Full set of OSG 3.2.1 osgWidget headers:
 #include <osgWidget/Box>
@@ -43,4 +43,6 @@
 
 // Aliases defined within this block will influence the generated wrapper source file names for those classes
 namespace pyplusplus { namespace aliases {
+    typedef osgWidget::UIObjectParent<osgWidget::Window>::Vector UIObjectParent_Window_Vector;
+    typedef osgWidget::UIObjectParent<osgWidget::Widget>::Vector UIObjectParent_Widget_Vector;
 }}

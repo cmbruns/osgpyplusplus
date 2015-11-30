@@ -2,12 +2,12 @@
 
 #include "boost/python.hpp"
 #include "wrap_osg.h"
-#include "applicationusageproxy.pypp.hpp"
+#include "ApplicationUsageProxy.pypp.hpp"
 
 namespace bp = boost::python;
 
 void register_ApplicationUsageProxy_class(){
 
-    bp::class_< osg::ApplicationUsageProxy >( "ApplicationUsageProxy", bp::init< osg::ApplicationUsage::Type, std::string const &, std::string const & >(( bp::arg("type"), bp::arg("option"), bp::arg("explanation") ), " register an explanation of commandline/environmentvariable/keyboard mouse usage.") );
+    bp::class_< osg::ApplicationUsageProxy >( "ApplicationUsageProxy", bp::init< osg::ApplicationUsage::Type, std::string const &, std::string const & >(( bp::arg("type"), bp::arg("option"), bp::arg("explanation") ), "\n register an explanation of commandline/environmentvariable/keyboard mouse usage.\n") );
 
 }

@@ -2,7 +2,7 @@
 
 #include "boost/python.hpp"
 #include "wrap_osg.h"
-#include "valueobjectclassnametrait_less__osg_scope_matrixf__greater_.pypp.hpp"
+#include "ValueObjectClassNameTrait_less__osg_scope_Matrixf__greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

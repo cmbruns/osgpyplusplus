@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "autotransform.pypp.hpp"
+#include "AutoTransform.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -340,42 +340,6 @@ struct AutoTransform_wrapper : osg::AutoTransform, bp::wrapper< osg::AutoTransfo
         osg::Node::ascend( boost::ref(nv) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
     virtual bool insertChild( unsigned int index, ::osg::Node * child ) {
         if( bp::override func_insertChild = this->get_override( "insertChild" ) )
             return func_insertChild( index, boost::python::ptr(child) );
@@ -436,18 +400,6 @@ struct AutoTransform_wrapper : osg::AutoTransform, bp::wrapper< osg::AutoTransfo
         return osg::Group::setChild( i, boost::python::ptr(node) );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
     virtual void setThreadSafeRefUnref( bool threadSafe ) {
         if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
             func_setThreadSafeRefUnref( threadSafe );
@@ -458,18 +410,6 @@ struct AutoTransform_wrapper : osg::AutoTransform, bp::wrapper< osg::AutoTransfo
     
     void default_setThreadSafeRefUnref( bool threadSafe ) {
         osg::Group::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
     }
 
     virtual void traverse( ::osg::NodeVisitor & nv ) {
@@ -502,8 +442,8 @@ void register_AutoTransform_class(){
         AutoTransform_exposer.def( bp::init< >("\n AutoTransform is a derived form of Transform that automatically\n scales or rotates to keep its children aligned with screen coordinates.\n") );
         { //::osg::AutoTransform::accept
         
-            typedef void ( ::osg::AutoTransform::*accept_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( AutoTransform_wrapper::*default_accept_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::AutoTransform::*accept_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( AutoTransform_wrapper::*default_accept_function_type )( ::osg::NodeVisitor & ) ;
             
             AutoTransform_exposer.def( 
                 "accept"
@@ -514,8 +454,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::asAutoTransform
         
-            typedef ::osg::AutoTransform * ( ::osg::AutoTransform::*asAutoTransform_function_type)(  ) ;
-            typedef ::osg::AutoTransform * ( AutoTransform_wrapper::*default_asAutoTransform_function_type)(  ) ;
+            typedef ::osg::AutoTransform * ( ::osg::AutoTransform::*asAutoTransform_function_type )(  ) ;
+            typedef ::osg::AutoTransform * ( AutoTransform_wrapper::*default_asAutoTransform_function_type )(  ) ;
             
             AutoTransform_exposer.def( 
                 "asAutoTransform"
@@ -526,8 +466,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::asAutoTransform
         
-            typedef ::osg::AutoTransform const * ( ::osg::AutoTransform::*asAutoTransform_function_type)(  ) const;
-            typedef ::osg::AutoTransform const * ( AutoTransform_wrapper::*default_asAutoTransform_function_type)(  ) const;
+            typedef ::osg::AutoTransform const * ( ::osg::AutoTransform::*asAutoTransform_function_type )(  ) const;
+            typedef ::osg::AutoTransform const * ( AutoTransform_wrapper::*default_asAutoTransform_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "asAutoTransform"
@@ -538,8 +478,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::className
         
-            typedef char const * ( ::osg::AutoTransform::*className_function_type)(  ) const;
-            typedef char const * ( AutoTransform_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::AutoTransform::*className_function_type )(  ) const;
+            typedef char const * ( AutoTransform_wrapper::*default_className_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "className"
@@ -549,8 +489,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::clone
         
-            typedef ::osg::Object * ( ::osg::AutoTransform::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( AutoTransform_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::AutoTransform::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( AutoTransform_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             AutoTransform_exposer.def( 
                 "clone"
@@ -562,8 +502,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::cloneType
         
-            typedef ::osg::Object * ( ::osg::AutoTransform::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( AutoTransform_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::AutoTransform::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( AutoTransform_wrapper::*default_cloneType_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "cloneType"
@@ -574,8 +514,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::computeBound
         
-            typedef ::osg::BoundingSphere ( ::osg::AutoTransform::*computeBound_function_type)(  ) const;
-            typedef ::osg::BoundingSphere ( AutoTransform_wrapper::*default_computeBound_function_type)(  ) const;
+            typedef ::osg::BoundingSphere ( ::osg::AutoTransform::*computeBound_function_type )(  ) const;
+            typedef ::osg::BoundingSphere ( AutoTransform_wrapper::*default_computeBound_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "computeBound"
@@ -585,8 +525,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::computeLocalToWorldMatrix
         
-            typedef bool ( ::osg::AutoTransform::*computeLocalToWorldMatrix_function_type)( ::osg::Matrix &,::osg::NodeVisitor * ) const;
-            typedef bool ( AutoTransform_wrapper::*default_computeLocalToWorldMatrix_function_type)( ::osg::Matrix &,::osg::NodeVisitor * ) const;
+            typedef bool ( ::osg::AutoTransform::*computeLocalToWorldMatrix_function_type )( ::osg::Matrix &,::osg::NodeVisitor * ) const;
+            typedef bool ( AutoTransform_wrapper::*default_computeLocalToWorldMatrix_function_type )( ::osg::Matrix &,::osg::NodeVisitor * ) const;
             
             AutoTransform_exposer.def( 
                 "computeLocalToWorldMatrix"
@@ -597,8 +537,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::computeWorldToLocalMatrix
         
-            typedef bool ( ::osg::AutoTransform::*computeWorldToLocalMatrix_function_type)( ::osg::Matrix &,::osg::NodeVisitor * ) const;
-            typedef bool ( AutoTransform_wrapper::*default_computeWorldToLocalMatrix_function_type)( ::osg::Matrix &,::osg::NodeVisitor * ) const;
+            typedef bool ( ::osg::AutoTransform::*computeWorldToLocalMatrix_function_type )( ::osg::Matrix &,::osg::NodeVisitor * ) const;
+            typedef bool ( AutoTransform_wrapper::*default_computeWorldToLocalMatrix_function_type )( ::osg::Matrix &,::osg::NodeVisitor * ) const;
             
             AutoTransform_exposer.def( 
                 "computeWorldToLocalMatrix"
@@ -609,7 +549,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::getAutoRotateMode
         
-            typedef ::osg::AutoTransform::AutoRotateMode ( ::osg::AutoTransform::*getAutoRotateMode_function_type)(  ) const;
+            typedef ::osg::AutoTransform::AutoRotateMode ( ::osg::AutoTransform::*getAutoRotateMode_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "getAutoRotateMode"
@@ -618,7 +558,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::getAutoScaleToScreen
         
-            typedef bool ( ::osg::AutoTransform::*getAutoScaleToScreen_function_type)(  ) const;
+            typedef bool ( ::osg::AutoTransform::*getAutoScaleToScreen_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "getAutoScaleToScreen"
@@ -627,7 +567,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::getAutoScaleTransitionWidthRatio
         
-            typedef float ( ::osg::AutoTransform::*getAutoScaleTransitionWidthRatio_function_type)(  ) const;
+            typedef float ( ::osg::AutoTransform::*getAutoScaleTransitionWidthRatio_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "getAutoScaleTransitionWidthRatio"
@@ -636,7 +576,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::getAutoUpdateEyeMovementTolerance
         
-            typedef float ( ::osg::AutoTransform::*getAutoUpdateEyeMovementTolerance_function_type)(  ) const;
+            typedef float ( ::osg::AutoTransform::*getAutoUpdateEyeMovementTolerance_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "getAutoUpdateEyeMovementTolerance"
@@ -645,7 +585,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::getAxis
         
-            typedef ::osg::Vec3 const & ( ::osg::AutoTransform::*getAxis_function_type)(  ) const;
+            typedef ::osg::Vec3 const & ( ::osg::AutoTransform::*getAxis_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "getAxis"
@@ -656,7 +596,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::getMaximumScale
         
-            typedef double ( ::osg::AutoTransform::*getMaximumScale_function_type)(  ) const;
+            typedef double ( ::osg::AutoTransform::*getMaximumScale_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "getMaximumScale"
@@ -665,7 +605,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::getMinimumScale
         
-            typedef double ( ::osg::AutoTransform::*getMinimumScale_function_type)(  ) const;
+            typedef double ( ::osg::AutoTransform::*getMinimumScale_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "getMinimumScale"
@@ -674,7 +614,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::getNormal
         
-            typedef ::osg::Vec3 const & ( ::osg::AutoTransform::*getNormal_function_type)(  ) const;
+            typedef ::osg::Vec3 const & ( ::osg::AutoTransform::*getNormal_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "getNormal"
@@ -685,7 +625,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::getPivotPoint
         
-            typedef ::osg::Vec3d const & ( ::osg::AutoTransform::*getPivotPoint_function_type)(  ) const;
+            typedef ::osg::Vec3d const & ( ::osg::AutoTransform::*getPivotPoint_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "getPivotPoint"
@@ -695,7 +635,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::getPosition
         
-            typedef ::osg::Vec3d const & ( ::osg::AutoTransform::*getPosition_function_type)(  ) const;
+            typedef ::osg::Vec3d const & ( ::osg::AutoTransform::*getPosition_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "getPosition"
@@ -705,7 +645,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::getRotation
         
-            typedef ::osg::Quat const & ( ::osg::AutoTransform::*getRotation_function_type)(  ) const;
+            typedef ::osg::Quat const & ( ::osg::AutoTransform::*getRotation_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "getRotation"
@@ -715,7 +655,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::getScale
         
-            typedef ::osg::Vec3d const & ( ::osg::AutoTransform::*getScale_function_type)(  ) const;
+            typedef ::osg::Vec3d const & ( ::osg::AutoTransform::*getScale_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "getScale"
@@ -725,8 +665,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::isSameKindAs
         
-            typedef bool ( ::osg::AutoTransform::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( AutoTransform_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::AutoTransform::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( AutoTransform_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             AutoTransform_exposer.def( 
                 "isSameKindAs"
@@ -737,8 +677,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::libraryName
         
-            typedef char const * ( ::osg::AutoTransform::*libraryName_function_type)(  ) const;
-            typedef char const * ( AutoTransform_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::AutoTransform::*libraryName_function_type )(  ) const;
+            typedef char const * ( AutoTransform_wrapper::*default_libraryName_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "libraryName"
@@ -748,7 +688,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::setAutoRotateMode
         
-            typedef void ( ::osg::AutoTransform::*setAutoRotateMode_function_type)( ::osg::AutoTransform::AutoRotateMode ) ;
+            typedef void ( ::osg::AutoTransform::*setAutoRotateMode_function_type )( ::osg::AutoTransform::AutoRotateMode ) ;
             
             AutoTransform_exposer.def( 
                 "setAutoRotateMode"
@@ -758,7 +698,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::setAutoScaleToScreen
         
-            typedef void ( ::osg::AutoTransform::*setAutoScaleToScreen_function_type)( bool ) ;
+            typedef void ( ::osg::AutoTransform::*setAutoScaleToScreen_function_type )( bool ) ;
             
             AutoTransform_exposer.def( 
                 "setAutoScaleToScreen"
@@ -768,7 +708,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::setAutoScaleTransitionWidthRatio
         
-            typedef void ( ::osg::AutoTransform::*setAutoScaleTransitionWidthRatio_function_type)( float ) ;
+            typedef void ( ::osg::AutoTransform::*setAutoScaleTransitionWidthRatio_function_type )( float ) ;
             
             AutoTransform_exposer.def( 
                 "setAutoScaleTransitionWidthRatio"
@@ -778,7 +718,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::setAutoUpdateEyeMovementTolerance
         
-            typedef void ( ::osg::AutoTransform::*setAutoUpdateEyeMovementTolerance_function_type)( float ) ;
+            typedef void ( ::osg::AutoTransform::*setAutoUpdateEyeMovementTolerance_function_type )( float ) ;
             
             AutoTransform_exposer.def( 
                 "setAutoUpdateEyeMovementTolerance"
@@ -788,7 +728,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::setAxis
         
-            typedef void ( ::osg::AutoTransform::*setAxis_function_type)( ::osg::Vec3 const & ) ;
+            typedef void ( ::osg::AutoTransform::*setAxis_function_type )( ::osg::Vec3 const & ) ;
             
             AutoTransform_exposer.def( 
                 "setAxis"
@@ -799,7 +739,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::setMaximumScale
         
-            typedef void ( ::osg::AutoTransform::*setMaximumScale_function_type)( double ) ;
+            typedef void ( ::osg::AutoTransform::*setMaximumScale_function_type )( double ) ;
             
             AutoTransform_exposer.def( 
                 "setMaximumScale"
@@ -809,7 +749,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::setMinimumScale
         
-            typedef void ( ::osg::AutoTransform::*setMinimumScale_function_type)( double ) ;
+            typedef void ( ::osg::AutoTransform::*setMinimumScale_function_type )( double ) ;
             
             AutoTransform_exposer.def( 
                 "setMinimumScale"
@@ -819,7 +759,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::setNormal
         
-            typedef void ( ::osg::AutoTransform::*setNormal_function_type)( ::osg::Vec3 const & ) ;
+            typedef void ( ::osg::AutoTransform::*setNormal_function_type )( ::osg::Vec3 const & ) ;
             
             AutoTransform_exposer.def( 
                 "setNormal"
@@ -830,7 +770,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::setPivotPoint
         
-            typedef void ( ::osg::AutoTransform::*setPivotPoint_function_type)( ::osg::Vec3d const & ) ;
+            typedef void ( ::osg::AutoTransform::*setPivotPoint_function_type )( ::osg::Vec3d const & ) ;
             
             AutoTransform_exposer.def( 
                 "setPivotPoint"
@@ -840,7 +780,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::setPosition
         
-            typedef void ( ::osg::AutoTransform::*setPosition_function_type)( ::osg::Vec3d const & ) ;
+            typedef void ( ::osg::AutoTransform::*setPosition_function_type )( ::osg::Vec3d const & ) ;
             
             AutoTransform_exposer.def( 
                 "setPosition"
@@ -850,7 +790,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::setRotation
         
-            typedef void ( ::osg::AutoTransform::*setRotation_function_type)( ::osg::Quat const & ) ;
+            typedef void ( ::osg::AutoTransform::*setRotation_function_type )( ::osg::Quat const & ) ;
             
             AutoTransform_exposer.def( 
                 "setRotation"
@@ -860,7 +800,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::setScale
         
-            typedef void ( ::osg::AutoTransform::*setScale_function_type)( double ) ;
+            typedef void ( ::osg::AutoTransform::*setScale_function_type )( double ) ;
             
             AutoTransform_exposer.def( 
                 "setScale"
@@ -870,7 +810,7 @@ void register_AutoTransform_class(){
         }
         { //::osg::AutoTransform::setScale
         
-            typedef void ( ::osg::AutoTransform::*setScale_function_type)( ::osg::Vec3d const & ) ;
+            typedef void ( ::osg::AutoTransform::*setScale_function_type )( ::osg::Vec3d const & ) ;
             
             AutoTransform_exposer.def( 
                 "setScale"
@@ -880,8 +820,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Group::addChild
         
-            typedef bool ( ::osg::Group::*addChild_function_type)( ::osg::Node * ) ;
-            typedef bool ( AutoTransform_wrapper::*default_addChild_function_type)( ::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*addChild_function_type )( ::osg::Node * ) ;
+            typedef bool ( AutoTransform_wrapper::*default_addChild_function_type )( ::osg::Node * ) ;
             
             AutoTransform_exposer.def( 
                 "addChild"
@@ -892,8 +832,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Node::asCamera
         
-            typedef ::osg::Camera * ( ::osg::Node::*asCamera_function_type)(  ) ;
-            typedef ::osg::Camera * ( AutoTransform_wrapper::*default_asCamera_function_type)(  ) ;
+            typedef ::osg::Camera * ( ::osg::Node::*asCamera_function_type )(  ) ;
+            typedef ::osg::Camera * ( AutoTransform_wrapper::*default_asCamera_function_type )(  ) ;
             
             AutoTransform_exposer.def( 
                 "asCamera"
@@ -904,8 +844,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Node::asCamera
         
-            typedef ::osg::Camera const * ( ::osg::Node::*asCamera_function_type)(  ) const;
-            typedef ::osg::Camera const * ( AutoTransform_wrapper::*default_asCamera_function_type)(  ) const;
+            typedef ::osg::Camera const * ( ::osg::Node::*asCamera_function_type )(  ) const;
+            typedef ::osg::Camera const * ( AutoTransform_wrapper::*default_asCamera_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "asCamera"
@@ -916,8 +856,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Node::asGeode
         
-            typedef ::osg::Geode * ( ::osg::Node::*asGeode_function_type)(  ) ;
-            typedef ::osg::Geode * ( AutoTransform_wrapper::*default_asGeode_function_type)(  ) ;
+            typedef ::osg::Geode * ( ::osg::Node::*asGeode_function_type )(  ) ;
+            typedef ::osg::Geode * ( AutoTransform_wrapper::*default_asGeode_function_type )(  ) ;
             
             AutoTransform_exposer.def( 
                 "asGeode"
@@ -928,8 +868,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Node::asGeode
         
-            typedef ::osg::Geode const * ( ::osg::Node::*asGeode_function_type)(  ) const;
-            typedef ::osg::Geode const * ( AutoTransform_wrapper::*default_asGeode_function_type)(  ) const;
+            typedef ::osg::Geode const * ( ::osg::Node::*asGeode_function_type )(  ) const;
+            typedef ::osg::Geode const * ( AutoTransform_wrapper::*default_asGeode_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "asGeode"
@@ -940,8 +880,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Group::asGroup
         
-            typedef ::osg::Group * ( ::osg::Group::*asGroup_function_type)(  ) ;
-            typedef ::osg::Group * ( AutoTransform_wrapper::*default_asGroup_function_type)(  ) ;
+            typedef ::osg::Group * ( ::osg::Group::*asGroup_function_type )(  ) ;
+            typedef ::osg::Group * ( AutoTransform_wrapper::*default_asGroup_function_type )(  ) ;
             
             AutoTransform_exposer.def( 
                 "asGroup"
@@ -952,8 +892,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Group::asGroup
         
-            typedef ::osg::Group const * ( ::osg::Group::*asGroup_function_type)(  ) const;
-            typedef ::osg::Group const * ( AutoTransform_wrapper::*default_asGroup_function_type)(  ) const;
+            typedef ::osg::Group const * ( ::osg::Group::*asGroup_function_type )(  ) const;
+            typedef ::osg::Group const * ( AutoTransform_wrapper::*default_asGroup_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "asGroup"
@@ -964,8 +904,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Transform::asMatrixTransform
         
-            typedef ::osg::MatrixTransform * ( ::osg::Transform::*asMatrixTransform_function_type)(  ) ;
-            typedef ::osg::MatrixTransform * ( AutoTransform_wrapper::*default_asMatrixTransform_function_type)(  ) ;
+            typedef ::osg::MatrixTransform * ( ::osg::Transform::*asMatrixTransform_function_type )(  ) ;
+            typedef ::osg::MatrixTransform * ( AutoTransform_wrapper::*default_asMatrixTransform_function_type )(  ) ;
             
             AutoTransform_exposer.def( 
                 "asMatrixTransform"
@@ -976,8 +916,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Transform::asMatrixTransform
         
-            typedef ::osg::MatrixTransform const * ( ::osg::Transform::*asMatrixTransform_function_type)(  ) const;
-            typedef ::osg::MatrixTransform const * ( AutoTransform_wrapper::*default_asMatrixTransform_function_type)(  ) const;
+            typedef ::osg::MatrixTransform const * ( ::osg::Transform::*asMatrixTransform_function_type )(  ) const;
+            typedef ::osg::MatrixTransform const * ( AutoTransform_wrapper::*default_asMatrixTransform_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "asMatrixTransform"
@@ -988,8 +928,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Transform::asPositionAttitudeTransform
         
-            typedef ::osg::PositionAttitudeTransform * ( ::osg::Transform::*asPositionAttitudeTransform_function_type)(  ) ;
-            typedef ::osg::PositionAttitudeTransform * ( AutoTransform_wrapper::*default_asPositionAttitudeTransform_function_type)(  ) ;
+            typedef ::osg::PositionAttitudeTransform * ( ::osg::Transform::*asPositionAttitudeTransform_function_type )(  ) ;
+            typedef ::osg::PositionAttitudeTransform * ( AutoTransform_wrapper::*default_asPositionAttitudeTransform_function_type )(  ) ;
             
             AutoTransform_exposer.def( 
                 "asPositionAttitudeTransform"
@@ -1000,8 +940,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Transform::asPositionAttitudeTransform
         
-            typedef ::osg::PositionAttitudeTransform const * ( ::osg::Transform::*asPositionAttitudeTransform_function_type)(  ) const;
-            typedef ::osg::PositionAttitudeTransform const * ( AutoTransform_wrapper::*default_asPositionAttitudeTransform_function_type)(  ) const;
+            typedef ::osg::PositionAttitudeTransform const * ( ::osg::Transform::*asPositionAttitudeTransform_function_type )(  ) const;
+            typedef ::osg::PositionAttitudeTransform const * ( AutoTransform_wrapper::*default_asPositionAttitudeTransform_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "asPositionAttitudeTransform"
@@ -1012,8 +952,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Node::asSwitch
         
-            typedef ::osg::Switch * ( ::osg::Node::*asSwitch_function_type)(  ) ;
-            typedef ::osg::Switch * ( AutoTransform_wrapper::*default_asSwitch_function_type)(  ) ;
+            typedef ::osg::Switch * ( ::osg::Node::*asSwitch_function_type )(  ) ;
+            typedef ::osg::Switch * ( AutoTransform_wrapper::*default_asSwitch_function_type )(  ) ;
             
             AutoTransform_exposer.def( 
                 "asSwitch"
@@ -1024,8 +964,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Node::asSwitch
         
-            typedef ::osg::Switch const * ( ::osg::Node::*asSwitch_function_type)(  ) const;
-            typedef ::osg::Switch const * ( AutoTransform_wrapper::*default_asSwitch_function_type)(  ) const;
+            typedef ::osg::Switch const * ( ::osg::Node::*asSwitch_function_type )(  ) const;
+            typedef ::osg::Switch const * ( AutoTransform_wrapper::*default_asSwitch_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "asSwitch"
@@ -1036,8 +976,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Transform::asTransform
         
-            typedef ::osg::Transform * ( ::osg::Transform::*asTransform_function_type)(  ) ;
-            typedef ::osg::Transform * ( AutoTransform_wrapper::*default_asTransform_function_type)(  ) ;
+            typedef ::osg::Transform * ( ::osg::Transform::*asTransform_function_type )(  ) ;
+            typedef ::osg::Transform * ( AutoTransform_wrapper::*default_asTransform_function_type )(  ) ;
             
             AutoTransform_exposer.def( 
                 "asTransform"
@@ -1048,8 +988,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Transform::asTransform
         
-            typedef ::osg::Transform const * ( ::osg::Transform::*asTransform_function_type)(  ) const;
-            typedef ::osg::Transform const * ( AutoTransform_wrapper::*default_asTransform_function_type)(  ) const;
+            typedef ::osg::Transform const * ( ::osg::Transform::*asTransform_function_type )(  ) const;
+            typedef ::osg::Transform const * ( AutoTransform_wrapper::*default_asTransform_function_type )(  ) const;
             
             AutoTransform_exposer.def( 
                 "asTransform"
@@ -1060,8 +1000,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Node::ascend
         
-            typedef void ( ::osg::Node::*ascend_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( AutoTransform_wrapper::*default_ascend_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::Node::*ascend_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( AutoTransform_wrapper::*default_ascend_function_type )( ::osg::NodeVisitor & ) ;
             
             AutoTransform_exposer.def( 
                 "ascend"
@@ -1070,45 +1010,10 @@ void register_AutoTransform_class(){
                 , ( bp::arg("nv") ) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( AutoTransform_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            AutoTransform_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&AutoTransform_wrapper::default_computeDataVariance) );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( AutoTransform_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            AutoTransform_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&AutoTransform_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( AutoTransform_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            AutoTransform_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&AutoTransform_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::Group::insertChild
         
-            typedef bool ( ::osg::Group::*insertChild_function_type)( unsigned int,::osg::Node * ) ;
-            typedef bool ( AutoTransform_wrapper::*default_insertChild_function_type)( unsigned int,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*insertChild_function_type )( unsigned int,::osg::Node * ) ;
+            typedef bool ( AutoTransform_wrapper::*default_insertChild_function_type )( unsigned int,::osg::Node * ) ;
             
             AutoTransform_exposer.def( 
                 "insertChild"
@@ -1119,8 +1024,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Group::removeChildren
         
-            typedef bool ( ::osg::Group::*removeChildren_function_type)( unsigned int,unsigned int ) ;
-            typedef bool ( AutoTransform_wrapper::*default_removeChildren_function_type)( unsigned int,unsigned int ) ;
+            typedef bool ( ::osg::Group::*removeChildren_function_type )( unsigned int,unsigned int ) ;
+            typedef bool ( AutoTransform_wrapper::*default_removeChildren_function_type )( unsigned int,unsigned int ) ;
             
             AutoTransform_exposer.def( 
                 "removeChildren"
@@ -1131,8 +1036,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Group::replaceChild
         
-            typedef bool ( ::osg::Group::*replaceChild_function_type)( ::osg::Node *,::osg::Node * ) ;
-            typedef bool ( AutoTransform_wrapper::*default_replaceChild_function_type)( ::osg::Node *,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*replaceChild_function_type )( ::osg::Node *,::osg::Node * ) ;
+            typedef bool ( AutoTransform_wrapper::*default_replaceChild_function_type )( ::osg::Node *,::osg::Node * ) ;
             
             AutoTransform_exposer.def( 
                 "replaceChild"
@@ -1143,8 +1048,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Group::resizeGLObjectBuffers
         
-            typedef void ( ::osg::Group::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( AutoTransform_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::Group::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( AutoTransform_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             AutoTransform_exposer.def( 
                 "resizeGLObjectBuffers"
@@ -1155,8 +1060,8 @@ void register_AutoTransform_class(){
         }
         { //::osg::Group::setChild
         
-            typedef bool ( ::osg::Group::*setChild_function_type)( unsigned int,::osg::Node * ) ;
-            typedef bool ( AutoTransform_wrapper::*default_setChild_function_type)( unsigned int,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*setChild_function_type )( unsigned int,::osg::Node * ) ;
+            typedef bool ( AutoTransform_wrapper::*default_setChild_function_type )( unsigned int,::osg::Node * ) ;
             
             AutoTransform_exposer.def( 
                 "setChild"
@@ -1165,33 +1070,10 @@ void register_AutoTransform_class(){
                 , ( bp::arg("i"), bp::arg("node") ) );
         
         }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( AutoTransform_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            AutoTransform_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&AutoTransform_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            AutoTransform_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
         { //::osg::Group::setThreadSafeRefUnref
         
-            typedef void ( ::osg::Group::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( AutoTransform_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
+            typedef void ( ::osg::Group::*setThreadSafeRefUnref_function_type )( bool ) ;
+            typedef void ( AutoTransform_wrapper::*default_setThreadSafeRefUnref_function_type )( bool ) ;
             
             AutoTransform_exposer.def( 
                 "setThreadSafeRefUnref"
@@ -1200,22 +1082,10 @@ void register_AutoTransform_class(){
                 , ( bp::arg("threadSafe") ) );
         
         }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( AutoTransform_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            AutoTransform_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&AutoTransform_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
-        
-        }
         { //::osg::Group::traverse
         
-            typedef void ( ::osg::Group::*traverse_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( AutoTransform_wrapper::*default_traverse_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::Group::*traverse_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( AutoTransform_wrapper::*default_traverse_function_type )( ::osg::NodeVisitor & ) ;
             
             AutoTransform_exposer.def( 
                 "traverse"

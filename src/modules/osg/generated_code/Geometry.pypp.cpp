@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "geometry.pypp.hpp"
+#include "Geometry.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -292,30 +292,6 @@ struct Geometry_wrapper : osg::Geometry, bp::wrapper< osg::Geometry > {
         osg::Drawable::computeDataVariance( );
     }
 
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
     virtual void setCullCallback( ::osg::Drawable::CullCallback * cc ) {
         if( bp::override func_setCullCallback = this->get_override( "setCullCallback" ) )
             func_setCullCallback( boost::python::ptr(cc) );
@@ -352,18 +328,6 @@ struct Geometry_wrapper : osg::Geometry, bp::wrapper< osg::Geometry > {
         osg::Drawable::setEventCallback( boost::python::ptr(ac) );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
     virtual void setThreadSafeRefUnref( bool threadSafe ) {
         if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
             func_setThreadSafeRefUnref( threadSafe );
@@ -388,18 +352,6 @@ struct Geometry_wrapper : osg::Geometry, bp::wrapper< osg::Geometry > {
         osg::Drawable::setUpdateCallback( boost::python::ptr(ac) );
     }
 
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_Geometry_class(){
@@ -418,8 +370,8 @@ void register_Geometry_class(){
         Geometry_exposer.def( bp::init< >() );
         { //::osg::Geometry::accept
         
-            typedef void ( ::osg::Geometry::*accept_function_type)( ::osg::Drawable::AttributeFunctor & ) ;
-            typedef void ( Geometry_wrapper::*default_accept_function_type)( ::osg::Drawable::AttributeFunctor & ) ;
+            typedef void ( ::osg::Geometry::*accept_function_type )( ::osg::Drawable::AttributeFunctor & ) ;
+            typedef void ( Geometry_wrapper::*default_accept_function_type )( ::osg::Drawable::AttributeFunctor & ) ;
             
             Geometry_exposer.def( 
                 "accept"
@@ -430,8 +382,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::accept
         
-            typedef void ( ::osg::Geometry::*accept_function_type)( ::osg::Drawable::ConstAttributeFunctor & ) const;
-            typedef void ( Geometry_wrapper::*default_accept_function_type)( ::osg::Drawable::ConstAttributeFunctor & ) const;
+            typedef void ( ::osg::Geometry::*accept_function_type )( ::osg::Drawable::ConstAttributeFunctor & ) const;
+            typedef void ( Geometry_wrapper::*default_accept_function_type )( ::osg::Drawable::ConstAttributeFunctor & ) const;
             
             Geometry_exposer.def( 
                 "accept"
@@ -442,8 +394,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::accept
         
-            typedef void ( ::osg::Geometry::*accept_function_type)( ::osg::PrimitiveFunctor & ) const;
-            typedef void ( Geometry_wrapper::*default_accept_function_type)( ::osg::PrimitiveFunctor & ) const;
+            typedef void ( ::osg::Geometry::*accept_function_type )( ::osg::PrimitiveFunctor & ) const;
+            typedef void ( Geometry_wrapper::*default_accept_function_type )( ::osg::PrimitiveFunctor & ) const;
             
             Geometry_exposer.def( 
                 "accept"
@@ -454,8 +406,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::accept
         
-            typedef void ( ::osg::Geometry::*accept_function_type)( ::osg::PrimitiveIndexFunctor & ) const;
-            typedef void ( Geometry_wrapper::*default_accept_function_type)( ::osg::PrimitiveIndexFunctor & ) const;
+            typedef void ( ::osg::Geometry::*accept_function_type )( ::osg::PrimitiveIndexFunctor & ) const;
+            typedef void ( Geometry_wrapper::*default_accept_function_type )( ::osg::PrimitiveIndexFunctor & ) const;
             
             Geometry_exposer.def( 
                 "accept"
@@ -466,7 +418,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::addPrimitiveSet
         
-            typedef bool ( ::osg::Geometry::*addPrimitiveSet_function_type)( ::osg::PrimitiveSet * ) ;
+            typedef bool ( ::osg::Geometry::*addPrimitiveSet_function_type )( ::osg::PrimitiveSet * ) ;
             
             Geometry_exposer.def( 
                 "addPrimitiveSet"
@@ -477,8 +429,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::asGeometry
         
-            typedef ::osg::Geometry * ( ::osg::Geometry::*asGeometry_function_type)(  ) ;
-            typedef ::osg::Geometry * ( Geometry_wrapper::*default_asGeometry_function_type)(  ) ;
+            typedef ::osg::Geometry * ( ::osg::Geometry::*asGeometry_function_type )(  ) ;
+            typedef ::osg::Geometry * ( Geometry_wrapper::*default_asGeometry_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "asGeometry"
@@ -489,8 +441,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::asGeometry
         
-            typedef ::osg::Geometry const * ( ::osg::Geometry::*asGeometry_function_type)(  ) const;
-            typedef ::osg::Geometry const * ( Geometry_wrapper::*default_asGeometry_function_type)(  ) const;
+            typedef ::osg::Geometry const * ( ::osg::Geometry::*asGeometry_function_type )(  ) const;
+            typedef ::osg::Geometry const * ( Geometry_wrapper::*default_asGeometry_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "asGeometry"
@@ -501,7 +453,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::checkForDeprecatedData
         
-            typedef bool ( ::osg::Geometry::*checkForDeprecatedData_function_type)(  ) ;
+            typedef bool ( ::osg::Geometry::*checkForDeprecatedData_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "checkForDeprecatedData"
@@ -511,8 +463,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::className
         
-            typedef char const * ( ::osg::Geometry::*className_function_type)(  ) const;
-            typedef char const * ( Geometry_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::Geometry::*className_function_type )(  ) const;
+            typedef char const * ( Geometry_wrapper::*default_className_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "className"
@@ -522,8 +474,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::clone
         
-            typedef ::osg::Object * ( ::osg::Geometry::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( Geometry_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::Geometry::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( Geometry_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             Geometry_exposer.def( 
                 "clone"
@@ -535,8 +487,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::cloneType
         
-            typedef ::osg::Object * ( ::osg::Geometry::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( Geometry_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::Geometry::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( Geometry_wrapper::*default_cloneType_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "cloneType"
@@ -547,8 +499,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::compileGLObjects
         
-            typedef void ( ::osg::Geometry::*compileGLObjects_function_type)( ::osg::RenderInfo & ) const;
-            typedef void ( Geometry_wrapper::*default_compileGLObjects_function_type)( ::osg::RenderInfo & ) const;
+            typedef void ( ::osg::Geometry::*compileGLObjects_function_type )( ::osg::RenderInfo & ) const;
+            typedef void ( Geometry_wrapper::*default_compileGLObjects_function_type )( ::osg::RenderInfo & ) const;
             
             Geometry_exposer.def( 
                 "compileGLObjects"
@@ -559,7 +511,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::containsDeprecatedData
         
-            typedef bool ( ::osg::Geometry::*containsDeprecatedData_function_type)(  ) const;
+            typedef bool ( ::osg::Geometry::*containsDeprecatedData_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "containsDeprecatedData"
@@ -569,7 +521,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::containsSharedArrays
         
-            typedef bool ( ::osg::Geometry::*containsSharedArrays_function_type)(  ) const;
+            typedef bool ( ::osg::Geometry::*containsSharedArrays_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "containsSharedArrays"
@@ -579,8 +531,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::dirtyDisplayList
         
-            typedef void ( ::osg::Geometry::*dirtyDisplayList_function_type)(  ) ;
-            typedef void ( Geometry_wrapper::*default_dirtyDisplayList_function_type)(  ) ;
+            typedef void ( ::osg::Geometry::*dirtyDisplayList_function_type )(  ) ;
+            typedef void ( Geometry_wrapper::*default_dirtyDisplayList_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "dirtyDisplayList"
@@ -590,8 +542,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::drawImplementation
         
-            typedef void ( ::osg::Geometry::*drawImplementation_function_type)( ::osg::RenderInfo & ) const;
-            typedef void ( Geometry_wrapper::*default_drawImplementation_function_type)( ::osg::RenderInfo & ) const;
+            typedef void ( ::osg::Geometry::*drawImplementation_function_type )( ::osg::RenderInfo & ) const;
+            typedef void ( Geometry_wrapper::*default_drawImplementation_function_type )( ::osg::RenderInfo & ) const;
             
             Geometry_exposer.def( 
                 "drawImplementation"
@@ -602,7 +554,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::duplicateSharedArrays
         
-            typedef void ( ::osg::Geometry::*duplicateSharedArrays_function_type)(  ) ;
+            typedef void ( ::osg::Geometry::*duplicateSharedArrays_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "duplicateSharedArrays"
@@ -612,7 +564,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::empty
         
-            typedef bool ( ::osg::Geometry::*empty_function_type)(  ) const;
+            typedef bool ( ::osg::Geometry::*empty_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "empty"
@@ -621,7 +573,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::fixDeprecatedData
         
-            typedef void ( ::osg::Geometry::*fixDeprecatedData_function_type)(  ) ;
+            typedef void ( ::osg::Geometry::*fixDeprecatedData_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "fixDeprecatedData"
@@ -631,7 +583,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getArrayList
         
-            typedef bool ( ::osg::Geometry::*getArrayList_function_type)( ::std::vector< osg::ref_ptr<osg::Array> > & ) const;
+            typedef bool ( ::osg::Geometry::*getArrayList_function_type )( ::std::vector< osg::ref_ptr<osg::Array> > & ) const;
             
             Geometry_exposer.def( 
                 "getArrayList"
@@ -641,7 +593,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getColorArray
         
-            typedef ::osg::Array * ( ::osg::Geometry::*getColorArray_function_type)(  ) ;
+            typedef ::osg::Array * ( ::osg::Geometry::*getColorArray_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "getColorArray"
@@ -651,7 +603,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getColorArray
         
-            typedef ::osg::Array const * ( ::osg::Geometry::*getColorArray_function_type)(  ) const;
+            typedef ::osg::Array const * ( ::osg::Geometry::*getColorArray_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getColorArray"
@@ -661,7 +613,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getColorBinding
         
-            typedef ::osg::Geometry::AttributeBinding ( ::osg::Geometry::*getColorBinding_function_type)(  ) const;
+            typedef ::osg::Geometry::AttributeBinding ( ::osg::Geometry::*getColorBinding_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getColorBinding"
@@ -670,7 +622,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getDrawElementsList
         
-            typedef bool ( ::osg::Geometry::*getDrawElementsList_function_type)( ::std::vector< osg::DrawElements* > & ) const;
+            typedef bool ( ::osg::Geometry::*getDrawElementsList_function_type )( ::std::vector< osg::DrawElements* > & ) const;
             
             Geometry_exposer.def( 
                 "getDrawElementsList"
@@ -680,7 +632,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getFogCoordArray
         
-            typedef ::osg::Array * ( ::osg::Geometry::*getFogCoordArray_function_type)(  ) ;
+            typedef ::osg::Array * ( ::osg::Geometry::*getFogCoordArray_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "getFogCoordArray"
@@ -690,7 +642,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getFogCoordArray
         
-            typedef ::osg::Array const * ( ::osg::Geometry::*getFogCoordArray_function_type)(  ) const;
+            typedef ::osg::Array const * ( ::osg::Geometry::*getFogCoordArray_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getFogCoordArray"
@@ -700,7 +652,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getFogCoordBinding
         
-            typedef ::osg::Geometry::AttributeBinding ( ::osg::Geometry::*getFogCoordBinding_function_type)(  ) const;
+            typedef ::osg::Geometry::AttributeBinding ( ::osg::Geometry::*getFogCoordBinding_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getFogCoordBinding"
@@ -709,8 +661,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getGLObjectSizeHint
         
-            typedef unsigned int ( ::osg::Geometry::*getGLObjectSizeHint_function_type)(  ) const;
-            typedef unsigned int ( Geometry_wrapper::*default_getGLObjectSizeHint_function_type)(  ) const;
+            typedef unsigned int ( ::osg::Geometry::*getGLObjectSizeHint_function_type )(  ) const;
+            typedef unsigned int ( Geometry_wrapper::*default_getGLObjectSizeHint_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getGLObjectSizeHint"
@@ -720,7 +672,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getNormalArray
         
-            typedef ::osg::Array * ( ::osg::Geometry::*getNormalArray_function_type)(  ) ;
+            typedef ::osg::Array * ( ::osg::Geometry::*getNormalArray_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "getNormalArray"
@@ -730,7 +682,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getNormalArray
         
-            typedef ::osg::Array const * ( ::osg::Geometry::*getNormalArray_function_type)(  ) const;
+            typedef ::osg::Array const * ( ::osg::Geometry::*getNormalArray_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getNormalArray"
@@ -740,7 +692,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getNormalBinding
         
-            typedef ::osg::Geometry::AttributeBinding ( ::osg::Geometry::*getNormalBinding_function_type)(  ) const;
+            typedef ::osg::Geometry::AttributeBinding ( ::osg::Geometry::*getNormalBinding_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getNormalBinding"
@@ -750,7 +702,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getNumPrimitiveSets
         
-            typedef unsigned int ( ::osg::Geometry::*getNumPrimitiveSets_function_type)(  ) const;
+            typedef unsigned int ( ::osg::Geometry::*getNumPrimitiveSets_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getNumPrimitiveSets"
@@ -759,7 +711,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getNumTexCoordArrays
         
-            typedef unsigned int ( ::osg::Geometry::*getNumTexCoordArrays_function_type)(  ) const;
+            typedef unsigned int ( ::osg::Geometry::*getNumTexCoordArrays_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getNumTexCoordArrays"
@@ -768,7 +720,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getNumVertexAttribArrays
         
-            typedef unsigned int ( ::osg::Geometry::*getNumVertexAttribArrays_function_type)(  ) const;
+            typedef unsigned int ( ::osg::Geometry::*getNumVertexAttribArrays_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getNumVertexAttribArrays"
@@ -777,7 +729,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getOrCreateElementBufferObject
         
-            typedef ::osg::ElementBufferObject * ( ::osg::Geometry::*getOrCreateElementBufferObject_function_type)(  ) ;
+            typedef ::osg::ElementBufferObject * ( ::osg::Geometry::*getOrCreateElementBufferObject_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "getOrCreateElementBufferObject"
@@ -787,7 +739,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getOrCreateVertexBufferObject
         
-            typedef ::osg::VertexBufferObject * ( ::osg::Geometry::*getOrCreateVertexBufferObject_function_type)(  ) ;
+            typedef ::osg::VertexBufferObject * ( ::osg::Geometry::*getOrCreateVertexBufferObject_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "getOrCreateVertexBufferObject"
@@ -797,7 +749,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getPrimitiveSet
         
-            typedef ::osg::PrimitiveSet * ( ::osg::Geometry::*getPrimitiveSet_function_type)( unsigned int ) ;
+            typedef ::osg::PrimitiveSet * ( ::osg::Geometry::*getPrimitiveSet_function_type )( unsigned int ) ;
             
             Geometry_exposer.def( 
                 "getPrimitiveSet"
@@ -808,7 +760,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getPrimitiveSet
         
-            typedef ::osg::PrimitiveSet const * ( ::osg::Geometry::*getPrimitiveSet_function_type)( unsigned int ) const;
+            typedef ::osg::PrimitiveSet const * ( ::osg::Geometry::*getPrimitiveSet_function_type )( unsigned int ) const;
             
             Geometry_exposer.def( 
                 "getPrimitiveSet"
@@ -819,7 +771,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getPrimitiveSetIndex
         
-            typedef unsigned int ( ::osg::Geometry::*getPrimitiveSetIndex_function_type)( ::osg::PrimitiveSet const * ) const;
+            typedef unsigned int ( ::osg::Geometry::*getPrimitiveSetIndex_function_type )( ::osg::PrimitiveSet const * ) const;
             
             Geometry_exposer.def( 
                 "getPrimitiveSetIndex"
@@ -830,7 +782,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getPrimitiveSetList
         
-            typedef ::std::vector< osg::ref_ptr<osg::PrimitiveSet> > & ( ::osg::Geometry::*getPrimitiveSetList_function_type)(  ) ;
+            typedef ::std::vector< osg::ref_ptr<osg::PrimitiveSet> > & ( ::osg::Geometry::*getPrimitiveSetList_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "getPrimitiveSetList"
@@ -840,7 +792,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getPrimitiveSetList
         
-            typedef ::std::vector< osg::ref_ptr<osg::PrimitiveSet> > const & ( ::osg::Geometry::*getPrimitiveSetList_function_type)(  ) const;
+            typedef ::std::vector< osg::ref_ptr<osg::PrimitiveSet> > const & ( ::osg::Geometry::*getPrimitiveSetList_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getPrimitiveSetList"
@@ -850,7 +802,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getSecondaryColorArray
         
-            typedef ::osg::Array * ( ::osg::Geometry::*getSecondaryColorArray_function_type)(  ) ;
+            typedef ::osg::Array * ( ::osg::Geometry::*getSecondaryColorArray_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "getSecondaryColorArray"
@@ -860,7 +812,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getSecondaryColorArray
         
-            typedef ::osg::Array const * ( ::osg::Geometry::*getSecondaryColorArray_function_type)(  ) const;
+            typedef ::osg::Array const * ( ::osg::Geometry::*getSecondaryColorArray_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getSecondaryColorArray"
@@ -870,7 +822,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getSecondaryColorBinding
         
-            typedef ::osg::Geometry::AttributeBinding ( ::osg::Geometry::*getSecondaryColorBinding_function_type)(  ) const;
+            typedef ::osg::Geometry::AttributeBinding ( ::osg::Geometry::*getSecondaryColorBinding_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getSecondaryColorBinding"
@@ -879,7 +831,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getTexCoordArray
         
-            typedef ::osg::Array * ( ::osg::Geometry::*getTexCoordArray_function_type)( unsigned int ) ;
+            typedef ::osg::Array * ( ::osg::Geometry::*getTexCoordArray_function_type )( unsigned int ) ;
             
             Geometry_exposer.def( 
                 "getTexCoordArray"
@@ -890,7 +842,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getTexCoordArray
         
-            typedef ::osg::Array const * ( ::osg::Geometry::*getTexCoordArray_function_type)( unsigned int ) const;
+            typedef ::osg::Array const * ( ::osg::Geometry::*getTexCoordArray_function_type )( unsigned int ) const;
             
             Geometry_exposer.def( 
                 "getTexCoordArray"
@@ -901,7 +853,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getTexCoordArrayList
         
-            typedef ::std::vector< osg::ref_ptr<osg::Array> > & ( ::osg::Geometry::*getTexCoordArrayList_function_type)(  ) ;
+            typedef ::std::vector< osg::ref_ptr<osg::Array> > & ( ::osg::Geometry::*getTexCoordArrayList_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "getTexCoordArrayList"
@@ -911,7 +863,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getTexCoordArrayList
         
-            typedef ::std::vector< osg::ref_ptr<osg::Array> > const & ( ::osg::Geometry::*getTexCoordArrayList_function_type)(  ) const;
+            typedef ::std::vector< osg::ref_ptr<osg::Array> > const & ( ::osg::Geometry::*getTexCoordArrayList_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getTexCoordArrayList"
@@ -921,7 +873,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getVertexArray
         
-            typedef ::osg::Array * ( ::osg::Geometry::*getVertexArray_function_type)(  ) ;
+            typedef ::osg::Array * ( ::osg::Geometry::*getVertexArray_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "getVertexArray"
@@ -931,7 +883,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getVertexArray
         
-            typedef ::osg::Array const * ( ::osg::Geometry::*getVertexArray_function_type)(  ) const;
+            typedef ::osg::Array const * ( ::osg::Geometry::*getVertexArray_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getVertexArray"
@@ -941,7 +893,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getVertexAttribArray
         
-            typedef ::osg::Array * ( ::osg::Geometry::*getVertexAttribArray_function_type)( unsigned int ) ;
+            typedef ::osg::Array * ( ::osg::Geometry::*getVertexAttribArray_function_type )( unsigned int ) ;
             
             Geometry_exposer.def( 
                 "getVertexAttribArray"
@@ -952,7 +904,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getVertexAttribArray
         
-            typedef ::osg::Array const * ( ::osg::Geometry::*getVertexAttribArray_function_type)( unsigned int ) const;
+            typedef ::osg::Array const * ( ::osg::Geometry::*getVertexAttribArray_function_type )( unsigned int ) const;
             
             Geometry_exposer.def( 
                 "getVertexAttribArray"
@@ -963,7 +915,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getVertexAttribArrayList
         
-            typedef ::std::vector< osg::ref_ptr<osg::Array> > & ( ::osg::Geometry::*getVertexAttribArrayList_function_type)(  ) ;
+            typedef ::std::vector< osg::ref_ptr<osg::Array> > & ( ::osg::Geometry::*getVertexAttribArrayList_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "getVertexAttribArrayList"
@@ -973,7 +925,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getVertexAttribArrayList
         
-            typedef ::std::vector< osg::ref_ptr<osg::Array> > const & ( ::osg::Geometry::*getVertexAttribArrayList_function_type)(  ) const;
+            typedef ::std::vector< osg::ref_ptr<osg::Array> > const & ( ::osg::Geometry::*getVertexAttribArrayList_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "getVertexAttribArrayList"
@@ -983,7 +935,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getVertexAttribBinding
         
-            typedef ::osg::Geometry::AttributeBinding ( ::osg::Geometry::*getVertexAttribBinding_function_type)( unsigned int ) const;
+            typedef ::osg::Geometry::AttributeBinding ( ::osg::Geometry::*getVertexAttribBinding_function_type )( unsigned int ) const;
             
             Geometry_exposer.def( 
                 "getVertexAttribBinding"
@@ -993,7 +945,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::getVertexAttribNormalize
         
-            typedef ::GLboolean ( ::osg::Geometry::*getVertexAttribNormalize_function_type)( unsigned int ) const;
+            typedef ::GLboolean ( ::osg::Geometry::*getVertexAttribNormalize_function_type )( unsigned int ) const;
             
             Geometry_exposer.def( 
                 "getVertexAttribNormalize"
@@ -1004,7 +956,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::insertPrimitiveSet
         
-            typedef bool ( ::osg::Geometry::*insertPrimitiveSet_function_type)( unsigned int,::osg::PrimitiveSet * ) ;
+            typedef bool ( ::osg::Geometry::*insertPrimitiveSet_function_type )( unsigned int,::osg::PrimitiveSet * ) ;
             
             Geometry_exposer.def( 
                 "insertPrimitiveSet"
@@ -1015,8 +967,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::isSameKindAs
         
-            typedef bool ( ::osg::Geometry::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( Geometry_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::Geometry::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( Geometry_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             Geometry_exposer.def( 
                 "isSameKindAs"
@@ -1027,8 +979,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::libraryName
         
-            typedef char const * ( ::osg::Geometry::*libraryName_function_type)(  ) const;
-            typedef char const * ( Geometry_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::Geometry::*libraryName_function_type )(  ) const;
+            typedef char const * ( Geometry_wrapper::*default_libraryName_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "libraryName"
@@ -1038,7 +990,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::removePrimitiveSet
         
-            typedef bool ( ::osg::Geometry::*removePrimitiveSet_function_type)( unsigned int,unsigned int ) ;
+            typedef bool ( ::osg::Geometry::*removePrimitiveSet_function_type )( unsigned int,unsigned int ) ;
             
             Geometry_exposer.def( 
                 "removePrimitiveSet"
@@ -1049,8 +1001,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::resizeGLObjectBuffers
         
-            typedef void ( ::osg::Geometry::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( Geometry_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::Geometry::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( Geometry_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             Geometry_exposer.def( 
                 "resizeGLObjectBuffers"
@@ -1061,7 +1013,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setColorArray
         
-            typedef void ( ::osg::Geometry::*setColorArray_function_type)( ::osg::Array *,::osg::Array::Binding ) ;
+            typedef void ( ::osg::Geometry::*setColorArray_function_type )( ::osg::Array *,::osg::Array::Binding ) ;
             
             Geometry_exposer.def( 
                 "setColorArray"
@@ -1071,7 +1023,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setColorBinding
         
-            typedef void ( ::osg::Geometry::*setColorBinding_function_type)( ::osg::Geometry::AttributeBinding ) ;
+            typedef void ( ::osg::Geometry::*setColorBinding_function_type )( ::osg::Geometry::AttributeBinding ) ;
             
             Geometry_exposer.def( 
                 "setColorBinding"
@@ -1081,7 +1033,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setFogCoordArray
         
-            typedef void ( ::osg::Geometry::*setFogCoordArray_function_type)( ::osg::Array *,::osg::Array::Binding ) ;
+            typedef void ( ::osg::Geometry::*setFogCoordArray_function_type )( ::osg::Array *,::osg::Array::Binding ) ;
             
             Geometry_exposer.def( 
                 "setFogCoordArray"
@@ -1091,7 +1043,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setFogCoordBinding
         
-            typedef void ( ::osg::Geometry::*setFogCoordBinding_function_type)( ::osg::Geometry::AttributeBinding ) ;
+            typedef void ( ::osg::Geometry::*setFogCoordBinding_function_type )( ::osg::Geometry::AttributeBinding ) ;
             
             Geometry_exposer.def( 
                 "setFogCoordBinding"
@@ -1101,7 +1053,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setNormalArray
         
-            typedef void ( ::osg::Geometry::*setNormalArray_function_type)( ::osg::Array *,::osg::Array::Binding ) ;
+            typedef void ( ::osg::Geometry::*setNormalArray_function_type )( ::osg::Array *,::osg::Array::Binding ) ;
             
             Geometry_exposer.def( 
                 "setNormalArray"
@@ -1111,7 +1063,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setNormalBinding
         
-            typedef void ( ::osg::Geometry::*setNormalBinding_function_type)( ::osg::Geometry::AttributeBinding ) ;
+            typedef void ( ::osg::Geometry::*setNormalBinding_function_type )( ::osg::Geometry::AttributeBinding ) ;
             
             Geometry_exposer.def( 
                 "setNormalBinding"
@@ -1122,7 +1074,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setPrimitiveSet
         
-            typedef bool ( ::osg::Geometry::*setPrimitiveSet_function_type)( unsigned int,::osg::PrimitiveSet * ) ;
+            typedef bool ( ::osg::Geometry::*setPrimitiveSet_function_type )( unsigned int,::osg::PrimitiveSet * ) ;
             
             Geometry_exposer.def( 
                 "setPrimitiveSet"
@@ -1133,7 +1085,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setPrimitiveSetList
         
-            typedef void ( ::osg::Geometry::*setPrimitiveSetList_function_type)( ::std::vector< osg::ref_ptr<osg::PrimitiveSet> > const & ) ;
+            typedef void ( ::osg::Geometry::*setPrimitiveSetList_function_type )( ::std::vector< osg::ref_ptr<osg::PrimitiveSet> > const & ) ;
             
             Geometry_exposer.def( 
                 "setPrimitiveSetList"
@@ -1143,7 +1095,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setSecondaryColorArray
         
-            typedef void ( ::osg::Geometry::*setSecondaryColorArray_function_type)( ::osg::Array *,::osg::Array::Binding ) ;
+            typedef void ( ::osg::Geometry::*setSecondaryColorArray_function_type )( ::osg::Array *,::osg::Array::Binding ) ;
             
             Geometry_exposer.def( 
                 "setSecondaryColorArray"
@@ -1153,7 +1105,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setSecondaryColorBinding
         
-            typedef void ( ::osg::Geometry::*setSecondaryColorBinding_function_type)( ::osg::Geometry::AttributeBinding ) ;
+            typedef void ( ::osg::Geometry::*setSecondaryColorBinding_function_type )( ::osg::Geometry::AttributeBinding ) ;
             
             Geometry_exposer.def( 
                 "setSecondaryColorBinding"
@@ -1163,7 +1115,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setTexCoordArray
         
-            typedef void ( ::osg::Geometry::*setTexCoordArray_function_type)( unsigned int,::osg::Array *,::osg::Array::Binding ) ;
+            typedef void ( ::osg::Geometry::*setTexCoordArray_function_type )( unsigned int,::osg::Array *,::osg::Array::Binding ) ;
             
             Geometry_exposer.def( 
                 "setTexCoordArray"
@@ -1173,8 +1125,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setUseVertexBufferObjects
         
-            typedef void ( ::osg::Geometry::*setUseVertexBufferObjects_function_type)( bool ) ;
-            typedef void ( Geometry_wrapper::*default_setUseVertexBufferObjects_function_type)( bool ) ;
+            typedef void ( ::osg::Geometry::*setUseVertexBufferObjects_function_type )( bool ) ;
+            typedef void ( Geometry_wrapper::*default_setUseVertexBufferObjects_function_type )( bool ) ;
             
             Geometry_exposer.def( 
                 "setUseVertexBufferObjects"
@@ -1185,7 +1137,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setVertexArray
         
-            typedef void ( ::osg::Geometry::*setVertexArray_function_type)( ::osg::Array * ) ;
+            typedef void ( ::osg::Geometry::*setVertexArray_function_type )( ::osg::Array * ) ;
             
             Geometry_exposer.def( 
                 "setVertexArray"
@@ -1195,7 +1147,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setVertexAttribArray
         
-            typedef void ( ::osg::Geometry::*setVertexAttribArray_function_type)( unsigned int,::osg::Array *,::osg::Array::Binding ) ;
+            typedef void ( ::osg::Geometry::*setVertexAttribArray_function_type )( unsigned int,::osg::Array *,::osg::Array::Binding ) ;
             
             Geometry_exposer.def( 
                 "setVertexAttribArray"
@@ -1205,7 +1157,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setVertexAttribBinding
         
-            typedef void ( ::osg::Geometry::*setVertexAttribBinding_function_type)( unsigned int,::osg::Geometry::AttributeBinding ) ;
+            typedef void ( ::osg::Geometry::*setVertexAttribBinding_function_type )( unsigned int,::osg::Geometry::AttributeBinding ) ;
             
             Geometry_exposer.def( 
                 "setVertexAttribBinding"
@@ -1215,7 +1167,7 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::setVertexAttribNormalize
         
-            typedef void ( ::osg::Geometry::*setVertexAttribNormalize_function_type)( unsigned int,::GLboolean ) ;
+            typedef void ( ::osg::Geometry::*setVertexAttribNormalize_function_type )( unsigned int,::GLboolean ) ;
             
             Geometry_exposer.def( 
                 "setVertexAttribNormalize"
@@ -1226,8 +1178,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::supports
         
-            typedef bool ( ::osg::Geometry::*supports_function_type)( ::osg::Drawable::AttributeFunctor const & ) const;
-            typedef bool ( Geometry_wrapper::*default_supports_function_type)( ::osg::Drawable::AttributeFunctor const & ) const;
+            typedef bool ( ::osg::Geometry::*supports_function_type )( ::osg::Drawable::AttributeFunctor const & ) const;
+            typedef bool ( Geometry_wrapper::*default_supports_function_type )( ::osg::Drawable::AttributeFunctor const & ) const;
             
             Geometry_exposer.def( 
                 "supports"
@@ -1238,8 +1190,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::supports
         
-            typedef bool ( ::osg::Geometry::*supports_function_type)( ::osg::Drawable::ConstAttributeFunctor const & ) const;
-            typedef bool ( Geometry_wrapper::*default_supports_function_type)( ::osg::Drawable::ConstAttributeFunctor const & ) const;
+            typedef bool ( ::osg::Geometry::*supports_function_type )( ::osg::Drawable::ConstAttributeFunctor const & ) const;
+            typedef bool ( Geometry_wrapper::*default_supports_function_type )( ::osg::Drawable::ConstAttributeFunctor const & ) const;
             
             Geometry_exposer.def( 
                 "supports"
@@ -1250,8 +1202,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::supports
         
-            typedef bool ( ::osg::Geometry::*supports_function_type)( ::osg::PrimitiveFunctor const & ) const;
-            typedef bool ( Geometry_wrapper::*default_supports_function_type)( ::osg::PrimitiveFunctor const & ) const;
+            typedef bool ( ::osg::Geometry::*supports_function_type )( ::osg::PrimitiveFunctor const & ) const;
+            typedef bool ( Geometry_wrapper::*default_supports_function_type )( ::osg::PrimitiveFunctor const & ) const;
             
             Geometry_exposer.def( 
                 "supports"
@@ -1262,8 +1214,8 @@ void register_Geometry_class(){
         }
         { //::osg::Geometry::supports
         
-            typedef bool ( ::osg::Geometry::*supports_function_type)( ::osg::PrimitiveIndexFunctor const & ) const;
-            typedef bool ( Geometry_wrapper::*default_supports_function_type)( ::osg::PrimitiveIndexFunctor const & ) const;
+            typedef bool ( ::osg::Geometry::*supports_function_type )( ::osg::PrimitiveIndexFunctor const & ) const;
+            typedef bool ( Geometry_wrapper::*default_supports_function_type )( ::osg::PrimitiveIndexFunctor const & ) const;
             
             Geometry_exposer.def( 
                 "supports"
@@ -1274,8 +1226,8 @@ void register_Geometry_class(){
         }
         { //::osg::Drawable::computeBound
         
-            typedef ::osg::BoundingBox ( ::osg::Drawable::*computeBound_function_type)(  ) const;
-            typedef ::osg::BoundingBox ( Geometry_wrapper::*default_computeBound_function_type)(  ) const;
+            typedef ::osg::BoundingBox ( ::osg::Drawable::*computeBound_function_type )(  ) const;
+            typedef ::osg::BoundingBox ( Geometry_wrapper::*default_computeBound_function_type )(  ) const;
             
             Geometry_exposer.def( 
                 "computeBound"
@@ -1285,8 +1237,8 @@ void register_Geometry_class(){
         }
         { //::osg::Drawable::computeDataVariance
         
-            typedef void ( ::osg::Drawable::*computeDataVariance_function_type)(  ) ;
-            typedef void ( Geometry_wrapper::*default_computeDataVariance_function_type)(  ) ;
+            typedef void ( ::osg::Drawable::*computeDataVariance_function_type )(  ) ;
+            typedef void ( Geometry_wrapper::*default_computeDataVariance_function_type )(  ) ;
             
             Geometry_exposer.def( 
                 "computeDataVariance"
@@ -1294,34 +1246,10 @@ void register_Geometry_class(){
                 , default_computeDataVariance_function_type(&Geometry_wrapper::default_computeDataVariance) );
         
         }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( Geometry_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            Geometry_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Geometry_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( Geometry_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            Geometry_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&Geometry_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::Drawable::setCullCallback
         
-            typedef void ( ::osg::Drawable::*setCullCallback_function_type)( ::osg::Drawable::CullCallback * ) ;
-            typedef void ( Geometry_wrapper::*default_setCullCallback_function_type)( ::osg::Drawable::CullCallback * ) ;
+            typedef void ( ::osg::Drawable::*setCullCallback_function_type )( ::osg::Drawable::CullCallback * ) ;
+            typedef void ( Geometry_wrapper::*default_setCullCallback_function_type )( ::osg::Drawable::CullCallback * ) ;
             
             Geometry_exposer.def( 
                 "setCullCallback"
@@ -1332,8 +1260,8 @@ void register_Geometry_class(){
         }
         { //::osg::Drawable::setDrawCallback
         
-            typedef void ( ::osg::Drawable::*setDrawCallback_function_type)( ::osg::Drawable::DrawCallback * ) ;
-            typedef void ( Geometry_wrapper::*default_setDrawCallback_function_type)( ::osg::Drawable::DrawCallback * ) ;
+            typedef void ( ::osg::Drawable::*setDrawCallback_function_type )( ::osg::Drawable::DrawCallback * ) ;
+            typedef void ( Geometry_wrapper::*default_setDrawCallback_function_type )( ::osg::Drawable::DrawCallback * ) ;
             
             Geometry_exposer.def( 
                 "setDrawCallback"
@@ -1344,8 +1272,8 @@ void register_Geometry_class(){
         }
         { //::osg::Drawable::setEventCallback
         
-            typedef void ( ::osg::Drawable::*setEventCallback_function_type)( ::osg::Drawable::EventCallback * ) ;
-            typedef void ( Geometry_wrapper::*default_setEventCallback_function_type)( ::osg::Drawable::EventCallback * ) ;
+            typedef void ( ::osg::Drawable::*setEventCallback_function_type )( ::osg::Drawable::EventCallback * ) ;
+            typedef void ( Geometry_wrapper::*default_setEventCallback_function_type )( ::osg::Drawable::EventCallback * ) ;
             
             Geometry_exposer.def( 
                 "setEventCallback"
@@ -1354,33 +1282,10 @@ void register_Geometry_class(){
                 , ( bp::arg("ac") ) );
         
         }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( Geometry_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            Geometry_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&Geometry_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            Geometry_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
         { //::osg::Drawable::setThreadSafeRefUnref
         
-            typedef void ( ::osg::Drawable::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( Geometry_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
+            typedef void ( ::osg::Drawable::*setThreadSafeRefUnref_function_type )( bool ) ;
+            typedef void ( Geometry_wrapper::*default_setThreadSafeRefUnref_function_type )( bool ) ;
             
             Geometry_exposer.def( 
                 "setThreadSafeRefUnref"
@@ -1391,26 +1296,14 @@ void register_Geometry_class(){
         }
         { //::osg::Drawable::setUpdateCallback
         
-            typedef void ( ::osg::Drawable::*setUpdateCallback_function_type)( ::osg::Drawable::UpdateCallback * ) ;
-            typedef void ( Geometry_wrapper::*default_setUpdateCallback_function_type)( ::osg::Drawable::UpdateCallback * ) ;
+            typedef void ( ::osg::Drawable::*setUpdateCallback_function_type )( ::osg::Drawable::UpdateCallback * ) ;
+            typedef void ( Geometry_wrapper::*default_setUpdateCallback_function_type )( ::osg::Drawable::UpdateCallback * ) ;
             
             Geometry_exposer.def( 
                 "setUpdateCallback"
                 , setUpdateCallback_function_type(&::osg::Drawable::setUpdateCallback)
                 , default_setUpdateCallback_function_type(&Geometry_wrapper::default_setUpdateCallback)
                 , ( bp::arg("ac") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( Geometry_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            Geometry_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&Geometry_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
     }

@@ -26,8 +26,8 @@ find_path(OSG_DIR "include/osg/Node")
 find_program(OSGVERSION_EXE osgversion PATHS "${OSG_DIR}/bin" NO_DEFAULT_PATH)
 execute_process(COMMAND "${OSGVERSION_EXE}" OUTPUT_VARIABLE OSGVERSION_EXE_OUT)
 # message(STATUS ${OSGVERSION_EXE_OUT})
-string(REGEX MATCH "[0-9\\.]+" OSG_VERSION_STRING ${OSGVERSION_EXE_OUT})
-message(STATUS "OpenSceneGraph version " ${OSG_VERSION_STRING})
+string(REGEX MATCH "[0-9\\.]+" OSG_VERSION_STRING "${OSGVERSION_EXE_OUT}")
+message(STATUS "OpenSceneGraph version " "${OSG_VERSION_STRING}")
 
 # Increment OSGPYPP_PATCH_VERSION with each release of osgpyplusplus
 # Use two digits, because version will be convolved with OSG patch version

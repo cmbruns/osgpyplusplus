@@ -18,135 +18,131 @@
 
 #include "indexing_suite/deque.hpp"
 
-#include "wrap_osgdb.h"
+#include "wrap_osgDB.h"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/_osgdb_enumerations.pypp.hpp"
+#include "AuthenticationDetails.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/_osgdb_free_functions.pypp.hpp"
+#include "AuthenticationMap.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/_osgdb_global_variables.pypp.hpp"
+#include "BaseCompressor.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/authenticationdetails.pypp.hpp"
+#include "BaseSerializer.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/authenticationmap.pypp.hpp"
+#include "Children.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/basecompressor.pypp.hpp"
+#include "CompressorMap.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/baseserializer.pypp.hpp"
+#include "DatabasePager.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/basic_type_wrapper.pypp.hpp"
+#include "DotOsgWrapper.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/children.pypp.hpp"
+#include "DynamicLibrary.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/compressormap.pypp.hpp"
+#include "ExternalFileWriter.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/databasepager.pypp.hpp"
+#include "Field.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/dotosgwrapper.pypp.hpp"
+#include "FieldReader.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/dynamiclibrary.pypp.hpp"
+#include "FieldReaderIterator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/externalfilewriter.pypp.hpp"
+#include "FileLocationCallback.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/field.pypp.hpp"
+#include "FileNameComparator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/fieldreader.pypp.hpp"
+#include "FilePathList.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/fieldreaderiterator.pypp.hpp"
+#include "FindFileCallback.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/filelocationcallback.pypp.hpp"
+#include "FinishedObjectReadCallback.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/filenamecomparator.pypp.hpp"
+#include "ImageOptions.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/filepathlist.pypp.hpp"
+#include "ImagePager.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/findfilecallback.pypp.hpp"
+#include "ImageProcessor.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/finishedobjectreadcallback.pypp.hpp"
+#include "ImageProcessorList.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/ifstream.pypp.hpp"
+#include "Input.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/imageoptions.pypp.hpp"
+#include "InputException.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/imagepager.pypp.hpp"
+#include "InputIterator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/imageprocessor.pypp.hpp"
+#include "InputStream.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/imageprocessorlist.pypp.hpp"
+#include "IntLookup.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/input.pypp.hpp"
+#include "ObjectGLenum.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/inputexception.pypp.hpp"
+#include "ObjectMark.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/inputiterator.pypp.hpp"
+#include "ObjectProperty.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/inputstream.pypp.hpp"
+#include "ObjectWrapper.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/intlookup.pypp.hpp"
+#include "ObjectWrapperManager.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/list_less__osg_scope_ref_ptr_less_osgdb_scope_readerwriterinfo_greater___greater_.pypp.hpp"
+#include "ObjectsSet.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/list_less__std_scope_string__greater_.pypp.hpp"
+#include "Options.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/map_less__int_comma__std_scope_string__greater_.pypp.hpp"
+#include "Output.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/map_less__std_scope_string_comma__int__greater_.pypp.hpp"
+#include "OutputException.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/objectglenum.pypp.hpp"
+#include "OutputIterator.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/objectmark.pypp.hpp"
+#include "OutputStream.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/objectproperty.pypp.hpp"
+#include "ParameterOutput.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/objectsset.pypp.hpp"
+#include "PluginFunctionProxy.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/objectwrapper.pypp.hpp"
+#include "ReadFileCallback.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/objectwrappermanager.pypp.hpp"
+#include "ReaderWriter.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/ofstream.pypp.hpp"
+#include "ReaderWriterInfo.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/options.pypp.hpp"
+#include "ReaderWriterList.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/output.pypp.hpp"
+#include "RegisterCompressorProxy.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/outputexception.pypp.hpp"
+#include "RegisterCustomWrapperProxy.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/outputiterator.pypp.hpp"
+#include "RegisterDotOsgWrapperProxy.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/outputstream.pypp.hpp"
+#include "RegisterWrapperProxy.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/parameteroutput.pypp.hpp"
+#include "Registry.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/pluginfunctionproxy.pypp.hpp"
+#include "UpdateWrapperVersionProxy.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/readerwriter.pypp.hpp"
+#include "UserLookupTableProxy.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/readerwriterinfo.pypp.hpp"
+#include "WrapperMap.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/readerwriterlist.pypp.hpp"
+#include "WriteFileCallback.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/readfilecallback.pypp.hpp"
+#include "XmlNode.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/registercompressorproxy.pypp.hpp"
+#include "_osgDB_enumerations.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/registercustomwrapperproxy.pypp.hpp"
+#include "_osgDB_free_functions.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/registerdotosgwrapperproxy.pypp.hpp"
+#include "_osgDB_global_variables.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/registerwrapperproxy.pypp.hpp"
+#include "basic_type_wrapper.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/registry.pypp.hpp"
+#include "list_less__osg_scope_ref_ptr_less_osgDB_scope_ReaderWriterInfo_greater___greater_.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/updatewrapperversionproxy.pypp.hpp"
+#include "list_less__std_scope_string__greater_.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/userlookuptableproxy.pypp.hpp"
+#include "map_less__int_comma__std_scope_string__greater_.pypp.hpp"
 
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/wrappermap.pypp.hpp"
-
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/writefilecallback.pypp.hpp"
-
-#include "f:/users/cmbruns/git/osgpyplusplus/src/modules/osgdb/generated_code/xmlnode.pypp.hpp"
+#include "map_less__std_scope_string_comma__int__greater_.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -283,8 +279,6 @@ BOOST_PYTHON_MODULE(_osgDB){
 
     register_ObjectWrapperManager_class();
 
-    register_ofstream_class();
-
     register_Output_class();
 
     register_OutputException_class();
@@ -325,8 +319,6 @@ BOOST_PYTHON_MODULE(_osgDB){
 
     register_basic_type_wrapper_class();
 
-    register_ifstream_class();
-
     { //::osgDB::writeHeightFieldFile
     
         typedef boost::python::object ( *writeHeightFieldFile_function_type )( ::osg::HeightField &,::std::string const & );
@@ -334,7 +326,8 @@ BOOST_PYTHON_MODULE(_osgDB){
         bp::def( 
             "writeHeightFieldFile"
             , writeHeightFieldFile_function_type( &writeHeightFieldFile_a4d0ffa9adfdd6e0112de20aadb853a0 )
-            , ( bp::arg("hf"), bp::arg("filename") ) );
+            , ( bp::arg("hf"), bp::arg("filename") )
+            , " Write an osg::HeightField to file.\n Return true on success,\n return false on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to write the specified file." );
     
     }
 
@@ -345,7 +338,8 @@ BOOST_PYTHON_MODULE(_osgDB){
         bp::def( 
             "writeHeightFieldFile"
             , writeHeightFieldFile_function_type( &writeHeightFieldFile_3110a869fbf62205f51b9a799e26845a )
-            , ( bp::arg("hf"), bp::arg("filename"), bp::arg("options") ) );
+            , ( bp::arg("hf"), bp::arg("filename"), bp::arg("options") )
+            , " Write an osg::HeightField to file.\n Return true on success,\n return false on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to write the specified file." );
     
     }
 
@@ -356,7 +350,8 @@ BOOST_PYTHON_MODULE(_osgDB){
         bp::def( 
             "writeImageFile"
             , writeImageFile_function_type( &writeImageFile_0572104a58011a7ddd41dfa1f9bb94d5 )
-            , ( bp::arg("image"), bp::arg("filename") ) );
+            , ( bp::arg("image"), bp::arg("filename") )
+            , " Write an osg::Image to file.\n Return true on success,\n return false on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to write the specified file." );
     
     }
 
@@ -367,7 +362,8 @@ BOOST_PYTHON_MODULE(_osgDB){
         bp::def( 
             "writeImageFile"
             , writeImageFile_function_type( &writeImageFile_10f8a171de3b3be3a44fc24113a5a5cb )
-            , ( bp::arg("image"), bp::arg("filename"), bp::arg("options") ) );
+            , ( bp::arg("image"), bp::arg("filename"), bp::arg("options") )
+            , " Write an osg::Image to file.\n Return true on success,\n return false on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to write the specified file." );
     
     }
 
@@ -378,7 +374,8 @@ BOOST_PYTHON_MODULE(_osgDB){
         bp::def( 
             "writeNodeFile"
             , writeNodeFile_function_type( &writeNodeFile_8e6b8986ff55b2fc734915c1e71ed28e )
-            , ( bp::arg("node"), bp::arg("filename") ) );
+            , ( bp::arg("node"), bp::arg("filename") )
+            , " Write an osg::Node to file.\n Return true on success,\n return false on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to write the specified file." );
     
     }
 
@@ -389,7 +386,8 @@ BOOST_PYTHON_MODULE(_osgDB){
         bp::def( 
             "writeNodeFile"
             , writeNodeFile_function_type( &writeNodeFile_94aad5feb87f445a8c9bd1d76feb7d39 )
-            , ( bp::arg("node"), bp::arg("filename"), bp::arg("options") ) );
+            , ( bp::arg("node"), bp::arg("filename"), bp::arg("options") )
+            , " Write an osg::Node to file.\n Return true on success,\n return false on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to write the specified file." );
     
     }
 
@@ -400,7 +398,8 @@ BOOST_PYTHON_MODULE(_osgDB){
         bp::def( 
             "writeObjectFile"
             , writeObjectFile_function_type( &writeObjectFile_f3d04fbc6184fc75bcfe72d1c88bb571 )
-            , ( bp::arg("object"), bp::arg("filename") ) );
+            , ( bp::arg("object"), bp::arg("filename") )
+            , " Write an osg::Object to file.\n Return true on success,\n return false on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to write the specified file." );
     
     }
 
@@ -411,7 +410,8 @@ BOOST_PYTHON_MODULE(_osgDB){
         bp::def( 
             "writeObjectFile"
             , writeObjectFile_function_type( &writeObjectFile_b8b4a6539851c2a57a9019eda3ddb0d8 )
-            , ( bp::arg("object"), bp::arg("filename"), bp::arg("options") ) );
+            , ( bp::arg("object"), bp::arg("filename"), bp::arg("options") )
+            , " Write an osg::Object to file.\n Return true on success,\n return false on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to write the specified file." );
     
     }
 
@@ -422,7 +422,8 @@ BOOST_PYTHON_MODULE(_osgDB){
         bp::def( 
             "writeShaderFile"
             , writeShaderFile_function_type( &writeShaderFile_b068de8e0814ec3d353252d0f4b46083 )
-            , ( bp::arg("shader"), bp::arg("filename") ) );
+            , ( bp::arg("shader"), bp::arg("filename") )
+            , " Write an osg::Shader to file.\n Return true on success,\n return false on failure.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to write the specified file." );
     
     }
 
@@ -433,7 +434,8 @@ BOOST_PYTHON_MODULE(_osgDB){
         bp::def( 
             "writeShaderFile"
             , writeShaderFile_function_type( &writeShaderFile_61b1f8ccbf43222c0a979526c16e13b2 )
-            , ( bp::arg("shader"), bp::arg("filename"), bp::arg("options") ) );
+            , ( bp::arg("shader"), bp::arg("filename"), bp::arg("options") )
+            , " Write an osg::Shader to file.\n Return true on success,\n return false on failure.\n Use the Options object to control cache operations and file search paths in osgDB::Registry.\n The osgDB::Registry is used to load the appropriate ReaderWriter plugin\n for the filename extension, and this plugin then handles the request\n to write the specified file." );
     
     }
 

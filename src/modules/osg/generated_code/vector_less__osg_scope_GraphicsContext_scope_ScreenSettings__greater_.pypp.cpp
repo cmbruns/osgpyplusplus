@@ -5,7 +5,7 @@
 #include "indexing_suite/vector.hpp"
 #include "wrap_osg.h"
 #include "_ScreenSettings__value_traits.pypp.hpp"
-#include "vector_less__osg_scope_graphicscontext_scope_screensettings__greater_.pypp.hpp"
+#include "vector_less__osg_scope_GraphicsContext_scope_ScreenSettings__greater_.pypp.hpp"
 
 namespace bp = boost::python;
 

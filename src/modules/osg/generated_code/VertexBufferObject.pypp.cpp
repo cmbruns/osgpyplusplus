@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "vertexbufferobject.pypp.hpp"
+#include "VertexBufferObject.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -76,42 +76,6 @@ struct VertexBufferObject_wrapper : osg::VertexBufferObject, bp::wrapper< osg::V
         return osg::VertexBufferObject::libraryName( );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
     virtual void resizeGLObjectBuffers( unsigned int maxSize ) {
         if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
             func_resizeGLObjectBuffers( maxSize );
@@ -124,42 +88,6 @@ struct VertexBufferObject_wrapper : osg::VertexBufferObject, bp::wrapper< osg::V
         osg::BufferObject::resizeGLObjectBuffers( maxSize );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_VertexBufferObject_class(){
@@ -168,88 +96,54 @@ void register_VertexBufferObject_class(){
         .def( bp::init< >() )    
         .def( 
             "addArray"
-            , (unsigned int ( ::osg::VertexBufferObject::* )( ::osg::Array * ))( &::osg::VertexBufferObject::addArray )
+            , (unsigned int ( ::osg::VertexBufferObject::* )( ::osg::Array * ) )( &::osg::VertexBufferObject::addArray )
             , ( bp::arg("array") ) )    
         .def( 
             "className"
-            , (char const * ( ::osg::VertexBufferObject::* )(  )const)(&::osg::VertexBufferObject::className)
-            , (char const * ( VertexBufferObject_wrapper::* )(  )const)(&VertexBufferObject_wrapper::default_className) )    
+            , (char const * ( ::osg::VertexBufferObject::* )(  ) const)(&::osg::VertexBufferObject::className)
+            , (char const * ( VertexBufferObject_wrapper::* )(  ) const)(&VertexBufferObject_wrapper::default_className) )    
         .def( 
             "clone"
-            , (::osg::Object * ( ::osg::VertexBufferObject::* )( ::osg::CopyOp const & )const)(&::osg::VertexBufferObject::clone)
-            , (::osg::Object * ( VertexBufferObject_wrapper::* )( ::osg::CopyOp const & )const)(&VertexBufferObject_wrapper::default_clone)
+            , (::osg::Object * ( ::osg::VertexBufferObject::* )( ::osg::CopyOp const & ) const)(&::osg::VertexBufferObject::clone)
+            , (::osg::Object * ( VertexBufferObject_wrapper::* )( ::osg::CopyOp const & ) const)(&VertexBufferObject_wrapper::default_clone)
             , ( bp::arg("copyop") )
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "cloneType"
-            , (::osg::Object * ( ::osg::VertexBufferObject::* )(  )const)(&::osg::VertexBufferObject::cloneType)
-            , (::osg::Object * ( VertexBufferObject_wrapper::* )(  )const)(&VertexBufferObject_wrapper::default_cloneType)
+            , (::osg::Object * ( ::osg::VertexBufferObject::* )(  ) const)(&::osg::VertexBufferObject::cloneType)
+            , (::osg::Object * ( VertexBufferObject_wrapper::* )(  ) const)(&VertexBufferObject_wrapper::default_cloneType)
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "getArray"
-            , (::osg::Array * ( ::osg::VertexBufferObject::* )( unsigned int ))( &::osg::VertexBufferObject::getArray )
+            , (::osg::Array * ( ::osg::VertexBufferObject::* )( unsigned int ) )( &::osg::VertexBufferObject::getArray )
             , ( bp::arg("i") )
             , bp::return_internal_reference< >() )    
         .def( 
             "getArray"
-            , (::osg::Array const * ( ::osg::VertexBufferObject::* )( unsigned int )const)( &::osg::VertexBufferObject::getArray )
+            , (::osg::Array const * ( ::osg::VertexBufferObject::* )( unsigned int ) const)( &::osg::VertexBufferObject::getArray )
             , ( bp::arg("i") )
             , bp::return_internal_reference< >() )    
         .def( 
             "isSameKindAs"
-            , (bool ( ::osg::VertexBufferObject::* )( ::osg::Object const * )const)(&::osg::VertexBufferObject::isSameKindAs)
-            , (bool ( VertexBufferObject_wrapper::* )( ::osg::Object const * )const)(&VertexBufferObject_wrapper::default_isSameKindAs)
+            , (bool ( ::osg::VertexBufferObject::* )( ::osg::Object const * ) const)(&::osg::VertexBufferObject::isSameKindAs)
+            , (bool ( VertexBufferObject_wrapper::* )( ::osg::Object const * ) const)(&VertexBufferObject_wrapper::default_isSameKindAs)
             , ( bp::arg("obj") ) )    
         .def( 
             "libraryName"
-            , (char const * ( ::osg::VertexBufferObject::* )(  )const)(&::osg::VertexBufferObject::libraryName)
-            , (char const * ( VertexBufferObject_wrapper::* )(  )const)(&VertexBufferObject_wrapper::default_libraryName) )    
+            , (char const * ( ::osg::VertexBufferObject::* )(  ) const)(&::osg::VertexBufferObject::libraryName)
+            , (char const * ( VertexBufferObject_wrapper::* )(  ) const)(&VertexBufferObject_wrapper::default_libraryName) )    
         .def( 
             "removeArray"
-            , (void ( ::osg::VertexBufferObject::* )( ::osg::Array * ))( &::osg::VertexBufferObject::removeArray )
+            , (void ( ::osg::VertexBufferObject::* )( ::osg::Array * ) )( &::osg::VertexBufferObject::removeArray )
             , ( bp::arg("array") ) )    
         .def( 
             "setArray"
-            , (void ( ::osg::VertexBufferObject::* )( unsigned int,::osg::Array * ))( &::osg::VertexBufferObject::setArray )
+            , (void ( ::osg::VertexBufferObject::* )( unsigned int,::osg::Array * ) )( &::osg::VertexBufferObject::setArray )
             , ( bp::arg("i"), bp::arg("array") ) )    
         .def( 
-            "computeDataVariance"
-            , (void ( ::osg::Object::* )(  ))(&::osg::Object::computeDataVariance)
-            , (void ( VertexBufferObject_wrapper::* )(  ))(&VertexBufferObject_wrapper::default_computeDataVariance) )    
-        .def( 
-            "getUserData"
-            , (::osg::Referenced * ( ::osg::Object::* )(  ))(&::osg::Object::getUserData)
-            , (::osg::Referenced * ( VertexBufferObject_wrapper::* )(  ))(&VertexBufferObject_wrapper::default_getUserData)
-            , bp::return_internal_reference< >() )    
-        .def( 
-            "getUserData"
-            , (::osg::Referenced const * ( ::osg::Object::* )(  )const)(&::osg::Object::getUserData)
-            , (::osg::Referenced const * ( VertexBufferObject_wrapper::* )(  )const)(&VertexBufferObject_wrapper::default_getUserData)
-            , bp::return_internal_reference< >() )    
-        .def( 
             "resizeGLObjectBuffers"
-            , (void ( ::osg::BufferObject::* )( unsigned int ))(&::osg::BufferObject::resizeGLObjectBuffers)
-            , (void ( VertexBufferObject_wrapper::* )( unsigned int ))(&VertexBufferObject_wrapper::default_resizeGLObjectBuffers)
-            , ( bp::arg("maxSize") ) )    
-        .def( 
-            "setName"
-            , (void ( ::osg::Object::* )( ::std::string const & ))(&::osg::Object::setName)
-            , (void ( VertexBufferObject_wrapper::* )( ::std::string const & ))(&VertexBufferObject_wrapper::default_setName)
-            , ( bp::arg("name") ) )    
-        .def( 
-            "setName"
-            , (void ( ::osg::Object::* )( char const * ))( &::osg::Object::setName )
-            , ( bp::arg("name") )
-            , " Set the name of object using a C style string." )    
-        .def( 
-            "setThreadSafeRefUnref"
-            , (void ( ::osg::Object::* )( bool ))(&::osg::Object::setThreadSafeRefUnref)
-            , (void ( VertexBufferObject_wrapper::* )( bool ))(&VertexBufferObject_wrapper::default_setThreadSafeRefUnref)
-            , ( bp::arg("threadSafe") ) )    
-        .def( 
-            "setUserData"
-            , (void ( ::osg::Object::* )( ::osg::Referenced * ))(&::osg::Object::setUserData)
-            , (void ( VertexBufferObject_wrapper::* )( ::osg::Referenced * ))(&VertexBufferObject_wrapper::default_setUserData)
-            , ( bp::arg("obj") ) );
+            , (void ( ::osg::BufferObject::* )( unsigned int ) )(&::osg::BufferObject::resizeGLObjectBuffers)
+            , (void ( VertexBufferObject_wrapper::* )( unsigned int ) )(&VertexBufferObject_wrapper::default_resizeGLObjectBuffers)
+            , ( bp::arg("maxSize") ) );
 
 }

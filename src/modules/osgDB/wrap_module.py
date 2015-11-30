@@ -34,7 +34,7 @@ from wrap_helpers import *
 
 class OsgDBWrapper(BaseWrapper):
     def __init__(self):
-        BaseWrapper.__init__(self, files=["wrap_osgdb.h",])
+        BaseWrapper.__init__(self, files=["wrap_osgDB.h",])
         # Don't rewrap anything already wrapped by osg etc.
         # See http://www.language-binding.net/pyplusplus/documentation/multi_module_development.html
         self.mb.register_module_dependency('../osg/generated_code/')
@@ -53,8 +53,29 @@ class OsgDBWrapper(BaseWrapper):
         wrap_call_policies(self.mb)
 
         hide_nonpublic(self.mb)
+
+        # linux compile error HalfWayMapGenerator.pypp.cpp:13:113: error: `HalfWayMapGenerator_wrapper` was not declared in this scope
+        for cls_name in [
+                 "AuthenticationDetails",
+                 "DotOsgWrapper",
+                 "DynamicLibrary",
+                 "InputException",
+                 "ObjectWrapper",
+                 "ObjectWrapperManager",
+                 "OutputException",
+                 "ReaderWriterInfo",
+                 "XmlNode",
+                 ]:
+            cls = osgDB.class_(cls_name)
+            cls.wrapper_alias = cls.decl_string
         
         self.wrap_all_osg_referenced(osgDB)
+
+        for cls_inner in [
+                ["ImageOptions","TexCoordRange"],
+                ]:
+            cls = osgDB.class_(cls_inner[0]).class_(cls_inner[1])
+            cls.held_type = 'osg::ref_ptr< %s >' % cls.decl_string # decl_string not wrapper_alias
 
         self.wrap_options()
         self.wrap_input()
@@ -104,6 +125,8 @@ class OsgDBWrapper(BaseWrapper):
         
         # Exclude difficult classes for now
         for cls_name in [
+                "ifstream",
+                "ofstream",
                 "Archive",
                 "DatabaseRevision",
                 "DatabaseRevisions",
@@ -137,11 +160,8 @@ class OsgDBWrapper(BaseWrapper):
         cls.no_init = False # Important! So derived class can call parent constructor
         cls.held_type = 'osg::ref_ptr< %s >' % cls.wrapper_alias # Important! So overridden method gets called
         
-        
-        self.mb.build_code_creator(module_name='_osgDB')
-        self.mb.split_module(os.path.join(os.path.abspath('.'), 'generated_code'))
-        # Create a file to indicate completion of wrapping script
-        open(os.path.join(os.path.abspath('.'), 'generated_code', 'generate_module.stamp'), "w").close()
+        # Write results
+        self.generate_module_code("_osgDB")
     
     def wrap_databasepager(self):
         databasepager = self.mb.class_("DatabasePager")

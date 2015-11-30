@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "view.pypp.hpp"
+#include "View.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -23,18 +23,6 @@ struct View_wrapper : osg::View, bp::wrapper< osg::View > {
             virtual void updateSlave( ::osg::View & view, ::osg::View::Slave & slave ){
                 bp::override func_updateSlave = this->get_override( "updateSlave" );
                 func_updateSlave( boost::ref(view), boost::ref(slave) );
-            }
-        
-            virtual void setThreadSafeRefUnref( bool threadSafe ) {
-                if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-                    func_setThreadSafeRefUnref( threadSafe );
-                else{
-                    this->osg::Referenced::setThreadSafeRefUnref( threadSafe );
-                }
-            }
-            
-            void default_setThreadSafeRefUnref( bool threadSafe ) {
-                osg::Referenced::setThreadSafeRefUnref( threadSafe );
             }
         
         };
@@ -153,90 +141,6 @@ struct View_wrapper : osg::View, bp::wrapper< osg::View > {
         osg::View::take( boost::ref(rhs) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_View_class(){
@@ -258,19 +162,14 @@ void register_View_class(){
             bp::class_< View_wrapper::Slave_wrapper::UpdateSlaveCallback_wrapper, bp::bases< osg::Referenced >, osg::ref_ptr< View_wrapper::Slave_wrapper::UpdateSlaveCallback_wrapper >, boost::noncopyable >( "UpdateSlaveCallback", bp::no_init )    
                 .def( 
                     "updateSlave"
-                    , bp::pure_virtual( (void ( ::osg::View::Slave::UpdateSlaveCallback::* )( ::osg::View &,::osg::View::Slave & ))(&::osg::View::Slave::UpdateSlaveCallback::updateSlave) )
-                    , ( bp::arg("view"), bp::arg("slave") ) )    
-                .def( 
-                    "setThreadSafeRefUnref"
-                    , (void ( ::osg::Referenced::* )( bool ))(&::osg::Referenced::setThreadSafeRefUnref)
-                    , (void ( View_wrapper::Slave_wrapper::UpdateSlaveCallback_wrapper::* )( bool ))(&View_wrapper::Slave_wrapper::UpdateSlaveCallback_wrapper::default_setThreadSafeRefUnref)
-                    , ( bp::arg("threadSafe") ) );
+                    , bp::pure_virtual( (void ( ::osg::View::Slave::UpdateSlaveCallback::* )( ::osg::View &,::osg::View::Slave & ) )(&::osg::View::Slave::UpdateSlaveCallback::updateSlave) )
+                    , ( bp::arg("view"), bp::arg("slave") ) );
             bp::implicitly_convertible< bool, osg::View::Slave >();
             Slave_exposer.def( bp::init< osg::Camera *, osg::Matrixd const &, osg::Matrixd const &, bp::optional< bool > >(( bp::arg("camera"), bp::arg("projectionOffset"), bp::arg("viewOffset"), bp::arg("useMastersSceneData")=(bool)(true) ), "\n Slave allows one to up a camera that follows the master with a local offset to the project and view matrices.\n") );
             Slave_exposer.def( bp::init< osg::View::Slave const & >(( bp::arg("rhs") ), "\n Slave allows one to up a camera that follows the master with a local offset to the project and view matrices.\n") );
             { //::osg::View::Slave::updateSlave
             
-                typedef void ( ::osg::View::Slave::*updateSlave_function_type)( ::osg::View & ) ;
+                typedef void ( ::osg::View::Slave::*updateSlave_function_type )( ::osg::View & ) ;
                 
                 Slave_exposer.def( 
                     "updateSlave"
@@ -280,8 +179,8 @@ void register_View_class(){
             }
             { //::osg::View::Slave::updateSlaveImplementation
             
-                typedef void ( ::osg::View::Slave::*updateSlaveImplementation_function_type)( ::osg::View & ) ;
-                typedef void ( View_wrapper::Slave_wrapper::*default_updateSlaveImplementation_function_type)( ::osg::View & ) ;
+                typedef void ( ::osg::View::Slave::*updateSlaveImplementation_function_type )( ::osg::View & ) ;
+                typedef void ( View_wrapper::Slave_wrapper::*default_updateSlaveImplementation_function_type )( ::osg::View & ) ;
                 
                 Slave_exposer.def( 
                     "updateSlaveImplementation"
@@ -299,7 +198,7 @@ void register_View_class(){
         View_exposer.def( bp::init< >("\n View - maintains a master camera view and a list of slave cameras that are relative to this master camera.\n Note, if no slave cameras are attached to the view then the master camera does both the control and implementation of the rendering of the scene,\n but if slave cameras are present then the master controls the view onto the scene, while the slaves implement the rendering of the scene.\n") );
         { //::osg::View::addSlave
         
-            typedef bool ( ::osg::View::*addSlave_function_type)( ::osg::Camera *,bool ) ;
+            typedef bool ( ::osg::View::*addSlave_function_type )( ::osg::Camera *,bool ) ;
             
             View_exposer.def( 
                 "addSlave"
@@ -309,7 +208,7 @@ void register_View_class(){
         }
         { //::osg::View::addSlave
         
-            typedef bool ( ::osg::View::*addSlave_function_type)( ::osg::Camera *,::osg::Matrix const &,::osg::Matrix const &,bool ) ;
+            typedef bool ( ::osg::View::*addSlave_function_type )( ::osg::Camera *,::osg::Matrix const &,::osg::Matrix const &,bool ) ;
             
             View_exposer.def( 
                 "addSlave"
@@ -319,8 +218,8 @@ void register_View_class(){
         }
         { //::osg::View::className
         
-            typedef char const * ( ::osg::View::*className_function_type)(  ) const;
-            typedef char const * ( View_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::View::*className_function_type )(  ) const;
+            typedef char const * ( View_wrapper::*default_className_function_type )(  ) const;
             
             View_exposer.def( 
                 "className"
@@ -330,8 +229,8 @@ void register_View_class(){
         }
         { //::osg::View::clone
         
-            typedef ::osg::Object * ( ::osg::View::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( View_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::View::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( View_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             View_exposer.def( 
                 "clone"
@@ -343,8 +242,8 @@ void register_View_class(){
         }
         { //::osg::View::cloneType
         
-            typedef ::osg::Object * ( ::osg::View::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( View_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::View::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( View_wrapper::*default_cloneType_function_type )(  ) const;
             
             View_exposer.def( 
                 "cloneType"
@@ -355,7 +254,7 @@ void register_View_class(){
         }
         { //::osg::View::findSlaveForCamera
         
-            typedef ::osg::View::Slave * ( ::osg::View::*findSlaveForCamera_function_type)( ::osg::Camera * ) ;
+            typedef ::osg::View::Slave * ( ::osg::View::*findSlaveForCamera_function_type )( ::osg::Camera * ) ;
             
             View_exposer.def( 
                 "findSlaveForCamera"
@@ -366,7 +265,7 @@ void register_View_class(){
         }
         { //::osg::View::findSlaveIndexForCamera
         
-            typedef unsigned int ( ::osg::View::*findSlaveIndexForCamera_function_type)( ::osg::Camera * ) const;
+            typedef unsigned int ( ::osg::View::*findSlaveIndexForCamera_function_type )( ::osg::Camera * ) const;
             
             View_exposer.def( 
                 "findSlaveIndexForCamera"
@@ -376,7 +275,7 @@ void register_View_class(){
         }
         { //::osg::View::getCamera
         
-            typedef ::osg::Camera * ( ::osg::View::*getCamera_function_type)(  ) ;
+            typedef ::osg::Camera * ( ::osg::View::*getCamera_function_type )(  ) ;
             
             View_exposer.def( 
                 "getCamera"
@@ -387,7 +286,7 @@ void register_View_class(){
         }
         { //::osg::View::getCamera
         
-            typedef ::osg::Camera const * ( ::osg::View::*getCamera_function_type)(  ) const;
+            typedef ::osg::Camera const * ( ::osg::View::*getCamera_function_type )(  ) const;
             
             View_exposer.def( 
                 "getCamera"
@@ -398,7 +297,7 @@ void register_View_class(){
         }
         { //::osg::View::getFrameStamp
         
-            typedef ::osg::FrameStamp * ( ::osg::View::*getFrameStamp_function_type)(  ) ;
+            typedef ::osg::FrameStamp * ( ::osg::View::*getFrameStamp_function_type )(  ) ;
             
             View_exposer.def( 
                 "getFrameStamp"
@@ -409,7 +308,7 @@ void register_View_class(){
         }
         { //::osg::View::getFrameStamp
         
-            typedef ::osg::FrameStamp const * ( ::osg::View::*getFrameStamp_function_type)(  ) const;
+            typedef ::osg::FrameStamp const * ( ::osg::View::*getFrameStamp_function_type )(  ) const;
             
             View_exposer.def( 
                 "getFrameStamp"
@@ -420,7 +319,7 @@ void register_View_class(){
         }
         { //::osg::View::getLight
         
-            typedef ::osg::Light * ( ::osg::View::*getLight_function_type)(  ) ;
+            typedef ::osg::Light * ( ::osg::View::*getLight_function_type )(  ) ;
             
             View_exposer.def( 
                 "getLight"
@@ -431,7 +330,7 @@ void register_View_class(){
         }
         { //::osg::View::getLight
         
-            typedef ::osg::Light const * ( ::osg::View::*getLight_function_type)(  ) const;
+            typedef ::osg::Light const * ( ::osg::View::*getLight_function_type )(  ) const;
             
             View_exposer.def( 
                 "getLight"
@@ -442,7 +341,7 @@ void register_View_class(){
         }
         { //::osg::View::getLightingMode
         
-            typedef ::osg::View::LightingMode ( ::osg::View::*getLightingMode_function_type)(  ) const;
+            typedef ::osg::View::LightingMode ( ::osg::View::*getLightingMode_function_type )(  ) const;
             
             View_exposer.def( 
                 "getLightingMode"
@@ -452,7 +351,7 @@ void register_View_class(){
         }
         { //::osg::View::getNumSlaves
         
-            typedef unsigned int ( ::osg::View::*getNumSlaves_function_type)(  ) const;
+            typedef unsigned int ( ::osg::View::*getNumSlaves_function_type )(  ) const;
             
             View_exposer.def( 
                 "getNumSlaves"
@@ -461,7 +360,7 @@ void register_View_class(){
         }
         { //::osg::View::getSlave
         
-            typedef ::osg::View::Slave & ( ::osg::View::*getSlave_function_type)( unsigned int ) ;
+            typedef ::osg::View::Slave & ( ::osg::View::*getSlave_function_type )( unsigned int ) ;
             
             View_exposer.def( 
                 "getSlave"
@@ -472,7 +371,7 @@ void register_View_class(){
         }
         { //::osg::View::getSlave
         
-            typedef ::osg::View::Slave const & ( ::osg::View::*getSlave_function_type)( unsigned int ) const;
+            typedef ::osg::View::Slave const & ( ::osg::View::*getSlave_function_type )( unsigned int ) const;
             
             View_exposer.def( 
                 "getSlave"
@@ -483,7 +382,7 @@ void register_View_class(){
         }
         { //::osg::View::getStats
         
-            typedef ::osg::Stats * ( ::osg::View::*getStats_function_type)(  ) ;
+            typedef ::osg::Stats * ( ::osg::View::*getStats_function_type )(  ) ;
             
             View_exposer.def( 
                 "getStats"
@@ -494,7 +393,7 @@ void register_View_class(){
         }
         { //::osg::View::getStats
         
-            typedef ::osg::Stats const * ( ::osg::View::*getStats_function_type)(  ) const;
+            typedef ::osg::Stats const * ( ::osg::View::*getStats_function_type )(  ) const;
             
             View_exposer.def( 
                 "getStats"
@@ -505,8 +404,8 @@ void register_View_class(){
         }
         { //::osg::View::isSameKindAs
         
-            typedef bool ( ::osg::View::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( View_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::View::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( View_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             View_exposer.def( 
                 "isSameKindAs"
@@ -517,8 +416,8 @@ void register_View_class(){
         }
         { //::osg::View::libraryName
         
-            typedef char const * ( ::osg::View::*libraryName_function_type)(  ) const;
-            typedef char const * ( View_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::View::*libraryName_function_type )(  ) const;
+            typedef char const * ( View_wrapper::*default_libraryName_function_type )(  ) const;
             
             View_exposer.def( 
                 "libraryName"
@@ -528,7 +427,7 @@ void register_View_class(){
         }
         { //::osg::View::removeSlave
         
-            typedef bool ( ::osg::View::*removeSlave_function_type)( unsigned int ) ;
+            typedef bool ( ::osg::View::*removeSlave_function_type )( unsigned int ) ;
             
             View_exposer.def( 
                 "removeSlave"
@@ -538,7 +437,7 @@ void register_View_class(){
         }
         { //::osg::View::setCamera
         
-            typedef void ( ::osg::View::*setCamera_function_type)( ::osg::Camera * ) ;
+            typedef void ( ::osg::View::*setCamera_function_type )( ::osg::Camera * ) ;
             
             View_exposer.def( 
                 "setCamera"
@@ -549,7 +448,7 @@ void register_View_class(){
         }
         { //::osg::View::setFrameStamp
         
-            typedef void ( ::osg::View::*setFrameStamp_function_type)( ::osg::FrameStamp * ) ;
+            typedef void ( ::osg::View::*setFrameStamp_function_type )( ::osg::FrameStamp * ) ;
             
             View_exposer.def( 
                 "setFrameStamp"
@@ -560,7 +459,7 @@ void register_View_class(){
         }
         { //::osg::View::setLight
         
-            typedef void ( ::osg::View::*setLight_function_type)( ::osg::Light * ) ;
+            typedef void ( ::osg::View::*setLight_function_type )( ::osg::Light * ) ;
             
             View_exposer.def( 
                 "setLight"
@@ -571,7 +470,7 @@ void register_View_class(){
         }
         { //::osg::View::setLightingMode
         
-            typedef void ( ::osg::View::*setLightingMode_function_type)( ::osg::View::LightingMode ) ;
+            typedef void ( ::osg::View::*setLightingMode_function_type )( ::osg::View::LightingMode ) ;
             
             View_exposer.def( 
                 "setLightingMode"
@@ -582,7 +481,7 @@ void register_View_class(){
         }
         { //::osg::View::setStats
         
-            typedef void ( ::osg::View::*setStats_function_type)( ::osg::Stats * ) ;
+            typedef void ( ::osg::View::*setStats_function_type )( ::osg::Stats * ) ;
             
             View_exposer.def( 
                 "setStats"
@@ -593,8 +492,8 @@ void register_View_class(){
         }
         { //::osg::View::take
         
-            typedef void ( ::osg::View::*take_function_type)( ::osg::View & ) ;
-            typedef void ( View_wrapper::*default_take_function_type)( ::osg::View & ) ;
+            typedef void ( ::osg::View::*take_function_type )( ::osg::View & ) ;
+            typedef void ( View_wrapper::*default_take_function_type )( ::osg::View & ) ;
             
             View_exposer.def( 
                 "take"
@@ -605,105 +504,11 @@ void register_View_class(){
         }
         { //::osg::View::updateSlaves
         
-            typedef void ( ::osg::View::*updateSlaves_function_type)(  ) ;
+            typedef void ( ::osg::View::*updateSlaves_function_type )(  ) ;
             
             View_exposer.def( 
                 "updateSlaves"
                 , updateSlaves_function_type( &::osg::View::updateSlaves ) );
-        
-        }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( View_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            View_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&View_wrapper::default_computeDataVariance) );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( View_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            View_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&View_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( View_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            View_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&View_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::resizeGLObjectBuffers
-        
-            typedef void ( ::osg::Object::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( View_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            
-            View_exposer.def( 
-                "resizeGLObjectBuffers"
-                , resizeGLObjectBuffers_function_type(&::osg::Object::resizeGLObjectBuffers)
-                , default_resizeGLObjectBuffers_function_type(&View_wrapper::default_resizeGLObjectBuffers)
-                , ( bp::arg("arg0") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( View_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            View_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&View_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            View_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
-        { //::osg::Object::setThreadSafeRefUnref
-        
-            typedef void ( ::osg::Object::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( View_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
-            
-            View_exposer.def( 
-                "setThreadSafeRefUnref"
-                , setThreadSafeRefUnref_function_type(&::osg::Object::setThreadSafeRefUnref)
-                , default_setThreadSafeRefUnref_function_type(&View_wrapper::default_setThreadSafeRefUnref)
-                , ( bp::arg("threadSafe") ) );
-        
-        }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( View_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            View_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&View_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
         
         }
     }

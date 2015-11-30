@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgwidget.h"
+#include "wrap_osgWidget.h"
 #include "wrap_referenced.h"
-#include "mousehandler.pypp.hpp"
+#include "MouseHandler.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -158,18 +158,6 @@ struct MouseHandler_wrapper : osgWidget::MouseHandler, bp::wrapper< osgWidget::M
     
     char const * default_libraryName(  ) const  {
         return osgGA::GUIEventHandler::libraryName( );
-    }
-
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
     }
 
     virtual void setName( ::std::string const & name ) {

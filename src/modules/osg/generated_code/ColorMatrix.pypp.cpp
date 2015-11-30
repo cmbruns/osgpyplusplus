@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "colormatrix.pypp.hpp"
+#include "ColorMatrix.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -148,18 +148,6 @@ struct ColorMatrix_wrapper : osg::ColorMatrix, bp::wrapper< osg::ColorMatrix > {
         osg::StateAttribute::compileGLObjects( boost::ref(arg0) );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
     virtual unsigned int getMember(  ) const  {
         if( bp::override func_getMember = this->get_override( "getMember" ) )
             return func_getMember(  );
@@ -182,30 +170,6 @@ struct ColorMatrix_wrapper : osg::ColorMatrix, bp::wrapper< osg::ColorMatrix > {
     
     bool default_getModeUsage( ::osg::StateAttribute::ModeUsage & arg0 ) const  {
         return osg::StateAttribute::getModeUsage( boost::ref(arg0) );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
     }
 
     virtual bool isTextureAttribute(  ) const  {
@@ -232,42 +196,6 @@ struct ColorMatrix_wrapper : osg::ColorMatrix, bp::wrapper< osg::ColorMatrix > {
         osg::StateAttribute::resizeGLObjectBuffers( arg0 );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
-    virtual void setThreadSafeRefUnref( bool threadSafe ) {
-        if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
-            func_setThreadSafeRefUnref( threadSafe );
-        else{
-            this->osg::Object::setThreadSafeRefUnref( threadSafe );
-        }
-    }
-    
-    void default_setThreadSafeRefUnref( bool threadSafe ) {
-        osg::Object::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
-    }
-
 };
 
 void register_ColorMatrix_class(){
@@ -276,123 +204,89 @@ void register_ColorMatrix_class(){
         .def( bp::init< >("\n Encapsulates OpenGL color matrix functionality.\n") )    
         .def( 
             "apply"
-            , (void ( ::osg::ColorMatrix::* )( ::osg::State & )const)(&::osg::ColorMatrix::apply)
-            , (void ( ColorMatrix_wrapper::* )( ::osg::State & )const)(&ColorMatrix_wrapper::default_apply)
+            , (void ( ::osg::ColorMatrix::* )( ::osg::State & ) const)(&::osg::ColorMatrix::apply)
+            , (void ( ColorMatrix_wrapper::* )( ::osg::State & ) const)(&ColorMatrix_wrapper::default_apply)
             , ( bp::arg("state") ) )    
         .def( 
             "className"
-            , (char const * ( ::osg::ColorMatrix::* )(  )const)(&::osg::ColorMatrix::className)
-            , (char const * ( ColorMatrix_wrapper::* )(  )const)(&ColorMatrix_wrapper::default_className) )    
+            , (char const * ( ::osg::ColorMatrix::* )(  ) const)(&::osg::ColorMatrix::className)
+            , (char const * ( ColorMatrix_wrapper::* )(  ) const)(&ColorMatrix_wrapper::default_className) )    
         .def( 
             "clone"
-            , (::osg::Object * ( ::osg::ColorMatrix::* )( ::osg::CopyOp const & )const)(&::osg::ColorMatrix::clone)
-            , (::osg::Object * ( ColorMatrix_wrapper::* )( ::osg::CopyOp const & )const)(&ColorMatrix_wrapper::default_clone)
+            , (::osg::Object * ( ::osg::ColorMatrix::* )( ::osg::CopyOp const & ) const)(&::osg::ColorMatrix::clone)
+            , (::osg::Object * ( ColorMatrix_wrapper::* )( ::osg::CopyOp const & ) const)(&ColorMatrix_wrapper::default_clone)
             , ( bp::arg("copyop") )
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "cloneType"
-            , (::osg::Object * ( ::osg::ColorMatrix::* )(  )const)(&::osg::ColorMatrix::cloneType)
-            , (::osg::Object * ( ColorMatrix_wrapper::* )(  )const)(&ColorMatrix_wrapper::default_cloneType)
+            , (::osg::Object * ( ::osg::ColorMatrix::* )(  ) const)(&::osg::ColorMatrix::cloneType)
+            , (::osg::Object * ( ColorMatrix_wrapper::* )(  ) const)(&ColorMatrix_wrapper::default_cloneType)
             , bp::return_value_policy< bp::reference_existing_object >() )    
         .def( 
             "getMatrix"
-            , (::osg::Matrix & ( ::osg::ColorMatrix::* )(  ))( &::osg::ColorMatrix::getMatrix )
+            , (::osg::Matrix & ( ::osg::ColorMatrix::* )(  ) )( &::osg::ColorMatrix::getMatrix )
             , bp::return_internal_reference< >()
             , " Gets the color matrix." )    
         .def( 
             "getMatrix"
-            , (::osg::Matrix const & ( ::osg::ColorMatrix::* )(  )const)( &::osg::ColorMatrix::getMatrix )
+            , (::osg::Matrix const & ( ::osg::ColorMatrix::* )(  ) const)( &::osg::ColorMatrix::getMatrix )
             , bp::return_internal_reference< >()
             , " Gets the const color matrix." )    
         .def( 
             "getType"
-            , (::osg::StateAttribute::Type ( ::osg::ColorMatrix::* )(  )const)(&::osg::ColorMatrix::getType)
-            , (::osg::StateAttribute::Type ( ColorMatrix_wrapper::* )(  )const)(&ColorMatrix_wrapper::default_getType) )    
+            , (::osg::StateAttribute::Type ( ::osg::ColorMatrix::* )(  ) const)(&::osg::ColorMatrix::getType)
+            , (::osg::StateAttribute::Type ( ColorMatrix_wrapper::* )(  ) const)(&ColorMatrix_wrapper::default_getType) )    
         .def( 
             "isSameKindAs"
-            , (bool ( ::osg::ColorMatrix::* )( ::osg::Object const * )const)(&::osg::ColorMatrix::isSameKindAs)
-            , (bool ( ColorMatrix_wrapper::* )( ::osg::Object const * )const)(&ColorMatrix_wrapper::default_isSameKindAs)
+            , (bool ( ::osg::ColorMatrix::* )( ::osg::Object const * ) const)(&::osg::ColorMatrix::isSameKindAs)
+            , (bool ( ColorMatrix_wrapper::* )( ::osg::Object const * ) const)(&ColorMatrix_wrapper::default_isSameKindAs)
             , ( bp::arg("obj") ) )    
         .def( 
             "libraryName"
-            , (char const * ( ::osg::ColorMatrix::* )(  )const)(&::osg::ColorMatrix::libraryName)
-            , (char const * ( ColorMatrix_wrapper::* )(  )const)(&ColorMatrix_wrapper::default_libraryName) )    
+            , (char const * ( ::osg::ColorMatrix::* )(  ) const)(&::osg::ColorMatrix::libraryName)
+            , (char const * ( ColorMatrix_wrapper::* )(  ) const)(&ColorMatrix_wrapper::default_libraryName) )    
         .def( 
             "setMatrix"
-            , (void ( ::osg::ColorMatrix::* )( ::osg::Matrix const & ))( &::osg::ColorMatrix::setMatrix )
+            , (void ( ::osg::ColorMatrix::* )( ::osg::Matrix const & ) )( &::osg::ColorMatrix::setMatrix )
             , ( bp::arg("matrix") )
             , " Sets the color matrix." )    
         .def( 
             "asTexture"
-            , (::osg::Texture * ( ::osg::StateAttribute::* )(  ))(&::osg::StateAttribute::asTexture)
-            , (::osg::Texture * ( ColorMatrix_wrapper::* )(  ))(&ColorMatrix_wrapper::default_asTexture)
+            , (::osg::Texture * ( ::osg::StateAttribute::* )(  ) )(&::osg::StateAttribute::asTexture)
+            , (::osg::Texture * ( ColorMatrix_wrapper::* )(  ) )(&ColorMatrix_wrapper::default_asTexture)
             , bp::return_internal_reference< >() )    
         .def( 
             "asTexture"
-            , (::osg::Texture const * ( ::osg::StateAttribute::* )(  )const)(&::osg::StateAttribute::asTexture)
-            , (::osg::Texture const * ( ColorMatrix_wrapper::* )(  )const)(&ColorMatrix_wrapper::default_asTexture)
+            , (::osg::Texture const * ( ::osg::StateAttribute::* )(  ) const)(&::osg::StateAttribute::asTexture)
+            , (::osg::Texture const * ( ColorMatrix_wrapper::* )(  ) const)(&ColorMatrix_wrapper::default_asTexture)
             , bp::return_internal_reference< >() )    
         .def( 
             "checkValidityOfAssociatedModes"
-            , (bool ( ::osg::StateAttribute::* )( ::osg::State & )const)(&::osg::StateAttribute::checkValidityOfAssociatedModes)
-            , (bool ( ColorMatrix_wrapper::* )( ::osg::State & )const)(&ColorMatrix_wrapper::default_checkValidityOfAssociatedModes)
+            , (bool ( ::osg::StateAttribute::* )( ::osg::State & ) const)(&::osg::StateAttribute::checkValidityOfAssociatedModes)
+            , (bool ( ColorMatrix_wrapper::* )( ::osg::State & ) const)(&ColorMatrix_wrapper::default_checkValidityOfAssociatedModes)
             , ( bp::arg("arg0") ) )    
         .def( 
             "compileGLObjects"
-            , (void ( ::osg::StateAttribute::* )( ::osg::State & )const)(&::osg::StateAttribute::compileGLObjects)
-            , (void ( ColorMatrix_wrapper::* )( ::osg::State & )const)(&ColorMatrix_wrapper::default_compileGLObjects)
+            , (void ( ::osg::StateAttribute::* )( ::osg::State & ) const)(&::osg::StateAttribute::compileGLObjects)
+            , (void ( ColorMatrix_wrapper::* )( ::osg::State & ) const)(&ColorMatrix_wrapper::default_compileGLObjects)
             , ( bp::arg("arg0") ) )    
-        .def( 
-            "computeDataVariance"
-            , (void ( ::osg::Object::* )(  ))(&::osg::Object::computeDataVariance)
-            , (void ( ColorMatrix_wrapper::* )(  ))(&ColorMatrix_wrapper::default_computeDataVariance) )    
         .def( 
             "getMember"
-            , (unsigned int ( ::osg::StateAttribute::* )(  )const)(&::osg::StateAttribute::getMember)
-            , (unsigned int ( ColorMatrix_wrapper::* )(  )const)(&ColorMatrix_wrapper::default_getMember) )    
+            , (unsigned int ( ::osg::StateAttribute::* )(  ) const)(&::osg::StateAttribute::getMember)
+            , (unsigned int ( ColorMatrix_wrapper::* )(  ) const)(&ColorMatrix_wrapper::default_getMember) )    
         .def( 
             "getModeUsage"
-            , (bool ( ::osg::StateAttribute::* )( ::osg::StateAttribute::ModeUsage & )const)(&::osg::StateAttribute::getModeUsage)
-            , (bool ( ColorMatrix_wrapper::* )( ::osg::StateAttribute::ModeUsage & )const)(&ColorMatrix_wrapper::default_getModeUsage)
+            , (bool ( ::osg::StateAttribute::* )( ::osg::StateAttribute::ModeUsage & ) const)(&::osg::StateAttribute::getModeUsage)
+            , (bool ( ColorMatrix_wrapper::* )( ::osg::StateAttribute::ModeUsage & ) const)(&ColorMatrix_wrapper::default_getModeUsage)
             , ( bp::arg("arg0") ) )    
-        .def( 
-            "getUserData"
-            , (::osg::Referenced * ( ::osg::Object::* )(  ))(&::osg::Object::getUserData)
-            , (::osg::Referenced * ( ColorMatrix_wrapper::* )(  ))(&ColorMatrix_wrapper::default_getUserData)
-            , bp::return_internal_reference< >() )    
-        .def( 
-            "getUserData"
-            , (::osg::Referenced const * ( ::osg::Object::* )(  )const)(&::osg::Object::getUserData)
-            , (::osg::Referenced const * ( ColorMatrix_wrapper::* )(  )const)(&ColorMatrix_wrapper::default_getUserData)
-            , bp::return_internal_reference< >() )    
         .def( 
             "isTextureAttribute"
-            , (bool ( ::osg::StateAttribute::* )(  )const)(&::osg::StateAttribute::isTextureAttribute)
-            , (bool ( ColorMatrix_wrapper::* )(  )const)(&ColorMatrix_wrapper::default_isTextureAttribute) )    
+            , (bool ( ::osg::StateAttribute::* )(  ) const)(&::osg::StateAttribute::isTextureAttribute)
+            , (bool ( ColorMatrix_wrapper::* )(  ) const)(&ColorMatrix_wrapper::default_isTextureAttribute) )    
         .def( 
             "resizeGLObjectBuffers"
-            , (void ( ::osg::StateAttribute::* )( unsigned int ))(&::osg::StateAttribute::resizeGLObjectBuffers)
-            , (void ( ColorMatrix_wrapper::* )( unsigned int ))(&ColorMatrix_wrapper::default_resizeGLObjectBuffers)
-            , ( bp::arg("arg0") ) )    
-        .def( 
-            "setName"
-            , (void ( ::osg::Object::* )( ::std::string const & ))(&::osg::Object::setName)
-            , (void ( ColorMatrix_wrapper::* )( ::std::string const & ))(&ColorMatrix_wrapper::default_setName)
-            , ( bp::arg("name") ) )    
-        .def( 
-            "setName"
-            , (void ( ::osg::Object::* )( char const * ))( &::osg::Object::setName )
-            , ( bp::arg("name") )
-            , " Set the name of object using a C style string." )    
-        .def( 
-            "setThreadSafeRefUnref"
-            , (void ( ::osg::Object::* )( bool ))(&::osg::Object::setThreadSafeRefUnref)
-            , (void ( ColorMatrix_wrapper::* )( bool ))(&ColorMatrix_wrapper::default_setThreadSafeRefUnref)
-            , ( bp::arg("threadSafe") ) )    
-        .def( 
-            "setUserData"
-            , (void ( ::osg::Object::* )( ::osg::Referenced * ))(&::osg::Object::setUserData)
-            , (void ( ColorMatrix_wrapper::* )( ::osg::Referenced * ))(&ColorMatrix_wrapper::default_setUserData)
-            , ( bp::arg("obj") ) );
+            , (void ( ::osg::StateAttribute::* )( unsigned int ) )(&::osg::StateAttribute::resizeGLObjectBuffers)
+            , (void ( ColorMatrix_wrapper::* )( unsigned int ) )(&ColorMatrix_wrapper::default_resizeGLObjectBuffers)
+            , ( bp::arg("arg0") ) );
 
 }

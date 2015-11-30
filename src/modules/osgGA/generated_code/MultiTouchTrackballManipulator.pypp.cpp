@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgga.h"
+#include "wrap_osgGA.h"
 #include "wrap_referenced.h"
-#include "multitouchtrackballmanipulator.pypp.hpp"
+#include "MultiTouchTrackballManipulator.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -144,7 +144,7 @@ struct MultiTouchTrackballManipulator_wrapper : osgGA::MultiTouchTrackballManipu
         osg::Object::computeDataVariance( );
     }
 
-    virtual void computeHomePosition( ::osg::Camera const * camera=0, bool useBoundingBox=false ) {
+    virtual void computeHomePosition( ::osg::Camera const * camera=0l, bool useBoundingBox=false ) {
         if( bp::override func_computeHomePosition = this->get_override( "computeHomePosition" ) )
             func_computeHomePosition( boost::python::ptr(camera), useBoundingBox );
         else{
@@ -152,7 +152,7 @@ struct MultiTouchTrackballManipulator_wrapper : osgGA::MultiTouchTrackballManipu
         }
     }
     
-    void default_computeHomePosition( ::osg::Camera const * camera=0, bool useBoundingBox=false ) {
+    void default_computeHomePosition( ::osg::Camera const * camera=0l, bool useBoundingBox=false ) {
         osgGA::CameraManipulator::computeHomePosition( boost::python::ptr(camera), useBoundingBox );
     }
 
@@ -492,18 +492,6 @@ struct MultiTouchTrackballManipulator_wrapper : osgGA::MultiTouchTrackballManipu
         return osgGA::OrbitManipulator::performMovementRightMouseButton( eventTimeDelta, dx, dy );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     virtual void rotateTrackball( float const px0, float const py0, float const px1, float const py1, float const scale ){
         if( bp::override func_rotateTrackball = this->get_override( "rotateTrackball" ) )
             func_rotateTrackball( px0, py0, px1, py1, scale );
@@ -833,8 +821,8 @@ void register_MultiTouchTrackballManipulator_class(){
         bp::implicitly_convertible< int, osgGA::MultiTouchTrackballManipulator >();
         { //::osgGA::MultiTouchTrackballManipulator::className
         
-            typedef char const * ( ::osgGA::MultiTouchTrackballManipulator::*className_function_type)(  ) const;
-            typedef char const * ( MultiTouchTrackballManipulator_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osgGA::MultiTouchTrackballManipulator::*className_function_type )(  ) const;
+            typedef char const * ( MultiTouchTrackballManipulator_wrapper::*default_className_function_type )(  ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "className"
@@ -844,8 +832,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::MultiTouchTrackballManipulator::clone
         
-            typedef ::osg::Object * ( ::osgGA::MultiTouchTrackballManipulator::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( MultiTouchTrackballManipulator_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osgGA::MultiTouchTrackballManipulator::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( MultiTouchTrackballManipulator_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "clone"
@@ -857,8 +845,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::MultiTouchTrackballManipulator::cloneType
         
-            typedef ::osg::Object * ( ::osgGA::MultiTouchTrackballManipulator::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( MultiTouchTrackballManipulator_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osgGA::MultiTouchTrackballManipulator::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( MultiTouchTrackballManipulator_wrapper::*default_cloneType_function_type )(  ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "cloneType"
@@ -879,7 +867,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::MultiTouchTrackballManipulator::handleMultiTouchDrag
         
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*handleMultiTouchDrag_function_type)( ::osgGA::GUIEventAdapter::TouchData *,::osgGA::GUIEventAdapter::TouchData *,double const ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*handleMultiTouchDrag_function_type )( ::osgGA::GUIEventAdapter::TouchData *,::osgGA::GUIEventAdapter::TouchData *,double const ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "handleMultiTouchDrag"
@@ -889,8 +877,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::MultiTouchTrackballManipulator::isSameKindAs
         
-            typedef bool ( ::osgGA::MultiTouchTrackballManipulator::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( MultiTouchTrackballManipulator_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osgGA::MultiTouchTrackballManipulator::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( MultiTouchTrackballManipulator_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "isSameKindAs"
@@ -901,8 +889,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::MultiTouchTrackballManipulator::libraryName
         
-            typedef char const * ( ::osgGA::MultiTouchTrackballManipulator::*libraryName_function_type)(  ) const;
-            typedef char const * ( MultiTouchTrackballManipulator_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osgGA::MultiTouchTrackballManipulator::*libraryName_function_type )(  ) const;
+            typedef char const * ( MultiTouchTrackballManipulator_wrapper::*default_libraryName_function_type )(  ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "libraryName"
@@ -912,7 +900,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::allocAnimationData
         
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*allocAnimationData_function_type)(  ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*allocAnimationData_function_type )(  ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "allocAnimationData"
@@ -930,7 +918,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::applyAnimationStep
         
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*applyAnimationStep_function_type)( double const,double const ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*applyAnimationStep_function_type )( double const,double const ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "applyAnimationStep"
@@ -940,20 +928,20 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::CameraManipulator::computeHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*computeHomePosition_function_type)( ::osg::Camera const *,bool ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_computeHomePosition_function_type)( ::osg::Camera const *,bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*computeHomePosition_function_type )( ::osg::Camera const *,bool ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_computeHomePosition_function_type )( ::osg::Camera const *,bool ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "computeHomePosition"
                 , computeHomePosition_function_type(&::osgGA::CameraManipulator::computeHomePosition)
                 , default_computeHomePosition_function_type(&MultiTouchTrackballManipulator_wrapper::default_computeHomePosition)
-                , ( bp::arg("camera")=bp::object(), bp::arg("useBoundingBox")=(bool)(false) ) );
+                , ( bp::arg("camera")=0l, bp::arg("useBoundingBox")=(bool)(false) ) );
         
         }
         { //::osgGA::GUIEventHandler::event
         
-            typedef void ( ::osgGA::GUIEventHandler::*event_function_type)( ::osg::NodeVisitor *,::osg::Drawable * ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_event_function_type)( ::osg::NodeVisitor *,::osg::Drawable * ) ;
+            typedef void ( ::osgGA::GUIEventHandler::*event_function_type )( ::osg::NodeVisitor *,::osg::Drawable * ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_event_function_type )( ::osg::NodeVisitor *,::osg::Drawable * ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "event"
@@ -964,8 +952,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::finishAnimation
         
-            typedef void ( ::osgGA::StandardManipulator::*finishAnimation_function_type)(  ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_finishAnimation_function_type)(  ) ;
+            typedef void ( ::osgGA::StandardManipulator::*finishAnimation_function_type )(  ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_finishAnimation_function_type )(  ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "finishAnimation"
@@ -985,7 +973,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::fixVerticalAxis
         
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*fixVerticalAxis_function_type)( ::osg::Vec3d &,::osg::Quat &,bool ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*fixVerticalAxis_function_type )( ::osg::Vec3d &,::osg::Quat &,bool ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "fixVerticalAxis"
@@ -1005,7 +993,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::flushMouseEventStack
         
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*flushMouseEventStack_function_type)(  ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*flushMouseEventStack_function_type )(  ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "flushMouseEventStack"
@@ -1014,8 +1002,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getFusionDistanceMode
         
-            typedef ::osgUtil::SceneView::FusionDistanceMode ( ::osgGA::OrbitManipulator::*getFusionDistanceMode_function_type)(  ) const;
-            typedef ::osgUtil::SceneView::FusionDistanceMode ( MultiTouchTrackballManipulator_wrapper::*default_getFusionDistanceMode_function_type)(  ) const;
+            typedef ::osgUtil::SceneView::FusionDistanceMode ( ::osgGA::OrbitManipulator::*getFusionDistanceMode_function_type )(  ) const;
+            typedef ::osgUtil::SceneView::FusionDistanceMode ( MultiTouchTrackballManipulator_wrapper::*default_getFusionDistanceMode_function_type )(  ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "getFusionDistanceMode"
@@ -1025,8 +1013,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getFusionDistanceValue
         
-            typedef float ( ::osgGA::OrbitManipulator::*getFusionDistanceValue_function_type)(  ) const;
-            typedef float ( MultiTouchTrackballManipulator_wrapper::*default_getFusionDistanceValue_function_type)(  ) const;
+            typedef float ( ::osgGA::OrbitManipulator::*getFusionDistanceValue_function_type )(  ) const;
+            typedef float ( MultiTouchTrackballManipulator_wrapper::*default_getFusionDistanceValue_function_type )(  ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "getFusionDistanceValue"
@@ -1036,8 +1024,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*getHomePosition_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_getHomePosition_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( ::osgGA::CameraManipulator::*getHomePosition_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_getHomePosition_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "getHomePosition"
@@ -1048,8 +1036,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getInverseMatrix
         
-            typedef ::osg::Matrixd ( ::osgGA::OrbitManipulator::*getInverseMatrix_function_type)(  ) const;
-            typedef ::osg::Matrixd ( MultiTouchTrackballManipulator_wrapper::*default_getInverseMatrix_function_type)(  ) const;
+            typedef ::osg::Matrixd ( ::osgGA::OrbitManipulator::*getInverseMatrix_function_type )(  ) const;
+            typedef ::osg::Matrixd ( MultiTouchTrackballManipulator_wrapper::*default_getInverseMatrix_function_type )(  ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "getInverseMatrix"
@@ -1059,8 +1047,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getMatrix
         
-            typedef ::osg::Matrixd ( ::osgGA::OrbitManipulator::*getMatrix_function_type)(  ) const;
-            typedef ::osg::Matrixd ( MultiTouchTrackballManipulator_wrapper::*default_getMatrix_function_type)(  ) const;
+            typedef ::osg::Matrixd ( ::osgGA::OrbitManipulator::*getMatrix_function_type )(  ) const;
+            typedef ::osg::Matrixd ( MultiTouchTrackballManipulator_wrapper::*default_getMatrix_function_type )(  ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "getMatrix"
@@ -1070,8 +1058,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::getNode
         
-            typedef ::osg::Node const * ( ::osgGA::StandardManipulator::*getNode_function_type)(  ) const;
-            typedef ::osg::Node const * ( MultiTouchTrackballManipulator_wrapper::*default_getNode_function_type)(  ) const;
+            typedef ::osg::Node const * ( ::osgGA::StandardManipulator::*getNode_function_type )(  ) const;
+            typedef ::osg::Node const * ( MultiTouchTrackballManipulator_wrapper::*default_getNode_function_type )(  ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "getNode"
@@ -1082,8 +1070,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::getNode
         
-            typedef ::osg::Node * ( ::osgGA::StandardManipulator::*getNode_function_type)(  ) ;
-            typedef ::osg::Node * ( MultiTouchTrackballManipulator_wrapper::*default_getNode_function_type)(  ) ;
+            typedef ::osg::Node * ( ::osgGA::StandardManipulator::*getNode_function_type )(  ) ;
+            typedef ::osg::Node * ( MultiTouchTrackballManipulator_wrapper::*default_getNode_function_type )(  ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "getNode"
@@ -1094,7 +1082,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::getRelativeFlag
         
-            typedef bool ( MultiTouchTrackballManipulator_wrapper::*getRelativeFlag_function_type)( int ) const;
+            typedef bool ( MultiTouchTrackballManipulator_wrapper::*getRelativeFlag_function_type )( int ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "getRelativeFlag"
@@ -1104,7 +1092,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::getThrowScale
         
-            typedef float ( MultiTouchTrackballManipulator_wrapper::*getThrowScale_function_type)( double const ) const;
+            typedef float ( MultiTouchTrackballManipulator_wrapper::*getThrowScale_function_type )( double const ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "getThrowScale"
@@ -1114,8 +1102,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getTransformation
         
-            typedef void ( ::osgGA::OrbitManipulator::*getTransformation_function_type)( ::osg::Vec3d &,::osg::Quat & ) const;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_getTransformation_function_type)( ::osg::Vec3d &,::osg::Quat & ) const;
+            typedef void ( ::osgGA::OrbitManipulator::*getTransformation_function_type )( ::osg::Vec3d &,::osg::Quat & ) const;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_getTransformation_function_type )( ::osg::Vec3d &,::osg::Quat & ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "getTransformation"
@@ -1126,8 +1114,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getTransformation
         
-            typedef void ( ::osgGA::OrbitManipulator::*getTransformation_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_getTransformation_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( ::osgGA::OrbitManipulator::*getTransformation_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_getTransformation_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "getTransformation"
@@ -1138,8 +1126,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::getUsage
         
-            typedef void ( ::osgGA::StandardManipulator::*getUsage_function_type)( ::osg::ApplicationUsage & ) const;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_getUsage_function_type)( ::osg::ApplicationUsage & ) const;
+            typedef void ( ::osgGA::StandardManipulator::*getUsage_function_type )( ::osg::ApplicationUsage & ) const;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_getUsage_function_type )( ::osg::ApplicationUsage & ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "getUsage"
@@ -1171,8 +1159,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::home
         
-            typedef void ( ::osgGA::StandardManipulator::*home_function_type)( double ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_home_function_type)( double ) ;
+            typedef void ( ::osgGA::StandardManipulator::*home_function_type )( double ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_home_function_type )( double ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "home"
@@ -1193,7 +1181,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::isMouseMoving
         
-            typedef bool ( MultiTouchTrackballManipulator_wrapper::*isMouseMoving_function_type)(  ) const;
+            typedef bool ( MultiTouchTrackballManipulator_wrapper::*isMouseMoving_function_type )(  ) const;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "isMouseMoving"
@@ -1202,7 +1190,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::panModel
         
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*panModel_function_type)( float const,float const,float const ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*panModel_function_type )( float const,float const,float const ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "panModel"
@@ -1212,7 +1200,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::performMouseDeltaMovement
         
-            typedef bool ( MultiTouchTrackballManipulator_wrapper::*performMouseDeltaMovement_function_type)( float const,float const ) ;
+            typedef bool ( MultiTouchTrackballManipulator_wrapper::*performMouseDeltaMovement_function_type )( float const,float const ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "performMouseDeltaMovement"
@@ -1222,7 +1210,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::performMovementLeftMouseButton
         
-            typedef bool ( MultiTouchTrackballManipulator_wrapper::*performMovementLeftMouseButton_function_type)( double const,double const,double const ) ;
+            typedef bool ( MultiTouchTrackballManipulator_wrapper::*performMovementLeftMouseButton_function_type )( double const,double const,double const ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "performMovementLeftMouseButton"
@@ -1232,7 +1220,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::performMovementMiddleMouseButton
         
-            typedef bool ( MultiTouchTrackballManipulator_wrapper::*performMovementMiddleMouseButton_function_type)( double const,double const,double const ) ;
+            typedef bool ( MultiTouchTrackballManipulator_wrapper::*performMovementMiddleMouseButton_function_type )( double const,double const,double const ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "performMovementMiddleMouseButton"
@@ -1242,7 +1230,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::performMovementRightMouseButton
         
-            typedef bool ( MultiTouchTrackballManipulator_wrapper::*performMovementRightMouseButton_function_type)( double const,double const,double const ) ;
+            typedef bool ( MultiTouchTrackballManipulator_wrapper::*performMovementRightMouseButton_function_type )( double const,double const,double const ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "performMovementRightMouseButton"
@@ -1252,7 +1240,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::rotateTrackball
         
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*rotateTrackball_function_type)( float const,float const,float const,float const,float const ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*rotateTrackball_function_type )( float const,float const,float const,float const,float const ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "rotateTrackball"
@@ -1262,7 +1250,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::rotateWithFixedVertical
         
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*rotateWithFixedVertical_function_type)( float const,float const ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*rotateWithFixedVertical_function_type )( float const,float const ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "rotateWithFixedVertical"
@@ -1272,7 +1260,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::rotateWithFixedVertical
         
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*rotateWithFixedVertical_function_type)( float const,float const,::osg::Vec3f const & ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*rotateWithFixedVertical_function_type )( float const,float const,::osg::Vec3f const & ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "rotateWithFixedVertical"
@@ -1292,8 +1280,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::setAllowThrow
         
-            typedef void ( ::osgGA::StandardManipulator::*setAllowThrow_function_type)( bool ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setAllowThrow_function_type)( bool ) ;
+            typedef void ( ::osgGA::StandardManipulator::*setAllowThrow_function_type )( bool ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setAllowThrow_function_type )( bool ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setAllowThrow"
@@ -1304,8 +1292,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::setAnimationTime
         
-            typedef void ( ::osgGA::StandardManipulator::*setAnimationTime_function_type)( double const ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setAnimationTime_function_type)( double const ) ;
+            typedef void ( ::osgGA::StandardManipulator::*setAnimationTime_function_type )( double const ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setAnimationTime_function_type )( double const ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setAnimationTime"
@@ -1316,8 +1304,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setAutoComputeHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*setAutoComputeHomePosition_function_type)( bool ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setAutoComputeHomePosition_function_type)( bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setAutoComputeHomePosition_function_type )( bool ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setAutoComputeHomePosition_function_type )( bool ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setAutoComputeHomePosition"
@@ -1328,8 +1316,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setByInverseMatrix
         
-            typedef void ( ::osgGA::OrbitManipulator::*setByInverseMatrix_function_type)( ::osg::Matrixd const & ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setByInverseMatrix_function_type)( ::osg::Matrixd const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setByInverseMatrix_function_type )( ::osg::Matrixd const & ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setByInverseMatrix_function_type )( ::osg::Matrixd const & ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setByInverseMatrix"
@@ -1340,8 +1328,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setByMatrix
         
-            typedef void ( ::osgGA::OrbitManipulator::*setByMatrix_function_type)( ::osg::Matrixd const & ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setByMatrix_function_type)( ::osg::Matrixd const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setByMatrix_function_type )( ::osg::Matrixd const & ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setByMatrix_function_type )( ::osg::Matrixd const & ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setByMatrix"
@@ -1352,8 +1340,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setCenter
         
-            typedef void ( ::osgGA::OrbitManipulator::*setCenter_function_type)( ::osg::Vec3d const & ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setCenter_function_type)( ::osg::Vec3d const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setCenter_function_type )( ::osg::Vec3d const & ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setCenter_function_type )( ::osg::Vec3d const & ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setCenter"
@@ -1364,8 +1352,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setCoordinateFrameCallback
         
-            typedef void ( ::osgGA::CameraManipulator::*setCoordinateFrameCallback_function_type)( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setCoordinateFrameCallback_function_type)( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setCoordinateFrameCallback_function_type )( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setCoordinateFrameCallback_function_type )( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setCoordinateFrameCallback"
@@ -1376,8 +1364,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setDistance
         
-            typedef void ( ::osgGA::OrbitManipulator::*setDistance_function_type)( double ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setDistance_function_type)( double ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setDistance_function_type )( double ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setDistance_function_type )( double ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setDistance"
@@ -1388,8 +1376,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*setHomePosition_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setHomePosition_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setHomePosition_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setHomePosition_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setHomePosition"
@@ -1400,8 +1388,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setMinimumDistance
         
-            typedef void ( ::osgGA::OrbitManipulator::*setMinimumDistance_function_type)( double const &,bool ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setMinimumDistance_function_type)( double const &,bool ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setMinimumDistance_function_type )( double const &,bool ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setMinimumDistance_function_type )( double const &,bool ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setMinimumDistance"
@@ -1412,8 +1400,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::setNode
         
-            typedef void ( ::osgGA::StandardManipulator::*setNode_function_type)( ::osg::Node * ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setNode_function_type)( ::osg::Node * ) ;
+            typedef void ( ::osgGA::StandardManipulator::*setNode_function_type )( ::osg::Node * ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setNode_function_type )( ::osg::Node * ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setNode"
@@ -1424,7 +1412,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::setRelativeFlag
         
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*setRelativeFlag_function_type)( int,bool ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*setRelativeFlag_function_type )( int,bool ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setRelativeFlag"
@@ -1434,8 +1422,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setRotation
         
-            typedef void ( ::osgGA::OrbitManipulator::*setRotation_function_type)( ::osg::Quat const & ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setRotation_function_type)( ::osg::Quat const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setRotation_function_type )( ::osg::Quat const & ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setRotation_function_type )( ::osg::Quat const & ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setRotation"
@@ -1446,8 +1434,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setTrackballSize
         
-            typedef void ( ::osgGA::OrbitManipulator::*setTrackballSize_function_type)( double const & ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setTrackballSize_function_type)( double const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setTrackballSize_function_type )( double const & ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setTrackballSize_function_type )( double const & ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setTrackballSize"
@@ -1458,8 +1446,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setTransformation
         
-            typedef void ( ::osgGA::OrbitManipulator::*setTransformation_function_type)( ::osg::Vec3d const &,::osg::Quat const & ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setTransformation_function_type)( ::osg::Vec3d const &,::osg::Quat const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setTransformation_function_type )( ::osg::Vec3d const &,::osg::Quat const & ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setTransformation_function_type )( ::osg::Vec3d const &,::osg::Quat const & ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setTransformation"
@@ -1470,8 +1458,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setTransformation
         
-            typedef void ( ::osgGA::OrbitManipulator::*setTransformation_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const & ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setTransformation_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setTransformation_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const & ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setTransformation_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const & ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setTransformation"
@@ -1482,8 +1470,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::StandardManipulator::setVerticalAxisFixed
         
-            typedef void ( ::osgGA::StandardManipulator::*setVerticalAxisFixed_function_type)( bool ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setVerticalAxisFixed_function_type)( bool ) ;
+            typedef void ( ::osgGA::StandardManipulator::*setVerticalAxisFixed_function_type )( bool ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setVerticalAxisFixed_function_type )( bool ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setVerticalAxisFixed"
@@ -1494,8 +1482,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setWheelZoomFactor
         
-            typedef void ( ::osgGA::OrbitManipulator::*setWheelZoomFactor_function_type)( double ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setWheelZoomFactor_function_type)( double ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setWheelZoomFactor_function_type )( double ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_setWheelZoomFactor_function_type )( double ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "setWheelZoomFactor"
@@ -1506,7 +1494,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::tb_project_to_sphere
         
-            typedef float ( MultiTouchTrackballManipulator_wrapper::*tb_project_to_sphere_function_type)( float,float,float ) ;
+            typedef float ( MultiTouchTrackballManipulator_wrapper::*tb_project_to_sphere_function_type )( float,float,float ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "tb_project_to_sphere"
@@ -1516,7 +1504,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::trackball
         
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*trackball_function_type)( ::osg::Vec3d &,float &,float,float,float,float ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*trackball_function_type )( ::osg::Vec3d &,float &,float,float,float,float ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "trackball"
@@ -1526,8 +1514,8 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::CameraManipulator::updateCamera
         
-            typedef void ( ::osgGA::CameraManipulator::*updateCamera_function_type)( ::osg::Camera & ) ;
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_updateCamera_function_type)( ::osg::Camera & ) ;
+            typedef void ( ::osgGA::CameraManipulator::*updateCamera_function_type )( ::osg::Camera & ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*default_updateCamera_function_type )( ::osg::Camera & ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "updateCamera"
@@ -1538,7 +1526,7 @@ void register_MultiTouchTrackballManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::zoomModel
         
-            typedef void ( MultiTouchTrackballManipulator_wrapper::*zoomModel_function_type)( float const,bool ) ;
+            typedef void ( MultiTouchTrackballManipulator_wrapper::*zoomModel_function_type )( float const,bool ) ;
             
             MultiTouchTrackballManipulator_exposer.def( 
                 "zoomModel"

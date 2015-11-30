@@ -1,5 +1,8 @@
 #include "../default.h"
 
+#include <osg/Switch>
+#include <osg/Geometry>
+
 // DONE - all osgFX include files included
 #include <osgFX/AnisotropicLighting>
 #include <osgFX/BumpMapping>

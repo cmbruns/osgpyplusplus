@@ -3,7 +3,7 @@
 #include "boost/python.hpp"
 #include "wrap_osg.h"
 #include "wrap_referenced.h"
-#include "cameraview.pypp.hpp"
+#include "CameraView.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -316,42 +316,6 @@ struct CameraView_wrapper : osg::CameraView, bp::wrapper< osg::CameraView > {
         return osg::Transform::computeBound( );
     }
 
-    virtual void computeDataVariance(  ) {
-        if( bp::override func_computeDataVariance = this->get_override( "computeDataVariance" ) )
-            func_computeDataVariance(  );
-        else{
-            this->osg::Object::computeDataVariance(  );
-        }
-    }
-    
-    void default_computeDataVariance(  ) {
-        osg::Object::computeDataVariance( );
-    }
-
-    virtual ::osg::Referenced * getUserData(  ) {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced * default_getUserData(  ) {
-        return osg::Object::getUserData( );
-    }
-
-    virtual ::osg::Referenced const * getUserData(  ) const  {
-        if( bp::override func_getUserData = this->get_override( "getUserData" ) )
-            return func_getUserData(  );
-        else{
-            return this->osg::Object::getUserData(  );
-        }
-    }
-    
-    ::osg::Referenced const * default_getUserData(  ) const  {
-        return osg::Object::getUserData( );
-    }
-
     virtual bool insertChild( unsigned int index, ::osg::Node * child ) {
         if( bp::override func_insertChild = this->get_override( "insertChild" ) )
             return func_insertChild( index, boost::python::ptr(child) );
@@ -412,18 +376,6 @@ struct CameraView_wrapper : osg::CameraView, bp::wrapper< osg::CameraView > {
         return osg::Group::setChild( i, boost::python::ptr(node) );
     }
 
-    virtual void setName( ::std::string const & name ) {
-        if( bp::override func_setName = this->get_override( "setName" ) )
-            func_setName( name );
-        else{
-            this->osg::Object::setName( name );
-        }
-    }
-    
-    void default_setName( ::std::string const & name ) {
-        osg::Object::setName( name );
-    }
-
     virtual void setThreadSafeRefUnref( bool threadSafe ) {
         if( bp::override func_setThreadSafeRefUnref = this->get_override( "setThreadSafeRefUnref" ) )
             func_setThreadSafeRefUnref( threadSafe );
@@ -434,18 +386,6 @@ struct CameraView_wrapper : osg::CameraView, bp::wrapper< osg::CameraView > {
     
     void default_setThreadSafeRefUnref( bool threadSafe ) {
         osg::Group::setThreadSafeRefUnref( threadSafe );
-    }
-
-    virtual void setUserData( ::osg::Referenced * obj ) {
-        if( bp::override func_setUserData = this->get_override( "setUserData" ) )
-            func_setUserData( boost::python::ptr(obj) );
-        else{
-            this->osg::Object::setUserData( boost::python::ptr(obj) );
-        }
-    }
-    
-    void default_setUserData( ::osg::Referenced * obj ) {
-        osg::Object::setUserData( boost::python::ptr(obj) );
     }
 
     virtual void traverse( ::osg::NodeVisitor & nv ) {
@@ -477,8 +417,8 @@ void register_CameraView_class(){
         CameraView_exposer.def( bp::init< >("\n CameraView - is a Transform that is used to specify camera views from within the scene graph.\n The application must attach a camera to a CameraView via the NodePath from the top of the scene graph\n to the CameraView node itself, and accumulate the view matrix from this NodePath.\n") );
         { //::osg::CameraView::accept
         
-            typedef void ( ::osg::CameraView::*accept_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( CameraView_wrapper::*default_accept_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::CameraView::*accept_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( CameraView_wrapper::*default_accept_function_type )( ::osg::NodeVisitor & ) ;
             
             CameraView_exposer.def( 
                 "accept"
@@ -489,8 +429,8 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::className
         
-            typedef char const * ( ::osg::CameraView::*className_function_type)(  ) const;
-            typedef char const * ( CameraView_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osg::CameraView::*className_function_type )(  ) const;
+            typedef char const * ( CameraView_wrapper::*default_className_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "className"
@@ -500,8 +440,8 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::clone
         
-            typedef ::osg::Object * ( ::osg::CameraView::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( CameraView_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osg::CameraView::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( CameraView_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             CameraView_exposer.def( 
                 "clone"
@@ -513,8 +453,8 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::cloneType
         
-            typedef ::osg::Object * ( ::osg::CameraView::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( CameraView_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osg::CameraView::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( CameraView_wrapper::*default_cloneType_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "cloneType"
@@ -525,8 +465,8 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::computeLocalToWorldMatrix
         
-            typedef bool ( ::osg::CameraView::*computeLocalToWorldMatrix_function_type)( ::osg::Matrix &,::osg::NodeVisitor * ) const;
-            typedef bool ( CameraView_wrapper::*default_computeLocalToWorldMatrix_function_type)( ::osg::Matrix &,::osg::NodeVisitor * ) const;
+            typedef bool ( ::osg::CameraView::*computeLocalToWorldMatrix_function_type )( ::osg::Matrix &,::osg::NodeVisitor * ) const;
+            typedef bool ( CameraView_wrapper::*default_computeLocalToWorldMatrix_function_type )( ::osg::Matrix &,::osg::NodeVisitor * ) const;
             
             CameraView_exposer.def( 
                 "computeLocalToWorldMatrix"
@@ -537,8 +477,8 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::computeWorldToLocalMatrix
         
-            typedef bool ( ::osg::CameraView::*computeWorldToLocalMatrix_function_type)( ::osg::Matrix &,::osg::NodeVisitor * ) const;
-            typedef bool ( CameraView_wrapper::*default_computeWorldToLocalMatrix_function_type)( ::osg::Matrix &,::osg::NodeVisitor * ) const;
+            typedef bool ( ::osg::CameraView::*computeWorldToLocalMatrix_function_type )( ::osg::Matrix &,::osg::NodeVisitor * ) const;
+            typedef bool ( CameraView_wrapper::*default_computeWorldToLocalMatrix_function_type )( ::osg::Matrix &,::osg::NodeVisitor * ) const;
             
             CameraView_exposer.def( 
                 "computeWorldToLocalMatrix"
@@ -549,7 +489,7 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::getAttitude
         
-            typedef ::osg::Quat const & ( ::osg::CameraView::*getAttitude_function_type)(  ) const;
+            typedef ::osg::Quat const & ( ::osg::CameraView::*getAttitude_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "getAttitude"
@@ -560,7 +500,7 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::getFieldOfView
         
-            typedef double ( ::osg::CameraView::*getFieldOfView_function_type)(  ) const;
+            typedef double ( ::osg::CameraView::*getFieldOfView_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "getFieldOfView"
@@ -570,7 +510,7 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::getFieldOfViewMode
         
-            typedef ::osg::CameraView::FieldOfViewMode ( ::osg::CameraView::*getFieldOfViewMode_function_type)(  ) const;
+            typedef ::osg::CameraView::FieldOfViewMode ( ::osg::CameraView::*getFieldOfViewMode_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "getFieldOfViewMode"
@@ -580,7 +520,7 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::getFocalLength
         
-            typedef double ( ::osg::CameraView::*getFocalLength_function_type)(  ) const;
+            typedef double ( ::osg::CameraView::*getFocalLength_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "getFocalLength"
@@ -590,7 +530,7 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::getPosition
         
-            typedef ::osg::Vec3d const & ( ::osg::CameraView::*getPosition_function_type)(  ) const;
+            typedef ::osg::Vec3d const & ( ::osg::CameraView::*getPosition_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "getPosition"
@@ -601,8 +541,8 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::isSameKindAs
         
-            typedef bool ( ::osg::CameraView::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( CameraView_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osg::CameraView::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( CameraView_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             CameraView_exposer.def( 
                 "isSameKindAs"
@@ -613,8 +553,8 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::libraryName
         
-            typedef char const * ( ::osg::CameraView::*libraryName_function_type)(  ) const;
-            typedef char const * ( CameraView_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osg::CameraView::*libraryName_function_type )(  ) const;
+            typedef char const * ( CameraView_wrapper::*default_libraryName_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "libraryName"
@@ -624,7 +564,7 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::setAttitude
         
-            typedef void ( ::osg::CameraView::*setAttitude_function_type)( ::osg::Quat const & ) ;
+            typedef void ( ::osg::CameraView::*setAttitude_function_type )( ::osg::Quat const & ) ;
             
             CameraView_exposer.def( 
                 "setAttitude"
@@ -635,7 +575,7 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::setFieldOfView
         
-            typedef void ( ::osg::CameraView::*setFieldOfView_function_type)( double ) ;
+            typedef void ( ::osg::CameraView::*setFieldOfView_function_type )( double ) ;
             
             CameraView_exposer.def( 
                 "setFieldOfView"
@@ -646,7 +586,7 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::setFieldOfViewMode
         
-            typedef void ( ::osg::CameraView::*setFieldOfViewMode_function_type)( ::osg::CameraView::FieldOfViewMode ) ;
+            typedef void ( ::osg::CameraView::*setFieldOfViewMode_function_type )( ::osg::CameraView::FieldOfViewMode ) ;
             
             CameraView_exposer.def( 
                 "setFieldOfViewMode"
@@ -657,7 +597,7 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::setFocalLength
         
-            typedef void ( ::osg::CameraView::*setFocalLength_function_type)( double ) ;
+            typedef void ( ::osg::CameraView::*setFocalLength_function_type )( double ) ;
             
             CameraView_exposer.def( 
                 "setFocalLength"
@@ -668,7 +608,7 @@ void register_CameraView_class(){
         }
         { //::osg::CameraView::setPosition
         
-            typedef void ( ::osg::CameraView::*setPosition_function_type)( ::osg::Vec3d const & ) ;
+            typedef void ( ::osg::CameraView::*setPosition_function_type )( ::osg::Vec3d const & ) ;
             
             CameraView_exposer.def( 
                 "setPosition"
@@ -679,8 +619,8 @@ void register_CameraView_class(){
         }
         { //::osg::Group::addChild
         
-            typedef bool ( ::osg::Group::*addChild_function_type)( ::osg::Node * ) ;
-            typedef bool ( CameraView_wrapper::*default_addChild_function_type)( ::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*addChild_function_type )( ::osg::Node * ) ;
+            typedef bool ( CameraView_wrapper::*default_addChild_function_type )( ::osg::Node * ) ;
             
             CameraView_exposer.def( 
                 "addChild"
@@ -691,8 +631,8 @@ void register_CameraView_class(){
         }
         { //::osg::Node::asCamera
         
-            typedef ::osg::Camera * ( ::osg::Node::*asCamera_function_type)(  ) ;
-            typedef ::osg::Camera * ( CameraView_wrapper::*default_asCamera_function_type)(  ) ;
+            typedef ::osg::Camera * ( ::osg::Node::*asCamera_function_type )(  ) ;
+            typedef ::osg::Camera * ( CameraView_wrapper::*default_asCamera_function_type )(  ) ;
             
             CameraView_exposer.def( 
                 "asCamera"
@@ -703,8 +643,8 @@ void register_CameraView_class(){
         }
         { //::osg::Node::asCamera
         
-            typedef ::osg::Camera const * ( ::osg::Node::*asCamera_function_type)(  ) const;
-            typedef ::osg::Camera const * ( CameraView_wrapper::*default_asCamera_function_type)(  ) const;
+            typedef ::osg::Camera const * ( ::osg::Node::*asCamera_function_type )(  ) const;
+            typedef ::osg::Camera const * ( CameraView_wrapper::*default_asCamera_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "asCamera"
@@ -715,8 +655,8 @@ void register_CameraView_class(){
         }
         { //::osg::Node::asGeode
         
-            typedef ::osg::Geode * ( ::osg::Node::*asGeode_function_type)(  ) ;
-            typedef ::osg::Geode * ( CameraView_wrapper::*default_asGeode_function_type)(  ) ;
+            typedef ::osg::Geode * ( ::osg::Node::*asGeode_function_type )(  ) ;
+            typedef ::osg::Geode * ( CameraView_wrapper::*default_asGeode_function_type )(  ) ;
             
             CameraView_exposer.def( 
                 "asGeode"
@@ -727,8 +667,8 @@ void register_CameraView_class(){
         }
         { //::osg::Node::asGeode
         
-            typedef ::osg::Geode const * ( ::osg::Node::*asGeode_function_type)(  ) const;
-            typedef ::osg::Geode const * ( CameraView_wrapper::*default_asGeode_function_type)(  ) const;
+            typedef ::osg::Geode const * ( ::osg::Node::*asGeode_function_type )(  ) const;
+            typedef ::osg::Geode const * ( CameraView_wrapper::*default_asGeode_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "asGeode"
@@ -739,8 +679,8 @@ void register_CameraView_class(){
         }
         { //::osg::Group::asGroup
         
-            typedef ::osg::Group * ( ::osg::Group::*asGroup_function_type)(  ) ;
-            typedef ::osg::Group * ( CameraView_wrapper::*default_asGroup_function_type)(  ) ;
+            typedef ::osg::Group * ( ::osg::Group::*asGroup_function_type )(  ) ;
+            typedef ::osg::Group * ( CameraView_wrapper::*default_asGroup_function_type )(  ) ;
             
             CameraView_exposer.def( 
                 "asGroup"
@@ -751,8 +691,8 @@ void register_CameraView_class(){
         }
         { //::osg::Group::asGroup
         
-            typedef ::osg::Group const * ( ::osg::Group::*asGroup_function_type)(  ) const;
-            typedef ::osg::Group const * ( CameraView_wrapper::*default_asGroup_function_type)(  ) const;
+            typedef ::osg::Group const * ( ::osg::Group::*asGroup_function_type )(  ) const;
+            typedef ::osg::Group const * ( CameraView_wrapper::*default_asGroup_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "asGroup"
@@ -763,8 +703,8 @@ void register_CameraView_class(){
         }
         { //::osg::Transform::asMatrixTransform
         
-            typedef ::osg::MatrixTransform * ( ::osg::Transform::*asMatrixTransform_function_type)(  ) ;
-            typedef ::osg::MatrixTransform * ( CameraView_wrapper::*default_asMatrixTransform_function_type)(  ) ;
+            typedef ::osg::MatrixTransform * ( ::osg::Transform::*asMatrixTransform_function_type )(  ) ;
+            typedef ::osg::MatrixTransform * ( CameraView_wrapper::*default_asMatrixTransform_function_type )(  ) ;
             
             CameraView_exposer.def( 
                 "asMatrixTransform"
@@ -775,8 +715,8 @@ void register_CameraView_class(){
         }
         { //::osg::Transform::asMatrixTransform
         
-            typedef ::osg::MatrixTransform const * ( ::osg::Transform::*asMatrixTransform_function_type)(  ) const;
-            typedef ::osg::MatrixTransform const * ( CameraView_wrapper::*default_asMatrixTransform_function_type)(  ) const;
+            typedef ::osg::MatrixTransform const * ( ::osg::Transform::*asMatrixTransform_function_type )(  ) const;
+            typedef ::osg::MatrixTransform const * ( CameraView_wrapper::*default_asMatrixTransform_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "asMatrixTransform"
@@ -787,8 +727,8 @@ void register_CameraView_class(){
         }
         { //::osg::Transform::asPositionAttitudeTransform
         
-            typedef ::osg::PositionAttitudeTransform * ( ::osg::Transform::*asPositionAttitudeTransform_function_type)(  ) ;
-            typedef ::osg::PositionAttitudeTransform * ( CameraView_wrapper::*default_asPositionAttitudeTransform_function_type)(  ) ;
+            typedef ::osg::PositionAttitudeTransform * ( ::osg::Transform::*asPositionAttitudeTransform_function_type )(  ) ;
+            typedef ::osg::PositionAttitudeTransform * ( CameraView_wrapper::*default_asPositionAttitudeTransform_function_type )(  ) ;
             
             CameraView_exposer.def( 
                 "asPositionAttitudeTransform"
@@ -799,8 +739,8 @@ void register_CameraView_class(){
         }
         { //::osg::Transform::asPositionAttitudeTransform
         
-            typedef ::osg::PositionAttitudeTransform const * ( ::osg::Transform::*asPositionAttitudeTransform_function_type)(  ) const;
-            typedef ::osg::PositionAttitudeTransform const * ( CameraView_wrapper::*default_asPositionAttitudeTransform_function_type)(  ) const;
+            typedef ::osg::PositionAttitudeTransform const * ( ::osg::Transform::*asPositionAttitudeTransform_function_type )(  ) const;
+            typedef ::osg::PositionAttitudeTransform const * ( CameraView_wrapper::*default_asPositionAttitudeTransform_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "asPositionAttitudeTransform"
@@ -811,8 +751,8 @@ void register_CameraView_class(){
         }
         { //::osg::Node::asSwitch
         
-            typedef ::osg::Switch * ( ::osg::Node::*asSwitch_function_type)(  ) ;
-            typedef ::osg::Switch * ( CameraView_wrapper::*default_asSwitch_function_type)(  ) ;
+            typedef ::osg::Switch * ( ::osg::Node::*asSwitch_function_type )(  ) ;
+            typedef ::osg::Switch * ( CameraView_wrapper::*default_asSwitch_function_type )(  ) ;
             
             CameraView_exposer.def( 
                 "asSwitch"
@@ -823,8 +763,8 @@ void register_CameraView_class(){
         }
         { //::osg::Node::asSwitch
         
-            typedef ::osg::Switch const * ( ::osg::Node::*asSwitch_function_type)(  ) const;
-            typedef ::osg::Switch const * ( CameraView_wrapper::*default_asSwitch_function_type)(  ) const;
+            typedef ::osg::Switch const * ( ::osg::Node::*asSwitch_function_type )(  ) const;
+            typedef ::osg::Switch const * ( CameraView_wrapper::*default_asSwitch_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "asSwitch"
@@ -835,8 +775,8 @@ void register_CameraView_class(){
         }
         { //::osg::Transform::asTransform
         
-            typedef ::osg::Transform * ( ::osg::Transform::*asTransform_function_type)(  ) ;
-            typedef ::osg::Transform * ( CameraView_wrapper::*default_asTransform_function_type)(  ) ;
+            typedef ::osg::Transform * ( ::osg::Transform::*asTransform_function_type )(  ) ;
+            typedef ::osg::Transform * ( CameraView_wrapper::*default_asTransform_function_type )(  ) ;
             
             CameraView_exposer.def( 
                 "asTransform"
@@ -847,8 +787,8 @@ void register_CameraView_class(){
         }
         { //::osg::Transform::asTransform
         
-            typedef ::osg::Transform const * ( ::osg::Transform::*asTransform_function_type)(  ) const;
-            typedef ::osg::Transform const * ( CameraView_wrapper::*default_asTransform_function_type)(  ) const;
+            typedef ::osg::Transform const * ( ::osg::Transform::*asTransform_function_type )(  ) const;
+            typedef ::osg::Transform const * ( CameraView_wrapper::*default_asTransform_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "asTransform"
@@ -859,8 +799,8 @@ void register_CameraView_class(){
         }
         { //::osg::Node::ascend
         
-            typedef void ( ::osg::Node::*ascend_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( CameraView_wrapper::*default_ascend_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::Node::*ascend_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( CameraView_wrapper::*default_ascend_function_type )( ::osg::NodeVisitor & ) ;
             
             CameraView_exposer.def( 
                 "ascend"
@@ -871,8 +811,8 @@ void register_CameraView_class(){
         }
         { //::osg::Transform::computeBound
         
-            typedef ::osg::BoundingSphere ( ::osg::Transform::*computeBound_function_type)(  ) const;
-            typedef ::osg::BoundingSphere ( CameraView_wrapper::*default_computeBound_function_type)(  ) const;
+            typedef ::osg::BoundingSphere ( ::osg::Transform::*computeBound_function_type )(  ) const;
+            typedef ::osg::BoundingSphere ( CameraView_wrapper::*default_computeBound_function_type )(  ) const;
             
             CameraView_exposer.def( 
                 "computeBound"
@@ -880,45 +820,10 @@ void register_CameraView_class(){
                 , default_computeBound_function_type(&CameraView_wrapper::default_computeBound) );
         
         }
-        { //::osg::Object::computeDataVariance
-        
-            typedef void ( ::osg::Object::*computeDataVariance_function_type)(  ) ;
-            typedef void ( CameraView_wrapper::*default_computeDataVariance_function_type)(  ) ;
-            
-            CameraView_exposer.def( 
-                "computeDataVariance"
-                , computeDataVariance_function_type(&::osg::Object::computeDataVariance)
-                , default_computeDataVariance_function_type(&CameraView_wrapper::default_computeDataVariance) );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced * ( ::osg::Object::*getUserData_function_type)(  ) ;
-            typedef ::osg::Referenced * ( CameraView_wrapper::*default_getUserData_function_type)(  ) ;
-            
-            CameraView_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&CameraView_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
-        { //::osg::Object::getUserData
-        
-            typedef ::osg::Referenced const * ( ::osg::Object::*getUserData_function_type)(  ) const;
-            typedef ::osg::Referenced const * ( CameraView_wrapper::*default_getUserData_function_type)(  ) const;
-            
-            CameraView_exposer.def( 
-                "getUserData"
-                , getUserData_function_type(&::osg::Object::getUserData)
-                , default_getUserData_function_type(&CameraView_wrapper::default_getUserData)
-                , bp::return_internal_reference< >() );
-        
-        }
         { //::osg::Group::insertChild
         
-            typedef bool ( ::osg::Group::*insertChild_function_type)( unsigned int,::osg::Node * ) ;
-            typedef bool ( CameraView_wrapper::*default_insertChild_function_type)( unsigned int,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*insertChild_function_type )( unsigned int,::osg::Node * ) ;
+            typedef bool ( CameraView_wrapper::*default_insertChild_function_type )( unsigned int,::osg::Node * ) ;
             
             CameraView_exposer.def( 
                 "insertChild"
@@ -929,8 +834,8 @@ void register_CameraView_class(){
         }
         { //::osg::Group::removeChildren
         
-            typedef bool ( ::osg::Group::*removeChildren_function_type)( unsigned int,unsigned int ) ;
-            typedef bool ( CameraView_wrapper::*default_removeChildren_function_type)( unsigned int,unsigned int ) ;
+            typedef bool ( ::osg::Group::*removeChildren_function_type )( unsigned int,unsigned int ) ;
+            typedef bool ( CameraView_wrapper::*default_removeChildren_function_type )( unsigned int,unsigned int ) ;
             
             CameraView_exposer.def( 
                 "removeChildren"
@@ -941,8 +846,8 @@ void register_CameraView_class(){
         }
         { //::osg::Group::replaceChild
         
-            typedef bool ( ::osg::Group::*replaceChild_function_type)( ::osg::Node *,::osg::Node * ) ;
-            typedef bool ( CameraView_wrapper::*default_replaceChild_function_type)( ::osg::Node *,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*replaceChild_function_type )( ::osg::Node *,::osg::Node * ) ;
+            typedef bool ( CameraView_wrapper::*default_replaceChild_function_type )( ::osg::Node *,::osg::Node * ) ;
             
             CameraView_exposer.def( 
                 "replaceChild"
@@ -953,8 +858,8 @@ void register_CameraView_class(){
         }
         { //::osg::Group::resizeGLObjectBuffers
         
-            typedef void ( ::osg::Group::*resizeGLObjectBuffers_function_type)( unsigned int ) ;
-            typedef void ( CameraView_wrapper::*default_resizeGLObjectBuffers_function_type)( unsigned int ) ;
+            typedef void ( ::osg::Group::*resizeGLObjectBuffers_function_type )( unsigned int ) ;
+            typedef void ( CameraView_wrapper::*default_resizeGLObjectBuffers_function_type )( unsigned int ) ;
             
             CameraView_exposer.def( 
                 "resizeGLObjectBuffers"
@@ -965,8 +870,8 @@ void register_CameraView_class(){
         }
         { //::osg::Group::setChild
         
-            typedef bool ( ::osg::Group::*setChild_function_type)( unsigned int,::osg::Node * ) ;
-            typedef bool ( CameraView_wrapper::*default_setChild_function_type)( unsigned int,::osg::Node * ) ;
+            typedef bool ( ::osg::Group::*setChild_function_type )( unsigned int,::osg::Node * ) ;
+            typedef bool ( CameraView_wrapper::*default_setChild_function_type )( unsigned int,::osg::Node * ) ;
             
             CameraView_exposer.def( 
                 "setChild"
@@ -975,33 +880,10 @@ void register_CameraView_class(){
                 , ( bp::arg("i"), bp::arg("node") ) );
         
         }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( ::std::string const & ) ;
-            typedef void ( CameraView_wrapper::*default_setName_function_type)( ::std::string const & ) ;
-            
-            CameraView_exposer.def( 
-                "setName"
-                , setName_function_type(&::osg::Object::setName)
-                , default_setName_function_type(&CameraView_wrapper::default_setName)
-                , ( bp::arg("name") ) );
-        
-        }
-        { //::osg::Object::setName
-        
-            typedef void ( ::osg::Object::*setName_function_type)( char const * ) ;
-            
-            CameraView_exposer.def( 
-                "setName"
-                , setName_function_type( &::osg::Object::setName )
-                , ( bp::arg("name") )
-                , " Set the name of object using a C style string." );
-        
-        }
         { //::osg::Group::setThreadSafeRefUnref
         
-            typedef void ( ::osg::Group::*setThreadSafeRefUnref_function_type)( bool ) ;
-            typedef void ( CameraView_wrapper::*default_setThreadSafeRefUnref_function_type)( bool ) ;
+            typedef void ( ::osg::Group::*setThreadSafeRefUnref_function_type )( bool ) ;
+            typedef void ( CameraView_wrapper::*default_setThreadSafeRefUnref_function_type )( bool ) ;
             
             CameraView_exposer.def( 
                 "setThreadSafeRefUnref"
@@ -1010,22 +892,10 @@ void register_CameraView_class(){
                 , ( bp::arg("threadSafe") ) );
         
         }
-        { //::osg::Object::setUserData
-        
-            typedef void ( ::osg::Object::*setUserData_function_type)( ::osg::Referenced * ) ;
-            typedef void ( CameraView_wrapper::*default_setUserData_function_type)( ::osg::Referenced * ) ;
-            
-            CameraView_exposer.def( 
-                "setUserData"
-                , setUserData_function_type(&::osg::Object::setUserData)
-                , default_setUserData_function_type(&CameraView_wrapper::default_setUserData)
-                , ( bp::arg("obj") ) );
-        
-        }
         { //::osg::Group::traverse
         
-            typedef void ( ::osg::Group::*traverse_function_type)( ::osg::NodeVisitor & ) ;
-            typedef void ( CameraView_wrapper::*default_traverse_function_type)( ::osg::NodeVisitor & ) ;
+            typedef void ( ::osg::Group::*traverse_function_type )( ::osg::NodeVisitor & ) ;
+            typedef void ( CameraView_wrapper::*default_traverse_function_type )( ::osg::NodeVisitor & ) ;
             
             CameraView_exposer.def( 
                 "traverse"

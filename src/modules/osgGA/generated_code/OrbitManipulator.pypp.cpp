@@ -3,9 +3,9 @@
 #include "boost/python.hpp"
 #include "__call_policies.pypp.hpp"
 #include "__convenience.pypp.hpp"
-#include "wrap_osgga.h"
+#include "wrap_osgGA.h"
 #include "wrap_referenced.h"
-#include "orbitmanipulator.pypp.hpp"
+#include "OrbitManipulator.pypp.hpp"
 
 namespace bp = boost::python;
 
@@ -426,7 +426,7 @@ struct OrbitManipulator_wrapper : osgGA::OrbitManipulator, bp::wrapper< osgGA::O
         osg::Object::computeDataVariance( );
     }
 
-    virtual void computeHomePosition( ::osg::Camera const * camera=0, bool useBoundingBox=false ) {
+    virtual void computeHomePosition( ::osg::Camera const * camera=0l, bool useBoundingBox=false ) {
         if( bp::override func_computeHomePosition = this->get_override( "computeHomePosition" ) )
             func_computeHomePosition( boost::python::ptr(camera), useBoundingBox );
         else{
@@ -434,7 +434,7 @@ struct OrbitManipulator_wrapper : osgGA::OrbitManipulator, bp::wrapper< osgGA::O
         }
     }
     
-    void default_computeHomePosition( ::osg::Camera const * camera=0, bool useBoundingBox=false ) {
+    void default_computeHomePosition( ::osg::Camera const * camera=0l, bool useBoundingBox=false ) {
         osgGA::CameraManipulator::computeHomePosition( boost::python::ptr(camera), useBoundingBox );
     }
 
@@ -664,18 +664,6 @@ struct OrbitManipulator_wrapper : osgGA::OrbitManipulator, bp::wrapper< osgGA::O
         return osgGA::StandardManipulator::isMouseMoving( );
     }
 
-    virtual void resizeGLObjectBuffers( unsigned int arg0 ) {
-        if( bp::override func_resizeGLObjectBuffers = this->get_override( "resizeGLObjectBuffers" ) )
-            func_resizeGLObjectBuffers( arg0 );
-        else{
-            this->osg::Object::resizeGLObjectBuffers( arg0 );
-        }
-    }
-    
-    void default_resizeGLObjectBuffers( unsigned int arg0 ) {
-        osg::Object::resizeGLObjectBuffers( arg0 );
-    }
-
     static void rotateYawPitch( ::osg::Quat & rotation, double const yaw, double const pitch, ::osg::Vec3d const & localUp=osg::Vec3d(0.0, 0.0, 0.0) ){
         osgGA::StandardManipulator::rotateYawPitch( boost::ref(rotation), yaw, pitch, boost::ref(localUp) );
     }
@@ -829,7 +817,7 @@ void register_OrbitManipulator_class(){
         bp::implicitly_convertible< int, osgGA::OrbitManipulator >();
         { //::osgGA::OrbitManipulator::allocAnimationData
         
-            typedef void ( OrbitManipulator_wrapper::*allocAnimationData_function_type)(  ) ;
+            typedef void ( OrbitManipulator_wrapper::*allocAnimationData_function_type )(  ) ;
             
             OrbitManipulator_exposer.def( 
                 "allocAnimationData"
@@ -838,7 +826,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::applyAnimationStep
         
-            typedef void ( OrbitManipulator_wrapper::*applyAnimationStep_function_type)( double const,double const ) ;
+            typedef void ( OrbitManipulator_wrapper::*applyAnimationStep_function_type )( double const,double const ) ;
             
             OrbitManipulator_exposer.def( 
                 "applyAnimationStep"
@@ -848,8 +836,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::className
         
-            typedef char const * ( ::osgGA::OrbitManipulator::*className_function_type)(  ) const;
-            typedef char const * ( OrbitManipulator_wrapper::*default_className_function_type)(  ) const;
+            typedef char const * ( ::osgGA::OrbitManipulator::*className_function_type )(  ) const;
+            typedef char const * ( OrbitManipulator_wrapper::*default_className_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "className"
@@ -859,8 +847,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::clone
         
-            typedef ::osg::Object * ( ::osgGA::OrbitManipulator::*clone_function_type)( ::osg::CopyOp const & ) const;
-            typedef ::osg::Object * ( OrbitManipulator_wrapper::*default_clone_function_type)( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( ::osgGA::OrbitManipulator::*clone_function_type )( ::osg::CopyOp const & ) const;
+            typedef ::osg::Object * ( OrbitManipulator_wrapper::*default_clone_function_type )( ::osg::CopyOp const & ) const;
             
             OrbitManipulator_exposer.def( 
                 "clone"
@@ -872,8 +860,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::cloneType
         
-            typedef ::osg::Object * ( ::osgGA::OrbitManipulator::*cloneType_function_type)(  ) const;
-            typedef ::osg::Object * ( OrbitManipulator_wrapper::*default_cloneType_function_type)(  ) const;
+            typedef ::osg::Object * ( ::osgGA::OrbitManipulator::*cloneType_function_type )(  ) const;
+            typedef ::osg::Object * ( OrbitManipulator_wrapper::*default_cloneType_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "cloneType"
@@ -884,7 +872,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getCenter
         
-            typedef ::osg::Vec3d const & ( ::osgGA::OrbitManipulator::*getCenter_function_type)(  ) const;
+            typedef ::osg::Vec3d const & ( ::osgGA::OrbitManipulator::*getCenter_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "getCenter"
@@ -894,7 +882,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getDistance
         
-            typedef double ( ::osgGA::OrbitManipulator::*getDistance_function_type)(  ) const;
+            typedef double ( ::osgGA::OrbitManipulator::*getDistance_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "getDistance"
@@ -903,7 +891,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getElevation
         
-            typedef double ( ::osgGA::OrbitManipulator::*getElevation_function_type)(  ) const;
+            typedef double ( ::osgGA::OrbitManipulator::*getElevation_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "getElevation"
@@ -912,8 +900,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getFusionDistanceMode
         
-            typedef ::osgUtil::SceneView::FusionDistanceMode ( ::osgGA::OrbitManipulator::*getFusionDistanceMode_function_type)(  ) const;
-            typedef ::osgUtil::SceneView::FusionDistanceMode ( OrbitManipulator_wrapper::*default_getFusionDistanceMode_function_type)(  ) const;
+            typedef ::osgUtil::SceneView::FusionDistanceMode ( ::osgGA::OrbitManipulator::*getFusionDistanceMode_function_type )(  ) const;
+            typedef ::osgUtil::SceneView::FusionDistanceMode ( OrbitManipulator_wrapper::*default_getFusionDistanceMode_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "getFusionDistanceMode"
@@ -923,8 +911,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getFusionDistanceValue
         
-            typedef float ( ::osgGA::OrbitManipulator::*getFusionDistanceValue_function_type)(  ) const;
-            typedef float ( OrbitManipulator_wrapper::*default_getFusionDistanceValue_function_type)(  ) const;
+            typedef float ( ::osgGA::OrbitManipulator::*getFusionDistanceValue_function_type )(  ) const;
+            typedef float ( OrbitManipulator_wrapper::*default_getFusionDistanceValue_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "getFusionDistanceValue"
@@ -934,7 +922,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getHeading
         
-            typedef double ( ::osgGA::OrbitManipulator::*getHeading_function_type)(  ) const;
+            typedef double ( ::osgGA::OrbitManipulator::*getHeading_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "getHeading"
@@ -943,8 +931,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getInverseMatrix
         
-            typedef ::osg::Matrixd ( ::osgGA::OrbitManipulator::*getInverseMatrix_function_type)(  ) const;
-            typedef ::osg::Matrixd ( OrbitManipulator_wrapper::*default_getInverseMatrix_function_type)(  ) const;
+            typedef ::osg::Matrixd ( ::osgGA::OrbitManipulator::*getInverseMatrix_function_type )(  ) const;
+            typedef ::osg::Matrixd ( OrbitManipulator_wrapper::*default_getInverseMatrix_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "getInverseMatrix"
@@ -954,8 +942,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getMatrix
         
-            typedef ::osg::Matrixd ( ::osgGA::OrbitManipulator::*getMatrix_function_type)(  ) const;
-            typedef ::osg::Matrixd ( OrbitManipulator_wrapper::*default_getMatrix_function_type)(  ) const;
+            typedef ::osg::Matrixd ( ::osgGA::OrbitManipulator::*getMatrix_function_type )(  ) const;
+            typedef ::osg::Matrixd ( OrbitManipulator_wrapper::*default_getMatrix_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "getMatrix"
@@ -965,17 +953,17 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getMinimumDistance
         
-            typedef double ( ::osgGA::OrbitManipulator::*getMinimumDistance_function_type)( bool * ) const;
+            typedef double ( ::osgGA::OrbitManipulator::*getMinimumDistance_function_type )( bool * ) const;
             
             OrbitManipulator_exposer.def( 
                 "getMinimumDistance"
                 , getMinimumDistance_function_type( &::osgGA::OrbitManipulator::getMinimumDistance )
-                , ( bp::arg("relativeToModelSize")=bp::object() ) );
+                , ( bp::arg("relativeToModelSize")=0l ) );
         
         }
         { //::osgGA::OrbitManipulator::getRotation
         
-            typedef ::osg::Quat const & ( ::osgGA::OrbitManipulator::*getRotation_function_type)(  ) const;
+            typedef ::osg::Quat const & ( ::osgGA::OrbitManipulator::*getRotation_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "getRotation"
@@ -985,7 +973,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getTrackballSize
         
-            typedef double ( ::osgGA::OrbitManipulator::*getTrackballSize_function_type)(  ) const;
+            typedef double ( ::osgGA::OrbitManipulator::*getTrackballSize_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "getTrackballSize"
@@ -995,8 +983,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getTransformation
         
-            typedef void ( ::osgGA::OrbitManipulator::*getTransformation_function_type)( ::osg::Vec3d &,::osg::Quat & ) const;
-            typedef void ( OrbitManipulator_wrapper::*default_getTransformation_function_type)( ::osg::Vec3d &,::osg::Quat & ) const;
+            typedef void ( ::osgGA::OrbitManipulator::*getTransformation_function_type )( ::osg::Vec3d &,::osg::Quat & ) const;
+            typedef void ( OrbitManipulator_wrapper::*default_getTransformation_function_type )( ::osg::Vec3d &,::osg::Quat & ) const;
             
             OrbitManipulator_exposer.def( 
                 "getTransformation"
@@ -1007,8 +995,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getTransformation
         
-            typedef void ( ::osgGA::OrbitManipulator::*getTransformation_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
-            typedef void ( OrbitManipulator_wrapper::*default_getTransformation_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( ::osgGA::OrbitManipulator::*getTransformation_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( OrbitManipulator_wrapper::*default_getTransformation_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
             
             OrbitManipulator_exposer.def( 
                 "getTransformation"
@@ -1019,7 +1007,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::getWheelZoomFactor
         
-            typedef double ( ::osgGA::OrbitManipulator::*getWheelZoomFactor_function_type)(  ) const;
+            typedef double ( ::osgGA::OrbitManipulator::*getWheelZoomFactor_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "getWheelZoomFactor"
@@ -1029,8 +1017,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::isSameKindAs
         
-            typedef bool ( ::osgGA::OrbitManipulator::*isSameKindAs_function_type)( ::osg::Object const * ) const;
-            typedef bool ( OrbitManipulator_wrapper::*default_isSameKindAs_function_type)( ::osg::Object const * ) const;
+            typedef bool ( ::osgGA::OrbitManipulator::*isSameKindAs_function_type )( ::osg::Object const * ) const;
+            typedef bool ( OrbitManipulator_wrapper::*default_isSameKindAs_function_type )( ::osg::Object const * ) const;
             
             OrbitManipulator_exposer.def( 
                 "isSameKindAs"
@@ -1041,8 +1029,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::libraryName
         
-            typedef char const * ( ::osgGA::OrbitManipulator::*libraryName_function_type)(  ) const;
-            typedef char const * ( OrbitManipulator_wrapper::*default_libraryName_function_type)(  ) const;
+            typedef char const * ( ::osgGA::OrbitManipulator::*libraryName_function_type )(  ) const;
+            typedef char const * ( OrbitManipulator_wrapper::*default_libraryName_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "libraryName"
@@ -1052,7 +1040,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::panModel
         
-            typedef void ( OrbitManipulator_wrapper::*panModel_function_type)( float const,float const,float const ) ;
+            typedef void ( OrbitManipulator_wrapper::*panModel_function_type )( float const,float const,float const ) ;
             
             OrbitManipulator_exposer.def( 
                 "panModel"
@@ -1062,7 +1050,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::performMouseDeltaMovement
         
-            typedef bool ( OrbitManipulator_wrapper::*performMouseDeltaMovement_function_type)( float const,float const ) ;
+            typedef bool ( OrbitManipulator_wrapper::*performMouseDeltaMovement_function_type )( float const,float const ) ;
             
             OrbitManipulator_exposer.def( 
                 "performMouseDeltaMovement"
@@ -1072,7 +1060,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::performMovementLeftMouseButton
         
-            typedef bool ( OrbitManipulator_wrapper::*performMovementLeftMouseButton_function_type)( double const,double const,double const ) ;
+            typedef bool ( OrbitManipulator_wrapper::*performMovementLeftMouseButton_function_type )( double const,double const,double const ) ;
             
             OrbitManipulator_exposer.def( 
                 "performMovementLeftMouseButton"
@@ -1082,7 +1070,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::performMovementMiddleMouseButton
         
-            typedef bool ( OrbitManipulator_wrapper::*performMovementMiddleMouseButton_function_type)( double const,double const,double const ) ;
+            typedef bool ( OrbitManipulator_wrapper::*performMovementMiddleMouseButton_function_type )( double const,double const,double const ) ;
             
             OrbitManipulator_exposer.def( 
                 "performMovementMiddleMouseButton"
@@ -1092,7 +1080,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::performMovementRightMouseButton
         
-            typedef bool ( OrbitManipulator_wrapper::*performMovementRightMouseButton_function_type)( double const,double const,double const ) ;
+            typedef bool ( OrbitManipulator_wrapper::*performMovementRightMouseButton_function_type )( double const,double const,double const ) ;
             
             OrbitManipulator_exposer.def( 
                 "performMovementRightMouseButton"
@@ -1102,7 +1090,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::rotateTrackball
         
-            typedef void ( OrbitManipulator_wrapper::*rotateTrackball_function_type)( float const,float const,float const,float const,float const ) ;
+            typedef void ( OrbitManipulator_wrapper::*rotateTrackball_function_type )( float const,float const,float const,float const,float const ) ;
             
             OrbitManipulator_exposer.def( 
                 "rotateTrackball"
@@ -1112,7 +1100,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::rotateWithFixedVertical
         
-            typedef void ( OrbitManipulator_wrapper::*rotateWithFixedVertical_function_type)( float const,float const ) ;
+            typedef void ( OrbitManipulator_wrapper::*rotateWithFixedVertical_function_type )( float const,float const ) ;
             
             OrbitManipulator_exposer.def( 
                 "rotateWithFixedVertical"
@@ -1122,7 +1110,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::rotateWithFixedVertical
         
-            typedef void ( OrbitManipulator_wrapper::*rotateWithFixedVertical_function_type)( float const,float const,::osg::Vec3f const & ) ;
+            typedef void ( OrbitManipulator_wrapper::*rotateWithFixedVertical_function_type )( float const,float const,::osg::Vec3f const & ) ;
             
             OrbitManipulator_exposer.def( 
                 "rotateWithFixedVertical"
@@ -1132,8 +1120,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setByInverseMatrix
         
-            typedef void ( ::osgGA::OrbitManipulator::*setByInverseMatrix_function_type)( ::osg::Matrixd const & ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setByInverseMatrix_function_type)( ::osg::Matrixd const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setByInverseMatrix_function_type )( ::osg::Matrixd const & ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setByInverseMatrix_function_type )( ::osg::Matrixd const & ) ;
             
             OrbitManipulator_exposer.def( 
                 "setByInverseMatrix"
@@ -1144,8 +1132,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setByMatrix
         
-            typedef void ( ::osgGA::OrbitManipulator::*setByMatrix_function_type)( ::osg::Matrixd const & ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setByMatrix_function_type)( ::osg::Matrixd const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setByMatrix_function_type )( ::osg::Matrixd const & ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setByMatrix_function_type )( ::osg::Matrixd const & ) ;
             
             OrbitManipulator_exposer.def( 
                 "setByMatrix"
@@ -1156,8 +1144,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setCenter
         
-            typedef void ( ::osgGA::OrbitManipulator::*setCenter_function_type)( ::osg::Vec3d const & ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setCenter_function_type)( ::osg::Vec3d const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setCenter_function_type )( ::osg::Vec3d const & ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setCenter_function_type )( ::osg::Vec3d const & ) ;
             
             OrbitManipulator_exposer.def( 
                 "setCenter"
@@ -1168,8 +1156,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setDistance
         
-            typedef void ( ::osgGA::OrbitManipulator::*setDistance_function_type)( double ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setDistance_function_type)( double ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setDistance_function_type )( double ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setDistance_function_type )( double ) ;
             
             OrbitManipulator_exposer.def( 
                 "setDistance"
@@ -1180,7 +1168,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setElevation
         
-            typedef void ( ::osgGA::OrbitManipulator::*setElevation_function_type)( double ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setElevation_function_type )( double ) ;
             
             OrbitManipulator_exposer.def( 
                 "setElevation"
@@ -1190,7 +1178,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setHeading
         
-            typedef void ( ::osgGA::OrbitManipulator::*setHeading_function_type)( double ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setHeading_function_type )( double ) ;
             
             OrbitManipulator_exposer.def( 
                 "setHeading"
@@ -1200,8 +1188,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setMinimumDistance
         
-            typedef void ( ::osgGA::OrbitManipulator::*setMinimumDistance_function_type)( double const &,bool ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setMinimumDistance_function_type)( double const &,bool ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setMinimumDistance_function_type )( double const &,bool ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setMinimumDistance_function_type )( double const &,bool ) ;
             
             OrbitManipulator_exposer.def( 
                 "setMinimumDistance"
@@ -1212,8 +1200,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setRotation
         
-            typedef void ( ::osgGA::OrbitManipulator::*setRotation_function_type)( ::osg::Quat const & ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setRotation_function_type)( ::osg::Quat const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setRotation_function_type )( ::osg::Quat const & ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setRotation_function_type )( ::osg::Quat const & ) ;
             
             OrbitManipulator_exposer.def( 
                 "setRotation"
@@ -1224,8 +1212,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setTrackballSize
         
-            typedef void ( ::osgGA::OrbitManipulator::*setTrackballSize_function_type)( double const & ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setTrackballSize_function_type)( double const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setTrackballSize_function_type )( double const & ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setTrackballSize_function_type )( double const & ) ;
             
             OrbitManipulator_exposer.def( 
                 "setTrackballSize"
@@ -1236,8 +1224,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setTransformation
         
-            typedef void ( ::osgGA::OrbitManipulator::*setTransformation_function_type)( ::osg::Vec3d const &,::osg::Quat const & ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setTransformation_function_type)( ::osg::Vec3d const &,::osg::Quat const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setTransformation_function_type )( ::osg::Vec3d const &,::osg::Quat const & ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setTransformation_function_type )( ::osg::Vec3d const &,::osg::Quat const & ) ;
             
             OrbitManipulator_exposer.def( 
                 "setTransformation"
@@ -1248,8 +1236,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setTransformation
         
-            typedef void ( ::osgGA::OrbitManipulator::*setTransformation_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const & ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setTransformation_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const & ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setTransformation_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const & ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setTransformation_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const & ) ;
             
             OrbitManipulator_exposer.def( 
                 "setTransformation"
@@ -1260,8 +1248,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::setWheelZoomFactor
         
-            typedef void ( ::osgGA::OrbitManipulator::*setWheelZoomFactor_function_type)( double ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setWheelZoomFactor_function_type)( double ) ;
+            typedef void ( ::osgGA::OrbitManipulator::*setWheelZoomFactor_function_type )( double ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setWheelZoomFactor_function_type )( double ) ;
             
             OrbitManipulator_exposer.def( 
                 "setWheelZoomFactor"
@@ -1272,7 +1260,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::tb_project_to_sphere
         
-            typedef float ( OrbitManipulator_wrapper::*tb_project_to_sphere_function_type)( float,float,float ) ;
+            typedef float ( OrbitManipulator_wrapper::*tb_project_to_sphere_function_type )( float,float,float ) ;
             
             OrbitManipulator_exposer.def( 
                 "tb_project_to_sphere"
@@ -1282,7 +1270,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::trackball
         
-            typedef void ( OrbitManipulator_wrapper::*trackball_function_type)( ::osg::Vec3d &,float &,float,float,float,float ) ;
+            typedef void ( OrbitManipulator_wrapper::*trackball_function_type )( ::osg::Vec3d &,float &,float,float,float,float ) ;
             
             OrbitManipulator_exposer.def( 
                 "trackball"
@@ -1292,7 +1280,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::OrbitManipulator::zoomModel
         
-            typedef void ( OrbitManipulator_wrapper::*zoomModel_function_type)( float const,bool ) ;
+            typedef void ( OrbitManipulator_wrapper::*zoomModel_function_type )( float const,bool ) ;
             
             OrbitManipulator_exposer.def( 
                 "zoomModel"
@@ -1311,20 +1299,20 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::CameraManipulator::computeHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*computeHomePosition_function_type)( ::osg::Camera const *,bool ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_computeHomePosition_function_type)( ::osg::Camera const *,bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*computeHomePosition_function_type )( ::osg::Camera const *,bool ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_computeHomePosition_function_type )( ::osg::Camera const *,bool ) ;
             
             OrbitManipulator_exposer.def( 
                 "computeHomePosition"
                 , computeHomePosition_function_type(&::osgGA::CameraManipulator::computeHomePosition)
                 , default_computeHomePosition_function_type(&OrbitManipulator_wrapper::default_computeHomePosition)
-                , ( bp::arg("camera")=bp::object(), bp::arg("useBoundingBox")=(bool)(false) ) );
+                , ( bp::arg("camera")=0l, bp::arg("useBoundingBox")=(bool)(false) ) );
         
         }
         { //::osgGA::GUIEventHandler::event
         
-            typedef void ( ::osgGA::GUIEventHandler::*event_function_type)( ::osg::NodeVisitor *,::osg::Drawable * ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_event_function_type)( ::osg::NodeVisitor *,::osg::Drawable * ) ;
+            typedef void ( ::osgGA::GUIEventHandler::*event_function_type )( ::osg::NodeVisitor *,::osg::Drawable * ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_event_function_type )( ::osg::NodeVisitor *,::osg::Drawable * ) ;
             
             OrbitManipulator_exposer.def( 
                 "event"
@@ -1335,8 +1323,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::finishAnimation
         
-            typedef void ( ::osgGA::StandardManipulator::*finishAnimation_function_type)(  ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_finishAnimation_function_type)(  ) ;
+            typedef void ( ::osgGA::StandardManipulator::*finishAnimation_function_type )(  ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_finishAnimation_function_type )(  ) ;
             
             OrbitManipulator_exposer.def( 
                 "finishAnimation"
@@ -1356,7 +1344,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::fixVerticalAxis
         
-            typedef void ( OrbitManipulator_wrapper::*fixVerticalAxis_function_type)( ::osg::Vec3d &,::osg::Quat &,bool ) ;
+            typedef void ( OrbitManipulator_wrapper::*fixVerticalAxis_function_type )( ::osg::Vec3d &,::osg::Quat &,bool ) ;
             
             OrbitManipulator_exposer.def( 
                 "fixVerticalAxis"
@@ -1376,7 +1364,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::flushMouseEventStack
         
-            typedef void ( OrbitManipulator_wrapper::*flushMouseEventStack_function_type)(  ) ;
+            typedef void ( OrbitManipulator_wrapper::*flushMouseEventStack_function_type )(  ) ;
             
             OrbitManipulator_exposer.def( 
                 "flushMouseEventStack"
@@ -1385,8 +1373,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::CameraManipulator::getHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*getHomePosition_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
-            typedef void ( OrbitManipulator_wrapper::*default_getHomePosition_function_type)( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( ::osgGA::CameraManipulator::*getHomePosition_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
+            typedef void ( OrbitManipulator_wrapper::*default_getHomePosition_function_type )( ::osg::Vec3d &,::osg::Vec3d &,::osg::Vec3d & ) const;
             
             OrbitManipulator_exposer.def( 
                 "getHomePosition"
@@ -1397,8 +1385,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::getNode
         
-            typedef ::osg::Node const * ( ::osgGA::StandardManipulator::*getNode_function_type)(  ) const;
-            typedef ::osg::Node const * ( OrbitManipulator_wrapper::*default_getNode_function_type)(  ) const;
+            typedef ::osg::Node const * ( ::osgGA::StandardManipulator::*getNode_function_type )(  ) const;
+            typedef ::osg::Node const * ( OrbitManipulator_wrapper::*default_getNode_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "getNode"
@@ -1409,8 +1397,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::getNode
         
-            typedef ::osg::Node * ( ::osgGA::StandardManipulator::*getNode_function_type)(  ) ;
-            typedef ::osg::Node * ( OrbitManipulator_wrapper::*default_getNode_function_type)(  ) ;
+            typedef ::osg::Node * ( ::osgGA::StandardManipulator::*getNode_function_type )(  ) ;
+            typedef ::osg::Node * ( OrbitManipulator_wrapper::*default_getNode_function_type )(  ) ;
             
             OrbitManipulator_exposer.def( 
                 "getNode"
@@ -1421,7 +1409,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::getRelativeFlag
         
-            typedef bool ( OrbitManipulator_wrapper::*getRelativeFlag_function_type)( int ) const;
+            typedef bool ( OrbitManipulator_wrapper::*getRelativeFlag_function_type )( int ) const;
             
             OrbitManipulator_exposer.def( 
                 "getRelativeFlag"
@@ -1431,7 +1419,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::getThrowScale
         
-            typedef float ( OrbitManipulator_wrapper::*getThrowScale_function_type)( double const ) const;
+            typedef float ( OrbitManipulator_wrapper::*getThrowScale_function_type )( double const ) const;
             
             OrbitManipulator_exposer.def( 
                 "getThrowScale"
@@ -1441,8 +1429,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::getUsage
         
-            typedef void ( ::osgGA::StandardManipulator::*getUsage_function_type)( ::osg::ApplicationUsage & ) const;
-            typedef void ( OrbitManipulator_wrapper::*default_getUsage_function_type)( ::osg::ApplicationUsage & ) const;
+            typedef void ( ::osgGA::StandardManipulator::*getUsage_function_type )( ::osg::ApplicationUsage & ) const;
+            typedef void ( OrbitManipulator_wrapper::*default_getUsage_function_type )( ::osg::ApplicationUsage & ) const;
             
             OrbitManipulator_exposer.def( 
                 "getUsage"
@@ -1484,8 +1472,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::home
         
-            typedef void ( ::osgGA::StandardManipulator::*home_function_type)( double ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_home_function_type)( double ) ;
+            typedef void ( ::osgGA::StandardManipulator::*home_function_type )( double ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_home_function_type )( double ) ;
             
             OrbitManipulator_exposer.def( 
                 "home"
@@ -1506,7 +1494,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::isMouseMoving
         
-            typedef bool ( OrbitManipulator_wrapper::*isMouseMoving_function_type)(  ) const;
+            typedef bool ( OrbitManipulator_wrapper::*isMouseMoving_function_type )(  ) const;
             
             OrbitManipulator_exposer.def( 
                 "isMouseMoving"
@@ -1525,8 +1513,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::setAllowThrow
         
-            typedef void ( ::osgGA::StandardManipulator::*setAllowThrow_function_type)( bool ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setAllowThrow_function_type)( bool ) ;
+            typedef void ( ::osgGA::StandardManipulator::*setAllowThrow_function_type )( bool ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setAllowThrow_function_type )( bool ) ;
             
             OrbitManipulator_exposer.def( 
                 "setAllowThrow"
@@ -1537,8 +1525,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::setAnimationTime
         
-            typedef void ( ::osgGA::StandardManipulator::*setAnimationTime_function_type)( double const ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setAnimationTime_function_type)( double const ) ;
+            typedef void ( ::osgGA::StandardManipulator::*setAnimationTime_function_type )( double const ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setAnimationTime_function_type )( double const ) ;
             
             OrbitManipulator_exposer.def( 
                 "setAnimationTime"
@@ -1549,8 +1537,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setAutoComputeHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*setAutoComputeHomePosition_function_type)( bool ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setAutoComputeHomePosition_function_type)( bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setAutoComputeHomePosition_function_type )( bool ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setAutoComputeHomePosition_function_type )( bool ) ;
             
             OrbitManipulator_exposer.def( 
                 "setAutoComputeHomePosition"
@@ -1561,8 +1549,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setCoordinateFrameCallback
         
-            typedef void ( ::osgGA::CameraManipulator::*setCoordinateFrameCallback_function_type)( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setCoordinateFrameCallback_function_type)( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setCoordinateFrameCallback_function_type )( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setCoordinateFrameCallback_function_type )( ::osgGA::CameraManipulator::CoordinateFrameCallback * ) ;
             
             OrbitManipulator_exposer.def( 
                 "setCoordinateFrameCallback"
@@ -1573,8 +1561,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::CameraManipulator::setHomePosition
         
-            typedef void ( ::osgGA::CameraManipulator::*setHomePosition_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setHomePosition_function_type)( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
+            typedef void ( ::osgGA::CameraManipulator::*setHomePosition_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setHomePosition_function_type )( ::osg::Vec3d const &,::osg::Vec3d const &,::osg::Vec3d const &,bool ) ;
             
             OrbitManipulator_exposer.def( 
                 "setHomePosition"
@@ -1585,8 +1573,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::setNode
         
-            typedef void ( ::osgGA::StandardManipulator::*setNode_function_type)( ::osg::Node * ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setNode_function_type)( ::osg::Node * ) ;
+            typedef void ( ::osgGA::StandardManipulator::*setNode_function_type )( ::osg::Node * ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setNode_function_type )( ::osg::Node * ) ;
             
             OrbitManipulator_exposer.def( 
                 "setNode"
@@ -1597,7 +1585,7 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::setRelativeFlag
         
-            typedef void ( OrbitManipulator_wrapper::*setRelativeFlag_function_type)( int,bool ) ;
+            typedef void ( OrbitManipulator_wrapper::*setRelativeFlag_function_type )( int,bool ) ;
             
             OrbitManipulator_exposer.def( 
                 "setRelativeFlag"
@@ -1607,8 +1595,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::StandardManipulator::setVerticalAxisFixed
         
-            typedef void ( ::osgGA::StandardManipulator::*setVerticalAxisFixed_function_type)( bool ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_setVerticalAxisFixed_function_type)( bool ) ;
+            typedef void ( ::osgGA::StandardManipulator::*setVerticalAxisFixed_function_type )( bool ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_setVerticalAxisFixed_function_type )( bool ) ;
             
             OrbitManipulator_exposer.def( 
                 "setVerticalAxisFixed"
@@ -1619,8 +1607,8 @@ void register_OrbitManipulator_class(){
         }
         { //::osgGA::CameraManipulator::updateCamera
         
-            typedef void ( ::osgGA::CameraManipulator::*updateCamera_function_type)( ::osg::Camera & ) ;
-            typedef void ( OrbitManipulator_wrapper::*default_updateCamera_function_type)( ::osg::Camera & ) ;
+            typedef void ( ::osgGA::CameraManipulator::*updateCamera_function_type )( ::osg::Camera & ) ;
+            typedef void ( OrbitManipulator_wrapper::*default_updateCamera_function_type )( ::osg::Camera & ) ;
             
             OrbitManipulator_exposer.def( 
                 "updateCamera"

@@ -68,6 +68,14 @@ class OsgAnimationWrapper(BaseWrapper):
         # BEFORE wrap_all_osg_referenced...
         osgAnimation.class_("StatsHandler").wrapper_alias = 'AnimStatsHandler_wrapper'
 
+        # linux compile error HalfWayMapGenerator.pypp.cpp:13:113: error: `HalfWayMapGenerator_wrapper` was not declared in this scope
+        for cls_name in [
+                 "Target",
+                 ]:
+            cls = osgAnimation.class_(cls_name)
+            cls.wrapper_alias = cls.decl_string
+        for cls in osgAnimation.classes(lambda c: c.name.startswith("TemplateTarget")):
+            cls.wrapper_alias = cls.decl_string
 
         self.wrap_all_osg_referenced(osgAnimation)
             
