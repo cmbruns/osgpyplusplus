@@ -2,7 +2,8 @@
 language: cpp
 compiler:
   - gcc
-# Use container architecture so maybe we could cache some outputs
+# TODO: Use container architecture so maybe we could cache some outputs
+# But not yet, because container arch does not seem to have Trusty dist. Nov 30 2015
 sudo: false
 # Need trusty to get osg 3.2; I'm not supporting osg 3.0 at the moment
 dist: trusty
@@ -14,8 +15,9 @@ addons:
       - openscenegraph
       - libopenscenegraph-dev
 # Build each OSG module in a separate job, to reduce risk of timeout
-# TODO: slowest modules first, like backpack algorithm
+# Run slowest modules first, like backpack algorithm
 env:
+  - OSG_MODULE=_osg
   - OSG_MODULE=_osgUtil
   - OSG_MODULE=_osgAnimation
   - OSG_MODULE=_osgDB
@@ -28,7 +30,6 @@ env:
   - OSG_MODULE=_osgVolume
   - OSG_MODULE=_osgWidget
   - OSG_MODULE=_osgFX
-# TODO: add giant time consuming _osg module
 before_script:
   - mkdir build_cmake
   - cd build_cmake
