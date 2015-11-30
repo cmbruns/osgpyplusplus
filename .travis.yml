@@ -4,7 +4,7 @@ compiler:
   - gcc
 # TODO: Use container architecture so maybe we could cache some outputs
 # But not yet, because container arch does not seem to have Trusty dist. Nov 30 2015
-sudo: false
+sudo: required
 # Need trusty to get osg 3.2; I'm not supporting osg 3.0 at the moment
 dist: trusty
 # Use APT feature to avoid needing sudo for dependencies
