@@ -210,6 +210,8 @@ class OsgGAWrapper(BaseWrapper):
         td = cls.class_("TouchData")
         expose_ref_ptr_class(td)
         td.constructors(arg_types=[None, None]).exclude()
+        td.member_functions("begin").exclude() # STL cross compile error
+        td.member_functions("end").exclude() # STL cross compile error
         # td.member_function("libraryName").exclude()
         
 if __name__ == "__main__":

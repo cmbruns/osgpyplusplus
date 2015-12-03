@@ -413,6 +413,9 @@ class OsgWrapper(BaseWrapper):
             cls.member_functions(fn_name).exclude()
         osg.class_("Referenced").member_functions("setThreadSafeRefUnref").exclude()
 
+        cls = osg.class_("AnimationPath")
+        cls.member_function("write", arg_types=[None, None]).exclude() # STL cross compile error
+
         osg.class_("QueryGeometry").exclude()
 
         # Indexing for variable-sized VecXArrays

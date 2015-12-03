@@ -602,24 +602,6 @@ void register_GUIEventAdapter_class(){
                 .def_readwrite( "x", &osgGA::GUIEventAdapter::TouchData::TouchPoint::x )    
                 .def_readwrite( "y", &osgGA::GUIEventAdapter::TouchData::TouchPoint::y );
             TouchData_exposer.def( bp::init< >() );
-            { //::osgGA::GUIEventAdapter::TouchData::begin
-            
-                typedef ::__gnu_cxx::__normal_iterator< osgGA::GUIEventAdapter::TouchData::TouchPoint*, std::vector< osgGA::GUIEventAdapter::TouchData::TouchPoint > > ( ::osgGA::GUIEventAdapter::TouchData::*begin_function_type )(  ) ;
-                
-                TouchData_exposer.def( 
-                    "begin"
-                    , begin_function_type( &::osgGA::GUIEventAdapter::TouchData::begin ) );
-            
-            }
-            { //::osgGA::GUIEventAdapter::TouchData::begin
-            
-                typedef ::__gnu_cxx::__normal_iterator< osgGA::GUIEventAdapter::TouchData::TouchPoint const*, std::vector< osgGA::GUIEventAdapter::TouchData::TouchPoint > > ( ::osgGA::GUIEventAdapter::TouchData::*begin_function_type )(  ) const;
-                
-                TouchData_exposer.def( 
-                    "begin"
-                    , begin_function_type( &::osgGA::GUIEventAdapter::TouchData::begin ) );
-            
-            }
             { //::osgGA::GUIEventAdapter::TouchData::className
             
                 typedef char const * ( ::osgGA::GUIEventAdapter::TouchData::*className_function_type )(  ) const;
@@ -654,24 +636,6 @@ void register_GUIEventAdapter_class(){
                     , cloneType_function_type(&::osgGA::GUIEventAdapter::TouchData::cloneType)
                     , default_cloneType_function_type(&GUIEventAdapter_wrapper::TouchData_wrapper::default_cloneType)
                     , bp::return_value_policy< bp::reference_existing_object >() );
-            
-            }
-            { //::osgGA::GUIEventAdapter::TouchData::end
-            
-                typedef ::__gnu_cxx::__normal_iterator< osgGA::GUIEventAdapter::TouchData::TouchPoint*, std::vector< osgGA::GUIEventAdapter::TouchData::TouchPoint > > ( ::osgGA::GUIEventAdapter::TouchData::*end_function_type )(  ) ;
-                
-                TouchData_exposer.def( 
-                    "end"
-                    , end_function_type( &::osgGA::GUIEventAdapter::TouchData::end ) );
-            
-            }
-            { //::osgGA::GUIEventAdapter::TouchData::end
-            
-                typedef ::__gnu_cxx::__normal_iterator< osgGA::GUIEventAdapter::TouchData::TouchPoint const*, std::vector< osgGA::GUIEventAdapter::TouchData::TouchPoint > > ( ::osgGA::GUIEventAdapter::TouchData::*end_function_type )(  ) const;
-                
-                TouchData_exposer.def( 
-                    "end"
-                    , end_function_type( &::osgGA::GUIEventAdapter::TouchData::end ) );
             
             }
             { //::osgGA::GUIEventAdapter::TouchData::get

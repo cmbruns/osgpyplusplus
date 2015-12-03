@@ -105,6 +105,7 @@ class OsgDBWrapper(BaseWrapper):
             for fn in mb.free_functions(fn_name):
                 fn.call_policies = return_value_policy(reference_existing_object)
         mb.free_functions("fopen").exclude()
+        osgDB.free_functions("open").exclude()
         # mb.free_functions("writeShaderFile").exclude()
         # mb.free_functions("writeImageFile").exclude()
         # mb.free_functions("writeNodeFile").exclude()

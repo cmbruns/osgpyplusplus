@@ -257,26 +257,6 @@ void register_Statistics_class(){
             .value("STAT_RESTART", osgUtil::Statistics::STAT_RESTART)
             .export_values()
             ;
-        { //::osgUtil::Statistics::GetPrimitivesBegin
-        
-            typedef ::std::_Rb_tree_iterator< std::pair< unsigned int const, unsigned int > > ( ::osgUtil::Statistics::*GetPrimitivesBegin_function_type )(  ) ;
-            
-            Statistics_exposer.def( 
-                "GetPrimitivesBegin"
-                , GetPrimitivesBegin_function_type( &::osgUtil::Statistics::GetPrimitivesBegin )
-                , " deprecated" );
-        
-        }
-        { //::osgUtil::Statistics::GetPrimitivesEnd
-        
-            typedef ::std::_Rb_tree_iterator< std::pair< unsigned int const, unsigned int > > ( ::osgUtil::Statistics::*GetPrimitivesEnd_function_type )(  ) ;
-            
-            Statistics_exposer.def( 
-                "GetPrimitivesEnd"
-                , GetPrimitivesEnd_function_type( &::osgUtil::Statistics::GetPrimitivesEnd )
-                , " deprecated" );
-        
-        }
         { //::osgUtil::Statistics::add
         
             typedef void ( ::osgUtil::Statistics::*add_function_type )( ::osgUtil::Statistics const & ) ;

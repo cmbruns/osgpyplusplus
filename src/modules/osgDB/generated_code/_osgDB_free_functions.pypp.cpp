@@ -688,18 +688,6 @@ void register_free_functions(){
     
     }
 
-    { //::osgDB::open
-    
-        typedef void ( *open_function_type )( ::std::fstream &,char const *,::std::_Ios_Openmode );
-        
-        bp::def( 
-            "open"
-            , open_function_type( &::osgDB::open )
-            , ( bp::arg("fs"), bp::arg("filename"), bp::arg("mode") )
-            , " Convenience function for fstream open , std::ifstream, and std::ofstream to\n automatically handle UTF-8 to UTF-16 filename conversion. Always use one\n of these classes in any OpenSceneGraph code instead of the STL equivalent." );
-    
-    }
-
     { //::osgDB::openArchive
     
         typedef ::osgDB::Archive * ( *openArchive_function_type )( ::std::string const &,::osgDB::ReaderWriter::ArchiveStatus,unsigned int,::osgDB::Options * );

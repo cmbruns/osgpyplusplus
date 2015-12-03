@@ -91,6 +91,10 @@ class OsgUtilWrapper(BaseWrapper):
                 # Because "manage_new_object" causes trouble with protected destructors, so let's leak this memory
                 fn.call_policies = return_value_policy(reference_existing_object)
 
+        cls = osgUtil.class_("Statistics")
+        cls.member_functions("GetPrimitivesBegin").exclude() # cross compile errors
+        cls.member_functions("GetPrimitivesEnd").exclude() # cross compile errors
+
         # Write results
         self.generate_module_code("_osgUtil")
         

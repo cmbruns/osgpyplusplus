@@ -473,17 +473,6 @@ void register_AnimationPath_class(){
                 , " Write the animation path to a flat ASCII file stream." );
         
         }
-        { //::osg::AnimationPath::write
-        
-            typedef void ( ::osg::AnimationPath::*write_function_type )( ::std::_Rb_tree_const_iterator< std::pair< double const, osg::AnimationPath::ControlPoint > >,::std::ostream & ) const;
-            
-            AnimationPath_exposer.def( 
-                "write"
-                , write_function_type( &::osg::AnimationPath::write )
-                , ( bp::arg("itr"), bp::arg("out") )
-                , " Write the control point to a flat ASCII file stream." );
-        
-        }
     }
 
 }
